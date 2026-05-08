@@ -76,7 +76,7 @@
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .section {
     position: relative;
     padding-top: 51px;

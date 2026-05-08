@@ -20,7 +20,7 @@ export function Header() {
 
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <Image src="/icons/icons/logo.svg" alt="Minecraft game logo" width={215} height={59} />
+          <Image src="/icons/icons/logo.webp" alt="Minecraft game logo" width={215} height={59} />
         </Link>
 
         <div className={styles.divider} />

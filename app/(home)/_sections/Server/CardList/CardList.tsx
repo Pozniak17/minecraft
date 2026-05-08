@@ -12,7 +12,7 @@ const CARDS: CardProps[] = [
     text: 'Classic survival with balanced PvP',
     description:
       'Vanilla survival with PvP and TNT disabled. Perfect for fair fights, progression, and long-term gameplay.',
-    icon: '/icons/illustrations/server-1.svg',
+    icon: '/home/images/server-1.webp',
     link: '#',
   },
   {
@@ -20,7 +20,7 @@ const CARDS: CardProps[] = [
     text: 'Total freedom. Total chaos.',
     description:
       'Vanilla survival with PvP and TNT enabled. Build, destroy, raid, or dominate — no limits on playstyle.',
-    icon: '/icons/illustrations/server-2.svg',
+    icon: '/home/images/server-2.webp',
     link: '#',
   },
   {
@@ -28,7 +28,7 @@ const CARDS: CardProps[] = [
     text: 'Build, relax, and connect',
     description:
       'Peaceful vanilla server without PvP or TNT. Focus on creativity, social play, and beautiful builds.',
-    icon: '/icons/illustrations/server-3.svg',
+    icon: '/home/images/server-3.webp',
     link: '#',
   },
 ];
@@ -38,7 +38,7 @@ export default function CardList() {
     align: 'center',
     loop: false,
     breakpoints: {
-      '(min-width: 1024px)': { active: false },
+      '(min-width: 1280px)': { active: false },
     },
   });
 

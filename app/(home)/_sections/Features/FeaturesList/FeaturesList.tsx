@@ -15,7 +15,7 @@ export default function FeaturesList({ items }: FeaturesListProps) {
     align: 'center',
     loop: false,
     breakpoints: {
-      '(min-width: 1024px)': { active: false },
+      '(min-width: 1280px)': { active: false },
     },
   });
 

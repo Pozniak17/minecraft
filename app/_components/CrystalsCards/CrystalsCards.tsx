@@ -34,7 +34,7 @@ export default function CrystalsCards() {
     align: 'center',
     loop: false,
     breakpoints: {
-      '(min-width: 1024px)': { active: false },
+      '(min-width: 1280px)': { active: false },
     },
   });
 

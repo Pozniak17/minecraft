@@ -100,7 +100,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .hero {
     background-position: right top;
   }

@@ -11,9 +11,12 @@
 .inner {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 20px;
   width: 100%;
+  /* Хедер має власний фіксований паддінг — перекриваємо Container, бо його 60/150px
+     забагато для компактного бургер-лейаута і не вміщує повний десктопний нав. */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* ── Logo ── */
@@ -144,9 +147,15 @@
   opacity: 0.7;
 }
 
-/* ── Desktop (≥ 1024px) ── */
+/* ── Desktop (≥ 1280px) ──
+   Натуральна ширина повного хедера ≈ 1168px + 2×20px паддінга = 1208px,
+   тому бургер вимикаємо й показуємо повний нав саме від 1280. */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
+  .inner {
+    justify-content: center;
+  }
+
   .nav {
     display: flex;
   }
@@ -164,9 +173,9 @@
   }
 }
 
-/* ── Mobile & Tablet (< 1024px) ── */
+/* ── Mobile & Tablet (< 1280px) ── */
 
-@media (max-width: 1023px) {
+@media (max-width: 1279px) {
   .dividerEdge,
   .dividerDesktop,
   .authButtons,
@@ -174,7 +183,8 @@
     display: none;
   }
 
-  .langButton {
+  /* Увесь вільний простір лишається між логотипом (і розділювачем) та кластером меню+мова */
+  .menuButton {
     margin-left: auto;
   }
 }

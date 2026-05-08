@@ -81,9 +81,9 @@
   flex-shrink: 0;
 }
 
-/* ── Desktop (≥ 1024px): single row, no inline labels ── */
+/* ── Desktop (≥ 1280px): single row, no inline labels ── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .rateCard {
     width: 1150px;
     height: 62px;

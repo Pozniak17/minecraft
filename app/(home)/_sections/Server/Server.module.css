@@ -235,7 +235,7 @@
   line-height: normal;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .title {
     font-size: var(--Size-Desk-H2-Medium, 40px);
   }

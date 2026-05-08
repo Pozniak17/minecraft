@@ -41,7 +41,7 @@
   transform: scale(1.2);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   /* 3 картки зверху, 2 знизу по центру (5‑та картка — по лініях 4–5) */
   .track {
     display: grid;

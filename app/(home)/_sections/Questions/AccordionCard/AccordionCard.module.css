@@ -70,7 +70,7 @@
   padding-top: 12px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .accordionCard {
     width: 566px;
     min-height: 55px;

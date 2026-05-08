@@ -16,7 +16,7 @@ export default function RateCard({
         <span className={styles.label}>Rank</span>
         <span className={styles.value}>
           <Image
-            src="/icons/illustrations/champ-cup.svg"
+            src="/icons/illustrations/champ-cup.webp"
             alt=""
             width={20}
             height={22}

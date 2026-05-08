@@ -48,7 +48,7 @@ export function Hero() {
 
           <div className={styles.cat}>
             <Image
-              src="/icons/illustrations/cat.svg"
+              src="/icons/illustrations/cat.webp"
               alt="Minecraft cat"
               width={488}
               height={222}

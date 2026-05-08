@@ -59,7 +59,7 @@
   line-height: 150%; /* 18px */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .featuresCard {
     width: 100%;
     margin-left: 0;

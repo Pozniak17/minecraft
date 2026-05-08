@@ -39,7 +39,7 @@
   line-height: 150%; /* 15.75px */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .benefitsCard {
     width: 100%;
     max-width: none;

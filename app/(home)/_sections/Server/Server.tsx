@@ -57,7 +57,7 @@ export default function Server() {
                 <h3 className={styles.statsTitleWrapper}>
                   Top Players Today
                   <Image
-                    src="/icons/illustrations/champ-cup.svg"
+                    src="/icons/illustrations/champ-cup.webp"
                     alt="Arrow up"
                     width={33}
                     height={36}

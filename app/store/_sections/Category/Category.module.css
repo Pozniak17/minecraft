@@ -20,7 +20,7 @@
   margin-top: 32px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .title {
     margin-bottom: 24px;
     font-size: var(--Size-Desk-H2-Medium, 40px);

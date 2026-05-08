@@ -167,9 +167,9 @@
   gap: 18px;
 }
 
-/* ── Tablet (768px – 1023px) ── */
+/* ── Tablet (768px – 1279px) ── */
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .top {
     flex-direction: row;
     align-items: flex-start;
@@ -230,9 +230,9 @@
   }
 }
 
-/* ── Desktop (>= 1024px) ── */
+/* ── Desktop (>= 1280px) ── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .footer {
     padding-top: 22px;
     padding-bottom: 20px;

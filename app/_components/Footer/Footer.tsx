@@ -40,7 +40,7 @@ export function Footer() {
           <div className={styles.info}>
             <Link href="/" className={styles.logo}>
               <Image
-                src="/icons/icons/logo.svg"
+                src="/icons/icons/logo.webp"
                 alt="Minecraft game logo"
                 width={214}
                 height={59}
@@ -101,7 +101,7 @@ export function Footer() {
         {/* Decorative grass left */}
         <div className={styles.grassLeft}>
           <Image
-            src="/icons/illustrations/footer-left-grass.svg"
+            src="/footer/images/footer-left-grass.webp"
             alt=""
             width={253}
             height={151}
@@ -112,7 +112,7 @@ export function Footer() {
         {/* Decorative grass right (desktop) */}
         <div className={styles.grassRight}>
           <Image
-            src="/icons/illustrations/footer-rigth-grass.svg"
+            src="/footer/images/footer-rigth-grass.webp"
             alt=""
             width={308}
             height={183}

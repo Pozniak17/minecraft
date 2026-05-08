@@ -35,7 +35,7 @@
   transform: scale(1.2);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .cards {
     flex-wrap: wrap;
     gap: 22px;
