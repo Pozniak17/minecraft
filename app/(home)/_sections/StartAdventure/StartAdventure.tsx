@@ -15,27 +15,30 @@ export default function StartAdventure() {
               Play Now
             </Link>
           </div>
-
-          <div className={styles.videoBox}>
-            <video
-              src="/video/big_cat.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="none"
-              className={styles.video}
-            />
-            <Image
-              src="/icons/illustrations/effect.png"
-              alt=""
-              fill
-              loading="lazy"
-              className={styles.effect}
-            />
-          </div>
         </div>
       </Container>
+
+      {/* Decorative video — anchored to 1440 column (desktop only) */}
+      <div className={styles.frame}>
+        <div className={styles.videoBox}>
+          <video
+            src="/video/big_cat.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            className={styles.video}
+          />
+          <Image
+            src="/icons/illustrations/effect.png"
+            alt=""
+            fill
+            loading="lazy"
+            className={styles.effect}
+          />
+        </div>
+      </div>
     </section>
   );
 }

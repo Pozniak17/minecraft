@@ -1,6 +1,7 @@
 import BenefitsList from './BenefitsList/BenefitsList';
 import styles from './Benefits.module.css';
 import { Divider } from '../../../_components/Divider/Divider';
+import { Container } from '../../../_components/Container/Container';
 
 export type BenefitsCardProps = {
   title: string;
@@ -38,8 +39,10 @@ export default function BenefitsSection() {
   return (
     <>
       <section className={styles.benefitsSection}>
-        <h2 className={styles.title}>Why Play With Us?</h2>
-        <BenefitsList items={Data} />
+        <Container>
+          <h2 className={styles.title}>Why Play With Us?</h2>
+          <BenefitsList items={Data} />
+        </Container>
         <div className={styles.benefitsVideoContainer}>
           <div className={styles.overlay}></div>
           <video className={styles.video} autoPlay loop muted playsInline preload="auto">

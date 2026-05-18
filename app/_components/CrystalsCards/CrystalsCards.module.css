@@ -37,10 +37,10 @@
 
 @media (min-width: 1280px) {
   .cards {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 22px;
-    row-gap: 32px;
     justify-content: center;
+    margin-inline: -10px;
   }
 
   .dots {

@@ -8,16 +8,29 @@ export function Hero() {
   return (
     <>
       <section className={styles.main}>
-        <div className={styles.overlay}></div>
-        <video
-          className={styles.video}
-          src="/video/hero-video.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        />
+        {/* Video + overlay + cat share the same containing block (video size) */}
+        <div className={styles.videoWrap}>
+          <video
+            className={styles.video}
+            src="/video/hero-video.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          />
+          <div className={styles.overlay}></div>
+          <div className={styles.frame}>
+            <div className={styles.cat}>
+              <Image
+                src="/icons/illustrations/cat.webp"
+                alt="Minecraft cat"
+                width={488}
+                height={222}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Content */}
         <Container className={styles.content}>
@@ -44,15 +57,6 @@ export function Hero() {
               <Image src="/icons/social/ic_outline-discord.svg" alt="" width={24} height={24} />
               <span>Join Discord</span>
             </a>
-          </div>
-
-          <div className={styles.cat}>
-            <Image
-              src="/icons/illustrations/cat.webp"
-              alt="Minecraft cat"
-              width={488}
-              height={222}
-            />
           </div>
         </Container>
       </section>

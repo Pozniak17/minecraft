@@ -34,6 +34,26 @@ const PAYMENT_ICONS = [
 export function Footer() {
   return (
     <footer className={styles.footer}>
+      {/* Decorative grass — anchored to footer edges (full viewport width) */}
+      <div className={styles.grassLeft}>
+        <Image
+          src="/footer/images/footer-left-grass.webp"
+          alt=""
+          width={253}
+          height={151}
+          aria-hidden="true"
+        />
+      </div>
+      <div className={styles.grassRight}>
+        <Image
+          src="/footer/images/footer-rigth-grass.webp"
+          alt=""
+          width={308}
+          height={183}
+          aria-hidden="true"
+        />
+      </div>
+
       <Container className={styles.content}>
         <div className={styles.top}>
           {/* Left section: Logo + Description + Socials */}
@@ -96,28 +116,6 @@ export function Footer() {
               </ul>
             </div>
           </div>
-        </div>
-
-        {/* Decorative grass left */}
-        <div className={styles.grassLeft}>
-          <Image
-            src="/footer/images/footer-left-grass.webp"
-            alt=""
-            width={253}
-            height={151}
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* Decorative grass right (desktop) */}
-        <div className={styles.grassRight}>
-          <Image
-            src="/footer/images/footer-rigth-grass.webp"
-            alt=""
-            width={308}
-            height={183}
-            aria-hidden="true"
-          />
         </div>
 
         {/* Bottom bar */}

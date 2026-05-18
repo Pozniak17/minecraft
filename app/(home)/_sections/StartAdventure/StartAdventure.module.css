@@ -76,11 +76,24 @@
   display: none;
 }
 
+.frame {
+  display: none;
+}
+
 @media (min-width: 1280px) {
   .section {
     position: relative;
     padding-top: 51px;
     padding-bottom: 51px;
+  }
+
+  .frame {
+    display: block;
+    position: absolute;
+    inset: 0;
+    max-width: var(--container-max-width, 1440px);
+    margin-inline: auto;
+    pointer-events: none;
   }
   .title {
     margin: 0;
