@@ -5,6 +5,10 @@ import image1 from '@/public/privileges/images/1.png';
 import image2 from '@/public/privileges/images/2.png';
 import image3 from '@/public/privileges/images/3.png';
 import image4 from '@/public/privileges/images/4.png';
+import image5 from '@/public/privileges/images/5.png';
+import image6 from '@/public/privileges/images/6.png';
+import image7 from '@/public/privileges/images/7.png';
+import image8 from '@/public/privileges/images/8.png';
 
 export type PrivilegesCardProps = {
   title: string;
@@ -40,25 +44,25 @@ const Data: PrivilegesCardProps[] = [
   {
     title: 'Avenger',
     text: 'Take full control of your gameplay with the AVENGER kit. Change your nickname, control time and weather and view other players’ armor. You’ll also get 22 auction slots, the ability to claim up to 50 regions, set 50 homes, and earn $250 per hour in-game. Designed for dedicated players who want full freedom, large-scale building potential.',
-    icon: image1,
+    icon: image5,
   },
 
   {
     title: 'Legend',
     text: 'Reach the highest tier with the LEGEND kit and powerful server privileges. Manage players, repair your items, and monitor private messages. You’ll receive 30 auction slots, the ability to claim up to 99 regions, set 99 homes, and earn $250 per hour in-game. The ultimate package for players who want top authority',
-    icon: image1,
+    icon: image6,
   },
 
   {
     title: 'Phantom',
     text: 'Enter the server with ultimate power through the PHANTOM kit and unmatched privileges. Gain immunity from bans, kicks, mutes, and similar restrictions, heal yourself instantly, ban players, and reveal real nicknames. You’ll receive 60 auction slots, the ability to claim up to 199 regions, set 199 homes, and earn $300 per hour in-game. The most exclusive tier for players who want maximum server dominance.',
-    icon: image1,
+    icon: image7,
   },
 
   {
     title: 'Phoenix',
     text: 'Rise above all with the PHOENIX kit and the most powerful privileges on the server. Gain enhanced banning abilities (×2), repair all items at once, heal other players using, and activate immortality.You’ll receive 100 auction slots, the ability to claim up to 299 regions, set 299 homes, and earn $400 per hour in-game. The ultimate rank for players who want complete control, prestige, and maximum server advantages.',
-    icon: image1,
+    icon: image8,
   },
 ];
 
