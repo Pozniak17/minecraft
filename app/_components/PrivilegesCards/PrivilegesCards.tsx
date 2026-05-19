@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
 import { StaticImageData } from 'next/image';
 import Card from './Card/Card';
 import styles from './PrivilegesCards.module.css';
@@ -66,12 +70,47 @@ const Data: PrivilegesCardProps[] = [
   },
 ];
 
-export default function PrivilegesCards() {
+type PrivilegesCardsProps = {
+  initialLimit?: number;
+  /** When set, "View more" navigates here instead of expanding inline. */
+  viewMoreHref?: string;
+};
+
+export default function PrivilegesCards({
+  initialLimit,
+  viewMoreHref,
+}: PrivilegesCardsProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  const hasMore = initialLimit != null && Data.length > initialLimit;
+  const visible = hasMore && !expanded ? Data.slice(0, initialLimit) : Data;
+  const showViewMore = hasMore && !expanded;
+
   return (
-    <ul className={styles.cards}>
-      {Data.map((item, index) => (
-        <Card key={index} title={item.title} text={item.text} icon={item.icon} />
-      ))}
-    </ul>
+    <div className={styles.root}>
+      <ul className={styles.cards}>
+        {visible.map((item, index) => (
+          <Card key={index} title={item.title} text={item.text} icon={item.icon} />
+        ))}
+      </ul>
+
+      {showViewMore && (
+        <div className={styles.viewMore}>
+          {viewMoreHref ? (
+            <Link href={viewMoreHref} className={styles.viewMoreBtn}>
+              View more
+            </Link>
+          ) : (
+            <button
+              type="button"
+              className={styles.viewMoreBtn}
+              onClick={() => setExpanded(true)}
+            >
+              View more
+            </button>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
