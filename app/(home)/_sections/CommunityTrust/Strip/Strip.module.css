@@ -1,7 +1,9 @@
 .marquee {
+  --strip-logo-height: 32px;
+
   display: flex;
   width: 100%;
-  height: 26px;
+  height: var(--strip-logo-height);
   overflow: hidden;
 
   -webkit-mask-image: linear-gradient(
@@ -34,8 +36,26 @@
 
 .item {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
   line-height: 0;
   padding-right: 48px;
+}
+
+.logoSlot {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: var(--strip-logo-height);
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 @keyframes scroll {

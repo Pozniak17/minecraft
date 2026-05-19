@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: 'Minecraft Game — A Next-Generation Ecosystem',
   description:
     'Three unique servers, an in-game economy, rankings, and tournaments. Play the way you like.',
+  manifest: '/favicon/site.webmanifest',
 };
 
 export default function RootLayout({
