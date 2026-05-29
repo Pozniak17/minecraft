@@ -1,0 +1,232 @@
+.hero {
+  position: relative;
+  height: 821px;
+  width: 100%;
+  background-color: var(--color-bg);
+  background-image: url('/about/images/about-mob.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Header is position:absolute — reserve its height so content does not sit underneath */
+.content {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--header-height) + 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.badge {
+  margin-bottom: 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  padding: 6px 14px;
+  justify-content: center;
+  align-items: center;
+
+  color: #bde153;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: 16px;
+  width: 335px;
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 42px; /* 105% */
+  text-transform: uppercase;
+}
+
+.description {
+  margin-bottom: 24px;
+  width: 335px;
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+}
+
+.btnPrimary {
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+
+  border-radius: 999px;
+  background: #bde153;
+  box-shadow:
+    3px 4px 20px 0 rgba(187, 223, 51, 0.45),
+    -2px -3px 5px 0 rgba(255, 255, 255, 0.15) inset;
+
+  color: #001812;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btnSecondary {
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    background-image: url('/about/images/about-bg.webp');
+    background-size: cover;
+    background-position: 75% 50%;
+  }
+
+  .content {
+    align-items: flex-start;
+    text-align: start;
+    padding-top: calc(var(--header-height) + 80px);
+  }
+
+  .description {
+    max-width: 480px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .badge {
+    margin-bottom: 30px;
+    display: flex;
+    padding: 6px 14px;
+    justify-content: center;
+    align-items: center;
+
+    color: #bde153;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+  }
+  .title {
+    margin-bottom: 24px;
+    width: 620px;
+
+    text-align: start;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 64px; /* 100% */
+    text-transform: uppercase;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    width: 457px;
+    text-align: start;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+
+  .buttons {
+  }
+
+  .btnPrimary {
+    display: flex;
+    padding: 14px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    color: #001812;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+
+    border-radius: 999px;
+    background: #bde153;
+    box-shadow:
+      4px 5px 30px 0 rgba(187, 223, 51, 0.55),
+      -3px -4px 7px 0 rgba(255, 255, 255, 0.15) inset;
+  }
+
+  .btnSecondary {
+    display: flex;
+    padding: 14px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+  }
+}
