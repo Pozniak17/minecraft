@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Container } from '../Container/Container';
 import styles from './Header.module.css';
 
@@ -12,7 +15,14 @@ const NAV_LINKS = [
   { label: 'ABOUT', href: '/about' },
 ];
 
+function isNavLinkActive(href: string, pathname: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
@@ -28,7 +38,17 @@ export function Header() {
         {/* Desktop nav */}
         <nav className={styles.nav}>
           {NAV_LINKS.map(link => (
-            <Link key={link.href} href={link.href} className={styles.navLink}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={[
+                styles.navLink,
+                isNavLinkActive(link.href, pathname) && styles.navLinkActive,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              aria-current={isNavLinkActive(link.href, pathname) ? 'page' : undefined}
+            >
               {link.label}
             </Link>
           ))}

@@ -68,6 +68,22 @@
   color: var(--color-primary);
 }
 
+.navLinkActive,
+.navLinkActive:hover {
+  color: var(--primary-color-primary-500, #bde153);
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Desk-Body-xsmall, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
 /* ── Auth buttons (desktop) ── */
 
 .authButtons {
