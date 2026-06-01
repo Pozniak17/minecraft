@@ -2,12 +2,12 @@ import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 // import step2Illustration from '@/public/how-to-start/stepper-1.webp';
-import test1Image from '@/public/how-to-start/test1.png';
-import test2Image from '@/public/how-to-start/test2.png';
-import test3Image from '@/public/how-to-start/test3.png';
-import test4Image from '@/public/how-to-start/test4.png';
-import test5Image from '@/public/how-to-start/test5.png';
-import test6Image from '@/public/how-to-start/test6.png';
+import img1 from '@/public/how-to-start/1.webp';
+import img2 from '@/public/how-to-start/2.webp';
+import img3 from '@/public/how-to-start/3.webp';
+import img4 from '@/public/how-to-start/4.webp';
+import img5 from '@/public/how-to-start/5.webp';
+import img6 from '@/public/how-to-start/6.webp';
 
 export default function Hero() {
   return (
@@ -59,7 +59,7 @@ export default function Hero() {
                 </p>
                 <button className={styles.stepperButton}>Sign Up</button>
               </div>
-              <Image src={test1Image} alt="" className={styles.stepperImage} />
+              <Image src={img1} alt="" className={styles.stepperImage} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -75,7 +75,7 @@ export default function Hero() {
                 </p>
                 <button className={styles.stepperButton}>Go to Dashboard</button>
               </div>
-              <Image src={test2Image} alt="" className={styles.stepperImage} />
+              <Image src={img2} alt="" className={styles.stepperImage} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -91,7 +91,7 @@ export default function Hero() {
                   <br /> <br /> Dive in and choose the server that suits your gaming style!
                 </p>
               </div>
-              <Image src={test3Image} alt="" className={styles.stepperImage} />
+              <Image src={img3} alt="" className={styles.stepperImage} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -107,7 +107,7 @@ export default function Hero() {
                 </p>
                 <button className={styles.stepperButton}>View server details</button>
               </div>
-              <Image src={test4Image} alt="" className={styles.stepperImage} />
+              <Image src={img4} alt="" className={styles.stepperImage} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -125,7 +125,7 @@ export default function Hero() {
                 </p>
                 <button className={styles.stepperButton}>Start playing now</button>
               </div>
-              <Image src={test5Image} alt="" className={styles.stepperImage} />
+              <Image src={img5} alt="" className={styles.stepperImage} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -141,7 +141,7 @@ export default function Hero() {
                 </p>
                 <button className={styles.stepperButton}>Open Store</button>
               </div>
-              <Image src={test6Image} alt="" className={styles.stepperImage} />
+              <Image src={img6} alt="" className={styles.stepperImage} />
             </li>
           </ul>
         </div>
