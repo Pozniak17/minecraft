@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './Card.module.css';
-import type { CardProps } from '../CardList/CardList';
+import type { CardProps } from '../CardList';
 
 export default function Card({ image, ganre, title, description }: CardProps) {
   return (
