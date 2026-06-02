@@ -1,3 +1,4 @@
+import { Badge } from '@/app/_components/Badge/Badge';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 
@@ -5,7 +6,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <Container className={styles.content}>
-        <span className={styles.badge}>About the project</span>
+        <Badge>About the project</Badge>
         <h1 className={styles.title}>Welcome to the Minecraft ecosystem!</h1>
         <p className={styles.description}>
           More than just Minecraft — a unique space for players, built by fans who live and breathe

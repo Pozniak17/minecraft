@@ -1,0 +1,27 @@
+.badge {
+  margin-bottom: 16px;
+  display: inline-flex;
+  padding: 6px 14px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 999px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  backdrop-filter: blur(10px);
+
+  color: var(--color-primary, #bde153);
+  font-family: var(--font-main, Montserrat), sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1280px) {
+  .badge {
+    margin-bottom: 30px;
+  }
+}

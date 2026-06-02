@@ -20,28 +20,6 @@
   text-align: center;
 }
 
-.badge {
-  margin-bottom: 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.1);
-  backdrop-filter: blur(10px);
-
-  display: flex;
-  padding: 6px 14px;
-  justify-content: center;
-  align-items: center;
-
-  color: #bde153;
-  font-family: Montserrat;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.96px;
-  text-transform: uppercase;
-}
-
 .title {
   margin-bottom: 16px;
   width: 335px;
@@ -140,22 +118,6 @@
 }
 
 @media (min-width: 1280px) {
-  .badge {
-    margin-bottom: 30px;
-    display: flex;
-    padding: 6px 14px;
-    justify-content: center;
-    align-items: center;
-
-    color: #bde153;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.96px;
-    text-transform: uppercase;
-  }
   .title {
     margin-bottom: 24px;
     width: 620px;
