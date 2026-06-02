@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    flex-direction: row;
+    gap: 24px;
+  }
+}

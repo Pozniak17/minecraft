@@ -1,0 +1,32 @@
+.section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.title {
+  margin-bottom: 15px;
+  color: var(--New-group-color-bg-default-50, #fff);
+  text-align: center;
+
+  /* mobile/H2 */
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Mobile-H2-Medium, 30px);
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.cards {
+  margin-top: 32px;
+}
+
+@media (min-width: 1280px) {
+  .title {
+    margin-bottom: 24px;
+    font-size: var(--Size-Desk-H2-Medium, 40px);
+  }
+
+  .cards {
+    margin-top: 56px;
+  }
+}

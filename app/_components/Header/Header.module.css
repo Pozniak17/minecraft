@@ -1,0 +1,206 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  /* Хедер має власний фіксований паддінг — перекриваємо Container, бо його 60/150px
+     забагато для компактного бургер-лейаута і не вміщує повний десктопний нав. */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ── Logo ── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* ── Divider ── */
+
+.divider {
+  width: 1px;
+  height: 72px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+.dividerDesktop {
+  width: 1px;
+  height: 72px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ── Navigation (desktop) ── */
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.navLink {
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLinkActive,
+.navLinkActive:hover {
+  color: var(--primary-color-primary-500, #bde153);
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Desk-Body-xsmall, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+/* ── Auth buttons (desktop) ── */
+
+.authButtons {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btnSecondary {
+  height: 38px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  backdrop-filter: blur(24px);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btnPrimary {
+  height: 38px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  box-shadow:
+    4px 5px 30px 0px rgba(187, 223, 51, 0.55),
+    inset -3px -4px 7px 0px rgba(255, 255, 255, 0.15);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--color-bg);
+  white-space: nowrap;
+  transition: filter 0.2s;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.1);
+}
+
+/* ── Menu button (mobile) ── */
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Language selector ── */
+
+.langButton {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.langArrow {
+  opacity: 0.7;
+}
+
+/* ── Desktop (≥ 1280px) ──
+   Натуральна ширина повного хедера ≈ 1168px + 2×20px паддінга = 1208px,
+   тому бургер вимикаємо й показуємо повний нав саме від 1280. */
+
+@media (min-width: 1280px) {
+  .inner {
+    justify-content: center;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .authButtons {
+    display: flex;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .dividerDesktop {
+    display: block;
+  }
+}
+
+/* ── Mobile & Tablet (< 1280px) ── */
+
+@media (max-width: 1279px) {
+  .dividerEdge,
+  .dividerDesktop,
+  .authButtons,
+  .nav {
+    display: none;
+  }
+
+  /* Увесь вільний простір лишається між логотипом (і розділювачем) та кластером меню+мова */
+  .menuButton {
+    margin-left: auto;
+  }
+}

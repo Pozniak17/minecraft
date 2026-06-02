@@ -1,0 +1,233 @@
+.card {
+  position: relative;
+  width: 338px;
+  height: 364px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 123px 10px 22px 19px;
+
+  border-radius: 20px;
+  border: 1px solid var(--new-group-color-bg-default-505, rgba(255, 255, 255, 0.05));
+  background: var(--new-group-color-bg-default-505, rgba(255, 255, 255, 0.05));
+  box-shadow: 4px 5px 30px 0 rgba(3, 29, 23, 0.44);
+  backdrop-filter: blur(5px);
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--primary-color-primary-500, #bde153);
+  background: var(--primary-color-primary-50010, rgba(189, 225, 83, 0.1));
+}
+
+.title {
+  margin-bottom: 17px;
+
+  color: #fff;
+
+  /* mobile/H3 */
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Mobile-H3-Small, 18px);
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.text {
+  margin-bottom: 21px;
+  width: 288px;
+  color: #fff;
+
+  /* mobile/body-2 */
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Mobile-Body-xxsmall, 10.5px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 15.75px */
+}
+
+.icon {
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ── Icon layout: viewport < 1024px ── */
+/* 1 — Silver */
+.card:nth-child(1) .icon {
+  width: 146px;
+  height: 158px;
+  left: 182px;
+  bottom: 214px;
+}
+
+/* 2 — Supreme */
+.card:nth-child(2) .icon {
+  width: 161px;
+  height: 174px;
+  left: 176px;
+  bottom: 215px;
+}
+
+/* 3 — Wither */
+.card:nth-child(3) .icon {
+  width: 279px;
+  height: 150px;
+  left: 79px;
+  bottom: 224px;
+}
+
+/* 4 — Hero */
+.card:nth-child(4) .icon {
+  width: 187px;
+  height: 160px;
+  left: 140px;
+  bottom: 220px;
+}
+
+/* 5 — Avenger */
+.card:nth-child(5) .icon {
+  width: 189px;
+  height: 189px;
+  left: 150px;
+  bottom: 215px;
+}
+
+/* 6 — Legend */
+.card:nth-child(6) .icon {
+  width: 213px;
+  height: 213px;
+  left: 145px;
+  bottom: 195px;
+}
+
+/* 7 — Phantom */
+.card:nth-child(7) .icon {
+  width: 160px;
+  height: 160px;
+  left: 168px;
+  bottom: 218px;
+}
+
+/* 8 — Phoenix */
+.card:nth-child(8) .icon {
+  width: 151px;
+  height: 151px;
+  left: 160px;
+  bottom: 230px;
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  height: 47px;
+  padding: 26px 55px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  border-radius: 109px;
+  border: 1px solid var(--primary-color-primary-50010, rgba(189, 225, 83, 0.1));
+  background: var(--primary-color-primary-50010, rgba(189, 225, 83, 0.1));
+
+  /* Blur */
+  backdrop-filter: blur(24px);
+
+  color: var(--New-group-color-bg-default-50, #fff);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Desk-Body-xsmall, 16px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (min-width: 1280px) {
+  .card {
+    width: 371px;
+    height: 479px;
+    justify-content: center;
+
+    padding: 141px 20px 31px 20px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    font-size: var(--Size-Desk-H3-Small, 24px);
+  }
+
+  .text {
+    width: 333px;
+    font-size: var(--Size-Desk-Body-xxsmall, 14px);
+  }
+
+  /* 1 — Silver */
+  .card:nth-child(1) .icon {
+    width: 188px;
+    height: 203px;
+    left: 174px;
+    bottom: 289px;
+  }
+
+  /* 2 — Supreme */
+  .card:nth-child(2) .icon {
+    width: 195px;
+    height: 210px;
+    left: 154px;
+    bottom: 309px;
+  }
+
+  /* 3 — Wither */
+  .card:nth-child(3) .icon {
+    width: 323px;
+    height: 174px;
+    left: 91px;
+    bottom: 315px;
+  }
+
+  /* 4 — Hero */
+  .card:nth-child(4) .icon {
+    width: 231px;
+    height: 197px;
+    left: 120px;
+    bottom: 315px;
+  }
+
+  /* 5 — Avenger */
+  .card:nth-child(5) .icon {
+    width: 233px;
+    height: 233px;
+    left: 142px;
+    bottom: 323px;
+  }
+
+  /* 6 — Legend */
+  .card:nth-child(6) .icon {
+    width: 263px;
+    height: 263px;
+    left: 124px;
+    bottom: 288px;
+  }
+
+  /* 7 — Phantom */
+  .card:nth-child(7) .icon {
+    width: 197px;
+    height: 197px;
+    left: 161px;
+    bottom: 333px;
+  }
+
+  /* 8 — Phoenix */
+  .card:nth-child(8) .icon {
+    width: 186px;
+    height: 186px;
+    left: 154px;
+    bottom: 340px;
+  }
+}

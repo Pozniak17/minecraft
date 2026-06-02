@@ -1,0 +1,70 @@
+.root {
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+}
+
+.viewMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.viewMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 48px;
+  border-radius: 109px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.08);
+  backdrop-filter: blur(24px);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.viewMoreBtn:hover {
+  border-color: var(--primary-color-primary-500, #bde153);
+  background: rgba(189, 225, 83, 0.15);
+}
+
+@media (min-width: 1280px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 371px);
+    justify-content: center;
+    column-gap: 22px;
+    row-gap: 32px;
+    /* 3×371 + 2×22 = 1157px; content area is 1140px — reclaim 10px per side */
+    width: 100%;
+    margin-inline: -10px;
+  }
+
+  /* Row 3: 2 cards centered (3 + 3 + 2) */
+  .cards > :nth-child(7),
+  .cards > :nth-child(8) {
+    margin-inline-start: calc((371px + 22px) / 2);
+  }
+
+  .cards > :nth-child(7) {
+    grid-column: 1;
+  }
+
+  .cards > :nth-child(8) {
+    grid-column: 2;
+  }
+}
