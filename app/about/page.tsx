@@ -5,7 +5,7 @@ import Hero from './_sections/Hero/Hero';
 
 const About = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#001812' }}>
       <Hero />
       <AboutServers />
       <AboutEconomy />
