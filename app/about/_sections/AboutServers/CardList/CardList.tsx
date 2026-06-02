@@ -1,7 +1,5 @@
-import { Container } from '@/app/_components/Container/Container';
-import Card from '../Card/Card';
 import styles from './CardList.module.css';
-import AboutServers from '../../AboutServers/AboutServers';
+import Card from './Card/Card';
 
 export interface CardProps {
   image: string;

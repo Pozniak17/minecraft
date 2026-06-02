@@ -1,3 +1,4 @@
+import AboutEconomy from './_sections/AboutEconomy/AboutEconomy';
 import AboutServers from './_sections/AboutServers/AboutServers';
 
 import Hero from './_sections/Hero/Hero';
@@ -7,6 +8,7 @@ const About = () => {
     <div>
       <Hero />
       <AboutServers />
+      <AboutEconomy />
     </div>
   );
 };

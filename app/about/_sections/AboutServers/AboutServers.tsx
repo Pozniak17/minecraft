@@ -1,6 +1,6 @@
 import styles from './AboutServers.module.css';
 import { Container } from '@/app/_components/Container/Container';
-import CardList from '../AboutCards/CardList/CardList';
+import CardList from './CardList/CardList';
 
 export default function AboutServers() {
   return (
