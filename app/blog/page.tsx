@@ -1,5 +1,11 @@
+import Hero from './Hero/Hero';
+
 const Blog = () => {
-  return <div>Blog Page</div>;
+  return (
+    <main style={{ backgroundColor: '#001812' }}>
+      <Hero />
+    </main>
+  );
 };
 
 export default Blog;
