@@ -3,38 +3,57 @@
     padding-bottom: 48px;
 }
 
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Mobile: порядок content → leaderboard → bottomList */
+.main {
+    display: contents;
+}
+
+.content {
+    order: 1;
+}
+
+.leaderboard {
+    order: 2;
+}
+
+.bottomList {
+    order: 3;
+}
+
 .badge {
     margin-bottom: 10px;
     display: block;
     width: fit-content;
     margin-inline: auto;
     padding: 5px 10px;
-    color: #BDE153;
-    font-family: Montserrat;
+    color: #bde153;
+    font-family: Montserrat, sans-serif;
     font-size: 9px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.72px;
     text-transform: uppercase;
-
     border-radius: 999px;
-    border: 1px solid rgba(189, 225, 83, 0.30);
-    background: rgba(189, 225, 83, 0.10);
+    border: 1px solid rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
 }
 
 .title {
     margin-inline: auto;
     margin-bottom: 24px;
     width: 335px;
-    color: #FFF;
+    color: #fff;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 30px;
-    font-style: normal;
     font-weight: 800;
     line-height: 32px;
-    /* 106.667% */
     text-transform: uppercase;
 }
 
@@ -44,9 +63,8 @@
     width: 335px;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
     line-height: 18px;
 }
@@ -57,19 +75,146 @@
     width: 335px;
     padding: 16px;
     border-radius: 16px;
-    border: 1px dashed rgba(189, 225, 83, 0.30);
+    border: 1px dashed rgba(189, 225, 83, 0.3);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .leaderboardTitle {
     margin-bottom: 12px;
-    color: #FFF;
-    font-family: Montserrat;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
     font-size: 10px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.6px;
     text-transform: uppercase;
+}
 
+.bottomList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.bottomItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 335px;
+    padding: 10px 12px;
+    padding-left: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.72);
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.bottomItem::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #bde153;
+    transform: translateY(-50%);
+}
+
+@media screen and (min-width: 1280px) {
+    .section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+
+    .layout {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    .main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        min-width: 0;
+        max-width: 760px;
+    }
+
+    .content,
+    .leaderboard,
+    .bottomList {
+        order: unset;
+    }
+
+    .badge {
+        margin-inline: 0;
+        margin-bottom: 16px;
+        padding: 6px 14px;
+        font-size: 12px;
+        letter-spacing: 0.96px;
+    }
+
+    .title {
+        margin-inline: 0;
+        margin-bottom: 24px;
+        width: 760px;
+        max-width: 100%;
+        text-align: start;
+        font-size: 40px;
+        line-height: 44px;
+    }
+
+    .description {
+        margin-inline: 0;
+        width: 520px;
+        max-width: 100%;
+        text-align: start;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .bottomList {
+        align-items: stretch;
+        width: 520px;
+        max-width: 100%;
+        gap: 12px;
+    }
+
+    .bottomItem {
+        width: 100%;
+        height: 41px;
+        padding: 14px 16px;
+        padding-left: 36px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .bottomItem::before {
+        left: 16px;
+    }
+
+    .leaderboard {
+        flex-shrink: 0;
+        margin-inline: 0;
+        margin-bottom: 0;
+        width: 560px;
+        height: 452px;
+        padding: 24px;
+        box-sizing: border-box;
+    }
+
+    .leaderboardTitle {
+        margin-bottom: 16px;
+        font-size: 14px;
+        letter-spacing: 0.56px;
+    }
 }

@@ -11,7 +11,7 @@ export default function Card({ number, title, value, status }: CardProps) {
           <p className={styles.status}>{status}</p>
         </div>
       </div>
-      <p className={styles.value}>{value}</p>
+      <p className={styles.value}>{value} pts</p>
     </li>
   );
 }

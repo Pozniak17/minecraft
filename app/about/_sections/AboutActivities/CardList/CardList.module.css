@@ -4,3 +4,9 @@
     flex-direction: column;
     gap: 10px;
 }
+
+@media screen and (min-width: 1280px) {
+    .list {
+        gap: 16px;
+    }
+}
