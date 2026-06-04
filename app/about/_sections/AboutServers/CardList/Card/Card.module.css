@@ -1,6 +1,6 @@
 .card {
   display: flex;
-  width: 100%;
+  width: 335px;
   flex-direction: column;
   overflow: hidden;
 
@@ -9,7 +9,7 @@
 }
 
 .image {
-  width: 100%;
+  width: 335px;
   height: 200px;
   object-fit: cover;
   object-position: center;

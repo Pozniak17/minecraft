@@ -72,7 +72,7 @@ const ARTICLES: ArticleCardProps[] = [
 export default function Articles() {
   return (
     <section className={styles.articles}>
-      <Container>
+      <Container variant="blog">
         <div className={styles.article_wrapper}>
           <h2 className={styles.title}>Latest articles</h2>
           <button className={styles.button_sort}>

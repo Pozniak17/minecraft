@@ -1,9 +1,6 @@
 .section {
   margin-top: 48px;
   margin-bottom: 48px;
-  width: 100%;
-  max-width: 335px;
-  margin-inline: auto;
 }
 
 .badge {
@@ -28,8 +25,9 @@
 }
 
 .title {
+  margin-inline: auto;
   margin-bottom: 10px;
-  width: 100%;
+  width: 335px;
   color: #fff;
   text-align: center;
   font-family: Montserrat;
@@ -42,8 +40,9 @@
 }
 
 .description {
+  margin-inline: auto;
   margin-bottom: 24px;
-  width: 100%;
+  width: 335px;
   color: rgba(255, 255, 255, 0.72);
   text-align: center;
   font-family: Montserrat;
@@ -58,7 +57,6 @@
   .section {
     margin-top: 120px;
     margin-bottom: 120px;
-    max-width: none;
   }
 
   .badge {
@@ -81,7 +79,6 @@
 
   .title {
     width: 760px;
-    margin-inline: auto;
     color: #fff;
     text-align: center;
     font-family: Montserrat;
@@ -96,7 +93,6 @@
   .description {
     margin-bottom: 64px;
     width: 720px;
-    margin-inline: auto;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
     font-family: Montserrat;

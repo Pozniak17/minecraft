@@ -6,7 +6,7 @@ import HeroTags from './HeroTags';
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <Container className={styles.content}>
+      <Container variant="blog" className={styles.content}>
         <div className={styles.head}>
           <Badge className={styles.badge}>Blog</Badge>
           <h1 className={styles.title}>Stories from the Minecraft ecosystem</h1>

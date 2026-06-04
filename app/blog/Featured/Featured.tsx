@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Featured() {
   return (
     <section className={styles.featured}>
-      <Container>
+      <Container variant="blog">
         <div className={styles.main_wrapper}>
           <div className={styles.image_wrapper}>
             <Image

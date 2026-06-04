@@ -38,16 +38,13 @@
   margin-top: 32px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   gap: 10px;
-  width: 100%;
-  max-width: 335px;
-  margin-inline: auto;
 }
 
 /* Stats Card */
 .stats {
-  width: 100%;
+  width: 337px;
   height: 157px;
   padding: 27px 16px 10px;
 
@@ -132,7 +129,7 @@
 
 /* topPlayers Card */
 .topPlayers {
-  width: 100%;
+  width: 337px;
   height: 205px;
   padding: 27px 16px 10px;
   border-radius: 20px;
@@ -167,7 +164,7 @@
 /* newPlayerBonus card */
 .newPlayerBonus {
   position: relative;
-  width: 100%;
+  width: 337px;
   height: 236px;
   padding: 21px 16px 10px;
 
@@ -242,16 +239,12 @@
   .title {
     font-size: var(--Size-Desk-H2-Medium, 40px);
   }
-
   .description {
     font-size: var(--Size-Desk-Body-xsmall, 16px);
     margin-bottom: 39px;
   }
 
   .statsContainer {
-    max-width: none;
-    margin-inline: 0;
-    align-items: center;
     margin-top: 20px;
     gap: 23px;
   }
