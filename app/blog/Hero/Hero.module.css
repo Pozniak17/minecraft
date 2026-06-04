@@ -24,10 +24,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    max-width: 335px;
+    margin-inline: auto;
 }
 
 .title {
-    width: 300px;
+    width: 100%;
     margin-bottom: 12px;
     color: #FFF;
     text-align: center;
@@ -42,7 +45,7 @@
 
 .description {
     margin-bottom: 20px;
-    width: 300px;
+    width: 100%;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
     font-family: Montserrat;
@@ -55,7 +58,7 @@
 
 .search {
     display: flex;
-    width: 335px;
+    width: 100%;
     height: 48px;
     padding: 10px 6px 10px 16px;
     align-items: center;
@@ -137,7 +140,8 @@
         align-items: center;
         text-align: center;
         padding-top: 120px;
-        padding-inline: 80px;
+        max-width: none;
+        margin-inline: 0;
     }
 
     .head {

@@ -2,8 +2,12 @@
     background: #031D17;
     padding-top: 48px;
     padding-bottom: 48px;
+}
 
-
+.inner {
+    width: 100%;
+    max-width: 335px;
+    margin-inline: auto;
 }
 
 .badge {
@@ -43,9 +47,7 @@
 
 .description {
     margin-bottom: 20px;
-    width: 335px;
-    margin-inline: auto;
-    margin-bottom: 20px;
+    width: 100%;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
     font-family: Montserrat;
@@ -88,6 +90,10 @@
         padding-bottom: 120px;
     }
 
+    .inner {
+        max-width: none;
+    }
+
     .badge {
         margin-bottom: 16px;
         padding: 6px 14px;
@@ -114,10 +120,11 @@
         text-transform: uppercase;
     }
 
-    .description {
-        margin-bottom: 48px;
-        width: 720px;
-        color: rgba(255, 255, 255, 0.72);
+  .description {
+    margin-bottom: 48px;
+    width: 720px;
+    margin-inline: auto;
+    color: rgba(255, 255, 255, 0.72);
         text-align: center;
         font-family: Montserrat;
         font-size: 16px;

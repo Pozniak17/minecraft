@@ -1,6 +1,7 @@
 .rateCard {
   list-style: none;
-  width: 337px;
+  width: 100%;
+  max-width: 335px;
   height: 134px;
   padding: 14px 21px;
 

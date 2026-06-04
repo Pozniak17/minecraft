@@ -1,6 +1,9 @@
 .grid {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 335px;
+  margin-inline: auto;
 }
 
 .leftColumn,
@@ -35,6 +38,8 @@
     column-gap: 48px;
     align-items: start;
     padding-top: 64px;
+    max-width: none;
+    margin-inline: 0;
   }
 
   .leftColumn,

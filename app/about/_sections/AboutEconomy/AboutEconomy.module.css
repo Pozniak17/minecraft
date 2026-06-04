@@ -16,6 +16,13 @@
     position: relative;
 }
 
+.inner {
+    position: relative;
+    width: 100%;
+    max-width: 335px;
+    margin-inline: auto;
+}
+
 .badge {
     margin-bottom: 10px;
     display: block;
@@ -35,9 +42,8 @@
 }
 
 .title {
-    margin-inline: auto;
     margin-bottom: 24px;
-    width: 335px;
+    width: 100%;
     color: #fff;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -49,8 +55,7 @@
 
 .description {
     margin-bottom: 24px;
-    margin-inline: auto;
-    width: 335px;
+    width: 100%;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -63,13 +68,14 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
+    width: 100%;
 }
 
 .item {
     padding: 12px 16px;
-    width: 335px;
+    width: 100%;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
@@ -154,6 +160,10 @@
 
     .bg_image {
         display: none;
+    }
+
+    .inner {
+        max-width: none;
     }
 
     .badge {

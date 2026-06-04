@@ -1,0 +1,224 @@
+.card {
+    margin-bottom: 12px;
+    width: 335px;
+    height: 407px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.image {
+    width: 335px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card_content {
+    padding: 16px;
+}
+
+
+
+.content_header {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.genre {
+    display: inline-block;
+    padding: 3px 8px;
+    color: #BDE153;
+    letter-spacing: 0.54px;
+    border-radius: 999px;
+    background: rgba(189, 225, 83, 0.10);
+}
+
+.time {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.36px;
+}
+
+.title {
+    margin-bottom: 12px;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 22px;
+
+}
+
+.description {
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.66);
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.author_date {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.author_name {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.avatar {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    color: #bde153;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+
+    border-radius: 999px;
+    border: 1px solid rgba(189, 225, 83, 0.30);
+    background: rgba(189, 225, 83, 0.10);
+}
+
+.divider {
+    width: 3px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.35);
+    flex-shrink: 0;
+}
+
+@media (min-width: 1280px) {
+    .card {
+        width: 395px;
+        height: 532px;
+    }
+
+    .image {
+        width: 395px;
+        height: 247px;
+    }
+
+    .card_content {
+        padding: 24px;
+    }
+
+    .content_header {
+        margin-bottom: 16px;
+    }
+
+    .genre {
+        padding: 4px 10px;
+        color: #BDE153;
+        font-family: Montserrat;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.66px;
+        text-transform: uppercase;
+    }
+
+    .time {
+        color: rgba(255, 255, 255, 0.55);
+        font-family: Montserrat;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.44px;
+        text-transform: uppercase;
+    }
+
+    .title {
+        margin-bottom: 16px;
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 26px;
+    }
+
+    .description {
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.66);
+        font-family: Montserrat;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+    }
+
+    .meta {
+        gap: 10px;
+    }
+
+    .avatar {
+
+        width: 28px;
+        height: 28px;
+
+        color: #BDE153;
+        font-family: Montserrat;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+
+    .author_name {
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .author_date {
+        color: rgba(255, 255, 255, 0.55);
+        font-family: Montserrat;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+}

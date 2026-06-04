@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
+    max-width: 335px;
+    margin-inline: auto;
 }
 
 /* Mobile: порядок content → leaderboard → bottomList */
@@ -45,9 +48,8 @@
 }
 
 .title {
-    margin-inline: auto;
     margin-bottom: 24px;
-    width: 335px;
+    width: 100%;
     color: #fff;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -58,9 +60,8 @@
 }
 
 .description {
-    margin-inline: auto;
     margin-bottom: 24px;
-    width: 335px;
+    width: 100%;
     color: rgba(255, 255, 255, 0.72);
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -70,9 +71,8 @@
 }
 
 .leaderboard {
-    margin-inline: auto;
     margin-bottom: 24px;
-    width: 335px;
+    width: 100%;
     padding: 16px;
     border-radius: 16px;
     border: 1px dashed rgba(189, 225, 83, 0.3);
@@ -124,14 +124,14 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
+    width: 100%;
 }
 
 .bottomItem {
     position: relative;
     display: flex;
     align-items: center;
-    width: 335px;
+    width: 100%;
     padding: 10px 12px;
     padding-left: 30px;
     border-radius: 10px;
@@ -163,6 +163,7 @@
     }
 
     .layout {
+        max-width: none;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
