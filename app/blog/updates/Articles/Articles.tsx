@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Articles.module.css';
+import { useArticleToc } from './useArticleToc';
 
 const TOC_ITEMS = [
   { id: '01', label: "What's new in 2.6" },
@@ -16,6 +16,8 @@ const TOC_ITEMS = [
   { id: '07', label: 'Known issues' },
   { id: '08', label: "What's next" },
 ] as const;
+
+const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const SOCIAL_LINKS = [
   { icon: '/icons/social/ic_outline-discord.svg', alt: 'Discord', href: '#', size: 24 },
@@ -101,37 +103,6 @@ const KNOWN_ISSUES_DESKTOP = [
   'Tournament chat is sometimes delayed by 5-10 seconds during peak hours.',
   'Three minor visual glitches with the new lantern cosmetic in low-light biomes.',
 ];
-
-const DESKTOP_MEDIA = '(min-width: 1280px)';
-
-function getSectionScrollState(sectionElements: HTMLElement[]) {
-  const anchor = window.scrollY + window.innerHeight * 0.3;
-  let progressUnits = 0;
-  let activeId: (typeof TOC_ITEMS)[number]['id'] = TOC_ITEMS[0].id;
-
-  for (let index = 0; index < sectionElements.length; index += 1) {
-    const section = sectionElements[index];
-    const top = section.getBoundingClientRect().top + window.scrollY;
-    const height = section.offsetHeight;
-    const bottom = top + height;
-
-    if (anchor >= bottom) {
-      progressUnits += 1;
-      activeId = TOC_ITEMS[index].id;
-    } else if (anchor > top) {
-      progressUnits += (anchor - top) / height;
-      activeId = TOC_ITEMS[index].id;
-      break;
-    } else {
-      break;
-    }
-  }
-
-  return {
-    activeId,
-    progress: Math.min(100, Math.round((progressUnits / sectionElements.length) * 100)),
-  };
-}
 
 function BulletList({
   items,
@@ -264,48 +235,7 @@ function ShareLinks({ className }: { className?: string }) {
 }
 
 export default function Articles() {
-  const [activeId, setActiveId] = useState<(typeof TOC_ITEMS)[number]['id']>('01');
-  const [readingProgress, setReadingProgress] = useState(0);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(DESKTOP_MEDIA);
-    let frameId = 0;
-
-    const syncFromScroll = () => {
-      if (!mediaQuery.matches) {
-        return;
-      }
-
-      const sections = TOC_ITEMS.map(item => document.getElementById(`section-${item.id}`)).filter(
-        (section): section is HTMLElement => section !== null,
-      );
-
-      if (sections.length === 0) {
-        return;
-      }
-
-      const { activeId: nextActiveId, progress } = getSectionScrollState(sections);
-      setActiveId(nextActiveId);
-      setReadingProgress(progress);
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frameId);
-      frameId = requestAnimationFrame(syncFromScroll);
-    };
-
-    syncFromScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    mediaQuery.addEventListener('change', syncFromScroll);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      mediaQuery.removeEventListener('change', syncFromScroll);
-    };
-  }, []);
+  const { activeId, readingProgress, setActiveId } = useArticleToc(SECTION_IDS);
 
   const scrollToSection = (id: (typeof TOC_ITEMS)[number]['id']) => {
     setActiveId(id);
