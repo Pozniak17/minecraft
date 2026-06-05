@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
@@ -102,7 +102,36 @@ const KNOWN_ISSUES_DESKTOP = [
   'Three minor visual glitches with the new lantern cosmetic in low-light biomes.',
 ];
 
-const READING_PROGRESS = 32;
+const DESKTOP_MEDIA = '(min-width: 1280px)';
+
+function getSectionScrollState(sectionElements: HTMLElement[]) {
+  const anchor = window.scrollY + window.innerHeight * 0.3;
+  let progressUnits = 0;
+  let activeId: (typeof TOC_ITEMS)[number]['id'] = TOC_ITEMS[0].id;
+
+  for (let index = 0; index < sectionElements.length; index += 1) {
+    const section = sectionElements[index];
+    const top = section.getBoundingClientRect().top + window.scrollY;
+    const height = section.offsetHeight;
+    const bottom = top + height;
+
+    if (anchor >= bottom) {
+      progressUnits += 1;
+      activeId = TOC_ITEMS[index].id;
+    } else if (anchor > top) {
+      progressUnits += (anchor - top) / height;
+      activeId = TOC_ITEMS[index].id;
+      break;
+    } else {
+      break;
+    }
+  }
+
+  return {
+    activeId,
+    progress: Math.min(100, Math.round((progressUnits / sectionElements.length) * 100)),
+  };
+}
 
 function BulletList({
   items,
@@ -235,9 +264,50 @@ function ShareLinks({ className }: { className?: string }) {
 }
 
 export default function Articles() {
-  const [activeId, setActiveId] = useState<string>('01');
+  const [activeId, setActiveId] = useState<(typeof TOC_ITEMS)[number]['id']>('01');
+  const [readingProgress, setReadingProgress] = useState(0);
 
-  const scrollToSection = (id: string) => {
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_MEDIA);
+    let frameId = 0;
+
+    const syncFromScroll = () => {
+      if (!mediaQuery.matches) {
+        return;
+      }
+
+      const sections = TOC_ITEMS.map(item => document.getElementById(`section-${item.id}`)).filter(
+        (section): section is HTMLElement => section !== null,
+      );
+
+      if (sections.length === 0) {
+        return;
+      }
+
+      const { activeId: nextActiveId, progress } = getSectionScrollState(sections);
+      setActiveId(nextActiveId);
+      setReadingProgress(progress);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(syncFromScroll);
+    };
+
+    syncFromScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    mediaQuery.addEventListener('change', syncFromScroll);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      mediaQuery.removeEventListener('change', syncFromScroll);
+    };
+  }, []);
+
+  const scrollToSection = (id: (typeof TOC_ITEMS)[number]['id']) => {
     setActiveId(id);
     document.getElementById(`section-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -278,20 +348,20 @@ export default function Articles() {
               <div className={styles.progressBlock}>
                 <div className={styles.progressRow}>
                   <span className={styles.progressLabel}>Reading progress</span>
-                  <span className={styles.progressValue}>{READING_PROGRESS}%</span>
+                  <span className={styles.progressValue}>{readingProgress}%</span>
                 </div>
 
                 <div
                   className={styles.progressBar}
                   role="progressbar"
-                  aria-valuenow={READING_PROGRESS}
+                  aria-valuenow={readingProgress}
                   aria-valuemin={0}
                   aria-valuemax={100}
                   aria-label="Reading progress"
                 >
                   <span
                     className={styles.progressFill}
-                    style={{ width: `${READING_PROGRESS}%` }}
+                    style={{ width: `${readingProgress}%` }}
                   />
                 </div>
               </div>

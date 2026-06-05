@@ -147,7 +147,7 @@
 .shareRow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
 }
 
@@ -544,9 +544,16 @@
     max-width: 280px;
     margin-inline: 0;
     flex-shrink: 0;
-    position: sticky;
-    top: calc(var(--header-height) + 24px);
     gap: 24px;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+  }
+
+  .card {
+    padding: 24px 20px;
+    gap: 16px;
+    border-radius: 16px;
   }
 
   .main {
@@ -577,12 +584,6 @@
   .desktopOnly.bulletList,
   .desktopOnly.orderedList {
     display: flex;
-  }
-
-  .card {
-    padding: 24px 20px;
-    gap: 16px;
-    border-radius: 16px;
   }
 
   .headIcon {
