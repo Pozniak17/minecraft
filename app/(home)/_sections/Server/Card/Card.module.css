@@ -143,6 +143,14 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.linkButton:hover {
+  border-color: var(--color-primary, #bde153);
+  background: rgba(189, 225, 83, 0.15);
 }
 
 @media (min-width: 1280px) {

@@ -235,6 +235,10 @@
   line-height: normal;
 }
 
+.newPlayerBonus_button:hover {
+  filter: brightness(1.1);
+}
+
 @media (min-width: 1280px) {
   .title {
     font-size: var(--Size-Desk-H2-Medium, 40px);

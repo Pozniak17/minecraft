@@ -69,6 +69,10 @@
   text-transform: uppercase;
 }
 
+.btnPrimary:hover {
+  filter: brightness(1.1);
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -96,6 +100,10 @@
   line-height: normal;
   letter-spacing: 0.48px;
   text-transform: uppercase;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 768px) {

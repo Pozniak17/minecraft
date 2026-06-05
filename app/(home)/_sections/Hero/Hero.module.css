@@ -106,7 +106,7 @@
   color: var(--color-bg);
   text-decoration: none;
   white-space: nowrap;
-  transition: filter 0.2s;
+  transition: filter 0.2s ease;
 }
 
 .btnPrimary:hover {

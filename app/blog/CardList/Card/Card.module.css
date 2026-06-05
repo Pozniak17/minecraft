@@ -25,6 +25,8 @@
     margin-bottom: 12px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     font-family: Montserrat;
     font-size: 9px;
     font-style: normal;
@@ -128,6 +130,7 @@
     .card {
         width: 395px;
         height: 532px;
+        border-radius: 16px;
     }
 
     .image {

@@ -148,6 +148,11 @@
   line-height: normal;
 }
 
+.button:hover {
+  border-color: var(--color-primary, #bde153);
+  background: rgba(189, 225, 83, 0.15);
+}
+
 @media (min-width: 1280px) {
   .card {
     width: 371px;

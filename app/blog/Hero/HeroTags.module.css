@@ -28,6 +28,14 @@
   white-space: nowrap;
 }
 
+.tag:hover:not(.tagActive) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tagActive:hover {
+  filter: brightness(1.05);
+}
+
 .tag:focus-visible {
   outline: 2px solid #bde153;
   outline-offset: 2px;

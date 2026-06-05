@@ -1,0 +1,76 @@
+import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
+import { Container } from '@/app/_components/Container/Container';
+import styles from './Hero.module.css';
+import Image from 'next/image';
+
+export default function Hero() {
+  return (
+    <div className={styles.page}>
+      <Container variant="blog">
+        <div className={styles.content}>
+          <div className={styles.textBlock}>
+            <Breadcrumbs />
+            <ul className={styles.tags}>
+              <li>
+                <span>Updates</span>
+              </li>
+              <li>
+                <span>Featured</span>
+              </li>
+            </ul>
+            <h1 className={styles.title}>
+              Server Update 2.6 — new Skyblock mechanics, custom crafts, and the biggest patch of
+              the season
+            </h1>
+
+            <p className={styles.description}>
+              After eight weeks on the public test branch, the 2.6 patch is finally rolling out
+              across every server.
+            </p>
+            <p className={styles.descriptionDesktop}>
+              After eight weeks on the public test branch, the 2.6 patch is finally rolling out to
+              every server. We rewrote the Skyblock generator from scratch, added 12 new custom
+              crafts, rebalanced the economy, and shipped a brand-new tournament mode.
+            </p>
+
+            <div className={styles.meta}>
+              <span className={styles.avatar}>M</span>
+              <div className={styles.authorCol}>
+                <span className={styles.author_name}>Mike Rasmus</span>
+                <span className={styles.author_role}>Lead Server Engineer</span>
+              </div>
+              <span className={styles.divider} aria-hidden="true" />
+              <span className={styles.author_date}>Apr 28, 2026</span>
+              <span className={styles.divider} aria-hidden="true" />
+              <span className={styles.author_read}>7 min read</span>
+              <span className={styles.liveGroup}>
+                <span className={styles.divider} aria-hidden="true" />
+                <span className={styles.liveBadge}>
+                  <span className={styles.liveDot} aria-hidden="true" />
+                  Live now
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <Image
+            src="/blog/blog-featured.webp"
+            alt="Server Update 2.6 hero illustration"
+            width={375}
+            height={203}
+            className={`${styles.image} ${styles.imageMobile}`}
+            priority
+          />
+          <Image
+            src="/blog/update-hero-desktop.png"
+            alt="Server Update 2.6 hero illustration"
+            width={1114}
+            height={603}
+            className={`${styles.image} ${styles.imageDesktop}`}
+            priority
+          />
+        </div>
+      </Container>
+    </div>
+  );
+}

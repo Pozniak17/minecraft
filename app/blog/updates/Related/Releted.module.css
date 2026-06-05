@@ -1,0 +1,156 @@
+.related {
+  padding-block: 40px;
+  background: var(--color-bg-effect);
+}
+
+.inner {
+  width: 100%;
+  max-width: 335px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.head {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.headLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.badge {
+  width: fit-content;
+  padding: 5px 10px;
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+}
+
+.title {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.list > :global(*) {
+  margin-bottom: 0;
+}
+
+.listDesktop {
+  display: none;
+}
+
+.button {
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.buttonDesktop {
+  display: none;
+}
+
+.arrow {
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (min-width: 1280px) {
+  .related {
+    padding-block: 64px 80px;
+  }
+
+  .inner {
+    max-width: none;
+    width: 100%;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .badge {
+    padding: 5px 12px;
+    font-size: 11px;
+    letter-spacing: 0.88px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .listMobile {
+    display: none;
+  }
+
+  .listDesktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .buttonMobile {
+    display: none;
+  }
+
+  .buttonDesktop {
+    display: flex;
+    flex-shrink: 0;
+    padding: 12px 20px;
+  }
+}

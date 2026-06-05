@@ -27,6 +27,10 @@
   font: inherit;
 }
 
+.toggle:hover {
+  opacity: 0.85;
+}
+
 .title {
   flex: 1;
   color: #fff;

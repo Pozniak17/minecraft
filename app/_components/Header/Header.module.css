@@ -142,6 +142,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.menuButton:hover {
+  opacity: 0.75;
 }
 
 /* ── Language selector ── */
@@ -157,6 +162,11 @@
   color: var(--color-text);
   white-space: nowrap;
   flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.langButton:hover {
+  color: var(--color-primary);
 }
 
 .langArrow {

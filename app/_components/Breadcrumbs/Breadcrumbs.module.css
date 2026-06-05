@@ -1,0 +1,46 @@
+.breadcrumbs {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.50);
+  font-family: Montserrat;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.breadcrumbs a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumbs .accent {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: Montserrat;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1280px) {
+  .breadcrumbs {
+    margin-bottom: 0;
+    font-size: 13px;
+    letter-spacing: 0.78px;
+  }
+
+  .breadcrumbs .accent {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    letter-spacing: 0.78px;
+  }
+}

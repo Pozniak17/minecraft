@@ -100,6 +100,10 @@
     background: #BDE153;
 }
 
+.button:hover {
+    filter: brightness(1.1);
+}
+
 @media (min-width: 1280px) {
     .newsletter {
         padding-top: 64px;

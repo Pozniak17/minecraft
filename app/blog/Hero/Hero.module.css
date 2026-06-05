@@ -125,6 +125,10 @@
     background: #BDE153;
 }
 
+.searchButton:hover {
+    filter: brightness(1.1);
+}
+
 @media (min-width: 1280px) {
     .hero {
         padding-top: 0;

@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'HOW TO START', href: '/how-to-start' },
   { label: 'BLOG', href: '/blog' },
   { label: 'ABOUT', href: '/about' },
+  { label: 'FAQ', href: '/faq' },
 ];
 
 function isNavLinkActive(href: string, pathname: string) {
@@ -36,7 +37,7 @@ export function Header() {
         <div className={styles.divider} />
 
         {/* Desktop nav */}
-        <nav className={styles.nav}>
+        <nav className={styles.nav} aria-label="Main navigation">
           {NAV_LINKS.map(link => (
             <Link
               key={link.href}

@@ -1,6 +1,7 @@
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Featured.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Featured() {
   return (
@@ -50,7 +51,13 @@ export default function Featured() {
 
             <ul className={styles.button_list}>
               <li>
-                <button className={styles.first_button}>Read article</button>
+                <Link
+                  href="/blog/updates"
+                  aria-label="Read Server Update 2.6 article"
+                  className={styles.first_button}
+                >
+                  Read article
+                </Link>
               </li>
               <li>
                 <button className={styles.second_button}>All updates</button>

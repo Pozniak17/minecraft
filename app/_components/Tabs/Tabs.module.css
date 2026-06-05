@@ -27,6 +27,14 @@
     box-shadow 0.2s ease;
 }
 
+.tab:hover:not(.tabActive) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tabActive:hover {
+  filter: brightness(1.05);
+}
+
 .tab:focus-visible {
   outline: 2px solid var(--color-primary, #bde153);
   outline-offset: 2px;
