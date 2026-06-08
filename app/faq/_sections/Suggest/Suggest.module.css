@@ -1,0 +1,158 @@
+.suggest {
+  background: #001812;
+}
+
+.content {
+  width: 335px;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-bottom: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.08);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.topLabel {
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 295px;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 295px;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.fieldLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.input,
+.select {
+  width: 100%;
+  height: 44px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 24, 18, 0.6);
+}
+
+.input {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(189, 225, 83, 0.4);
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.selectPlaceholder {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.chevron {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.select:hover {
+  background: rgba(0, 24, 18, 0.75);
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 37px;
+  border-radius: 999px;
+  background: #bde153;
+  color: #001812;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+}
+
+.submit:hover {
+  filter: brightness(1.1);
+}
+
+@media (min-width: 1280px) {
+  .suggest {
+    display: none;
+  }
+}

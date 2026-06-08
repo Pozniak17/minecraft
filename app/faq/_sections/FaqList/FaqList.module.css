@@ -1,0 +1,595 @@
+.faqList {
+  background: #001812;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+  padding-bottom: 32px;
+  width: 335px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.itemFeatured {
+  border-color: rgba(189, 225, 83, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.itemFeatured:hover,
+.itemFeatured:focus-within {
+  border-color: rgba(189, 225, 83, 0.45);
+  background: rgba(189, 225, 83, 0.08);
+}
+
+.itemFeatured:hover .readButton,
+.itemFeatured:focus-within .readButton {
+  border-color: rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  color: #bde153;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+}
+
+.num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.category {
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(189, 225, 83, 0.1);
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.updated {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.updatedLabel {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 400;
+}
+
+.question {
+  max-width: 235px;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 20px;
+}
+
+.readButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109px;
+  height: 37px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.readButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.readButton:focus-visible {
+  outline: 2px solid #bde153;
+  outline-offset: 2px;
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.pagRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagArrow,
+.pagNumber,
+.pagEllipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.pagArrow {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.pagArrowNext {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #bde153;
+}
+
+.pagArrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagNumber {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.pagNumber:hover:not(.pagNumberActive) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagNumberActive {
+  border-color: #bde153;
+  background: #bde153;
+  color: #001812;
+}
+
+.pagEllipsis {
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.pagCaption {
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.desktopHeader {
+  display: none;
+}
+
+.desktopOnly {
+  display: none;
+}
+
+.updatedLabelDesktop {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .content {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    gap: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .desktopHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+
+  .headerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  .headerTitle {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .headerSubtitle {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .desktopSort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 10px 14px 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .desktopSortLabel {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.44px;
+    text-transform: uppercase;
+  }
+
+  .desktopSortValue {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .desktopSortChevron {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: normal;
+  }
+
+  .desktopSort:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .list {
+    gap: 16px;
+  }
+
+  .item {
+    border-radius: 12px;
+  }
+
+  .itemFeatured {
+    border-color: rgba(189, 225, 83, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .itemFeatured:hover,
+  .itemFeatured:focus-within {
+    border-color: rgba(189, 225, 83, 0.45);
+    background: rgba(189, 225, 83, 0.08);
+  }
+
+  .head {
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+  }
+
+  .num {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 6px 20px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .meta {
+    grid-column: 1;
+    grid-row: 1;
+    gap: 8px;
+  }
+
+  .category {
+    padding: 3px 8px;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+  }
+
+  .updated {
+    font-size: 10px;
+    letter-spacing: 0.6px;
+  }
+
+  .updatedLabelMobile {
+    display: none;
+  }
+
+  .updatedLabelDesktop {
+    display: inline;
+  }
+
+  .question {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .readButton {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    width: auto;
+    min-width: 145px;
+    height: auto;
+    padding: 16px 28px;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+  }
+
+  .divider {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 16px;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
+
+  .desktopOnly {
+    display: flex;
+  }
+
+  .pagDesktop {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .pagDesktopLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pagDesktopPrev,
+  .pagDesktopNext {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  .pagDesktopPrev {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .pagDesktopPrev span:first-child {
+    font-size: 13px;
+  }
+
+  .pagDesktopNext {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .pagDesktopNextArrow {
+    color: #bde153;
+    font-size: 13px;
+  }
+
+  .pagDesktopPrev:hover:not(:disabled),
+  .pagDesktopNext:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .pagDesktopPrev:disabled,
+  .pagDesktopNext:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .pagDesktopNumbers {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pagNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .pagNumberActive {
+    box-shadow: 2px 3px 14px rgba(187, 223, 51, 0.4);
+  }
+
+  .pagEllipsis {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .pagDesktopInfo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .pagDesktopRange {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+  }
+
+  .pagPerPage {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .pagPerPageLabel {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.44px;
+    text-transform: uppercase;
+  }
+
+  .pagPerPageValue {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: normal;
+  }
+
+  .pagPerPageChevron {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .pagPerPage:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

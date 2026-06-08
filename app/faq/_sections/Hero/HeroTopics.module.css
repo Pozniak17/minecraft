@@ -1,0 +1,70 @@
+.topics {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .topics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .label {
+    color: #fff;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tag:hover:not(.tagActive) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .tagActive {
+    border-color: #bde153;
+    background: #bde153;
+    color: #001812;
+  }
+
+  .tagActive:hover {
+    filter: brightness(1.05);
+  }
+
+  .tag:focus-visible {
+    outline: 2px solid #bde153;
+    outline-offset: 2px;
+  }
+}

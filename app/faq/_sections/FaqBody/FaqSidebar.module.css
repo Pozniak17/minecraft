@@ -1,0 +1,221 @@
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  .categoriesCard,
+  .popularCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .popularCard {
+    gap: 12px;
+  }
+
+  .cardTitle {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.88px;
+    text-transform: uppercase;
+  }
+
+  .categoryList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+  }
+
+  .categoryItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    text-align: left;
+  }
+
+  .categoryItem:hover:not(.categoryItemActive) {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .categoryItemActive {
+    border-color: rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
+  }
+
+  .categoryLabel {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .categoryItemActive .categoryLabel {
+    color: #bde153;
+  }
+
+  .categoryCount {
+    color: rgba(255, 255, 255, 0.45);
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.22px;
+  }
+
+  .categoryItemActive .categoryCount {
+    color: rgba(189, 225, 83, 0.85);
+  }
+
+  .popularList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .popularItem {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding-block: 8px;
+  }
+
+  .popularNum {
+    flex-shrink: 0;
+    color: #bde153;
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.44px;
+  }
+
+  .popularQuestion {
+    color: rgba(255, 255, 255, 0.78);
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .supportCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    padding: 24px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
+  }
+
+  .supportTop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #33df5e;
+  }
+
+  .supportLabel {
+    color: #33df5e;
+    font-family: Montserrat, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.88px;
+    text-transform: uppercase;
+  }
+
+  .supportTitle {
+    max-width: 240px;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 22px;
+    text-transform: uppercase;
+  }
+
+  .supportDescription {
+    max-width: 240px;
+    color: rgba(255, 255, 255, 0.72);
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .supportActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  .primaryButton {
+    background: #bde153;
+    color: #001812;
+  }
+
+  .primaryButton:hover {
+    filter: brightness(1.1);
+  }
+
+  .secondaryButton {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .secondaryButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

@@ -3,13 +3,16 @@ import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 
+const BREADCRUMB_ITEMS = ['Home', 'Blog', 'Updates', 'Server Update 2.6'];
+const BREADCRUMB_LINKS = ['/', '/blog', '/blog/updates'];
+
 export default function Hero() {
   return (
     <div className={styles.page}>
       <Container variant="blog">
         <div className={styles.content}>
           <div className={styles.textBlock}>
-            <Breadcrumbs />
+            <Breadcrumbs items={BREADCRUMB_ITEMS} links={BREADCRUMB_LINKS} />
             <ul className={styles.tags}>
               <li>
                 <span>Updates</span>
