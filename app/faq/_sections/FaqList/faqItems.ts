@@ -1,5 +1,6 @@
 export type FaqListItem = {
   id: string;
+  slug?: string;
   category: string;
   updated: string;
   question: string;
@@ -10,6 +11,7 @@ export type FaqListItem = {
 export const FAQ_LIST_ITEMS: FaqListItem[] = [
   {
     id: '01',
+    slug: 'join',
     category: 'Get started',
     updated: 'May 12',
     question: 'How do I join the server for the first time?',

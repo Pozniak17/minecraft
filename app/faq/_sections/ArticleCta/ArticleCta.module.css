@@ -1,0 +1,189 @@
+.cta {
+  padding-top: 32px;
+  padding-bottom: 40px;
+  background: #001812;
+}
+
+.inner {
+  width: 335px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 20px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #33df5e;
+}
+
+.statusLabel {
+  color: #33df5e;
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.desktopOnly {
+  display: none;
+}
+
+.action {
+  width: 100%;
+  padding-top: 6px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #bde153;
+  color: #001812;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button:focus-visible {
+  outline: 2px solid #bde153;
+  outline-offset: 2px;
+}
+
+@media (min-width: 1280px) {
+  .cta {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  .mobileOnly {
+    display: none !important;
+  }
+
+  .desktopOnly {
+    display: block;
+  }
+
+  .inner {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    min-height: 182px;
+    padding: 36px 40px;
+    border-radius: 20px;
+    text-align: left;
+  }
+
+  .content {
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .status {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .statusLabel {
+    font-size: 11px;
+    letter-spacing: 0.88px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .description.desktopOnly {
+    max-width: 680px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .action {
+    width: auto;
+    padding-top: 0;
+    flex-shrink: 0;
+  }
+
+  .button {
+    width: auto;
+    padding: 14px 22px;
+    font-size: 13px;
+    letter-spacing: 0.52px;
+  }
+}
