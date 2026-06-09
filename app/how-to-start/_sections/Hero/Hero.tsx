@@ -1,6 +1,7 @@
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 // import step2Illustration from '@/public/how-to-start/stepper-1.webp';
 import img1 from '@/public/how-to-start/1.webp';
 import img2 from '@/public/how-to-start/2.webp';
@@ -57,7 +58,9 @@ export default function Hero() {
                   essential for accessing your personal dashboard, making purchases in our store,
                   and syncing with the server.
                 </p>
-                <button className={styles.stepperButton}>Sign Up</button>
+                <Link href="/register" className={styles.stepperButton}>
+                  Sign Up
+                </Link>
               </div>
               <Image src={img1} alt="" className={styles.stepperImage} />
             </li>

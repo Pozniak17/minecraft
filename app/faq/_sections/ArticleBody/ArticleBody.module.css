@@ -253,11 +253,7 @@
 
 .figureFrame {
   overflow: hidden;
-  min-height: 160px;
-  padding: 14px;
   border-radius: 10px;
-  border: 1px dashed rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.06);
 }
 
 .figureImage {
@@ -843,15 +839,11 @@
   }
 
   .figureFrame {
-    min-height: 400px;
-    padding: 20px;
     border-radius: 12px;
-    border: 1px dashed rgba(189, 225, 83, 0.3);
   }
 
   .figureImage {
     height: auto;
-    min-height: 360px;
   }
 
   .figureCaption {

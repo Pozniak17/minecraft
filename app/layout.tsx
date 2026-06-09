@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
-import { Header } from './_components/Header/Header';
-import { Footer } from './_components/Footer/Footer';
+import { SiteChrome } from './_components/SiteChrome/SiteChrome';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -27,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

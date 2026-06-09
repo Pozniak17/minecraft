@@ -3,40 +3,31 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { Container } from '../Container/Container';
+import { MobileNav } from './MobileNav/MobileNav';
+import { isNavLinkActive, NAV_LINKS } from './navLinks';
 import styles from './Header.module.css';
-
-const NAV_LINKS = [
-  { label: 'HOME', href: '/' },
-  { label: 'SERVERS', href: '/servers' },
-  { label: 'STORE', href: '/store' },
-  { label: 'HOW TO START', href: '/how-to-start' },
-  { label: 'BLOG', href: '/blog' },
-  { label: 'ABOUT', href: '/about' },
-  { label: 'FAQ', href: '/faq' },
-];
-
-function isNavLinkActive(href: string, pathname: string) {
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
 
 export function Header() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
 
-        {/* Logo */}
         <Link href="/" className={styles.logo}>
           <Image src="/icons/icons/logo.webp" alt="Minecraft game logo" width={215} height={59} />
         </Link>
 
         <div className={styles.divider} />
 
-        {/* Desktop nav */}
         <nav className={styles.nav} aria-label="Main navigation">
           {NAV_LINKS.map(link => (
             <Link
@@ -55,22 +46,31 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Mobile burger */}
-        <button className={styles.menuButton} aria-label="Open menu">
+        <button
+          type="button"
+          className={styles.menuButton}
+          aria-label="Open menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav-drawer"
+          onClick={() => setIsMenuOpen(true)}
+        >
           <Image src="/icons/icons/ic_twotone-menu.svg" alt="" width={24} height={24} />
         </button>
 
         <div className={styles.divider} />
 
-        {/* Desktop auth buttons */}
         <div className={styles.authButtons}>
-          <button className={styles.btnSecondary}>Log In</button>
-          <button className={styles.btnPrimary}>Sign UP</button>
+          <Link href="/login" className={styles.btnSecondary}>
+            Log In
+          </Link>
+          <Link href="/register" className={styles.btnPrimary}>
+            Sign UP
+          </Link>
         </div>
 
         <div className={styles.dividerDesktop} />
 
-        <button className={styles.langButton}>
+        <button type="button" className={styles.langButton}>
           <span>EN</span>
           <Image
             src="/icons/icons/fe_arrow-down.svg"
@@ -83,6 +83,12 @@ export function Header() {
 
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
       </Container>
+
+      <MobileNav
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        pathname={pathname}
+      />
     </header>
   );
 }

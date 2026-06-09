@@ -1,0 +1,390 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(0, 24, 18, 0.85);
+  cursor: pointer;
+  animation: fadeIn 0.2s ease;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(320px, 100vw);
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-bg);
+  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.25s ease;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 36px;
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  transition: background 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.authRow {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.loginButton,
+.signupButton {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 13px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.52px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.loginButton {
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.loginButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.signupButton {
+  background: var(--color-primary);
+  color: var(--color-bg-effect);
+  box-shadow:
+    3px 4px 20px rgba(187, 223, 51, 0.45),
+    inset -2px -3px 5px rgba(255, 255, 255, 0.15);
+}
+
+.signupButton:hover {
+  filter: brightness(1.1);
+}
+
+.statusCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.statusCard:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.statusDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: #33df5e;
+}
+
+.statusText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.statusTitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.statusSubtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+}
+
+.statusChevron {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 6px 4px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navLinkActive,
+.navLinkActive:hover {
+  border-color: rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  color: var(--color-primary);
+}
+
+.navChevron {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.socialRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  transition: background 0.2s ease;
+}
+
+.socialButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.spacer {
+  flex: 1;
+  min-height: 16px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.legalRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-block: 6px;
+}
+
+.legalItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legalSeparator {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legalLink:hover {
+  color: var(--color-text);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 6px;
+}
+
+.langButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+
+.langButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.langArrow {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 9px;
+}
+
+.version {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1280px) {
+  .root {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .drawer {
+    animation: none;
+  }
+}
