@@ -4,7 +4,7 @@ export interface LoginInput {
 }
 
 export interface RegisterInput {
-  username: string;
+  username?: string;
   password: string; // 4–24 символи
   email?: string;
 }

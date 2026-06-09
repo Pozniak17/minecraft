@@ -7,7 +7,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { register as registerUser, sendEmailCode } from '@/lib/api/auth';
 import styles from './RegistrationForm.module.css';
 
-type FieldErrors = Partial<Record<'username' | 'email' | 'password', string>>;
+type FieldErrors = Partial<Record<'email' | 'password', string>>;
 
 function mapApiErrors(data: unknown): { fields: FieldErrors; general: string | null } {
   const fields: FieldErrors = {};
@@ -19,7 +19,7 @@ function mapApiErrors(data: unknown): { fields: FieldErrors; general: string | n
 
   if (data && typeof data === 'object') {
     const obj = data as Record<string, unknown>;
-    (['username', 'email', 'password'] as const).forEach(key => {
+    (['email', 'password'] as const).forEach(key => {
       const value = obj[key];
       if (Array.isArray(value) && value.length) fields[key] = String(value[0]);
       else if (typeof value === 'string') fields[key] = value;
@@ -88,7 +88,6 @@ const STATS = [
 ] as const;
 
 export default function RegistrationForm() {
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -109,7 +108,6 @@ export default function RegistrationForm() {
     setFieldErrors({});
 
     const errors: FieldErrors = {};
-    if (!username.trim()) errors.username = 'Username is required.';
     if (!email.trim()) errors.email = 'Email is required.';
     if (password.length < 4 || password.length > 24) {
       errors.password = 'Password must be 4–24 characters.';
@@ -130,7 +128,7 @@ export default function RegistrationForm() {
 
     setStatus('submitting');
     try {
-      await registerUser({ username: username.trim(), password, email: email.trim() });
+      await registerUser({ password, email: email.trim() });
       try {
         await sendEmailCode({ email: email.trim() });
       } catch {
@@ -230,30 +228,6 @@ export default function RegistrationForm() {
               {formError && <p className={styles.formError}>{formError}</p>}
 
               <div className={styles.field}>
-                <label className={styles.label} htmlFor="register-username">
-                  Username
-                </label>
-                <input
-                  id="register-username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  placeholder="Choose a username"
-                  className={[styles.input, fieldErrors.username && styles.inputError]
-                    .filter(Boolean)
-                    .join(' ')}
-                  value={username}
-                  onChange={event => setUsername(event.target.value)}
-                  required
-                />
-                {fieldErrors.username ? (
-                  <p className={styles.fieldError}>{fieldErrors.username}</p>
-                ) : (
-                  <p className={styles.help}>This will be your login.</p>
-                )}
-              </div>
-
-              <div className={styles.field}>
                 <label className={styles.label} htmlFor="register-email">
                   Email address
                 </label>
@@ -270,10 +244,8 @@ export default function RegistrationForm() {
                   onChange={event => setEmail(event.target.value)}
                   required
                 />
-                {fieldErrors.email ? (
+                {fieldErrors.email && (
                   <p className={styles.fieldError}>{fieldErrors.email}</p>
-                ) : (
-                  <p className={styles.help}>Needed to activate your account.</p>
                 )}
               </div>
 
@@ -300,37 +272,38 @@ export default function RegistrationForm() {
                   onChange={event => setPassword(event.target.value)}
                   required
                 />
-                {fieldErrors.password ? (
+                {fieldErrors.password && (
                   <p className={styles.fieldError}>{fieldErrors.password}</p>
-                ) : (
-                  <p className={styles.help}>4–24 characters.</p>
                 )}
 
                 {passwordStrength && (
-                <div className={styles.strength} aria-live="polite">
-                  <div className={styles.strengthBars}>
-                    {Array.from({ length: 4 }, (_, index) => (
+                  <div className={styles.strength} aria-live="polite">
+                    <div className={styles.strengthBars}>
+                      {Array.from({ length: 4 }, (_, index) => (
+                        <span
+                          key={index}
+                          className={styles.strengthBar}
+                          style={{
+                            background:
+                              index < passwordStrength.filledBars
+                                ? passwordStrength.color
+                                : 'rgba(255, 255, 255, 0.08)',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className={styles.strengthMeta}>
                       <span
-                        key={index}
-                        className={styles.strengthBar}
-                        style={{
-                          background:
-                            index < passwordStrength.filledBars
-                              ? passwordStrength.color
-                              : 'rgba(255, 255, 255, 0.08)',
-                        }}
-                      />
-                    ))}
+                        className={styles.strengthLabel}
+                        style={{ color: passwordStrength.color }}
+                      >
+                        {passwordStrength.label}
+                      </span>
+                      <span className={styles.strengthHint}>{passwordStrength.hint}</span>
+                    </div>
                   </div>
-                  <div className={styles.strengthMeta}>
-                    <span className={styles.strengthLabel} style={{ color: passwordStrength.color }}>
-                      {passwordStrength.label}
-                    </span>
-                    <span className={styles.strengthHint}>{passwordStrength.hint}</span>
-                  </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="register-confirm-password">
