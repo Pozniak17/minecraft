@@ -1,0 +1,17 @@
+.dashboard {
+  display: flex;
+  min-height: 100dvh;
+  align-items: flex-start;
+}
+
+.dashboardMain {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboardContent {
+  flex: 1;
+  min-width: 0;
+}
