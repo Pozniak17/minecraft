@@ -39,7 +39,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -51,13 +51,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-main);
+  color: rgba(255, 255, 255, 0.66);
+  font-family: Montserrat;
   font-size: 12px;
+  font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.72px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.66);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -74,14 +75,16 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 16px;
   width: 100%;
 }
 
 .head {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
   width: 100%;
 }
 
@@ -100,6 +103,10 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 20px;
+}
+
+.subtitleDesktop {
+  display: none;
 }
 
 .field {
@@ -181,17 +188,15 @@
     border-color 0.2s ease;
 }
 
-.checkboxInput:focus-visible + .checkboxBox {
+.checkboxInput:focus-visible+.checkboxBox {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-.checkboxInput:checked + .checkboxBox {
+.checkboxInput:checked+.checkboxBox {
   border-color: var(--color-primary);
   background:
-    var(--color-primary)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2L4.4 8.6L11 1.4' stroke='%23001812' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
-    center / 12px 10px no-repeat;
+    var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2L4.4 8.6L11 1.4' stroke='%23001812' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px 10px no-repeat;
 }
 
 .checkboxText {
@@ -220,7 +225,7 @@
 }
 
 .submit {
-  width: 100%;
+
   padding: 16px 24px;
   border-radius: var(--radius-pill);
   background: var(--color-primary);
@@ -243,7 +248,7 @@
 .signupBlock {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   align-items: center;
   width: 100%;
 }
@@ -273,11 +278,18 @@
   text-transform: uppercase;
 }
 
+.dividerLabelDesktop {
+  display: none;
+}
+
 .footerLink {
+  display: flex;
+  gap: 6px;
   color: rgba(255, 255, 255, 0.55);
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
+  letter-spacing: 0.48px;
   line-height: normal;
   text-align: center;
 }
@@ -296,6 +308,7 @@
 }
 
 .helpFoot {
+  display: none;
   margin-top: 24px;
   color: rgba(255, 255, 255, 0.45);
   font-family: var(--font-main);
@@ -439,6 +452,7 @@
   }
 
   .form {
+    align-items: flex-start;
     gap: clamp(16px, 2.5vh, 24px);
     flex-shrink: 1;
     min-height: 0;
@@ -449,8 +463,14 @@
   }
 
   .title {
+
     font-size: clamp(28px, 3.2vw, 36px);
     line-height: 1.1;
+  }
+
+  .head {
+    align-items: flex-start;
+    gap: 8px
   }
 
   .subtitle {
@@ -458,8 +478,31 @@
     line-height: 22px;
   }
 
+  .subtitleMobile {
+    display: none;
+  }
+
+  .subtitleDesktop {
+    display: inline;
+  }
+
+  .dividerLabelMobile {
+    display: none;
+  }
+
+  .dividerLabelDesktop {
+    display: inline;
+  }
+
+  .footerLink {
+    font-size: 13px;
+    letter-spacing: 0.52px;
+  }
+
   .helpFoot {
-    margin-top: clamp(12px, 2vh, 30px);
+    display: flex;
+    gap: 6px;
+    margin-top: clamp(12px, 30, 30px);
     flex-shrink: 0;
   }
 
@@ -475,8 +518,8 @@
 
 @media (min-width: 1280px) and (max-height: 820px) {
   .topbar {
-    margin-bottom: 12px;
-    gap: 8px;
+    gap: 12px;
+    margin-bottom: 40px;
   }
 
   .logo img {
@@ -485,7 +528,7 @@
   }
 
   .form {
-    gap: 14px;
+    gap: 24px;
   }
 
   .signupBlock {
@@ -507,7 +550,30 @@
   }
 }
 
+.formError {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff8d8d;
+  font-family: var(--font-main);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.submit:disabled:hover {
+  filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
+
   .submit,
   .backLink,
   .forgotLink,

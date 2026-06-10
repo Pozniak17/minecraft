@@ -129,6 +129,9 @@ export default function RegistrationForm() {
     setStatus('submitting');
     try {
       await registerUser({ password, email: email.trim() });
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('pending_verify_email', email.trim());
+      }
       try {
         await sendEmailCode({ email: email.trim() });
       } catch {

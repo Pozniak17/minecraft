@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 
-const AUTH_ROUTES = ['/register', '/login', '/forgot-password'];
+const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email'];
 
 function isAuthRoute(pathname: string) {
   return AUTH_ROUTES.some(

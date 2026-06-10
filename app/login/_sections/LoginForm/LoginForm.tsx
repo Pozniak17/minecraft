@@ -1,15 +1,47 @@
 'use client';
 
+import { isAxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
+import { login } from '@/lib/api/auth';
 import styles from './LoginForm.module.css';
 
 export default function LoginForm() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
+  const [status, setStatus] = useState<'idle' | 'submitting'>('idle');
+  const [formError, setFormError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setFormError(null);
+
+    if (!email.trim() || !password) {
+      setFormError('Enter your email and password.');
+      return;
+    }
+
+    setStatus('submitting');
+    try {
+      await login({ username: email.trim(), password });
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('user_email', email.trim());
+      }
+      router.push('/profile');
+      router.refresh();
+    } catch (err) {
+      setStatus('idle');
+      if (isAxiosError(err)) {
+        const detail = err.response?.data?.detail;
+        setFormError(typeof detail === 'string' ? detail : 'Invalid email or password.');
+      } else {
+        setFormError('Network error. Please try again.');
+      }
+    }
   }
 
   return (
@@ -38,9 +70,14 @@ export default function LoginForm() {
             <div className={styles.head}>
               <h1 className={styles.title}>Welcome back</h1>
               <p className={styles.subtitle}>
-                Sign in to continue building. Use the email and password you registered with.
+                <span className={styles.subtitleMobile}>Sign in to continue building.</span>
+                <span className={styles.subtitleDesktop}>
+                  Sign in to continue building. Use the email and password you registered with.
+                </span>
               </p>
             </div>
+
+            {formError && <p className={styles.formError}>{formError}</p>}
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="login-email">
@@ -53,6 +90,8 @@ export default function LoginForm() {
                 autoComplete="email"
                 placeholder="you@example.com"
                 className={styles.input}
+                value={email}
+                onChange={event => setEmail(event.target.value)}
                 required
               />
             </div>
@@ -68,6 +107,8 @@ export default function LoginForm() {
                 autoComplete="current-password"
                 placeholder="Enter your password"
                 className={styles.input}
+                value={password}
+                onChange={event => setPassword(event.target.value)}
                 required
               />
             </div>
@@ -88,19 +129,22 @@ export default function LoginForm() {
               </Link>
             </div>
 
-            <button type="submit" className={styles.submit}>
-              Log in
+            <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
+              {status === 'submitting' ? 'Logging in…' : 'Log in'}
             </button>
 
             <div className={styles.signupBlock}>
               <div className={styles.divider} role="presentation">
                 <span className={styles.dividerLine} />
-                <span className={styles.dividerLabel}>New to the ecosystem?</span>
+                <span className={styles.dividerLabel}>
+                  <span className={styles.dividerLabelMobile}>New here?</span>
+                  <span className={styles.dividerLabelDesktop}>New to the ecosystem?</span>
+                </span>
                 <span className={styles.dividerLine} />
               </div>
 
               <p className={styles.footerLink}>
-                Don&apos;t have an account?{' '}
+                No account?
                 <Link href="/register" className={styles.createLink}>
                   Create one →
                 </Link>
