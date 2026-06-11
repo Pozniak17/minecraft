@@ -13,7 +13,7 @@ export const WORKSPACE_LINKS: WorkspaceLink[] = [
   { label: 'Shop', href: '/store', icon: 'shop-minimalistic-outline' },
   { label: 'Servers', href: '/servers', icon: 'server-2-outline' },
   { label: 'Cart', href: '/cart', icon: 'cart-large-minimalistic-outline', badge: 0 },
-  { label: 'Purchase History', href: '/profile/history', icon: 'history-outline' },
+  { label: 'Purchase History', href: '/dashboard/history', icon: 'history-outline' },
   { label: 'Top / Ratings', href: '/top', icon: 'bill-check-outline' },
   { label: 'Tournaments', href: '#', icon: 'cup-first-outline', soon: true },
   { label: 'How to Start', href: '/how-to-start', icon: 'flag-2-outline' },

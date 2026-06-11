@@ -9,15 +9,7 @@ import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../dashboardNa
 import { isNavLinkActive } from '../Header/navLinks';
 import styles from './DashboardSidebar.module.css';
 
-function formatBalance(value: number) {
-  return new Intl.NumberFormat('en-US').format(value);
-}
-
-type DashboardSidebarProps = {
-  balance?: number;
-};
-
-export function DashboardSidebar({ balance = 0 }: DashboardSidebarProps) {
+export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [name, setName] = useState('Player');
@@ -46,7 +38,13 @@ export function DashboardSidebar({ balance = 0 }: DashboardSidebarProps) {
   return (
     <aside className={styles.sidebar} aria-label="Dashboard navigation">
       <Link href="/dashboard" className={styles.logo}>
-        <Image src="/icons/icons/logo.webp" alt="Minecraft game logo" width={144} height={40} priority />
+        <Image
+          src="/icons/icons/logo.webp"
+          alt="Minecraft game logo"
+          width={214}
+          height={59}
+          priority
+        />
       </Link>
 
       <div className={styles.userCard}>
@@ -55,17 +53,8 @@ export function DashboardSidebar({ balance = 0 }: DashboardSidebarProps) {
         </span>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{name}</span>
-          <span className={styles.balance}>
-            <Image src="/profile/img.png" alt="" width={14} height={18} className={styles.balanceIcon} />
-            <span className={styles.balanceValue}>{formatBalance(balance)}</span>
-            <span className={styles.balanceUnit}>crystals</span>
-          </span>
         </div>
       </div>
-
-      <Link href="/store" className={styles.topup}>
-        Top up crystals
-      </Link>
 
       <div className={styles.sectionLabel}>
         <span>My workspace</span>
@@ -115,19 +104,38 @@ export function DashboardSidebar({ balance = 0 }: DashboardSidebarProps) {
         })}
       </nav>
 
-      <div className={styles.spacer} aria-hidden="true" />
+      <div className={styles.footer}>
+        <div className={styles.spacer} aria-hidden="true">
+          <Image
+            src="/profile/2.webp"
+            alt=""
+            width={480}
+            height={540}
+            className={styles.spacerMascot}
+          />
+        </div>
 
-      <hr className={styles.divider} />
+        <hr className={styles.divider} />
 
-      <div className={styles.account}>
-        <Link href="/profile" className={styles.footItem}>
-          <span className={styles.wsIcon} style={iconStyle('settings-outline')} aria-hidden="true" />
-          <span className={styles.footLabel}>Settings</span>
-        </Link>
-        <button type="button" className={styles.footItem} onClick={handleLogout} disabled={loggingOut}>
-          <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
-          <span className={styles.footLabel}>{loggingOut ? 'Logging out…' : 'Log out'}</span>
-        </button>
+        <div className={styles.account}>
+          <Link href="/dashboard" className={styles.footItem}>
+            <span
+              className={styles.wsIcon}
+              style={iconStyle('settings-outline')}
+              aria-hidden="true"
+            />
+            <span className={styles.footLabel}>Settings</span>
+          </Link>
+          <button
+            type="button"
+            className={styles.footItem}
+            onClick={handleLogout}
+            disabled={loggingOut}
+          >
+            <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
+            <span className={styles.footLabel}>{loggingOut ? 'Logging out…' : 'Log out'}</span>
+          </button>
+        </div>
       </div>
 
       <div className={styles.bottom}>

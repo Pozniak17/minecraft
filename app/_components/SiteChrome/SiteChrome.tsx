@@ -8,7 +8,7 @@ import { Header } from '../Header/Header';
 import styles from './SiteChrome.module.css';
 
 const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email'];
-const DASHBOARD_ROUTES = ['/dashboard', '/profile'];
+const DASHBOARD_ROUTES = ['/dashboard'];
 
 function matchesRoute(pathname: string, routes: string[]) {
   return routes.some(

@@ -192,7 +192,7 @@ export default function Dashboard() {
         <div className={styles.activity}>
           <div className={styles.activityHead}>
             <h2 className={styles.activityTitle}>Recent activity</h2>
-            <Link href="/profile/history" className={styles.viewAll}>
+            <Link href="/dashboard/history" className={styles.viewAll}>
               View all
             </Link>
           </div>

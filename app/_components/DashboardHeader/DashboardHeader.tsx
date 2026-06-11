@@ -66,7 +66,7 @@ export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
             <span className={styles.balanceValue}>{formatBalance(balance)}</span>
           </div>
 
-          <Link href="/profile" className={styles.avatar} aria-label="My account">
+          <Link href="/dashboard" className={styles.avatar} aria-label="My account">
             {initial}
           </Link>
         </div>
@@ -106,7 +106,6 @@ export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         pathname={pathname}
-        balance={balance}
       />
     </header>
   );

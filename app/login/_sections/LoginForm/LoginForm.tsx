@@ -31,7 +31,7 @@ export default function LoginForm() {
       if (typeof window !== 'undefined') {
         window.localStorage.setItem('user_email', email.trim());
       }
-      router.push('/profile');
+      router.push('/dashboard');
       router.refresh();
     } catch (err) {
       setStatus('idle');

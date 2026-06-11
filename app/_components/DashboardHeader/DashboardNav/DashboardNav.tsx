@@ -9,18 +9,13 @@ import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboar
 import { isNavLinkActive, NAV_LINKS } from '../../Header/navLinks';
 import styles from './DashboardNav.module.css';
 
-function formatBalance(value: number) {
-  return new Intl.NumberFormat('en-US').format(value);
-}
-
 type DashboardNavProps = {
   isOpen: boolean;
   onClose: () => void;
   pathname: string;
-  balance?: number;
 };
 
-export function DashboardNav({ isOpen, onClose, pathname, balance = 0 }: DashboardNavProps) {
+export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
   const router = useRouter();
   const [name, setName] = useState('');
   const [initial, setInitial] = useState('U');
@@ -92,17 +87,6 @@ export function DashboardNav({ isOpen, onClose, pathname, balance = 0 }: Dashboa
           </span>
           <div className={styles.userInfo}>
             <span className={styles.userName}>{name}</span>
-            <span className={styles.balance}>
-              <Image
-                src="/profile/img.png"
-                alt=""
-                width={14}
-                height={18}
-                className={styles.balanceIcon}
-              />
-              <span className={styles.balanceValue}>{formatBalance(balance)}</span>
-              <span className={styles.balanceUnit}>crystals</span>
-            </span>
           </div>
         </div>
 
@@ -180,7 +164,7 @@ export function DashboardNav({ isOpen, onClose, pathname, balance = 0 }: Dashboa
         <hr className={styles.divider} />
 
         <div className={styles.account}>
-          <Link href="/profile" className={styles.footItem} onClick={onClose}>
+          <Link href="/dashboard" className={styles.footItem} onClick={onClose}>
             <span className={styles.wsIcon} style={iconStyle('settings-outline')} aria-hidden="true" />
             <span className={styles.footLabel}>Settings</span>
           </Link>
