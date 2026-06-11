@@ -13,7 +13,15 @@ const MAX = 10_000;
 const STEP = 100;
 const RATE = 19.99 / 2500; // ≈ price per crystal so 2,500 → $19.99
 
-const PACKS = [
+type CrystalPack = {
+  amount: number;
+  price: string;
+  img: string;
+  save?: string;
+  popular?: boolean;
+};
+
+const PACKS: CrystalPack[] = [
   { amount: 500, price: '$4.99', img: '/profile/shop/crystal-1.webp' },
   { amount: 1500, price: '$12.99', save: '10%', img: '/profile/shop/crystal-2.webp' },
   {
@@ -24,7 +32,7 @@ const PACKS = [
     popular: true,
   },
   { amount: 15000, price: '$99.99', save: '30%', img: '/profile/shop/crystal-4.webp' },
-] as const;
+];
 
 const nf = new Intl.NumberFormat('en-US');
 
