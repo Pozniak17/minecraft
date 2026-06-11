@@ -1,0 +1,799 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 20px 32px;
+}
+
+/* ── Header ── */
+.shopHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.hdrTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.eyebrow {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  color: var(--color-primary, #bde153);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  text-transform: uppercase;
+  color: var(--color-text, #fff);
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.subtitleExtra {
+  display: none;
+}
+
+/* ── Currency ── */
+.currency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+}
+
+.currencyLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.currencyValue {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.currencyCaret {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+}
+
+.tab {
+  padding: 8px 12px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.tab:hover {
+  border-color: rgba(189, 225, 83, 0.5);
+}
+
+.tabActive {
+  border-color: var(--color-primary, #bde153);
+  background: var(--color-primary, #bde153);
+  color: #001812;
+}
+
+.tabSuffix {
+  display: none;
+}
+
+/* ── Crystals section title (desktop only) ── */
+.crysTitle {
+  display: none;
+}
+
+/* ── Crystals row (calc + packs) ── */
+.crysRow {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ── Custom amount calc ── */
+.calc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.08);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+
+.calcHead {
+  color: var(--color-primary, #bde153);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.88px;
+  text-transform: uppercase;
+}
+
+.calcDesc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 24, 18, 0.6);
+}
+
+.stepBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.stepBtn:active {
+  transform: scale(0.94);
+}
+
+.stepBtnPlus {
+  border-color: var(--color-primary, #bde153);
+  background: var(--color-primary, #bde153);
+  color: #001812;
+}
+
+.stepValue {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  text-align: center;
+}
+
+.stepAmount {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-primary, #bde153);
+}
+
+.stepUnit {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Slider ── */
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  outline: none;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary, #bde153);
+  border: 3px solid #001812;
+  box-shadow: 0 0 0 1px rgba(189, 225, 83, 0.4);
+}
+
+.range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary, #bde153);
+  border: 3px solid #001812;
+}
+
+.sliderLabels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.calcPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.calcTotal {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calcTotalLabel {
+  display: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.calcPriceValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary, #bde153);
+}
+
+.addAccent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-primary, #bde153);
+  color: #001812;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.addAccent:hover {
+  filter: brightness(1.05);
+}
+
+.addTextFull {
+  display: none;
+}
+
+.calcImg {
+  display: none;
+}
+
+/* ── Crystal packs ── */
+.packsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.packsHeading {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: var(--color-text, #fff);
+}
+
+.packs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.pack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 136px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+
+.packPopular {
+  border-color: rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+}
+
+.saveWrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+}
+
+.save {
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(51, 223, 94, 0.3);
+  background: rgba(51, 223, 94, 0.15);
+  color: #33df5e;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.savePrefix {
+  display: none;
+}
+
+.popular {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--color-primary, #bde153);
+  color: #001812;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.popPrefix {
+  display: none;
+}
+
+.packAmount {
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.packUnit {
+  display: none;
+}
+
+.packPriceRow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.packPrice {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-primary, #bde153);
+}
+
+.packAdd {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.packAdd:hover {
+  border-color: rgba(189, 225, 83, 0.5);
+  background: rgba(189, 225, 83, 0.1);
+}
+
+.packImg {
+  position: absolute;
+  top: -14px;
+  right: -10px;
+  z-index: 1;
+  width: 96px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ── Privileges title ── */
+.prTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.prHeading {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: var(--color-text, #fff);
+}
+
+.prNote {
+  display: none;
+}
+
+/* ─────────────── Desktop ─────────────── */
+@media (min-width: 1024px) {
+  .root {
+    gap: 32px;
+    padding: 40px 48px 64px;
+  }
+
+  .shopHeader {
+    gap: 16px;
+  }
+
+  .hdrTop {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .headerLeft {
+    gap: 6px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .subtitle {
+    max-width: 640px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .subtitleExtra {
+    display: inline;
+  }
+
+  .currency {
+    width: auto;
+    flex-shrink: 0;
+    gap: 10px;
+    padding: 12px 14px 12px 16px;
+    border-radius: 12px;
+  }
+
+  .currencyLabel {
+    font-size: 11px;
+    letter-spacing: 0.66px;
+  }
+
+  .currencyValue {
+    font-size: 14px;
+  }
+
+  .currencyCaret {
+    margin-left: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .tabs {
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 10px 18px;
+    font-size: 12px;
+    letter-spacing: 0.72px;
+  }
+
+  .tabSuffix {
+    display: inline;
+  }
+
+  /* Crystals section title */
+  .crysTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-transform: uppercase;
+  }
+
+  .crysHeading {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .bestValue {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.66px;
+    color: var(--color-primary, #bde153);
+  }
+
+  /* Calc + packs side by side */
+  .crysRow {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .calc {
+    width: 460px;
+    flex-shrink: 0;
+    gap: 20px;
+    padding: 28px;
+    border-radius: 20px;
+  }
+
+  .stepper {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .stepBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .stepAmount {
+    font-size: 36px;
+  }
+
+  .stepUnit {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+
+  .range {
+    height: 8px;
+  }
+
+  .sliderLabels {
+    font-size: 10px;
+    letter-spacing: 0.4px;
+  }
+
+  .calcPrice {
+    align-items: flex-end;
+    padding-top: 6px;
+  }
+
+  .calcTotalLabel {
+    display: block;
+  }
+
+  .calcPriceValue {
+    font-size: 24px;
+  }
+
+  .addAccent {
+    padding: 14px 20px;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    box-shadow: 3px 4px 20px 0 rgba(187, 223, 51, 0.45);
+  }
+
+  .addGlyph,
+  .addTextShort {
+    display: none;
+  }
+
+  .addTextFull {
+    display: inline;
+  }
+
+  .calcImg {
+    display: block;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    width: 115px;
+    height: auto;
+  }
+
+  /* Packs */
+  .packsCol {
+    flex: 1;
+    min-width: 0;
+    gap: 0;
+  }
+
+  .packsHeading {
+    display: none;
+  }
+
+  .packs {
+    gap: 16px;
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .pack {
+    gap: 12px;
+    min-height: 0;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .packAmount {
+    font-size: 20px;
+  }
+
+  .packUnit {
+    display: inline;
+  }
+
+  .packPriceRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4px;
+  }
+
+  .packPrice {
+    font-size: 20px;
+  }
+
+  .packAdd {
+    width: auto;
+    padding: 8px 14px;
+  }
+
+  .savePrefix {
+    display: inline;
+  }
+
+  .save {
+    font-size: 9px;
+    letter-spacing: 0.36px;
+  }
+
+  .popPrefix {
+    display: inline;
+  }
+
+  .packImg {
+    width: 150px;
+    top: -36px;
+    right: -16px;
+  }
+
+  .pack:nth-child(2) .packImg {
+    width: 168px;
+    top: -52px;
+    right: -8px;
+  }
+
+  .pack:nth-child(3) .packImg {
+    width: 120px;
+    top: -6px;
+    right: 0;
+  }
+
+  .pack:nth-child(4) .packImg {
+    width: 120px;
+    top: -6px;
+    right: -4px;
+  }
+
+  /* Privileges title */
+  .prTitle {
+    padding-top: 16px;
+  }
+
+  .prHeading {
+    font-size: 20px;
+  }
+
+  .prNote {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.66px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+}

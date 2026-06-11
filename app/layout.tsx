@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
+import { getRefreshToken } from '@/lib/server/authCookies';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -18,15 +19,17 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isAuthed = Boolean(await getRefreshToken());
+
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome isAuthed={isAuthed}>{children}</SiteChrome>
       </body>
     </html>
   );

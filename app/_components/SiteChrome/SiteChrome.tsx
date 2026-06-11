@@ -9,6 +9,9 @@ import styles from './SiteChrome.module.css';
 
 const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email'];
 const DASHBOARD_ROUTES = ['/dashboard'];
+// Routes that use the dashboard chrome only when the user is authenticated;
+// otherwise they fall back to the marketing chrome.
+const HYBRID_ROUTES = ['/store'];
 
 function matchesRoute(pathname: string, routes: string[]) {
   return routes.some(
@@ -16,14 +19,24 @@ function matchesRoute(pathname: string, routes: string[]) {
   );
 }
 
-export function SiteChrome({ children }: { children: React.ReactNode }) {
+export function SiteChrome({
+  children,
+  isAuthed = false,
+}: {
+  children: React.ReactNode;
+  isAuthed?: boolean;
+}) {
   const pathname = usePathname();
 
   if (matchesRoute(pathname, AUTH_ROUTES)) {
     return children;
   }
 
-  if (matchesRoute(pathname, DASHBOARD_ROUTES)) {
+  const useDashboardChrome =
+    matchesRoute(pathname, DASHBOARD_ROUTES) ||
+    (isAuthed && matchesRoute(pathname, HYBRID_ROUTES));
+
+  if (useDashboardChrome) {
     return (
       <div className={styles.dashboard}>
         <DashboardSidebar />
