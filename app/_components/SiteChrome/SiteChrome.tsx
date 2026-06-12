@@ -8,7 +8,6 @@ import { Header } from '../Header/Header';
 import styles from './SiteChrome.module.css';
 
 const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email'];
-const DASHBOARD_ROUTES = ['/dashboard'];
 
 function matchesRoute(pathname: string, routes: string[]) {
   return routes.some(
@@ -29,10 +28,7 @@ export function SiteChrome({
     return children;
   }
 
-  const useDashboardChrome =
-    isAuthed && matchesRoute(pathname, DASHBOARD_ROUTES);
-
-  if (useDashboardChrome) {
+  if (isAuthed) {
     return (
       <div className={styles.dashboard}>
         <DashboardSidebar />
