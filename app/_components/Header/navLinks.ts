@@ -10,6 +10,7 @@ export const NAV_LINKS = [
 
 export function isNavLinkActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/';
+  if (href === '/dashboard') return pathname === '/dashboard';
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

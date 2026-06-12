@@ -90,7 +90,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
           </div>
         </div>
 
-        <Link href="/store" className={styles.topup} onClick={onClose}>
+        <Link href="/dashboard/shop" className={styles.topup} onClick={onClose}>
           Top up crystals
         </Link>
 

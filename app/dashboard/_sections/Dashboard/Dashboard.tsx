@@ -113,7 +113,7 @@ export default function Dashboard() {
             <span className={styles.headerBalanceUnit}>crystals</span>
           </div>
 
-          <Link href="/store" className={styles.topUp}>
+          <Link href="/dashboard/shop" className={styles.topUp}>
             Top up
           </Link>
         </div>
@@ -137,7 +137,7 @@ export default function Dashboard() {
 
       <div className={styles.sectionHead}>
         <h2 className={styles.sectionTitle}>Server status</h2>
-        <Link href="/servers" className={styles.seeAll}>
+        <Link href="/dashboard/servers" className={styles.seeAll}>
           <span>See all servers</span>
           <span aria-hidden="true">→</span>
         </Link>
@@ -179,7 +179,7 @@ export default function Dashboard() {
 
             <div className={styles.serverFoot}>
               <span className={styles.serverMeta}>{server.meta}</span>
-              <Link href="/servers" className={styles.joinButton}>
+              <Link href="/dashboard/servers" className={styles.joinButton}>
                 <span>{server.cta}</span>
                 <span aria-hidden="true">→</span>
               </Link>
@@ -253,7 +253,7 @@ export default function Dashboard() {
             ))}
           </div>
 
-          <Link href="/store" className={styles.openShop}>
+          <Link href="/dashboard/shop" className={styles.openShop}>
             Open Shop
           </Link>
         </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { getRefreshToken } from '@/lib/server/authCookies';
+import { requireAuth } from '@/lib/server/requireAuth';
 import Dashboard from './_sections/Dashboard/Dashboard';
 
 export const metadata: Metadata = {
@@ -9,11 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function DashboardPage() {
-  const refresh = await getRefreshToken();
-
-  if (!refresh) {
-    redirect('/login');
-  }
+  await requireAuth();
 
   return <Dashboard />;
 }
