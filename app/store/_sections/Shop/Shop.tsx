@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import styles from './Shop.module.css';
 
@@ -37,6 +38,8 @@ const PACKS: CrystalPack[] = [
 const nf = new Intl.NumberFormat('en-US');
 
 export default function Shop() {
+  const pathname = usePathname();
+  const isDashboard = pathname?.startsWith('/dashboard') ?? false;
   const [tab, setTab] = useState<Tab>('All');
   const [amount, setAmount] = useState(2500);
 
@@ -231,7 +234,9 @@ export default function Shop() {
             <h2 className={styles.prHeading}>Privileges — 8 tiers</h2>
             <p className={styles.prNote}>All tiers stack with crystals balance</p>
           </div>
-          <PrivilegesCards />
+          <div className={styles.privilegesFull}>
+            <PrivilegesCards compact={isDashboard} />
+          </div>
         </>
       )}
     </div>

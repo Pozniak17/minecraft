@@ -9,13 +9,19 @@ import { MobileNav } from './MobileNav/MobileNav';
 import { isNavLinkActive, NAV_LINKS } from './navLinks';
 import styles from './Header.module.css';
 
-export function Header() {
+export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [nick, setNick] = useState('Player');
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const email = window.localStorage.getItem('user_email') ?? '';
+    setNick(email ? email.split('@')[0] : 'Player');
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -60,12 +66,23 @@ export function Header() {
         <div className={styles.divider} />
 
         <div className={styles.authButtons}>
-          <Link href="/login" className={styles.btnSecondary}>
-            Log In
-          </Link>
-          <Link href="/register" className={styles.btnPrimary}>
-            Sign UP
-          </Link>
+          {isAuthed ? (
+            <Link href="/dashboard" className={styles.account} aria-label="Go to dashboard">
+              <span className={styles.avatar} aria-hidden="true">
+                {nick.charAt(0).toUpperCase()}
+              </span>
+              <span className={styles.nick}>{nick}</span>
+            </Link>
+          ) : (
+            <>
+              <Link href="/login" className={styles.btnSecondary}>
+                Log In
+              </Link>
+              <Link href="/register" className={styles.btnPrimary}>
+                Sign UP
+              </Link>
+            </>
+          )}
         </div>
 
         <div className={styles.dividerDesktop} />
@@ -88,6 +105,8 @@ export function Header() {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         pathname={pathname}
+        isAuthed={isAuthed}
+        nick={nick}
       />
     </header>
   );

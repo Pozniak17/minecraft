@@ -10,9 +10,17 @@ type MobileNavProps = {
   isOpen: boolean;
   onClose: () => void;
   pathname: string;
+  isAuthed?: boolean;
+  nick?: string;
 };
 
-export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
+export function MobileNav({
+  isOpen,
+  onClose,
+  pathname,
+  isAuthed = false,
+  nick = 'Player',
+}: MobileNavProps) {
   useEffect(() => {
     if (!isOpen) return;
 
@@ -65,12 +73,23 @@ export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
         </div>
 
         <div className={styles.authRow}>
-          <Link href="/login" className={styles.loginButton} onClick={onClose}>
-            Log in
-          </Link>
-          <Link href="/register" className={styles.signupButton} onClick={onClose}>
-            Sign up
-          </Link>
+          {isAuthed ? (
+            <Link href="/dashboard" className={styles.account} onClick={onClose}>
+              <span className={styles.avatar} aria-hidden="true">
+                {nick.charAt(0).toUpperCase()}
+              </span>
+              <span className={styles.nick}>{nick}</span>
+            </Link>
+          ) : (
+            <>
+              <Link href="/login" className={styles.loginButton} onClick={onClose}>
+                Log in
+              </Link>
+              <Link href="/register" className={styles.signupButton} onClick={onClose}>
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
 
         <Link href="/servers" className={styles.statusCard} onClick={onClose}>

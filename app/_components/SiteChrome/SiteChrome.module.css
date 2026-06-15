@@ -1,5 +1,8 @@
 .dashboard {
   display: flex;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
   min-height: 100dvh;
   align-items: flex-start;
 }

@@ -49,7 +49,8 @@
   font-size: var(--Size-Mobile-Body-xxsmall, 10.5px);
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 15.75px */
+  line-height: 150%;
+  /* 15.75px */
 }
 
 .icon {
@@ -154,12 +155,25 @@
 }
 
 @media (min-width: 1280px) {
-  .card {
+
+  /* :not(.cardCompact) — li має обидва класи; без цього compact-стилі перебиваються */
+  .card:not(.cardCompact) {
     width: 371px;
     height: 479px;
     justify-content: center;
 
     padding: 141px 20px 31px 20px;
+  }
+
+  /* Compact variant — dashboard Shop (/dashboard/shop) */
+  .card.cardCompact {
+    width: 327px;
+    height: 422px;
+    padding: 124px 18px 27px 18px;
+  }
+
+  .card.cardCompact .text {
+    width: 291px;
   }
 
   .title {
@@ -173,7 +187,7 @@
   }
 
   /* 1 — Silver */
-  .card:nth-child(1) .icon {
+  .card:not(.cardCompact):nth-child(1) .icon {
     width: 188px;
     height: 203px;
     left: 174px;
@@ -181,7 +195,7 @@
   }
 
   /* 2 — Supreme */
-  .card:nth-child(2) .icon {
+  .card:not(.cardCompact):nth-child(2) .icon {
     width: 195px;
     height: 210px;
     left: 154px;
@@ -189,7 +203,7 @@
   }
 
   /* 3 — Wither */
-  .card:nth-child(3) .icon {
+  .card:not(.cardCompact):nth-child(3) .icon {
     width: 323px;
     height: 174px;
     left: 91px;
@@ -197,7 +211,7 @@
   }
 
   /* 4 — Hero */
-  .card:nth-child(4) .icon {
+  .card:not(.cardCompact):nth-child(4) .icon {
     width: 231px;
     height: 197px;
     left: 120px;
@@ -205,7 +219,7 @@
   }
 
   /* 5 — Avenger */
-  .card:nth-child(5) .icon {
+  .card:not(.cardCompact):nth-child(5) .icon {
     width: 233px;
     height: 233px;
     left: 142px;
@@ -213,7 +227,7 @@
   }
 
   /* 6 — Legend */
-  .card:nth-child(6) .icon {
+  .card:not(.cardCompact):nth-child(6) .icon {
     width: 263px;
     height: 263px;
     left: 124px;
@@ -221,7 +235,7 @@
   }
 
   /* 7 — Phantom */
-  .card:nth-child(7) .icon {
+  .card:not(.cardCompact):nth-child(7) .icon {
     width: 197px;
     height: 197px;
     left: 161px;
@@ -229,10 +243,67 @@
   }
 
   /* 8 — Phoenix */
-  .card:nth-child(8) .icon {
+  .card:not(.cardCompact):nth-child(8) .icon {
     width: 186px;
     height: 186px;
     left: 154px;
     bottom: 340px;
+  }
+
+  /* ── Compact icon layout (dashboard Shop) — редагуй тут ── */
+  .card.cardCompact:nth-child(1) .icon {
+    width: 166px;
+    height: 179px;
+    left: 153px;
+    bottom: 270px;
+  }
+
+  .card.cardCompact:nth-child(2) .icon {
+    width: 172px;
+    height: 185px;
+    left: 136px;
+    bottom: 280px;
+  }
+
+  .card.cardCompact:nth-child(3) .icon {
+    width: 285px;
+    height: 153px;
+    left: 80px;
+    bottom: 310px;
+  }
+
+  .card.cardCompact:nth-child(4) .icon {
+    width: 204px;
+    height: 174px;
+    left: 106px;
+    bottom: 288px;
+  }
+
+  .card.cardCompact:nth-child(5) .icon {
+    width: 205px;
+    height: 205px;
+    left: 125px;
+    bottom: 285px;
+  }
+
+  .card.cardCompact:nth-child(6) .icon {
+    width: 232px;
+    height: 232px;
+    left: 109px;
+    bottom: 254px;
+  }
+
+  .card.cardCompact:nth-child(7) .icon {
+    width: 174px;
+    height: 174px;
+    left: 142px;
+    bottom: 317px;
+  }
+
+  .card.cardCompact:nth-child(8) .icon {
+    width: 164px;
+    height: 164px;
+    left: 136px;
+    bottom: 337px;
   }
 }

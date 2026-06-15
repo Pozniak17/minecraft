@@ -633,7 +633,7 @@
 
 @media (min-width: 1024px) {
   .root {
-    max-width: 1200px;
+    max-width: none;
     margin: 0;
     gap: 32px;
     padding: 40px 48px 64px;

@@ -74,11 +74,14 @@ type PrivilegesCardsProps = {
   initialLimit?: number;
   /** When set, "View more" navigates here instead of expanding inline. */
   viewMoreHref?: string;
+  /** Smaller cards for the narrower dashboard content area. */
+  compact?: boolean;
 };
 
 export default function PrivilegesCards({
   initialLimit,
   viewMoreHref,
+  compact = false,
 }: PrivilegesCardsProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -88,9 +91,15 @@ export default function PrivilegesCards({
 
   return (
     <div className={styles.root}>
-      <ul className={styles.cards}>
+      <ul className={`${styles.cards} ${compact ? styles.cardsCompact : ''}`}>
         {visible.map((item, index) => (
-          <Card key={index} title={item.title} text={item.text} icon={item.icon} />
+          <Card
+            key={index}
+            title={item.title}
+            text={item.text}
+            icon={item.icon}
+            compact={compact}
+          />
         ))}
       </ul>
 

@@ -67,4 +67,16 @@
   .cards > :nth-child(8) {
     grid-column: 2;
   }
+
+  /* Compact grid — 327px tracks for the dashboard Shop */
+  .cardsCompact {
+    grid-template-columns: repeat(3, 327px);
+    column-gap: 22px;
+    margin-inline: 0;
+  }
+
+  .cardsCompact > :nth-child(7),
+  .cardsCompact > :nth-child(8) {
+    margin-inline-start: calc((327px + 22px) / 2);
+  }
 }

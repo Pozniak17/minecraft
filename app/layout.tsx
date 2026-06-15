@@ -1,21 +1,8 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
 import { getRefreshToken } from '@/lib/server/authCookies';
-
-const VIEWPORT_ZOOM_SCRIPT = `(function () {
-  var DESIGN_WIDTH = 1440;
-  var MAX_ZOOM = 3;
-  function applyZoom() {
-    var width = window.innerWidth;
-    var zoom = width > DESIGN_WIDTH ? Math.min(width / DESIGN_WIDTH, MAX_ZOOM) : 1;
-    document.documentElement.style.zoom = String(zoom);
-  }
-  applyZoom();
-  window.addEventListener('resize', applyZoom);
-})();`;
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -42,9 +29,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <Script id="viewport-zoom" strategy="beforeInteractive">
-          {VIEWPORT_ZOOM_SCRIPT}
-        </Script>
         <SiteChrome isAuthed={isAuthed}>{children}</SiteChrome>
       </body>
     </html>
