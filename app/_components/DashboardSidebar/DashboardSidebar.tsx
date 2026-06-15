@@ -70,10 +70,11 @@ export function DashboardSidebar() {
       <nav className={styles.workspace} aria-label="My workspace">
         {WORKSPACE_LINKS.map(link => {
           const isActive = link.href !== '#' && isNavLinkActive(link.href, pathname);
+          const isDisabled = link.soon && link.href === '#';
           const className = [
             styles.wsItem,
             isActive && styles.wsItemActive,
-            link.soon && styles.wsItemDisabled,
+            isDisabled && styles.wsItemDisabled,
           ]
             .filter(Boolean)
             .join(' ');
@@ -89,7 +90,7 @@ export function DashboardSidebar() {
             </>
           );
 
-          if (link.soon) {
+          if (isDisabled) {
             return (
               <span key={link.label} className={className} aria-disabled="true">
                 {content}

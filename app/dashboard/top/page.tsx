@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import TopRatings from '@/app/dashboard/_sections/TopRatings/TopRatings';
 import { requireAuth } from '@/lib/server/requireAuth';
 
 export const metadata: Metadata = {
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 export default async function DashboardTopPage() {
   await requireAuth();
 
-  return null;
+  return <TopRatings />;
 }

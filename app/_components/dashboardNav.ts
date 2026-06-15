@@ -15,7 +15,7 @@ export const WORKSPACE_LINKS: WorkspaceLink[] = [
   { label: 'Cart', href: '/dashboard/cart', icon: 'cart-large-minimalistic-outline', badge: 0 },
   { label: 'Purchase History', href: '/dashboard/history', icon: 'history-outline' },
   { label: 'Top / Ratings', href: '/dashboard/top', icon: 'bill-check-outline' },
-  { label: 'Tournaments', href: '#', icon: 'cup-first-outline', soon: true },
+  { label: 'Tournaments', href: '/dashboard/tournaments', icon: 'cup-first-outline', soon: true },
   { label: 'How to Start', href: '/dashboard/how-to-start', icon: 'flag-2-outline' },
 ];
 
