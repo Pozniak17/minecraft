@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { requireAuth } from '@/lib/server/requireAuth';
+import Cart from '@/app/dashboard/_sections/Cart/Cart';
 
 export const metadata: Metadata = {
   title: 'Cart — Dashboard',
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 export default async function DashboardCartPage() {
   await requireAuth();
 
-  return null;
+  return <Cart />;
 }

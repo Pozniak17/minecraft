@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { requireAuth } from '@/lib/server/requireAuth';
+import PurchaseHistory from '@/app/dashboard/_sections/PurchaseHistory/PurchaseHistory';
 
 export const metadata: Metadata = {
   title: 'Purchase History — Dashboard',
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 export default async function DashboardHistoryPage() {
   await requireAuth();
 
-  return null;
+  return <PurchaseHistory />;
 }

@@ -1,0 +1,714 @@
+.shell {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100dvh - var(--header-height));
+  background-color: var(--color-bg-effect, #001812);
+  background-image: url('/profile/purchase_history/bg_mobile.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.root {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 20px 32px;
+}
+
+/* ── Header ── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.headerMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.eyebrow {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  color: var(--color-primary);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.subtitle,
+.toolbar,
+.periodMobile,
+.statIconWrap,
+.statLabelDesktop,
+.statValueDesktop,
+.table {
+  display: none;
+}
+
+/* ── Period filter ── */
+
+.periodWrap {
+  position: relative;
+  align-self: flex-start;
+}
+
+.periodBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 170px;
+  padding: 10px 12px 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-main);
+}
+
+.periodLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.periodPrefix {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.periodValue {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.periodCaret {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1;
+}
+
+.periodMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 24, 18, 0.95);
+  backdrop-filter: blur(12px);
+  list-style: none;
+}
+
+.periodOption {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.periodOption:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Stats ── */
+
+.stats {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.stats::-webkit-scrollbar {
+  display: none;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+  width: 77px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+}
+
+.statCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.statLabelMobile,
+.statLabelDesktop,
+.statValueMobile,
+.statValueDesktop {
+  display: inline;
+}
+
+.statLabelDesktop,
+.statValueDesktop {
+  display: none;
+}
+
+.statLabelMobile {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.statValueMobile {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ── Orders (mobile cards) ── */
+
+.orderList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  list-style: none;
+}
+
+.orderCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+}
+
+.orderHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.orderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.orderDate {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.orderContext {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.orderTotal {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.orderPrice {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.statusBadge {
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.statusBadgeDot,
+.statusDot,
+.serverBadge,
+.tableDateMonth,
+.tableDateDay,
+.tableNickname,
+.tableAmount,
+.tableItemList,
+.tableActions,
+.tableOpenBtn,
+.tableReceiptBtn {
+  display: none;
+}
+
+.status_paid {
+  border: 1px solid rgba(51, 223, 94, 0.3);
+  background: rgba(51, 223, 94, 0.12);
+  color: #33df5e;
+}
+
+.status_refund {
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  background: rgba(255, 179, 71, 0.12);
+  color: #ffb347;
+}
+
+.status_failed {
+  border: 1px solid rgba(239, 77, 77, 0.3);
+  background: rgba(239, 77, 77, 0.12);
+  color: #ef4d4d;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  list-style: none;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.itemDot {
+  flex-shrink: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+}
+
+.orderActions {
+  display: flex;
+  gap: 6px;
+}
+
+.openBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 47px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.openBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.receiptBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 28px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.1);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.receiptBtn:hover {
+  background: rgba(189, 225, 83, 0.18);
+}
+
+.receiptIcon {
+  flex-shrink: 0;
+  width: 13px;
+  height: 14px;
+}
+
+/* ─────────────── Desktop ─────────────── */
+
+@media (min-width: 1024px) {
+  .shell {
+    background-image: url('/profile/purchase_history/bg_desktop.webp');
+  }
+
+  .root {
+    gap: 24px;
+    max-width: none;
+    margin: 0;
+    padding: 40px 48px 64px;
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .headerMain {
+    gap: 6px;
+  }
+
+  .eyebrow {
+    padding: 5px 10px;
+    font-size: 11px;
+    letter-spacing: 0.88px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .subtitle {
+    display: block;
+    max-width: 760px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .toolbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+    padding-top: 6px;
+  }
+
+  .periodMobile {
+    display: none;
+  }
+
+  .periodWrap {
+    align-self: auto;
+  }
+
+  .periodBtn {
+    width: auto;
+    gap: 8px;
+    padding: 10px 12px 10px 14px;
+  }
+
+  .periodPrefix {
+    font-size: 11px;
+    letter-spacing: 0.44px;
+  }
+
+  .periodValue {
+    font-size: 12px;
+  }
+
+  .exportBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.44px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .exportBtn:hover {
+    background: rgba(189, 225, 83, 0.18);
+  }
+
+  .exportIcon {
+    flex-shrink: 0;
+    width: 13px;
+    height: 14px;
+  }
+
+  .stats {
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .statCard {
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    width: auto;
+    min-width: 0;
+    padding: 18px 20px;
+    border-radius: 12px;
+  }
+
+  .statIconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
+  }
+
+  .statIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .statCopy {
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+  }
+
+  .statLabelMobile,
+  .statValueMobile {
+    display: none;
+  }
+
+  .statLabelDesktop,
+  .statValueDesktop {
+    display: block;
+  }
+
+  .statLabelDesktop {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .statValueDesktop {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  .orderList {
+    display: none;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+  }
+
+  .tableHead,
+  .tableRow {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr) 110px 130px 90px 90px 110px;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 20px;
+  }
+
+  .tableHead {
+    background: rgba(3, 29, 23, 0.5);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .tableRow {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-block: 16px;
+  }
+
+  .tableDateMonth {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .tableDateDay {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .orderDate {
+    display: none;
+  }
+
+  .tableItemList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+  }
+
+  .tableItemRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .serverBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+
+  .tableNickname {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .tableAmount {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .statusBadgeDot {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    font-size: 9px;
+    letter-spacing: 0.54px;
+  }
+
+  .statusDot {
+    display: block;
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-pill);
+    background: currentColor;
+  }
+
+  .tableActions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tableOpenBtn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+
+  .tableOpenBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .tableReceiptBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(189, 225, 83, 0.3);
+    background: rgba(189, 225, 83, 0.1);
+  }
+
+  .tableReceiptBtn:hover {
+    background: rgba(189, 225, 83, 0.18);
+  }
+}
