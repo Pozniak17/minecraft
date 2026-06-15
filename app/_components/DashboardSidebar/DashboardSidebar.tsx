@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { logout } from '@/lib/api/auth';
+import { LogoutModal } from '../LogoutModal/LogoutModal';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../dashboardNav';
 import { isNavLinkActive } from '../Header/navLinks';
 import styles from './DashboardSidebar.module.css';
@@ -13,13 +14,16 @@ export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [name, setName] = useState('Player');
+  const [email, setEmail] = useState('');
   const [initial, setInitial] = useState('U');
   const [loggingOut, setLoggingOut] = useState(false);
+  const [logoutOpen, setLogoutOpen] = useState(false);
 
   useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    setName(email ? email.split('@')[0] : 'Player');
-    setInitial(email ? email.charAt(0).toUpperCase() : 'U');
+    const storedEmail = window.localStorage.getItem('user_email') ?? '';
+    setEmail(storedEmail);
+    setName(storedEmail ? storedEmail.split('@')[0] : 'Player');
+    setInitial(storedEmail ? storedEmail.charAt(0).toUpperCase() : 'U');
   }, []);
 
   async function handleLogout() {
@@ -30,12 +34,14 @@ export function DashboardSidebar() {
       // навіть якщо запит впав — чистимо клієнтський стан і виходимо
     } finally {
       window.localStorage.removeItem('user_email');
+      setLogoutOpen(false);
       router.push('/');
       router.refresh();
     }
   }
 
   return (
+    <>
     <aside className={styles.sidebar} aria-label="Dashboard navigation">
       <Link href="/dashboard" className={styles.logo}>
         <Image
@@ -129,7 +135,7 @@ export function DashboardSidebar() {
           <button
             type="button"
             className={styles.footItem}
-            onClick={handleLogout}
+            onClick={() => setLogoutOpen(true)}
             disabled={loggingOut}
           >
             <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
@@ -148,5 +154,16 @@ export function DashboardSidebar() {
         <span className={styles.version}>v 2.6.0</span>
       </div>
     </aside>
+
+    <LogoutModal
+      isOpen={logoutOpen}
+      onClose={() => setLogoutOpen(false)}
+      onConfirm={handleLogout}
+      name={name}
+      email={email}
+      initial={initial}
+      confirming={loggingOut}
+    />
+    </>
   );
 }

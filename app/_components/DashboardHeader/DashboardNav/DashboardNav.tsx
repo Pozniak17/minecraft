@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { logout } from '@/lib/api/auth';
+import { LogoutModal } from '../../LogoutModal/LogoutModal';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboardNav';
 import { isNavLinkActive, NAV_LINKS } from '../../Header/navLinks';
 import styles from './DashboardNav.module.css';
@@ -18,13 +19,16 @@ type DashboardNavProps = {
 export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
   const router = useRouter();
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [initial, setInitial] = useState('U');
   const [loggingOut, setLoggingOut] = useState(false);
+  const [logoutOpen, setLogoutOpen] = useState(false);
 
   useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    setName(email ? email.split('@')[0] : 'Player');
-    setInitial(email ? email.charAt(0).toUpperCase() : 'U');
+    const storedEmail = window.localStorage.getItem('user_email') ?? '';
+    setEmail(storedEmail);
+    setName(storedEmail ? storedEmail.split('@')[0] : 'Player');
+    setInitial(storedEmail ? storedEmail.charAt(0).toUpperCase() : 'U');
   }, []);
 
   useEffect(() => {
@@ -53,16 +57,22 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
       // навіть якщо запит впав — чистимо клієнтський стан і виходимо
     } finally {
       window.localStorage.removeItem('user_email');
+      setLogoutOpen(false);
       onClose();
       router.push('/');
       router.refresh();
     }
   }
 
-  if (!isOpen) return null;
+  function openLogoutModal() {
+    onClose();
+    setLogoutOpen(true);
+  }
 
   return (
-    <div className={styles.root}>
+    <>
+      {isOpen && (
+      <div className={styles.root}>
       <button type="button" className={styles.overlay} aria-label="Close menu" onClick={onClose} />
 
       <aside
@@ -171,7 +181,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
           <button
             type="button"
             className={styles.footItem}
-            onClick={handleLogout}
+            onClick={openLogoutModal}
             disabled={loggingOut}
           >
             <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
@@ -189,6 +199,18 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
           <span className={styles.version}>v 2.6.0</span>
         </div>
       </aside>
-    </div>
+      </div>
+      )}
+
+      <LogoutModal
+        isOpen={logoutOpen}
+        onClose={() => setLogoutOpen(false)}
+        onConfirm={handleLogout}
+        name={name}
+        email={email}
+        initial={initial}
+        confirming={loggingOut}
+      />
+    </>
   );
 }

@@ -1,0 +1,258 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(0, 24, 18, 0.7);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 335px;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #031d17;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid rgba(239, 77, 77, 0.3);
+  background: rgba(239, 77, 77, 0.15);
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.title {
+  max-width: 280px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 26px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.description {
+  max-width: 280px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.descriptionDesktop,
+.userNameDesktop,
+.footnote {
+  display: none;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(189, 225, 83, 0.4);
+  background: rgba(189, 225, 83, 0.15);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.userCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.userLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.userNameMobile,
+.userNameDesktop {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.cancelBtn,
+.logoutBtn {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 12px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+.cancelBtn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logoutBtn {
+  border: none;
+  background: #ef4d4d;
+  color: #fff;
+  box-shadow: 3px 4px 20px rgba(239, 77, 77, 0.45);
+}
+
+.logoutBtn:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+.cancelBtn:disabled,
+.logoutBtn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* ─────────────── Desktop ─────────────── */
+
+@media (min-width: 1024px) {
+  .dialog {
+    gap: 20px;
+    max-width: 480px;
+    padding: 36px 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .iconWrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+  }
+
+  .title {
+    max-width: 400px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .description {
+    max-width: 400px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .descriptionMobile,
+  .userNameMobile {
+    display: none;
+  }
+
+  .descriptionDesktop,
+  .userNameDesktop,
+  .footnote {
+    display: block;
+  }
+
+  .userCard {
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .userLabel {
+    font-size: 10px;
+    letter-spacing: 0.6px;
+  }
+
+  .userNameDesktop {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .cancelBtn,
+  .logoutBtn {
+    padding: 14px 20px;
+    font-size: 13px;
+    letter-spacing: 0.52px;
+  }
+
+  .footnote {
+    padding-top: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}

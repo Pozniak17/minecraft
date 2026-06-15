@@ -53,6 +53,7 @@ export default function Shop() {
     setAmount(prev => Math.min(MAX, Math.max(MIN, prev + dir * STEP)));
 
   return (
+    <div className={styles.shell}>
     <div className={styles.root}>
       <header className={styles.shopHeader}>
         <div className={styles.hdrTop}>
@@ -239,6 +240,7 @@ export default function Shop() {
           </div>
         </>
       )}
+    </div>
     </div>
   );
 }

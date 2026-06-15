@@ -86,6 +86,7 @@ export default function Dashboard() {
   }, []);
 
   return (
+    <div className={styles.shell}>
     <section className={styles.root}>
       <div className={styles.header}>
         <div className={styles.welcome}>
@@ -259,5 +260,6 @@ export default function Dashboard() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

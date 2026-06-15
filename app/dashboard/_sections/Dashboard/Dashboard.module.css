@@ -1,5 +1,22 @@
-.root {
+.shell {
+  position: relative;
   display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100dvh - var(--header-height));
+  background-color: var(--color-bg-effect, #001812);
+  background-image: url('/profile/dashboard/bg-mobile.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.root {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 20px;
   width: 100%;
@@ -632,6 +649,10 @@
 /* ── Desktop (≥ 1024px) ── */
 
 @media (min-width: 1024px) {
+  .shell {
+    background-image: url('/profile/dashboard/bg-desktop.webp');
+  }
+
   .root {
     max-width: none;
     margin: 0;

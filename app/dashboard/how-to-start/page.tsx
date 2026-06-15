@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import HowToStart from '@/app/dashboard/_sections/HowToStart/HowToStart';
 import { requireAuth } from '@/lib/server/requireAuth';
 
 export const metadata: Metadata = {
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 export default async function DashboardHowToStartPage() {
   await requireAuth();
 
-  return null;
+  return <HowToStart />;
 }
