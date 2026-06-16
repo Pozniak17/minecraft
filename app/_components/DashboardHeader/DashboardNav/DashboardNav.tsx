@@ -175,7 +175,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         <hr className={styles.divider} />
 
         <div className={styles.account}>
-          <Link href="/dashboard" className={styles.footItem} onClick={onClose}>
+          <Link href="/dashboard/settings" className={styles.footItem} onClick={onClose}>
             <span className={styles.wsIcon} style={iconStyle('settings-outline')} aria-hidden="true" />
             <span className={styles.footLabel}>Settings</span>
           </Link>

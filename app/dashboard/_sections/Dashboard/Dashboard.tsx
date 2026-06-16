@@ -108,12 +108,6 @@ export default function Dashboard() {
             <span className={styles.notifDot} aria-hidden="true" />
           </button>
 
-          <div className={styles.headerBalance}>
-            <Image src="/profile/img.png" alt="" width={18} height={23} className={styles.headerBalanceIcon} />
-            <span className={styles.headerBalanceValue}>2,480</span>
-            <span className={styles.headerBalanceUnit}>crystals</span>
-          </div>
-
           <Link href="/dashboard/shop" className={styles.topUp}>
             Top up
           </Link>

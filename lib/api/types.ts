@@ -7,6 +7,7 @@ export interface RegisterInput {
   username?: string;
   password: string; // 4–24 символи
   email?: string;
+  seonSession?: string | null; // SEON device-intelligence session (антифрод)
 }
 
 export interface SendCodeInput {
@@ -26,4 +27,99 @@ export interface AuthTokens {
 export interface ApiErrorBody {
   detail?: string;
   [field: string]: unknown; // DRF повертає помилки по полях
+}
+
+export interface RestorePasswordInput {
+  email: string;
+}
+
+export interface ChangePasswordInput {
+  email: string;
+  tmp_password: string;
+  new_password: string;
+}
+
+// ---- Shop / core ----
+
+export interface Currency {
+  abbr: string;
+  name: string;
+}
+
+export interface ServerItem {
+  server_type: string;
+}
+
+export interface CategoryItem {
+  // Реальний бекенд віддає title/slug; translations лишаємо опційним (зі Swagger).
+  title?: string;
+  translations?: string;
+  slug: string;
+}
+
+export interface Product {
+  id: string;
+  category_slug?: string;
+  // Реальний бекенд віддає title/description; translations — опційний фолбек (зі Swagger).
+  title?: string;
+  description?: string;
+  translations?: string;
+  price?: string; // присутня лише в приватному списку
+  one_to_buy?: boolean;
+  image_name?: string | null;
+  currency?: string;
+}
+
+export interface Paginated<T> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
+
+export interface ProductsQuery {
+  page?: number;
+  page_size?: number;
+  search_query?: string;
+  category?: string;
+  currency?: string;
+  priced?: boolean;
+}
+
+// ---- Cart / orders ----
+
+export interface AddToCartInput {
+  amount: number;
+  item_id: string;
+  currency: string;
+}
+
+export interface OrderItem {
+  id: string;
+  amount: number;
+  price: string;
+  one_to_buy: boolean;
+  sum_item_price: string;
+  currency: string;
+  product_id: string;
+  order_id: string;
+  user: string;
+  image_name: string;
+  updated: string;
+  created: string;
+}
+
+export interface OrderListItem {
+  id: string;
+  order_item: OrderItem[];
+  total_price: string;
+  server?: string | null;
+  user_nickname?: string | null;
+}
+
+// ---- Payment ----
+
+export interface CreatePaymentInput {
+  user_nickname: string;
+  server: string;
 }

@@ -1,20 +1,30 @@
-import styles from './LuckyStatus.module.css';
+'use client';
 
-const STATS = [
-  { value: '427', labelMobile: 'Players', labelDesktop: 'Players Online' },
-  { value: '89%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-  { value: '~12ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
-];
+import { useServerOnline } from '@/lib/client/useServerOnline';
+import styles from './LuckyStatus.module.css';
 
 const ACTIVITY_PERCENT = 68;
 
 export default function LuckyStatus() {
+  const { online, status } = useServerOnline('luckysurvival');
+  const isOffline = status === 'offline';
+
+  const STATS = [
+    {
+      value: online !== null ? String(online) : isOffline ? '—' : '427',
+      labelMobile: 'Players',
+      labelDesktop: 'Players Online',
+    },
+    { value: '89%', labelMobile: 'Load', labelDesktop: 'Server Load' },
+    { value: '~12ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
+  ];
+
   return (
     <section className={styles.card}>
       <div className={styles.header}>
         <span className={styles.dot} aria-hidden="true" />
         <h3 className={styles.title}>Live Server Status</h3>
-        <span className={styles.online}>ONLINE</span>
+        <span className={styles.online}>{isOffline ? 'OFFLINE' : 'ONLINE'}</span>
       </div>
 
       <ul className={styles.stats}>

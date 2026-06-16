@@ -1,12 +1,22 @@
+'use client';
+
+import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './CalmSkyStatus.module.css';
 
-const STATS = [
-  { value: '508', labelMobile: 'Players', labelDesktop: 'Players Online' },
-  { value: '71%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-  { value: '~15ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
-];
-
 export default function CalmSkyStatus() {
+  const { online, status } = useServerOnline('calmsky');
+  const isOffline = status === 'offline';
+
+  const STATS = [
+    {
+      value: online !== null ? String(online) : isOffline ? '—' : '508',
+      labelMobile: 'Players',
+      labelDesktop: 'Players Online',
+    },
+    { value: '71%', labelMobile: 'Load', labelDesktop: 'Server Load' },
+    { value: '~15ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
+  ];
+
   return (
     <section className={styles.card}>
       <div className={styles.header}>
@@ -15,7 +25,7 @@ export default function CalmSkyStatus() {
           <span className={styles.titleMobile}>Live Status</span>
           <span className={styles.titleDesktop}>Live Server Status</span>
         </h3>
-        <span className={styles.online}>ONLINE</span>
+        <span className={styles.online}>{isOffline ? 'OFFLINE' : 'ONLINE'}</span>
       </div>
 
       <ul className={styles.stats}>

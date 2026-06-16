@@ -3,8 +3,9 @@
 import { isAxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { register as registerUser, sendEmailCode } from '@/lib/api/auth';
+import { initSeon, getSeonSession } from '@/lib/client/seon';
 import styles from './RegistrationForm.module.css';
 
 type FieldErrors = Partial<Record<'email' | 'password', string>>;
@@ -102,6 +103,11 @@ export default function RegistrationForm() {
 
   const passwordStrength = useMemo(() => getPasswordStrength(password), [password]);
 
+  useEffect(() => {
+    // Стартуємо SEON-агент на відкритті форми (поведінковий аналіз для антифроду).
+    initSeon();
+  }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormError(null);
@@ -128,7 +134,8 @@ export default function RegistrationForm() {
 
     setStatus('submitting');
     try {
-      await registerUser({ password, email: email.trim() });
+      const seonSession = await getSeonSession();
+      await registerUser({ password, email: email.trim(), seonSession });
       if (typeof window !== 'undefined') {
         window.localStorage.setItem('pending_verify_email', email.trim());
       }

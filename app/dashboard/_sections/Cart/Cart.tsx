@@ -2,19 +2,28 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
+import {
+  getOrderItems,
+  changeItemAmount,
+  removeFromCart,
+} from '@/lib/api/cart';
+import { getServers } from '@/lib/api/shop';
+import { createPayment } from '@/lib/api/payment';
+import type { OrderItem } from '@/lib/api/types';
 import styles from './Cart.module.css';
 
-type CartItem = {
+type Row = {
   id: string;
   title: string;
   subtitle: string;
   subtitleDesktop: string;
   unitPrice: number;
+  qty: number;
   image: string;
-  initialQty: number;
+  fromApi: boolean;
 };
 
-const CART_ITEMS: CartItem[] = [
+const FALLBACK_ROWS: Row[] = [
   {
     id: 'phoenix',
     title: 'Phoenix privilege',
@@ -22,7 +31,8 @@ const CART_ITEMS: CartItem[] = [
     subtitleDesktop: 'Lifetime upgrade — works on all servers',
     unitPrice: 9.99,
     image: '/profile/cart/1.webp',
-    initialQty: 1,
+    qty: 1,
+    fromApi: false,
   },
   {
     id: 'crystals-2500',
@@ -31,7 +41,8 @@ const CART_ITEMS: CartItem[] = [
     subtitleDesktop: 'In-game currency, instant delivery',
     unitPrice: 19.99,
     image: '/profile/cart/2.webp',
-    initialQty: 1,
+    qty: 1,
+    fromApi: false,
   },
   {
     id: 'crystals-15000',
@@ -40,18 +51,19 @@ const CART_ITEMS: CartItem[] = [
     subtitleDesktop: 'Glowing banner set + floating lantern',
     unitPrice: 3.99,
     image: '/profile/cart/3.webp',
-    initialQty: 2,
+    qty: 2,
+    fromApi: false,
   },
 ];
 
-const SERVERS = ['Classic', 'Skyblock', 'Anarchy'] as const;
+const CART_IMAGES = ['/profile/cart/1.webp', '/profile/cart/2.webp', '/profile/cart/3.webp'];
+// Реальні сервери з ТЗ (бекенд /core/servers/ поки повертає []).
+const FALLBACK_SERVERS = ['LuckySurvival', 'MineWars', 'CalmSky'];
 const PAYMENT_METHODS = ['VISA', 'MC', 'Pay', 'GPay', 'PayPal'] as const;
-
-type Server = (typeof SERVERS)[number];
 
 const nf = new Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'EUR',
   minimumFractionDigits: 2,
 });
 
@@ -59,45 +71,146 @@ function formatPrice(value: number) {
   return nf.format(value);
 }
 
+// create_payment може повернути URL платіжки під різними іменами полів —
+// дістаємо перший валідний, щоб коректно зредіректити на оплату.
+function extractPaymentUrl(data: unknown): string | null {
+  if (typeof data === 'string') {
+    return /^https?:\/\//.test(data) ? data : null;
+  }
+  if (data && typeof data === 'object') {
+    const obj = data as Record<string, unknown>;
+    const keys = [
+      'payment_url',
+      'paymentUrl',
+      'redirect_url',
+      'redirectUrl',
+      'checkout_url',
+      'checkoutUrl',
+      'url',
+      'link',
+    ];
+    for (const key of keys) {
+      const value = obj[key];
+      if (typeof value === 'string' && /^https?:\/\//.test(value)) return value;
+    }
+  }
+  return null;
+}
+
+function labelFromImage(name: string | undefined): string {
+  if (!name) return 'Item';
+  const base = name.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
+  return base ? base.replace(/[-_]+/g, ' ') : 'Item';
+}
+
+function orderItemToRow(item: OrderItem, index: number): Row {
+  return {
+    id: item.id,
+    title: labelFromImage(item.image_name),
+    subtitle: item.currency ?? 'In-game',
+    subtitleDesktop: `${item.currency ?? 'In-game'} — instant delivery`,
+    unitPrice: Number(item.price) || 0,
+    qty: item.amount,
+    image: CART_IMAGES[index % CART_IMAGES.length],
+    fromApi: true,
+  };
+}
+
 export default function Cart() {
-  const [quantities, setQuantities] = useState<Record<string, number>>(() =>
-    Object.fromEntries(CART_ITEMS.map(item => [item.id, item.initialQty])),
-  );
-  const [removedIds, setRemovedIds] = useState<Set<string>>(new Set());
-  const [server, setServer] = useState<Server>('Classic');
+  const [rows, setRows] = useState<Row[]>(FALLBACK_ROWS);
+  const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
+  const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
   const [nickname, setNickname] = useState('RedstoneKing');
   const [promoCode, setPromoCode] = useState('');
+  const [paying, setPaying] = useState(false);
+  const [payMessage, setPayMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
-    if (email) {
-      setNickname(email.split('@')[0]);
-    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (email) setNickname(email.split('@')[0]);
   }, []);
 
-  const activeItems = useMemo(
-    () => CART_ITEMS.filter(item => !removedIds.has(item.id)),
-    [removedIds],
-  );
+  useEffect(() => {
+    let active = true;
+    getServers()
+      .then(list => {
+        if (!active || list.length === 0) return;
+        const types = list.map(s => s.server_type);
+        setServers(types);
+        setServer(prev => (types.includes(prev) ? prev : types[0]));
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
-  const lineCount = activeItems.length;
+  useEffect(() => {
+    let active = true;
+    getOrderItems()
+      .then(items => {
+        if (!active || items.length === 0) return;
+        setRows(items.map(orderItemToRow));
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const lineCount = rows.length;
 
   const subtotal = useMemo(
-    () =>
-      activeItems.reduce((sum, item) => sum + item.unitPrice * (quantities[item.id] ?? 0), 0),
-    [activeItems, quantities],
+    () => rows.reduce((sum, item) => sum + item.unitPrice * item.qty, 0),
+    [rows]
   );
 
   const changeQty = (id: string, delta: number) => {
-    setQuantities(prev => {
-      const next = Math.max(1, (prev[id] ?? 1) + delta);
-      return { ...prev, [id]: next };
-    });
+    let nextQty = 1;
+    setRows(prev =>
+      prev.map(row => {
+        if (row.id !== id) return row;
+        nextQty = Math.max(1, row.qty + delta);
+        return { ...row, qty: nextQty };
+      })
+    );
+
+    const target = rows.find(r => r.id === id);
+    if (target?.fromApi) {
+      changeItemAmount(id, nextQty).catch(() => {});
+    }
   };
 
   const removeItem = (id: string) => {
-    setRemovedIds(prev => new Set(prev).add(id));
+    const target = rows.find(r => r.id === id);
+    setRows(prev => prev.filter(row => row.id !== id));
+    if (target?.fromApi) {
+      removeFromCart(id).catch(() => {});
+    }
   };
+
+  async function handlePay() {
+    if (!nickname.trim()) {
+      setPayMessage('Enter your in-game nickname.');
+      return;
+    }
+    setPaying(true);
+    setPayMessage(null);
+    try {
+      const data = await createPayment({ user_nickname: nickname.trim(), server });
+      const url = extractPaymentUrl(data);
+      if (url) {
+        window.location.href = url;
+        return;
+      }
+      setPayMessage('Payment created. Check your dashboard for status.');
+    } catch {
+      setPayMessage('Could not start payment. Please try again.');
+    } finally {
+      setPaying(false);
+    }
+  }
 
   const summaryBlock = (
     <section className={styles.summary} aria-labelledby="summary-heading">
@@ -124,10 +237,16 @@ export default function Cart() {
         <span>Total</span>
         <span className={styles.summaryTotalValue}>{formatPrice(subtotal)}</span>
       </div>
-      <button type="button" className={styles.payBtn}>
-        <span>Proceed to pay</span>
+      <button
+        type="button"
+        className={styles.payBtn}
+        onClick={handlePay}
+        disabled={paying || lineCount === 0}
+      >
+        <span>{paying ? 'Processing…' : 'Proceed to pay'}</span>
         <span aria-hidden>→</span>
       </button>
+      {payMessage && <p className={styles.secureNote}>{payMessage}</p>}
       <p className={styles.secureNote}>
         <span className={styles.secureNoteMobile}>SSL secure checkout</span>
         <span className={styles.secureNoteDesktop}>Secure checkout — SSL encrypted</span>
@@ -164,9 +283,8 @@ export default function Cart() {
               <span className={styles.panelLabelDesktop}>Items in cart</span>
             </h2>
             <ul className={styles.itemList}>
-              {activeItems.map(item => {
-                const qty = quantities[item.id] ?? 1;
-                const lineTotal = item.unitPrice * qty;
+              {rows.map(item => {
+                const lineTotal = item.unitPrice * item.qty;
 
                 return (
                   <li key={item.id} className={styles.itemRow}>
@@ -194,7 +312,7 @@ export default function Cart() {
                       >
                         −
                       </button>
-                      <span className={styles.qtyValue}>{qty}</span>
+                      <span className={styles.qtyValue}>{item.qty}</span>
                       <button
                         type="button"
                         className={`${styles.qtyBtn} ${styles.qtyBtnPlus}`}
@@ -232,7 +350,7 @@ export default function Cart() {
             <div className={styles.field}>
               <p className={styles.fieldLabel}>Select server</p>
               <div className={styles.serverRow} role="radiogroup" aria-label="Select server">
-                {SERVERS.map(option => (
+                {servers.map(option => (
                   <button
                     key={option}
                     type="button"

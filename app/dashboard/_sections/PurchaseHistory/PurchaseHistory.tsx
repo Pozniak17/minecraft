@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getOrders } from '@/lib/api/orders';
+import type { OrderListItem } from '@/lib/api/types';
 import styles from './PurchaseHistory.module.css';
 
 type OrderStatus = 'paid' | 'refund' | 'failed';
@@ -15,6 +17,37 @@ type Order = {
   status: OrderStatus;
   items: string[];
 };
+
+const dateFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: '2-digit',
+  year: 'numeric',
+});
+
+function itemLabel(imageName: string | undefined): string {
+  if (!imageName) return 'Item';
+  const base = imageName.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
+  const cleaned = base.replace(/[-_]+/g, ' ').trim();
+  return cleaned || 'Item';
+}
+
+function mapOrder(order: OrderListItem): Order {
+  const first = order.order_item?.[0];
+  const created = first?.created ? new Date(first.created) : null;
+  const currency = first?.currency ? ` ${first.currency}` : '';
+
+  return {
+    id: order.id,
+    date: created ? dateFmt.format(created).replace(',', '') : '—',
+    player: order.user_nickname ?? '—',
+    server: order.server ?? '—',
+    total: `${order.total_price}${currency}`,
+    status: 'paid',
+    items: (order.order_item ?? []).map(
+      oi => `${itemLabel(oi.image_name)} ×${oi.amount}`
+    ),
+  };
+}
 
 const STATS = [
   {
@@ -123,6 +156,20 @@ function splitDate(date: string) {
 export default function PurchaseHistory() {
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>('Last 90 days');
   const [periodOpen, setPeriodOpen] = useState(false);
+  const [orders, setOrders] = useState<Order[]>(ORDERS);
+
+  useEffect(() => {
+    let active = true;
+    getOrders(1, 50)
+      .then(data => {
+        if (!active || data.results.length === 0) return;
+        setOrders(data.results.map(mapOrder));
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const periodControl = (
     <div className={styles.periodWrap}>
@@ -215,7 +262,7 @@ export default function PurchaseHistory() {
         </div>
 
         <ul className={styles.orderList}>
-          {ORDERS.map(order => (
+          {orders.map(order => (
             <li key={order.id} className={styles.orderCard}>
               <div className={styles.orderHead}>
                 <div className={styles.orderMeta}>
@@ -286,7 +333,7 @@ export default function PurchaseHistory() {
             </span>
           </div>
 
-          {ORDERS.map(order => {
+          {orders.map(order => {
             const { month, dayYear } = splitDate(order.date);
 
             return (

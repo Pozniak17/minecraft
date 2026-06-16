@@ -1,41 +1,57 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
+import { getCurrencies } from '@/lib/api/shop';
 import styles from './Shop.module.css';
 
 const TABS = ['All', 'Crystals', 'Privileges'] as const;
 type Tab = (typeof TABS)[number];
 
 const MIN = 100;
-const MAX = 10_000;
+const MAX = 15_000;
 const STEP = 100;
-const RATE = 19.99 / 2500; // ≈ price per crystal so 2,500 → $19.99
+const CRYSTALS_PER_UNIT = 10; // ТЗ: 10 кристалів = 1 EUR
 
 type CrystalPack = {
   amount: number;
-  price: string;
   img: string;
-  save?: string;
+  save?: number; // знижка у відсотках («більше береш — більша знижка»)
   popular?: boolean;
 };
 
 const PACKS: CrystalPack[] = [
-  { amount: 500, price: '$4.99', img: '/profile/shop/crystal-1.webp' },
-  { amount: 1500, price: '$12.99', save: '10%', img: '/profile/shop/crystal-2.webp' },
+  { amount: 500, img: '/profile/shop/crystal-1.webp' },
+  { amount: 1500, img: '/profile/shop/crystal-2.webp' },
   {
     amount: 5000,
-    price: '$39.99',
-    save: '20%',
     img: '/profile/shop/crystal-3.webp',
     popular: true,
   },
-  { amount: 15000, price: '$99.99', save: '30%', img: '/profile/shop/crystal-4.webp' },
+  { amount: 15000, img: '/profile/shop/crystal-4.webp' },
 ];
 
 const nf = new Intl.NumberFormat('en-US');
+
+function formatSliderLabel(value: number): string {
+  if (value >= 1000) {
+    const k = value / 1000;
+    return Number.isInteger(k) ? `${k}K` : `${k.toFixed(1).replace(/\.0$/, '')}K`;
+  }
+  return nf.format(value);
+}
+
+// Мітки на рівних відстанях = значення на лінійній шкалі MIN…MAX.
+const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
+  t => Math.round(MIN + t * (MAX - MIN)),
+);
+
+// Ціна за курсом ТЗ: 10 кристалів = 1 EUR.
+function packPrice(amount: number) {
+  return (amount / CRYSTALS_PER_UNIT).toFixed(2);
+}
 
 export default function Shop() {
   const pathname = usePathname();
@@ -43,14 +59,29 @@ export default function Shop() {
   const [tab, setTab] = useState<Tab>('All');
   const [amount, setAmount] = useState(2500);
 
+  const [currency, setCurrency] = useState('EUR');
+
   const percent = ((amount - MIN) / (MAX - MIN)) * 100;
-  const price = useMemo(() => (amount * RATE).toFixed(2), [amount]);
+  const price = useMemo(() => (amount / CRYSTALS_PER_UNIT).toFixed(2), [amount]);
 
   const showCrystals = tab === 'All' || tab === 'Crystals';
   const showPrivileges = tab === 'All' || tab === 'Privileges';
 
   const step = (dir: 1 | -1) =>
     setAmount(prev => Math.min(MAX, Math.max(MIN, prev + dir * STEP)));
+
+  useEffect(() => {
+    let active = true;
+    getCurrencies()
+      .then(list => {
+        if (!active || list.length === 0) return;
+        setCurrency(list[0].abbr);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div className={styles.shell}>
@@ -71,10 +102,8 @@ export default function Shop() {
 
           <div className={styles.currency}>
             <span className={styles.currencyLabel}>Currency:</span>
-            <span className={styles.currencyValue}>USD</span>
-            <span className={styles.currencyCaret} aria-hidden>
-              ▾
-            </span>
+            <span className={styles.currencyValue}>{currency}</span>
+            <span className={styles.currencyCaret} aria-hidden>▾</span>
           </div>
         </div>
 
@@ -150,18 +179,18 @@ export default function Shop() {
                   aria-label="Crystals amount"
                 />
                 <div className={styles.sliderLabels}>
-                  <span>100</span>
-                  <span>1k</span>
-                  <span>2.5k</span>
-                  <span>5k</span>
-                  <span>10k</span>
+                  {SLIDER_TICKS.map(value => (
+                    <span key={value}>{formatSliderLabel(value)}</span>
+                  ))}
                 </div>
               </div>
 
               <div className={styles.calcPrice}>
                 <div className={styles.calcTotal}>
                   <span className={styles.calcTotalLabel}>Total</span>
-                  <span className={styles.calcPriceValue}>${price}</span>
+                  <span className={styles.calcPriceValue}>
+                    {price} {currency}
+                  </span>
                 </div>
                 <button type="button" className={styles.addAccent}>
                   <span className={styles.addGlyph} aria-hidden>
@@ -199,7 +228,7 @@ export default function Shop() {
                       <div className={styles.saveWrap}>
                         <span className={styles.save}>
                           <span className={styles.savePrefix}>Save </span>
-                          {pack.save}
+                          {pack.save}%
                         </span>
                       </div>
                     )}
@@ -208,7 +237,9 @@ export default function Shop() {
                       <span className={styles.packUnit}> crystals</span>
                     </span>
                     <div className={styles.packPriceRow}>
-                      <span className={styles.packPrice}>{pack.price}</span>
+                      <span className={styles.packPrice}>
+                        {packPrice(pack.amount)} {currency}
+                      </span>
                       <button type="button" className={styles.packAdd}>
                         Add
                       </button>

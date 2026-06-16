@@ -7,7 +7,7 @@ import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import styles from './SiteChrome.module.css';
 
-const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email'];
+const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email', '/payment'];
 const DASHBOARD_ROUTES = ['/dashboard'];
 
 function matchesRoute(pathname: string, routes: string[]) {

@@ -125,7 +125,7 @@ export function DashboardSidebar() {
         <hr className={styles.divider} />
 
         <div className={styles.account}>
-          <Link href="/dashboard" className={styles.footItem}>
+          <Link href="/dashboard/settings" className={styles.footItem}>
             <span
               className={styles.wsIcon}
               style={iconStyle('settings-outline')}

@@ -112,36 +112,6 @@
   background: #ef4d4d;
 }
 
-.headerBalance {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.1);
-}
-
-.headerBalanceIcon {
-  width: 18px;
-  height: auto;
-}
-
-.headerBalanceValue {
-  color: var(--color-primary);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.28px;
-}
-
-.headerBalanceUnit {
-  color: rgba(189, 225, 83, 0.72);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
 .topUp {
   display: inline-flex;
   align-items: center;

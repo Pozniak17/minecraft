@@ -4,6 +4,8 @@ import type {
   RegisterInput,
   SendCodeInput,
   VerifyCodeInput,
+  RestorePasswordInput,
+  ChangePasswordInput,
 } from './types';
 
 export function login(input: LoginInput) {
@@ -24,4 +26,12 @@ export function verifyEmailCode(input: VerifyCodeInput) {
 
 export function logout() {
   return apiClient.post('/auth/logout');
+}
+
+export function restorePassword(input: RestorePasswordInput) {
+  return apiClient.post('/auth/restore-password', input);
+}
+
+export function changePassword(input: ChangePasswordInput) {
+  return apiClient.post('/auth/change-password', input);
 }
