@@ -4,7 +4,7 @@ import Settings from '@/app/dashboard/_sections/Settings/Settings';
 
 export const metadata: Metadata = {
   title: 'Settings — Dashboard',
-  description: 'Manage your account security and credentials.',
+  description: 'Manage profile, security, and notifications.',
 };
 
 export default async function DashboardSettingsPage() {
