@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
 import { getRefreshToken } from '@/lib/server/authCookies';
@@ -30,6 +31,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={montserrat.variable}>
         <SiteChrome isAuthed={isAuthed}>{children}</SiteChrome>
+        <Script
+          src="https://static.minecraftsgame.com/script.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

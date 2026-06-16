@@ -1,66 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { DASHBOARD_SERVERS } from '@/lib/data/dashboardServers';
 import styles from './Servers.module.css';
-
-type ServerStatus = 'online' | 'offline';
-
-type ServerItem = {
-  id: string;
-  name: string;
-  nameMobile?: string;
-  status: ServerStatus;
-  current: number;
-  max: number;
-  description: string;
-  image: string;
-  latency: string;
-  joinLabel: string;
-  joinLabelDesktop: string;
-};
-
-const SERVERS: ServerItem[] = [
-  {
-    id: 'classic',
-    name: 'Classic / Survival',
-    status: 'online',
-    current: 128,
-    max: 200,
-    description:
-      'A beloved classic with hardcore touches and a thriving economy. The perfect spot for cozy survival and large-scale building.',
-    image: '/profile/servers/classic-survival.webp',
-    latency: '32 ms',
-    joinLabel: 'Join',
-    joinLabelDesktop: 'Join server',
-  },
-  {
-    id: 'skyblock',
-    name: 'Skyblock / Tech',
-    nameMobile: 'Skyblock',
-    status: 'online',
-    current: 84,
-    max: 150,
-    description:
-      'Sharpen your automation and survival skills on floating islands. Custom crafts, machines, and endless possibilities for engineers.',
-    image: '/profile/servers/skyblock-tech.webp',
-    latency: '38 ms',
-    joinLabel: 'Join',
-    joinLabelDesktop: 'Join server',
-  },
-  {
-    id: 'anarchy',
-    name: 'Anarchy / PvP',
-    status: 'offline',
-    current: 0,
-    max: 100,
-    description:
-      'A world with no rules but ruthless competition. Prove your dominance in PvP, capture territories, and crush your enemies.',
-    image: '/profile/servers/anarchy-pvp.webp',
-    latency: 'Offline',
-    joinLabel: 'Notify',
-    joinLabelDesktop: 'Notify me',
-  },
-];
 
 export default function Servers() {
   return (
@@ -86,7 +29,7 @@ export default function Servers() {
       </header>
 
       <ul className={styles.list}>
-        {SERVERS.map(server => {
+        {DASHBOARD_SERVERS.map(server => {
           const ratio = server.max > 0 ? server.current / server.max : 0;
           const isOnline = server.status === 'online';
           const mobileTitle = server.nameMobile ?? server.name;
@@ -147,12 +90,12 @@ export default function Servers() {
                   <span className={styles.joinMobile}>{server.joinLabel}</span>
                   <span className={styles.joinDesktop}>{server.joinLabelDesktop}</span>
                 </button>
-                <button type="button" className={styles.open}>
+                <Link href={`/dashboard/servers/${server.id}`} className={styles.open}>
                   <span className={styles.openMobile}>Open</span>
                   <span className={styles.openDesktop}>
                     Open page <span className={styles.openArrow}>→</span>
                   </span>
-                </button>
+                </Link>
               </div>
             </li>
           );
