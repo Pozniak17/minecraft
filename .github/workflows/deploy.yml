@@ -22,4 +22,4 @@ jobs:
           script: |
             set -e
             cd /var/www/minecraftsgame
-            ./deploy.sh
+            bash deploy.sh
