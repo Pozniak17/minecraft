@@ -14,6 +14,7 @@ import styles from './Cart.module.css';
 
 type Row = {
   id: string;
+  productId: string;
   title: string;
   subtitle: string;
   subtitleDesktop: string;
@@ -26,6 +27,7 @@ type Row = {
 const FALLBACK_ROWS: Row[] = [
   {
     id: 'phoenix',
+    productId: 'phoenix',
     title: 'Phoenix privilege',
     subtitle: 'Lifetime upgrade',
     subtitleDesktop: 'Lifetime upgrade — works on all servers',
@@ -36,6 +38,7 @@ const FALLBACK_ROWS: Row[] = [
   },
   {
     id: 'crystals-2500',
+    productId: 'crystals-2500',
     title: 'Crystals × 2,500',
     subtitle: 'In-game currency',
     subtitleDesktop: 'In-game currency, instant delivery',
@@ -46,6 +49,7 @@ const FALLBACK_ROWS: Row[] = [
   },
   {
     id: 'crystals-15000',
+    productId: 'crystals-15000',
     title: '15,000 crystals',
     subtitle: 'Banner + lantern',
     subtitleDesktop: 'Glowing banner set + floating lantern',
@@ -106,6 +110,7 @@ function labelFromImage(name: string | undefined): string {
 function orderItemToRow(item: OrderItem, index: number): Row {
   return {
     id: item.id,
+    productId: item.product_id,
     title: labelFromImage(item.image_name),
     subtitle: item.currency ?? 'In-game',
     subtitleDesktop: `${item.currency ?? 'In-game'} — instant delivery`,
@@ -177,8 +182,9 @@ export default function Cart() {
     );
 
     const target = rows.find(r => r.id === id);
+    // Бекенд ідентифікує позицію кошика за product_id, а не за id рядка замовлення.
     if (target?.fromApi) {
-      changeItemAmount(id, nextQty).catch(() => {});
+      changeItemAmount(target.productId, nextQty).catch(() => {});
     }
   };
 
@@ -186,7 +192,7 @@ export default function Cart() {
     const target = rows.find(r => r.id === id);
     setRows(prev => prev.filter(row => row.id !== id));
     if (target?.fromApi) {
-      removeFromCart(id).catch(() => {});
+      removeFromCart(target.productId).catch(() => {});
     }
   };
 
