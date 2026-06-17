@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import { getCurrencies } from '@/lib/api/shop';
+import { crystalsToEur } from '@/lib/pricing';
 import styles from './Shop.module.css';
 
 const TABS = ['All', 'Crystals', 'Privileges'] as const;
@@ -13,7 +14,6 @@ type Tab = (typeof TABS)[number];
 const MIN = 100;
 const MAX = 15_000;
 const STEP = 100;
-const CRYSTALS_PER_UNIT = 10; // ТЗ: 10 кристалів = 1 EUR
 
 type CrystalPack = {
   amount: number;
@@ -48,9 +48,9 @@ const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
   t => Math.round(MIN + t * (MAX - MIN)),
 );
 
-// Ціна за курсом ТЗ: 10 кристалів = 1 EUR.
+// Ціна за курсом ТЗ: 10 кристалів = 0.99 EUR.
 function packPrice(amount: number) {
-  return (amount / CRYSTALS_PER_UNIT).toFixed(2);
+  return crystalsToEur(amount).toFixed(2);
 }
 
 export default function Shop() {
@@ -62,7 +62,7 @@ export default function Shop() {
   const [currency, setCurrency] = useState('EUR');
 
   const percent = ((amount - MIN) / (MAX - MIN)) * 100;
-  const price = useMemo(() => (amount / CRYSTALS_PER_UNIT).toFixed(2), [amount]);
+  const price = useMemo(() => crystalsToEur(amount).toFixed(2), [amount]);
 
   const showCrystals = tab === 'All' || tab === 'Crystals';
   const showPrivileges = tab === 'All' || tab === 'Privileges';
