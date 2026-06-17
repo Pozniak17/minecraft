@@ -11,9 +11,9 @@ import styles from './Shop.module.css';
 const TABS = ['All', 'Crystals', 'Privileges'] as const;
 type Tab = (typeof TABS)[number];
 
-const MIN = 100;
+const MIN = 10;
 const MAX = 15_000;
-const STEP = 100;
+const STEP = 10;
 
 type CrystalPack = {
   amount: number;
