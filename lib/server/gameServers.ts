@@ -11,8 +11,9 @@ export type GameServerKey = keyof typeof GAME_SERVERS;
 
 export const GAME_API_PORT = 7000;
 
-export const GAME_API_TOKEN =
-  process.env.GAME_API_TOKEN ?? '0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj';
+// Токен береться ТІЛЬКИ з оточення (.env.local на сервері). Без нього запит до
+// ігрового API не пройде і сервер показуватиметься offline — це навмисно.
+export const GAME_API_TOKEN = process.env.GAME_API_TOKEN ?? '';
 
 // Боти не показуються в моніторингу — за ТЗ додаємо зміщення до кількості онлайн.
 export const ONLINE_BOT_OFFSET = 30;
