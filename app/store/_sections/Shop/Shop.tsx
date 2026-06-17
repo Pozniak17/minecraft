@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
-import { getCurrencies } from '@/lib/api/shop';
+import { getCurrencies, getProducts } from '@/lib/api/shop';
+import { addToCart } from '@/lib/api/cart';
 import { crystalsToEur } from '@/lib/pricing';
 import styles from './Shop.module.css';
 
@@ -61,6 +62,13 @@ export default function Shop() {
 
   const [currency, setCurrency] = useState('EUR');
 
+  // Мапа продуктів бекенду: title(lowercase) → id; окремо id товару «Crystals».
+  const [productIdByTitle, setProductIdByTitle] = useState<Map<string, string>>(new Map());
+  const [crystalId, setCrystalId] = useState<string | null>(null);
+  const [addingKey, setAddingKey] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const percent = ((amount - MIN) / (MAX - MIN)) * 100;
   const price = useMemo(() => crystalsToEur(amount).toFixed(2), [amount]);
 
@@ -69,6 +77,18 @@ export default function Shop() {
 
   const step = (dir: 1 | -1) =>
     setAmount(prev => Math.min(MAX, Math.max(MIN, prev + dir * STEP)));
+
+  const flash = useCallback((message: string) => {
+    setNotice(message);
+    if (noticeTimer.current) clearTimeout(noticeTimer.current);
+    noticeTimer.current = setTimeout(() => setNotice(null), 3000);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (noticeTimer.current) clearTimeout(noticeTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -82,6 +102,62 @@ export default function Shop() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    getProducts({ page_size: 100 })
+      .then(data => {
+        if (!active) return;
+        const map = new Map<string, string>();
+        let crystal: string | null = null;
+        for (const p of data.results) {
+          if (p.title) map.set(p.title.toLowerCase(), p.id);
+          if (p.category_slug === 'crystals') crystal = p.id;
+        }
+        setProductIdByTitle(map);
+        setCrystalId(crystal);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  // amount = кількість кристалів (бекенд тарифікує за одиницю товару «Crystals»).
+  const addCrystals = useCallback(
+    async (qty: number) => {
+      if (!crystalId || addingKey) return;
+      const key = `crystals-${qty}`;
+      setAddingKey(key);
+      try {
+        await addToCart({ amount: qty, item_id: crystalId, currency });
+        flash(`Added ${nf.format(qty)} crystals to cart`);
+      } catch {
+        flash('Could not add to cart. Please try again.');
+      } finally {
+        setAddingKey(null);
+      }
+    },
+    [crystalId, addingKey, currency, flash]
+  );
+
+  const addPrivilege = useCallback(
+    async (title: string) => {
+      const id = productIdByTitle.get(title.toLowerCase());
+      if (!id) {
+        flash('This item is not available yet.');
+        return;
+      }
+      try {
+        await addToCart({ amount: 1, item_id: id, currency });
+        flash(`${title} privilege added to cart`);
+      } catch {
+        flash('Could not add to cart. Please try again.');
+        throw new Error('add-failed');
+      }
+    },
+    [productIdByTitle, currency, flash]
+  );
 
   return (
     <div className={styles.shell}>
@@ -192,12 +268,19 @@ export default function Shop() {
                     {price} {currency}
                   </span>
                 </div>
-                <button type="button" className={styles.addAccent}>
+                <button
+                  type="button"
+                  className={styles.addAccent}
+                  onClick={() => addCrystals(amount)}
+                  disabled={!crystalId || addingKey === `crystals-${amount}`}
+                >
                   <span className={styles.addGlyph} aria-hidden>
                     ◆
                   </span>
                   <span className={styles.addTextShort}>Add</span>
-                  <span className={styles.addTextFull}>Add to cart</span>
+                  <span className={styles.addTextFull}>
+                    {addingKey === `crystals-${amount}` ? 'Adding…' : 'Add to cart'}
+                  </span>
                 </button>
               </div>
 
@@ -240,8 +323,13 @@ export default function Shop() {
                       <span className={styles.packPrice}>
                         {packPrice(pack.amount)} {currency}
                       </span>
-                      <button type="button" className={styles.packAdd}>
-                        Add
+                      <button
+                        type="button"
+                        className={styles.packAdd}
+                        onClick={() => addCrystals(pack.amount)}
+                        disabled={!crystalId || addingKey === `crystals-${pack.amount}`}
+                      >
+                        {addingKey === `crystals-${pack.amount}` ? '…' : 'Add'}
                       </button>
                     </div>
                     <Image
@@ -267,11 +355,16 @@ export default function Shop() {
             <p className={styles.prNote}>All tiers stack with crystals balance</p>
           </div>
           <div className={styles.privilegesFull}>
-            <PrivilegesCards compact={isDashboard} />
+            <PrivilegesCards compact={isDashboard} onAddToCart={addPrivilege} />
           </div>
         </>
       )}
     </div>
+    {notice && (
+      <div className={styles.toast} role="status" aria-live="polite">
+        {notice}
+      </div>
+    )}
     </div>
   );
 }

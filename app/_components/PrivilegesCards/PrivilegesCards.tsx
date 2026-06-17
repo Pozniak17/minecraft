@@ -76,18 +76,36 @@ type PrivilegesCardsProps = {
   viewMoreHref?: string;
   /** Smaller cards for the narrower dashboard content area. */
   compact?: boolean;
+  /** When provided, the "Add to cart" button on each card is wired to this. */
+  onAddToCart?: (title: string) => Promise<void> | void;
 };
 
 export default function PrivilegesCards({
   initialLimit,
   viewMoreHref,
   compact = false,
+  onAddToCart,
 }: PrivilegesCardsProps) {
   const [expanded, setExpanded] = useState(false);
+  const [pendingTitle, setPendingTitle] = useState<string | null>(null);
+  const [doneTitles, setDoneTitles] = useState<Set<string>>(new Set());
 
   const hasMore = initialLimit != null && Data.length > initialLimit;
   const visible = hasMore && !expanded ? Data.slice(0, initialLimit) : Data;
   const showViewMore = hasMore && !expanded;
+
+  const handleAdd = async (title: string) => {
+    if (!onAddToCart || pendingTitle) return;
+    setPendingTitle(title);
+    try {
+      await onAddToCart(title);
+      setDoneTitles(prev => new Set(prev).add(title));
+    } catch {
+      // Помилку показує батьківський компонент (Shop) через свій notice.
+    } finally {
+      setPendingTitle(null);
+    }
+  };
 
   return (
     <div className={styles.root}>
@@ -99,6 +117,9 @@ export default function PrivilegesCards({
             text={item.text}
             icon={item.icon}
             compact={compact}
+            onAdd={onAddToCart ? () => handleAdd(item.title) : undefined}
+            pending={pendingTitle === item.title}
+            done={doneTitles.has(item.title)}
           />
         ))}
       </ul>

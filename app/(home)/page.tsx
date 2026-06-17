@@ -9,14 +9,17 @@ import Rate from './_sections/Rate/Rate';
 
 import Server from './_sections/Server/Server';
 import StartAdventure from './_sections/StartAdventure/StartAdventure';
+import { getRefreshToken } from '@/lib/server/authCookies';
 
-export default function Home() {
+export default async function Home() {
+  const isAuthed = Boolean(await getRefreshToken());
+
   return (
     <>
       <Hero />
       <Server />
       <Features />
-      <Preview />
+      <Preview isAuthed={isAuthed} />
       <Benefits />
       <Rate />
       <CommunityTrust />

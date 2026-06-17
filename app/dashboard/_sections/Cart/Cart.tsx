@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import {
   getOrderItems,
@@ -23,42 +24,6 @@ type Row = {
   image: string;
   fromApi: boolean;
 };
-
-const FALLBACK_ROWS: Row[] = [
-  {
-    id: 'phoenix',
-    productId: 'phoenix',
-    title: 'Phoenix privilege',
-    subtitle: 'Lifetime upgrade',
-    subtitleDesktop: 'Lifetime upgrade — works on all servers',
-    unitPrice: 9.99,
-    image: '/profile/cart/1.webp',
-    qty: 1,
-    fromApi: false,
-  },
-  {
-    id: 'crystals-2500',
-    productId: 'crystals-2500',
-    title: 'Crystals × 2,500',
-    subtitle: 'In-game currency',
-    subtitleDesktop: 'In-game currency, instant delivery',
-    unitPrice: 19.99,
-    image: '/profile/cart/2.webp',
-    qty: 1,
-    fromApi: false,
-  },
-  {
-    id: 'crystals-15000',
-    productId: 'crystals-15000',
-    title: '15,000 crystals',
-    subtitle: 'Banner + lantern',
-    subtitleDesktop: 'Glowing banner set + floating lantern',
-    unitPrice: 3.99,
-    image: '/profile/cart/3.webp',
-    qty: 2,
-    fromApi: false,
-  },
-];
 
 const CART_IMAGES = ['/profile/cart/1.webp', '/profile/cart/2.webp', '/profile/cart/3.webp'];
 // Реальні сервери з ТЗ (бекенд /core/servers/ поки повертає []).
@@ -122,7 +87,8 @@ function orderItemToRow(item: OrderItem, index: number): Row {
 }
 
 export default function Cart() {
-  const [rows, setRows] = useState<Row[]>(FALLBACK_ROWS);
+  const [rows, setRows] = useState<Row[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
   const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
   const [nickname, setNickname] = useState('RedstoneKing');
@@ -155,10 +121,13 @@ export default function Cart() {
     let active = true;
     getOrderItems()
       .then(items => {
-        if (!active || items.length === 0) return;
+        if (!active) return;
         setRows(items.map(orderItemToRow));
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        if (active) setLoaded(true);
+      });
     return () => {
       active = false;
     };
@@ -288,6 +257,19 @@ export default function Cart() {
               <span className={styles.panelLabelMobile}>Items</span>
               <span className={styles.panelLabelDesktop}>Items in cart</span>
             </h2>
+            {!loaded ? (
+              <p className={styles.cartState}>Loading your cart…</p>
+            ) : rows.length === 0 ? (
+              <div className={styles.emptyState}>
+                <p className={styles.emptyTitle}>Your cart is empty</p>
+                <p className={styles.emptyText}>
+                  Add privileges or crystals from the store to get started.
+                </p>
+                <Link href="/store" className={styles.emptyCta}>
+                  Browse the store →
+                </Link>
+              </div>
+            ) : (
             <ul className={styles.itemList}>
               {rows.map(item => {
                 const lineTotal = item.unitPrice * item.qty;
@@ -341,6 +323,7 @@ export default function Cart() {
                 );
               })}
             </ul>
+            )}
           </section>
 
           <section
