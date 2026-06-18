@@ -284,6 +284,32 @@
   color: var(--color-primary, #bde153);
 }
 
+/* Редаговане поле суми: успадковує розмір/колір від .stepAmount, прибирає хром інпута. */
+.stepInput {
+  width: 100%;
+  max-width: 220px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: inherit;
+  outline: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.stepInput:focus,
+.stepInput:focus-visible {
+  outline: none;
+}
+
+.stepInput::-webkit-outer-spin-button,
+.stepInput::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .stepUnit {
   font-size: 9px;
   font-weight: 600;

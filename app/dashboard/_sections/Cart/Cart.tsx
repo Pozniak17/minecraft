@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   getOrderItems,
   changeItemAmount,
@@ -21,6 +21,7 @@ type Row = {
   subtitleDesktop: string;
   unitPrice: number;
   qty: number;
+  lineTotal: number;
   image: string;
   fromApi: boolean;
 };
@@ -29,6 +30,13 @@ const CART_IMAGES = ['/profile/cart/1.webp', '/profile/cart/2.webp', '/profile/c
 // Реальні сервери з ТЗ (бекенд /core/servers/ поки повертає []).
 const FALLBACK_SERVERS = ['LuckySurvival', 'MineWars', 'CalmSky'];
 const PAYMENT_METHODS = ['VISA', 'MC', 'Pay', 'GPay', 'PayPal'] as const;
+// Верхня межа кількості за позицію — узгоджено з бекендом (AddToCart.amount max 20000).
+const MAX_QTY = 15_000;
+
+// Назва сервера бекенду ("LuckySurvival") → ключ ігрового моніторингу ("luckysurvival").
+function serverKey(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
 
 const nf = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -75,14 +83,18 @@ function labelFromImage(name: string | undefined): string {
 type ProductMeta = { title: string; isCrystal: boolean };
 
 function orderItemToRow(item: OrderItem, index: number): Row {
+  const unitPrice = Number(item.price) || 0;
+  // Сума по позиції — авторитетна з бекенду; фолбек на unitPrice*amount.
+  const lineTotal = Number(item.sum_item_price) || unitPrice * item.amount;
   return {
     id: item.id,
     productId: item.product_id,
     title: labelFromImage(item.image_name),
     subtitle: item.currency ?? 'In-game',
     subtitleDesktop: `${item.currency ?? 'In-game'} — instant delivery`,
-    unitPrice: Number(item.price) || 0,
+    unitPrice,
     qty: item.amount,
+    lineTotal,
     image: CART_IMAGES[index % CART_IMAGES.length],
     fromApi: true,
   };
@@ -118,6 +130,16 @@ export default function Cart() {
     return () => {
       active = false;
     };
+  }, []);
+
+  // Перезавантаження кошика з бекенду — щоб підтягнути авторитетні price/sum_item_price.
+  const reloadCart = useCallback(async () => {
+    try {
+      const items = await getOrderItems();
+      setRows(items.map(orderItemToRow));
+    } catch {
+      // мовчазний фолбек — лишаємо поточний стан
+    }
   }, []);
 
   useEffect(() => {
@@ -164,26 +186,33 @@ export default function Cart() {
   const lineCount = rows.length;
 
   const subtotal = useMemo(
-    () => rows.reduce((sum, item) => sum + item.unitPrice * item.qty, 0),
+    () => rows.reduce((sum, item) => sum + item.lineTotal, 0),
     [rows]
   );
 
   // dir: +1 / -1 — напрямок; крок залежить від товару (кристали — по 10).
   const changeQty = (id: string, dir: 1 | -1) => {
     let nextQty = 1;
+    let productId: string | null = null;
+    let fromApi = false;
     setRows(prev =>
       prev.map(row => {
         if (row.id !== id) return row;
         const step = stepFor(row);
-        nextQty = Math.max(step, row.qty + dir * step);
-        return { ...row, qty: nextQty };
+        // Клемп у межах бекенду: [step .. MAX_QTY].
+        nextQty = Math.min(MAX_QTY, Math.max(step, row.qty + dir * step));
+        productId = row.productId;
+        fromApi = row.fromApi;
+        // Оптимістичне оновлення суми; нижче синхронізуємо з бекендом.
+        return { ...row, qty: nextQty, lineTotal: row.unitPrice * nextQty };
       })
     );
 
-    const target = rows.find(r => r.id === id);
     // Бекенд ідентифікує позицію кошика за product_id, а не за id рядка замовлення.
-    if (target?.fromApi) {
-      changeItemAmount(target.productId, nextQty).catch(() => {});
+    if (fromApi && productId) {
+      changeItemAmount(productId, nextQty)
+        .then(() => reloadCart())
+        .catch(() => {});
     }
   };
 
@@ -195,21 +224,45 @@ export default function Cart() {
     }
   };
 
+  // ТЗ: перед видачею донату гравець ОБОВ'ЯЗКОВО має бути в мережі, інакше товар "піде в молоко".
+  // Повертає true, якщо ник знайдено серед онлайн-гравців; null — якщо перевірити не вдалося.
+  async function isNicknameOnline(nick: string): Promise<boolean | null> {
+    try {
+      const res = await fetch(`/api/servers/${serverKey(server)}/online`);
+      if (!res.ok) return null;
+      const data = (await res.json()) as { status?: string; players?: unknown };
+      if (data.status !== 'online') return false;
+      const players = Array.isArray(data.players) ? (data.players as string[]) : [];
+      return players.some(p => p.toLowerCase() === nick.toLowerCase());
+    } catch {
+      return null;
+    }
+  }
+
   async function handlePay() {
-    if (!nickname.trim()) {
+    const nick = nickname.trim();
+    if (!nick) {
       setPayMessage('Enter your in-game nickname.');
       return;
     }
     setPaying(true);
     setPayMessage(null);
     try {
-      const data = await createPayment({ user_nickname: nickname.trim(), server });
+      // Перевірка онлайну — best-effort нагадування, НЕ блокер: доставка відбувається
+      // після оплати, тож не зриваємо створення платежу, якщо гравця ще немає в мережі.
+      const online = await isNicknameOnline(nick);
+
+      const data = await createPayment({ user_nickname: nick, server });
       const url = extractPaymentUrl(data);
       if (url) {
         window.location.href = url;
         return;
       }
-      setPayMessage('Payment created. Check your dashboard for status.');
+      setPayMessage(
+        online === false
+          ? `Payment created — join ${server} as "${nick}" so your items can be delivered.`
+          : 'Payment created — awaiting confirmation. Track it in your purchase history.'
+      );
     } catch {
       setPayMessage('Could not start payment. Please try again.');
     } finally {
@@ -302,7 +355,7 @@ export default function Cart() {
             ) : (
             <ul className={styles.itemList}>
               {rows.map(item => {
-                const lineTotal = item.unitPrice * item.qty;
+                const lineTotal = item.lineTotal;
                 const title = titleFor(item);
 
                 return (
