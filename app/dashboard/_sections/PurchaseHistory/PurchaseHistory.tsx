@@ -4,8 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { getOrders } from '@/lib/api/orders';
+import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import styles from './PurchaseHistory.module.css';
+
+// product_id → метадані товару (назва + чи це кристали) з каталогу бекенду.
+type ProductMeta = { title: string; isCrystal: boolean };
 
 type OrderStatus = 'paid' | 'refund' | 'failed';
 
@@ -34,24 +38,31 @@ function itemLabel(imageName: string | undefined): string {
   return cleaned || 'Item';
 }
 
-function isCrystalItem(imageName: string | undefined): boolean {
-  return (imageName ?? '').toLowerCase().includes('crystal');
+// Назва позиції: спершу реальна назва товару з каталогу, далі фолбек на image_name.
+function itemTitle(productId: string, imageName: string | undefined, meta: Map<string, ProductMeta>): string {
+  return meta.get(productId)?.title || itemLabel(imageName);
 }
 
-function mapOrder(order: OrderListItem): Order {
+// Бекенд віддає decimal з 8 знаками ("420.00000000") — показуємо рівно 2 знаки.
+function formatAmount(value: string | number | undefined, currency: string): string {
+  const num = Number(value) || 0;
+  return `${num.toFixed(2)} ${currency}`;
+}
+
+function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
   const first = order.order_item?.[0];
   const created = first?.created ? new Date(first.created) : null;
-  const currency = first?.currency ? ` ${first.currency}` : '';
+  const currency = first?.currency ?? 'EUR';
 
   return {
     id: order.id,
     date: created ? dateFmt.format(created).replace(',', '') : '—',
     player: order.user_nickname ?? '—',
     server: order.server ?? '—',
-    total: `${order.total_price}${currency}`,
+    total: formatAmount(order.total_price, currency),
     status: 'paid',
     items: (order.order_item ?? []).map(
-      oi => `${itemLabel(oi.image_name)} ×${oi.amount}`
+      oi => `${itemTitle(oi.product_id, oi.image_name, meta)} ×${oi.amount}`
     ),
   };
 }
@@ -76,6 +87,7 @@ export default function PurchaseHistory() {
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>('Last 90 days');
   const [periodOpen, setPeriodOpen] = useState(false);
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
+  const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -94,7 +106,31 @@ export default function PurchaseHistory() {
     };
   }, []);
 
-  const orders = useMemo(() => rawOrders.map(mapOrder), [rawOrders]);
+  // Каталог товарів: даємо позиціям реальну назву та визначаємо кристали за категорією.
+  useEffect(() => {
+    let active = true;
+    getProducts({ page_size: 100 })
+      .then(data => {
+        if (!active) return;
+        const map = new Map<string, ProductMeta>();
+        for (const p of data.results) {
+          map.set(p.id, {
+            title: p.title ?? '',
+            isCrystal: p.category_slug === 'crystals',
+          });
+        }
+        setProductMeta(map);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const orders = useMemo(
+    () => rawOrders.map(order => mapOrder(order, productMeta)),
+    [rawOrders, productMeta]
+  );
 
   // Статистика рахується з реальних замовлень (а не фіксовані числа).
   const stats = useMemo(() => {
@@ -107,7 +143,8 @@ export default function PurchaseHistory() {
       spent += Number(order.total_price) || 0;
       for (const item of order.order_item ?? []) {
         if (item.currency) currency = item.currency;
-        if (isCrystalItem(item.image_name)) {
+        // Кристали визначаємо за категорією товару (image_name з бекенду — null).
+        if (productMeta.get(item.product_id)?.isCrystal) {
           crystals += item.amount;
         } else {
           privileges += 1;
@@ -147,7 +184,7 @@ export default function PurchaseHistory() {
         icon: '/profile/purchase_history/4.svg',
       },
     ];
-  }, [rawOrders]);
+  }, [rawOrders, productMeta]);
 
   const isEmpty = loaded && orders.length === 0;
 

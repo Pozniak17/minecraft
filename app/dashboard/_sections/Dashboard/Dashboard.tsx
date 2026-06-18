@@ -90,7 +90,7 @@ function orderToActivity(order: OrderListItem, index: number): ActivityItem {
   return {
     title: `Purchased ${itemLabel(first?.image_name)}${more}`,
     time: relativeTime(first?.created),
-    amount: `-${order.total_price} ${currency}`,
+    amount: `-${(Number(order.total_price) || 0).toFixed(2)} ${currency}`,
     tone: 'neg',
     img: ACTIVITY_IMAGES[index % ACTIVITY_IMAGES.length],
   };
