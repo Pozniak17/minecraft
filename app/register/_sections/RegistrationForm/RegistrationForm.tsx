@@ -82,6 +82,40 @@ function getPasswordStrength(password: string): PasswordStrength | null {
   };
 }
 
+function EyeIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  ) : (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+      <line x1="1" y1="1" x2="23" y2="23" />
+    </svg>
+  );
+}
+
 const STATS = [
   { value: '12,000+', label: 'active players' },
   { value: '4.8/5', label: 'community rating' },
@@ -92,6 +126,8 @@ export default function RegistrationForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -263,25 +299,38 @@ export default function RegistrationForm() {
                 <label className={styles.label} htmlFor="register-password">
                   Password
                 </label>
-                <input
-                  id="register-password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  placeholder="Strong password"
-                  className={[
-                    styles.input,
-                    password && styles.inputFilled,
-                    fieldErrors.password && styles.inputError,
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  minLength={4}
-                  maxLength={24}
-                  value={password}
-                  onChange={event => setPassword(event.target.value)}
-                  required
-                />
+                <div className={styles.inputWrap}>
+                  <input
+                    id="register-password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    autoComplete="new-password"
+                    placeholder="Strong password"
+                    className={[
+                      styles.input,
+                      styles.inputWithToggle,
+                      password && styles.inputFilled,
+                      fieldErrors.password && styles.inputError,
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    minLength={4}
+                    maxLength={24}
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className={styles.toggle}
+                    onClick={() => setShowPassword(value => !value)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-pressed={showPassword}
+                    tabIndex={-1}
+                  >
+                    <EyeIcon open={showPassword} />
+                  </button>
+                </div>
                 {fieldErrors.password && (
                   <p className={styles.fieldError}>{fieldErrors.password}</p>
                 )}
@@ -319,19 +368,31 @@ export default function RegistrationForm() {
                 <label className={styles.label} htmlFor="register-confirm-password">
                   Confirm password
                 </label>
-                <input
-                  id="register-confirm-password"
-                  name="confirmPassword"
-                  type="password"
-                  autoComplete="new-password"
-                  placeholder="Repeat your password"
-                  className={styles.input}
-                  minLength={4}
-                  maxLength={24}
-                  value={confirmPassword}
-                  onChange={event => setConfirmPassword(event.target.value)}
-                  required
-                />
+                <div className={styles.inputWrap}>
+                  <input
+                    id="register-confirm-password"
+                    name="confirmPassword"
+                    type={showConfirm ? 'text' : 'password'}
+                    autoComplete="new-password"
+                    placeholder="Repeat your password"
+                    className={`${styles.input} ${styles.inputWithToggle}`}
+                    minLength={4}
+                    maxLength={24}
+                    value={confirmPassword}
+                    onChange={event => setConfirmPassword(event.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className={styles.toggle}
+                    onClick={() => setShowConfirm(value => !value)}
+                    aria-label={showConfirm ? 'Hide password' : 'Show password'}
+                    aria-pressed={showConfirm}
+                    tabIndex={-1}
+                  >
+                    <EyeIcon open={showConfirm} />
+                  </button>
+                </div>
               </div>
 
               <label className={styles.checkbox}>

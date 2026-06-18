@@ -59,15 +59,22 @@ export async function initSeon(): Promise<void> {
 // Викликати при сабміті — повертає session-рядок або null (fail-open).
 export async function getSeonSession(): Promise<string | null> {
   const agent = await loadAgent();
-  if (!agent) return null;
+  if (!agent) {
+    console.warn('[seon] agent not loaded — fingerprint skipped');
+    return null;
+  }
   try {
-    return await agent.getSession({
+    const session = await agent.getSession({
       geolocation: { canPrompt: false },
-      networkTimeoutMs: 2000,
-      fieldTimeoutMs: 2000,
+      networkTimeoutMs: 4000,
+      fieldTimeoutMs: 4000,
+      region: 'eu',
       silentMode: true,
     });
-  } catch {
+    if (!session) console.warn('[seon] empty session payload');
+    return session ?? null;
+  } catch (err) {
+    console.warn('[seon] getSession failed', err);
     return null;
   }
 }

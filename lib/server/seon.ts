@@ -30,19 +30,41 @@ export async function evaluateRegistration(input: EvaluateInput): Promise<FraudV
   if (input.ip) body.ip = input.ip;
   if (input.session) body.session = input.session;
 
+  const sessionLen = input.session ? input.session.length : 0;
+
   try {
     const { data } = await axios.post(SEON_FRAUD_API, body, {
       headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
       timeout: 4000,
     });
 
-    const result = (data?.data ?? {}) as { state?: string; fraud_score?: number };
+    const result = (data?.data ?? {}) as {
+      id?: number;
+      state?: string;
+      fraud_score?: number;
+      device_details?: unknown;
+    };
+
+    // Діагностика: видно у pm2 logs, що реально долетіло в SEON.
+    // Якщо device=NULL при наявній session — payload зіпсований/неповний (резолвери недоступні).
+    console.log(
+      `[seon] register email=${input.email ? 'yes' : 'no'} ip=${input.ip ? 'yes' : 'no'} ` +
+        `session=${sessionLen || 'none'} -> seon_id=${result.id ?? '-'} ` +
+        `state=${result.state ?? '-'} score=${result.fraud_score ?? '-'} ` +
+        `device=${result.device_details ? 'yes' : 'NULL'}`,
+    );
+
     return {
       allow: result.state !== 'DECLINE',
       state: result.state,
       fraudScore: result.fraud_score,
     };
-  } catch {
+  } catch (err) {
+    const status = axios.isAxiosError(err) ? err.response?.status : undefined;
+    const message = axios.isAxiosError(err)
+      ? JSON.stringify(err.response?.data ?? err.message)
+      : String(err);
+    console.error(`[seon] error session=${sessionLen || 'none'} status=${status ?? '-'} ${message}`);
     return { allow: true };
   }
 }

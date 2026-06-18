@@ -8,10 +8,45 @@ import { FormEvent, useState } from 'react';
 import { login } from '@/lib/api/auth';
 import styles from './LoginForm.module.css';
 
+function EyeIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  ) : (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+      <line x1="1" y1="1" x2="23" y2="23" />
+    </svg>
+  );
+}
+
 export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [status, setStatus] = useState<'idle' | 'submitting'>('idle');
   const [formError, setFormError] = useState<string | null>(null);
@@ -100,17 +135,29 @@ export default function LoginForm() {
               <label className={styles.label} htmlFor="login-password">
                 Password
               </label>
-              <input
-                id="login-password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                placeholder="Enter your password"
-                className={styles.input}
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-                required
-              />
+              <div className={styles.inputWrap}>
+                <input
+                  id="login-password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  autoComplete="current-password"
+                  placeholder="Enter your password"
+                  className={`${styles.input} ${styles.inputWithToggle}`}
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className={styles.toggle}
+                  onClick={() => setShowPassword(value => !value)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-pressed={showPassword}
+                  tabIndex={-1}
+                >
+                  <EyeIcon open={showPassword} />
+                </button>
+              </div>
             </div>
 
             <div className={styles.helperRow}>
