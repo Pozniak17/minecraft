@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
+import { CookieConsent } from './_components/CookieConsent/CookieConsent';
 import { getRefreshToken } from '@/lib/server/authCookies';
 
 const montserrat = Montserrat({
@@ -31,6 +32,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={montserrat.variable}>
         <SiteChrome isAuthed={isAuthed}>{children}</SiteChrome>
+        <CookieConsent />
         <Script
           src="https://static.minecraftsgame.com/script.js"
           strategy="afterInteractive"
