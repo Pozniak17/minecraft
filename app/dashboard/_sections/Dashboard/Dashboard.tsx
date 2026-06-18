@@ -50,15 +50,6 @@ type ActivityItem = {
   desktopOnly?: boolean;
 };
 
-// Demo-стрічка: показується, поки немає реальних замовлень / користувач не залогінений.
-const DEMO_ACTIVITY: ActivityItem[] = [
-  { title: 'Purchased VIP+ privilege', time: '2 h ago', amount: '-980 ◆', tone: 'neg', img: '/profile/activity/act-1.png' },
-  { title: 'Reached top 50 in Skyblock', time: '5 h ago', amount: '+200 ◆', tone: 'pos', img: '/profile/activity/act-2.png' },
-  { title: 'Joined Classic server', time: 'Yesterday', icon: 'server-2-outline' },
-  { title: 'Crystals top-up: 1,000', time: '2 days ago', amount: '+1,000 ◆', tone: 'pos', img: '/profile/img.png', desktopOnly: true },
-  { title: 'Logged in from new device', time: '3 days ago', img: '/profile/activity/act-5.png', desktopOnly: true },
-];
-
 const ACTIVITY_IMAGES = [
   '/profile/activity/act-1.png',
   '/profile/activity/act-2.png',
@@ -107,7 +98,8 @@ function orderToActivity(order: OrderListItem, index: number): ActivityItem {
 
 export default function Dashboard() {
   const [name, setName] = useState('Player');
-  const [activity, setActivity] = useState<ActivityItem[]>(DEMO_ACTIVITY);
+  const [activity, setActivity] = useState<ActivityItem[]>([]);
+  const [activityLoaded, setActivityLoaded] = useState(false);
 
   // Живий онлайн кожного сервера (фіксована кількість викликів хука — коректно).
   const lucky = useServerOnline('luckysurvival');
@@ -126,6 +118,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (email) setName(email.split('@')[0]);
   }, []);
 
@@ -133,10 +126,13 @@ export default function Dashboard() {
     let active = true;
     getOrders(1, 5)
       .then(data => {
-        if (!active || data.results.length === 0) return;
+        if (!active) return;
         setActivity(data.results.map(orderToActivity));
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        if (active) setActivityLoaded(true);
+      });
     return () => {
       active = false;
     };
@@ -258,6 +254,12 @@ export default function Dashboard() {
               View all
             </Link>
           </div>
+
+          {activityLoaded && activity.length === 0 && (
+            <p className={styles.activityEmpty}>
+              No activity yet. Your purchases will show up here.
+            </p>
+          )}
 
           {activity.map((item, index) => (
             <div

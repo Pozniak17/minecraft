@@ -8,7 +8,7 @@ import {
   changeItemAmount,
   removeFromCart,
 } from '@/lib/api/cart';
-import { getServers } from '@/lib/api/shop';
+import { getServers, getProducts } from '@/lib/api/shop';
 import { createPayment } from '@/lib/api/payment';
 import type { OrderItem } from '@/lib/api/types';
 import styles from './Cart.module.css';
@@ -72,6 +72,8 @@ function labelFromImage(name: string | undefined): string {
   return base ? base.replace(/[-_]+/g, ' ') : 'Item';
 }
 
+type ProductMeta = { title: string; isCrystal: boolean };
+
 function orderItemToRow(item: OrderItem, index: number): Row {
   return {
     id: item.id,
@@ -89,6 +91,7 @@ function orderItemToRow(item: OrderItem, index: number): Row {
 export default function Cart() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
   const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
   const [nickname, setNickname] = useState('RedstoneKing');
@@ -133,6 +136,31 @@ export default function Cart() {
     };
   }, []);
 
+  // Мапа продуктів: даємо позиціям кошика реальну назву та крок (кристали — по 10).
+  useEffect(() => {
+    let active = true;
+    getProducts({ page_size: 100 })
+      .then(data => {
+        if (!active) return;
+        const map = new Map<string, ProductMeta>();
+        for (const p of data.results) {
+          map.set(p.id, {
+            title: p.title ?? '',
+            isCrystal: p.category_slug === 'crystals',
+          });
+        }
+        setProductMeta(map);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  // Назва та крок кількості — derived з мапи продуктів (кристали продаються по 10).
+  const titleFor = (row: Row) => productMeta.get(row.productId)?.title || row.title;
+  const stepFor = (row: Row) => (productMeta.get(row.productId)?.isCrystal ? 10 : 1);
+
   const lineCount = rows.length;
 
   const subtotal = useMemo(
@@ -140,12 +168,14 @@ export default function Cart() {
     [rows]
   );
 
-  const changeQty = (id: string, delta: number) => {
+  // dir: +1 / -1 — напрямок; крок залежить від товару (кристали — по 10).
+  const changeQty = (id: string, dir: 1 | -1) => {
     let nextQty = 1;
     setRows(prev =>
       prev.map(row => {
         if (row.id !== id) return row;
-        nextQty = Math.max(1, row.qty + delta);
+        const step = stepFor(row);
+        nextQty = Math.max(step, row.qty + dir * step);
         return { ...row, qty: nextQty };
       })
     );
@@ -273,6 +303,7 @@ export default function Cart() {
             <ul className={styles.itemList}>
               {rows.map(item => {
                 const lineTotal = item.unitPrice * item.qty;
+                const title = titleFor(item);
 
                 return (
                   <li key={item.id} className={styles.itemRow}>
@@ -287,7 +318,7 @@ export default function Cart() {
                       />
                     </div>
                     <div className={styles.itemMeta}>
-                      <p className={styles.itemTitle}>{item.title}</p>
+                      <p className={styles.itemTitle}>{title}</p>
                       <p className={styles.itemSubtitleMobile}>{item.subtitle}</p>
                       <p className={styles.itemSubtitleDesktop}>{item.subtitleDesktop}</p>
                     </div>
@@ -296,7 +327,7 @@ export default function Cart() {
                         type="button"
                         className={styles.qtyBtn}
                         onClick={() => changeQty(item.id, -1)}
-                        aria-label={`Decrease ${item.title} quantity`}
+                        aria-label={`Decrease ${title} quantity`}
                       >
                         −
                       </button>
@@ -305,7 +336,7 @@ export default function Cart() {
                         type="button"
                         className={`${styles.qtyBtn} ${styles.qtyBtnPlus}`}
                         onClick={() => changeQty(item.id, 1)}
-                        aria-label={`Increase ${item.title} quantity`}
+                        aria-label={`Increase ${title} quantity`}
                       >
                         +
                       </button>
@@ -315,7 +346,7 @@ export default function Cart() {
                       type="button"
                       className={styles.removeBtn}
                       onClick={() => removeItem(item.id)}
-                      aria-label={`Remove ${item.title}`}
+                      aria-label={`Remove ${title}`}
                     >
                       ×
                     </button>

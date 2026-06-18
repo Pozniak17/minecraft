@@ -43,7 +43,14 @@ export default function Hero() {
                 <p className={styles.stepperDescription}>
                   a licensed version of Minecraft is required to play
                 </p>
-                <button className={styles.stepperButton}>Download now</button>
+                <a
+                  href="https://www.minecraft.net/en-us/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.stepperButton}
+                >
+                  Download now
+                </a>
               </div>
             </li>
 
@@ -76,7 +83,9 @@ export default function Hero() {
                   features, including the ability to make purchases, view your order history, and
                   manage your account settings.
                 </p>
-                <button className={styles.stepperButton}>Go to Dashboard</button>
+                <Link href="/dashboard" className={styles.stepperButton}>
+                  Go to Dashboard
+                </Link>
               </div>
               <Image src={img2} alt="" className={styles.stepperImage} />
             </li>
@@ -108,7 +117,9 @@ export default function Hero() {
                   add the server&apos;s IP address, which you can find on the server&apos;s page.
                   This will allow you to connect and start playing with others!
                 </p>
-                <button className={styles.stepperButton}>View server details</button>
+                <Link href="/servers" className={styles.stepperButton}>
+                  View server details
+                </Link>
               </div>
               <Image src={img4} alt="" className={styles.stepperImage} />
             </li>
@@ -142,7 +153,9 @@ export default function Hero() {
                   your personal dashboard. This account allows you to shop in our store anytime and
                   enjoy permanent privileges with your purchases.
                 </p>
-                <button className={styles.stepperButton}>Open Store</button>
+                <Link href="/store" className={styles.stepperButton}>
+                  Open Store
+                </Link>
               </div>
               <Image src={img6} alt="" className={styles.stepperImage} />
             </li>
