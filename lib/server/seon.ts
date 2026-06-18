@@ -43,7 +43,8 @@ export async function evaluateRegistration(input: EvaluateInput): Promise<FraudV
     const { data } = await axios.post(SEON_FRAUD_API, body, {
       headers: { 'Content-Type': 'application/json', 'X-API-KEY': apiKey },
       // Enrichment-модулі (email/ip/device) збільшують час відповіді — 4с замало.
-      timeout: 12000,
+      // Запас над спостереженими ~11с; fail-open лишається, якщо SEON ще повільніший.
+      timeout: 15000,
     });
 
     const result = (data?.data ?? {}) as {
