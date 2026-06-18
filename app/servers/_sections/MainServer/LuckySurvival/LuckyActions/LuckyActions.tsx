@@ -1,14 +1,17 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './LuckyActions.module.css';
 
-export default function LuckyActions() {
+export default function LuckyActions({ isAuthed = false }: { isAuthed?: boolean }) {
+  const playHref = isAuthed ? '/dashboard/servers/classic' : '/register';
+
   return (
     <section className={styles.card}>
       <h3 className={styles.eyebrow}>Quick Actions</h3>
 
-      <button type="button" className={`${styles.button} ${styles.primary}`}>
+      <Link href={playHref} className={`${styles.button} ${styles.primary}`}>
         Play Now
-      </button>
+      </Link>
 
       <button type="button" className={`${styles.button} ${styles.secondary}`}>
         <Image

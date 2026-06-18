@@ -7,7 +7,7 @@ import CalmSkyHeader from './CalmSkyHeader/CalmSkyHeader';
 import CalmSkyHowToStart from './CalmSkyHowToStart/CalmSkyHowToStart';
 import CalmSkyStatus from './CalmSkyStatus/CalmSkyStatus';
 
-export default function CalmSky() {
+export default function CalmSky({ isAuthed = false }: { isAuthed?: boolean }) {
   return (
     <>
       <CalmSkyHeader />
@@ -18,7 +18,7 @@ export default function CalmSky() {
           <CalmSkyStatus />
         </div>
         <div className={styles.rightColumn}>
-          <CalmSkyActions />
+          <CalmSkyActions isAuthed={isAuthed} />
           <CalmSkyFeatures />
           <CalmSkyHowToStart />
         </div>

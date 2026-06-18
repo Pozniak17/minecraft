@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getRefreshToken } from '@/lib/server/authCookies';
 import Hero from './_sections/Hero/Hero';
 import MainServer from './_sections/MainServer/MainServer';
 
@@ -7,11 +8,13 @@ export const metadata: Metadata = {
   description: 'Pick your world — live status, current load, and latency for every server.',
 };
 
-export default function ServersPage() {
+export default async function ServersPage() {
+  const isAuthed = Boolean(await getRefreshToken());
+
   return (
     <>
       <Hero />
-      <MainServer />
+      <MainServer isAuthed={isAuthed} />
     </>
   );
 }

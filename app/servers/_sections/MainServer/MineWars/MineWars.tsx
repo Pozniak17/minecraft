@@ -7,7 +7,7 @@ import MineWarsHeader from './MineWarsHeader/MineWarsHeader';
 import MineWarsHowToStart from './MineWarsHowToStart/MineWarsHowToStart';
 import MineWarsStatus from './MineWarsStatus/MineWarsStatus';
 
-export default function MineWars() {
+export default function MineWars({ isAuthed = false }: { isAuthed?: boolean }) {
   return (
     <>
       <MineWarsHeader />
@@ -18,7 +18,7 @@ export default function MineWars() {
           <MineWarsStatus />
         </div>
         <div className={styles.rightColumn}>
-          <MineWarsActions />
+          <MineWarsActions isAuthed={isAuthed} />
           <MineWarsFeatures />
           <MineWarsHowToStart />
         </div>

@@ -7,7 +7,7 @@ import LuckyHowToStart from './LuckyHowToStart/LuckyHowToStart';
 import LuckyActions from './LuckyActions/LuckyActions';
 import LuckyStatus from './LuckyStatus/LuckyStatus';
 
-export default function LuckySurvival() {
+export default function LuckySurvival({ isAuthed = false }: { isAuthed?: boolean }) {
   return (
     <>
       <LuckyHeader />
@@ -18,7 +18,7 @@ export default function LuckySurvival() {
           <LuckyStatus />
         </div>
         <div className={styles.rightColumn}>
-          <LuckyActions />
+          <LuckyActions isAuthed={isAuthed} />
           <LuckyFeatures />
           <LuckyHowToStart />
         </div>

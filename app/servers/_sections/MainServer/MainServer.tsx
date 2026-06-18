@@ -15,7 +15,7 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]['id'];
 
-export default function MainServer() {
+export default function MainServer({ isAuthed = false }: { isAuthed?: boolean }) {
   const [activeTab, setActiveTab] = useState<TabId>('lucky');
 
   const ActiveComponent =
@@ -38,7 +38,7 @@ export default function MainServer() {
           ))}
         </ul>
 
-        <ActiveComponent />
+        <ActiveComponent isAuthed={isAuthed} />
       </Container>
     </section>
   );

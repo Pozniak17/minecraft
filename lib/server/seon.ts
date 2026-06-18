@@ -22,9 +22,16 @@ export async function evaluateRegistration(input: EvaluateInput): Promise<FraudV
   const apiKey = process.env.SEON_LICENSE_KEY;
   if (!apiKey) return { allow: true };
 
+  // config-прапорці ОБОВ'ЯЗКОВІ, щоб SEON запустив відповідні модулі збагачення.
+  // Без них device_details/email_details/ip_details приходять null.
+  const config: Record<string, unknown> = { device_fingerprinting: true };
+  if (input.email) config.email_api = true;
+  if (input.ip) config.ip_api = true;
+
   const body: Record<string, unknown> = {
     action_type: 'account_register',
     merchant_id: process.env.SEON_MERCHANT_ID ?? 'frontstore_reg',
+    config,
   };
   if (input.email) body.email = input.email;
   if (input.ip) body.ip = input.ip;
