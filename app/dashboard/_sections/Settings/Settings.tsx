@@ -7,7 +7,7 @@ import styles from './Settings.module.css';
 
 type SectionId = 'profile' | 'security' | 'notifications' | 'linked' | 'danger';
 
-type PasswordStep = 'idle' | 'request' | 'reset' | 'done';
+type PasswordStep = 'idle' | 'form' | 'done';
 
 const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
   { id: 'profile', label: 'Profile' },
@@ -163,7 +163,7 @@ export default function Settings() {
   const [tmpPassword, setTmpPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [status, setStatus] = useState<'idle' | 'submitting'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'saving'>('idle');
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
@@ -240,21 +240,19 @@ export default function Settings() {
     };
   }, []);
 
-  async function handleRequestPassword(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleSendTempPassword() {
     setError(null);
     setNotice(null);
 
     if (!email.trim()) {
-      setError('Enter your account email.');
+      setError('No account email found. Sign in again.');
       return;
     }
 
-    setStatus('submitting');
+    setStatus('sending');
     try {
       await restorePassword({ email: email.trim() });
-      setPasswordStep('reset');
-      setNotice('We emailed you a temporary password. Enter it below with your new password.');
+      setNotice('Temporary password sent to your email. Enter it below with your new password.');
     } catch (err) {
       setError(errorText(err, 'Could not send the temporary password.'));
     } finally {
@@ -279,7 +277,7 @@ export default function Settings() {
       return;
     }
 
-    setStatus('submitting');
+    setStatus('saving');
     try {
       await changePassword({
         email: email.trim(),
@@ -301,7 +299,7 @@ export default function Settings() {
   function openPasswordChange() {
     setError(null);
     setNotice(null);
-    setPasswordStep('request');
+    setPasswordStep('form');
     scrollToSection('security');
   }
 
@@ -564,25 +562,21 @@ export default function Settings() {
                         Close
                       </button>
                     </div>
-                  ) : passwordStep === 'request' ? (
-                    <form className={styles.passwordForm} onSubmit={handleRequestPassword} noValidate>
-                      <p className={styles.passwordIntro}>
-                        For your security we send a temporary password to your email, then you set a
-                        new one.
-                      </p>
-                      <button
-                        type="submit"
-                        className={styles.primaryPillWide}
-                        disabled={status === 'submitting'}
-                      >
-                        {status === 'submitting' ? 'Sending…' : 'Send temporary password'}
-                      </button>
-                      <button type="button" className={styles.textBtn} onClick={closePasswordChange}>
-                        Cancel
-                      </button>
-                    </form>
                   ) : (
                     <form className={styles.passwordForm} onSubmit={handleResetPassword} noValidate>
+                      <p className={styles.passwordIntro}>
+                        We email a temporary password to{' '}
+                        <strong>{email || 'your account email'}</strong>, then you set a new one
+                        below.
+                      </p>
+                      <button
+                        type="button"
+                        className={styles.outlinePillWide}
+                        disabled={status !== 'idle'}
+                        onClick={handleSendTempPassword}
+                      >
+                        {status === 'sending' ? 'Sending…' : 'Send temporary password'}
+                      </button>
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="settings-tmp">
                           Temporary password
@@ -631,16 +625,12 @@ export default function Settings() {
                       <button
                         type="submit"
                         className={styles.primaryPillWide}
-                        disabled={status === 'submitting'}
+                        disabled={status !== 'idle'}
                       >
-                        {status === 'submitting' ? 'Saving…' : 'Save new password'}
+                        {status === 'saving' ? 'Saving…' : 'Save new password'}
                       </button>
-                      <button
-                        type="button"
-                        className={styles.textBtn}
-                        onClick={() => setPasswordStep('request')}
-                      >
-                        Request a new code
+                      <button type="button" className={styles.textBtn} onClick={closePasswordChange}>
+                        Cancel
                       </button>
                     </form>
                   )}

@@ -263,6 +263,7 @@
 .primaryPill,
 .outlinePill,
 .primaryPillWide,
+.outlinePillWide,
 .dangerBtn {
   display: inline-flex;
   align-items: center;
@@ -290,7 +291,8 @@
   color: var(--color-bg-effect);
 }
 
-.primaryPillWide {
+.primaryPillWide,
+.outlinePillWide {
   width: 100%;
   padding-block: 10px;
   font-size: 10px;
@@ -301,13 +303,15 @@
   filter: brightness(1.08);
 }
 
-.outlinePill {
+.outlinePill,
+.outlinePillWide {
   border: 1px solid var(--color-border-light);
   background: rgba(255, 255, 255, 0.05);
   color: var(--color-text);
 }
 
-.outlinePill:hover {
+.outlinePill:hover,
+.outlinePillWide:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 

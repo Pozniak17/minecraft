@@ -1,0 +1,182 @@
+В итоге у нас 3 сервера (Версии игры с которых пустит 1.12-1.19)
+ 1. LuckySurvival - ванильный майнкрафт сервер с pvp и отключённым tnt
+ 2. MineWars - ванильный майнкрафт сервер с pvp и включённым tnt (можно заниматься на нём вообще чем хочешь)
+ 3. CalmSky - ванильный майнкрафт сервер без pvp, без tnt (онли постройка и общение)
+ 
+Общая информация по серверам:
+	✓8 донат групп (каждая последующая группа даёт возможности и предыдущей так же и она продаётся навсегда, а не месячной подпиской):
+		Silver (10 euro):
+			- 'Available kit SILVER /kit silver'
+			- 'Ability to change personal time /ptime'
+			- 'The ability to open a workbench /workbench'
+			- 'Ability to open an ender chest /ec'
+			- 'Ability to open inventory /ci'
+			- 'Teleport the player to you /tpahere'
+			- 'Option to disable private messages /msgtoggle'
+			- 'Slots at auction: 4'
+			- 'Regions for privatization: 2 (/rg claim)'
+			- 'You can set 2 homes (/sethome)'
+			- 'Salary 50$ per hour (/salary)'
+		Supreme (20 euro):
+			- 'Available kit SUPRIME /kit supreme'
+			- 'The ability to put the unit on your head /hat'
+			- 'Ability to ignore a player /ignore'
+			- 'Ability to view the last visit /seen'
+			- 'The ability to change the weather /pweather'
+			- 'Slots at auction: 6'
+			- 'Regions for privatization: 4 (/rg claim)'
+			- 'You can set 4 homes (/sethome)'
+			- 'Salary 100$ per hour (/salary)'
+		Wither (30 euro):
+			- 'Available kit WITHER /kit wither'
+			- 'Ability to write in the admin chat # message'
+			- 'The opportunity to get to know players nearby /near'
+			- 'The ability to restore satiety /feed'
+			- 'The ability to extinguish oneself /ext'
+			- 'Ability to view server information /gc'
+			- 'Slots at auction: 8'
+			- 'Regions for privatization: 6 (/rg claim)'
+			- 'You can set 6 homes (/sethome)'
+			- 'Salary 150$ per hour (/salary)'
+		Hero (40 euro):
+			- 'Available kit HERO /kit hero'
+			- 'Ability to write ads /bc'
+			- "You can open someone else's inventory /invsee"
+			- 'You can disable teleportation /tptoggle'
+			- 'The ability to extinguish oneself /ext'
+			- 'Ability to view server information /gc'
+			- 'Spawner drops when broken with silk touch'
+			- 'Slots at auction: 12'
+			- 'Regions for privatization: 8 (/rg claim)'
+			- 'You can set 8 homes (/sethome)'
+			- 'Salary 200$ per hour (/salary)'
+		Avenger (50 euro):
+			- 'Available kit ANENGER /kit avenger'
+			- 'Ability to change nickname /nick'
+			- 'The ability to set the sun /sun'
+			- 'The ability to make it rain /rain'
+			- 'Option to turn on a day /day'
+			- 'Option to turn on night /night'
+			- 'View someone else's armor /invsee [nickname] -а'
+			- 'Slots at auction: 22'
+			- 'Regions for privatization: 50 (/rg claim)'
+			- 'You can set 50 homes (/sethome)'
+			- 'Salary 250$ per hour (/salary)'
+		Legend (100 euro):
+			- 'Available kit LEGEND /kit legend'
+			- 'Ability to kick a player /kick'
+			- 'The ability to mute a player /mute'
+			- 'The ability to unmute /unmute'
+			- 'Ability to repair an item /repair'
+			- 'The ability to read someone else's private messages /socialspy'
+			- 'Access to color chat +Color number'
+			- 'Slots at auction: 30'
+			- 'Regions for privatization: 99 (/rg claim)'
+			- 'You can set 99 homes (/sethome)'
+			- 'Salary 250$ per hour (/salary)'
+		Phantom (125 euro):
+			- 'Available kit PHANTOM /kit phantom'
+			- 'Permanent immunity from bans, kicks, mutes, etc.'
+			- 'The ability to heal oneself /heal'
+			- 'Ability to ban a player /ban'
+			- 'The opportunity to learn the real name /realname'
+			- 'The ability to repair an enchanted item /repair'
+			- 'Slots at auction: 60'
+			- 'Regions for privatization: 199 (/rg claim)'
+			- 'You can set 199 homes (/sethome)'
+			- 'Salary 300$ per hour (/salary)'
+		Phoenix (150 euro):
+			- 'Available kit PHOENIX /kit phoenix'
+			- 'Ability to ban a player /ban (increased by x2)'
+			- 'The ability to repair all objects /repair all'
+			- 'The possibility of curing a friend /heal <ник>'
+			- 'The possibility of enabling immortality /god'
+			- 'Ability to set a prefix /prefix <ник> <префикс>'
+			- 'You can log on to a &lfilled server'
+			- 'Slots at auction: 100'
+			- 'Regions for privatization: 299 (/rg claim)'
+			- 'You can set 299 homes (/sethome)'
+			- 'Salary 400$ per hour (/salary)'
+	✓Кейсы (открыть их можно только на спавне):
+		Донатные:
+		Возможность выиграть любую из выше перечисленной группы
+			Prices (чем больше берешь тем больше скидка):
+				5 cases = 25 euro
+				10 cases = 40 euro
+				20 cases = 60 euro
+				30 cases = 75 euro
+		Кейсы с монетками:
+		Возможность выиграть от 1к до 25к внутриигровой валюты (НЕ ДОНАТНОЙ)
+			Prices (чем больше берешь тем больше скидка):
+				5 cases = 10 euro
+				10 cases = 15 euro
+				20 cases = 20 euro
+				30 cases = 25 euro
+	✓Игровая валюта:
+		Донатная - Crystals, за неё можно покупать уникальные ресурсы на самом сервере в магазинах которые стоят на спавне. (цена которая указана на сервере это 10 кристаллов за 1 евро)
+		Не донатная - внутриигровой $, можно торговать с игроками, зарабатывается с помощью активностей на сервере.
+		
+	✓На всех сервера есть работы (Шахтер, рыбак, лесоруб и тд) за выполнение рабочих обязанностей игроки могут зарабатывать игровые $
+	✓Можно создавать кланы (в итоге клановые войны или клановые ивенты от комьюнити и все такое)
+	✓Аукцион (возможность трейдить внутриигровыми предметами между игроками)
+	✓Для каждой привелегии настроен свой kit(начальный набор с предметами, доступен раз в сутки)
+	✓Есть Автошахта, Лесорубка
+	✓Чат активности для заработка не донатной валюты (типо реши пример и все такое)
+	✓Автоочистка мира от мусорных предметов
+	✓У серверов своя регистрация и авторизация (без почты, только ник и пароль)
+	✓У каждого сервера свой профиль (под каждый отдельно покупается донат и отдельная рега)
+
+Если сервер PVP:
+	✓Вышел во время пвп - умер
+	✓Можно заказать игрока за вознаграждение
+	✓Можно выбивать головы игроков и коллекционировать
+	✓Доступна прокачка игрока (RPG элементы, типо разные умения и так далее). Целых 20 направлений по 97 уровней.
+	✓Можно строить ловушки и гриферить игроков
+	
+	
+Техничка (все примеры по серверу LuckySurvival, апи токен у всех одинаковый):
+	✓Как зайти на сервер?
+		Нужно в лаунчере майнкрафт ввести айпи сервера + порт:
+			LuckySurvival - 188.245.202.194:25565
+			MineWars - 94.130.231.109:25565
+			CalmSky - 195.201.115.31:25565
+	
+	
+	✓У всех серверов api доступ по порту 7000, далее будут эндпоинты с примерами
+	✓Как получить количество игроков и их ники которые в данный момент онлайн?
+		curl -X 'GET' \
+		  'http://188.245.202.194:7000/v1/players' \
+		  -H 'accept: application/json' \
+		  -H 'Authorization: 0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj'
+		 Success Response:
+			{"onlinePlayers":[{"name":"{NickName}","uuid":"839f3d8b-47f4-323e-b98f-3c6beef75c80"}]}
+			
+		В этот же способ вы выводите себе онлайн на сайте. Обязательно добавляйте +30 к количеству игроков (потом решим количество) так как боты не показываются в таком мониторинге
+	✓Как выдавать донат?
+		!!!!ПЕРЕД ВЫДАЧЕЙ ОБЯЗАТЕЛЬНО ПРОВЕРИТЬ ЧТО ИГРОК В СЕТИ ПО НИКУ, ИНАЧЕ ВСЁ УЙДЁТ В МОЛОКО!!!!
+		
+		✓Выдача привелегий:
+			curl -X 'POST' \
+			  'http://188.245.202.194:7000/v1/server/exec?command=pex%20user%20{nickname}%20group%20add%20{privelege_name}' \
+			  -H 'accept: application/json' \
+			  -H 'Authorization: 0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj'
+		privelege_names = silver, supreme, wither, hero, avenger, legend, phantom, phoenix
+		
+		✓Выдача кейсов:
+			ВАЖНО! Они выпадают как предметы, по этому если у игрока не будет места в инвентаре, он упадёт рядом с ним
+			Донатные кейсы:
+				curl -X 'POST' \
+				  'http://188.245.202.194:7000/v1/server/exec?command=crate%20give%20p%20donate%20{quantity}%20{nickname}' \
+				  -H 'accept: application/json' \
+				  -H 'Authorization: 0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj'
+			Кейсы с монетками:
+				curl -X 'POST' \
+				  'http://188.245.202.194:7000/v1/server/exec?command=crate%20give%20p%20money%20{quantity}%20{nickname}' \
+				  -H 'accept: application/json' \
+				  -H 'Authorization: 0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj'
+		
+		✓Выдача донатной валюты:
+			curl -X 'POST' \
+			  'http://188.245.202.194:7000/v1/server/exec?command=p%20give%20{nickname}%20{quantity}' \
+			  -H 'accept: application/json' \
+			  -H 'Authorization: 0Xaa9oi72aP6PkjHXg340qd8Uba8OiWj'
