@@ -20,12 +20,17 @@ export default function MineWarsStatus() {
   return (
     <section className={styles.card}>
       <div className={styles.header}>
-        <span className={styles.dot} aria-hidden="true" />
+        <span
+          className={[styles.dot, isOffline && styles.dotOffline].filter(Boolean).join(' ')}
+          aria-hidden="true"
+        />
         <h3 className={styles.title}>
           <span className={styles.titleMobile}>Live Status</span>
           <span className={styles.titleDesktop}>Live Server Status</span>
         </h3>
-        <span className={styles.online}>{isOffline ? 'OFFLINE' : 'ONLINE'}</span>
+        <span className={isOffline ? styles.offline : styles.online}>
+          {isOffline ? 'OFFLINE' : 'ONLINE'}
+        </span>
       </div>
 
       <ul className={styles.stats}>

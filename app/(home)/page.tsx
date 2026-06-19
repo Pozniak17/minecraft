@@ -13,7 +13,6 @@ import { getRefreshToken } from '@/lib/server/authCookies';
 
 export default async function Home() {
   const isAuthed = Boolean(await getRefreshToken());
-
   return (
     <>
       <Hero />

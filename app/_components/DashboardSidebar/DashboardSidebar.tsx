@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { logout } from '@/lib/api/auth';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
+import { LogoutOverlay } from '../LogoutOverlay/LogoutOverlay';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../dashboardNav';
 import { isNavLinkActive } from '../Header/navLinks';
 import styles from './DashboardSidebar.module.css';
@@ -165,6 +166,8 @@ export function DashboardSidebar() {
       initial={initial}
       confirming={loggingOut}
     />
+
+    <LogoutOverlay show={loggingOut} />
     </>
   );
 }

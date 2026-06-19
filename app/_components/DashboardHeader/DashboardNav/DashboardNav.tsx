@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { logout } from '@/lib/api/auth';
 import { LogoutModal } from '../../LogoutModal/LogoutModal';
+import { LogoutOverlay } from '../../LogoutOverlay/LogoutOverlay';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboardNav';
 import { isNavLinkActive, NAV_LINKS } from '../../Header/navLinks';
 import styles from './DashboardNav.module.css';
@@ -212,6 +213,8 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         initial={initial}
         confirming={loggingOut}
       />
+
+      <LogoutOverlay show={loggingOut} />
     </>
   );
 }
