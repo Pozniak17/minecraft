@@ -26,6 +26,34 @@
   background: var(--primary-color-primary-50010, rgba(189, 225, 83, 0.1));
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.priceLabel {
+  color: rgba(255, 255, 255, 0.56);
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.priceValue {
+  color: #fff;
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: normal;
+}
+
 .title {
   margin-bottom: 17px;
 
@@ -154,7 +182,167 @@
   background: rgba(189, 225, 83, 0.15);
 }
 
+/* ── Compact variant (dashboard Shop) — новий дизайн карток (Figma) ── */
+/* Спільні стилі для mobile і desktop — Figma compact-картка ідентична на обох breakpoint'ах. */
+.card.cardCompact {
+  width: 327px;
+  min-height: 450px;
+  justify-content: flex-start;
+  padding: 152px 17px 18px;
+  border-radius: 18px;
+  backdrop-filter: blur(4px);
+}
+
+.card.cardCompact:nth-child(3) {
+  min-height: 481px;
+}
+
+.card.cardCompact .title {
+  margin-bottom: 12px;
+  font-size: 21px;
+}
+
+.card.cardCompact .text {
+  width: auto;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.card.cardCompact .priceRow {
+  margin-top: 16px;
+}
+
+.card.cardCompact .priceValue {
+  font-size: 21px;
+}
+
+.card.cardCompact .button {
+  height: 41px;
+  margin-top: auto;
+  padding: 0 24px;
+  border-radius: 96px;
+  font-size: 14px;
+}
+
+.card.cardCompact .button img {
+  width: 21px;
+  height: 21px;
+}
+
+/* Mobile: кнопка зафіксована внизу, price row — 14px над нею */
+@media (max-width: 1279px) {
+  .card.cardCompact {
+    height: 450px;
+  }
+
+  .card.cardCompact:nth-child(3) {
+    height: 481px;
+  }
+
+  .card.cardCompact .content {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .card.cardCompact .priceRow {
+    margin-top: auto;
+  }
+
+  .card.cardCompact .button {
+    margin-top: 14px;
+    flex-shrink: 0;
+  }
+}
+
+/* Icon positions — 1–3 з Figma, 4–8 за аналогією */
+.card.cardCompact:nth-child(1) .icon {
+  width: 165px;
+  height: 179px;
+  left: 153px;
+  top: 17px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(2) .icon {
+  width: 171px;
+  height: 185px;
+  left: 136px;
+  top: -7px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(3) .icon {
+  width: 290px;
+  height: 157px;
+  left: 70px;
+  top: 17px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(4) .icon {
+  width: 187px;
+  height: 160px;
+  left: 129px;
+  top: 10px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(5) .icon {
+  width: 189px;
+  height: 189px;
+  left: 139px;
+  top: -5px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(6) .icon {
+  width: 213px;
+  height: 213px;
+  left: 134px;
+  top: -15px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(7) .icon {
+  width: 160px;
+  height: 160px;
+  left: 157px;
+  top: 15px;
+  bottom: auto;
+}
+
+.card.cardCompact:nth-child(8) .icon {
+  width: 151px;
+  height: 151px;
+  left: 149px;
+  top: 20px;
+  bottom: auto;
+}
+
 @media (min-width: 1280px) {
+
+  /* Compact: кнопка зафіксована внизу, price row — 16px над нею */
+  .card.cardCompact {
+    height: 450px;
+  }
+
+  .card.cardCompact:nth-child(3) {
+    height: 481px;
+  }
+
+  .card.cardCompact .content {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .card.cardCompact .priceRow {
+    margin-top: auto;
+  }
+
+  .card.cardCompact .button {
+    margin-top: 16px;
+    flex-shrink: 0;
+  }
 
   /* :not(.cardCompact) — li має обидва класи; без цього compact-стилі перебиваються */
   .card:not(.cardCompact) {
@@ -163,17 +351,6 @@
     justify-content: center;
 
     padding: 141px 20px 31px 20px;
-  }
-
-  /* Compact variant — dashboard Shop (/dashboard/shop) */
-  .card.cardCompact {
-    width: 327px;
-    height: 422px;
-    padding: 124px 18px 27px 18px;
-  }
-
-  .card.cardCompact .text {
-    width: 291px;
   }
 
   .title {
@@ -248,62 +425,5 @@
     height: 186px;
     left: 154px;
     bottom: 340px;
-  }
-
-  /* ── Compact icon layout (dashboard Shop) — редагуй тут ── */
-  .card.cardCompact:nth-child(1) .icon {
-    width: 166px;
-    height: 179px;
-    left: 153px;
-    bottom: 270px;
-  }
-
-  .card.cardCompact:nth-child(2) .icon {
-    width: 172px;
-    height: 185px;
-    left: 136px;
-    bottom: 280px;
-  }
-
-  .card.cardCompact:nth-child(3) .icon {
-    width: 285px;
-    height: 153px;
-    left: 80px;
-    bottom: 310px;
-  }
-
-  .card.cardCompact:nth-child(4) .icon {
-    width: 204px;
-    height: 174px;
-    left: 106px;
-    bottom: 288px;
-  }
-
-  .card.cardCompact:nth-child(5) .icon {
-    width: 205px;
-    height: 205px;
-    left: 125px;
-    bottom: 285px;
-  }
-
-  .card.cardCompact:nth-child(6) .icon {
-    width: 232px;
-    height: 232px;
-    left: 109px;
-    bottom: 254px;
-  }
-
-  .card.cardCompact:nth-child(7) .icon {
-    width: 174px;
-    height: 174px;
-    left: 142px;
-    bottom: 317px;
-  }
-
-  .card.cardCompact:nth-child(8) .icon {
-    width: 164px;
-    height: 164px;
-    left: 136px;
-    bottom: 337px;
   }
 }

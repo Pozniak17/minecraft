@@ -4,6 +4,7 @@ import styles from './Card.module.css';
 
 type CardProps = PrivilegesCardProps & {
   compact?: boolean;
+  price?: string;
   onAdd?: () => void;
   pending?: boolean;
   done?: boolean;
@@ -14,6 +15,7 @@ export default function Card({
   text,
   icon,
   compact = false,
+  price,
   onAdd,
   pending = false,
   done = false,
@@ -22,9 +24,17 @@ export default function Card({
 
   return (
     <li className={`${styles.card} ${compact ? styles.cardCompact : ''}`}>
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.text}>{text}</p>
       <Image className={styles.icon} src={icon} alt={title} />
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.text}>{text}</p>
+        {price && (
+          <div className={styles.priceRow}>
+            <span className={styles.priceLabel}>Price</span>
+            <span className={styles.priceValue}>{price}</span>
+          </div>
+        )}
+      </div>
       <button
         type="button"
         className={styles.button}

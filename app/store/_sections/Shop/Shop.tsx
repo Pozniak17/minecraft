@@ -74,6 +74,8 @@ export default function Shop() {
   const [crystalId, setCrystalId] = useState<string | null>(null);
   // Реальна ціна за 1 кристал з бекенду (лише в кабінеті, де є авторизація).
   const [pricePerCrystal, setPricePerCrystal] = useState<number | null>(null);
+  // Відформатовані ціни привілеїв за назвою тиру (лише в кабінеті, де є ціни).
+  const [privilegePrices, setPrivilegePrices] = useState<Record<string, string>>({});
   const [addingKey, setAddingKey] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -162,6 +164,14 @@ export default function Shop() {
         const crystal = data.results.find(p => p.category_slug === 'crystals');
         const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
         if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
+
+        const prices: Record<string, string> = {};
+        for (const p of data.results) {
+          if (p.category_slug === 'crystals' || !p.title || p.price == null) continue;
+          const value = Number(p.price);
+          if (Number.isFinite(value)) prices[p.title] = `${value.toFixed(2)} ${currency}`;
+        }
+        setPrivilegePrices(prices);
       })
       .catch(() => {});
     return () => {
@@ -430,7 +440,11 @@ export default function Shop() {
             <p className={styles.prNote}>All tiers stack with crystals balance</p>
           </div>
           <div className={styles.privilegesFull}>
-            <PrivilegesCards compact={isDashboard} onAddToCart={addPrivilege} />
+            <PrivilegesCards
+              compact={isDashboard}
+              pricesByTitle={privilegePrices}
+              onAddToCart={addPrivilege}
+            />
           </div>
         </>
       )}
