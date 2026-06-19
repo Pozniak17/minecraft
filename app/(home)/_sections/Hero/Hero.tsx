@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getDashboardPlayHref } from '@/lib/data/servers';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import styles from './Hero.module.css';
 
-export function Hero() {
+export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+  const playHref = getDashboardPlayHref(isAuthed);
+
   return (
     <>
       <section className={styles.main}>
@@ -45,7 +48,7 @@ export function Hero() {
           </p>
 
           <div className={styles.buttons}>
-            <Link href="/play" className={styles.btnPrimary}>
+            <Link href={playHref} className={styles.btnPrimary}>
               Play Now
             </Link>
             <a

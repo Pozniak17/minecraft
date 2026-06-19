@@ -15,7 +15,7 @@ export default async function Home() {
   const isAuthed = Boolean(await getRefreshToken());
   return (
     <>
-      <Hero />
+      <Hero isAuthed={isAuthed} />
       <Server />
       <Features />
       <Preview isAuthed={isAuthed} />

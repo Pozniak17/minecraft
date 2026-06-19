@@ -13,3 +13,8 @@ export function getDashboardServerHref(id: ProjectServerId): string {
 export function getPlayNowHref(id: ProjectServerId, isAuthed: boolean): string {
   return isAuthed ? getDashboardServerHref(id) : '/register';
 }
+
+/** Головна CTA «Play Now»: кабінет → сервери, гість → логін. */
+export function getDashboardPlayHref(isAuthed: boolean): string {
+  return isAuthed ? '/dashboard/servers' : '/login';
+}
