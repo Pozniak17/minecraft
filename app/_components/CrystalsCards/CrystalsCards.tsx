@@ -29,7 +29,7 @@ const Data: CrystalsCardProps[] = [
   },
 ];
 
-export default function CrystalsCards() {
+export default function CrystalsCards({ seeMoreHref }: { seeMoreHref: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
     loop: false,
@@ -61,7 +61,13 @@ export default function CrystalsCards() {
       <div className={styles.viewport} ref={emblaRef}>
         <ul className={styles.cards}>
           {Data.map((item, index) => (
-            <Card key={index} title={item.title} text={item.text} icon={item.icon} />
+            <Card
+              key={index}
+              title={item.title}
+              text={item.text}
+              icon={item.icon}
+              seeMoreHref={seeMoreHref}
+            />
           ))}
         </ul>
       </div>

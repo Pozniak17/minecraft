@@ -18,3 +18,8 @@ export function getPlayNowHref(id: ProjectServerId, isAuthed: boolean): string {
 export function getDashboardPlayHref(isAuthed: boolean): string {
   return isAuthed ? '/dashboard/servers' : '/login';
 }
+
+/** Store preview / See more: публічний store або shop у кабінеті. */
+export function getStoreHref(isAuthed: boolean): string {
+  return isAuthed ? '/dashboard/shop' : '/store';
+}

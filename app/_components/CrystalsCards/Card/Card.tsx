@@ -1,15 +1,20 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CrystalsCardProps } from '../CrystalsCards';
 import styles from './Card.module.css';
 
-export default function Card({ title, text, icon }: CrystalsCardProps) {
+type CardProps = CrystalsCardProps & {
+  seeMoreHref: string;
+};
+
+export default function Card({ title, text, icon, seeMoreHref }: CardProps) {
   return (
     <li className={styles.slide}>
       <article className={styles.card}>
         <Image className={styles.icon} src={icon} alt={title} width={177} height={124} />
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.text}>{text}</p>
-        <button type="button" className={styles.button}>
+        <Link href={seeMoreHref} className={styles.button}>
           <Image
             src="/icons/icons/arrow-up.svg"
             alt=""
@@ -18,7 +23,7 @@ export default function Card({ title, text, icon }: CrystalsCardProps) {
             aria-hidden
           />
           See More
-        </button>
+        </Link>
       </article>
     </li>
   );

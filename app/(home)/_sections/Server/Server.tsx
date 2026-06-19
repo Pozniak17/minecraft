@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import CardList from './CardList/CardList';
+import { NewPlayerBonus } from './NewPlayerBonus/NewPlayerBonus';
 import styles from './Server.module.css';
 
 export default function Server() {
@@ -110,24 +111,7 @@ export default function Server() {
               </div>
             </div>
 
-            <div className={styles.newPlayerBonus}>
-              <h2 className={styles.newPlayerBonus_title}>New Player Bonus</h2>
-              <p className={styles.newPlayerBonus_text}>Get 20% OFF your first purchase</p>
-              <p className={styles.newPlayerBonus_description}>
-                Boost your gameplay with in-game currency or privileges.
-                <br />
-                Limited-time offer for new players.
-              </p>
-              <button className={styles.newPlayerBonus_button}>Claim Bonus</button>
-              <Image
-                className={styles.newPlayerBonus_illustration}
-                src="/icons/illustrations/server-illustration.png"
-                alt=""
-                width={475}
-                height={243}
-                aria-hidden="true"
-              />
-            </div>
+            <NewPlayerBonus />
           </div>
         </Container>
       </section>

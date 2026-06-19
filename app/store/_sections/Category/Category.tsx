@@ -7,10 +7,12 @@ import Tabs, { type Tab } from '@/app/_components/Tabs/Tabs';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import CrystalsCards from '@/app/_components/CrystalsCards/CrystalsCards';
 import { usePrivilegeCart } from '@/lib/client/usePrivilegeCart';
+import { getStoreHref } from '@/lib/data/servers';
 
 export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
   const [activeTab, setActiveTab] = useState<Tab>('Privileges');
   const addPrivilege = usePrivilegeCart(isAuthed);
+  const storeHref = getStoreHref(isAuthed);
 
   return (
     <section className={styles.section}>
@@ -21,7 +23,7 @@ export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
 
         <div className={styles.cards}>
           {activeTab === 'Crystals' ? (
-            <CrystalsCards />
+            <CrystalsCards seeMoreHref={storeHref} />
           ) : (
             <PrivilegesCards onAddToCart={addPrivilege} />
           )}

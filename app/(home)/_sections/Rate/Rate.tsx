@@ -2,74 +2,9 @@ import { Container } from '@/app/_components/Container/Container';
 import styles from './Rate.module.css';
 import RateCard from './RateCard/RateCard';
 import { Divider } from '@/app/_components/Divider/Divider';
+import { TOP_RATED_PLAYERS, type TopRatedPlayer } from '@/lib/data/topRatedPlayers';
 
-export type RateCardProps = {
-  rank: number;
-  player: string;
-  server: string;
-  level: number;
-  play_time: string;
-  active_score: string;
-};
-
-const RATE_CARDS: RateCardProps[] = [
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-  {
-    rank: 1,
-    player: 'AlexPvP',
-    server: 'MineWars',
-    level: 78,
-    play_time: '412h',
-    active_score: '9,840',
-  },
-];
+export type RateCardProps = TopRatedPlayer;
 
 export default function Rate() {
   return (
@@ -87,9 +22,9 @@ export default function Rate() {
             <span>Activity Score</span>
           </div>
           <ul className={styles.rateList}>
-            {RATE_CARDS.map((card, index) => (
+            {TOP_RATED_PLAYERS.map(card => (
               <RateCard
-                key={index}
+                key={`${card.rank}-${card.player}`}
                 rank={card.rank}
                 player={card.player}
                 server={card.server}
