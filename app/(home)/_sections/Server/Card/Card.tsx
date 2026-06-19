@@ -1,5 +1,7 @@
-import Link from 'next/link';
+'use client';
+
 import Image from 'next/image';
+import { useCallback } from 'react';
 import styles from './Card.module.css';
 
 export type CardProps = {
@@ -7,10 +9,17 @@ export type CardProps = {
   text: string;
   description: string;
   icon: string;
-  link: string;
+  connectAddress: string;
+  onCopied?: () => void;
 };
 
-export function Card({ title, text, description, icon, link }: CardProps) {
+export function Card({ title, text, description, icon, connectAddress, onCopied }: CardProps) {
+  const handleCopy = useCallback(() => {
+    void navigator.clipboard.writeText(connectAddress).then(() => {
+      onCopied?.();
+    });
+  }, [connectAddress, onCopied]);
+
   return (
     <div className={styles.card}>
       <Image className={styles.icon} src={icon} alt={title} width={203} height={191} />
@@ -46,14 +55,14 @@ export function Card({ title, text, description, icon, link }: CardProps) {
           </div>
         </li>
         <li className={styles.item}>
-          Server IP: <div className={styles.status}>play.luckysurvival.com</div>
+          Server IP: <div className={styles.status}>{connectAddress}</div>
         </li>
       </ul>
 
-      <Link className={styles.linkButton} href={link}>
-        <Image src="/icons/icons/arrow-up.svg" alt="Join" width={24} height={24} />
+      <button type="button" className={styles.linkButton} onClick={handleCopy}>
+        <Image src="/icons/icons/arrow-up.svg" alt="" width={24} height={24} />
         <p>Join {title}</p>
-      </Link>
+      </button>
     </div>
   );
 }

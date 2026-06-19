@@ -11,6 +11,13 @@ export type GameServerKey = keyof typeof GAME_SERVERS;
 
 export const GAME_API_PORT = 7000;
 
+/** Стандартний порт Minecraft Java (technical/doc.txt). */
+export const MINECRAFT_GAME_PORT = 25565;
+
+export function getServerConnectAddress(key: GameServerKey): string {
+  return `${GAME_SERVERS[key].ip}:${MINECRAFT_GAME_PORT}`;
+}
+
 // Токен береться ТІЛЬКИ з оточення (.env.local на сервері). Без нього запит до
 // ігрового API не пройде і сервер показуватиметься offline — це навмисно.
 export const GAME_API_TOKEN = process.env.GAME_API_TOKEN ?? '';
