@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { logout } from '@/lib/api/auth';
+import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../LogoutOverlay/LogoutOverlay';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../dashboardNav';
@@ -14,18 +15,10 @@ import styles from './DashboardSidebar.module.css';
 export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const [name, setName] = useState('Player');
-  const [email, setEmail] = useState('');
-  const [initial, setInitial] = useState('U');
+  const { profile, displayName: name, initial, photoUrl } = useProfile();
+  const email = profile?.email ?? '';
   const [loggingOut, setLoggingOut] = useState(false);
   const [logoutOpen, setLogoutOpen] = useState(false);
-
-  useEffect(() => {
-    const storedEmail = window.localStorage.getItem('user_email') ?? '';
-    setEmail(storedEmail);
-    setName(storedEmail ? storedEmail.split('@')[0] : 'Player');
-    setInitial(storedEmail ? storedEmail.charAt(0).toUpperCase() : 'U');
-  }, []);
 
   async function handleLogout() {
     setLoggingOut(true);
@@ -55,9 +48,19 @@ export function DashboardSidebar() {
       </Link>
 
       <div className={styles.userCard}>
-        <span className={styles.avatar} aria-hidden="true">
-          {initial}
-        </span>
+        {photoUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            className={styles.avatar}
+            src={photoUrl}
+            alt="Profile"
+            style={{ objectFit: 'cover' }}
+          />
+        ) : (
+          <span className={styles.avatar} aria-hidden="true">
+            {initial}
+          </span>
+        )}
         <div className={styles.userInfo}>
           <span className={styles.userName}>{name}</span>
         </div>

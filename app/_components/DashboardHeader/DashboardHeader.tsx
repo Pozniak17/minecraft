@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { isNavLinkActive, NAV_LINKS } from '../Header/navLinks';
+import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { DashboardNav } from './DashboardNav/DashboardNav';
 import styles from './DashboardHeader.module.css';
 
@@ -18,17 +19,12 @@ function formatBalance(value: number) {
 
 export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
   const pathname = usePathname();
+  const { initial, photoUrl } = useProfile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [initial, setInitial] = useState('U');
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    setInitial(email ? email.charAt(0).toUpperCase() : 'U');
-  }, []);
 
   return (
     <header className={styles.header}>
@@ -67,7 +63,12 @@ export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
           </div>
 
           <Link href="/dashboard" className={styles.avatar} aria-label="My account">
-            {initial}
+            {photoUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={photoUrl} alt="Profile" className={styles.avatarImg} />
+            ) : (
+              initial
+            )}
           </Link>
         </div>
       </div>

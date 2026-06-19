@@ -1,7 +1,10 @@
 import axios, { type AxiosRequestConfig } from 'axios';
 
+export const BACKEND_API_URL =
+  process.env.BACKEND_API_URL ?? 'https://api.minecraftsgame.com/api/v1';
+
 export const backend = axios.create({
-  baseURL: process.env.BACKEND_API_URL ?? 'https://api.minecraftsgame.com/api/v1',
+  baseURL: BACKEND_API_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
 });

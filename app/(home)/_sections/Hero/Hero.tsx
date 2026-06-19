@@ -49,13 +49,13 @@ export function Hero() {
               Play Now
             </Link>
             <a
-              href="https://discord.gg/"
+              href="https://twitch.tv/"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnSecondary}
             >
-              <Image src="/icons/social/ic_outline-discord.svg" alt="" width={24} height={24} />
-              <span>Join Discord</span>
+              <Image src="/icons/social/twitch.png" alt="" width={24} height={24} />
+              <span>Join Twitch</span>
             </a>
           </div>
         </Container>

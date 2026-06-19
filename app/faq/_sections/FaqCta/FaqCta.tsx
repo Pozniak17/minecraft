@@ -26,7 +26,7 @@ export default function FaqCta() {
                 Send a ticket
               </button>
               <button type="button" className={styles.secondaryButton}>
-                Join Discord
+                Join Twitch
               </button>
             </div>
           </div>

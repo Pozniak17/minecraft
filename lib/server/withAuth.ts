@@ -39,3 +39,20 @@ export async function withAuth<T>(fn: RequestFn<T>): Promise<T> {
     throw err;
   }
 }
+
+// Варіант для fetch (multipart / бінарні відповіді): при 401 один раз оновлює токен і повторює.
+export async function withAuthFetch(
+  fn: (accessToken: string | null) => Promise<Response>
+): Promise<Response> {
+  const token = await getAccessToken();
+  const res = await fn(token);
+
+  if (res.status === 401) {
+    const refreshed = await refreshAccess();
+    if (refreshed) {
+      return await fn(refreshed);
+    }
+  }
+
+  return res;
+}

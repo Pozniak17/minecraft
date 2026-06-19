@@ -2,12 +2,21 @@
 
 import { isAxiosError } from 'axios';
 import { FormEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
-import { changePassword, restorePassword } from '@/lib/api/auth';
+import {
+  updateProfile,
+  changeAccountPassword,
+  uploadPhoto,
+  deletePhoto,
+} from '@/lib/api/profile';
+import type { UserProfileUpdate } from '@/lib/api/types';
+import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
 import styles from './Settings.module.css';
 
 type SectionId = 'profile' | 'security' | 'notifications' | 'linked' | 'danger';
 
 type PasswordStep = 'idle' | 'form' | 'done';
+
+type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
   { id: 'profile', label: 'Profile' },
@@ -17,7 +26,13 @@ const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
   { id: 'danger', label: 'Danger zone', danger: true },
 ];
 
-const COUNTRIES = ['Ukraine', 'Poland', 'Germany', 'United States', 'United Kingdom'] as const;
+// Ринки під валюти/мови з ТЗ: єврозона + UK, US, Canada, Australia, New Zealand
+const COUNTRIES = [
+  'United Kingdom', 'United States', 'Canada', 'Australia', 'New Zealand',
+  'Austria', 'Belgium', 'Cyprus', 'Estonia', 'Finland', 'France', 'Germany', 'Greece',
+  'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands',
+  'Portugal', 'Slovakia', 'Slovenia', 'Spain',
+] as const;
 
 const NOTIFICATIONS = [
   {
@@ -139,15 +154,32 @@ export default function Settings() {
   const isProgrammaticScroll = useRef(false);
   const lastSyncedSectionId = useRef<SectionId>('profile');
 
+  const {
+    profile,
+    initial,
+    photoUrl,
+    setProfile,
+    markPhotoUploaded,
+    markPhotoRemoved,
+  } = useProfile();
+
   const [email, setEmail] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [nickname, setNickname] = useState('');
-  const [country, setCountry] = useState<(typeof COUNTRIES)[number]>('Ukraine');
+  const [country, setCountry] = useState('');
   const [bio, setBio] = useState(
     'Redstone tinkerer since 2022. Mostly Skyblock. Always down to help new players.',
   );
-  const [initial, setInitial] = useState('R');
   const [activeSection, setActiveSection] = useState<SectionId>('profile');
+
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const seeded = useRef(false);
+
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
+  const saveTimer = useRef<number | null>(null);
+  const pendingSave = useRef<UserProfileUpdate>({});
 
   const [twoFactor, setTwoFactor] = useState(true);
   const [notifications, setNotifications] = useState(() =>
@@ -160,21 +192,81 @@ export default function Settings() {
   );
 
   const [passwordStep, setPasswordStep] = useState<PasswordStep>('idle');
-  const [tmpPassword, setTmpPassword] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [status, setStatus] = useState<'idle' | 'sending' | 'saving'>('idle');
+  const [status, setStatus] = useState<'idle' | 'saving'>('idle');
   const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem('user_email') ?? '';
-    const name = stored ? stored.split('@')[0] : 'Player';
-    setEmail(stored);
-    setDisplayName(name);
-    setNickname(name);
-    setInitial(name.charAt(0).toUpperCase() || 'U');
+    if (seeded.current || !profile) return;
+    seeded.current = true;
+    setEmail(profile.email ?? '');
+    setDisplayName(profile.username ?? '');
+    setNickname(profile.game_username ?? '');
+    setCountry(profile.country ?? '');
+  }, [profile]);
+
+  useEffect(() => {
+    return () => {
+      if (saveTimer.current) window.clearTimeout(saveTimer.current);
+    };
   }, []);
+
+  const commitSave = useCallback(async () => {
+    const payload = pendingSave.current;
+    pendingSave.current = {};
+    if (Object.keys(payload).length === 0) return;
+
+    setSaveStatus('saving');
+    try {
+      await updateProfile(payload);
+      setSaveStatus('saved');
+    } catch {
+      setSaveStatus('error');
+    }
+  }, []);
+
+  const queueSave = useCallback(
+    (partial: UserProfileUpdate) => {
+      pendingSave.current = { ...pendingSave.current, ...partial };
+      if (saveTimer.current) window.clearTimeout(saveTimer.current);
+      saveTimer.current = window.setTimeout(() => {
+        void commitSave();
+      }, 600);
+    },
+    [commitSave],
+  );
+
+  async function handlePhotoUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+
+    setPhotoError(null);
+    setPhotoBusy(true);
+    try {
+      await uploadPhoto(file);
+      markPhotoUploaded();
+    } catch (err) {
+      setPhotoError(errorText(err, 'Could not upload the photo.'));
+    } finally {
+      setPhotoBusy(false);
+    }
+  }
+
+  async function handlePhotoRemove() {
+    setPhotoError(null);
+    setPhotoBusy(true);
+    try {
+      await deletePhoto();
+      markPhotoRemoved();
+    } catch (err) {
+      setPhotoError(errorText(err, 'Could not remove the photo.'));
+    } finally {
+      setPhotoBusy(false);
+    }
+  }
 
   const scrollToSection = useCallback((id: SectionId) => {
     setActiveSection(id);
@@ -240,36 +332,16 @@ export default function Settings() {
     };
   }, []);
 
-  async function handleSendTempPassword() {
-    setError(null);
-    setNotice(null);
-
-    if (!email.trim()) {
-      setError('No account email found. Sign in again.');
-      return;
-    }
-
-    setStatus('sending');
-    try {
-      await restorePassword({ email: email.trim() });
-      setNotice('Temporary password sent to your email. Enter it below with your new password.');
-    } catch (err) {
-      setError(errorText(err, 'Could not send the temporary password.'));
-    } finally {
-      setStatus('idle');
-    }
-  }
-
-  async function handleResetPassword(event: FormEvent<HTMLFormElement>) {
+  async function handleChangePassword(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
 
-    if (!tmpPassword || !newPassword) {
-      setError('Enter the temporary password and your new password.');
+    if (!currentPassword || !newPassword) {
+      setError('Enter your current and new password.');
       return;
     }
-    if (newPassword.length < 4 || newPassword.length > 24) {
-      setError('New password must be 4–24 characters.');
+    if (newPassword.length < 10 || newPassword.length > 24) {
+      setError('New password must be 10–24 characters.');
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -279,16 +351,12 @@ export default function Settings() {
 
     setStatus('saving');
     try {
-      await changePassword({
-        email: email.trim(),
-        tmp_password: tmpPassword,
+      await changeAccountPassword({
+        current: currentPassword,
         new_password: newPassword,
+        confirm: confirmPassword,
       });
-      setPasswordStep('done');
-      setNotice(null);
-      setTmpPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
+      setPasswordStepDone();
     } catch (err) {
       setError(errorText(err, 'Could not change the password.'));
     } finally {
@@ -296,18 +364,23 @@ export default function Settings() {
     }
   }
 
+  function setPasswordStepDone() {
+    setPasswordStep('done');
+    setCurrentPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+  }
+
   function openPasswordChange() {
     setError(null);
-    setNotice(null);
     setPasswordStep('form');
     scrollToSection('security');
   }
 
   function closePasswordChange() {
     setError(null);
-    setNotice(null);
     setPasswordStep('idle');
-    setTmpPassword('');
+    setCurrentPassword('');
     setNewPassword('');
     setConfirmPassword('');
   }
@@ -388,35 +461,67 @@ export default function Settings() {
                 <h2 className={styles.cardTitle}>Profile</h2>
                 <span className={styles.savedBadge}>
                   <span className={styles.savedDot} aria-hidden="true" />
-                  <span className={styles.savedBadgeMobile}>Auto-saved</span>
-                  <span className={styles.savedBadgeDesktop}>Auto-saved 2 min ago</span>
+                  {saveStatus === 'saving' && 'Saving…'}
+                  {saveStatus === 'saved' && 'Saved'}
+                  {saveStatus === 'error' && 'Save failed'}
+                  {saveStatus === 'idle' && 'Auto-saved'}
                 </span>
               </div>
 
               <div className={styles.avatarRow}>
-                <span className={styles.avatarLarge} aria-hidden="true">
-                  {initial}
-                </span>
+                {photoUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    className={styles.avatarLarge}
+                    src={photoUrl}
+                    alt="Profile"
+                    style={{ objectFit: 'cover' }}
+                  />
+                ) : (
+                  <span className={styles.avatarLarge} aria-hidden="true">
+                    {initial}
+                  </span>
+                )}
                 <div className={styles.avatarMeta}>
                   <span className={styles.avatarTitle}>Profile picture</span>
-                  <span className={styles.avatarHintMobile}>PNG/JPG, up to 2 MB.</span>
+                  <span className={styles.avatarHintMobile}>JPG/PNG/WebP, up to 5 MB.</span>
                   <span className={styles.avatarHintDesktop}>
-                    PNG or JPG, square format, up to 2 MB. Your in-game skin can also sync
+                    JPEG, PNG or WebP, square format, up to 5 MB. Your in-game skin can also sync
                     automatically.
                   </span>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    hidden
+                    onChange={handlePhotoUpload}
+                  />
                   <div className={styles.avatarActions}>
-                    <button type="button" className={styles.primaryPill}>
-                      <span className={styles.pillMobile}>Upload</span>
-                      <span className={styles.pillDesktop}>Upload photo</span>
+                    <button
+                      type="button"
+                      className={styles.primaryPill}
+                      disabled={photoBusy}
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <span className={styles.pillMobile}>{photoBusy ? '…' : 'Upload'}</span>
+                      <span className={styles.pillDesktop}>
+                        {photoBusy ? 'Uploading…' : 'Upload photo'}
+                      </span>
                     </button>
                     <button type="button" className={styles.outlinePill}>
                       <span className={styles.pillMobile}>Sync</span>
                       <span className={styles.pillDesktop}>Sync from Minecraft</span>
                     </button>
-                    <button type="button" className={styles.ghostPill}>
+                    <button
+                      type="button"
+                      className={styles.ghostPill}
+                      disabled={photoBusy || !photoUrl}
+                      onClick={handlePhotoRemove}
+                    >
                       Remove
                     </button>
                   </div>
+                  {photoError && <p className={styles.formError}>{photoError}</p>}
                 </div>
               </div>
 
@@ -430,7 +535,11 @@ export default function Settings() {
                       id="settings-display-name"
                       className={styles.input}
                       value={displayName}
-                      onChange={event => setDisplayName(event.target.value)}
+                      onChange={event => {
+                        setDisplayName(event.target.value);
+                        setProfile({ username: event.target.value });
+                        queueSave({ username: event.target.value });
+                      }}
                     />
                     <p className={styles.help}>
                       <span className={styles.helpMobile}>Visible on the leaderboard.</span>
@@ -448,7 +557,11 @@ export default function Settings() {
                       id="settings-nickname"
                       className={styles.input}
                       value={nickname}
-                      onChange={event => setNickname(event.target.value)}
+                      onChange={event => {
+                        setNickname(event.target.value);
+                        setProfile({ game_username: event.target.value });
+                        queueSave({ game_username: event.target.value });
+                      }}
                     />
                     <p className={styles.help}>
                       <span className={styles.helpMobile}>Must match Minecraft account.</span>
@@ -471,7 +584,7 @@ export default function Settings() {
                       />
                       <span className={styles.verifiedTag}>Verified</span>
                     </div>
-                    <p className={styles.helpDesktopOnly}>You can update your email below.</p>
+                    <p className={styles.helpDesktopOnly}>Contact support to change your email.</p>
                   </div>
 
                   <div className={styles.field}>
@@ -483,10 +596,16 @@ export default function Settings() {
                         id="settings-country"
                         className={styles.select}
                         value={country}
-                        onChange={event =>
-                          setCountry(event.target.value as (typeof COUNTRIES)[number])
-                        }
+                        onChange={event => {
+                          setCountry(event.target.value);
+                          setProfile({ country: event.target.value });
+                          queueSave({ country: event.target.value });
+                        }}
                       >
+                        <option value="">Not set</option>
+                        {country && !COUNTRIES.includes(country as (typeof COUNTRIES)[number]) && (
+                          <option value={country}>{country}</option>
+                        )}
                         {COUNTRIES.map(option => (
                           <option key={option} value={option}>
                             {option}
@@ -551,7 +670,6 @@ export default function Settings() {
               {passwordStep !== 'idle' && (
                 <div className={styles.passwordPanel}>
                   {error && <p className={styles.formError}>{error}</p>}
-                  {notice && <p className={styles.notice}>{notice}</p>}
 
                   {passwordStep === 'done' ? (
                     <div className={styles.passwordDone}>
@@ -563,30 +681,21 @@ export default function Settings() {
                       </button>
                     </div>
                   ) : (
-                    <form className={styles.passwordForm} onSubmit={handleResetPassword} noValidate>
+                    <form className={styles.passwordForm} onSubmit={handleChangePassword} noValidate>
                       <p className={styles.passwordIntro}>
-                        We email a temporary password to{' '}
-                        <strong>{email || 'your account email'}</strong>, then you set a new one
-                        below.
+                        Enter your current password and choose a new one (10–24 characters).
                       </p>
-                      <button
-                        type="button"
-                        className={styles.outlinePillWide}
-                        disabled={status !== 'idle'}
-                        onClick={handleSendTempPassword}
-                      >
-                        {status === 'sending' ? 'Sending…' : 'Send temporary password'}
-                      </button>
                       <div className={styles.field}>
-                        <label className={styles.label} htmlFor="settings-tmp">
-                          Temporary password
+                        <label className={styles.label} htmlFor="settings-current">
+                          Current password
                         </label>
                         <input
-                          id="settings-tmp"
+                          id="settings-current"
+                          type="password"
                           className={styles.input}
-                          value={tmpPassword}
-                          onChange={event => setTmpPassword(event.target.value)}
-                          autoComplete="one-time-code"
+                          value={currentPassword}
+                          onChange={event => setCurrentPassword(event.target.value)}
+                          autoComplete="current-password"
                           required
                         />
                       </div>
@@ -601,7 +710,7 @@ export default function Settings() {
                           value={newPassword}
                           onChange={event => setNewPassword(event.target.value)}
                           autoComplete="new-password"
-                          minLength={4}
+                          minLength={10}
                           maxLength={24}
                           required
                         />
@@ -617,7 +726,7 @@ export default function Settings() {
                           value={confirmPassword}
                           onChange={event => setConfirmPassword(event.target.value)}
                           autoComplete="new-password"
-                          minLength={4}
+                          minLength={10}
                           maxLength={24}
                           required
                         />

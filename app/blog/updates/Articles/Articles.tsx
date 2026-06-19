@@ -20,7 +20,7 @@ const TOC_ITEMS = [
 const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const SOCIAL_LINKS = [
-  { icon: '/icons/social/ic_outline-discord.svg', alt: 'Discord', href: '#', size: 24 },
+  { icon: '/icons/social/twitch.png', alt: 'Twitch', href: 'https://twitch.tv/', size: 24 },
   { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: '#', size: 18 },
   { icon: '/icons/social/mingcute_youtube-fill.svg', alt: 'YouTube', href: '#', size: 24 },
   { icon: '/icons/social/ic_twotone-tiktok.svg', alt: 'TikTok', href: '#', size: 24 },

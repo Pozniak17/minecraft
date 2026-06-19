@@ -16,13 +16,13 @@ export default function LuckyActions({ isAuthed = false }: { isAuthed?: boolean 
 
       <button type="button" className={`${styles.button} ${styles.secondary}`}>
         <Image
-          src="/icons/social/ic_outline-discord.svg"
+          src="/icons/social/twitch.png"
           alt=""
           width={24}
           height={24}
           className={styles.discordIcon}
         />
-        Join Discord
+        Join Twitch
       </button>
     </section>
   );

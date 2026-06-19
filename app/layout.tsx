@@ -5,6 +5,7 @@ import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
 import { CookieConsent } from './_components/CookieConsent/CookieConsent';
 import { getRefreshToken } from '@/lib/server/authCookies';
+import { getServerProfile } from '@/lib/server/profile';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -27,11 +28,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const isAuthed = Boolean(await getRefreshToken());
+  const initialProfile = isAuthed ? await getServerProfile() : null;
 
   return (
     <html lang="en">
       <body className={montserrat.variable}>
-        <SiteChrome isAuthed={isAuthed}>{children}</SiteChrome>
+        <SiteChrome isAuthed={isAuthed} initialProfile={initialProfile}>
+          {children}
+        </SiteChrome>
         <CookieConsent />
         <Script
           src="https://static.minecraftsgame.com/script.js"

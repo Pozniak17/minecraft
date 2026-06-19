@@ -39,6 +39,28 @@ export interface ChangePasswordInput {
   new_password: string;
 }
 
+// ---- User profile ----
+
+export interface UserProfile {
+  email: string;
+  username: string | null;
+  game_username: string | null;
+  country: string | null;
+  has_profile_photo: string | boolean;
+}
+
+export interface UserProfileUpdate {
+  username?: string | null;
+  game_username?: string | null;
+  country?: string | null;
+}
+
+export interface AuthenticatedChangePasswordInput {
+  current: string;
+  new_password: string; // 10–24 символи
+  confirm: string;
+}
+
 // ---- Shop / core ----
 
 export interface Currency {

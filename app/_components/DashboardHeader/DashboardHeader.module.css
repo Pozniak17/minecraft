@@ -103,6 +103,13 @@
   background: rgba(189, 225, 83, 0.25);
 }
 
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+}
+
 /* ── Desktop nav (≥ 1024px) ── */
 
 .desktopNav {
