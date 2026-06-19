@@ -16,8 +16,9 @@ type EvaluateInput = {
 };
 
 // Антифрод-перевірка на етапі реєстрації.
-// Fail-open: якщо ключ не налаштований або SEON недоступний/таймаут — дозволяємо.
-// Блокуємо тільки за явним вердиктом state === 'DECLINE'.
+// MONITOR-ONLY: SEON збирає дані й рахує score (видно в дашборді), але НІКОГО
+// не блокує — реєстрацію пропускаємо завжди. Рішення про блок приймає суппорт
+// вручну на основі вердикту в дашборді SEON.
 export async function evaluateRegistration(input: EvaluateInput): Promise<FraudVerdict> {
   const apiKey = process.env.SEON_LICENSE_KEY;
   if (!apiKey) return { allow: true };
@@ -63,8 +64,9 @@ export async function evaluateRegistration(input: EvaluateInput): Promise<FraudV
         `device=${result.device_details ? 'yes' : 'NULL'}`,
     );
 
+    // Monitor-only: завжди allow, блокування лишаємо на ручний розгляд суппорту.
     return {
-      allow: result.state !== 'DECLINE',
+      allow: true,
       state: result.state,
       fraudScore: result.fraud_score,
     };

@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { DashboardServer, LivePlayer } from '@/lib/data/dashboardServers';
+import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './ServerDetail.module.css';
 
 type ServerDetailProps = {
@@ -58,9 +59,33 @@ function ChartBlock({
 
 export default function ServerDetail({ server }: ServerDetailProps) {
   const [copied, setCopied] = useState(false);
-  const isOnline = server.status === 'online';
+  const live = useServerOnline(server.id);
+  const isOnline = live.status === 'online';
+  const isLoading = live.status === 'loading';
+  const statusLabel = isLoading ? 'checking…' : isOnline ? 'online' : 'offline';
+  const current =
+    live.online !== null ? live.online : isLoading ? server.current : null;
+  const playersMobile =
+    current !== null ? `${current}/${server.max}` : `—/${server.max}`;
+  const playersDesktop =
+    current !== null ? `${current} / ${server.max}` : `— / ${server.max}`;
   const chartMax = Math.max(...server.chartData, 1);
-  const hasLive = server.livePlayers.length > 0;
+
+  const livePlayers = useMemo((): LivePlayer[] => {
+    if (isOnline && live.players.length > 0) {
+      return live.players.map(name => ({
+        initial: name.charAt(0).toUpperCase() || '?',
+        name,
+        activity: 'Playing',
+      }));
+    }
+    if (isLoading) {
+      return server.livePlayersDesktop;
+    }
+    return [];
+  }, [isOnline, isLoading, live.players, server.livePlayersDesktop]);
+
+  const hasLive = livePlayers.length > 0;
 
   const handleCopy = useCallback(() => {
     void navigator.clipboard.writeText(server.ip).then(() => {
@@ -103,7 +128,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
               className={`${styles.status} ${isOnline ? styles.statusOnline : styles.statusOffline}`}
             >
               <span className={styles.statusDot} aria-hidden />
-              {server.status}
+              {statusLabel}
             </span>
             <span className={styles.category}>{server.category}</span>
           </div>
@@ -116,12 +141,8 @@ export default function ServerDetail({ server }: ServerDetailProps) {
           <dl className={styles.stats}>
             <div className={styles.stat}>
               <dt className={styles.statValue}>
-                <span className={styles.statValueMobile}>
-                  {server.current}/{server.max}
-                </span>
-                <span className={styles.statValueDesktop}>
-                  {server.current} / {server.max}
-                </span>
+                <span className={styles.statValueMobile}>{playersMobile}</span>
+                <span className={styles.statValueDesktop}>{playersDesktop}</span>
               </dt>
               <dd className={styles.statLabel}>
                 <span className={styles.statLabelMobile}>players</span>
@@ -129,7 +150,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
               </dd>
             </div>
             <div className={styles.stat}>
-              <dt className={styles.statValue}>{server.latency}</dt>
+              <dt className={styles.statValue}>{isOnline ? server.latency : 'Offline'}</dt>
               <dd className={styles.statLabel}>latency</dd>
             </div>
             <div className={styles.stat}>
@@ -191,19 +212,17 @@ export default function ServerDetail({ server }: ServerDetailProps) {
           <div className={styles.activityRow}>
             <div className={styles.livePanelMobile}>
               <ul className={styles.liveList}>
-                <LiveRows players={server.livePlayers} />
+                <LiveRows players={livePlayers} />
               </ul>
             </div>
 
             <div className={styles.livePanelDesktop}>
               <div className={styles.liveHeadDesktop}>
                 <span className={styles.liveHeadTitle}>Live now</span>
-                <span className={styles.liveHeadCount}>
-                  {server.current} / {server.max} players
-                </span>
+                <span className={styles.liveHeadCount}>{playersDesktop} players</span>
               </div>
               <ul className={styles.liveList}>
-                <LiveRows players={server.livePlayersDesktop} />
+                <LiveRows players={livePlayers} />
               </ul>
             </div>
 

@@ -14,17 +14,13 @@ export async function POST(req: NextRequest) {
   try {
     const { username, password, email, seonSession } = (await req.json()) as RegisterInput;
 
-    const verdict = await evaluateRegistration({
+    // Monitor-only: SEON збирає дані й рахує score (видно в дашборді/логах),
+    // але реєстрацію не блокує — рішення про блок приймає суппорт вручну.
+    await evaluateRegistration({
       email,
       ip: clientIp(req),
       session: seonSession,
     });
-    if (!verdict.allow) {
-      return NextResponse.json(
-        { detail: 'Registration blocked by anti-fraud check. Please contact support.' },
-        { status: 403 },
-      );
-    }
 
     const payload: Record<string, unknown> = { password };
     if (username) payload.username = username;
