@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
+import { GAME_SERVERS } from '@/lib/server/gameServers';
 import {
   JOIN_ADD_SERVER,
   JOIN_BEFORE,
@@ -37,7 +38,7 @@ const SOCIAL_LINKS = [
   { icon: '/icons/social/ic_twotone-tiktok.svg', alt: 'TikTok', href: '#', size: 24 },
 ] as const;
 
-const EXAMPLE_IP = 'classic.minecraft-ecosystem.example';
+const EXAMPLE_IP = GAME_SERVERS.luckysurvival.ip;
 
 function BulletList({
   items,

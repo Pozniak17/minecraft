@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getPlayNowHref } from '@/lib/data/servers';
 import styles from './LuckyActions.module.css';
 
 export default function LuckyActions({ isAuthed = false }: { isAuthed?: boolean }) {
-  const playHref = isAuthed ? '/dashboard/servers/classic' : '/register';
+  const playHref = getPlayNowHref('luckysurvival', isAuthed);
 
   return (
     <section className={styles.card}>

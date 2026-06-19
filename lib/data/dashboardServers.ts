@@ -1,3 +1,5 @@
+import { GAME_SERVERS } from '@/lib/server/gameServers';
+
 export type ServerStatus = 'online' | 'offline';
 
 export type LivePlayer = {
@@ -37,42 +39,42 @@ export type DashboardServer = {
 
 export const DASHBOARD_SERVERS: DashboardServer[] = [
   {
-    id: 'classic',
-    name: 'Classic / Survival',
-    breadcrumbLabel: 'Classic',
-    detailTitle: 'Classic — Survival',
+    id: 'luckysurvival',
+    name: 'LuckySurvival',
+    breadcrumbLabel: 'LuckySurvival',
+    detailTitle: 'LuckySurvival',
     category: 'Survival',
     status: 'online',
     current: 128,
     max: 200,
     description:
-      'A beloved classic with hardcore touches and a thriving economy. The perfect spot for cozy survival and large-scale building.',
+      'Classic survival with fair PvP, balanced economy and an active community.',
     detailDescription:
-      'Our most-played server since 2022. Classic Minecraft survival with custom claims, fair economy, and an active 200+ player community.',
+      'LuckySurvival offers classic Minecraft survival with fair PvP, a balanced in-game economy, and an active community.',
     detailDescriptionDesktop:
-      'Our most-played server since 2022. Classic Minecraft survival with a hand-tuned economy, custom claims plugin, and an active community of 200+ regulars.',
+      'LuckySurvival offers a classic Minecraft survival experience with fair PvP, a balanced in-game economy, and an active community — built for both casual and competitive players.',
     image: '/profile/servers/1.webp',
-    latency: '32 ms',
+    latency: '12 ms',
     uptime: '99.9%',
-    ip: 'classic.minecraft-ecosystem.example',
-    version: 'Java • 1.20.4',
+    ip: GAME_SERVERS.luckysurvival.ip,
+    version: 'Java • 1.12–1.19',
     joinLabel: 'Join',
     joinLabelDesktop: 'Join server',
     aboutText:
-      'Classic Survival is our oldest server, running since 2022. Economy tuned for fair early-game progression. Players claim land with our custom plugin and trade at community markets.',
+      'LuckySurvival is vanilla survival with PvP enabled and TNT disabled. Fair fights, balanced economy, and long-term progression for chill and competitive players alike.',
     aboutTextDesktop:
-      'Classic Survival is our oldest server, running continuously since launch in 2022. The economy is tuned to keep early-game progression rewarding without flattening the late game. Players claim land with our custom claims plugin, trade at community markets, and form alliances or guilds for large-scale builds and PvP.',
+      'LuckySurvival is vanilla survival with PvP enabled and TNT disabled. Fair fights, a hand-tuned economy, and long-term progression — ideal for players who enjoy active gameplay, fair competition, and economic strategy.',
     features: [
-      'Custom land-claim plugin',
-      'Player-driven economy',
-      'Active community Discord',
-      'Hand-tuned mob spawns',
+      'Survival gameplay',
+      'Fair PvP battles',
+      'In-game economy',
+      'Player interaction',
     ],
     featuresDesktop: [
-      'Custom land-claim plugin with grief protection',
-      'Player-driven economy with daily auctions',
-      'Active community Discord with regular events',
-      'Hand-tuned mob spawns and balanced loot tables',
+      'Classic open-world survival with day/night cycle',
+      'Fair combat arenas and open-world PvP zones',
+      'Buy, sell and trade items with other players',
+      'Guilds, alliances and collaborative building',
     ],
     livePlayers: [
       { initial: 'R', name: 'RedstoneKing', activity: 'Building' },
@@ -91,103 +93,112 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     ],
   },
   {
-    id: 'skyblock',
-    name: 'Skyblock / Tech',
-    nameMobile: 'Skyblock',
-    breadcrumbLabel: 'Skyblock',
-    detailTitle: 'Skyblock — Tech',
-    category: 'Skyblock',
+    id: 'minewars',
+    name: 'MineWars',
+    breadcrumbLabel: 'MineWars',
+    detailTitle: 'MineWars',
+    category: 'PvP',
+    status: 'online',
+    current: 312,
+    max: 400,
+    description:
+      'High-intensity PvP combat, ranked matches, team battles and seasonal tournaments.',
+    detailDescription:
+      'MineWars is built for competitive players — ranked matches, seasonal tournaments, and team warfare with PvP and TNT enabled.',
+    detailDescriptionDesktop:
+      'MineWars is built for competitive players who thrive in combat. Join ranked ladder matches, compete in seasonal tournaments, and rise through team-based warfare with vanilla PvP and TNT enabled.',
+    image: '/profile/servers/2.webp',
+    latency: '8 ms',
+    uptime: '99.8%',
+    ip: GAME_SERVERS.minewars.ip,
+    version: 'Java • 1.12–1.19',
+    joinLabel: 'Join',
+    joinLabelDesktop: 'Join server',
+    aboutText:
+      'MineWars is vanilla survival with PvP and TNT enabled. Ranked matches, tournaments, and team warfare — every battle counts.',
+    aboutTextDesktop:
+      'MineWars is vanilla survival with PvP and TNT enabled. Join ranked ladder matches, compete in seasonal tournaments, and dominate the leaderboard through team-based warfare and conquest.',
+    features: [
+      'PvP combat',
+      'Tournaments',
+      'Ranked ladder',
+      'Team warfare',
+    ],
+    featuresDesktop: [
+      'Intense player vs player battles in dedicated arenas',
+      'Weekly and seasonal competitive tournaments with prizes',
+      'Climb the competitive ladder and earn exclusive rewards',
+      'Faction-based team combat and territory control',
+    ],
+    livePlayers: [
+      { initial: 'W', name: 'WarLord', activity: 'PvP arena' },
+      { initial: 'A', name: 'AlexPvP', activity: 'Ranked queue' },
+      { initial: 'F', name: 'FireStrike', activity: 'Raiding' },
+    ],
+    livePlayersDesktop: [
+      { initial: 'W', name: 'WarLord', activity: 'PvP arena' },
+      { initial: 'A', name: 'AlexPvP', activity: 'Ranked queue' },
+      { initial: 'F', name: 'FireStrike', activity: 'Raiding' },
+      { initial: 'K', name: 'KnightX', activity: 'Tournament' },
+    ],
+    chartData: [
+      80, 95, 110, 90, 150, 180, 200, 175, 160, 140, 120, 135, 190, 220, 210, 195, 180, 165,
+      150, 130, 110, 95, 120, 312,
+    ],
+  },
+  {
+    id: 'calmsky',
+    name: 'CalmSky',
+    nameMobile: 'CalmSky',
+    breadcrumbLabel: 'CalmSky',
+    detailTitle: 'CalmSky',
+    category: 'Peaceful',
     status: 'online',
     current: 84,
     max: 150,
     description:
-      'Sharpen your automation and survival skills on floating islands. Custom crafts, machines, and endless possibilities for engineers.',
+      'A relaxed, peaceful server for building, exploring and enjoying Minecraft at your own pace.',
     detailDescription:
-      'Engineer your island from a single tree into a sprawling factory. Custom tech trees, automation plugins, and weekly island challenges.',
+      'CalmSky is a peaceful haven — no PvP, no TNT. Focus on building, exploring, and community.',
     detailDescriptionDesktop:
-      'Engineer your island from a single tree into a sprawling factory. Custom tech trees, automation plugins, and weekly island challenges for 150+ engineers.',
-    image: '/profile/servers/2.webp',
-    latency: '38 ms',
+      'CalmSky is a peaceful haven for players who want to focus on building, exploring, and community without the stress of combat. No PvP, no TNT — just creativity and collaboration.',
+    image: '/profile/servers/3.webp',
+    latency: '15 ms',
     uptime: '99.7%',
-    ip: 'skyblock.minecraft-ecosystem.example',
-    version: 'Java • 1.20.4',
+    ip: GAME_SERVERS.calmsky.ip,
+    version: 'Java • 1.12–1.19',
     joinLabel: 'Join',
     joinLabelDesktop: 'Join server',
     aboutText:
-      'Skyblock Tech blends classic island survival with redstone-friendly automation. Progress through tiers, unlock machines, and compete in seasonal island rankings.',
+      'CalmSky is vanilla survival without PvP or TNT. Claim your plot, join build contests, and share creations with a supportive community.',
     aboutTextDesktop:
-      'Skyblock Tech blends classic island survival with redstone-friendly automation. Progress through upgrade tiers, unlock custom machines, and compete in seasonal island rankings with co-op teams.',
+      'CalmSky is vanilla survival without PvP or TNT. Claim your plot, explore vast landscapes, join friendly build contests, and share your creations with a supportive community.',
     features: [
-      'Custom crafting & machines',
-      'Island upgrade tiers',
-      'Weekly automation challenges',
-      'Co-op island teams',
+      'Creative building',
+      'Exploration',
+      'Build contests',
+      'Community plots',
     ],
     featuresDesktop: [
-      'Custom crafting & machines with tier unlocks',
-      'Island upgrade tiers with shared co-op progress',
-      'Weekly automation challenges with leaderboard rewards',
-      'Co-op island teams and cross-island trade routes',
+      'Unlimited creative mode with premium WorldEdit tools',
+      'Vast unexplored worlds with custom biomes and structures',
+      'Regular community build competitions with prizes',
+      'Claim your own plot and build with neighbors',
     ],
     livePlayers: [
-      { initial: 'T', name: 'TechForge', activity: 'Automating' },
-      { initial: 'S', name: 'SkyBuilder', activity: 'Island build' },
-      { initial: 'C', name: 'CircuitCat', activity: 'Redstone lab' },
+      { initial: 'S', name: 'SkyBuilder', activity: 'Building' },
+      { initial: 'C', name: 'CraftQueen', activity: 'Plot design' },
+      { initial: 'B', name: 'BlockArtist', activity: 'Contest build' },
     ],
     livePlayersDesktop: [
-      { initial: 'T', name: 'TechForge', activity: 'Automating' },
-      { initial: 'S', name: 'SkyBuilder', activity: 'Island build' },
-      { initial: 'C', name: 'CircuitCat', activity: 'Redstone lab' },
-      { initial: 'M', name: 'ModMaster', activity: 'Crafting' },
+      { initial: 'S', name: 'SkyBuilder', activity: 'Building' },
+      { initial: 'C', name: 'CraftQueen', activity: 'Plot design' },
+      { initial: 'B', name: 'BlockArtist', activity: 'Contest build' },
+      { initial: 'P', name: 'PeacefulPanda', activity: 'Exploring' },
     ],
     chartData: [
       30, 45, 55, 50, 90, 100, 115, 95, 80, 70, 60, 75, 110, 130, 125, 115, 100, 85, 70, 55,
       45, 40, 55, 84,
-    ],
-  },
-  {
-    id: 'anarchy',
-    name: 'Anarchy / PvP',
-    breadcrumbLabel: 'Anarchy',
-    detailTitle: 'Anarchy — PvP',
-    category: 'PvP',
-    status: 'offline',
-    current: 0,
-    max: 100,
-    description:
-      'A world with no rules but ruthless competition. Prove your dominance in PvP, capture territories, and crush your enemies.',
-    detailDescription:
-      'No claims, no mercy. Pure PvP anarchy with territory wars, loot crates, and a leaderboard that resets every season.',
-    detailDescriptionDesktop:
-      'No claims, no mercy. Pure PvP anarchy with territory wars, loot crates, and a seasonal leaderboard that resets every month.',
-    image: '/profile/servers/3.webp',
-    latency: 'Offline',
-    uptime: '—',
-    ip: 'anarchy.minecraft-ecosystem.example',
-    version: 'Java • 1.20.4',
-    joinLabel: 'Notify',
-    joinLabelDesktop: 'Notify me',
-    aboutText:
-      'Anarchy PvP is currently offline for a major map reset and anti-cheat upgrade. Sign up for notifications to join the reopening event.',
-    aboutTextDesktop:
-      'Anarchy PvP is currently offline for a major map reset and anti-cheat upgrade. The new season launches with refreshed territories, balanced loot tables, and a reopening event for early sign-ups.',
-    features: [
-      'Zero-rules PvP world',
-      'Seasonal territory wars',
-      'Custom loot events',
-      'Reopening notification list',
-    ],
-    featuresDesktop: [
-      'Zero-rules PvP world with no land claims',
-      'Seasonal territory wars and clan rankings',
-      'Custom loot events with rare gear drops',
-      'Reopening notification list for the next season',
-    ],
-    livePlayers: [],
-    livePlayersDesktop: [],
-    chartData: [
-      20, 35, 50, 45, 80, 95, 110, 90, 75, 60, 50, 65, 100, 120, 110, 95, 80, 65, 50, 35, 25,
-      20, 15, 0,
     ],
   },
 ];

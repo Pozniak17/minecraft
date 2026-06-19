@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getPlayNowHref } from '@/lib/data/servers';
 import styles from './MineWarsActions.module.css';
 
 export default function MineWarsActions({ isAuthed = false }: { isAuthed?: boolean }) {
-  const playHref = isAuthed ? '/dashboard/servers/anarchy' : '/register';
+  const playHref = getPlayNowHref('minewars', isAuthed);
 
   return (
     <section className={styles.card}>

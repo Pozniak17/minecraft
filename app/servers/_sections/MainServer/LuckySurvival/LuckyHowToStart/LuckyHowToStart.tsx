@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './LuckyHowToStart.module.css';
 
 const STEPS = [
@@ -21,10 +22,10 @@ export default function LuckyHowToStart() {
         ))}
       </ol>
 
-      <button type="button" className={styles.cta}>
+      <Link href="/how-to-start" className={styles.cta}>
         <span aria-hidden="true">📖</span>
         View Full Instructions →
-      </button>
+      </Link>
     </section>
   );
 }

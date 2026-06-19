@@ -11,24 +11,24 @@ export interface CardProps {
 const CARDS: CardProps[] = [
   {
     image: '/about/images/1.webp',
-    ganre: 'Classic',
-    title: 'Classic / Survival',
+    ganre: 'Survival',
+    title: 'LuckySurvival',
     description:
-      'A beloved classic with hardcore touches and a thriving economy. Perfect for cozy survival and large-scale building.',
+      'Vanilla survival with PvP and TNT disabled. Fair fights, balanced economy, and long-term gameplay.',
   },
   {
     image: '/about/images/2.webp',
-    ganre: 'Skyblock',
-    title: 'Skyblock / Tech',
+    ganre: 'PvP',
+    title: 'MineWars',
     description:
-      'Sharpen your automation and survival skills on floating islands. Custom crafts, machines, and endless possibilities for engineers.',
+      'Vanilla survival with PvP and TNT enabled. Ranked matches, tournaments, and team warfare.',
   },
   {
     image: '/about/images/3.webp',
-    ganre: 'Anarchy',
-    title: 'Anarchy / PvP',
+    ganre: 'Peaceful',
+    title: 'CalmSky',
     description:
-      'A world with no rules but ruthless competition. Prove your dominance in PvP, capture territories, and crush your enemies.',
+      'Peaceful vanilla server without PvP or TNT. Focus on creativity, social play, and beautiful builds.',
   },
 ];
 

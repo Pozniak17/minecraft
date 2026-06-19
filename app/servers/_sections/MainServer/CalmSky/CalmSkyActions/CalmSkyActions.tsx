@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getPlayNowHref } from '@/lib/data/servers';
 import styles from './CalmSkyActions.module.css';
 
 export default function CalmSkyActions({ isAuthed = false }: { isAuthed?: boolean }) {
-  const playHref = isAuthed ? '/dashboard/servers/skyblock' : '/register';
+  const playHref = getPlayNowHref('calmsky', isAuthed);
 
   return (
     <section className={styles.card}>

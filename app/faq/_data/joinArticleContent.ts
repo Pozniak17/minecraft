@@ -85,20 +85,20 @@ export const JOIN_CHOOSE_SERVER = {
   },
   bullets: {
     mobile: [
-      'Classic / Survival — laid-back, custom economy.',
-      'Skyblock / Tech — automation, progression-heavy.',
-      'Anarchy / PvP — no rules, pure competition.',
+      'LuckySurvival — fair PvP, balanced economy, TNT off.',
+      'MineWars — competitive PvP, TNT on, tournaments.',
+      'CalmSky — peaceful building, no PvP, no TNT.',
     ],
     desktop: [
-      'Classic / Survival — laid-back survival with custom economy and active claims protection.',
-      'Skyblock / Tech — floating islands, automation crafts, and progression-heavy gameplay.',
-      'Anarchy / PvP — no rules, no claims, pure competition. Not for the faint-hearted.',
+      'LuckySurvival — vanilla survival with fair PvP, balanced economy, and TNT disabled.',
+      'MineWars — vanilla survival with PvP and TNT enabled, ranked matches and tournaments.',
+      'CalmSky — peaceful vanilla server without PvP or TNT, focused on building and community.',
     ],
   },
   callout: {
-    mobile: 'New players land on Classic by default. Start there if unsure.',
+    mobile: 'New players land on LuckySurvival by default. Start there if unsure.',
     desktop:
-      'New players land on Classic by default. If you are not sure, start there — it is the safest place to learn the basics.',
+      'New players land on LuckySurvival by default. If you are not sure, start there — it is the safest place to learn the basics.',
   },
 };
 
