@@ -19,7 +19,12 @@ export function getDashboardPlayHref(isAuthed: boolean): string {
   return isAuthed ? '/dashboard/servers' : '/login';
 }
 
-/** Store preview / See more: публічний store або shop у кабінеті. */
+/** Store preview на головній: публічний store або shop у кабінеті. */
 export function getStoreHref(isAuthed: boolean): string {
   return isAuthed ? '/dashboard/shop' : '/store';
+}
+
+/** CTA «See More» / «Add to cart» з публічного store: логін для гостя, shop у кабінеті. */
+export function getShopHref(isAuthed: boolean): string {
+  return isAuthed ? '/dashboard/shop' : '/login';
 }
