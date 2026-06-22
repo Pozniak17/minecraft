@@ -14,7 +14,7 @@ type CurrencySelectProps = {
 type MenuPosition = {
   top: number;
   left: number;
-  minWidth: number;
+  width: number;
   transform?: string;
 };
 
@@ -26,12 +26,19 @@ function getMenuPosition(trigger: HTMLElement): MenuPosition {
   const spaceBelow = window.innerHeight - rect.bottom - MENU_GAP;
   const spaceAbove = rect.top - MENU_GAP;
   const openUp = spaceBelow < MENU_MAX_HEIGHT && spaceAbove > spaceBelow;
+  const alignEnd = rect.left + rect.width / 2 > window.innerWidth / 2;
 
   return {
     top: openUp ? rect.top - MENU_GAP : rect.bottom + MENU_GAP,
-    left: rect.right,
-    minWidth: rect.width,
-    transform: openUp ? 'translate(-100%, -100%)' : 'translateX(-100%)',
+    left: alignEnd ? rect.right : rect.left,
+    width: rect.width,
+    transform: openUp
+      ? alignEnd
+        ? 'translate(-100%, -100%)'
+        : 'translateY(-100%)'
+      : alignEnd
+        ? 'translateX(-100%)'
+        : undefined,
   };
 }
 
@@ -110,7 +117,7 @@ export default function CurrencySelect({ value, currencies, onChange }: Currency
             style={{
               top: menuPosition.top,
               left: menuPosition.left,
-              minWidth: menuPosition.minWidth,
+              width: menuPosition.width,
               transform: menuPosition.transform,
             }}
           >

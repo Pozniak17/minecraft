@@ -1,4 +1,5 @@
 import { Container } from '@/app/_components/Container/Container';
+import { getDashboardPlayHref, getOpenStoreHref } from '@/lib/data/servers';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +11,9 @@ import img4 from '@/public/how-to-start/4.webp';
 import img5 from '@/public/how-to-start/5.webp';
 import img6 from '@/public/how-to-start/6.webp';
 
-export default function Hero() {
+export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+  const playHref = getDashboardPlayHref(isAuthed);
+  const openStoreHref = getOpenStoreHref(isAuthed);
   return (
     <>
       <section className={styles.hero}>
@@ -37,7 +40,7 @@ export default function Hero() {
                       width={24}
                       height={24}
                     />
-                    1.21.x
+                    1.12–1.19
                   </span>
                 </h3>
                 <p className={styles.stepperDescription}>
@@ -83,7 +86,7 @@ export default function Hero() {
                   features, including the ability to make purchases, view your order history, and
                   manage your account settings.
                 </p>
-                <Link href="/dashboard" className={styles.stepperButton}>
+                <Link href={isAuthed ? '/dashboard' : '/login'} className={styles.stepperButton}>
                   Go to Dashboard
                 </Link>
               </div>
@@ -137,7 +140,9 @@ export default function Hero() {
                   ready for an engaging experience with development, economy, and player
                   interactions!
                 </p>
-                <button className={styles.stepperButton}>Start playing now</button>
+                <Link href={playHref} className={styles.stepperButton}>
+                  Start playing now
+                </Link>
               </div>
               <Image src={img5} alt="" className={styles.stepperImage} />
             </li>
@@ -153,7 +158,7 @@ export default function Hero() {
                   your personal dashboard. This account allows you to shop in our store anytime and
                   enjoy permanent privileges with your purchases.
                 </p>
-                <Link href="/store" className={styles.stepperButton}>
+                <Link href={openStoreHref} className={styles.stepperButton}>
                   Open Store
                 </Link>
               </div>

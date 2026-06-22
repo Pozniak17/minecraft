@@ -70,6 +70,15 @@ const Data: PrivilegesCardProps[] = [
   },
 ];
 
+const TIER_TITLES = Data.map(item => item.title);
+
+function priceForTitle(title: string, prices?: Record<string, string>): string | undefined {
+  if (!prices) return undefined;
+  if (prices[title]) return prices[title];
+  const key = Object.keys(prices).find(k => k.toLowerCase() === title.toLowerCase());
+  return key ? prices[key] : undefined;
+}
+
 type PrivilegesCardsProps = {
   initialLimit?: number;
   /** When set, "View more" navigates here instead of expanding inline. */
@@ -123,7 +132,7 @@ export default function PrivilegesCards({
             text={item.text}
             icon={item.icon}
             compact={compact}
-            price={pricesByTitle?.[item.title]}
+            price={priceForTitle(item.title, pricesByTitle)}
             addHref={addToCartHref}
             onAdd={!addToCartHref && onAddToCart ? () => handleAdd(item.title) : undefined}
             pending={pendingTitle === item.title}

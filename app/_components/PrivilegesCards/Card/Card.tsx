@@ -44,13 +44,13 @@ export default function Card({
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.text}>{text}</p>
-        {price && (
-          <div className={styles.priceRow}>
-            <span className={styles.priceLabel}>Price</span>
-            <span className={styles.priceValue}>{price}</span>
-          </div>
-        )}
       </div>
+      {price && (
+        <div className={styles.priceRow}>
+          <span className={styles.priceLabel}>Price</span>
+          <span className={styles.priceValue}>{price}</span>
+        </div>
+      )}
       {addHref ? (
         <Link href={addHref} className={styles.button}>
           {cta}

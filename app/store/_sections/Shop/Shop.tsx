@@ -9,7 +9,7 @@ import { isAxiosError } from 'axios';
 import { getCurrencies, getProducts } from '@/lib/api/shop';
 import type { Currency } from '@/lib/api/types';
 import { addToCart, changeItemAmount, getOrderItems } from '@/lib/api/cart';
-import { crystalsToEur } from '@/lib/pricing';
+import { buildFallbackPrivilegePrices, crystalsToEur } from '@/lib/pricing';
 import CurrencySelect from './CurrencySelect/CurrencySelect';
 import styles from './Shop.module.css';
 
@@ -52,6 +52,17 @@ const PACKS: CrystalPack[] = [
   },
   { amount: 15000, img: '/profile/shop/crystal-4.webp' },
 ];
+
+const PRIVILEGE_TITLES = [
+  'Silver',
+  'Supreme',
+  'Wither',
+  'Hero',
+  'Avenger',
+  'Legend',
+  'Phantom',
+  'Phoenix',
+] as const;
 
 const nf = new Intl.NumberFormat('en-US');
 
@@ -189,8 +200,12 @@ export default function Shop() {
   // У кабінеті (authed) тягнемо приватний список із цінами, щоб показувати реальний
   // курс кристалів (price за 1 кристал) — узгоджено з тим, що порахує бекенд у кошику.
   useEffect(() => {
-    if (!isDashboard) return;
+    if (!isDashboard) {
+      setPrivilegePrices({});
+      return;
+    }
     let active = true;
+    setPrivilegePrices(buildFallbackPrivilegePrices());
     getProducts({ priced: true, page_size: 100, currency, lang: locale })
       .then(data => {
         if (!active) return;
@@ -198,15 +213,22 @@ export default function Shop() {
         const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
         if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
 
-        const prices: Record<string, string> = {};
+        const prices = buildFallbackPrivilegePrices();
         for (const p of data.results) {
           if (p.category_slug === 'crystals' || !p.title || p.price == null) continue;
           const value = Number(p.price);
-          if (Number.isFinite(value)) prices[p.title] = `${value.toFixed(2)} ${currency}`;
+          if (!Number.isFinite(value)) continue;
+          const formatted = `${value.toFixed(2)} ${currency}`;
+          const tier =
+            PRIVILEGE_TITLES.find(t => t.toLowerCase() === p.title!.toLowerCase()) ?? p.title;
+          prices[tier] = formatted;
         }
         setPrivilegePrices(prices);
       })
-      .catch(() => {});
+      .catch(() => {
+        if (!active) return;
+        setPrivilegePrices(buildFallbackPrivilegePrices());
+      });
     return () => {
       active = false;
     };

@@ -1,11 +1,8 @@
 import Hero from './_sections/Hero/Hero';
+import { getRefreshToken } from '@/lib/server/authCookies';
 
-const HowToStart = () => {
-  return (
-    <>
-      <Hero />
-    </>
-  );
-};
+export default async function HowToStartPage() {
+  const isAuthed = Boolean(await getRefreshToken());
 
-export default HowToStart;
+  return <Hero isAuthed={isAuthed} />;
+}

@@ -10,15 +10,7 @@ import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { DashboardNav } from './DashboardNav/DashboardNav';
 import styles from './DashboardHeader.module.css';
 
-type DashboardHeaderProps = {
-  balance?: number;
-};
-
-function formatBalance(value: number) {
-  return new Intl.NumberFormat('en-US').format(value);
-}
-
-export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
+export function DashboardHeader() {
   const pathname = usePathname();
   const { initial, photoUrl } = useProfile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,17 +44,6 @@ export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
         </Link>
 
         <div className={styles.right}>
-          <div className={styles.balance}>
-            <Image
-              src="/profile/img.png"
-              alt=""
-              width={16}
-              height={22}
-              className={styles.balanceIcon}
-            />
-            <span className={styles.balanceValue}>{formatBalance(balance)}</span>
-          </div>
-
           <Link href="/dashboard" className={styles.avatar} aria-label="My account">
             {photoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element

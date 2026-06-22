@@ -10,7 +10,7 @@
   background: var(--color-bg);
 }
 
-/* ── Mobile bar (бургер / лого / баланс / аватар) ── */
+/* ── Mobile bar (бургер / лого / аватар) ── */
 
 .mobileBar {
   display: flex;
@@ -55,31 +55,6 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-}
-
-.balance {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.1);
-}
-
-.balanceIcon {
-  width: 16px;
-  height: auto;
-}
-
-.balanceValue {
-  font-family: var(--font-main);
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.22px;
-  line-height: normal;
-  color: var(--color-primary);
-  white-space: nowrap;
 }
 
 .avatar {

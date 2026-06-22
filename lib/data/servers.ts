@@ -14,9 +14,9 @@ export function getPlayNowHref(id: ProjectServerId, isAuthed: boolean): string {
   return isAuthed ? getDashboardServerHref(id) : '/register';
 }
 
-/** Головна CTA «Play Now»: кабінет → сервери, гість → логін. */
+/** Головна CTA «Play Now»: кабінет → сервери, гість без акаунта → реєстрація. */
 export function getDashboardPlayHref(isAuthed: boolean): string {
-  return isAuthed ? '/dashboard/servers' : '/login';
+  return isAuthed ? '/dashboard/servers' : '/register';
 }
 
 /** Store preview на головній: публічний store або shop у кабінеті. */
@@ -24,7 +24,12 @@ export function getStoreHref(isAuthed: boolean): string {
   return isAuthed ? '/dashboard/shop' : '/store';
 }
 
-/** CTA «See More» / «Add to cart» з публічного store: логін для гостя, shop у кабінеті. */
+/** CTA store/shop (Category, preview): кабінет → shop, гість → логін. */
 export function getShopHref(isAuthed: boolean): string {
+  return isAuthed ? '/dashboard/shop' : '/login';
+}
+
+/** «Open Store»: залогінений → shop; гість з акаунтом → login (немає акаунта → крок 2 Sign Up /register). */
+export function getOpenStoreHref(isAuthed: boolean): string {
   return isAuthed ? '/dashboard/shop' : '/login';
 }
