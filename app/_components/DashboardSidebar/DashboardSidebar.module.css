@@ -234,15 +234,14 @@
 .spacer {
   display: flex;
   flex-shrink: 0;
-  justify-content: center;
-  margin-bottom: 4px;
+  justify-content: flex-start;
+  margin-bottom: 22px;
   overflow: visible;
 }
 
 .spacerMascot {
-  width: 100%;
-  max-width: 240px;
-  height: auto;
+  width: 130px;
+  height: 142px;
   flex-shrink: 0;
   object-fit: contain;
   pointer-events: none;

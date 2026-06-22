@@ -119,10 +119,10 @@ export function DashboardSidebar() {
       <div className={styles.footer}>
         <div className={styles.spacer} aria-hidden="true">
           <Image
-            src="/profile/2.webp"
+            src="/profile/dashboard-cat.png"
             alt=""
-            width={480}
-            height={540}
+            width={130}
+            height={142}
             className={styles.spacerMascot}
           />
         </div>
