@@ -78,6 +78,8 @@ type PrivilegesCardsProps = {
   compact?: boolean;
   /** Formatted price per tier title, e.g. { Silver: '20.00 EUR' }. */
   pricesByTitle?: Record<string, string>;
+  /** When set, "Add to cart" navigates here (e.g. public store or dashboard shop). */
+  addToCartHref?: string;
   /** When provided, the "Add to cart" button on each card is wired to this. */
   onAddToCart?: (title: string) => Promise<void> | void;
 };
@@ -87,6 +89,7 @@ export default function PrivilegesCards({
   viewMoreHref,
   compact = false,
   pricesByTitle,
+  addToCartHref,
   onAddToCart,
 }: PrivilegesCardsProps) {
   const [expanded, setExpanded] = useState(false);
@@ -121,7 +124,8 @@ export default function PrivilegesCards({
             icon={item.icon}
             compact={compact}
             price={pricesByTitle?.[item.title]}
-            onAdd={onAddToCart ? () => handleAdd(item.title) : undefined}
+            addHref={addToCartHref}
+            onAdd={!addToCartHref && onAddToCart ? () => handleAdd(item.title) : undefined}
             pending={pendingTitle === item.title}
             done={doneTitles.has(item.title)}
           />

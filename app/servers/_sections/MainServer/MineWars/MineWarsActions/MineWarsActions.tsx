@@ -16,7 +16,7 @@ export default function MineWarsActions({ isAuthed = false }: { isAuthed?: boole
 
       <button type="button" className={`${styles.button} ${styles.secondary}`}>
         <Image
-          src="/icons/social/twitch.png"
+          src="/icons/social/twitch.svg"
           alt=""
           width={24}
           height={24}

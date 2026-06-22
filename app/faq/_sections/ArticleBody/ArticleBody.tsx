@@ -32,10 +32,10 @@ const TOC_ITEMS = [
 const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const SOCIAL_LINKS = [
-  { icon: '/icons/social/twitch.png', alt: 'Twitch', href: 'https://twitch.tv/', size: 24 },
-  { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: '#', size: 18 },
-  { icon: '/icons/social/mingcute_youtube-fill.svg', alt: 'YouTube', href: '#', size: 24 },
-  { icon: '/icons/social/ic_twotone-tiktok.svg', alt: 'TikTok', href: '#', size: 24 },
+  { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
+  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: '#', size: 18 },
+  { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
+  { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
 ] as const;
 
 const EXAMPLE_IP = GAME_SERVERS.luckysurvival.ip;
@@ -394,7 +394,7 @@ export default function ArticleBody() {
                 desktopItems={JOIN_WHATS_NEXT.bullets.desktop}
               />
               <div className={styles.ctaGroup}>
-                <a href="https://twitch.tv/" className={styles.ctaPrimary}>
+                <a href="#" className={styles.ctaPrimary}>
                   Join Twitch
                 </a>
                 <a href="#" className={styles.ctaSecondary}>

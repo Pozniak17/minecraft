@@ -52,12 +52,12 @@ export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
               Play Now
             </Link>
             <a
-              href="https://twitch.tv/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnSecondary}
             >
-              <Image src="/icons/social/twitch.png" alt="" width={24} height={24} />
+              <Image src="/icons/social/twitch.svg" alt="" width={24} height={24} />
               <span>Join Twitch</span>
             </a>
           </div>

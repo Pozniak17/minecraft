@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { PrivilegesCardProps } from '../PrivilegesCards';
 import styles from './Card.module.css';
 
 type CardProps = PrivilegesCardProps & {
   compact?: boolean;
   price?: string;
+  addHref?: string;
   onAdd?: () => void;
   pending?: boolean;
   done?: boolean;
@@ -16,11 +18,25 @@ export default function Card({
   icon,
   compact = false,
   price,
+  addHref,
   onAdd,
   pending = false,
   done = false,
 }: CardProps) {
   const label = done ? 'Added ✓' : pending ? 'Adding…' : 'Add to cart';
+
+  const cta = (
+    <>
+      <Image
+        src="/icons/icons/arrow-up.svg"
+        alt=""
+        width={24}
+        height={24}
+        aria-hidden
+      />
+      {label}
+    </>
+  );
 
   return (
     <li className={`${styles.card} ${compact ? styles.cardCompact : ''}`}>
@@ -35,21 +51,20 @@ export default function Card({
           </div>
         )}
       </div>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={onAdd}
-        disabled={pending}
-      >
-        <Image
-          src="/icons/icons/arrow-up.svg"
-          alt=""
-          width={24}
-          height={24}
-          aria-hidden
-        />
-        {label}
-      </button>
+      {addHref ? (
+        <Link href={addHref} className={styles.button}>
+          {cta}
+        </Link>
+      ) : (
+        <button
+          type="button"
+          className={styles.button}
+          onClick={onAdd}
+          disabled={pending}
+        >
+          {cta}
+        </button>
+      )}
     </li>
   );
 }
