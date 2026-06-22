@@ -7,8 +7,10 @@ import { useLocale } from 'next-intl';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import { isAxiosError } from 'axios';
 import { getCurrencies, getProducts } from '@/lib/api/shop';
+import type { Currency } from '@/lib/api/types';
 import { addToCart, changeItemAmount, getOrderItems } from '@/lib/api/cart';
 import { crystalsToEur } from '@/lib/pricing';
+import CurrencySelect from './CurrencySelect/CurrencySelect';
 import styles from './Shop.module.css';
 
 const TABS = ['All', 'Crystals', 'Privileges'] as const;
@@ -70,6 +72,7 @@ export default function Shop() {
   const [amountInput, setAmountInput] = useState('2500');
 
   const [currency, setCurrency] = useState('EUR');
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
 
   // Мапа продуктів бекенду: title(lowercase) → id; окремо id товару «Crystals».
   const [productIdByTitle, setProductIdByTitle] = useState<Map<string, string>>(new Map());
@@ -127,7 +130,9 @@ export default function Shop() {
     getCurrencies()
       .then(list => {
         if (!active || list.length === 0) return;
-        setCurrency(list[0].abbr);
+        setCurrencies(list);
+        const eur = list.find(c => c.abbr === 'EUR');
+        setCurrency(eur ? eur.abbr : list[0].abbr);
       })
       .catch(() => {});
     return () => {
@@ -254,11 +259,7 @@ export default function Shop() {
             </p>
           </div>
 
-          <div className={styles.currency}>
-            <span className={styles.currencyLabel}>Currency:</span>
-            <span className={styles.currencyValue}>{currency}</span>
-            <span className={styles.currencyCaret} aria-hidden>▾</span>
-          </div>
+          <CurrencySelect value={currency} currencies={currencies} onChange={setCurrency} />
         </div>
 
         <div className={styles.tabs} role="tablist">
