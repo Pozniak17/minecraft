@@ -9,7 +9,10 @@ import { isAxiosError } from 'axios';
 import { getCurrencies, getProducts } from '@/lib/api/shop';
 import type { Currency } from '@/lib/api/types';
 import { addToCart, changeItemAmount, getOrderItems } from '@/lib/api/cart';
-import { buildFallbackPrivilegePrices, crystalsToEur } from '@/lib/pricing';
+import {
+  buildFallbackPrivilegePrices,
+  crystalsToCurrency,
+} from '@/lib/pricing';
 import CurrencySelect from './CurrencySelect/CurrencySelect';
 import styles from './Shop.module.css';
 
@@ -68,8 +71,15 @@ const nf = new Intl.NumberFormat('en-US');
 
 // Ціна за кількість кристалів: реальний курс бекенду (за 1 кристал), якщо відомий,
 // інакше — лінійна оцінка з lib/pricing.ts (для публічної вітрини без авторизації).
-function crystalsPrice(amount: number, pricePerCrystal: number | null): string {
-  const value = pricePerCrystal != null ? amount * pricePerCrystal : crystalsToEur(amount);
+function crystalsPrice(
+  amount: number,
+  pricePerCrystal: number | null,
+  currency: string,
+): string {
+  const value =
+    pricePerCrystal != null
+      ? amount * pricePerCrystal
+      : crystalsToCurrency(amount, currency);
   return value.toFixed(2);
 }
 
@@ -121,8 +131,8 @@ export default function Shop() {
 
   const percent = ((amount - MIN) / (MAX - MIN)) * 100;
   const price = useMemo(
-    () => crystalsPrice(amount, pricePerCrystal),
-    [amount, pricePerCrystal]
+    () => crystalsPrice(amount, pricePerCrystal, currency),
+    [amount, pricePerCrystal, currency],
   );
 
   const showCrystals = tab === 'All' || tab === 'Crystals';
@@ -205,7 +215,8 @@ export default function Shop() {
       return;
     }
     let active = true;
-    setPrivilegePrices(buildFallbackPrivilegePrices());
+    setPricePerCrystal(null);
+    setPrivilegePrices(buildFallbackPrivilegePrices(currency));
     getProducts({ priced: true, page_size: 100, currency, lang: locale })
       .then(data => {
         if (!active) return;
@@ -213,7 +224,7 @@ export default function Shop() {
         const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
         if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
 
-        const prices = buildFallbackPrivilegePrices();
+        const prices = buildFallbackPrivilegePrices(currency);
         for (const p of data.results) {
           if (p.category_slug === 'crystals' || !p.title || p.price == null) continue;
           const value = Number(p.price);
@@ -227,7 +238,7 @@ export default function Shop() {
       })
       .catch(() => {
         if (!active) return;
-        setPrivilegePrices(buildFallbackPrivilegePrices());
+        setPrivilegePrices(buildFallbackPrivilegePrices(currency));
       });
     return () => {
       active = false;
@@ -461,7 +472,7 @@ export default function Shop() {
                     </span>
                     <div className={styles.packPriceRow}>
                       <span className={styles.packPrice}>
-                        {crystalsPrice(pack.amount, pricePerCrystal)} {currency}
+                        {crystalsPrice(pack.amount, pricePerCrystal, currency)} {currency}
                       </span>
                       <button
                         type="button"

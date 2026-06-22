@@ -14,7 +14,7 @@ import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
 import CountrySelect from './CountrySelect/CountrySelect';
 import styles from './Settings.module.css';
 
-type SectionId = 'profile' | 'security' | 'notifications' | 'linked' | 'danger';
+type SectionId = 'profile' | 'security' | 'danger';
 
 type PasswordStep = 'idle' | 'form' | 'done';
 
@@ -23,83 +23,7 @@ type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
   { id: 'profile', label: 'Profile' },
   { id: 'security', label: 'Security' },
-  { id: 'notifications', label: 'Notifications' },
-  { id: 'linked', label: 'Linked accounts' },
   { id: 'danger', label: 'Danger zone', danger: true },
-];
-
-const NOTIFICATIONS = [
-  {
-    id: 'serverUpdates',
-    title: 'Server updates',
-    hintMobile: 'New patches and maintenance.',
-    hintDesktop: 'When new patches release or maintenance is scheduled.',
-    emailDefault: true,
-    pushDefault: true,
-  },
-  {
-    id: 'purchaseConfirmations',
-    title: 'Purchase confirmations',
-    hintMobile: 'Receipts and order updates.',
-    hintDesktop: 'Receipts and order updates by email.',
-    emailDefault: true,
-    pushDefault: false,
-  },
-  {
-    id: 'tournamentReminders',
-    title: 'Tournament reminders',
-    hintMobile: '24 h before start.',
-    hintDesktop: '24 h before a tournament you signed up for starts.',
-    emailDefault: false,
-    pushDefault: true,
-  },
-  {
-    id: 'marketingNews',
-    title: 'Marketing & news',
-    hintMobile: 'Weekly dispatch.',
-    hintDesktop: 'Weekly dispatch with guides, community stories, and promos.',
-    emailDefault: true,
-    pushDefault: false,
-  },
-] as const;
-
-const LINKED_ACCOUNTS = [
-  {
-    id: 'java',
-    icon: 'M',
-    name: 'Minecraft Java',
-    detailMobile: 'RedstoneKing • UUID 8d4c…',
-    detailDesktop: 'RedstoneKing • UUID 8d4c…3a91',
-    status: 'linked' as const,
-    action: 'unlink' as const,
-  },
-  {
-    id: 'bedrock',
-    icon: 'M',
-    name: 'Minecraft Bedrock',
-    detailMobile: 'Not yet connected',
-    detailDesktop: 'Not yet connected',
-    status: 'notLinked' as const,
-    action: 'link' as const,
-  },
-  {
-    id: 'discord',
-    icon: 'D',
-    name: 'Discord',
-    detailMobile: '@redstoneking#4291',
-    detailDesktop: '@redstoneking#4291',
-    status: 'linked' as const,
-    action: 'unlink' as const,
-  },
-  {
-    id: 'microsoft',
-    icon: 'M',
-    name: 'Microsoft account',
-    detailMobile: 'Linked via Minecraft',
-    detailDesktop: 'Linked via Minecraft',
-    status: 'linked' as const,
-    action: 'unlink' as const,
-  },
 ];
 
 function errorText(err: unknown, fallback: string): string {
@@ -174,14 +98,6 @@ export default function Settings() {
   const pendingSave = useRef<UserProfileUpdate>({});
 
   const [twoFactor, setTwoFactor] = useState(true);
-  const [notifications, setNotifications] = useState(() =>
-    Object.fromEntries(
-      NOTIFICATIONS.flatMap(item => [
-        [`${item.id}Email`, item.emailDefault],
-        [`${item.id}Push`, item.pushDefault],
-      ]),
-    ) as Record<string, boolean>,
-  );
 
   const [passwordStep, setPasswordStep] = useState<PasswordStep>('idle');
   const [currentPassword, setCurrentPassword] = useState('');
@@ -385,11 +301,10 @@ export default function Settings() {
           <span className={styles.eyebrow}>Settings</span>
           <h1 className={styles.title}>Account settings</h1>
           <p className={styles.subtitleMobile}>
-            Manage profile, security, and notifications. Changes save automatically.
+            Manage profile and security. Changes save automatically.
           </p>
           <p className={styles.subtitleDesktop}>
-            Manage your profile, password, notifications, and connected accounts. Changes save
-            automatically.
+            Manage your profile and password. Changes save automatically.
           </p>
         </header>
 
@@ -766,99 +681,6 @@ export default function Settings() {
                   <span className={styles.pillMobile}>Manage</span>
                   <span className={styles.pillDesktop}>Manage sessions</span>
                 </button>
-              </div>
-            </section>
-
-            <section
-              ref={node => {
-                sectionRefs.current.notifications = node;
-              }}
-              id="settings-notifications"
-              className={styles.card}
-            >
-              <h2 className={styles.cardTitleStandalone}>Notifications</h2>
-
-              {NOTIFICATIONS.map((item, index) => (
-                <div key={item.id}>
-                  {index > 0 && <hr className={styles.divider} />}
-                  <div className={styles.notifyItem}>
-                    <div className={styles.notifyCopy}>
-                      <span className={styles.rowTitle}>{item.title}</span>
-                      <span className={styles.rowHintMobile}>{item.hintMobile}</span>
-                      <span className={styles.rowHintDesktop}>{item.hintDesktop}</span>
-                    </div>
-                    <div className={styles.notifyToggles}>
-                      <div className={styles.notifyToggle}>
-                        <span className={styles.notifyChannel}>Email</span>
-                        <Toggle
-                          checked={notifications[`${item.id}Email`]}
-                          onChange={value =>
-                            setNotifications(prev => ({ ...prev, [`${item.id}Email`]: value }))
-                          }
-                          label={`${item.title} email notifications`}
-                        />
-                      </div>
-                      <div className={styles.notifyToggle}>
-                        <span className={styles.notifyChannel}>Push</span>
-                        <Toggle
-                          checked={notifications[`${item.id}Push`]}
-                          onChange={value =>
-                            setNotifications(prev => ({ ...prev, [`${item.id}Push`]: value }))
-                          }
-                          label={`${item.title} push notifications`}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </section>
-
-            <section
-              ref={node => {
-                sectionRefs.current.linked = node;
-              }}
-              id="settings-linked"
-              className={styles.card}
-            >
-              <h2 className={styles.cardTitleStandalone}>Linked accounts</h2>
-
-              <div className={styles.linkedList}>
-                {LINKED_ACCOUNTS.map(account => (
-                  <div key={account.id} className={styles.linkedRow}>
-                    <div className={styles.linkedMeta}>
-                      <span className={styles.linkedIcon} aria-hidden="true">
-                        {account.icon}
-                      </span>
-                      <div className={styles.linkedText}>
-                        <span className={styles.linkedName}>{account.name}</span>
-                        <span className={styles.linkedDetailMobile}>{account.detailMobile}</span>
-                        <span className={styles.linkedDetailDesktop}>{account.detailDesktop}</span>
-                      </div>
-                    </div>
-                    <div className={styles.linkedActions}>
-                      <span
-                        className={[
-                          styles.statusBadge,
-                          account.status === 'linked'
-                            ? styles.statusLinked
-                            : styles.statusNotLinked,
-                        ].join(' ')}
-                      >
-                        <span className={styles.statusDot} aria-hidden="true" />
-                        {account.status === 'linked' ? 'Linked' : 'Not linked'}
-                      </span>
-                      <button
-                        type="button"
-                        className={
-                          account.action === 'link' ? styles.primaryPill : styles.outlinePill
-                        }
-                      >
-                        {account.action === 'link' ? 'Link' : 'Unlink'}
-                      </button>
-                    </div>
-                  </div>
-                ))}
               </div>
             </section>
 
