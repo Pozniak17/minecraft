@@ -41,12 +41,9 @@ export default function Featured() {
             </p>
 
             <div className={styles.meta}>
-              <span className={styles.avatar}>M</span>
-              <span className={styles.author_name}>Mike Rasmus</span>
+              <span className={styles.date}>Apr 28, 2026</span>
               <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.author_date}>Apr 28, 2026</span>
-              <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.author_read}>7 min read</span>
+              <span className={styles.readTime}>7 min read</span>
             </div>
 
             <ul className={styles.button_list}>

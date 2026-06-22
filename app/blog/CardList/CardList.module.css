@@ -8,39 +8,40 @@
     gap: 16px;
 }
 
-.button {
-    margin-inline: auto;
+.pagination {
     display: flex;
-    padding: 14px 24px;
     justify-content: center;
+    padding-top: 4px;
+}
+
+.pagRow {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    align-self: stretch;
-    color: #FFF;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    background: rgba(255, 255, 255, 0.05);
+    justify-content: center;
+    gap: 6px;
 }
 
-.button:hover {
-    background: rgba(255, 255, 255, 0.1);
+.pagNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: normal;
+    cursor: default;
 }
 
-
-.arrow {
-    color: #BDE153;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+.pagNumberActive {
+    border-color: #bde153;
+    background: #bde153;
+    color: #001812;
 }
 
 @media (min-width: 1280px) {
@@ -51,16 +52,17 @@
         justify-content: space-between;
     }
 
-    .button {
-        padding: 16px 28px;
-        gap: 10px;
-        color: #FFF;
-        font-family: Montserrat;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        letter-spacing: 0.56px;
-        text-transform: uppercase;
+    .pagination {
+        padding-top: 12px;
+    }
+
+    .pagRow {
+        gap: 8px;
+    }
+
+    .pagNumber {
+        width: 40px;
+        height: 40px;
+        font-size: 13px;
     }
 }

@@ -56,6 +56,59 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+}
+
+.sortWrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sortMenu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 20;
+    min-width: 100%;
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 24, 18, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sortOption {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.sortOption:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sortOptionActive {
+    color: var(--color-primary, #bde153);
 }
 
 @media (min-width: 1280px) {

@@ -11,7 +11,6 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     title: 'Top 10 survival tips for absolute beginners',
     description:
       'Spawning in a fresh world is overwhelming. Here is the short list of things to do in your first hour.',
-    author: 'Sarah Kim',
     date: 'Apr 22, 2026',
   },
   {
@@ -21,7 +20,6 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     title: 'How to build an efficient iron farm in 2026',
     description:
       'A compact, lag-friendly design that produces ~600 ingots per hour and works on every server in our ecosystem.',
-    author: 'Alex Petrov',
     date: 'Apr 18, 2026',
   },
   {
@@ -31,7 +29,6 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     title: 'PvP loadouts that actually work on Anarchy',
     description:
       'We tested 18 builds across two weeks of small-scale fights. Four loadouts keep winning — the rest, retire.',
-    author: 'Jonas Bergman',
     date: 'Apr 15, 2026',
   },
 ];
