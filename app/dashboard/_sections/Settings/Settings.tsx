@@ -9,7 +9,9 @@ import {
   deletePhoto,
 } from '@/lib/api/profile';
 import type { UserProfileUpdate } from '@/lib/api/types';
+import { COUNTRIES } from '@/lib/data/countries';
 import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
+import CountrySelect from './CountrySelect/CountrySelect';
 import styles from './Settings.module.css';
 
 type SectionId = 'profile' | 'security' | 'notifications' | 'linked' | 'danger';
@@ -25,14 +27,6 @@ const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
   { id: 'linked', label: 'Linked accounts' },
   { id: 'danger', label: 'Danger zone', danger: true },
 ];
-
-// Ринки під валюти/мови з ТЗ: єврозона + UK, US, Canada, Australia, New Zealand
-const COUNTRIES = [
-  'United Kingdom', 'United States', 'Canada', 'Australia', 'New Zealand',
-  'Austria', 'Belgium', 'Cyprus', 'Estonia', 'Finland', 'France', 'Germany', 'Greece',
-  'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands',
-  'Portugal', 'Slovakia', 'Slovenia', 'Spain',
-] as const;
 
 const NOTIFICATIONS = [
   {
@@ -591,31 +585,16 @@ export default function Settings() {
                     <label className={styles.label} htmlFor="settings-country">
                       Country / region
                     </label>
-                    <div className={styles.selectWrap}>
-                      <select
-                        id="settings-country"
-                        className={styles.select}
-                        value={country}
-                        onChange={event => {
-                          setCountry(event.target.value);
-                          setProfile({ country: event.target.value });
-                          queueSave({ country: event.target.value });
-                        }}
-                      >
-                        <option value="">Not set</option>
-                        {country && !COUNTRIES.includes(country as (typeof COUNTRIES)[number]) && (
-                          <option value={country}>{country}</option>
-                        )}
-                        {COUNTRIES.map(option => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                      <span className={styles.selectChevron} aria-hidden="true">
-                        ▾
-                      </span>
-                    </div>
+                    <CountrySelect
+                      id="settings-country"
+                      value={country}
+                      countries={COUNTRIES}
+                      onChange={next => {
+                        setCountry(next);
+                        setProfile({ country: next });
+                        queueSave({ country: next });
+                      }}
+                    />
                     <p className={styles.helpDesktopOnly}>Used only for tax-compliant billing.</p>
                   </div>
                 </div>
