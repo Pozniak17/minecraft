@@ -22,6 +22,19 @@ const STEP = 10;
 // Жорсткий ліміт кількості за позицію на бекенді (AddToCart.amount max).
 const BACKEND_MAX_QTY = 20_000;
 
+// Ключ збереження обраної валюти між сесіями.
+const CURRENCY_STORAGE_KEY = 'shop:currency';
+const DEFAULT_CURRENCY = 'EUR';
+
+function readStoredCurrency(): string | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.localStorage.getItem(CURRENCY_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
 type CrystalPack = {
   amount: number;
   img: string;
@@ -71,8 +84,18 @@ export default function Shop() {
   // Окреме текстове значення поля — щоб дати вводити суму вручну (в одиницях кристалів).
   const [amountInput, setAmountInput] = useState('2500');
 
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
   const [currencies, setCurrencies] = useState<Currency[]>([]);
+
+  // Зміна валюти + збереження вибору між сесіями.
+  const handleCurrencyChange = useCallback((next: string) => {
+    setCurrency(next);
+    try {
+      window.localStorage.setItem(CURRENCY_STORAGE_KEY, next);
+    } catch {
+      // localStorage недоступний (приватний режим тощо) — ігноруємо.
+    }
+  }, []);
 
   // Мапа продуктів бекенду: title(lowercase) → id; окремо id товару «Crystals».
   const [productIdByTitle, setProductIdByTitle] = useState<Map<string, string>>(new Map());
@@ -131,8 +154,11 @@ export default function Shop() {
       .then(list => {
         if (!active || list.length === 0) return;
         setCurrencies(list);
-        const eur = list.find(c => c.abbr === 'EUR');
-        setCurrency(eur ? eur.abbr : list[0].abbr);
+        const stored = readStoredCurrency();
+        const preferred =
+          (stored && list.find(c => c.abbr === stored)) ||
+          list.find(c => c.abbr === DEFAULT_CURRENCY);
+        setCurrency(preferred ? preferred.abbr : list[0].abbr);
       })
       .catch(() => {});
     return () => {
@@ -259,7 +285,11 @@ export default function Shop() {
             </p>
           </div>
 
-          <CurrencySelect value={currency} currencies={currencies} onChange={setCurrency} />
+          <CurrencySelect
+            value={currency}
+            currencies={currencies}
+            onChange={handleCurrencyChange}
+          />
         </div>
 
         <div className={styles.tabs} role="tablist">
