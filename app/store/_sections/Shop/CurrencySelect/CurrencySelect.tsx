@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Currency } from '@/lib/api/types';
 import styles from './CurrencySelect.module.css';
@@ -20,6 +20,18 @@ type MenuPosition = {
 
 const MENU_GAP = 6;
 const MENU_MAX_HEIGHT = 280;
+const PRIMARY_CURRENCIES = ['EUR', 'USD'];
+
+function sortCurrencies(currencies: Currency[]): Currency[] {
+  return [...currencies].sort((a, b) => {
+    const rankA = PRIMARY_CURRENCIES.indexOf(a.abbr);
+    const rankB = PRIMARY_CURRENCIES.indexOf(b.abbr);
+    const orderA = rankA === -1 ? PRIMARY_CURRENCIES.length : rankA;
+    const orderB = rankB === -1 ? PRIMARY_CURRENCIES.length : rankB;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.abbr.localeCompare(b.abbr);
+  });
+}
 
 function getMenuPosition(trigger: HTMLElement): MenuPosition {
   const rect = trigger.getBoundingClientRect();
@@ -51,6 +63,7 @@ export default function CurrencySelect({ value, currencies, onChange }: Currency
   const menuRef = useRef<HTMLUListElement>(null);
 
   const hasOptions = currencies.length > 1;
+  const sortedCurrencies = useMemo(() => sortCurrencies(currencies), [currencies]);
 
   const updateMenuPosition = useCallback(() => {
     const trigger = triggerRef.current;
@@ -121,7 +134,7 @@ export default function CurrencySelect({ value, currencies, onChange }: Currency
               transform: menuPosition.transform,
             }}
           >
-            {currencies.map(item => (
+            {sortedCurrencies.map(item => (
               <li key={item.abbr} role="presentation">
                 <button
                   type="button"
