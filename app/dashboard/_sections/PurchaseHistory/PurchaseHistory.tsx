@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { useLocale } from 'next-intl';
 import { getOrders } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
@@ -84,6 +85,7 @@ function splitDate(date: string) {
 }
 
 export default function PurchaseHistory() {
+  const locale = useLocale();
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>('Last 90 days');
   const [periodOpen, setPeriodOpen] = useState(false);
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
@@ -109,7 +111,7 @@ export default function PurchaseHistory() {
   // Каталог товарів: даємо позиціям реальну назву та визначаємо кристали за категорією.
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100 })
+    getProducts({ page_size: 100, lang: locale })
       .then(data => {
         if (!active) return;
         const map = new Map<string, ProductMeta>();
@@ -125,7 +127,7 @@ export default function PurchaseHistory() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [locale]);
 
   const orders = useMemo(
     () => rawOrders.map(order => mapOrder(order, productMeta)),

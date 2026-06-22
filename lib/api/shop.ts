@@ -37,10 +37,14 @@ export async function getProducts(query: ProductsQuery = {}) {
   return data;
 }
 
-export async function getProduct(id: string, opts: { priced?: boolean; currency?: string } = {}) {
+export async function getProduct(
+  id: string,
+  opts: { priced?: boolean; currency?: string; lang?: string } = {}
+) {
   const params: Record<string, string | number> = {};
   if (opts.priced) params.priced = 1;
   if (opts.currency) params.currency = opts.currency;
+  if (opts.lang) params.lang = opts.lang;
 
   const client = opts.priced ? http : apiClient;
   const { data } = await client.get<Product>(`/shop/products/${id}`, { params });

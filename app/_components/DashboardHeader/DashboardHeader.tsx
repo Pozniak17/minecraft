@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { isNavLinkActive, NAV_LINKS } from '../Header/navLinks';
 import { useProfile } from '../ProfileProvider/ProfileProvider';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { DashboardNav } from './DashboardNav/DashboardNav';
 import styles from './DashboardHeader.module.css';
 
@@ -91,16 +92,19 @@ export function DashboardHeader({ balance = 0 }: DashboardHeaderProps) {
 
         <span className={styles.navDivider} aria-hidden="true" />
 
-        <button type="button" className={styles.langButton}>
-          <span>EN</span>
-          <Image
-            src="/icons/icons/fe_arrow-down.svg"
-            alt=""
-            width={15}
-            height={15}
-            className={styles.langArrow}
-          />
-        </button>
+        <LanguageSwitcher
+          className={styles.langButton}
+          menuAlign="right"
+          arrow={
+            <Image
+              src="/icons/icons/fe_arrow-down.svg"
+              alt=""
+              width={15}
+              height={15}
+              className={styles.langArrow}
+            />
+          }
+        />
       </nav>
 
       <DashboardNav

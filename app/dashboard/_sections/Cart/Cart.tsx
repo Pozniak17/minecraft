@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useLocale } from 'next-intl';
 import {
   getOrderItems,
   changeItemAmount,
@@ -101,6 +102,7 @@ function orderItemToRow(item: OrderItem, index: number): Row {
 }
 
 export default function Cart() {
+  const locale = useLocale();
   const [rows, setRows] = useState<Row[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
@@ -161,7 +163,7 @@ export default function Cart() {
   // Мапа продуктів: даємо позиціям кошика реальну назву та крок (кристали — по 10).
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100 })
+    getProducts({ page_size: 100, lang: locale })
       .then(data => {
         if (!active) return;
         const map = new Map<string, ProductMeta>();
@@ -177,7 +179,7 @@ export default function Cart() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [locale]);
 
   // Назва та крок кількості — derived з мапи продуктів (кристали продаються по 10).
   const titleFor = (row: Row) => productMeta.get(row.productId)?.title || row.title;

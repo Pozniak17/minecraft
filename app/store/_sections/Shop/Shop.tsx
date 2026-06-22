@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import { isAxiosError } from 'axios';
 import { getCurrencies, getProducts } from '@/lib/api/shop';
@@ -61,6 +62,7 @@ const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
 
 export default function Shop() {
   const pathname = usePathname();
+  const locale = useLocale();
   const isDashboard = pathname?.startsWith('/dashboard') ?? false;
   const [tab, setTab] = useState<Tab>('All');
   const [amount, setAmount] = useState(2500);
@@ -135,7 +137,7 @@ export default function Shop() {
 
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100 })
+    getProducts({ page_size: 100, lang: locale })
       .then(data => {
         if (!active) return;
         const map = new Map<string, string>();
@@ -151,14 +153,14 @@ export default function Shop() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [locale]);
 
   // У кабінеті (authed) тягнемо приватний список із цінами, щоб показувати реальний
   // курс кристалів (price за 1 кристал) — узгоджено з тим, що порахує бекенд у кошику.
   useEffect(() => {
     if (!isDashboard) return;
     let active = true;
-    getProducts({ priced: true, page_size: 100, currency })
+    getProducts({ priced: true, page_size: 100, currency, lang: locale })
       .then(data => {
         if (!active) return;
         const crystal = data.results.find(p => p.category_slug === 'crystals');
@@ -177,7 +179,7 @@ export default function Shop() {
     return () => {
       active = false;
     };
-  }, [isDashboard, currency]);
+  }, [isDashboard, currency, locale]);
 
   // amount = кількість кристалів (бекенд тарифікує за одиницю товару «Crystals»).
   const addCrystals = useCallback(

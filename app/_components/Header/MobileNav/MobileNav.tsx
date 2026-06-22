@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
 import { isNavLinkActive, LEGAL_LINKS, NAV_LINKS, SOCIAL_LINKS } from '../navLinks';
 import styles from './MobileNav.module.css';
 
@@ -165,12 +166,15 @@ export function MobileNav({
         </div>
 
         <div className={styles.bottomRow}>
-          <button type="button" className={styles.langButton}>
-            <span>EN</span>
-            <span className={styles.langArrow} aria-hidden="true">
-              ▾
-            </span>
-          </button>
+          <LanguageSwitcher
+            className={styles.langButton}
+            openUp
+            arrow={
+              <span className={styles.langArrow} aria-hidden="true">
+                ▾
+              </span>
+            }
+          />
           <span className={styles.version}>v 2.6.0</span>
         </div>
       </aside>

@@ -10,6 +10,7 @@ import { LogoutModal } from '../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../LogoutOverlay/LogoutOverlay';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../dashboardNav';
 import { isNavLinkActive } from '../Header/navLinks';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import styles from './DashboardSidebar.module.css';
 
 export function DashboardSidebar() {
@@ -150,12 +151,15 @@ export function DashboardSidebar() {
       </div>
 
       <div className={styles.bottom}>
-        <button type="button" className={styles.langButton}>
-          <span>EN</span>
-          <span className={styles.langArrow} aria-hidden="true">
-            ▾
-          </span>
-        </button>
+        <LanguageSwitcher
+          className={styles.langButton}
+          openUp
+          arrow={
+            <span className={styles.langArrow} aria-hidden="true">
+              ▾
+            </span>
+          }
+        />
         <span className={styles.version}>v 2.6.0</span>
       </div>
     </aside>

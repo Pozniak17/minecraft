@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Container } from '../Container/Container';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { MobileNav } from './MobileNav/MobileNav';
 import { isNavLinkActive, NAV_LINKS } from './navLinks';
 import styles from './Header.module.css';
@@ -87,16 +88,19 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
 
         <div className={styles.dividerDesktop} />
 
-        <button type="button" className={styles.langButton}>
-          <span>EN</span>
-          <Image
-            src="/icons/icons/fe_arrow-down.svg"
-            alt=""
-            width={15}
-            height={15}
-            className={styles.langArrow}
-          />
-        </button>
+        <LanguageSwitcher
+          className={styles.langButton}
+          menuAlign="right"
+          arrow={
+            <Image
+              src="/icons/icons/fe_arrow-down.svg"
+              alt=""
+              width={15}
+              height={15}
+              className={styles.langArrow}
+            />
+          }
+        />
 
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
       </Container>

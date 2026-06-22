@@ -9,6 +9,7 @@ import { LogoutModal } from '../../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../../LogoutOverlay/LogoutOverlay';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboardNav';
 import { isNavLinkActive, NAV_LINKS } from '../../Header/navLinks';
+import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
 import styles from './DashboardNav.module.css';
 
 type DashboardNavProps = {
@@ -192,12 +193,15 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         </div>
 
         <div className={styles.bottom}>
-          <button type="button" className={styles.langButton}>
-            <span>EN</span>
-            <span className={styles.langArrow} aria-hidden="true">
-              ▾
-            </span>
-          </button>
+          <LanguageSwitcher
+            className={styles.langButton}
+            openUp
+            arrow={
+              <span className={styles.langArrow} aria-hidden="true">
+                ▾
+              </span>
+            }
+          />
           <span className={styles.version}>v 2.6.0</span>
         </div>
       </aside>

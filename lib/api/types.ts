@@ -106,6 +106,7 @@ export interface ProductsQuery {
   category?: string;
   currency?: string;
   priced?: boolean;
+  lang?: string;
 }
 
 // ---- Cart / orders ----

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import Script from 'next/script';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import './globals.css';
 import { SiteChrome } from './_components/SiteChrome/SiteChrome';
 import { CookieConsent } from './_components/CookieConsent/CookieConsent';
@@ -29,13 +31,16 @@ export default async function RootLayout({
 }>) {
   const isAuthed = Boolean(await getRefreshToken());
   const initialProfile = isAuthed ? await getServerProfile() : null;
+  const locale = await getLocale();
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={montserrat.variable}>
-        <SiteChrome isAuthed={isAuthed} initialProfile={initialProfile}>
-          {children}
-        </SiteChrome>
+        <NextIntlClientProvider>
+          <SiteChrome isAuthed={isAuthed} initialProfile={initialProfile}>
+            {children}
+          </SiteChrome>
+        </NextIntlClientProvider>
         <CookieConsent />
         <Script
           src="https://static.minecraftsgame.com/script.js"
