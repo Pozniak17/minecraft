@@ -5,25 +5,25 @@ import { useEffect, useState } from 'react';
 import { readHasStoredAccount } from '@/lib/client/storedAccount';
 import { getDashboardPlayHref, getOpenStoreHref } from '@/lib/data/servers';
 
-type StepperAuthLinkProps = {
+type AuthAwareLinkProps = {
   isAuthed: boolean;
   intent: 'play' | 'store';
   className?: string;
   children: React.ReactNode;
 };
 
-function resolveHref(intent: StepperAuthLinkProps['intent'], isAuthed: boolean, hasAccount: boolean) {
+function resolveHref(intent: AuthAwareLinkProps['intent'], isAuthed: boolean, hasAccount: boolean) {
   return intent === 'play'
     ? getDashboardPlayHref(isAuthed, hasAccount)
     : getOpenStoreHref(isAuthed, hasAccount);
 }
 
-export default function StepperAuthLink({
+export default function AuthAwareLink({
   isAuthed,
   intent,
   className,
   children,
-}: StepperAuthLinkProps) {
+}: AuthAwareLinkProps) {
   const [href, setHref] = useState(() => resolveHref(intent, isAuthed, false));
 
   useEffect(() => {

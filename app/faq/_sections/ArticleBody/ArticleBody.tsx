@@ -16,6 +16,7 @@ import {
   JOIN_TROUBLESHOOTING,
   JOIN_WHATS_NEXT,
 } from '@/app/faq/_data/joinArticleContent';
+import { TWITCH_URL } from '@/lib/data/social';
 import styles from './ArticleBody.module.css';
 import { useFaqArticleToc } from './useFaqArticleToc';
 
@@ -33,7 +34,7 @@ const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const SOCIAL_LINKS = [
   { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
-  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: '#', size: 18 },
+  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
   { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
   { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
 ] as const;
@@ -394,7 +395,12 @@ export default function ArticleBody() {
                 desktopItems={JOIN_WHATS_NEXT.bullets.desktop}
               />
               <div className={styles.ctaGroup}>
-                <a href="#" className={styles.ctaPrimary}>
+                <a
+                  href={TWITCH_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.ctaPrimary}
+                >
                   Join Twitch
                 </a>
                 <a href="#" className={styles.ctaSecondary}>

@@ -1,5 +1,5 @@
 import { Container } from '@/app/_components/Container/Container';
-import StepperAuthLink from './StepperAuthLink';
+import AuthAwareLink from '@/app/_components/AuthAwareLink/AuthAwareLink';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -138,13 +138,13 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                   ready for an engaging experience with development, economy, and player
                   interactions!
                 </p>
-                <StepperAuthLink
+                <AuthAwareLink
                   isAuthed={isAuthed}
                   intent="play"
                   className={styles.stepperButton}
                 >
                   Start playing now
-                </StepperAuthLink>
+                </AuthAwareLink>
               </div>
               <Image src={img5} alt="" className={styles.stepperImage} />
             </li>
@@ -160,13 +160,13 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                   your personal dashboard. This account allows you to shop in our store anytime and
                   enjoy permanent privileges with your purchases.
                 </p>
-                <StepperAuthLink
+                <AuthAwareLink
                   isAuthed={isAuthed}
                   intent="store"
                   className={styles.stepperButton}
                 >
                   Open Store
-                </StepperAuthLink>
+                </AuthAwareLink>
               </div>
               <Image src={img6} alt="" className={styles.stepperImage} />
             </li>

@@ -1,8 +1,9 @@
 import { Badge } from '@/app/_components/Badge/Badge';
+import AuthAwareLink from '@/app/_components/AuthAwareLink/AuthAwareLink';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 
-export default function Hero() {
+export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
   return (
     <section className={styles.hero}>
       <Container className={styles.content}>
@@ -14,12 +15,12 @@ export default function Hero() {
         </p>
 
         <div className={styles.buttons}>
-          <button type="button" className={styles.btnPrimary}>
+          <AuthAwareLink isAuthed={isAuthed} intent="play" className={styles.btnPrimary}>
             Start Playing
-          </button>
-          <button type="button" className={styles.btnSecondary}>
+          </AuthAwareLink>
+          <AuthAwareLink isAuthed={isAuthed} intent="store" className={styles.btnSecondary}>
             Go to Store
-          </button>
+          </AuthAwareLink>
         </div>
       </Container>
     </section>

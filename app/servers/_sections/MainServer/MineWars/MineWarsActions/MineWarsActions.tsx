@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPlayNowHref } from '@/lib/data/servers';
+import { TWITCH_URL } from '@/lib/data/social';
 import styles from './MineWarsActions.module.css';
 
 export default function MineWarsActions({ isAuthed = false }: { isAuthed?: boolean }) {
@@ -14,7 +15,12 @@ export default function MineWarsActions({ isAuthed = false }: { isAuthed?: boole
         Play Now
       </Link>
 
-      <button type="button" className={`${styles.button} ${styles.secondary}`}>
+      <a
+        href={TWITCH_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${styles.button} ${styles.secondary}`}
+      >
         <Image
           src="/icons/social/twitch.svg"
           alt=""
@@ -23,7 +29,7 @@ export default function MineWarsActions({ isAuthed = false }: { isAuthed?: boole
           className={styles.discordIcon}
         />
         Join Twitch
-      </button>
+      </a>
     </section>
   );
 }

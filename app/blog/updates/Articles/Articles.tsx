@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
+import { TWITCH_URL } from '@/lib/data/social';
 import styles from './Articles.module.css';
 import { useArticleToc } from './useArticleToc';
 
@@ -21,7 +22,7 @@ const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const SOCIAL_LINKS = [
   { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
-  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: '#', size: 18 },
+  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
   { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
   { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
 ] as const;

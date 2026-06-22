@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getDashboardPlayHref } from '@/lib/data/servers';
+import { TWITCH_URL } from '@/lib/data/social';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import styles from './Hero.module.css';
@@ -52,7 +53,7 @@ export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
               Play Now
             </Link>
             <a
-              href="#"
+              href={TWITCH_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnSecondary}

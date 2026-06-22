@@ -37,22 +37,9 @@ export default function Hero() {
             </p>
 
             <div className={styles.meta}>
-              <span className={styles.avatar}>M</span>
-              <div className={styles.authorCol}>
-                <span className={styles.author_name}>Mike Rasmus</span>
-                <span className={styles.author_role}>Lead Server Engineer</span>
-              </div>
+              <span className={styles.date}>Apr 28, 2026</span>
               <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.author_date}>Apr 28, 2026</span>
-              <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.author_read}>7 min read</span>
-              <span className={styles.liveGroup}>
-                <span className={styles.divider} aria-hidden="true" />
-                <span className={styles.liveBadge}>
-                  <span className={styles.liveDot} aria-hidden="true" />
-                  Live now
-                </span>
-              </span>
+              <span className={styles.readTime}>7 min read</span>
             </div>
           </div>
 

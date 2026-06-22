@@ -1,4 +1,5 @@
 import { Container } from '@/app/_components/Container/Container';
+import { TWITCH_URL } from '@/lib/data/social';
 import styles from './FaqCta.module.css';
 
 export default function FaqCta() {
@@ -25,9 +26,14 @@ export default function FaqCta() {
               <button type="button" className={styles.secondaryButton}>
                 Send a ticket
               </button>
-              <button type="button" className={styles.secondaryButton}>
+              <a
+                href={TWITCH_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.secondaryButton}
+              >
                 Join Twitch
-              </button>
+              </a>
             </div>
           </div>
 

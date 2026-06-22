@@ -11,7 +11,6 @@ const STATS = [
   { value: '120+', label: 'questions' },
   { value: '8', label: 'categories' },
   { value: '< 4h', label: 'avg reply' },
-  { value: '24/7', label: 'support', labelDesktop: 'live support' },
 ] as const;
 
 export default function Hero() {
@@ -59,16 +58,7 @@ export default function Hero() {
             {STATS.map(stat => (
               <div key={stat.label} className={styles.stat}>
                 <span className={styles.statValue}>{stat.value}</span>
-                <span className={styles.statLabel}>
-                  {'labelDesktop' in stat ? (
-                    <>
-                      <span className={styles.statLabelMobile}>{stat.label}</span>
-                      <span className={styles.statLabelDesktop}>{stat.labelDesktop}</span>
-                    </>
-                  ) : (
-                    stat.label
-                  )}
-                </span>
+                <span className={styles.statLabel}>{stat.label}</span>
               </div>
             ))}
           </div>
