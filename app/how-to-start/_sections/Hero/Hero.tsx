@@ -1,5 +1,5 @@
 import { Container } from '@/app/_components/Container/Container';
-import { getDashboardPlayHref, getOpenStoreHref } from '@/lib/data/servers';
+import StepperAuthLink from './StepperAuthLink';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,8 +12,6 @@ import img5 from '@/public/how-to-start/5.webp';
 import img6 from '@/public/how-to-start/6.webp';
 
 export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
-  const playHref = getDashboardPlayHref(isAuthed);
-  const openStoreHref = getOpenStoreHref(isAuthed);
   return (
     <>
       <section className={styles.hero}>
@@ -140,9 +138,13 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                   ready for an engaging experience with development, economy, and player
                   interactions!
                 </p>
-                <Link href={playHref} className={styles.stepperButton}>
+                <StepperAuthLink
+                  isAuthed={isAuthed}
+                  intent="play"
+                  className={styles.stepperButton}
+                >
                   Start playing now
-                </Link>
+                </StepperAuthLink>
               </div>
               <Image src={img5} alt="" className={styles.stepperImage} />
             </li>
@@ -158,9 +160,13 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                   your personal dashboard. This account allows you to shop in our store anytime and
                   enjoy permanent privileges with your purchases.
                 </p>
-                <Link href={openStoreHref} className={styles.stepperButton}>
+                <StepperAuthLink
+                  isAuthed={isAuthed}
+                  intent="store"
+                  className={styles.stepperButton}
+                >
                   Open Store
-                </Link>
+                </StepperAuthLink>
               </div>
               <Image src={img6} alt="" className={styles.stepperImage} />
             </li>
