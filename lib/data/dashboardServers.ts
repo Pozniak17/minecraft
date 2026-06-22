@@ -58,8 +58,8 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     uptime: '99.9%',
     ip: GAME_SERVERS.luckysurvival.ip,
     version: 'Java • 1.12–1.19',
-    joinLabel: 'Join',
-    joinLabelDesktop: 'Join server',
+    joinLabel: 'Copy IP',
+    joinLabelDesktop: 'Copy IP',
     aboutText:
       'LuckySurvival is vanilla survival with PvP enabled and TNT disabled. Fair fights, balanced economy, and long-term progression for chill and competitive players alike.',
     aboutTextDesktop:
@@ -112,8 +112,8 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     uptime: '99.8%',
     ip: GAME_SERVERS.minewars.ip,
     version: 'Java • 1.12–1.19',
-    joinLabel: 'Join',
-    joinLabelDesktop: 'Join server',
+    joinLabel: 'Copy IP',
+    joinLabelDesktop: 'Copy IP',
     aboutText:
       'MineWars is vanilla survival with PvP and TNT enabled. Ranked matches, tournaments, and team warfare — every battle counts.',
     aboutTextDesktop:
@@ -167,8 +167,8 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     uptime: '99.7%',
     ip: GAME_SERVERS.calmsky.ip,
     version: 'Java • 1.12–1.19',
-    joinLabel: 'Join',
-    joinLabelDesktop: 'Join server',
+    joinLabel: 'Copy IP',
+    joinLabelDesktop: 'Copy IP',
     aboutText:
       'CalmSky is vanilla survival without PvP or TNT. Claim your plot, join build contests, and share creations with a supportive community.',
     aboutTextDesktop:

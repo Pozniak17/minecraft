@@ -166,17 +166,11 @@ export default function ServerDetail({ server }: ServerDetailProps) {
             </div>
             <div className={styles.ipRow}>
               <p className={styles.ipAddress}>{server.ip}</p>
-              <button type="button" className={styles.copyBtn} onClick={handleCopy}>
-                {copied ? 'Copied' : 'Copy'}
-              </button>
             </div>
           </div>
 
-          <button
-            type="button"
-            className={`${styles.join} ${!isOnline ? styles.joinMuted : ''}`}
-          >
-            {server.joinLabelDesktop}
+          <button type="button" className={styles.join} onClick={handleCopy}>
+            {copied ? 'Copied' : server.joinLabelDesktop}
           </button>
         </div>
       </div>
