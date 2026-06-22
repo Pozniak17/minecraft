@@ -1,21 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { NAV_LINKS, SOCIAL_LINKS } from '../Header/navLinks';
 import styles from './Footer.module.css';
 import { Container } from '../Container/Container';
 
-const SOCIAL_LINKS = [
-  { icon: '/icons/social/twitch.png', alt: 'Twitch', href: 'https://twitch.tv/', size: 24 },
-  { icon: '/icons/social/prime_twitter.svg', alt: 'Twitter', href: '#', size: 18 },
-  { icon: '/icons/social/mingcute_youtube-fill.svg', alt: 'YouTube', href: '#', size: 24 },
-  { icon: '/icons/social/ic_twotone-tiktok.svg', alt: 'TikTok', href: '#', size: 24 },
-];
-
-const MAIN_LINKS = [
-  { label: 'Store', href: '/store' },
-  { label: 'Rules', href: '/rules' },
-  { label: 'About', href: '/about' },
-  { label: 'Contacts', href: '/contacts' },
-];
+const MAIN_LINKS = NAV_LINKS.filter(
+  link => link.href !== '/' && link.href !== '/how-to-start' && link.href !== '/faq',
+).map(link => ({
+  label: link.drawerLabel,
+  href: link.href,
+}));
 
 const SUPPORT_LINKS = [
   { label: 'How to Start Playing', href: '/how-to-start' },

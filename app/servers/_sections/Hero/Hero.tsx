@@ -44,8 +44,7 @@ export default function Hero() {
               height={8}
               className={styles.badgeSecondDot}
             />
-            All servers online&nbsp;&nbsp;•&nbsp;&nbsp;1,247 players
-            <span className={styles.badgeSecondActive}>&nbsp;active</span>
+            All servers online&nbsp;&nbsp;•&nbsp;&nbsp;Join the adventure
           </div>
         </div>
       </Container>

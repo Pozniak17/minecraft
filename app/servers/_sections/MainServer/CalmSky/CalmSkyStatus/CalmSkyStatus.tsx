@@ -14,7 +14,7 @@ export default function CalmSkyStatus() {
       labelDesktop: 'Players Online',
     },
     { value: '71%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-    { value: '~15ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
+    { value: '24/7', labelMobile: 'Availability', labelDesktop: 'Availability' },
   ];
 
   return (

@@ -23,7 +23,7 @@ export default async function Home() {
       <Rate />
       <CommunityTrust />
       <Questions />
-      <StartAdventure />
+      <StartAdventure isAuthed={isAuthed} />
     </>
   );
 }

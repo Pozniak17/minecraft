@@ -16,7 +16,7 @@ export default function LuckyStatus() {
       labelDesktop: 'Players Online',
     },
     { value: '89%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-    { value: '~12ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
+    { value: '24/7', labelMobile: 'Availability', labelDesktop: 'Availability' },
   ];
 
   return (

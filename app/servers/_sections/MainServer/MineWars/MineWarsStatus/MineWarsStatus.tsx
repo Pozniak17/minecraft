@@ -14,7 +14,7 @@ export default function MineWarsStatus() {
       labelDesktop: 'Players Online',
     },
     { value: '94%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-    { value: '~8ms', labelMobile: 'Ping', labelDesktop: 'Ping' },
+    { value: '24/7', labelMobile: 'Availability', labelDesktop: 'Availability' },
   ];
 
   return (
