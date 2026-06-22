@@ -161,9 +161,7 @@ export default function Settings() {
   const [displayName, setDisplayName] = useState('');
   const [nickname, setNickname] = useState('');
   const [country, setCountry] = useState('');
-  const [bio, setBio] = useState(
-    'Redstone tinkerer since 2022. Mostly Skyblock. Always down to help new players.',
-  );
+  const [bio, setBio] = useState('');
   const [activeSection, setActiveSection] = useState<SectionId>('profile');
 
   const [photoBusy, setPhotoBusy] = useState(false);
@@ -199,6 +197,7 @@ export default function Settings() {
     setDisplayName(profile.username ?? '');
     setNickname(profile.game_username ?? '');
     setCountry(profile.country ?? '');
+    setBio(profile.bio ?? '');
   }, [profile]);
 
   useEffect(() => {
@@ -610,7 +609,12 @@ export default function Settings() {
                     className={styles.textarea}
                     value={bio}
                     maxLength={240}
-                    onChange={event => setBio(event.target.value)}
+                    onChange={event => {
+                      const next = event.target.value;
+                      setBio(next);
+                      setProfile({ bio: next });
+                      queueSave({ bio: next });
+                    }}
                   />
                   <div className={styles.textareaFoot}>
                     <span className={styles.markdownMobile}>Markdown</span>

@@ -46,6 +46,7 @@ export interface UserProfile {
   username: string | null;
   game_username: string | null;
   country: string | null;
+  bio?: string | null;
   has_profile_photo: string | boolean;
 }
 
@@ -53,6 +54,7 @@ export interface UserProfileUpdate {
   username?: string | null;
   game_username?: string | null;
   country?: string | null;
+  bio?: string | null;
 }
 
 export interface AuthenticatedChangePasswordInput {

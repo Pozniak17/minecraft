@@ -11,6 +11,7 @@ export async function PATCH(req: NextRequest) {
     if (body.username !== undefined) payload.username = body.username;
     if (body.game_username !== undefined) payload.game_username = body.game_username;
     if (body.country !== undefined) payload.country = body.country;
+    if (body.bio !== undefined) payload.bio = body.bio;
 
     const data = await withAuth(async token => {
       const res = await backend.patch('/user/profile/update/', payload, backendAuth(token));
