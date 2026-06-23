@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 import { filterFaqArticles } from '@/app/faq/_data/faqArticles';
-import { DEFAULT_FAQ_CATEGORY, type FaqCategoryId } from './faqCategories';
+import { DEFAULT_FAQ_CATEGORY, FAQ_DEFAULT_ITEMS_PER_PAGE, type FaqCategoryId, type FaqPageSize } from './faqCategories';
 
 type FaqPageContextValue = {
   activeCategory: FaqCategoryId;
@@ -13,6 +13,8 @@ type FaqPageContextValue = {
   applySearch: () => void;
   clearSearch: () => void;
   resultCount: number;
+  itemsPerPage: FaqPageSize;
+  setItemsPerPage: (size: FaqPageSize) => void;
 };
 
 const FaqPageContext = createContext<FaqPageContextValue | null>(null);
@@ -21,6 +23,7 @@ export function FaqPageProvider({ children }: { children: ReactNode }) {
   const [activeCategory, setActiveCategory] = useState<FaqCategoryId>(DEFAULT_FAQ_CATEGORY);
   const [searchInput, setSearchInput] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState<FaqPageSize>(FAQ_DEFAULT_ITEMS_PER_PAGE);
 
   const resultCount = useMemo(
     () => filterFaqArticles(activeCategory, searchQuery).length,
@@ -54,6 +57,8 @@ export function FaqPageProvider({ children }: { children: ReactNode }) {
       applySearch,
       clearSearch,
       resultCount,
+      itemsPerPage,
+      setItemsPerPage,
     }),
     [
       activeCategory,
@@ -63,6 +68,7 @@ export function FaqPageProvider({ children }: { children: ReactNode }) {
       applySearch,
       clearSearch,
       resultCount,
+      itemsPerPage,
     ],
   );
 

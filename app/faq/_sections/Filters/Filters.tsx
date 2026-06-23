@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 import { filterFaqArticles } from '@/app/faq/_data/faqArticles';
 import styles from './Filters.module.css';
 import {
-  FAQ_ITEMS_PER_PAGE,
   FAQ_MOBILE_CHIP_IDS,
   getCategoryById,
   type FaqCategoryId,
@@ -20,7 +19,7 @@ type FiltersProps = {
 
 export default function Filters({ activeCategory, onCategoryChange }: FiltersProps) {
   const active = getCategoryById(activeCategory);
-  const { searchQuery, clearSearch } = useFaqPage();
+  const { searchQuery, clearSearch, itemsPerPage } = useFaqPage();
   const selectedLabel = active.id === 'all' ? 'All categories' : active.mobileLabel;
   const trimmedQuery = searchQuery.trim();
 
@@ -28,7 +27,7 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
     () => filterFaqArticles(activeCategory, searchQuery).length,
     [activeCategory, searchQuery],
   );
-  const visibleEnd = totalInCategory === 0 ? 0 : Math.min(FAQ_ITEMS_PER_PAGE, totalInCategory);
+  const visibleEnd = totalInCategory === 0 ? 0 : Math.min(itemsPerPage, totalInCategory);
 
   return (
     <div className={styles.filters}>

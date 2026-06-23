@@ -54,7 +54,14 @@ export const FAQ_MOBILE_CHIP_IDS: FaqCategoryId[] = [
   'gameplay',
 ];
 
-export const FAQ_ITEMS_PER_PAGE = 5;
+export const FAQ_DEFAULT_ITEMS_PER_PAGE = 5;
+
+export const FAQ_PAGE_SIZE_OPTIONS = [5, 10, 15] as const;
+
+export type FaqPageSize = (typeof FAQ_PAGE_SIZE_OPTIONS)[number];
+
+/** @deprecated Use FAQ_DEFAULT_ITEMS_PER_PAGE */
+export const FAQ_ITEMS_PER_PAGE = FAQ_DEFAULT_ITEMS_PER_PAGE;
 
 export function getCategoryById(id: FaqCategoryId): FaqCategory {
   return FAQ_CATEGORIES.find(category => category.id === id) ?? FAQ_CATEGORIES[0];
