@@ -10,7 +10,7 @@ export default function ArticlePage({ post }: { post: BlogPostFull }) {
   return (
     <>
       <Hero {...post} />
-      <ArticleBody lead={post.lead} sections={post.sections} sidebarTags={post.sidebarTags} />
+      <ArticleBody title={post.title} lead={post.lead} sections={post.sections} sidebarTags={post.sidebarTags} />
       <Related articles={relatedMobile} desktopArticles={relatedDesktop} />
     </>
   );

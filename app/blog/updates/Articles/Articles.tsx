@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
-import { TWITCH_URL } from '@/lib/data/social';
+import ArticleShareLinks from '@/app/blog/_components/ArticleShareLinks/ArticleShareLinks';
 import styles from './Articles.module.css';
 import { useArticleToc } from './useArticleToc';
 
@@ -20,12 +20,8 @@ const TOC_ITEMS = [
 
 const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
-const SOCIAL_LINKS = [
-  { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
-  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
-  { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
-  { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
-] as const;
+const ARTICLE_SHARE_TITLE =
+  'Server Update 2.6 — new Skyblock mechanics, custom crafts, and the biggest patch of the season';
 
 const TAGS = ['Updates', 'Skyblock', 'Economy', 'Tournaments'] as const;
 
@@ -216,25 +212,6 @@ function Callout({
   );
 }
 
-function ShareLinks({ className }: { className?: string }) {
-  return (
-    <div className={className}>
-      {SOCIAL_LINKS.map(link => (
-        <a
-          key={link.alt}
-          href={link.href}
-          className={styles.shareLink}
-          aria-label={link.alt}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={link.icon} alt="" width={link.size} height={link.size} />
-        </a>
-      ))}
-    </div>
-  );
-}
-
 export default function Articles() {
   const { activeId, readingProgress, setActiveId } = useArticleToc(SECTION_IDS);
 
@@ -300,7 +277,11 @@ export default function Articles() {
 
             <div className={styles.shareCard}>
               <p className={styles.shareCardTitle}>Share this article</p>
-              <ShareLinks className={styles.shareCardLinks} />
+              <ArticleShareLinks
+                title={ARTICLE_SHARE_TITLE}
+                className={styles.shareCardLinks}
+                linkClassName={styles.shareLink}
+              />
             </div>
 
             <div className={styles.tagsCard}>
@@ -318,7 +299,11 @@ export default function Articles() {
           <div className={styles.main}>
             <div className={styles.shareRow}>
               <span className={styles.shareLabel}>Share:</span>
-              <ShareLinks className={styles.shareRowLinks} />
+              <ArticleShareLinks
+                title={ARTICLE_SHARE_TITLE}
+                className={styles.shareRowLinks}
+                linkClassName={styles.shareLink}
+              />
             </div>
 
             <p className={`${styles.lead} ${styles.mobileOnly}`}>
@@ -529,10 +514,7 @@ export default function Articles() {
                 Thanks, as always, for being part of the ecosystem. See you on the islands.
               </p>
               <div className={styles.cta}>
-                <button type="button" className={styles.ctaPrimary}>
-                  Subscribe to updates
-                </button>
-                <Link href="/blog" className={styles.ctaSecondary}>
+                <Link href="/blog" className={styles.ctaPrimary}>
                   Browse all updates
                 </Link>
               </div>

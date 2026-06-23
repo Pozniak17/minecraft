@@ -3,7 +3,7 @@ import styles from './Support.module.css';
 
 export default function Support() {
   return (
-    <section className={styles.support}>
+    <section id="contacts" className={styles.support}>
       <Container variant="faq">
         <div className={styles.content}>
           <div className={styles.card}>

@@ -1,5 +1,5 @@
 import { FAQ_ARTICLES, getCategoryCounts } from '../_data/faqArticles';
-import type { FaqCategoryId } from '../_data/faqTypes';
+import type { FaqCategoryId, FaqSortOption } from '../_data/faqTypes';
 
 export type { FaqCategoryId } from '../_data/faqTypes';
 
@@ -60,8 +60,41 @@ export const FAQ_PAGE_SIZE_OPTIONS = [5, 10, 15] as const;
 
 export type FaqPageSize = (typeof FAQ_PAGE_SIZE_OPTIONS)[number];
 
+export const FAQ_SORT_OPTIONS = [
+  { id: 'all', label: 'All' },
+  { id: 'most-helpful', label: 'Most helpful' },
+  { id: 'latest', label: 'Latest' },
+] as const satisfies ReadonlyArray<{ id: FaqSortOption; label: string }>;
+
+export type { FaqSortOption };
+
+export const FAQ_DEFAULT_SORT: FaqSortOption = 'most-helpful';
+
+export function getFaqSortLabel(sort: FaqSortOption): string {
+  return FAQ_SORT_OPTIONS.find(option => option.id === sort)?.label ?? 'All';
+}
+
 /** @deprecated Use FAQ_DEFAULT_ITEMS_PER_PAGE */
 export const FAQ_ITEMS_PER_PAGE = FAQ_DEFAULT_ITEMS_PER_PAGE;
+
+export const FAQ_HERO_TOPIC_IDS = [
+  'getting-started',
+  'account',
+  'payments',
+  'servers',
+  'privileges',
+  'gameplay',
+  'technical',
+  'rules',
+] as const satisfies readonly Exclude<FaqCategoryId, 'all'>[];
+
+export function getHeroTopicLabel(id: (typeof FAQ_HERO_TOPIC_IDS)[number]): string {
+  const category = getCategoryById(id);
+  if (id === 'servers' || id === 'rules') {
+    return category.mobileLabel;
+  }
+  return category.label;
+}
 
 export function getCategoryById(id: FaqCategoryId): FaqCategory {
   return FAQ_CATEGORIES.find(category => category.id === id) ?? FAQ_CATEGORIES[0];

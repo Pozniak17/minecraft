@@ -339,7 +339,7 @@ export default function Cart() {
       </header>
 
       <div className={styles.body}>
-        <div className={styles.main}>
+        <div className={styles.mainPrimary}>
           <section className={styles.panel} aria-labelledby="cart-items-heading">
             <h2 id="cart-items-heading" className={styles.panelLabel}>
               <span className={styles.panelLabelMobile}>Items</span>
@@ -462,33 +462,49 @@ export default function Cart() {
               We will deliver privileges and crystals to this nickname on the selected server.
             </p>
           </section>
-
-          <section className={styles.promoPanel} aria-labelledby="promo-heading">
-            <span className={styles.promoIcon} aria-hidden>
-              🎟
-            </span>
-            <div className={styles.promoCopy}>
-              <h2 id="promo-heading" className={styles.promoTitle}>
-                <span className={styles.promoTitleMobile}>Promo code</span>
-                <span className={styles.promoTitleDesktop}>Have a promo code?</span>
-              </h2>
-              <p className={styles.promoHint}>Apply a discount before checkout.</p>
-            </div>
-            <div className={styles.promoRow}>
-              <input
-                className={styles.promoInput}
-                placeholder="Enter code"
-                value={promoCode}
-                onChange={e => setPromoCode(e.target.value)}
-              />
-              <button type="button" className={styles.promoApply}>
-                Apply
-              </button>
-            </div>
-          </section>
         </div>
 
-        <aside className={styles.sidebar}>{summaryBlock}</aside>
+        {summaryBlock}
+
+        <section className={styles.promoPanel} aria-labelledby="promo-heading">
+          <span className={styles.promoIcon} aria-hidden>
+            🎟
+          </span>
+          <div className={styles.promoCopy}>
+            <h2 id="promo-heading" className={styles.promoTitle}>
+              <span className={styles.promoTitleMobile}>Promo code</span>
+              <span className={styles.promoTitleDesktop}>Have a promo code?</span>
+            </h2>
+            <p className={styles.promoHint}>Apply a discount before checkout.</p>
+          </div>
+          <div className={styles.promoRow}>
+            <input
+              className={styles.promoInput}
+              placeholder="Enter code"
+              value={promoCode}
+              onChange={e => setPromoCode(e.target.value)}
+            />
+            <button type="button" className={styles.promoApply}>
+              Apply
+            </button>
+          </div>
+        </section>
+
+        <aside className={styles.importantNotice} aria-label="Important delivery notice">
+          <div className={styles.importantHead}>
+            <span className={styles.importantIcon} aria-hidden="true">
+              ⚠
+            </span>
+            <p className={styles.importantTitle}>Important</p>
+          </div>
+          <p className={styles.importantText}>
+            You must be on the selected server{' '}
+            <span className={styles.importantHighlight}>at the moment of purchase.</span>
+          </p>
+          <p className={styles.importantText}>
+            Delivery of items is only possible if you are online on the server.
+          </p>
+        </aside>
       </div>
       </div>
     </div>

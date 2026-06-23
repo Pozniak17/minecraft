@@ -3,17 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
-import { TWITCH_URL } from '@/lib/data/social';
+import ArticleShareLinks from '@/app/blog/_components/ArticleShareLinks/ArticleShareLinks';
 import type { ArticleBlock, ArticleSection, BlogPostFull, ResponsiveText } from '../types';
 import styles from './Articles.module.css';
 import { useArticleToc } from './useArticleToc';
-
-const SOCIAL_LINKS = [
-  { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
-  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
-  { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
-  { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
-] as const;
 
 function ResponsiveParagraph({ text, className }: { text: ResponsiveText; className: string }) {
   return (
@@ -131,25 +124,6 @@ function Callout({
   );
 }
 
-function ShareLinks({ className }: { className?: string }) {
-  return (
-    <div className={className}>
-      {SOCIAL_LINKS.map(link => (
-        <a
-          key={link.alt}
-          href={link.href}
-          className={styles.shareLink}
-          aria-label={link.alt}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={link.icon} alt="" width={link.size} height={link.size} />
-        </a>
-      ))}
-    </div>
-  );
-}
-
 function ArticleBlockRenderer({ block }: { block: ArticleBlock }) {
   switch (block.type) {
     case 'paragraph':
@@ -213,9 +187,9 @@ function ArticleSectionRenderer({
   );
 }
 
-type ArticleBodyProps = Pick<BlogPostFull, 'lead' | 'sections' | 'sidebarTags'>;
+type ArticleBodyProps = Pick<BlogPostFull, 'title' | 'lead' | 'sections' | 'sidebarTags'>;
 
-export default function ArticleBody({ lead, sections, sidebarTags }: ArticleBodyProps) {
+export default function ArticleBody({ title, lead, sections, sidebarTags }: ArticleBodyProps) {
   const tocItems = sections.map(section => ({ id: section.id, label: section.tocLabel }));
   const sectionIds = tocItems.map(item => item.id);
   const { activeId, readingProgress, setActiveId } = useArticleToc(sectionIds);
@@ -279,7 +253,11 @@ export default function ArticleBody({ lead, sections, sidebarTags }: ArticleBody
 
             <div className={styles.shareCard}>
               <p className={styles.shareCardTitle}>Share this article</p>
-              <ShareLinks className={styles.shareCardLinks} />
+              <ArticleShareLinks
+                title={title}
+                className={styles.shareCardLinks}
+                linkClassName={styles.shareLink}
+              />
             </div>
 
             <div className={styles.tagsCard}>
@@ -297,7 +275,11 @@ export default function ArticleBody({ lead, sections, sidebarTags }: ArticleBody
           <div className={styles.main}>
             <div className={styles.shareRow}>
               <span className={styles.shareLabel}>Share:</span>
-              <ShareLinks className={styles.shareRowLinks} />
+              <ArticleShareLinks
+                title={title}
+                className={styles.shareRowLinks}
+                linkClassName={styles.shareLink}
+              />
             </div>
 
             <ResponsiveParagraph text={lead} className={styles.lead} />

@@ -1,3 +1,4 @@
+import { TOP_RATED_PLAYERS } from '@/lib/data/topRatedPlayers';
 import Card from './Card/Card';
 import styles from './CardList.module.css';
 
@@ -7,35 +8,13 @@ export interface CardProps {
   value: string;
 }
 
-const CARDS: CardProps[] = [
-  {
-    title: 'RedstoneKing',
-    value: '12,840',
-  },
-  {
-    title: 'PixelHunter',
-    value: '11,205',
-  },
-  {
-    title: 'EnderQueen',
-    value: '9,870',
-  },
-
-  {
-    title: 'BlockNinja',
-    value: '8,440',
-  },
-  {
-    title: 'LavaWalker',
-    value: '7,520',
-  },
-];
+const LEADERBOARD_PREVIEW_COUNT = 5;
 
 export default function CardList() {
   return (
     <ul className={styles.list}>
-      {CARDS.map(({ title, value }, index) => (
-        <Card key={index} number={index + 1} title={title} value={value} />
+      {TOP_RATED_PLAYERS.slice(0, LEADERBOARD_PREVIEW_COUNT).map(({ rank, player, active_score }) => (
+        <Card key={player} number={rank} title={player} value={active_score} />
       ))}
     </ul>
   );

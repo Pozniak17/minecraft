@@ -354,6 +354,8 @@
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    color: inherit;
   }
 
   .desktopSortLabel {
@@ -380,10 +382,57 @@
     font-size: 16px;
     font-weight: 800;
     line-height: normal;
+    transition: transform 0.2s ease;
   }
 
   .desktopSort:hover {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  .sortWrap {
+    position: relative;
+  }
+
+  .sortMenu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 5;
+    min-width: 168px;
+    padding: 6px;
+    list-style: none;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #001812;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  .sortOption {
+    display: flex;
+    width: 100%;
+    padding: 10px 12px;
+    justify-content: flex-start;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    background: transparent;
+  }
+
+  .sortOption:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .sortOptionActive {
+    color: #bde153;
+    background: rgba(189, 225, 83, 0.12);
+  }
+
+  .sortChevronOpen {
+    transform: rotate(180deg);
   }
 
   .list {

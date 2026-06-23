@@ -1,4 +1,4 @@
-import type { FaqArticleCategoryId, FaqCategoryId } from './faqTypes';
+import type { FaqArticleCategoryId, FaqCategoryId, FaqSortOption } from './faqTypes';
 
 export type FaqArticleMeta = {
   slug: string;
@@ -583,6 +583,51 @@ export function filterFaqArticles(categoryId: FaqCategoryId, searchQuery: string
   }
 
   return byCategory.filter(article => matchesFaqSearch(article, normalized));
+}
+
+const MONTH_INDEX: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function getUpdatedTimestamp(updated: string): number {
+  const [month, day] = updated.split(' ');
+  const monthIndex = MONTH_INDEX[month] ?? 0;
+  const dayNumber = Number.parseInt(day ?? '1', 10);
+
+  return new Date(2026, monthIndex, Number.isNaN(dayNumber) ? 1 : dayNumber).getTime();
+}
+
+export function sortFaqArticles(articles: FaqArticleMeta[], sort: FaqSortOption): FaqArticleMeta[] {
+  if (sort === 'all') {
+    return articles;
+  }
+
+  const sorted = [...articles];
+
+  if (sort === 'most-helpful') {
+    return sorted.sort(
+      (a, b) =>
+        b.helpfulPercent - a.helpfulPercent ||
+        a.listId.localeCompare(b.listId, undefined, { numeric: true }),
+    );
+  }
+
+  return sorted.sort(
+    (a, b) =>
+      getUpdatedTimestamp(b.updated) - getUpdatedTimestamp(a.updated) ||
+      a.listId.localeCompare(b.listId, undefined, { numeric: true }),
+  );
 }
 
 export const FAQ_TOTAL_COUNT = FAQ_ARTICLES.length;

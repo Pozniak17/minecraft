@@ -208,6 +208,7 @@
   .primaryButton {
     background: #bde153;
     color: #001812;
+    text-decoration: none;
   }
 
   .primaryButton:hover {

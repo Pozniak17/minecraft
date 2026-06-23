@@ -9,8 +9,7 @@ import {
   type FaqCategoryId,
 } from '../faqCategories';
 import { useFaqPage } from '../FaqPageContext';
-
-const SORT_LABEL = 'Most helpful';
+import FaqSortSelect from '../FaqList/FaqSortSelect';
 
 type FiltersProps = {
   activeCategory: FaqCategoryId;
@@ -19,7 +18,7 @@ type FiltersProps = {
 
 export default function Filters({ activeCategory, onCategoryChange }: FiltersProps) {
   const active = getCategoryById(activeCategory);
-  const { searchQuery, clearSearch, itemsPerPage } = useFaqPage();
+  const { searchQuery, clearSearch, itemsPerPage, sortOption, setSortOption } = useFaqPage();
   const selectedLabel = active.id === 'all' ? 'All categories' : active.mobileLabel;
   const trimmedQuery = searchQuery.trim();
 
@@ -84,12 +83,7 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
               Clear
             </button>
           ) : (
-            <button type="button" className={styles.sort}>
-              <span>{SORT_LABEL}</span>
-              <span className={styles.chevron} aria-hidden="true">
-                ▾
-              </span>
-            </button>
+            <FaqSortSelect value={sortOption} onChange={setSortOption} variant="mobile" />
           )}
         </div>
       </div>

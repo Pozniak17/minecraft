@@ -180,6 +180,12 @@
   transition: background 0.2s ease;
 }
 
+button.shareLink {
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
 .shareLink:hover {
   background: rgba(255, 255, 255, 0.1);
 }

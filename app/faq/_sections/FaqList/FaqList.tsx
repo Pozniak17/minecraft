@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { filterFaqArticles, getFaqArticleHref } from '@/app/faq/_data/faqArticles';
+import { filterFaqArticles, getFaqArticleHref, sortFaqArticles } from '@/app/faq/_data/faqArticles';
 import { getCategoryById, type FaqCategoryId } from '../faqCategories';
 import { useFaqPage } from '../FaqPageContext';
 import type { FaqListItem } from './faqItems';
 import FaqPerPageSelect from './FaqPerPageSelect';
+import FaqSortSelect from './FaqSortSelect';
 import styles from './FaqList.module.css';
 
 type FaqListProps = {
@@ -48,13 +49,14 @@ function buildPageNumbers(totalPages: number, activePage: number): (number | 'â€
 
 export default function FaqList({ activeCategory }: FaqListProps) {
   const [activePage, setActivePage] = useState(1);
-  const { searchQuery, clearSearch, itemsPerPage, setItemsPerPage } = useFaqPage();
+  const { searchQuery, clearSearch, itemsPerPage, setItemsPerPage, sortOption, setSortOption } =
+    useFaqPage();
   const category = getCategoryById(activeCategory);
   const trimmedQuery = searchQuery.trim();
 
   const filteredItems = useMemo(
-    () => filterFaqArticles(activeCategory, searchQuery).map(toListItem),
-    [activeCategory, searchQuery],
+    () => sortFaqArticles(filterFaqArticles(activeCategory, searchQuery), sortOption).map(toListItem),
+    [activeCategory, searchQuery, sortOption],
   );
 
   const headerTitle = trimmedQuery ? `Results for "${trimmedQuery}"` : category.label;
@@ -72,7 +74,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
 
   useEffect(() => {
     setActivePage(1);
-  }, [activeCategory, searchQuery, itemsPerPage]);
+  }, [activeCategory, searchQuery, itemsPerPage, sortOption]);
 
   useEffect(() => {
     if (activePage > totalPages) {
@@ -97,13 +99,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
               </button>
             )}
           </div>
-          <button type="button" className={styles.desktopSort}>
-            <span className={styles.desktopSortLabel}>Sort:</span>
-            <span className={styles.desktopSortValue}>Most helpful</span>
-            <span className={styles.desktopSortChevron} aria-hidden="true">
-              â–¾
-            </span>
-          </button>
+          <FaqSortSelect value={sortOption} onChange={setSortOption} variant="desktop" />
         </header>
 
         {filteredItems.length === 0 ? (

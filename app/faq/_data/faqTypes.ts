@@ -10,3 +10,5 @@ export type FaqCategoryId =
   | 'rules';
 
 export type FaqArticleCategoryId = Exclude<FaqCategoryId, 'all'>;
+
+export type FaqSortOption = 'all' | 'most-helpful' | 'latest';
