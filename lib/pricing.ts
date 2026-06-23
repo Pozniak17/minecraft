@@ -24,6 +24,7 @@ const FALLBACK_EUR_TO: Record<string, number> = {
   AUD: 1.65,
   NZD: 1.78,
   CAD: 1.47,
+  PLN: 4.3,
 };
 
 export function eurToCurrency(eurAmount: number, currency: string): number {

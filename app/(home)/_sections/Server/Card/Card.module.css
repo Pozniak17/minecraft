@@ -20,6 +20,38 @@
   background: var(--primary-color-primary-50010, rgba(189, 225, 83, 0.1));
 }
 
+.versionBadge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 11;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 109px;
+  border: 1px solid var(--new-group-color-bg-default-505, rgba(255, 255, 255, 0.05));
+  background: var(--new-group-color-bg-default-505, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(24px);
+  color: var(--New-group-color-bg-default-50, #fff);
+  font-family: var(--Font-Serif-Typography, Montserrat);
+  font-size: var(--Size-Mobile-Body-xsmall, 12px);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.versionIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.versionLabel {
+  line-height: 1;
+}
+
 .icon {
   position: absolute;
   bottom: 272px;
@@ -118,13 +150,18 @@
   height: 13px;
 }
 
+.itemIp {
+  height: 36px;
+  flex-shrink: 0;
+}
+
 .linkButton {
   display: flex;
   width: 299px;
   height: 47px;
   margin-left: auto;
   margin-right: auto;
-  padding: 26px 55px;
+  padding: 0 20px;
   justify-content: center;
   align-items: center;
   gap: 6px;
@@ -148,6 +185,23 @@
     background 0.2s ease;
 }
 
+.linkButtonText {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.linkButtonCopied {
+  border-color: rgba(189, 225, 83, 0.35);
+  background: rgba(189, 225, 83, 0.12);
+  color: var(--primary-color-primary-500, #bde153);
+}
+
+.linkButtonCopied .linkButtonText {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
 .linkButton:hover {
   border-color: var(--color-primary, #bde153);
   background: rgba(189, 225, 83, 0.15);
@@ -159,6 +213,18 @@
     height: 499px;
 
     padding: 102px 20px 26px;
+  }
+
+  .versionBadge {
+    top: 20px;
+    left: 20px;
+    padding: 8px 14px;
+    font-size: var(--Size-Desk-Body-xxxsmal, 12px);
+  }
+
+  .versionIcon {
+    width: 18px;
+    height: 18px;
   }
 
   .title {
@@ -194,12 +260,16 @@
     gap: 9px;
   }
 
+  .linkButton {
+    width: 322px;
+  }
+
+  .linkButtonCopied .linkButtonText {
+    font-size: 11px;
+  }
+
   .icon {
     bottom: 354px;
     left: 168px;
-  }
-
-  .linkButton {
-    width: 322px;
   }
 }

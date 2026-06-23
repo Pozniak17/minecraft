@@ -6,15 +6,11 @@ import { useEffect, useState } from 'react';
 import { getOrders } from '@/lib/api/orders';
 import type { OrderListItem } from '@/lib/api/types';
 import { useServerOnline } from '@/lib/client/useServerOnline';
-import { crystalsToEur } from '@/lib/pricing';
+import { crystalsToCurrency } from '@/lib/pricing';
+import { DEFAULT_CURRENCY, formatMoney, getStoredCurrency } from '@/lib/client/currency';
 import styles from './Dashboard.module.css';
 
 const nf = new Intl.NumberFormat('en-US');
-const eur = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-});
 
 // Реальні сервери (ключі — з lib/server/gameServers.ts). М'який ліміт — лише для візуальної смужки.
 const SERVERS = [
@@ -100,6 +96,8 @@ export default function Dashboard() {
   const [name, setName] = useState('Player');
   const [activity, setActivity] = useState<ActivityItem[]>([]);
   const [activityLoaded, setActivityLoaded] = useState(false);
+  // Валюта читається після маунту (localStorage) — щоб уникнути розбіжності SSR/CSR.
+  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
 
   // Живий онлайн кожного сервера (фіксована кількість викликів хука — коректно).
   const lucky = useServerOnline('luckysurvival');
@@ -120,6 +118,8 @@ export default function Dashboard() {
     const email = window.localStorage.getItem('user_email') ?? '';
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (email) setName(email.split('@')[0]);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrency(getStoredCurrency());
   }, []);
 
   useEffect(() => {
@@ -311,7 +311,9 @@ export default function Dashboard() {
                   <Image src="/profile/img.png" alt="" width={16} height={20} className={styles.packIcon} />
                   <span className={styles.packAmount}>{nf.format(amount)}</span>
                 </span>
-                <span className={styles.packPrice}>{eur.format(crystalsToEur(amount))}</span>
+                <span className={styles.packPrice}>
+                  {formatMoney(crystalsToCurrency(amount, currency), currency)}
+                </span>
               </div>
             ))}
           </div>

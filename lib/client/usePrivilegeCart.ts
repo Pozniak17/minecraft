@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getProducts } from '@/lib/api/shop';
 import { addToCart } from '@/lib/api/cart';
+import { getStoredCurrency } from '@/lib/client/currency';
+import { notifyCartUpdated } from '@/lib/client/cartCount';
 
 // Хендлер «Add to cart» для публічних секцій із привілеями.
 // Неавторизований користувач їде на /login; авторизований — додає товар у кошик.
@@ -39,7 +41,9 @@ export function usePrivilegeCart(isAuthed: boolean) {
       if (!id) {
         throw new Error('product-not-found');
       }
-      await addToCart({ amount: 1, item_id: id, currency: 'EUR' });
+      // Бекенд сам зводить кошик до однієї валюти, тож мікс валют не блокуємо.
+      await addToCart({ amount: 1, item_id: id, currency: getStoredCurrency() });
+      notifyCartUpdated();
     },
     [isAuthed, idByTitle, router]
   );

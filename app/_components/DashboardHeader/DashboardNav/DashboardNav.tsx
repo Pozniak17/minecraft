@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { logout } from '@/lib/api/auth';
 import { LogoutModal } from '../../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../../LogoutOverlay/LogoutOverlay';
+import { useCartItemCount } from '@/lib/client/cartCount';
 import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboardNav';
 import { isNavLinkActive, NAV_LINKS } from '../../Header/navLinks';
 import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
@@ -25,6 +26,10 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
   const [initial, setInitial] = useState('U');
   const [loggingOut, setLoggingOut] = useState(false);
   const [logoutOpen, setLogoutOpen] = useState(false);
+  const cartCount = useCartItemCount();
+  const workspaceLinks = WORKSPACE_LINKS.map(link =>
+    link.href === '/dashboard/cart' ? { ...link, badge: cartCount } : link
+  );
 
   useEffect(() => {
     const storedEmail = window.localStorage.getItem('user_email') ?? '';
@@ -128,7 +133,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         </div>
 
         <nav className={styles.workspace} aria-label="My workspace">
-          {WORKSPACE_LINKS.map(link => {
+          {workspaceLinks.map(link => {
             const isActive = link.href !== '#' && isNavLinkActive(link.href, pathname);
             const isDisabled = link.soon && link.href === '#';
             const className = [

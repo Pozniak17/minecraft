@@ -12,6 +12,8 @@ import {
 import { getServers, getProducts } from '@/lib/api/shop';
 import { createPayment } from '@/lib/api/payment';
 import type { OrderItem } from '@/lib/api/types';
+import { DEFAULT_CURRENCY, formatMoney } from '@/lib/client/currency';
+import { notifyCartUpdated } from '@/lib/client/cartCount';
 import styles from './Cart.module.css';
 
 type Row = {
@@ -23,6 +25,7 @@ type Row = {
   unitPrice: number;
   qty: number;
   lineTotal: number;
+  currency: string;
   image: string;
   fromApi: boolean;
 };
@@ -39,15 +42,6 @@ function serverKey(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-const nf = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-});
-
-function formatPrice(value: number) {
-  return nf.format(value);
-}
 
 // create_payment може повернути URL платіжки під різними іменами полів —
 // дістаємо перший валідний, щоб коректно зредіректити на оплату.
@@ -96,6 +90,7 @@ function orderItemToRow(item: OrderItem, index: number): Row {
     unitPrice,
     qty: item.amount,
     lineTotal,
+    currency: item.currency ?? DEFAULT_CURRENCY,
     image: CART_IMAGES[index % CART_IMAGES.length],
     fromApi: true,
   };
@@ -139,6 +134,7 @@ export default function Cart() {
     try {
       const items = await getOrderItems();
       setRows(items.map(orderItemToRow));
+      notifyCartUpdated();
     } catch {
       // мовчазний фолбек — лишаємо поточний стан
     }
@@ -192,6 +188,9 @@ export default function Cart() {
     [rows]
   );
 
+  // Валюта кошика = валюта його позицій (бекенд тримає одну валюту на кошик).
+  const cartCurrency = rows[0]?.currency ?? DEFAULT_CURRENCY;
+
   // dir: +1 / -1 — напрямок; крок залежить від товару (кристали — по 10).
   const changeQty = (id: string, dir: 1 | -1) => {
     let nextQty = 1;
@@ -222,7 +221,11 @@ export default function Cart() {
     const target = rows.find(r => r.id === id);
     setRows(prev => prev.filter(row => row.id !== id));
     if (target?.fromApi) {
-      removeFromCart(target.productId).catch(() => {});
+      removeFromCart(target.productId)
+        .then(() => notifyCartUpdated())
+        .catch(() => {});
+    } else {
+      notifyCartUpdated();
     }
   };
 
@@ -282,7 +285,7 @@ export default function Cart() {
           Subtotal
           {lineCount > 0 ? ` (${lineCount} ${lineCount === 1 ? 'item' : 'items'})` : ''}
         </span>
-        <span className={styles.summaryValue}>{formatPrice(subtotal)}</span>
+        <span className={styles.summaryValue}>{formatMoney(subtotal, cartCurrency)}</span>
       </div>
       <div className={styles.summaryRow}>
         <span>Promo (—)</span>
@@ -290,12 +293,12 @@ export default function Cart() {
       </div>
       <div className={styles.summaryRow}>
         <span>Service fee</span>
-        <span className={styles.summaryValue}>{formatPrice(0)}</span>
+        <span className={styles.summaryValue}>{formatMoney(0, cartCurrency)}</span>
       </div>
       <div className={styles.summaryDivider} aria-hidden />
       <div className={styles.summaryTotal}>
         <span>Total</span>
-        <span className={styles.summaryTotalValue}>{formatPrice(subtotal)}</span>
+        <span className={styles.summaryTotalValue}>{formatMoney(subtotal, cartCurrency)}</span>
       </div>
       <button
         type="button"
@@ -396,7 +399,7 @@ export default function Cart() {
                         +
                       </button>
                     </div>
-                    <p className={styles.itemPrice}>{formatPrice(lineTotal)}</p>
+                    <p className={styles.itemPrice}>{formatMoney(lineTotal, item.currency)}</p>
                     <button
                       type="button"
                       className={styles.removeBtn}

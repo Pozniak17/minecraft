@@ -10,6 +10,12 @@ import { getCurrencies, getProducts } from '@/lib/api/shop';
 import type { Currency } from '@/lib/api/types';
 import { addToCart, changeItemAmount, getOrderItems } from '@/lib/api/cart';
 import {
+  DEFAULT_CURRENCY,
+  getStoredCurrency,
+  setStoredCurrency,
+} from '@/lib/client/currency';
+import { notifyCartUpdated } from '@/lib/client/cartCount';
+import {
   buildFallbackPrivilegePrices,
   crystalsToCurrency,
 } from '@/lib/pricing';
@@ -24,19 +30,6 @@ const MAX = 15_000;
 const STEP = 10;
 // Жорсткий ліміт кількості за позицію на бекенді (AddToCart.amount max).
 const BACKEND_MAX_QTY = 20_000;
-
-// Ключ збереження обраної валюти між сесіями.
-const CURRENCY_STORAGE_KEY = 'shop:currency';
-const DEFAULT_CURRENCY = 'EUR';
-
-function readStoredCurrency(): string | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    return window.localStorage.getItem(CURRENCY_STORAGE_KEY);
-  } catch {
-    return null;
-  }
-}
 
 type CrystalPack = {
   amount: number;
@@ -111,11 +104,7 @@ export default function Shop() {
   // Зміна валюти + збереження вибору між сесіями.
   const handleCurrencyChange = useCallback((next: string) => {
     setCurrency(next);
-    try {
-      window.localStorage.setItem(CURRENCY_STORAGE_KEY, next);
-    } catch {
-      // localStorage недоступний (приватний режим тощо) — ігноруємо.
-    }
+    setStoredCurrency(next);
   }, []);
 
   // Мапа продуктів бекенду: title(lowercase) → id; окремо id товару «Crystals».
@@ -175,9 +164,9 @@ export default function Shop() {
       .then(list => {
         if (!active || list.length === 0) return;
         setCurrencies(list);
-        const stored = readStoredCurrency();
+        const stored = getStoredCurrency();
         const preferred =
-          (stored && list.find(c => c.abbr === stored)) ||
+          list.find(c => c.abbr === stored) ||
           list.find(c => c.abbr === DEFAULT_CURRENCY);
         setCurrency(preferred ? preferred.abbr : list[0].abbr);
       })
@@ -246,6 +235,8 @@ export default function Shop() {
   }, [isDashboard, currency, locale]);
 
   // amount = кількість кристалів (бекенд тарифікує за одиницю товару «Crystals»).
+  // Бекенд сам зводить кошик до однієї валюти (курс оновлюється раз на день),
+  // тож мікс валют тут не блокуємо.
   const addCrystals = useCallback(
     async (qty: number) => {
       if (!crystalId || addingKey) return;
@@ -253,6 +244,7 @@ export default function Shop() {
       setAddingKey(key);
       try {
         await addToCart({ amount: qty, item_id: crystalId, currency });
+        notifyCartUpdated();
         flash(`Added ${nf.format(qty)} crystals to cart`);
       } catch (err) {
         // Бекенд відхиляє повторний add того ж товару (403/400) — кристали вже в кошику.
@@ -264,6 +256,7 @@ export default function Shop() {
             const existing = items.find(it => it.product_id === crystalId);
             const nextQty = Math.min(BACKEND_MAX_QTY, (existing?.amount ?? 0) + qty);
             await changeItemAmount(crystalId, nextQty);
+            notifyCartUpdated();
             flash(`Added ${nf.format(qty)} crystals (cart: ${nf.format(nextQty)})`);
             return;
           } catch {
@@ -287,6 +280,7 @@ export default function Shop() {
       }
       try {
         await addToCart({ amount: 1, item_id: id, currency });
+        notifyCartUpdated();
         flash(`${title} privilege added to cart`);
       } catch (err) {
         // 403 — привілей уже в кошику (або вже придбано); для користувача це не помилка.

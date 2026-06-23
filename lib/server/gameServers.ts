@@ -14,6 +14,9 @@ export const GAME_API_PORT = 7000;
 /** Стандартний порт Minecraft Java (technical/doc.txt). */
 export const MINECRAFT_GAME_PORT = 25565;
 
+/** Підтримуваний діапазон версій Minecraft Java для всіх серверів. */
+export const MINECRAFT_VERSION_LABEL = '1.12–1.19';
+
 export function getServerConnectAddress(key: GameServerKey): string {
   return `${GAME_SERVERS[key].ip}:${MINECRAFT_GAME_PORT}`;
 }
