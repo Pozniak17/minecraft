@@ -115,8 +115,12 @@ export default function Shop() {
   // Відформатовані ціни привілеїв за назвою тиру (лише в кабінеті, де є ціни).
   const [privilegePrices, setPrivilegePrices] = useState<Record<string, string>>({});
   const [addingKey, setAddingKey] = useState<string | null>(null);
+  const [doneKeys, setDoneKeys] = useState<Set<string>>(new Set());
   const [notice, setNotice] = useState<string | null>(null);
   const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const doneTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+
+  const DONE_RESET_MS = 800;
 
   const percent = ((amount - MIN) / (MAX - MIN)) * 100;
   const price = useMemo(
@@ -126,6 +130,30 @@ export default function Shop() {
 
   const showCrystals = tab === 'All' || tab === 'Crystals';
   const showPrivileges = tab === 'All' || tab === 'Privileges';
+
+  const crystalAddLabel = (key: string, full = false) => {
+    if (addingKey === key) return 'Adding…';
+    if (doneKeys.has(key)) return 'Added ✓';
+    return full ? 'Add to cart' : 'Add';
+  };
+
+  const markCrystalAdded = useCallback((key: string) => {
+    setDoneKeys(prev => new Set(prev).add(key));
+
+    const existing = doneTimers.current.get(key);
+    if (existing) clearTimeout(existing);
+
+    const timer = setTimeout(() => {
+      setDoneKeys(prev => {
+        const next = new Set(prev);
+        next.delete(key);
+        return next;
+      });
+      doneTimers.current.delete(key);
+    }, DONE_RESET_MS);
+
+    doneTimers.current.set(key, timer);
+  }, []);
 
   // Єдина точка зміни кількості: клемп у [MIN..MAX] + синхронізація текстового поля.
   const applyAmount = useCallback((next: number) => {
@@ -155,6 +183,7 @@ export default function Shop() {
   useEffect(() => {
     return () => {
       if (noticeTimer.current) clearTimeout(noticeTimer.current);
+      doneTimers.current.forEach(timer => clearTimeout(timer));
     };
   }, []);
 
@@ -245,6 +274,7 @@ export default function Shop() {
       try {
         await addToCart({ amount: qty, item_id: crystalId, currency });
         notifyCartUpdated();
+        markCrystalAdded(key);
         flash(`Added ${nf.format(qty)} crystals to cart`);
       } catch (err) {
         // Бекенд відхиляє повторний add того ж товару (403/400) — кристали вже в кошику.
@@ -257,6 +287,7 @@ export default function Shop() {
             const nextQty = Math.min(BACKEND_MAX_QTY, (existing?.amount ?? 0) + qty);
             await changeItemAmount(crystalId, nextQty);
             notifyCartUpdated();
+            markCrystalAdded(key);
             flash(`Added ${nf.format(qty)} crystals (cart: ${nf.format(nextQty)})`);
             return;
           } catch {
@@ -268,7 +299,7 @@ export default function Shop() {
         setAddingKey(null);
       }
     },
-    [crystalId, addingKey, currency, flash]
+    [crystalId, addingKey, currency, flash, markCrystalAdded]
   );
 
   const addPrivilege = useCallback(
@@ -415,16 +446,20 @@ export default function Shop() {
                 </div>
                 <button
                   type="button"
-                  className={styles.addAccent}
+                  className={`${styles.addAccent} ${
+                    doneKeys.has(`crystals-${amount}`) ? styles.addAccentDone : ''
+                  }`}
                   onClick={() => addCrystals(amount)}
                   disabled={!crystalId || addingKey === `crystals-${amount}`}
                 >
                   <span className={styles.addGlyph} aria-hidden>
                     ◆
                   </span>
-                  <span className={styles.addTextShort}>Add</span>
+                  <span className={styles.addTextShort}>
+                    {crystalAddLabel(`crystals-${amount}`)}
+                  </span>
                   <span className={styles.addTextFull}>
-                    {addingKey === `crystals-${amount}` ? 'Adding…' : 'Add to cart'}
+                    {crystalAddLabel(`crystals-${amount}`, true)}
                   </span>
                 </button>
               </div>
@@ -442,7 +477,12 @@ export default function Shop() {
             <div className={styles.packsCol}>
               <h2 className={styles.packsHeading}>Crystal packs</h2>
               <div className={styles.packs}>
-                {PACKS.map(pack => (
+                {PACKS.map(pack => {
+                  const packKey = `crystals-${pack.amount}`;
+                  const packDone = doneKeys.has(packKey);
+                  const packPending = addingKey === packKey;
+
+                  return (
                   <div
                     key={pack.amount}
                     className={`${styles.pack} ${pack.popular ? styles.packPopular : ''}`}
@@ -470,11 +510,11 @@ export default function Shop() {
                       </span>
                       <button
                         type="button"
-                        className={styles.packAdd}
+                        className={`${styles.packAdd} ${packDone ? styles.packAddDone : ''}`}
                         onClick={() => addCrystals(pack.amount)}
-                        disabled={!crystalId || addingKey === `crystals-${pack.amount}`}
+                        disabled={!crystalId || packPending}
                       >
-                        {addingKey === `crystals-${pack.amount}` ? '…' : 'Add'}
+                        {crystalAddLabel(packKey)}
                       </button>
                     </div>
                     <Image
@@ -486,7 +526,8 @@ export default function Shop() {
                       aria-hidden
                     />
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

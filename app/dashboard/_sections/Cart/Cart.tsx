@@ -464,7 +464,25 @@ export default function Cart() {
           </section>
         </div>
 
-        {summaryBlock}
+        <div className={styles.sidebarColumn}>
+          {summaryBlock}
+
+          <aside className={styles.importantNotice} aria-label="Important delivery notice">
+            <div className={styles.importantHead}>
+              <span className={styles.importantIcon} aria-hidden="true">
+                ⚠
+              </span>
+              <p className={styles.importantTitle}>Important</p>
+            </div>
+            <p className={styles.importantText}>
+              You must be on the selected server{' '}
+              <span className={styles.importantHighlight}>at the moment of purchase.</span>
+            </p>
+            <p className={styles.importantText}>
+              Delivery of items is only possible if you are online on the server.
+            </p>
+          </aside>
+        </div>
 
         <section className={styles.promoPanel} aria-labelledby="promo-heading">
           <span className={styles.promoIcon} aria-hidden>
@@ -489,22 +507,6 @@ export default function Cart() {
             </button>
           </div>
         </section>
-
-        <aside className={styles.importantNotice} aria-label="Important delivery notice">
-          <div className={styles.importantHead}>
-            <span className={styles.importantIcon} aria-hidden="true">
-              ⚠
-            </span>
-            <p className={styles.importantTitle}>Important</p>
-          </div>
-          <p className={styles.importantText}>
-            You must be on the selected server{' '}
-            <span className={styles.importantHighlight}>at the moment of purchase.</span>
-          </p>
-          <p className={styles.importantText}>
-            Delivery of items is only possible if you are online on the server.
-          </p>
-        </aside>
       </div>
       </div>
     </div>

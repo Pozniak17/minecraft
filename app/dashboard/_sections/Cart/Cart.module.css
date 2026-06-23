@@ -76,6 +76,14 @@
   order: 1;
 }
 
+.sidebarColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  order: 3;
+}
+
 /* ── Panels ── */
 
 .panel {
@@ -492,7 +500,6 @@
   border: 1px solid rgba(189, 225, 83, 0.3);
   background: rgba(189, 225, 83, 0.08);
   backdrop-filter: blur(15px);
-  order: 3;
 }
 
 .summaryTitle {
@@ -587,7 +594,6 @@
   border: 1px solid rgba(239, 77, 77, 0.45);
   background: rgba(255, 255, 255, 0.03);
   text-align: left;
-  order: 4;
 }
 
 .importantHead {
@@ -681,25 +687,27 @@
     order: unset;
   }
 
-  .summary {
+  .sidebarColumn {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: stretch;
+    width: 380px;
+    min-height: 100%;
     position: sticky;
     top: calc(var(--header-height) + 24px);
-    align-self: start;
     order: unset;
+  }
+
+  .importantNotice {
+    margin-top: auto;
   }
 
   .promoPanel {
     grid-column: 1;
     grid-row: 2;
-    order: unset;
-  }
-
-  .importantNotice {
-    grid-column: 2;
-    grid-row: 2;
-    align-self: stretch;
     order: unset;
   }
 
