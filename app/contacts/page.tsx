@@ -6,7 +6,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Contacts — Minecraft Game',
   description:
-    'Reach our support team via live chat, email, or Discord. Average reply time under 4 hours, around the clock.',
+    'Reach our support team by email, form, or social. We are here to help with account, billing, and gameplay questions.',
 };
 
 export default function ContactsPage() {

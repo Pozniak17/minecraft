@@ -1,4 +1,6 @@
 .channels {
+  position: relative;
+  z-index: 1;
   background: #031d17;
   margin-top: -1px;
 }
@@ -63,6 +65,17 @@
   line-height: 18px;
 }
 
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.formColumn {
+  width: 100%;
+}
+
 .grid {
   display: flex;
   flex-direction: column;
@@ -79,11 +92,10 @@
   align-items: flex-start;
   gap: 14px;
   width: 100%;
-  min-height: 100%;
   padding: 20px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  background: #041f19;
 }
 
 .cardIcon {
@@ -170,13 +182,6 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.bottomRow {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
 .faqCard,
 .socialCard {
   display: flex;
@@ -195,7 +200,7 @@
 
 .socialCard {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  background: #041f19;
 }
 
 .faqLabel,
@@ -320,10 +325,39 @@
     line-height: 24px;
   }
 
-  .grid {
+  .body {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 400px) minmax(0, 540px);
+    grid-template-rows: auto auto;
+    gap: 24px 48px;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .grid {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
+    width: 100%;
+  }
+
+  .formColumn {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .socialCard {
+    grid-column: 1;
+    grid-row: 2;
+    gap: 14px;
+    padding: 36px;
+    border-radius: 20px;
   }
 
   .card {
@@ -357,42 +391,14 @@
     letter-spacing: 0.48px;
   }
 
-  .bottomRow {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-  }
-
-  .faqCard,
-  .socialCard {
-    gap: 14px;
-    min-height: 100%;
-    padding: 36px;
-    border-radius: 20px;
-  }
-
-  .faqTitle,
   .socialTitle {
     font-size: 24px;
     line-height: 28px;
   }
 
-  .faqDescription,
   .socialDescription {
-    flex: 1;
     max-width: 520px;
     font-size: 14px;
     line-height: 22px;
-  }
-
-  .faqLink {
-    width: auto;
-    min-width: 180px;
-    margin-top: auto;
-  }
-
-  .socialList {
-    margin-top: auto;
-    padding-top: 4px;
   }
 }

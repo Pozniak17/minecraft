@@ -1,0 +1,306 @@
+.formCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #041f19;
+}
+
+.formLabel {
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.formTitle {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+
+.formDescription {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.messageField {
+  display: flex;
+  flex-direction: column;
+}
+
+.messageField .textarea {
+  flex: 1;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.78);
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 24, 18, 0.6);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.input,
+.select {
+  height: 44px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(189, 225, 83, 0.4);
+}
+
+.selectWrap {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.select option {
+  color: #001812;
+  background: #fff;
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  pointer-events: none;
+}
+
+.textarea {
+  min-height: 112px;
+  resize: vertical;
+  line-height: 18px;
+}
+
+.submit,
+.resetButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  width: auto;
+  min-width: 168px;
+  min-height: 40px;
+  margin-top: 4px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #bde153;
+  color: #001812;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover,
+.resetButton:hover {
+  filter: brightness(1.1);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit:disabled:hover {
+  filter: none;
+}
+
+.formError {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff8d8d;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 24, 18, 0.45);
+}
+
+.successTitle {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.successText {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.successLink {
+  color: #bde153;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.successLink:hover {
+  filter: brightness(1.1);
+}
+
+@media (min-width: 1280px) {
+  .formCard {
+    gap: 14px;
+    padding: 32px;
+    border-radius: 20px;
+  }
+
+  .formTitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .formDescription {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .form {
+    gap: 16px;
+    margin-top: 8px;
+    min-height: 0;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .messageField {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .messageField .textarea {
+    flex: 1;
+    min-height: 128px;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.44px;
+  }
+
+  .input,
+  .select {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .textarea {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .submit,
+  .resetButton {
+    min-height: 44px;
+    margin-top: auto;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+  }
+
+  .success {
+    flex: 1;
+    justify-content: center;
+  }
+}

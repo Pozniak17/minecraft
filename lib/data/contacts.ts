@@ -1,34 +1,31 @@
 export const SUPPORT_EMAIL = 'support@minecraftsgame.com';
-export const DISCORD_URL = 'https://discord.gg/minecraftsgame';
+
+export const CONTACT_TOPICS = [
+  { value: 'general', label: 'General question' },
+  { value: 'account', label: 'Account & login' },
+  { value: 'billing', label: 'Billing & payments' },
+  { value: 'privacy', label: 'Privacy & data' },
+  { value: 'other', label: 'Other' },
+] as const;
 
 export const CONTACT_STATS = [
-  { value: '< 4h', label: 'avg reply', labelDesktop: 'average reply time' },
-  { value: '24/7', label: 'support', labelDesktop: 'live support' },
-  { value: '3', label: 'channels', labelDesktop: 'contact channels' },
+  { value: 'Quick', label: 'replies', labelDesktop: 'timely replies' },
+  { value: 'Direct', label: 'contact', labelDesktop: 'direct contact' },
+  { value: 'Helpful', label: 'support', labelDesktop: 'friendly support' },
 ] as const;
 
 export type ContactChannel = {
   id: string;
   icon: string;
-  iconImage?: string;
   title: string;
   description: string;
   actionLabel: string;
   meta?: string;
-  href?: string;
-  external?: boolean;
-  type: 'link' | 'mailto' | 'button';
+  href: string;
+  type: 'mailto';
 };
 
 export const CONTACT_CHANNELS: ContactChannel[] = [
-  {
-    id: 'chat',
-    icon: '💬',
-    title: 'Live chat',
-    description: 'Talk to a moderator in real time. Best for urgent in-game issues.',
-    actionLabel: 'Open live chat',
-    type: 'button',
-  },
   {
     id: 'email',
     icon: '✉',
@@ -38,16 +35,5 @@ export const CONTACT_CHANNELS: ContactChannel[] = [
     meta: SUPPORT_EMAIL,
     href: `mailto:${SUPPORT_EMAIL}`,
     type: 'mailto',
-  },
-  {
-    id: 'discord',
-    icon: '',
-    iconImage: '/icons/social/ic_outline-discord.svg',
-    title: 'Community Discord',
-    description: 'Join #support for help, announcements, and player chat.',
-    actionLabel: 'Join Discord',
-    href: DISCORD_URL,
-    external: true,
-    type: 'link',
   },
 ];

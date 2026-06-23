@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
 import { Badge } from '@/app/_components/Badge/Badge';
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
-import { CONTACT_STATS, DISCORD_URL, SUPPORT_EMAIL } from '@/lib/data/contacts';
+import { CONTACT_STATS, SUPPORT_EMAIL } from '@/lib/data/contacts';
+import { TWITCH_URL } from '@/lib/data/social';
 import styles from './Hero.module.css';
 
 const BREADCRUMB_ITEMS = ['Home', 'FAQ', 'Contacts'];
@@ -20,12 +21,11 @@ export default function Hero() {
           <Badge className={styles.badge}>Get in touch</Badge>
           <h1 className={styles.title}>Contact us</h1>
           <p className={`${styles.description} ${styles.descriptionMobile}`}>
-            Our team replies in under 4 hours, around the clock. Pick the channel that works best
-            for you.
+            Our team is here to help. Pick the channel that works best for you.
           </p>
           <p className={`${styles.description} ${styles.descriptionDesktop}`}>
-            Our support team replies in under 4 hours, around the clock. Live chat, email, or
-            Discord — whichever is easiest for you.
+            Our support team is here to help. Email, Twitch, or the FAQ — whichever is easiest for
+            you.
           </p>
         </div>
 
@@ -46,12 +46,12 @@ export default function Hero() {
             Email us
           </a>
           <a
-            href={DISCORD_URL}
+            href={TWITCH_URL}
             className={styles.actionSecondary}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Join Discord
+            Join Twitch
           </a>
           <Link href="/faq" className={styles.actionSecondary}>
             Browse FAQ
