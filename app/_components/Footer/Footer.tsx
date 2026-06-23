@@ -12,6 +12,7 @@ const MAIN_LINKS = NAV_LINKS.filter(
 }));
 
 const SUPPORT_LINKS = [
+  { label: 'Contacts', href: '/contacts' },
   { label: 'How to Start Playing', href: '/how-to-start' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Cookie Policy', href: '/cookie-policy' },

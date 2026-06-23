@@ -59,7 +59,7 @@ export default function FaqSidebar({ activeCategory, onCategoryChange }: FaqSide
           Chat with us 24/7 or send a ticket — we usually reply within 4 hours.
         </p>
         <div className={styles.supportActions}>
-          <Link href="/faq#contacts" className={styles.primaryButton}>
+          <Link href="/contacts" className={styles.primaryButton}>
             Send a ticket
           </Link>
         </div>

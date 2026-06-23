@@ -98,6 +98,7 @@
   line-height: normal;
   letter-spacing: 0.44px;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
   transition: filter 0.2s ease;
 }

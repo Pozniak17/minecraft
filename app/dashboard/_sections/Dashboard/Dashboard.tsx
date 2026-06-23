@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getOrders } from '@/lib/api/orders';
 import type { OrderListItem } from '@/lib/api/types';
 import { useServerOnline } from '@/lib/client/useServerOnline';
@@ -96,6 +96,9 @@ export default function Dashboard() {
   const [name, setName] = useState('Player');
   const [activity, setActivity] = useState<ActivityItem[]>([]);
   const [activityLoaded, setActivityLoaded] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const notifRef = useRef<HTMLDivElement>(null);
+  const notifications: ActivityItem[] = [];
   // Валюта читається після маунту (localStorage) — щоб уникнути розбіжності SSR/CSR.
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
 
@@ -138,6 +141,27 @@ export default function Dashboard() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!notifOpen) return;
+
+    const onPointerDown = (event: MouseEvent) => {
+      if (notifRef.current?.contains(event.target as Node)) return;
+      setNotifOpen(false);
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setNotifOpen(false);
+    };
+
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [notifOpen]);
+
   return (
     <div className={styles.shell}>
     <section className={styles.root}>
@@ -149,17 +173,46 @@ export default function Dashboard() {
         </div>
 
         <div className={styles.headerActions}>
-          <button type="button" className={styles.notif} aria-label="Notifications">
-            <span
-              className={styles.notifIcon}
-              style={{
-                maskImage: 'url("/icons/dashboard/notification-2-line.svg")',
-                WebkitMaskImage: 'url("/icons/dashboard/notification-2-line.svg")',
-              }}
-              aria-hidden="true"
-            />
-            <span className={styles.notifDot} aria-hidden="true" />
-          </button>
+          <div className={styles.notifWrap} ref={notifRef}>
+            <button
+              type="button"
+              className={styles.notif}
+              aria-label="Notifications"
+              aria-haspopup="true"
+              aria-expanded={notifOpen}
+              onClick={() => setNotifOpen(open => !open)}
+            >
+              <span
+                className={styles.notifIcon}
+                style={{
+                  maskImage: 'url("/icons/dashboard/notification-2-line.svg")',
+                  WebkitMaskImage: 'url("/icons/dashboard/notification-2-line.svg")',
+                }}
+                aria-hidden="true"
+              />
+              {notifications.length > 0 && (
+                <span className={styles.notifDot} aria-hidden="true" />
+              )}
+            </button>
+
+            {notifOpen && (
+              <div className={styles.notifPanel} role="region" aria-label="Notifications">
+                <p className={styles.notifPanelTitle}>Notifications</p>
+                {notifications.length === 0 ? (
+                  <p className={styles.notifEmpty}>No recent notifications</p>
+                ) : (
+                  <ul className={styles.notifList}>
+                    {notifications.map((item, index) => (
+                      <li key={`${item.title}-${index}`} className={styles.notifItem}>
+                        <span className={styles.notifItemTitle}>{item.title}</span>
+                        <span className={styles.notifItemTime}>{item.time}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
 
           <Link href="/dashboard/shop" className={styles.topUp}>
             Top up
