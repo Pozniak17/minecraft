@@ -140,6 +140,7 @@ export interface OrderListItem {
   total_price: string;
   server?: string | null;
   user_nickname?: string | null;
+  has_bill?: string | boolean | null;
 }
 
 // ---- Payment ----

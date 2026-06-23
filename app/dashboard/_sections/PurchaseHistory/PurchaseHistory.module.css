@@ -432,6 +432,16 @@
   background: rgba(189, 225, 83, 0.18);
 }
 
+.receiptBtn:disabled,
+.tableReceiptBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.receiptBtn:disabled:hover {
+  background: rgba(189, 225, 83, 0.1);
+}
+
 .receiptIcon {
   flex-shrink: 0;
   width: 13px;

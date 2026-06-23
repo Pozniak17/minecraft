@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { getOrders } from '@/lib/api/orders';
+import { getOrders, downloadOrderBill, orderHasBill } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import styles from './PurchaseHistory.module.css';
@@ -22,6 +22,7 @@ type Order = {
   total: string;
   status: OrderStatus;
   items: string[];
+  hasBill: boolean;
 };
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
@@ -65,6 +66,7 @@ function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
     items: (order.order_item ?? []).map(
       oi => `${itemTitle(oi.product_id, oi.image_name, meta)} ×${oi.amount}`
     ),
+    hasBill: orderHasBill(order),
   };
 }
 
@@ -91,6 +93,20 @@ export default function PurchaseHistory() {
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [loaded, setLoaded] = useState(false);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
+
+  async function handleDownloadReceipt(orderId: string) {
+    setDownloadingId(orderId);
+    setDownloadError(null);
+    try {
+      await downloadOrderBill(orderId);
+    } catch (err) {
+      setDownloadError(err instanceof Error ? err.message : 'Could not download receipt.');
+    } finally {
+      setDownloadingId(null);
+    }
+  }
 
   useEffect(() => {
     let active = true;
@@ -257,6 +273,8 @@ export default function PurchaseHistory() {
 
         <div className={styles.periodMobile}>{periodControl}</div>
 
+        {downloadError ? <p className={styles.stateNote}>{downloadError}</p> : null}
+
         <div className={styles.stats}>
           {stats.map(stat => (
             <div key={stat.labelDesktop} className={styles.statCard}>
@@ -325,8 +343,13 @@ export default function PurchaseHistory() {
                     <button type="button" className={styles.openBtn}>
                       Open
                     </button>
-                    <button type="button" className={styles.receiptBtn}>
-                      <span>Receipt</span>
+                    <button
+                      type="button"
+                      className={styles.receiptBtn}
+                      disabled={!order.hasBill || downloadingId === order.id}
+                      onClick={() => handleDownloadReceipt(order.id)}
+                    >
+                      <span>{downloadingId === order.id ? 'Downloading…' : 'Receipt'}</span>
                       <Image
                         src="/profile/purchase_history/5.svg"
                         alt=""
@@ -407,7 +430,13 @@ export default function PurchaseHistory() {
                         <button type="button" className={styles.tableOpenBtn}>
                           Open
                         </button>
-                        <button type="button" className={styles.tableReceiptBtn} aria-label="Download receipt">
+                        <button
+                          type="button"
+                          className={styles.tableReceiptBtn}
+                          aria-label="Download receipt"
+                          disabled={!order.hasBill || downloadingId === order.id}
+                          onClick={() => handleDownloadReceipt(order.id)}
+                        >
                           <Image
                             src="/profile/purchase_history/5.svg"
                             alt=""
