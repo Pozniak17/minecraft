@@ -2,11 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { DASHBOARD_SERVERS, type DashboardServer } from '@/lib/data/dashboardServers';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './Servers.module.css';
 
 function ServerCard({ server }: { server: DashboardServer }) {
+  const [copied, setCopied] = useState(false);
+  const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const live = useServerOnline(server.id);
   const isOnline = live.status === 'online';
   const isLoading = live.status === 'loading';
@@ -18,6 +21,20 @@ function ServerCard({ server }: { server: DashboardServer }) {
   const playersDesktop =
     live.online !== null ? `${live.online} / ${server.max}` : `— / ${server.max}`;
   const statusLabel = isLoading ? 'checking…' : isOnline ? 'online' : 'offline';
+
+  useEffect(() => {
+    return () => {
+      if (copiedTimer.current) clearTimeout(copiedTimer.current);
+    };
+  }, []);
+
+  const handleCopyIp = useCallback(() => {
+    void navigator.clipboard.writeText(server.ip).then(() => {
+      setCopied(true);
+      if (copiedTimer.current) clearTimeout(copiedTimer.current);
+      copiedTimer.current = setTimeout(() => setCopied(false), 1500);
+    });
+  }, [server.ip]);
 
   return (
     <li className={styles.card}>
@@ -66,12 +83,15 @@ function ServerCard({ server }: { server: DashboardServer }) {
       </div>
 
       <div className={styles.actions}>
-        <button
-          type="button"
-          className={`${styles.join} ${!isOnline ? styles.joinMuted : ''}`}
-        >
-          <span className={styles.joinMobile}>{server.joinLabel}</span>
-          <span className={styles.joinDesktop}>{server.joinLabelDesktop}</span>
+        <button type="button" className={styles.join} onClick={handleCopyIp}>
+          {copied ? (
+            'Copied'
+          ) : (
+            <>
+              <span className={styles.joinMobile}>{server.joinLabel}</span>
+              <span className={styles.joinDesktop}>{server.joinLabelDesktop}</span>
+            </>
+          )}
         </button>
         <Link href={`/dashboard/servers/${server.id}`} className={styles.open}>
           <span className={styles.openMobile}>Open</span>

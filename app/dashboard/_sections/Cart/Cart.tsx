@@ -353,7 +353,7 @@ export default function Cart() {
                 <p className={styles.emptyText}>
                   Add privileges or crystals from the store to get started.
                 </p>
-                <Link href="/store" className={styles.emptyCta}>
+                <Link href="/dashboard/shop" className={styles.emptyCta}>
                   Browse the store →
                 </Link>
               </div>
