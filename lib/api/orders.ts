@@ -16,6 +16,21 @@ function parseFilename(contentDisposition: string | null): string | null {
   return plain?.[1] ?? null;
 }
 
+async function fetchOrderBill(orderId: string): Promise<{ blob: Blob; filename: string }> {
+  const res = await fetch(`/api/orders/${encodeURIComponent(orderId)}/bill`, {
+    credentials: 'include',
+  });
+
+  if (!res.ok) {
+    const err = (await res.json().catch(() => null)) as { detail?: string } | null;
+    throw new Error(err?.detail ?? 'Could not load receipt.');
+  }
+
+  const blob = await res.blob();
+  const filename = parseFilename(res.headers.get('content-disposition')) ?? `receipt-${orderId}.pdf`;
+  return { blob, filename };
+}
+
 export function orderHasBill(order: Pick<OrderListItem, 'has_bill'>): boolean {
   const value = order.has_bill;
   if (value == null) return true;
@@ -26,21 +41,22 @@ export function orderHasBill(order: Pick<OrderListItem, 'has_bill'>): boolean {
 }
 
 export async function downloadOrderBill(orderId: string): Promise<void> {
-  const res = await fetch(`/api/orders/${encodeURIComponent(orderId)}/bill`, {
-    credentials: 'include',
-  });
-
-  if (!res.ok) {
-    const err = (await res.json().catch(() => null)) as { detail?: string } | null;
-    throw new Error(err?.detail ?? 'Could not download receipt.');
-  }
-
-  const blob = await res.blob();
-  const filename = parseFilename(res.headers.get('content-disposition')) ?? `receipt-${orderId}.pdf`;
+  const { blob, filename } = await fetchOrderBill(orderId);
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
   link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+export async function openOrderBill(orderId: string): Promise<void> {
+  const { blob } = await fetchOrderBill(orderId);
+  const url = URL.createObjectURL(blob);
+  const tab = window.open(url, '_blank', 'noopener,noreferrer');
+  if (!tab) {
+    URL.revokeObjectURL(url);
+    throw new Error('Pop-up blocked. Allow pop-ups to open the receipt.');
+  }
+  window.setTimeout(() => URL.revokeObjectURL(url), 60_000);
 }

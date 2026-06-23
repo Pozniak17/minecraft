@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { getOrders, downloadOrderBill, orderHasBill } from '@/lib/api/orders';
+import { getOrders, downloadOrderBill, openOrderBill, orderHasBill } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import styles from './PurchaseHistory.module.css';
@@ -94,7 +94,20 @@ export default function PurchaseHistory() {
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [loaded, setLoaded] = useState(false);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [openingId, setOpeningId] = useState<string | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
+
+  async function handleOpenReceipt(orderId: string) {
+    setOpeningId(orderId);
+    setDownloadError(null);
+    try {
+      await openOrderBill(orderId);
+    } catch (err) {
+      setDownloadError(err instanceof Error ? err.message : 'Could not open receipt.');
+    } finally {
+      setOpeningId(null);
+    }
+  }
 
   async function handleDownloadReceipt(orderId: string) {
     setDownloadingId(orderId);
@@ -329,13 +342,18 @@ export default function PurchaseHistory() {
                   </ul>
 
                   <div className={styles.orderActions}>
-                    <button type="button" className={styles.openBtn}>
-                      Open
+                    <button
+                      type="button"
+                      className={styles.openBtn}
+                      disabled={!order.hasBill || openingId === order.id || downloadingId === order.id}
+                      onClick={() => handleOpenReceipt(order.id)}
+                    >
+                      {openingId === order.id ? 'Opening…' : 'Open'}
                     </button>
                     <button
                       type="button"
                       className={styles.receiptBtn}
-                      disabled={!order.hasBill || downloadingId === order.id}
+                      disabled={!order.hasBill || downloadingId === order.id || openingId === order.id}
                       onClick={() => handleDownloadReceipt(order.id)}
                     >
                       <span>{downloadingId === order.id ? 'Downloading…' : 'Receipt'}</span>
@@ -416,14 +434,19 @@ export default function PurchaseHistory() {
                     </div>
                     <div className={styles.colReceipt} role="cell">
                       <div className={styles.tableActions}>
-                        <button type="button" className={styles.tableOpenBtn}>
-                          Open
+                        <button
+                          type="button"
+                          className={styles.tableOpenBtn}
+                          disabled={!order.hasBill || openingId === order.id || downloadingId === order.id}
+                          onClick={() => handleOpenReceipt(order.id)}
+                        >
+                          {openingId === order.id ? 'Opening…' : 'Open'}
                         </button>
                         <button
                           type="button"
                           className={styles.tableReceiptBtn}
                           aria-label="Download receipt"
-                          disabled={!order.hasBill || downloadingId === order.id}
+                          disabled={!order.hasBill || downloadingId === order.id || openingId === order.id}
                           onClick={() => handleDownloadReceipt(order.id)}
                         >
                           <Image
