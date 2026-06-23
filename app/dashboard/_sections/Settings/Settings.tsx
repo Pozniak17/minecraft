@@ -35,29 +35,6 @@ function errorText(err: unknown, fallback: string): string {
   return 'Network error. Please try again.';
 }
 
-function Toggle({
-  checked,
-  onChange,
-  label,
-}: {
-  checked: boolean;
-  onChange: (value: boolean) => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked}
-      aria-label={label}
-      className={[styles.toggle, checked && styles.toggleOn].filter(Boolean).join(' ')}
-      onClick={() => onChange(!checked)}
-    >
-      <span className={styles.toggleKnob} />
-    </button>
-  );
-}
-
 function scrollSubnavItemIntoView(button: HTMLButtonElement | undefined) {
   button?.scrollIntoView({
     behavior: 'smooth',
@@ -96,8 +73,6 @@ export default function Settings() {
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   const saveTimer = useRef<number | null>(null);
   const pendingSave = useRef<UserProfileUpdate>({});
-
-  const [twoFactor, setTwoFactor] = useState(true);
 
   const [passwordStep, setPasswordStep] = useState<PasswordStep>('idle');
   const [currentPassword, setCurrentPassword] = useState('');
@@ -394,8 +369,7 @@ export default function Settings() {
                   <span className={styles.avatarTitle}>Profile picture</span>
                   <span className={styles.avatarHintMobile}>JPG/PNG/WebP, up to 5 MB.</span>
                   <span className={styles.avatarHintDesktop}>
-                    JPEG, PNG or WebP, square format, up to 5 MB. Your in-game skin can also sync
-                    automatically.
+                    JPEG, PNG or WebP, square format, up to 5 MB.
                   </span>
                   <input
                     ref={fileInputRef}
@@ -415,10 +389,6 @@ export default function Settings() {
                       <span className={styles.pillDesktop}>
                         {photoBusy ? 'Uploading…' : 'Upload photo'}
                       </span>
-                    </button>
-                    <button type="button" className={styles.outlinePill}>
-                      <span className={styles.pillMobile}>Sync</span>
-                      <span className={styles.pillDesktop}>Sync from Minecraft</span>
                     </button>
                     <button
                       type="button"
@@ -648,29 +618,6 @@ export default function Settings() {
 
               <div className={styles.row}>
                 <div className={styles.rowText}>
-                  <div className={styles.rowTitleWrap}>
-                    <span className={styles.rowTitleMobile}>Two-factor auth</span>
-                    <span className={styles.rowTitleDesktop}>Two-factor authentication</span>
-                    {twoFactor && (
-                      <span className={styles.onBadge}>On</span>
-                    )}
-                  </div>
-                  <span className={styles.rowHintMobile}>Authenticator + recovery codes.</span>
-                  <span className={styles.rowHintDesktop}>
-                    Authenticator app + recovery codes. Adds an extra layer to login.
-                  </span>
-                </div>
-                <Toggle
-                  checked={twoFactor}
-                  onChange={setTwoFactor}
-                  label="Two-factor authentication"
-                />
-              </div>
-
-              <hr className={styles.divider} />
-
-              <div className={styles.row}>
-                <div className={styles.rowText}>
                   <span className={styles.rowTitle}>Active sessions</span>
                   <span className={styles.rowHintMobile}>3 devices currently signed in.</span>
                   <span className={styles.rowHintDesktop}>
@@ -695,23 +642,6 @@ export default function Settings() {
                 <span aria-hidden="true">⚠</span>
                 Danger zone
               </h2>
-
-              <div className={styles.dangerRow}>
-                <div className={styles.rowText}>
-                  <span className={styles.rowTitleMobile}>Deactivate</span>
-                  <span className={styles.rowTitleDesktop}>Deactivate account</span>
-                  <span className={styles.dangerHintMobile}>Pause profile and notifications.</span>
-                  <span className={styles.dangerHintDesktop}>
-                    Pause profile and notifications.
-                  </span>
-                </div>
-                <button type="button" className={styles.dangerBtn}>
-                  <span className={styles.pillMobile}>Pause</span>
-                  <span className={styles.pillDesktop}>Deactivate</span>
-                </button>
-              </div>
-
-              <hr className={styles.dangerDivider} />
 
               <div className={styles.dangerRow}>
                 <div className={styles.rowText}>
