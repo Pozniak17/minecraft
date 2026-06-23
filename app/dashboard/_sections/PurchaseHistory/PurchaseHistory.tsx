@@ -257,17 +257,6 @@ export default function PurchaseHistory() {
           </div>
           <div className={styles.toolbar}>
             {periodControl}
-            <button type="button" className={styles.exportBtn}>
-              <span>Export CSV</span>
-              <Image
-                src="/profile/purchase_history/5.svg"
-                alt=""
-                width={13}
-                height={14}
-                className={styles.exportIcon}
-                aria-hidden
-              />
-            </button>
           </div>
         </header>
 
