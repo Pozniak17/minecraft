@@ -48,17 +48,6 @@
     line-height: normal;
 }
 
-.status {
-    color: #33DF5E;
-    font-family: Montserrat;
-    font-size: 8px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-}
-
 .value {
     color: #FFF;
     font-family: Montserrat;
@@ -93,11 +82,6 @@
 
     .title {
         font-size: 14px;
-    }
-
-    .status {
-        font-size: 10px;
-        letter-spacing: 0.6px;
     }
 
     .value {

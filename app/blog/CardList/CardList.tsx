@@ -8,15 +8,7 @@ export default function CardList({ articles }: { articles: ArticleCardProps[] })
     <>
       <ul className={styles.list}>
         {articles.map(article => (
-          <Card
-            key={article.title}
-            image={article.image}
-            genre={article.genre}
-            time={article.time}
-            title={article.title}
-            description={article.description}
-            date={article.date}
-          />
+          <Card key={article.title} {...article} />
         ))}
       </ul>
 

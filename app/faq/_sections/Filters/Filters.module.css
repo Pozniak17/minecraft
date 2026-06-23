@@ -169,6 +169,19 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.clearSearch {
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #bde153;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: rgba(189, 225, 83, 0.1);
+}
+
 .mobileOnly {
   /* visible on mobile */
 }

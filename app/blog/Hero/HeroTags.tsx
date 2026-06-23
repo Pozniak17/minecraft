@@ -1,40 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { BLOG_CATEGORIES, categoryHref, parseCategoryParam, type BlogCategory } from '../categories';
 import styles from './HeroTags.module.css';
 
-export const HERO_TAGS = [
-  'All',
-  'Guides',
-  'Engineering',
-  'PvP',
-  'Community',
-  'Updates',
-  'Tutorials',
-] as const;
-export type HeroTag = (typeof HERO_TAGS)[number];
-
 export default function HeroTags() {
-  const [activeTag, setActiveTag] = useState<HeroTag>('All');
+  const searchParams = useSearchParams();
+  const activeTag = parseCategoryParam(searchParams.get('category'));
 
   return (
     <div className={styles.tags} role="tablist" aria-label="Blog categories">
-      {HERO_TAGS.map(tag => {
+      {BLOG_CATEGORIES.map(tag => {
         const isActive = tag === activeTag;
 
         return (
-          <button
+          <Link
             key={tag}
-            type="button"
+            href={categoryHref(tag)}
             role="tab"
             aria-selected={isActive}
             className={`${styles.tag} ${isActive ? styles.tagActive : ''}`}
-            onClick={() => setActiveTag(tag)}
           >
             {tag}
-          </button>
+          </Link>
         );
       })}
     </div>
   );
 }
+
+export type { BlogCategory };

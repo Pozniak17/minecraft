@@ -8,9 +8,7 @@ export default function AboutActivities() {
       <Container>
         <div className={styles.layout}>
           <div className={styles.leaderboard}>
-            <p className={styles.leaderboardTitle}>
-              Top Players<span className={styles.leaderboardLive}>LIVE</span>
-            </p>
+            <p className={styles.leaderboardTitle}>Top Players</p>
             <CardList />
           </div>
 

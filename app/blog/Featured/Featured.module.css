@@ -141,6 +141,7 @@
     line-height: normal;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    text-decoration: none;
 
     display: flex;
     padding: 12px 24px;

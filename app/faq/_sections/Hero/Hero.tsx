@@ -1,14 +1,16 @@
 import { Container } from '@/app/_components/Container/Container';
 import { Badge } from '@/app/_components/Badge/Badge';
+import { FAQ_TOTAL_COUNT } from '@/app/faq/_data/faqArticles';
 import styles from './Hero.module.css';
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import HeroTopics from './HeroTopics';
+import HeroSearch from './HeroSearch';
 
 const BREADCRUMB_ITEMS = ['Home', 'Support', 'FAQ'];
 const BREADCRUMB_LINKS = ['/', '/support'];
 
 const STATS = [
-  { value: '120+', label: 'questions' },
+  { value: String(FAQ_TOTAL_COUNT), label: 'questions' },
   { value: '8', label: 'categories' },
   { value: '< 4h', label: 'avg reply' },
 ] as const;
@@ -32,27 +34,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className={styles.search}>
-            <span className={styles.searchIcon} aria-hidden="true">
-              ⌕
-            </span>
-            <input
-              className={`${styles.input} ${styles.inputMobile}`}
-              type="search"
-              placeholder="Search 120+ questions…"
-              aria-label="Search FAQ"
-            />
-            <input
-              className={`${styles.input} ${styles.inputDesktop}`}
-              type="search"
-              placeholder='Search 120+ questions — "how do I link my account", "payment refund"…'
-              aria-label="Search FAQ"
-            />
-            <button type="button" className={styles.searchButton}>
-              <span className={styles.searchButtonMobile}>Go</span>
-              <span className={styles.searchButtonDesktop}>Search</span>
-            </button>
-          </div>
+          <HeroSearch />
 
           <div className={styles.stats}>
             {STATS.map(stat => (

@@ -1,10 +1,11 @@
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import { Container } from '@/app/_components/Container/Container';
+import { categoryHref } from '@/app/blog/categories';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 
 const BREADCRUMB_ITEMS = ['Home', 'Blog', 'Updates', 'Server Update 2.6'];
-const BREADCRUMB_LINKS = ['/', '/blog', '/blog/updates'];
+const BREADCRUMB_LINKS = ['/', '/blog', categoryHref('Updates')];
 
 export default function Hero() {
   return (

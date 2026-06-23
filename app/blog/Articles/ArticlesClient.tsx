@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import CardList from '../CardList/CardList';
+import { filterArticlesByCategory, parseCategoryParam } from '../categories';
 import {
   ARTICLE_SORT_OPTIONS,
   type ArticleSort,
@@ -87,13 +89,26 @@ type ArticlesClientProps = {
 };
 
 export default function ArticlesClient({ articles }: ArticlesClientProps) {
+  const searchParams = useSearchParams();
+  const category = parseCategoryParam(searchParams.get('category'));
   const [sort, setSort] = useState<ArticleSort>('all');
-  const visibleArticles = useMemo(() => sortBlogArticles(articles, sort), [articles, sort]);
+
+  const filteredArticles = useMemo(
+    () => filterArticlesByCategory(articles, category),
+    [articles, category],
+  );
+  const visibleArticles = useMemo(
+    () => sortBlogArticles(filteredArticles, sort),
+    [filteredArticles, sort],
+  );
+
+  const sectionTitle =
+    category === 'All' ? 'Latest articles' : `${category} articles`;
 
   return (
     <>
       <div className={styles.article_wrapper}>
-        <h2 className={styles.title}>Latest articles</h2>
+        <h2 className={styles.title}>{sectionTitle}</h2>
         <ArticleSortSelect value={sort} onChange={setSort} />
       </div>
       <CardList articles={visibleArticles} />

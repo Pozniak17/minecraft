@@ -3,7 +3,7 @@ import { Container } from '@/app/_components/Container/Container';
 import Card, { type ArticleCardProps } from '@/app/blog/CardList/Card/Card';
 import styles from './Releted.module.css';
 
-const RELATED_ARTICLES: ArticleCardProps[] = [
+const RELATED_ARTICLES: (ArticleCardProps & { slug: string })[] = [
   {
     image: '/blog/1.webp',
     genre: 'Guides',
@@ -12,6 +12,7 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     description:
       'Spawning in a fresh world is overwhelming. Here is the short list of things to do in your first hour.',
     date: 'Apr 22, 2026',
+    slug: 'survival-tips',
   },
   {
     image: '/blog/2.webp',
@@ -21,6 +22,7 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     description:
       'A compact, lag-friendly design that produces ~600 ingots per hour and works on every server in our ecosystem.',
     date: 'Apr 18, 2026',
+    slug: 'iron-farm',
   },
   {
     image: '/blog/3.webp',
@@ -30,6 +32,7 @@ const RELATED_ARTICLES: ArticleCardProps[] = [
     description:
       'We tested 18 builds across two weeks of small-scale fights. Four loadouts keep winning — the rest, retire.',
     date: 'Apr 15, 2026',
+    slug: 'pvp-loadouts',
   },
 ];
 

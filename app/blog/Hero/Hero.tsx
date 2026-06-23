@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 import { Badge } from '@/app/_components/Badge/Badge';
@@ -25,7 +26,9 @@ export default function Hero() {
           </button>
         </div>
 
-        <HeroTags />
+        <Suspense fallback={null}>
+          <HeroTags />
+        </Suspense>
       </Container>
     </section>
   );

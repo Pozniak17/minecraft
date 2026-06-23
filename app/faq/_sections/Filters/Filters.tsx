@@ -1,7 +1,15 @@
 'use client';
 
+import { useMemo } from 'react';
+import { filterFaqArticles } from '@/app/faq/_data/faqArticles';
 import styles from './Filters.module.css';
-import { FAQ_MOBILE_CHIP_IDS, getCategoryById, type FaqCategoryId } from '../faqCategories';
+import {
+  FAQ_ITEMS_PER_PAGE,
+  FAQ_MOBILE_CHIP_IDS,
+  getCategoryById,
+  type FaqCategoryId,
+} from '../faqCategories';
+import { useFaqPage } from '../FaqPageContext';
 
 const SORT_LABEL = 'Most helpful';
 
@@ -12,7 +20,15 @@ type FiltersProps = {
 
 export default function Filters({ activeCategory, onCategoryChange }: FiltersProps) {
   const active = getCategoryById(activeCategory);
+  const { searchQuery, clearSearch } = useFaqPage();
   const selectedLabel = active.id === 'all' ? 'All categories' : active.mobileLabel;
+  const trimmedQuery = searchQuery.trim();
+
+  const totalInCategory = useMemo(
+    () => filterFaqArticles(activeCategory, searchQuery).length,
+    [activeCategory, searchQuery],
+  );
+  const visibleEnd = totalInCategory === 0 ? 0 : Math.min(FAQ_ITEMS_PER_PAGE, totalInCategory);
 
   return (
     <div className={styles.filters}>
@@ -55,13 +71,27 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
         </button>
 
         <div className={`${styles.meta} ${styles.mobileOnly}`}>
-          <p className={styles.result}>1-5 of 18</p>
-          <button type="button" className={styles.sort}>
-            <span>{SORT_LABEL}</span>
-            <span className={styles.chevron} aria-hidden="true">
-              ▾
-            </span>
-          </button>
+          <p className={styles.result}>
+            {trimmedQuery
+              ? totalInCategory === 0
+                ? `0 results for "${trimmedQuery}"`
+                : `1-${visibleEnd} of ${totalInCategory} for "${trimmedQuery}"`
+              : totalInCategory === 0
+                ? '0 results'
+                : `1-${visibleEnd} of ${totalInCategory}`}
+          </p>
+          {trimmedQuery ? (
+            <button type="button" className={styles.clearSearch} onClick={clearSearch}>
+              Clear
+            </button>
+          ) : (
+            <button type="button" className={styles.sort}>
+              <span>{SORT_LABEL}</span>
+              <span className={styles.chevron} aria-hidden="true">
+                ▾
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </div>

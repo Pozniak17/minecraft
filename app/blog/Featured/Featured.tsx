@@ -57,7 +57,9 @@ export default function Featured() {
                 </Link>
               </li>
               <li>
-                <button className={styles.second_button}>All updates</button>
+                <Link href="/blog" className={styles.second_button}>
+                  All updates
+                </Link>
               </li>
             </ul>
           </div>

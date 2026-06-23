@@ -8,6 +8,8 @@
 @media screen and (min-width: 1280px) {
   .list {
     flex-direction: row;
+    align-items: stretch;
+    width: 100%;
     gap: 24px;
   }
 }

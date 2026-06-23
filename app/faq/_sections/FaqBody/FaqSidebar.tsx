@@ -1,3 +1,6 @@
+'use client';
+
+import Link from 'next/link';
 import { FAQ_CATEGORIES, FAQ_MOST_ASKED, type FaqCategoryId } from '../faqCategories';
 import styles from './FaqSidebar.module.css';
 
@@ -38,7 +41,9 @@ export default function FaqSidebar({ activeCategory, onCategoryChange }: FaqSide
           {FAQ_MOST_ASKED.map(item => (
             <li key={item.num} className={styles.popularItem}>
               <span className={styles.popularNum}>{item.num}</span>
-              <span className={styles.popularQuestion}>{item.question}</span>
+              <Link href={`/faq/${item.slug}`} className={styles.popularQuestion}>
+                {item.question}
+              </Link>
             </li>
           ))}
         </ul>

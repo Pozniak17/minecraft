@@ -8,6 +8,18 @@
     background: rgba(255, 255, 255, 0.04);
 }
 
+.link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.link:focus-visible {
+    outline: 2px solid #bde153;
+    outline-offset: 2px;
+}
+
 .image {
     width: 335px;
     height: 200px;
