@@ -9,12 +9,6 @@ export default function ArticleCta() {
         <div className={styles.inner}>
           <div className={styles.card}>
             <div className={styles.content}>
-              <div className={styles.status}>
-                <span className={styles.dot} aria-hidden="true" />
-                <span className={`${styles.statusLabel} ${styles.mobileOnly}`}>Support online</span>
-                <span className={`${styles.statusLabel} ${styles.desktopOnly}`}>Support — online</span>
-              </div>
-
               <h2 className={styles.title}>Still need help?</h2>
 
               <p className={`${styles.description} ${styles.mobileOnly}`}>
@@ -28,7 +22,7 @@ export default function ArticleCta() {
 
             <div className={styles.action}>
               <Link href="/contacts" className={styles.button}>
-                Open live chat
+                Contact us
               </Link>
             </div>
           </div>

@@ -39,8 +39,8 @@ const JOIN_CONTENT: FaqArticleFullContent = {
   cta: {
     primary: 'Join Twitch',
     primaryHref: 'https://www.twitch.tv/minecraftsgame',
-    secondary: 'Read the full guide',
-    secondaryHref: '/how-to-start',
+    secondary: 'Browse all FAQ',
+    secondaryHref: '/faq',
   },
   sections: [
     {

@@ -31,31 +31,6 @@
   width: 100%;
 }
 
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.dot {
-  flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #33df5e;
-}
-
-.statusLabel {
-  color: #33df5e;
-  font-family: Montserrat, sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.72px;
-  text-transform: uppercase;
-}
-
 .title {
   color: #fff;
   font-family: Montserrat, sans-serif;
@@ -148,21 +123,6 @@
     gap: 8px;
     flex: 1;
     min-width: 0;
-  }
-
-  .status {
-    justify-content: flex-start;
-    gap: 8px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .statusLabel {
-    font-size: 11px;
-    letter-spacing: 0.88px;
   }
 
   .title {

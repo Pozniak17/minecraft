@@ -390,21 +390,6 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
               </div>
             )}
 
-            <aside className={styles.feedback}>
-              <h2 className={styles.feedbackTitle}>Was this answer helpful?</h2>
-              <TextBlock text={content.feedback.hint} className={styles.feedbackHint} />
-              <div className={styles.feedbackButtons}>
-                <button type="button" className={styles.feedbackYes}>
-                  <span className={styles.mobileOnly}>{content.feedback.yes.mobile}</span>
-                  <span className={styles.desktopOnly}>{content.feedback.yes.desktop}</span>
-                </button>
-                <button type="button" className={styles.feedbackNo}>
-                  <span className={styles.mobileOnly}>{content.feedback.no.mobile}</span>
-                  <span className={styles.desktopOnly}>{content.feedback.no.desktop}</span>
-                </button>
-              </div>
-              <TextBlock text={content.feedback.stats} className={styles.feedbackStats} />
-            </aside>
           </div>
         </div>
       </Container>

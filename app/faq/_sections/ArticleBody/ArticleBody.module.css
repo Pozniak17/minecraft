@@ -426,84 +426,6 @@
   color: #bde153;
 }
 
-.feedback {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 14px;
-  border: 1px solid rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.08);
-  text-align: center;
-}
-
-.feedbackTitle {
-  max-width: 295px;
-  color: #fff;
-  font-family: Montserrat, sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  line-height: normal;
-  text-transform: uppercase;
-}
-
-.feedbackHint {
-  color: rgba(255, 255, 255, 0.72);
-  font-family: Montserrat, sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.feedbackButtons {
-  display: flex;
-  gap: 8px;
-  padding-top: 4px;
-}
-
-.feedbackYes,
-.feedbackNo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 131px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  font-family: Montserrat, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.44px;
-  text-transform: uppercase;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.feedbackYes {
-  border: 1px solid rgba(51, 223, 94, 0.4);
-  background: rgba(51, 223, 94, 0.15);
-  color: #33df5e;
-}
-
-.feedbackNo {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-}
-
-.feedbackStats {
-  color: rgba(255, 255, 255, 0.55);
-  font-family: Montserrat, sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.54px;
-  text-transform: uppercase;
-}
-
 .desktopOnly {
   display: none;
 }
@@ -916,39 +838,5 @@
 
   .ctaSecondary {
     gap: 8px;
-  }
-
-  .feedback {
-    gap: 18px;
-    padding: 32px;
-    border-radius: 16px;
-  }
-
-  .feedbackTitle {
-    max-width: none;
-    font-size: 22px;
-  }
-
-  .feedbackHint {
-    max-width: 520px;
-    font-size: 14px;
-  }
-
-  .feedbackButtons {
-    gap: 12px;
-    padding-top: 4px;
-  }
-
-  .feedbackYes,
-  .feedbackNo {
-    min-width: 0;
-    padding: 14px 28px;
-    font-size: 13px;
-    letter-spacing: 0.52px;
-  }
-
-  .feedbackStats {
-    font-size: 11px;
-    letter-spacing: 0.66px;
   }
 }
