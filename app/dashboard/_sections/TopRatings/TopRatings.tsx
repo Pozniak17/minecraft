@@ -365,21 +365,23 @@ export default function TopRatings() {
                   </span>
                   <div className={styles.podiumDesktopCopy}>
                     <p className={styles.podiumDesktopName}>{player.name}</p>
-                    <p
-                      className={[
-                        styles.podiumDesktopValue,
-                        player.variant === 'gold' && styles.podiumValueGold,
-                        player.variant === 'silver' && styles.podiumValueSilver,
-                        player.variant === 'bronze' && styles.podiumValueBronze,
-                      ]
-                        .filter(Boolean)
-                        .join(' ')}
-                    >
-                      {player.value}
-                    </p>
+                    <div className={styles.podiumDesktopMeta}>
+                      <p
+                        className={[
+                          styles.podiumDesktopValue,
+                          player.variant === 'gold' && styles.podiumValueGold,
+                          player.variant === 'silver' && styles.podiumValueSilver,
+                          player.variant === 'bronze' && styles.podiumValueBronze,
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                      >
+                        {player.value}
+                      </p>
+                      <span className={styles.serverPill}>{player.server}</span>
+                    </div>
                   </div>
                 </div>
-                <span className={styles.serverPill}>{player.server}</span>
               </div>
             </article>
           ))}
@@ -438,43 +440,6 @@ export default function TopRatings() {
               ))}
             </ul>
           )}
-        </section>
-
-        <section className={`${styles.yourRank} ${styles.yourRankMobile}`} aria-label="Your rank">
-          <div className={styles.yourRankMain}>
-            <span className={styles.yourRankIcon} aria-hidden="true">
-              ★
-            </span>
-            <div className={styles.yourRankCopy}>
-              <span className={styles.yourRankLabel}>Your rank</span>
-              <span className={styles.yourRankTitle}>#24 — top 12%</span>
-            </div>
-          </div>
-          <span className={styles.yourRankValue}>148h</span>
-        </section>
-
-        <section className={`${styles.yourRank} ${styles.yourRankDesktop}`} aria-label="Your rank">
-          <div className={styles.yourRankMain}>
-            <span className={styles.yourRankIconDesktop} aria-hidden="true">
-              ★
-            </span>
-            <div className={styles.yourRankCopyDesktop}>
-              <span className={styles.yourRankTitleDesktop}>Your rank — top 12%</span>
-              <span className={styles.yourRankHint}>
-                Climb 7 more spots to break into the top 100.
-              </span>
-            </div>
-          </div>
-          <div className={styles.yourRankStats}>
-            <div className={styles.yourRankStat}>
-              <span className={styles.yourRankStatLabel}>Rank</span>
-              <span className={styles.yourRankStatValue}>#24</span>
-            </div>
-            <div className={styles.yourRankStat}>
-              <span className={styles.yourRankStatLabel}>Playtime</span>
-              <span className={styles.yourRankStatPlaytime}>148 h 32 m</span>
-            </div>
-          </div>
         </section>
       </div>
     </div>
