@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import {
   getOrderItems,
@@ -14,6 +14,7 @@ import { createPayment } from '@/lib/api/payment';
 import type { OrderItem } from '@/lib/api/types';
 import { DEFAULT_CURRENCY, formatMoney } from '@/lib/client/currency';
 import { notifyCartUpdated } from '@/lib/client/cartCount';
+import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
 import styles from './Cart.module.css';
 
 type Row = {
@@ -97,22 +98,35 @@ function orderItemToRow(item: OrderItem, index: number): Row {
 
 export default function Cart() {
   const locale = useLocale();
+  const { profile } = useProfile();
   const [rows, setRows] = useState<Row[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
   const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
-  const [nickname, setNickname] = useState('RedstoneKing');
+  const [nickname, setNickname] = useState('');
+  const nicknameSeeded = useRef(false);
   const [promoCode, setPromoCode] = useState('');
   const [paying, setPaying] = useState(false);
   const [payMessage, setPayMessage] = useState<string | null>(null);
   const [purchaseAgreed, setPurchaseAgreed] = useState(false);
 
   useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (nicknameSeeded.current) return;
+
+    const gameUsername = profile?.game_username?.trim();
+    if (gameUsername) {
+      setNickname(gameUsername);
+      nicknameSeeded.current = true;
+      return;
+    }
+
+    if (profile === null) return;
+
+    const email = profile.email ?? window.localStorage.getItem('user_email') ?? '';
     if (email) setNickname(email.split('@')[0]);
-  }, []);
+    nicknameSeeded.current = true;
+  }, [profile]);
 
   useEffect(() => {
     let active = true;
