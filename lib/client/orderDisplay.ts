@@ -31,12 +31,12 @@ export function formatActivityTitle(
   meta: Map<string, ProductMeta>,
 ): string {
   const items = order.order_item ?? [];
-  const first = items[0];
-  if (!first) return 'Purchase';
+  if (items.length === 0) return 'Purchase';
 
-  const label = formatOrderLineItem(first.product_id, first.image_name, first.amount, meta);
-  const more = items.length > 1 ? ` +${items.length - 1} more` : '';
-  return `Purchased ${label}${more}`;
+  const labels = items.map(item =>
+    formatOrderLineItem(item.product_id, item.image_name, item.amount, meta),
+  );
+  return `Purchased ${labels.join(', ')}`;
 }
 
 export function formatOrderAmount(value: string | number | undefined, currency: string): string {

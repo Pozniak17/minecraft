@@ -155,10 +155,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     let active = true;
-    getOrders(1, 5)
+    getOrders(1, 50)
       .then(data => {
         if (!active) return;
-        setRawOrders(data.results);
+        setRawOrders(data.results.slice(0, 5));
       })
       .catch(() => {})
       .finally(() => {
