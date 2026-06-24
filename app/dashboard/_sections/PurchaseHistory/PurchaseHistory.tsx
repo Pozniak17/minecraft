@@ -7,10 +7,13 @@ import { useLocale } from 'next-intl';
 import { getOrders, downloadOrderBill, openOrderBill, orderHasBill } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
+import {
+  buildProductMeta,
+  formatOrderAmount,
+  formatOrderLineItem,
+  type ProductMeta,
+} from '@/lib/client/orderDisplay';
 import styles from './PurchaseHistory.module.css';
-
-// product_id → метадані товару (назва + чи це кристали) з каталогу бекенду.
-type ProductMeta = { title: string; isCrystal: boolean };
 
 type OrderStatus = 'paid' | 'refund' | 'failed';
 
@@ -33,24 +36,6 @@ const dateFmt = new Intl.DateTimeFormat('en-US', {
 
 const nf = new Intl.NumberFormat('en-US');
 
-function itemLabel(imageName: string | undefined): string {
-  if (!imageName) return 'Item';
-  const base = imageName.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
-  const cleaned = base.replace(/[-_]+/g, ' ').trim();
-  return cleaned || 'Item';
-}
-
-// Назва позиції: спершу реальна назва товару з каталогу, далі фолбек на image_name.
-function itemTitle(productId: string, imageName: string | undefined, meta: Map<string, ProductMeta>): string {
-  return meta.get(productId)?.title || itemLabel(imageName);
-}
-
-// Бекенд віддає decimal з 8 знаками ("420.00000000") — показуємо рівно 2 знаки.
-function formatAmount(value: string | number | undefined, currency: string): string {
-  const num = Number(value) || 0;
-  return `${num.toFixed(2)} ${currency}`;
-}
-
 function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
   const first = order.order_item?.[0];
   const created = first?.created ? new Date(first.created) : null;
@@ -61,10 +46,10 @@ function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
     date: created ? dateFmt.format(created).replace(',', '') : '—',
     player: order.user_nickname ?? '—',
     server: order.server ?? '—',
-    total: formatAmount(order.total_price, currency),
+    total: formatOrderAmount(order.total_price, currency),
     status: 'paid',
-    items: (order.order_item ?? []).map(
-      oi => `${itemTitle(oi.product_id, oi.image_name, meta)} ×${oi.amount}`
+    items: (order.order_item ?? []).map(oi =>
+      formatOrderLineItem(oi.product_id, oi.image_name, oi.amount, meta),
     ),
     hasBill: orderHasBill(order),
   };
@@ -143,14 +128,7 @@ export default function PurchaseHistory() {
     getProducts({ page_size: 100, lang: locale })
       .then(data => {
         if (!active) return;
-        const map = new Map<string, ProductMeta>();
-        for (const p of data.results) {
-          map.set(p.id, {
-            title: p.title ?? '',
-            isCrystal: p.category_slug === 'crystals',
-          });
-        }
-        setProductMeta(map);
+        setProductMeta(buildProductMeta(data.results));
       })
       .catch(() => {});
     return () => {

@@ -2,9 +2,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLocale } from 'next-intl';
 import { getOrders } from '@/lib/api/orders';
+import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
+import {
+  buildProductMeta,
+  formatActivityTitle,
+  formatOrderAmount,
+  type ProductMeta,
+} from '@/lib/client/orderDisplay';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import { crystalsToCurrency } from '@/lib/pricing';
 import { DEFAULT_CURRENCY, formatMoney, getStoredCurrency } from '@/lib/client/currency';
@@ -55,13 +63,6 @@ const ACTIVITY_IMAGES = [
 
 const PACK_AMOUNTS = [500, 1500, 5000];
 
-function itemLabel(imageName: string | undefined): string {
-  if (!imageName) return 'item';
-  const base = imageName.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
-  const cleaned = base.replace(/[-_]+/g, ' ').trim();
-  return cleaned || 'item';
-}
-
 function relativeTime(iso: string | undefined): string {
   if (!iso) return 'Recently';
   const then = new Date(iso).getTime();
@@ -78,24 +79,35 @@ function relativeTime(iso: string | undefined): string {
   return `${months} mo ago`;
 }
 
-function orderToActivity(order: OrderListItem, index: number): ActivityItem {
+function orderToActivity(
+  order: OrderListItem,
+  meta: Map<string, ProductMeta>,
+  index: number,
+): ActivityItem {
   const items = order.order_item ?? [];
   const first = items[0];
-  const more = items.length > 1 ? ` +${items.length - 1} more` : '';
   const currency = first?.currency ?? 'EUR';
   return {
-    title: `Purchased ${itemLabel(first?.image_name)}${more}`,
+    title: formatActivityTitle(order, meta),
     time: relativeTime(first?.created),
-    amount: `-${(Number(order.total_price) || 0).toFixed(2)} ${currency}`,
+    amount: `-${formatOrderAmount(order.total_price, currency)}`,
     tone: 'neg',
     img: ACTIVITY_IMAGES[index % ACTIVITY_IMAGES.length],
   };
 }
 
 export default function Dashboard() {
+  const locale = useLocale();
   const [name, setName] = useState('Player');
-  const [activity, setActivity] = useState<ActivityItem[]>([]);
-  const [activityLoaded, setActivityLoaded] = useState(false);
+  const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
+  const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
+  const [productsLoaded, setProductsLoaded] = useState(false);
+  const [ordersLoaded, setOrdersLoaded] = useState(false);
+  const activityReady = productsLoaded && ordersLoaded;
+  const activity = useMemo(
+    () => rawOrders.map((order, index) => orderToActivity(order, productMeta, index)),
+    [rawOrders, productMeta],
+  );
   const [notifOpen, setNotifOpen] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
   const notifications: ActivityItem[] = [];
@@ -127,14 +139,30 @@ export default function Dashboard() {
 
   useEffect(() => {
     let active = true;
-    getOrders(1, 5)
+    getProducts({ page_size: 100, lang: locale })
       .then(data => {
         if (!active) return;
-        setActivity(data.results.map(orderToActivity));
+        setProductMeta(buildProductMeta(data.results));
       })
       .catch(() => {})
       .finally(() => {
-        if (active) setActivityLoaded(true);
+        if (active) setProductsLoaded(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [locale]);
+
+  useEffect(() => {
+    let active = true;
+    getOrders(1, 5)
+      .then(data => {
+        if (!active) return;
+        setRawOrders(data.results);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (active) setOrdersLoaded(true);
       });
     return () => {
       active = false;
@@ -308,13 +336,18 @@ export default function Dashboard() {
             </Link>
           </div>
 
-          {activityLoaded && activity.length === 0 && (
+          {!activityReady && (
+            <p className={styles.activityEmpty}>Loading…</p>
+          )}
+
+          {activityReady && activity.length === 0 && (
             <p className={styles.activityEmpty}>
               No activity yet. Your purchases will show up here.
             </p>
           )}
 
-          {activity.map((item, index) => (
+          {activityReady &&
+            activity.map((item, index) => (
             <div
               key={`${item.title}-${index}`}
               className={`${styles.activityRow} ${item.desktopOnly ? styles.desktopOnly : ''}`}
