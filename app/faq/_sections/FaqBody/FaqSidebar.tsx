@@ -48,22 +48,6 @@ export default function FaqSidebar({ activeCategory, onCategoryChange }: FaqSide
           ))}
         </ul>
       </div>
-
-      <div className={styles.supportCard}>
-        <div className={styles.supportTop}>
-          <span className={styles.dot} aria-hidden="true" />
-          <span className={styles.supportLabel}>Live support online</span>
-        </div>
-        <h3 className={styles.supportTitle}>Still need help?</h3>
-        <p className={styles.supportDescription}>
-          Chat with us 24/7 or send a ticket — we usually reply within 4 hours.
-        </p>
-        <div className={styles.supportActions}>
-          <Link href="/contacts" className={styles.primaryButton}>
-            Send a ticket
-          </Link>
-        </div>
-      </div>
     </aside>
   );
 }

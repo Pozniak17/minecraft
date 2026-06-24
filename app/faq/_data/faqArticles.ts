@@ -609,24 +609,23 @@ function getUpdatedTimestamp(updated: string): number {
 }
 
 export function sortFaqArticles(articles: FaqArticleMeta[], sort: FaqSortOption): FaqArticleMeta[] {
+  const byListId = (a: FaqArticleMeta, b: FaqArticleMeta) =>
+    a.listId.localeCompare(b.listId, undefined, { numeric: true });
+
   if (sort === 'all') {
-    return articles;
+    return [...articles].sort(byListId);
   }
 
   const sorted = [...articles];
 
   if (sort === 'most-helpful') {
     return sorted.sort(
-      (a, b) =>
-        b.helpfulPercent - a.helpfulPercent ||
-        a.listId.localeCompare(b.listId, undefined, { numeric: true }),
+      (a, b) => b.helpfulPercent - a.helpfulPercent || byListId(a, b),
     );
   }
 
   return sorted.sort(
-    (a, b) =>
-      getUpdatedTimestamp(b.updated) - getUpdatedTimestamp(a.updated) ||
-      a.listId.localeCompare(b.listId, undefined, { numeric: true }),
+    (a, b) => getUpdatedTimestamp(b.updated) - getUpdatedTimestamp(a.updated) || byListId(a, b),
   );
 }
 

@@ -1,0 +1,101 @@
+@media (min-width: 1280px) {
+  .form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 220px) auto;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 2px;
+  }
+
+  .fieldLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .input,
+  .select,
+  .submit {
+    height: 44px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    line-height: normal;
+  }
+
+  .input,
+  .select {
+    width: 100%;
+    min-width: 0;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 24, 18, 0.6);
+  }
+
+  .input {
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: rgba(189, 225, 83, 0.4);
+  }
+
+  .select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+  }
+
+  .select:hover {
+    background: rgba(0, 24, 18, 0.75);
+  }
+
+  .selectPlaceholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .chevron {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: #bde153;
+    color: #001812;
+    font-weight: 600;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .submit:hover {
+    filter: brightness(1.1);
+  }
+}

@@ -3,7 +3,6 @@ import FaqBody from './_sections/FaqBody/FaqBody';
 import { FaqPageProvider } from './_sections/FaqPageContext';
 import Support from './_sections/Support/Support';
 import Suggest from './_sections/Suggest/Suggest';
-import FaqCta from './_sections/FaqCta/FaqCta';
 
 export default function FAQ() {
   return (
@@ -13,7 +12,6 @@ export default function FAQ() {
         <FaqBody />
         <Support />
         <Suggest />
-        <FaqCta />
       </main>
     </FaqPageProvider>
   );

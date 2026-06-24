@@ -56,11 +56,6 @@ export default function Featured() {
                   Read article
                 </Link>
               </li>
-              <li>
-                <Link href="/blog" className={styles.second_button}>
-                  All updates
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

@@ -44,24 +44,6 @@
     background-color 0.2s ease;
 }
 
-.itemFeatured {
-  border-color: rgba(189, 225, 83, 0.3);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.itemFeatured:hover,
-.itemFeatured:focus-within {
-  border-color: rgba(189, 225, 83, 0.45);
-  background: rgba(189, 225, 83, 0.08);
-}
-
-.itemFeatured:hover .readButton,
-.itemFeatured:focus-within .readButton {
-  border-color: rgba(189, 225, 83, 0.3);
-  background: rgba(189, 225, 83, 0.1);
-  color: #bde153;
-}
-
 .head {
   display: flex;
   align-items: flex-start;
@@ -441,17 +423,6 @@
 
   .item {
     border-radius: 12px;
-  }
-
-  .itemFeatured {
-    border-color: rgba(189, 225, 83, 0.3);
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .itemFeatured:hover,
-  .itemFeatured:focus-within {
-    border-color: rgba(189, 225, 83, 0.45);
-    background: rgba(189, 225, 83, 0.08);
   }
 
   .head {

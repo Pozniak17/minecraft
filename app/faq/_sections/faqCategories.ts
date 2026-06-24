@@ -68,7 +68,7 @@ export const FAQ_SORT_OPTIONS = [
 
 export type { FaqSortOption };
 
-export const FAQ_DEFAULT_SORT: FaqSortOption = 'most-helpful';
+export const FAQ_DEFAULT_SORT: FaqSortOption = 'all';
 
 export function getFaqSortLabel(sort: FaqSortOption): string {
   return FAQ_SORT_OPTIONS.find(option => option.id === sort)?.label ?? 'All';

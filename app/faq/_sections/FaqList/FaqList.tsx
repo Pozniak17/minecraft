@@ -22,7 +22,6 @@ function toListItem(article: ReturnType<typeof filterFaqArticles>[number]): FaqL
     categoryId: article.categoryId,
     updated: article.updated,
     question: article.question,
-    featured: article.featured,
     divider: article.listId === '03' && article.categoryId === 'getting-started',
   };
 }
@@ -112,7 +111,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
             {pageItems.map(item => (
               <li
                 key={item.id}
-                className={`${styles.item} ${item.featured ? styles.itemFeatured : ''}`}
+                className={styles.item}
               >
                 <div className={styles.head}>
                   <span className={styles.num}>{item.id}</span>
