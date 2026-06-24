@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   width: 100%;
   min-height: 100%;
@@ -21,6 +21,7 @@
   align-items: flex-start;
   gap: 20px;
   width: 100%;
+  max-width: 480px;
 }
 
 .headerLeft {
@@ -89,6 +90,7 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  max-width: 480px;
   list-style: none;
 }
 
@@ -300,6 +302,7 @@
 /* ─────────────── Desktop ─────────────── */
 @media (min-width: 1280px) {
   .root {
+    align-items: flex-start;
     gap: 32px;
     min-height: calc(100dvh - var(--header-height, 72px));
     padding: 40px 48px 64px;
@@ -310,6 +313,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 24px;
+    max-width: none;
   }
 
   .headerLeft {
@@ -356,6 +360,7 @@
 
   .list {
     gap: 20px;
+    max-width: none;
   }
 
   .card {

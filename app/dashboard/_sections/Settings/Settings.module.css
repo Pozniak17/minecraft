@@ -94,60 +94,6 @@
   min-width: 0;
 }
 
-.sectionSelect {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  width: 100%;
-  padding: 11px 12px 11px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border-light);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-}
-
-.sectionSelectLabel {
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
-.sectionSelectControl {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  background: transparent;
-  color: var(--color-text);
-  font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 600;
-  line-height: normal;
-  appearance: none;
-  cursor: pointer;
-}
-
-.sectionSelectControl:focus {
-  outline: none;
-}
-
-.sectionSelectControl option {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-.sectionSelectChevron {
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 20px;
-  line-height: 1;
-  pointer-events: none;
-}
-
 .card,
 .dangerCard {
   display: flex;
@@ -917,7 +863,6 @@
   }
 
   .subtitleMobile,
-  .sectionSelect,
   .savedBadgeMobile,
   .avatarHintMobile,
   .pillMobile,

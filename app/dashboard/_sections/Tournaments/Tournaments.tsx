@@ -141,29 +141,13 @@ export default function Tournaments() {
           ))}
         </section>
 
-        <section className={styles.notifyCard} aria-labelledby="tournaments-notify-title">
-          <span className={styles.notifyIcon} aria-hidden="true">
-            🔔
-          </span>
-          <h2 id="tournaments-notify-title" className={styles.notifyTitle}>
-            Notify me at launch
-          </h2>
-          <p className={styles.notifyTextMobile}>Email when the first tournament opens.</p>
-          <p className={styles.notifyTextDesktop}>
-            We will email you the moment the first tournament opens.
-          </p>
-          <div className={styles.notifyActions}>
-            <button type="button" className={styles.notifyButton}>
-              Notify me
-            </button>
-            <Link href="/blog/updates" className={styles.announceButton}>
-              <span>Read the announcement</span>
-              <span className={styles.announceArrow} aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </div>
-        </section>
+        <p className={styles.blogNote}>
+          For more details, follow our{' '}
+          <Link href="/blog" className={styles.blogLink}>
+            blog
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

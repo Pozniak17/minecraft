@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
   width: 100%;
   min-height: 100%;
   flex: 1;
@@ -13,6 +12,15 @@
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
 }
 
 /* ── Breadcrumb ── */
@@ -498,8 +506,12 @@
 
 @media (min-width: 1280px) {
   .root {
-    gap: 32px;
     padding: 40px 48px 64px;
+  }
+
+  .inner {
+    gap: 32px;
+    max-width: none;
   }
 
   .crumb {

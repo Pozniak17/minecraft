@@ -1,11 +1,23 @@
 import { http } from './http';
 import type { OrderListItem, Paginated } from './types';
 
+export function getOrderTimestamp(order: OrderListItem): number {
+  const times = (order.order_item ?? [])
+    .map(item => new Date(item.created).getTime())
+    .filter(time => !Number.isNaN(time));
+
+  return times.length ? Math.max(...times) : 0;
+}
+
+export function sortOrdersByDateDesc(orders: OrderListItem[]): OrderListItem[] {
+  return [...orders].sort((a, b) => getOrderTimestamp(b) - getOrderTimestamp(a));
+}
+
 export async function getOrders(page = 1, pageSize?: number) {
   const params: Record<string, number> = { page };
   if (pageSize) params.page_size = pageSize;
   const { data } = await http.get<Paginated<OrderListItem>>('/orders', { params });
-  return data;
+  return { ...data, results: sortOrdersByDateDesc(data.results) };
 }
 
 function parseFilename(contentDisposition: string | null): string | null {

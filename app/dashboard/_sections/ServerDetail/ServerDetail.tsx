@@ -96,6 +96,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
 
   return (
     <section className={styles.root}>
+      <div className={styles.inner}>
       <nav className={styles.crumb} aria-label="Breadcrumb">
         <Link href="/dashboard/servers" className={styles.crumbLink}>
           <span className={styles.crumbArrow} aria-hidden>
@@ -228,6 +229,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
           <ChartBlock chartData={server.chartData} chartMax={chartMax} />
         </div>
       )}
+      </div>
     </section>
   );
 }

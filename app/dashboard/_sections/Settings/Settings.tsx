@@ -1,7 +1,7 @@
 'use client';
 
 import { isAxiosError } from 'axios';
-import { FormEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import {
   updateProfile,
   changeAccountPassword,
@@ -43,7 +43,6 @@ function scrollSubnavItemIntoView(button: HTMLButtonElement | undefined) {
 }
 
 export default function Settings() {
-  const sectionSelectId = useId();
   const sectionRefs = useRef<Partial<Record<SectionId, HTMLElement | null>>>({});
   const subnavButtonRefs = useRef(new Map<SectionId, HTMLButtonElement>());
   const isProgrammaticScroll = useRef(false);
@@ -282,25 +281,6 @@ export default function Settings() {
             Manage your profile and password. Changes save automatically.
           </p>
         </header>
-
-        <label className={styles.sectionSelect} htmlFor={sectionSelectId}>
-          <span className={styles.sectionSelectLabel}>Section:</span>
-          <select
-            id={sectionSelectId}
-            className={styles.sectionSelectControl}
-            value={activeSection}
-            onChange={event => scrollToSection(event.target.value as SectionId)}
-          >
-            {SECTIONS.map(section => (
-              <option key={section.id} value={section.id}>
-                {section.label}
-              </option>
-            ))}
-          </select>
-          <span className={styles.sectionSelectChevron} aria-hidden="true">
-            ▾
-          </span>
-        </label>
 
         <div className={styles.body}>
           <nav className={styles.subnav} aria-label="Settings sections">

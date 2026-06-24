@@ -44,7 +44,7 @@ export function DashboardHeader() {
         </Link>
 
         <div className={styles.right}>
-          <Link href="/dashboard" className={styles.avatar} aria-label="My account">
+          <Link href="/dashboard/settings" className={styles.avatar} aria-label="Settings">
             {photoUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={photoUrl} alt="Profile" className={styles.avatarImg} />

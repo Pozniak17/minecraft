@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Support.module.css';
 
@@ -7,25 +8,14 @@ export default function Support() {
       <Container variant="faq">
         <div className={styles.content}>
           <div className={styles.card}>
-            <div className={styles.top}>
-              <span className={styles.dot} aria-hidden="true" />
-              <span className={styles.topLabel}>Support online</span>
-            </div>
-
-            <h2 className={styles.title}>Can&apos;t find what you need?</h2>
+            <p className={styles.label}>Live support online</p>
+            <h2 className={styles.title}>Still need help?</h2>
             <p className={styles.description}>
-              Our team replies in under 4 hours, around the clock. Pick whichever channel is
-              easiest.
+              Chat with us 24/7 or send a ticket — we usually reply within 4 hours.
             </p>
-
-            <div className={styles.actions}>
-              <button type="button" className={styles.primaryButton}>
-                Open live chat
-              </button>
-              <button type="button" className={styles.secondaryButton}>
-                Send a ticket
-              </button>
-            </div>
+            <Link href="/contacts" className={styles.primaryButton}>
+              Send a ticket
+            </Link>
           </div>
         </div>
       </Container>
