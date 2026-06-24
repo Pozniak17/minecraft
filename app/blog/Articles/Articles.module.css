@@ -66,14 +66,19 @@
 .sortWrap {
     position: relative;
     flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .sortMenu {
     position: absolute;
     top: calc(100% + 6px);
     right: 0;
+    left: 0;
     z-index: 20;
-    min-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     padding: 4px;
     list-style: none;
@@ -87,7 +92,7 @@
 .sortOption {
     display: block;
     width: 100%;
-    padding: 8px 12px;
+    padding: 8px 10px;
     border: 0;
     border-radius: 8px;
     background: transparent;
@@ -97,8 +102,8 @@
     font-weight: 600;
     letter-spacing: 0.4px;
     text-transform: uppercase;
-    text-align: left;
-    white-space: nowrap;
+    text-align: center;
+    white-space: normal;
     cursor: pointer;
     transition: background-color 0.15s ease;
 }

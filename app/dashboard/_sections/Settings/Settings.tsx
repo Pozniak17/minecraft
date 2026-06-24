@@ -594,21 +594,6 @@ export default function Settings() {
                 </div>
               )}
 
-              <hr className={styles.divider} />
-
-              <div className={styles.row}>
-                <div className={styles.rowText}>
-                  <span className={styles.rowTitle}>Active sessions</span>
-                  <span className={styles.rowHintMobile}>3 devices currently signed in.</span>
-                  <span className={styles.rowHintDesktop}>
-                    3 devices currently signed in. Sign out of all to reset.
-                  </span>
-                </div>
-                <button type="button" className={styles.outlinePill}>
-                  <span className={styles.pillMobile}>Manage</span>
-                  <span className={styles.pillDesktop}>Manage sessions</span>
-                </button>
-              </div>
             </section>
 
             <section

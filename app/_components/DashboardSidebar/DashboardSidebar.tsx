@@ -53,7 +53,7 @@ export function DashboardSidebar() {
         />
       </Link>
 
-      <div className={styles.userCard}>
+      <Link href="/dashboard/settings" className={styles.userCard} aria-label="Settings">
         {photoUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -70,7 +70,7 @@ export function DashboardSidebar() {
         <div className={styles.userInfo}>
           <span className={styles.userName}>{name}</span>
         </div>
-      </div>
+      </Link>
 
       <div className={styles.sectionLabel}>
         <span>My workspace</span>
