@@ -98,7 +98,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .root {
     padding: 24px;
   }

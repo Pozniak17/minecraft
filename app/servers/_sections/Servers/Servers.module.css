@@ -298,7 +298,7 @@
 }
 
 /* ─────────────── Desktop ─────────────── */
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .root {
     gap: 32px;
     min-height: calc(100dvh - var(--header-height, 72px));

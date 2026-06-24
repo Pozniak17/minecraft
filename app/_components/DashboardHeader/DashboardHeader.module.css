@@ -85,7 +85,7 @@
   object-fit: cover;
 }
 
-/* ── Desktop nav (≥ 1024px) ── */
+/* ── Desktop nav (≥ 1280px) ── */
 
 .desktopNav {
   display: none;
@@ -142,7 +142,7 @@
   opacity: 0.7;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .mobileBar {
     display: none;
   }

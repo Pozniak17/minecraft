@@ -93,7 +93,7 @@
   object-position: center;
 }
 
-/* ── Icon layout: viewport < 1024px ── */
+/* ── Icon layout: viewport < 1280px ── */
 /* 1 — Silver */
 .card:nth-child(1) .icon {
   width: 146px;

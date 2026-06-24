@@ -889,7 +889,7 @@
   cursor: not-allowed;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .shell {
     background-image: url('/profile/dashboard/bg-desktop.webp');
   }

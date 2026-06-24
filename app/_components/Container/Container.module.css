@@ -5,12 +5,6 @@
   padding-inline: 20px;
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
-  .container {
-    padding-inline: 60px;
-  }
-}
-
 @media (min-width: 1280px) {
   .container {
     padding-inline: 150px;
@@ -19,11 +13,5 @@
   .containerBlog,
   .containerFaq {
     padding-inline: 80px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) {
-  .containerFaq {
-    padding-inline: 20px;
   }
 }

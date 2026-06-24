@@ -362,7 +362,7 @@
 
 /* ─────────────── Desktop ─────────────── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .shell {
     background-image: url('/how-to-start/private/bg-desktop.webp');
   }
@@ -799,9 +799,3 @@
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .doneActions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-}

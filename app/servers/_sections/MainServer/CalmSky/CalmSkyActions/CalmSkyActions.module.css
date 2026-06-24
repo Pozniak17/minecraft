@@ -80,7 +80,7 @@
   height: 24px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .card {
     width: 100%;
     margin: 20px 0 0;

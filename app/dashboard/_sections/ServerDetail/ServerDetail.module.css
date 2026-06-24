@@ -496,7 +496,7 @@
 
 /* ── Desktop ── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .root {
     gap: 32px;
     padding: 40px 48px 64px;

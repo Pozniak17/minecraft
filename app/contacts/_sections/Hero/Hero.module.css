@@ -165,17 +165,6 @@
   display: none;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    min-height: 620px;
-  }
-
-  .content {
-    width: 100%;
-    max-width: none;
-  }
-}
-
 @media (min-width: 1280px) {
   .hero {
     min-height: 680px;
@@ -190,6 +179,8 @@
   }
 
   .content {
+    width: 100%;
+    max-width: none;
     gap: 32px;
     padding-top: 120px;
     padding-bottom: 72px;

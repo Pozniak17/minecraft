@@ -192,7 +192,7 @@
 
 /* Stepper */
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .hero {
     background-image: url('/how-to-start/bg.webp');
     background-size: cover;

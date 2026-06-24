@@ -2,9 +2,9 @@
   display: none;
 }
 
-/* ── Desktop (≥ 1024px) ── */
+/* ── Desktop (≥ 1280px) ── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .sidebar {
     position: sticky;
     top: 0;

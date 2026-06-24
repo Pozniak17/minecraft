@@ -168,7 +168,7 @@
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .title {
     font-size: 28px;
     line-height: 34px;

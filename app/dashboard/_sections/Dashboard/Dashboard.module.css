@@ -692,9 +692,9 @@
   filter: brightness(1.08);
 }
 
-/* ── Desktop (≥ 1024px) ── */
+/* ── Desktop (≥ 1280px) ── */
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .shell {
     background-image: url('/profile/dashboard/bg-desktop.webp');
   }

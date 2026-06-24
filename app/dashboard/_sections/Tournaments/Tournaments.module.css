@@ -207,7 +207,7 @@
   filter: brightness(1.08);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .shell {
     background-image: url('/profile/tournaments/img-desktop.webp');
   }
