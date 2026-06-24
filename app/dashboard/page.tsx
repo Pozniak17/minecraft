@@ -3,7 +3,7 @@ import { requireAuth } from '@/lib/server/requireAuth';
 import Dashboard from './_sections/Dashboard/Dashboard';
 
 export const metadata: Metadata = {
-  title: 'Dashboard — Minecraft Game',
+  title: 'Dashboard',
   description: 'Your personal hub: servers, balance and quick actions.',
 };
 

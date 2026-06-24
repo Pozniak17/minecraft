@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import VerifyEmail from './_sections/VerifyEmail/VerifyEmail';
 
 export const metadata: Metadata = {
-  title: 'Verify Email — Minecraft Game',
+  title: 'Verify Email',
   description: 'Activate your account to start playing.',
+  robots: { index: false, follow: false },
 };
 
 export default async function VerifyEmailPage({

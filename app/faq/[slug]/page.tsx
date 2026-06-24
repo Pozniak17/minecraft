@@ -6,6 +6,9 @@ import Hero from '../_sections/ArticleHero/Hero';
 import Related from '../_sections/Related/Related';
 import { getAllFaqSlugs, getFaqArticleBySlug } from '../_data/faqArticles';
 import { getFaqRelatedItems } from '../_data/faqRelatedItems';
+import { buildMetadata } from '@/lib/seo/meta';
+import { JsonLd } from '@/app/_components/JsonLd/JsonLd';
+import { breadcrumbSchema, faqPageSchema } from '@/lib/seo/schema';
 
 type FaqArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -23,10 +26,12 @@ export async function generateMetadata({ params }: FaqArticlePageProps): Promise
     return { title: 'FAQ article not found' };
   }
 
-  return {
+  return buildMetadata({
     title: article.question,
     description: article.excerpt,
-  };
+    path: `/faq/${slug}`,
+    ogType: 'article',
+  });
 }
 
 export default async function FaqArticlePage({ params }: FaqArticlePageProps) {
@@ -41,6 +46,21 @@ export default async function FaqArticlePage({ params }: FaqArticlePageProps) {
 
   return (
     <main style={{ backgroundColor: '#001812' }}>
+      <JsonLd
+        id="faq-article-schema"
+        data={faqPageSchema([
+          { question: article.question, answer: article.quickAnswer },
+        ])}
+      />
+      <JsonLd
+        id="faq-article-breadcrumb"
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'FAQ', path: '/faq' },
+          { name: article.breadcrumbCategory, path: `/faq?category=${article.categoryId}` },
+          { name: article.breadcrumbShort, path: `/faq/${slug}` },
+        ])}
+      />
       <Hero article={article} />
       <ArticleBody slug={slug} />
       <Related items={relatedItems} categoryLabel={article.categoryLabel} />

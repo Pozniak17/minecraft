@@ -1,6 +1,9 @@
 {
   "name": "Minecraft Game",
   "short_name": "Minecraft",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",

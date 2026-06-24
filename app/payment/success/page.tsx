@@ -3,8 +3,9 @@ import { Suspense } from 'react';
 import PaymentResult from '@/app/payment/_sections/PaymentResult/PaymentResult';
 
 export const metadata: Metadata = {
-  title: 'Payment successful — Minecraft Game',
+  title: 'Payment Successful',
   description: 'Your payment has been completed.',
+  robots: { index: false, follow: false },
 };
 
 export default function PaymentSuccessPage() {

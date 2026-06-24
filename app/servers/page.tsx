@@ -1,18 +1,46 @@
 import type { Metadata } from 'next';
 import { getRefreshToken } from '@/lib/server/authCookies';
+import { buildMetadata } from '@/lib/seo/meta';
+import { JsonLd } from '@/app/_components/JsonLd/JsonLd';
+import { breadcrumbSchema, itemListSchema } from '@/lib/seo/schema';
+import { PROJECT_SERVERS } from '@/lib/data/servers';
+import { TOP_RATED_PLAYERS } from '@/lib/data/topRatedPlayers';
 import Hero from './_sections/Hero/Hero';
 import MainServer from './_sections/MainServer/MainServer';
 
-export const metadata: Metadata = {
-  title: 'Servers — Minecraft Game',
-  description: 'Pick your world — live status, current load, and latency for every server.',
-};
+export const metadata: Metadata = buildMetadata({
+  title: 'Servers',
+  description:
+    'Pick your world — LuckySurvival, MineWars, or CalmSky. Live status, current load, and latency for every Minecraft server.',
+  path: '/servers',
+});
 
 export default async function ServersPage() {
   const isAuthed = Boolean(await getRefreshToken());
 
   return (
     <>
+      <JsonLd
+        id="servers-breadcrumb"
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Servers', path: '/servers' },
+        ])}
+      />
+      <JsonLd
+        id="servers-list"
+        data={itemListSchema(
+          'Minecraft servers',
+          PROJECT_SERVERS.map(server => ({ name: server.name, url: '/servers' })),
+        )}
+      />
+      <JsonLd
+        id="servers-leaderboard"
+        data={itemListSchema(
+          'Top rated players',
+          TOP_RATED_PLAYERS.map(player => ({ name: player.player })),
+        )}
+      />
       <Hero />
       <MainServer isAuthed={isAuthed} />
     </>

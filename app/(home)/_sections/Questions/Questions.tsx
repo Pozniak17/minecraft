@@ -8,7 +8,7 @@ export type QuestionsCardProps = {
   answer: string;
 };
 
-const Data: QuestionsCardProps[] = [
+export const HOME_FAQ: QuestionsCardProps[] = [
   {
     question: 'How do I start playing?',
     answer: 'Create an account, choose a server, and connect using the IP address.',
@@ -49,7 +49,7 @@ export default function Questions() {
               See More
             </Link>
           </div>
-          <AccordionList items={Data} />
+          <AccordionList items={HOME_FAQ} />
         </div>
       </Container>
     </section>
