@@ -33,7 +33,6 @@ type Row = {
 const CART_IMAGES = ['/profile/cart/1.webp', '/profile/cart/2.webp', '/profile/cart/3.webp'];
 // Реальні сервери з ТЗ (бекенд /core/servers/ поки повертає []).
 const FALLBACK_SERVERS = ['LuckySurvival', 'MineWars', 'CalmSky'];
-const PAYMENT_METHODS = ['VISA', 'MC', 'Pay', 'GPay', 'PayPal'] as const;
 // Верхня межа кількості за позицію — узгоджено з бекендом (AddToCart.amount max 20000).
 const MAX_QTY = 15_000;
 
@@ -107,6 +106,7 @@ export default function Cart() {
   const [promoCode, setPromoCode] = useState('');
   const [paying, setPaying] = useState(false);
   const [payMessage, setPayMessage] = useState<string | null>(null);
+  const [purchaseAgreed, setPurchaseAgreed] = useState(false);
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
@@ -304,23 +304,24 @@ export default function Cart() {
         type="button"
         className={styles.payBtn}
         onClick={handlePay}
-        disabled={paying || lineCount === 0}
+        disabled={paying || lineCount === 0 || !purchaseAgreed}
       >
         <span>{paying ? 'Processing…' : 'Proceed to pay'}</span>
         <span aria-hidden>→</span>
       </button>
+      <label className={styles.consent}>
+        <input
+          type="checkbox"
+          className={styles.consentInput}
+          checked={purchaseAgreed}
+          onChange={event => setPurchaseAgreed(event.target.checked)}
+        />
+        <span className={styles.consentBox} aria-hidden="true" />
+        <span className={styles.consentText}>
+          By purchasing, I agree to immediate digital delivery and waive my withdrawal right.
+        </span>
+      </label>
       {payMessage && <p className={styles.secureNote}>{payMessage}</p>}
-      <p className={styles.secureNote}>
-        <span className={styles.secureNoteMobile}>SSL secure checkout</span>
-        <span className={styles.secureNoteDesktop}>Secure checkout — SSL encrypted</span>
-      </p>
-      <div className={styles.paymentMethods}>
-        {PAYMENT_METHODS.map(method => (
-          <span key={method} className={styles.paymentBadge}>
-            {method}
-          </span>
-        ))}
-      </div>
     </section>
   );
 
