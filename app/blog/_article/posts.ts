@@ -387,9 +387,9 @@ export const BLOG_POSTS: BlogPostFull[] = [
             type: 'paragraph',
             text: {
               mobile:
-                'This design is tested on Survival, Skyblock, and Anarchy branches. Claims protect the build; ask staff before crossing into wilderness on Anarchy.',
+                'This design is tested on LuckySurvival, MineWars, and CalmSky. Claims protect the build; ask staff before crossing into wilderness on MineWars.',
               desktop:
-                'This design is tested on our Survival, Skyblock, and Anarchy branches with no rule changes required. Land claims protect the build from griefing — on Anarchy, ask staff before placing villager modules near unclaimed wilderness borders.',
+                'This design is tested on our LuckySurvival, MineWars, and CalmSky servers with no rule changes required. Land claims protect the build from griefing — on MineWars, ask staff before placing villager modules near unclaimed wilderness borders.',
             },
           },
           {
@@ -407,21 +407,21 @@ export const BLOG_POSTS: BlogPostFull[] = [
     image: '/blog/3.webp',
     genre: 'PvP',
     time: 5,
-    title: 'PvP loadouts that actually work on Anarchy',
+    title: 'PvP loadouts that actually work on MineWars',
     description:
       'We tested 18 builds across two weeks of small-scale fights. Four loadouts keep winning — the rest, retire.',
     descriptionDesktop:
-      'We tested 18 builds across two weeks of small-scale Anarchy fights — duels, border skirmishes, and nether highway ambushes. Four loadouts keep winning at our current meta. The rest are fine for practice, but you can safely retire them from serious fights.',
+      'We tested 18 builds across two weeks of small-scale MineWars fights — duels, border skirmishes, and nether highway ambushes. Four loadouts keep winning at our current meta. The rest are fine for practice, but you can safely retire them from serious fights.',
     date: 'Apr 15, 2026',
     popularity: 1580,
-    heroTags: ['PvP', 'Anarchy'],
-    sidebarTags: ['PvP', 'Anarchy', 'Loadouts', 'Meta'],
+    heroTags: ['PvP', 'MineWars'],
+    sidebarTags: ['PvP', 'MineWars', 'Loadouts', 'Meta'],
     breadcrumbLabel: 'PvP loadouts',
     lead: {
       mobile:
-        'Anarchy PvP on our servers is not about perfect armor — it is about kit synergy, pearl discipline, and knowing when to disengage. These four loadouts survived two weeks of recorded fights.',
+        'MineWars PvP on our servers is not about perfect armor — it is about kit synergy, pearl discipline, and knowing when to disengage. These four loadouts survived two weeks of recorded fights.',
       desktop:
-        'Anarchy PvP on our servers is not about perfect armor enchants — it is about kit synergy, pearl discipline, and knowing when to disengage. These four loadouts survived two weeks of recorded fights across 180+ engagements. Everything else underperformed once opponents started running crystals and mace tech.',
+        'MineWars PvP on our servers is not about perfect armor enchants — it is about kit synergy, pearl discipline, and knowing when to disengage. These four loadouts survived two weeks of recorded fights across 180+ engagements. Everything else underperformed once opponents started running crystals and mace tech.',
     },
     sections: [
       {
@@ -435,7 +435,7 @@ export const BLOG_POSTS: BlogPostFull[] = [
               mobile:
                 'Spring 2026 favors burst damage and fast re-pearl. Tank builds still win long fights, but only if you force them — most fights end in under 15 seconds.',
               desktop:
-                'Spring 2026 favors burst damage and fast re-pearl timing. Tank builds still win extended trades, but only if you force them — most recorded fights on our Anarchy shard ended in under fifteen seconds once both players had full kits.',
+                'Spring 2026 favors burst damage and fast re-pearl timing. Tank builds still win extended trades, but only if you force them — most recorded fights on our MineWars shard ended in under fifteen seconds once both players had full kits.',
             },
           },
           {
@@ -526,7 +526,7 @@ export const BLOG_POSTS: BlogPostFull[] = [
               desktop:
                 '"If you are still full-trading in open field against crystal kits, you are donating gear to the economy. Hit, pearl out, re-engage from height — that is the whole kit."',
             },
-            author: 'NovaShift, Anarchy tournament finalist',
+            author: 'NovaShift, MineWars tournament finalist',
           },
         ],
       },
@@ -568,9 +568,9 @@ export const BLOG_POSTS: BlogPostFull[] = [
             type: 'paragraph',
             text: {
               mobile:
-                'Full Protection-only sword builds, bow-primary kits without pearls, and unenchanted diamond in crystal range — all underperformed in our tests. Keep them for duels, not Anarchy.',
+                'Full Protection-only sword builds, bow-primary kits without pearls, and unenchanted diamond in crystal range — all underperformed in our tests. Keep them for duels, not MineWars.',
               desktop:
-                'Full Protection-only sword builds, bow-primary kits without pearl escape, and unenchanted diamond in crystal range — all underperformed in our two-week test window. Keep them for friendly duels, not serious Anarchy roaming.',
+                'Full Protection-only sword builds, bow-primary kits without pearl escape, and unenchanted diamond in crystal range — all underperformed in our two-week test window. Keep them for friendly duels, not serious MineWars roaming.',
             },
           },
           {
@@ -1100,9 +1100,9 @@ export const BLOG_POSTS: BlogPostFull[] = [
             type: 'paragraph',
             text: {
               mobile:
-                'Survival and Skyblock allow all seven. Anarchy allows cosmetic packs only — no UI that hides totem pop animations. Tournament bracket requires default fire overlay.',
+                'LuckySurvival and CalmSky allow all seven. MineWars allows cosmetic packs only — no UI that hides totem pop animations. Tournament bracket requires default fire overlay.',
               desktop:
-                'Survival and Skyblock allow all seven without restriction. Anarchy allows cosmetic packs only — no UI mods that hide totem pop animations or shorten fire overlays. Official tournament brackets require default fire and totem visuals for fairness reviews.',
+                'LuckySurvival and CalmSky allow all seven without restriction. MineWars allows cosmetic packs only — no UI mods that hide totem pop animations or shorten fire overlays. Official tournament brackets require default fire and totem visuals for fairness reviews.',
             },
           },
         ],

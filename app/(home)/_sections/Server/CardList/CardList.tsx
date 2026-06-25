@@ -14,7 +14,7 @@ import styles from './CardList.module.css';
 const CARDS: (Omit<CardProps, 'connectAddress' | 'version'> & { id: GameServerKey })[] = [
   {
     id: 'luckysurvival',
-    title: 'Lucky Survival',
+    title: 'LuckySurvival',
     text: 'Classic survival with balanced PvP',
     description:
       'Vanilla survival with PvP and TNT disabled. Perfect for fair fights, progression, and long-term gameplay.',

@@ -9,7 +9,7 @@ import { useArticleToc } from './useArticleToc';
 
 const TOC_ITEMS = [
   { id: '01', label: "What's new in 2.6" },
-  { id: '02', label: 'Skyblock generator rewrite' },
+  { id: '02', label: 'Spawn hub refresh' },
   { id: '03', label: '12 new custom crafts' },
   { id: '04', label: 'Economy rebalance' },
   { id: '05', label: 'Tournament mode' },
@@ -21,12 +21,12 @@ const TOC_ITEMS = [
 const SECTION_IDS = TOC_ITEMS.map(item => item.id);
 
 const ARTICLE_SHARE_TITLE =
-  'Server Update 2.6 — new Skyblock mechanics, custom crafts, and the biggest patch of the season';
+  'Server Update 2.6 — custom crafts, economy rebalance, and the biggest patch of the season';
 
-const TAGS = ['Updates', 'Skyblock', 'Economy', 'Tournaments'] as const;
+const TAGS = ['Updates', 'LuckySurvival', 'Economy', 'Tournaments'] as const;
 
 const WHATS_NEW_BULLETS = [
-  'New Skyblock generator with biome-aware islands.',
+  'Refreshed spawn hubs on LuckySurvival, MineWars, and CalmSky.',
   'Twelve new custom crafts, including the Ender Compass.',
   'Economy rebalance covering prices and rewards.',
   'Brand-new Tournament mode with weekly brackets.',
@@ -34,7 +34,7 @@ const WHATS_NEW_BULLETS = [
 ];
 
 const WHATS_NEW_BULLETS_DESKTOP = [
-  'New Skyblock generator with biome-aware island shapes.',
+  'Refreshed spawn hubs with clearer warps and tutorial NPCs on every server.',
   'Twelve new custom crafts, including the long-requested Ender Compass.',
   'Economy rebalance covering vendor prices, taxes, and reward curves.',
   'Brand-new Tournament mode with weekly brackets and seasonal trophies.',
@@ -308,12 +308,12 @@ export default function Articles() {
 
             <p className={`${styles.lead} ${styles.mobileOnly}`}>
               After eight weeks on the public test branch, the 2.6 patch is finally rolling out
-              across every server. This release rewrites how Skyblock works, adds twelve new crafts,
+              across every server. This release refreshes spawn hubs on LuckySurvival, MineWars, and CalmSky, adds twelve new crafts,
               ships a new tournament mode, and touches almost every economy curve.
             </p>
             <p className={`${styles.lead} ${styles.desktopOnly}`}>
               After eight weeks on the public test branch, the 2.6 patch is finally rolling out
-              across every server. This release rewrites a fair amount of how Skyblock works, adds
+              across every server. This release refreshes spawn hubs on LuckySurvival, MineWars, and CalmSky, adds
               twelve new crafts, ships a brand-new tournament mode, and touches almost every economy
               curve in the game. Here is the full breakdown.
             </p>
@@ -321,13 +321,13 @@ export default function Articles() {
             <section id="section-01" className={styles.section}>
               <h2 className={styles.sectionTitle}>1. What&apos;s new in 2.6</h2>
               <p className={`${styles.paragraph} ${styles.mobileOnly}`}>
-                We focused this release on the three areas players asked for most: Skyblock
-                progression, economy balance, and competitive play. Every change ships across all
+                We focused this release on the three areas players asked for most: spawn hub
+                quality, economy balance, and competitive play. Every change ships across all
                 servers simultaneously.
               </p>
               <p className={`${styles.paragraph} ${styles.desktopOnly}`}>
                 We focused this release on the three areas players asked for most in the spring
-                survey: Skyblock progression, economy balance, and competitive play. Every change
+                survey: spawn hub quality, economy balance, and competitive play. Every change
                 ships across all servers simultaneously, so nothing is locked behind a specific
                 world.
               </p>
@@ -335,42 +335,40 @@ export default function Articles() {
             </section>
 
             <section id="section-02" className={styles.section}>
-              <h2 className={styles.sectionTitle}>2. Skyblock generator rewrite</h2>
+              <h2 className={styles.sectionTitle}>2. Spawn hub refresh</h2>
               <p className={`${styles.paragraph} ${styles.mobileOnly}`}>
-                The original Skyblock generator was the oldest piece of our codebase — four years
-                old, before we supported custom biomes. We finally retired it. The new generator
-                produces biome-aware islands.
+                Spawn hubs on LuckySurvival, MineWars, and CalmSky were the oldest areas on the map —
+                built before we added tutorial NPCs and cross-server warps. We rebuilt all three with
+                clearer signage and faster routes to the wilderness.
               </p>
               <p className={`${styles.paragraph} ${styles.desktopOnly}`}>
-                The original Skyblock generator was the oldest piece of our codebase — written four
-                years ago, before we supported custom biomes or large-scale automation. We finally
-                retired it. The new generator produces islands that respect the biome you picked at
-                signup: lush jungle starters, snowy spruce platforms, and a brand-new mushroom
-                variant for adventurous players.
+                Spawn hubs on LuckySurvival, MineWars, and CalmSky were the oldest areas on the map —
+                built before we added tutorial NPCs and cross-server warps. We rebuilt all three with
+                clearer signage, refreshed market stalls, and faster routes to the wilderness on each
+                server.
               </p>
               <ArticleFigure
                 src="/blog/update-skyblock.png"
-                alt="Biome-aware starter island in Skyblock"
-                caption="Caption: One of three new biome-aware starter islands available on day one."
+                alt="Refreshed spawn hub on LuckySurvival"
+                caption="Caption: The new LuckySurvival spawn — same world, clearer warps and tutorial flow."
                 dashed
               />
               <p className={`${styles.paragraph} ${styles.mobileOnly}`}>
-                Underneath, the generator is now seeded — the same world ID always produces the same
-                island, so you can plan builds with friends before you spawn in. Existing saves are
-                not touched.
+                Each hub keeps the same world seed and claim boundaries — only the spawn build changed.
+                Your existing bases and chests are untouched.
               </p>
               <p className={`${styles.paragraph} ${styles.desktopOnly}`}>
-                Underneath, the generator is now seeded — the same world ID always produces the same
-                island, so you can plan builds with friends before you even spawn in. The change is
-                fully backwards-compatible: existing saves are not touched.
+                Each hub keeps the same world seed and claim boundaries — only the spawn build changed.
+                Your existing bases, chests, and /home points are untouched; use the new warp signs to
+                reach the wilderness faster.
               </p>
               <Callout
                 variant="info"
                 title="Heads up"
-                desktopChildren="If you decide to regenerate your island, your old build is archived for 30 days. You can restore it from the user dashboard at any time during that window."
+                desktopChildren="If you had a shop stall in the old spawn market, staff migrated your chest contents to the new market row. Check /mail in-game if anything looks missing."
               >
-                If you regenerate your island, your old build is archived for 30 days. Restore it
-                from the dashboard any time.
+                If you had a shop stall in the old spawn market, staff migrated your chest contents to
+                the new market row.
               </Callout>
             </section>
 
@@ -395,7 +393,7 @@ export default function Articles() {
               </p>
               <p className={`${styles.paragraph} ${styles.desktopOnly}`}>
                 Six new decorative items have joined the catalog, including the wildly popular
-                Glowing Banner Set, the Skyblock Floating Lantern, and three variants of the
+                Glowing Banner Set, the Glowing Floating Lantern, and three variants of the
                 seasonal Iron Trophy used in tournaments. All cosmetic crafts are also available as
                 a bundle in the in-game store.
               </p>

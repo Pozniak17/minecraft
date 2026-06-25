@@ -28,7 +28,7 @@ const RELATED_ARTICLES: (ArticleCardProps & { slug: string })[] = [
     image: '/blog/3.webp',
     genre: 'PvP',
     time: 5,
-    title: 'PvP loadouts that actually work on Anarchy',
+    title: 'PvP loadouts that actually work on MineWars',
     description:
       'We tested 18 builds across two weeks of small-scale fights. Four loadouts keep winning — the rest, retire.',
     date: 'Apr 15, 2026',

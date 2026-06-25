@@ -23,7 +23,7 @@ export default function Hero() {
               </li>
             </ul>
             <h1 className={styles.title}>
-              Server Update 2.6 — new Skyblock mechanics, custom crafts, and the biggest patch of
+              Server Update 2.6 — custom crafts, economy rebalance, and the biggest patch of
               the season
             </h1>
 
@@ -33,7 +33,7 @@ export default function Hero() {
             </p>
             <p className={styles.descriptionDesktop}>
               After eight weeks on the public test branch, the 2.6 patch is finally rolling out to
-              every server. We rewrote the Skyblock generator from scratch, added 12 new custom
+              every server. We refreshed spawn hubs on LuckySurvival, MineWars, and CalmSky, added 12 new custom
               crafts, rebalanced the economy, and shipped a brand-new tournament mode.
             </p>
 

@@ -71,7 +71,7 @@ const STEPS: Step[] = [
     title: 'Buy or join a server',
     description: 'Pick a server, copy the IP, paste in Minecraft.',
     descriptionDesktop:
-      'Pick a server from the Servers page — Classic, Skyblock, or Anarchy. Copy the IP and paste it into Minecraft → Multiplayer → Add Server.',
+      'Pick a server from the Servers page — LuckySurvival, MineWars, or CalmSky. Copy the IP and paste it into Minecraft → Multiplayer → Add Server.',
     bullets: [
       'Open Servers page.',
       'Click Copy IP.',

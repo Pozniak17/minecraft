@@ -30,12 +30,12 @@ export default function Featured() {
             </ul>
 
             <h2 className={styles.title}>
-              Server Update 2.6 — new Skyblock mechanics, custom crafts, and the biggest patch of
+              Server Update 2.6 — custom crafts, economy rebalance, and the biggest patch of
               the season
             </h2>
 
             <p className={styles.description}>
-              We rewrote the entire island generator, added 12 new custom crafts, rebalanced the
+              We refreshed spawn hubs on LuckySurvival, MineWars, and CalmSky, added 12 new custom crafts, rebalanced the
               economy, and shipped a brand-new tournament mode. Here is everything you need to know
               — and the changes you can already test on the public branch tonight.
             </p>
