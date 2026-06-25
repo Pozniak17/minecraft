@@ -167,13 +167,26 @@ export default function Dashboard() {
     return items;
   }, [offlineNotifications, purchaseNotif]);
 
+  const notifFingerprint = useMemo(() => {
+    const parts: string[] = [];
+    if (purchaseNotif) parts.push(`purchase:${purchaseNotif.title}:${purchaseNotif.body}`);
+    if (offlineKey) parts.push(`offline:${offlineKey}`);
+    return parts.join('|');
+  }, [purchaseNotif, offlineKey]);
+
+  const [acknowledgedFingerprint, setAcknowledgedFingerprint] = useState('');
+  const showNotifDot =
+    notifFingerprint !== '' && notifFingerprint !== acknowledgedFingerprint;
+
   const hasAlert = notifications.some(item => item.tone === 'neg');
   const hasSuccess = notifications.some(item => item.tone === 'pos');
-  const notifAriaLabel = hasAlert
-    ? 'Notifications — server alert'
-    : hasSuccess
-      ? 'Notifications — purchase complete'
-      : 'Notifications';
+  const notifAriaLabel = showNotifDot
+    ? hasAlert
+      ? 'Notifications — server alert'
+      : hasSuccess
+        ? 'Notifications — purchase complete'
+        : 'Notifications'
+    : 'Notifications';
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
@@ -238,11 +251,6 @@ export default function Dashboard() {
   }, [activityReady, rawOrders, productMeta]);
 
   useEffect(() => {
-    if (!notifOpen || !purchaseNotif) return;
-    clearPurchaseSuccess();
-  }, [notifOpen, purchaseNotif]);
-
-  useEffect(() => {
     if (!notifOpen) return;
 
     const onPointerDown = (event: MouseEvent) => {
@@ -281,7 +289,16 @@ export default function Dashboard() {
               aria-label={notifAriaLabel}
               aria-haspopup="true"
               aria-expanded={notifOpen}
-              onClick={() => setNotifOpen(open => !open)}
+              onClick={() => {
+                setNotifOpen(open => {
+                  const next = !open;
+                  if (next && notifFingerprint) {
+                    setAcknowledgedFingerprint(notifFingerprint);
+                    clearPurchaseSuccess();
+                  }
+                  return next;
+                });
+              }}
             >
               <span
                 className={styles.notifIcon}
@@ -291,8 +308,8 @@ export default function Dashboard() {
                 }}
                 aria-hidden="true"
               />
-              {hasAlert && <span className={styles.notifDot} aria-hidden="true" />}
-              {!hasAlert && hasSuccess && (
+              {showNotifDot && hasAlert && <span className={styles.notifDot} aria-hidden="true" />}
+              {showNotifDot && !hasAlert && hasSuccess && (
                 <span className={`${styles.notifDot} ${styles.notifDotSuccess}`} aria-hidden="true" />
               )}
             </button>
