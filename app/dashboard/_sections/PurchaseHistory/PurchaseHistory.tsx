@@ -57,6 +57,29 @@ function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
 
 const PERIODS = ['Last 90 days', 'Last 30 days', 'Last 7 days', 'All time'] as const;
 
+type Period = (typeof PERIODS)[number];
+
+const PERIOD_DAYS: Record<Exclude<Period, 'All time'>, number> = {
+  'Last 7 days': 7,
+  'Last 30 days': 30,
+  'Last 90 days': 90,
+};
+
+function getOrderTimestamp(order: OrderListItem): number {
+  const times = (order.order_item ?? [])
+    .map(item => new Date(item.created).getTime())
+    .filter(time => !Number.isNaN(time));
+  return times.length ? Math.max(...times) : 0;
+}
+
+function orderMatchesPeriod(order: OrderListItem, period: Period): boolean {
+  if (period === 'All time') return true;
+  const ts = getOrderTimestamp(order);
+  if (!ts) return false;
+  const cutoff = Date.now() - PERIOD_DAYS[period] * 24 * 60 * 60 * 1000;
+  return ts >= cutoff;
+}
+
 const STATUS_LABEL: Record<OrderStatus, string> = {
   paid: 'paid',
   refund: 'refund',
@@ -73,7 +96,7 @@ function splitDate(date: string) {
 
 export default function PurchaseHistory() {
   const locale = useLocale();
-  const [period, setPeriod] = useState<(typeof PERIODS)[number]>('Last 90 days');
+  const [period, setPeriod] = useState<Period>('Last 90 days');
   const [periodOpen, setPeriodOpen] = useState(false);
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
@@ -136,19 +159,24 @@ export default function PurchaseHistory() {
     };
   }, [locale]);
 
-  const orders = useMemo(
-    () => rawOrders.map(order => mapOrder(order, productMeta)),
-    [rawOrders, productMeta]
+  const filteredOrders = useMemo(
+    () => rawOrders.filter(order => orderMatchesPeriod(order, period)),
+    [rawOrders, period],
   );
 
-  // Статистика рахується з реальних замовлень (а не фіксовані числа).
+  const orders = useMemo(
+    () => filteredOrders.map(order => mapOrder(order, productMeta)),
+    [filteredOrders, productMeta],
+  );
+
+  // Статистика рахується з відфільтрованих замовлень за обраний період.
   const stats = useMemo(() => {
     let spent = 0;
     let crystals = 0;
     let privileges = 0;
     let currency = 'EUR';
 
-    for (const order of rawOrders) {
+    for (const order of filteredOrders) {
       spent += Number(order.total_price) || 0;
       for (const item of order.order_item ?? []) {
         if (item.currency) currency = item.currency;
@@ -171,7 +199,7 @@ export default function PurchaseHistory() {
       {
         labelMobile: 'Orders',
         labelDesktop: 'Orders',
-        value: nf.format(rawOrders.length),
+        value: nf.format(filteredOrders.length),
         icon: '/profile/purchase_history/1.svg',
       },
       {
@@ -193,9 +221,10 @@ export default function PurchaseHistory() {
         icon: '/profile/purchase_history/4.svg',
       },
     ];
-  }, [rawOrders, productMeta]);
+  }, [filteredOrders, productMeta]);
 
-  const isEmpty = loaded && orders.length === 0;
+  const hasNoOrders = loaded && rawOrders.length === 0;
+  const hasNoOrdersInPeriod = loaded && rawOrders.length > 0 && orders.length === 0;
 
   const periodControl = (
     <div className={styles.periodWrap}>
@@ -280,7 +309,7 @@ export default function PurchaseHistory() {
 
         {!loaded ? (
           <p className={styles.stateNote}>Loading your orders…</p>
-        ) : isEmpty ? (
+        ) : hasNoOrders ? (
           <div className={styles.emptyState}>
             <p className={styles.emptyTitle}>No orders yet</p>
             <p className={styles.emptyText}>
@@ -289,6 +318,13 @@ export default function PurchaseHistory() {
             <Link href="/dashboard/shop" className={styles.emptyCta}>
               Go to shop →
             </Link>
+          </div>
+        ) : hasNoOrdersInPeriod ? (
+          <div className={styles.emptyState}>
+            <p className={styles.emptyTitle}>No orders in this period</p>
+            <p className={styles.emptyText}>
+              Try a longer period or choose &ldquo;All time&rdquo; to see your full history.
+            </p>
           </div>
         ) : (
           <>

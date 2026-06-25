@@ -66,7 +66,7 @@ function buildArticleMeta(seed: ArticleSeed): FaqArticleMeta {
     breadcrumbCategory: category.breadcrumb,
     breadcrumbShort: seed.breadcrumbShort,
     breadcrumbItemsDesktop: ['Home', 'Support', 'FAQ', category.breadcrumb, seed.breadcrumbShort],
-    breadcrumbLinksDesktop: ['/', '/support', '/faq', `/faq?category=${seed.categoryId}`],
+    breadcrumbLinksDesktop: ['/', '/faq', '/faq', `/faq?category=${seed.categoryId}`],
     question: seed.question,
     updated: seed.updated,
     updatedFull: `Updated ${seed.updated}, 2026`,

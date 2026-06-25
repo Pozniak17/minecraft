@@ -201,15 +201,11 @@
 /* Спільні стилі для mobile і desktop — Figma compact-картка ідентична на обох breakpoint'ах. */
 .card.cardCompact {
   width: 327px;
-  min-height: 450px;
+  min-height: 481px;
   justify-content: flex-start;
   padding: 152px 17px 18px;
   border-radius: 18px;
   backdrop-filter: blur(4px);
-}
-
-.card.cardCompact:nth-child(3) {
-  min-height: 481px;
 }
 
 .card.cardCompact .title {
@@ -252,10 +248,6 @@
 /* Mobile: кнопка зафіксована внизу, price row — 14px над нею */
 @media (max-width: 1279px) {
   .card.cardCompact {
-    height: 450px;
-  }
-
-  .card.cardCompact:nth-child(3) {
     height: 481px;
   }
 
@@ -343,10 +335,6 @@
 
   /* Compact: кнопка зафіксована внизу, price row — 16px над нею */
   .card.cardCompact {
-    height: 450px;
-  }
-
-  .card.cardCompact:nth-child(3) {
     height: 481px;
   }
 

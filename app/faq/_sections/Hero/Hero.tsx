@@ -7,7 +7,7 @@ import HeroTopics from './HeroTopics';
 import HeroSearch from './HeroSearch';
 
 const BREADCRUMB_ITEMS = ['Home', 'Support', 'FAQ'];
-const BREADCRUMB_LINKS = ['/', '/support'];
+const BREADCRUMB_LINKS = ['/', '/faq'];
 
 const STATS = [
   { value: String(FAQ_TOTAL_COUNT), label: 'questions' },
