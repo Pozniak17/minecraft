@@ -99,13 +99,13 @@ const STEPS: Step[] = [
       'After joining for the first time, link your in-game nickname to your account so privileges and crystals deliver to the right player.',
     bullets: [
       'In game: /link <your email>',
-      'Get a 6-digit code by email.',
-      '/link confirm 123456',
+      'Check your email for a link.',
+      'Click the link to finish linking.',
     ],
     bulletsDesktop: [
       'In game, run /link followed by your account email.',
-      'We send a 6-digit code to your email.',
-      'Run /link confirm 123456 to finish.',
+      'We send an activation link to your email.',
+      'Open the link in your browser — your nickname is linked automatically.',
     ],
     status: 'pending',
   },
