@@ -8,13 +8,6 @@ export type FaqArticleListBlock = {
   desktop: readonly string[];
 };
 
-export const JOIN_SIDEBAR_RELATED = [
-  'What versions of Minecraft do you support?',
-  'I forgot my password — how do I reset it?',
-  'How do I link my Microsoft account?',
-  'Why am I getting "connection lost" errors?',
-] as const;
-
 export const JOIN_LEAD: FaqArticleContentBlock = {
   mobile:
     'Joining a Minecraft Ecosystem server takes about two minutes once you have Minecraft installed. This guide walks through every step.',

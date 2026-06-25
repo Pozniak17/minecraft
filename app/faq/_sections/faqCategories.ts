@@ -74,9 +74,6 @@ export function getFaqSortLabel(sort: FaqSortOption): string {
   return FAQ_SORT_OPTIONS.find(option => option.id === sort)?.label ?? 'All';
 }
 
-/** @deprecated Use FAQ_DEFAULT_ITEMS_PER_PAGE */
-export const FAQ_ITEMS_PER_PAGE = FAQ_DEFAULT_ITEMS_PER_PAGE;
-
 export const FAQ_HERO_TOPIC_IDS = [
   'getting-started',
   'account',

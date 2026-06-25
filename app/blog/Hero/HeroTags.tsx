@@ -29,5 +29,3 @@ export default function HeroTags() {
     </div>
   );
 }
-
-export type { BlogCategory };

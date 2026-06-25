@@ -1,5 +1,5 @@
-export const USER_EMAIL_STORAGE_KEY = 'user_email';
-export const PENDING_VERIFY_EMAIL_STORAGE_KEY = 'pending_verify_email';
+const USER_EMAIL_STORAGE_KEY = 'user_email';
+const PENDING_VERIFY_EMAIL_STORAGE_KEY = 'pending_verify_email';
 
 /** Чи є локальна ознака, що користувач уже реєструвався / логінився в цьому браузері. */
 export function readHasStoredAccount(): boolean {

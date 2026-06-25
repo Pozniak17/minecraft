@@ -10,5 +10,3 @@ export type FaqListItem = {
   featured?: boolean;
   divider?: boolean;
 };
-
-export { FAQ_ITEMS_PER_PAGE } from '../faqCategories';

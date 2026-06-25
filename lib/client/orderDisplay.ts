@@ -2,14 +2,14 @@ import type { OrderListItem } from '@/lib/api/types';
 
 export type ProductMeta = { title: string; isCrystal: boolean };
 
-export function itemLabelFromImage(imageName: string | undefined): string {
+function itemLabelFromImage(imageName: string | undefined): string {
   if (!imageName) return 'Item';
   const base = imageName.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
   const cleaned = base.replace(/[-_]+/g, ' ').trim();
   return cleaned || 'Item';
 }
 
-export function orderItemTitle(
+function orderItemTitle(
   productId: string,
   imageName: string | undefined,
   meta: Map<string, ProductMeta>,

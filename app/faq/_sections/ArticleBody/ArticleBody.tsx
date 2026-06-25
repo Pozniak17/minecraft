@@ -8,7 +8,8 @@ import {
   getFaqArticleHref,
 } from '@/app/faq/_data/faqArticles';
 import { getFaqArticleContent } from '@/app/faq/_data/faqArticleContent';
-import type { FaqArticleContentBlock, FaqSectionContent } from '@/app/faq/_data/faqArticleTypes';
+import type { FaqArticleContentBlock } from '@/app/faq/_data/joinArticleContent';
+import type { FaqSectionContent } from '@/app/faq/_data/faqArticleTypes';
 import { GAME_SERVERS } from '@/lib/server/gameServers';
 import { TWITCH_URL } from '@/lib/data/social';
 import styles from './ArticleBody.module.css';

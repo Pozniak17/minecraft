@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { getOrderItems } from '@/lib/api/cart';
 
-export const CART_UPDATED_EVENT = 'cart-updated';
+const CART_UPDATED_EVENT = 'cart-updated';
 
 export function notifyCartUpdated() {
   window.dispatchEvent(new Event(CART_UPDATED_EVENT));

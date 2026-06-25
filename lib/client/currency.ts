@@ -1,7 +1,7 @@
 // Єдине джерело правди для обраної валюти магазину (зберігається між сесіями).
 // Бекенд тримає ціну в EUR і раз на день перераховує в інші валюти, тож фронт
 // лише передає обрану валюту — конвертацію робить бекенд.
-export const CURRENCY_STORAGE_KEY = 'shop:currency';
+const CURRENCY_STORAGE_KEY = 'shop:currency';
 export const DEFAULT_CURRENCY = 'EUR';
 
 export function getStoredCurrency(): string {

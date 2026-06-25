@@ -19,16 +19,6 @@ export interface VerifyCodeInput {
   email_code: string;
 }
 
-export interface AuthTokens {
-  access: string;
-  refresh: string;
-}
-
-export interface ApiErrorBody {
-  detail?: string;
-  [field: string]: unknown; // DRF повертає помилки по полях
-}
-
 export interface RestorePasswordInput {
   email: string;
 }
@@ -72,13 +62,6 @@ export interface Currency {
 
 export interface ServerItem {
   server_type: string;
-}
-
-export interface CategoryItem {
-  // Реальний бекенд віддає title/slug; translations лишаємо опційним (зі Swagger).
-  title?: string;
-  translations?: string;
-  slug: string;
 }
 
 export interface Product {

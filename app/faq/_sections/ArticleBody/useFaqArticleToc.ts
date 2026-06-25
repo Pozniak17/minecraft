@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-const READING_LINE_RATIO = 0.3;
 const ACTIVE_SECTION_ROOT_MARGIN = '-20% 0px -55% 0px';
 
 function getSectionElements(sectionIds: readonly string[]) {

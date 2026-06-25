@@ -2,7 +2,7 @@ import { Badge } from '../Badge/Badge';
 import { Container } from '../Container/Container';
 import styles from './LegalPage.module.css';
 
-export type LegalSection = {
+type LegalSection = {
   heading: string;
   paragraphs: string[];
 };

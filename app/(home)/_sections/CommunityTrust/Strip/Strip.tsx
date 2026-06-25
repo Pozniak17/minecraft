@@ -64,5 +64,3 @@ export default function Strip({ className }: StripProps) {
     </div>
   );
 }
-
-export { STRIP_LOGOS };

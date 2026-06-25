@@ -6,7 +6,7 @@ export const PROJECT_SERVERS = [
 
 export type ProjectServerId = (typeof PROJECT_SERVERS)[number]['id'];
 
-export function getDashboardServerHref(id: ProjectServerId): string {
+function getDashboardServerHref(id: ProjectServerId): string {
   return `/dashboard/servers/${id}`;
 }
 

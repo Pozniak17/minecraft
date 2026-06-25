@@ -1,7 +1,7 @@
 'use client';
 import styles from './Tabs.module.css';
 
-export const TABS = ['Crystals', 'Privileges'] as const;
+const TABS = ['Crystals', 'Privileges'] as const;
 export type Tab = (typeof TABS)[number];
 
 type TabsProps = {

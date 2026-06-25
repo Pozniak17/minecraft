@@ -12,7 +12,7 @@ export type GameServerKey = keyof typeof GAME_SERVERS;
 export const GAME_API_PORT = 7000;
 
 /** Стандартний порт Minecraft Java (technical/doc.txt). */
-export const MINECRAFT_GAME_PORT = 25565;
+const MINECRAFT_GAME_PORT = 25565;
 
 /** Підтримуваний діапазон версій Minecraft Java для всіх серверів. */
 export const MINECRAFT_VERSION_LABEL = '1.12–1.19';

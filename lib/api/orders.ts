@@ -1,7 +1,7 @@
 import { http } from './http';
 import type { OrderListItem, Paginated } from './types';
 
-export function getOrderTimestamp(order: OrderListItem): number {
+function getOrderTimestamp(order: OrderListItem): number {
   const times = (order.order_item ?? [])
     .map(item => new Date(item.created).getTime())
     .filter(time => !Number.isNaN(time));
@@ -9,7 +9,7 @@ export function getOrderTimestamp(order: OrderListItem): number {
   return times.length ? Math.max(...times) : 0;
 }
 
-export function sortOrdersByDateDesc(orders: OrderListItem[]): OrderListItem[] {
+function sortOrdersByDateDesc(orders: OrderListItem[]): OrderListItem[] {
   return [...orders].sort((a, b) => getOrderTimestamp(b) - getOrderTimestamp(a));
 }
 

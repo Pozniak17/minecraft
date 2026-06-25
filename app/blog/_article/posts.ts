@@ -1160,7 +1160,3 @@ export function getRelatedArticles(currentSlug: string) {
 
   return { mobile, desktop };
 }
-
-export function getBlogListArticles() {
-  return BLOG_POSTS.map(toCardProps);
-}

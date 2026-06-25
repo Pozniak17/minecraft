@@ -11,7 +11,7 @@ export const BLOG_CATEGORIES = [
 ] as const;
 
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
-export type BlogGenre = Exclude<BlogCategory, 'All'>;
+type BlogGenre = Exclude<BlogCategory, 'All'>;
 
 export function parseCategoryParam(value: string | null | undefined): BlogCategory {
   if (value && BLOG_CATEGORIES.includes(value as BlogCategory) && value !== 'All') {

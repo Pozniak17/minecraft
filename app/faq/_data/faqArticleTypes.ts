@@ -1,7 +1,5 @@
 import type { FaqArticleContentBlock, FaqArticleListBlock } from './joinArticleContent';
 
-export type { FaqArticleContentBlock, FaqArticleListBlock };
-
 export type FaqSectionContent = {
   id: string;
   tocNum: string;

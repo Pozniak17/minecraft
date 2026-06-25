@@ -1,6 +1,6 @@
 import { GAME_SERVERS } from '@/lib/server/gameServers';
 
-export type ServerStatus = 'online' | 'offline';
+type ServerStatus = 'online' | 'offline';
 
 export type LivePlayer = {
   initial: string;

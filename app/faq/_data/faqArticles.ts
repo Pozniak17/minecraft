@@ -551,7 +551,7 @@ export function formatArticleViews(views: number): string {
   return views.toLocaleString('en-US');
 }
 
-export function getArticlesByCategory(categoryId: FaqCategoryId): FaqArticleMeta[] {
+function getArticlesByCategory(categoryId: FaqCategoryId): FaqArticleMeta[] {
   if (categoryId === 'all') {
     return FAQ_ARTICLES;
   }

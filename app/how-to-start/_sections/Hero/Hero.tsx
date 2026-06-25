@@ -3,7 +3,6 @@ import AuthAwareLink from '@/app/_components/AuthAwareLink/AuthAwareLink';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-// import step2Illustration from '@/public/how-to-start/stepper-1.webp';
 import img1 from '@/public/how-to-start/1.webp';
 import img2 from '@/public/how-to-start/2.webp';
 import img3 from '@/public/how-to-start/3.webp';

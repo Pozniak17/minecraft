@@ -70,8 +70,6 @@ const Data: PrivilegesCardProps[] = [
   },
 ];
 
-const TIER_TITLES = Data.map(item => item.title);
-
 function priceForTitle(title: string, prices?: Record<string, string>): string | undefined {
   if (!prices) return undefined;
   if (prices[title]) return prices[title];

@@ -1743,7 +1743,7 @@ const SIMPLE_CONTENT = Object.fromEntries(
   SIMPLE_ARTICLES.map(article => [article.slug, buildSimpleArticle(article)]),
 ) as Record<string, FaqArticleFullContent>;
 
-export const FAQ_ARTICLE_CONTENT: Record<string, FaqArticleFullContent> = {
+const FAQ_ARTICLE_CONTENT: Record<string, FaqArticleFullContent> = {
   join: JOIN_CONTENT,
   ...SIMPLE_CONTENT,
 };
