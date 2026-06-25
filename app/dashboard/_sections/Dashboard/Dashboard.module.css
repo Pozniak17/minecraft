@@ -117,6 +117,10 @@
   background: #ef4d4d;
 }
 
+.notifDotSuccess {
+  background: #33df5e;
+}
+
 .notifPanel {
   position: absolute;
   top: calc(100% + 10px);
@@ -168,10 +172,29 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+.notifItemAlert {
+  border-color: rgba(239, 77, 77, 0.4);
+  border-left: 3px solid #ef4d4d;
+  background: rgba(239, 77, 77, 0.08);
+}
+
+.notifItemSuccess {
+  border-color: rgba(51, 223, 94, 0.4);
+  border-left: 3px solid #33df5e;
+  background: rgba(51, 223, 94, 0.08);
+}
+
 .notifItemTitle {
   font-size: 13px;
   font-weight: 600;
   color: var(--color-text);
+}
+
+.notifItemBody {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .notifItemTime {

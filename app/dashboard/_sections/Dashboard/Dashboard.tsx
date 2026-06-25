@@ -14,6 +14,7 @@ import {
   type ProductMeta,
 } from '@/lib/client/orderDisplay';
 import { useServerOnline } from '@/lib/client/useServerOnline';
+import { hasPurchaseSuccessPending, clearPurchaseSuccess } from '@/lib/client/purchaseNotification';
 import { crystalsToCurrency } from '@/lib/pricing';
 import { DEFAULT_CURRENCY, formatMoney, getStoredCurrency } from '@/lib/client/currency';
 import styles from './Dashboard.module.css';
@@ -47,12 +48,20 @@ const SOFT_PLAYER_CAP = 200;
 type ActivityItem = {
   title: string;
   time: string;
+  body?: string;
   amount?: string;
   tone?: 'pos' | 'neg';
   img?: string;
   icon?: string;
   desktopOnly?: boolean;
 };
+
+// "A and B" / "A, B, and C"
+function formatNameList(names: string[]): string {
+  if (names.length <= 1) return names[0] ?? '';
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
+}
 
 const ACTIVITY_IMAGES = [
   '/profile/activity/act-1.png',
@@ -110,7 +119,7 @@ export default function Dashboard() {
   );
   const [notifOpen, setNotifOpen] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
-  const notifications: ActivityItem[] = [];
+  const [purchaseNotif, setPurchaseNotif] = useState<ActivityItem | null>(null);
   // Валюта читається після маунту (localStorage) — щоб уникнути розбіжності SSR/CSR.
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
 
@@ -128,6 +137,43 @@ export default function Dashboard() {
   const activeCount = onlineNames.length;
   const activeHint =
     activeCount > 0 ? `${onlineNames.join(', ')} online` : 'Checking server status…';
+
+  const offlineNames = SERVERS.filter(s => liveByKey[s.key].status === 'offline').map(s => s.name);
+  const allResolved = SERVERS.every(s => liveByKey[s.key].status !== 'loading');
+  const offlineKey = allResolved ? offlineNames.join('|') : '';
+  const offlineNotifications = useMemo<ActivityItem[]>(() => {
+    if (offlineKey === '') return [];
+    const names = offlineKey.split('|');
+
+    let title: string;
+    let body: string;
+    if (names.length === SERVERS.length) {
+      title = 'All servers offline';
+      body = "We're working on it. Please check back shortly.";
+    } else if (names.length === 1) {
+      title = `${names[0]} is offline`;
+      body = "We're restoring access. Status refreshes every 10 seconds.";
+    } else {
+      title = `${names.length} servers offline`;
+      body = `${formatNameList(names)} are temporarily unavailable.`;
+    }
+
+    return [{ title, body, time: 'Live', tone: 'neg' }];
+  }, [offlineKey]);
+
+  const notifications = useMemo<ActivityItem[]>(() => {
+    const items: ActivityItem[] = [...offlineNotifications];
+    if (purchaseNotif) items.unshift(purchaseNotif);
+    return items;
+  }, [offlineNotifications, purchaseNotif]);
+
+  const hasAlert = notifications.some(item => item.tone === 'neg');
+  const hasSuccess = notifications.some(item => item.tone === 'pos');
+  const notifAriaLabel = hasAlert
+    ? 'Notifications — server alert'
+    : hasSuccess
+      ? 'Notifications — purchase complete'
+      : 'Notifications';
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
@@ -170,6 +216,33 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
+    if (!activityReady || !hasPurchaseSuccessPending()) return;
+
+    const latest = rawOrders[0];
+    if (latest) {
+      setPurchaseNotif({
+        title: 'Purchase complete',
+        body: `${formatActivityTitle(latest, productMeta)}. Delivered to your in-game nickname.`,
+        time: 'Just now',
+        tone: 'pos',
+      });
+      return;
+    }
+
+    setPurchaseNotif({
+      title: 'Purchase complete',
+      body: 'Your payment went through. Crystals and privileges are on their way.',
+      time: 'Just now',
+      tone: 'pos',
+    });
+  }, [activityReady, rawOrders, productMeta]);
+
+  useEffect(() => {
+    if (!notifOpen || !purchaseNotif) return;
+    clearPurchaseSuccess();
+  }, [notifOpen, purchaseNotif]);
+
+  useEffect(() => {
     if (!notifOpen) return;
 
     const onPointerDown = (event: MouseEvent) => {
@@ -205,7 +278,7 @@ export default function Dashboard() {
             <button
               type="button"
               className={styles.notif}
-              aria-label="Notifications"
+              aria-label={notifAriaLabel}
               aria-haspopup="true"
               aria-expanded={notifOpen}
               onClick={() => setNotifOpen(open => !open)}
@@ -218,8 +291,9 @@ export default function Dashboard() {
                 }}
                 aria-hidden="true"
               />
-              {notifications.length > 0 && (
-                <span className={styles.notifDot} aria-hidden="true" />
+              {hasAlert && <span className={styles.notifDot} aria-hidden="true" />}
+              {!hasAlert && hasSuccess && (
+                <span className={`${styles.notifDot} ${styles.notifDotSuccess}`} aria-hidden="true" />
               )}
             </button>
 
@@ -231,8 +305,20 @@ export default function Dashboard() {
                 ) : (
                   <ul className={styles.notifList}>
                     {notifications.map((item, index) => (
-                      <li key={`${item.title}-${index}`} className={styles.notifItem}>
+                      <li
+                        key={`${item.title}-${index}`}
+                        className={`${styles.notifItem} ${
+                          item.tone === 'neg'
+                            ? styles.notifItemAlert
+                            : item.tone === 'pos'
+                              ? styles.notifItemSuccess
+                              : ''
+                        }`}
+                      >
                         <span className={styles.notifItemTitle}>{item.title}</span>
+                        {item.body && (
+                          <span className={styles.notifItemBody}>{item.body}</span>
+                        )}
                         <span className={styles.notifItemTime}>{item.time}</span>
                       </li>
                     ))}

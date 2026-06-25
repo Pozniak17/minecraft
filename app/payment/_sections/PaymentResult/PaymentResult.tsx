@@ -2,7 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { notifyPurchaseSuccess } from '@/lib/client/purchaseNotification';
 import styles from './PaymentResult.module.css';
 
 type Status = 'success' | 'failed';
@@ -42,6 +44,10 @@ export default function PaymentResult({ status }: { status: Status }) {
     params.get('payment_id');
 
   const copy = COPY[status];
+
+  useEffect(() => {
+    if (status === 'success') notifyPurchaseSuccess();
+  }, [status]);
 
   return (
     <div className={`${styles.root} ${styles[status]}`}>
