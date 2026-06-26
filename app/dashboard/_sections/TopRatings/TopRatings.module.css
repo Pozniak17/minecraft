@@ -970,15 +970,39 @@
 
     border: 1px solid rgba(255, 255, 255, 0.2);
 
-    background: rgba(255, 255, 255, 0.05);
-
-    backdrop-filter: blur(15px);
+    background: rgba(3, 29, 23, 0.72);
 
     font-family: var(--font-main);
 
     cursor: pointer;
 
     white-space: nowrap;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+
+  }
+
+
+
+  .filterBtn[aria-expanded='true'] {
+
+    border-color: rgba(189, 225, 83, 0.35);
+
+    background: rgba(3, 29, 23, 0.92);
+
+  }
+
+
+
+  .filterBtn:focus-visible {
+
+    outline: 2px solid rgba(189, 225, 83, 0.45);
+
+    outline-offset: 2px;
 
   }
 
@@ -1032,19 +1056,15 @@
 
   .filterMenu {
 
-    position: absolute;
+    position: fixed;
 
-    top: calc(100% + 6px);
+    z-index: 2000;
 
-    right: 0;
-
-    z-index: 5;
+    box-sizing: border-box;
 
     display: flex;
 
     flex-direction: column;
-
-    min-width: 100%;
 
     margin: 0;
 
@@ -1054,9 +1074,9 @@
 
     border: 1px solid rgba(255, 255, 255, 0.15);
 
-    background: rgba(0, 24, 18, 0.95);
+    background: #001812;
 
-    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 
     list-style: none;
 

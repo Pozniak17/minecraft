@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import FilterDropdown from './FilterDropdown';
 import styles from './TopRatings.module.css';
 
 type Metric = 'playtime' | 'kills' | 'wealth' | 'achievements';
@@ -214,79 +215,33 @@ export default function TopRatings() {
           </div>
 
           <div className={styles.filterTools}>
-            <div className={styles.filterWrap}>
-              <button
-                type="button"
-                className={styles.filterBtn}
-                onClick={() => {
-                  setPeriodOpen(open => !open);
-                  setServerOpen(false);
-                }}
-                aria-expanded={periodOpen}
-                aria-haspopup="listbox"
-              >
-                <span className={styles.filterPrefix}>{t('tr.filter.periodPrefix')}</span>
-                <span className={styles.filterValue}>{periodLabels[period]}</span>
-                <span className={styles.filterCaret} aria-hidden="true">
-                  ▾
-                </span>
-              </button>
-              {periodOpen && (
-                <ul className={styles.filterMenu} role="listbox" aria-label={t('tr.filter.periodLabel')}>
-                  {PERIOD_KEYS.map(key => (
-                    <li key={key} role="option" aria-selected={period === key}>
-                      <button
-                        type="button"
-                        className={styles.filterOption}
-                        onClick={() => {
-                          setPeriod(key);
-                          setPeriodOpen(false);
-                        }}
-                      >
-                        {periodLabels[key]}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <FilterDropdown
+              prefix={t('tr.filter.periodPrefix')}
+              value={periodLabels[period]}
+              options={PERIOD_KEYS.map(key => ({ value: key, label: periodLabels[key] }))}
+              selectedValue={period}
+              isOpen={periodOpen}
+              onOpenChange={open => {
+                setPeriodOpen(open);
+                if (open) setServerOpen(false);
+              }}
+              onSelect={value => setPeriod(value as PeriodKey)}
+              ariaLabel={t('tr.filter.periodLabel')}
+            />
 
-            <div className={styles.filterWrap}>
-              <button
-                type="button"
-                className={styles.filterBtn}
-                onClick={() => {
-                  setServerOpen(open => !open);
-                  setPeriodOpen(false);
-                }}
-                aria-expanded={serverOpen}
-                aria-haspopup="listbox"
-              >
-                <span className={styles.filterPrefix}>{t('tr.filter.serverPrefix')}</span>
-                <span className={styles.filterValue}>{serverLabel(server)}</span>
-                <span className={styles.filterCaret} aria-hidden="true">
-                  ▾
-                </span>
-              </button>
-              {serverOpen && (
-                <ul className={styles.filterMenu} role="listbox" aria-label={t('tr.filter.serverLabel')}>
-                  {SERVER_KEYS.map(key => (
-                    <li key={key} role="option" aria-selected={server === key}>
-                      <button
-                        type="button"
-                        className={styles.filterOption}
-                        onClick={() => {
-                          setServer(key);
-                          setServerOpen(false);
-                        }}
-                      >
-                        {serverLabel(key)}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <FilterDropdown
+              prefix={t('tr.filter.serverPrefix')}
+              value={serverLabel(server)}
+              options={SERVER_KEYS.map(key => ({ value: key, label: serverLabel(key) }))}
+              selectedValue={server}
+              isOpen={serverOpen}
+              onOpenChange={open => {
+                setServerOpen(open);
+                if (open) setPeriodOpen(false);
+              }}
+              onSelect={value => setServer(value as ServerFilter)}
+              ariaLabel={t('tr.filter.serverLabel')}
+            />
           </div>
         </div>
 
