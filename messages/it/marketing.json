@@ -130,7 +130,7 @@
     "step3Desc": "Al passaggio 2, accederai alla tua dashboard utente. Qui potrai effettuare acquisti, visualizzare la cronologia degli ordini e gestire le impostazioni del tuo account.",
     "step3Button": "Vai alla dashboard",
     "step4Title": "Scegli un server",
-    "step4Desc": "Benvenuto al passaggio 2! Ecco come funziona: il nostro progetto offre tre server unici con regole e stili di gioco propri. Puoi esplorarli tramite questi link: <br/> <br/> - LuckySurvival <br/> - MineWars <br/> - CalmSky <br/> <br/> Tuffati e scegli il server adatto al tuo stile!",
+    "step4Desc": "Benvenuto al passaggio 2! Ecco come funziona: il nostro progetto offre tre server unici con regole e stili di gioco propri. Puoi esplorarli tramite questi link: <br></br> <br></br> - <lucky>LuckySurvival</lucky> <br></br> - <minewars>MineWars</minewars> <br></br> - <calmsky>CalmSky</calmsky> <br></br> <br></br> Tuffati e scegli il server adatto al tuo stile!",
     "step5Title": "Connettiti al server",
     "step5Desc": "Avvia Minecraft e vai alla sezione Multigiocatore. Aggiungi l'indirizzo IP del server, che trovi nella pagina del server, per connetterti e giocare con gli altri!",
     "step5Button": "Dettagli del server",

@@ -123,6 +123,28 @@
   /* 18px */
 }
 
+.stepperDescBreak {
+  display: block;
+  height: 6px;
+}
+
+.stepperDescBreak + .stepperDescBreak {
+  display: none;
+}
+
+.stepperLink {
+  color: var(--primary-color-primary-500, #bde153);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(189, 225, 83, 0.45);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.stepperLink:hover {
+  text-decoration-color: rgba(189, 225, 83, 0.85);
+}
+
 .stepperButton {
   box-sizing: border-box;
   display: inline-flex;

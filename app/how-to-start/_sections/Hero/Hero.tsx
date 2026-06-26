@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import AuthAwareLink from '@/app/_components/AuthAwareLink/AuthAwareLink';
+import { getPublicServerHref } from '@/lib/data/servers';
 import styles from './Hero.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -90,7 +91,24 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
               <div className={styles.stepperContent}>
                 <h3 className={styles.stepperTitle}>{t('howToStart.step4Title')}</h3>
                 <p className={styles.stepperDescription}>
-                  {t.rich('howToStart.step4Desc', { br: () => <br /> })}
+                  {t.rich('howToStart.step4Desc', {
+                    br: () => <span className={styles.stepperDescBreak} aria-hidden="true" />,
+                    lucky: chunks => (
+                      <Link href={getPublicServerHref('luckysurvival')} className={styles.stepperLink}>
+                        {chunks}
+                      </Link>
+                    ),
+                    minewars: chunks => (
+                      <Link href={getPublicServerHref('minewars')} className={styles.stepperLink}>
+                        {chunks}
+                      </Link>
+                    ),
+                    calmsky: chunks => (
+                      <Link href={getPublicServerHref('calmsky')} className={styles.stepperLink}>
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </p>
               </div>
               <Image src={img3} alt="" className={styles.stepperImage} />

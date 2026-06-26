@@ -130,7 +130,7 @@
     "step3Desc": "In Step 2, you'll log into your user dashboard. This area offers various features, including the ability to make purchases, view your order history, and manage your account settings.",
     "step3Button": "Go to Dashboard",
     "step4Title": "Choose a Server",
-    "step4Desc": "Welcome to Step 2! Here's how it works: Our project features three unique servers, each with its own rules and gameplay style. You can explore them through the following links: <br/> <br/> - LuckySurvival <br/> - MineWars <br/> - CalmSky <br/> <br/> Dive in and choose the server that suits your gaming style!",
+    "step4Desc": "Welcome to Step 2! Here's how it works: Our project features three unique servers, each with its own rules and gameplay style. You can explore them through the following links: <br></br> <br></br> - <lucky>LuckySurvival</lucky> <br></br> - <minewars>MineWars</minewars> <br></br> - <calmsky>CalmSky</calmsky> <br></br> <br></br> Dive in and choose the server that suits your gaming style!",
     "step5Title": "Connect to the Server",
     "step5Desc": "To begin, launch Minecraft and navigate to the Multiplayer section. Here, you can add the server's IP address, which you can find on the server's page. This will allow you to connect and start playing with others!",
     "step5Button": "View server details",

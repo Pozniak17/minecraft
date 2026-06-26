@@ -130,7 +130,7 @@
     "step3Desc": "En el paso 2, iniciarás sesión en tu panel de usuario. Allí podrás realizar compras, ver el historial de pedidos y gestionar la configuración de tu cuenta.",
     "step3Button": "Ir al panel",
     "step4Title": "Elegir un servidor",
-    "step4Desc": "¡Bienvenido al paso 2! Así funciona: nuestro proyecto tiene tres servidores únicos, cada uno con sus propias reglas y estilo. Puedes explorarlos en estos enlaces: <br/> <br/> - LuckySurvival <br/> - MineWars <br/> - CalmSky <br/> <br/> ¡Sumérgete y elige el servidor que se adapte a tu estilo!",
+    "step4Desc": "¡Bienvenido al paso 2! Así funciona: nuestro proyecto tiene tres servidores únicos, cada uno con sus propias reglas y estilo. Puedes explorarlos en estos enlaces: <br></br> <br></br> - <lucky>LuckySurvival</lucky> <br></br> - <minewars>MineWars</minewars> <br></br> - <calmsky>CalmSky</calmsky> <br></br> <br></br> ¡Sumérgete y elige el servidor que se adapte a tu estilo!",
     "step5Title": "Conectarse al servidor",
     "step5Desc": "Abre Minecraft y ve a la sección Multijugador. Añade la dirección IP del servidor, que encontrarás en la página del servidor, para conectarte y empezar a jugar con otros.",
     "step5Button": "Ver detalles del servidor",

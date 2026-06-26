@@ -14,6 +14,11 @@ export function getPlayNowHref(id: ProjectServerId, isAuthed: boolean): string {
   return isAuthed ? getDashboardServerHref(id) : '/register';
 }
 
+export function getPublicServerHref(id: ProjectServerId): string {
+  const server = PROJECT_SERVERS.find(item => item.id === id);
+  return server ? `/servers#${server.publicTab}` : '/servers';
+}
+
 /** Головна CTA «Play Now»: кабінет → сервери; гість з акаунтом → login; без акаунта → register. */
 export function getDashboardPlayHref(isAuthed: boolean, hasAccount = false): string {
   if (isAuthed) return '/dashboard/servers';

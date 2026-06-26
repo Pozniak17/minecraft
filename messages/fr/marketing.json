@@ -130,7 +130,7 @@
     "step3Desc": "À l'étape 2, connectez-vous à votre tableau de bord. Vous pourrez y effectuer des achats, consulter l'historique de vos commandes et gérer vos paramètres.",
     "step3Button": "Aller au tableau de bord",
     "step4Title": "Choisir un serveur",
-    "step4Desc": "Bienvenue à l'étape 2\u00a0! Voici comment ça fonctionne : notre projet propose trois serveurs uniques avec leurs propres règles et styles. Explorez-les via ces liens\u00a0: <br/> <br/> - LuckySurvival <br/> - MineWars <br/> - CalmSky <br/> <br/> Plongez et choisissez le serveur qui vous convient\u00a0!",
+    "step4Desc": "Bienvenue à l'étape 2\u00a0! Voici comment ça fonctionne : notre projet propose trois serveurs uniques avec leurs propres règles et styles. Explorez-les via ces liens\u00a0: <br></br> <br></br> - <lucky>LuckySurvival</lucky> <br></br> - <minewars>MineWars</minewars> <br></br> - <calmsky>CalmSky</calmsky> <br></br> <br></br> Plongez et choisissez le serveur qui vous convient\u00a0!",
     "step5Title": "Se connecter au serveur",
     "step5Desc": "Lancez Minecraft et accédez à la section Multijoueur. Ajoutez l'adresse IP du serveur, que vous trouverez sur la page du serveur, pour vous connecter et jouer avec d'autres\u00a0!",
     "step5Button": "Voir les détails du serveur",

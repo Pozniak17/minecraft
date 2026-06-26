@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './MainServer.module.css';
 import LuckySurvival from './LuckySurvival/LuckySurvival';
@@ -15,8 +15,27 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]['id'];
 
+const TAB_IDS = new Set<TabId>(TABS.map(tab => tab.id));
+
+function getTabFromHash(): TabId | null {
+  const hash = window.location.hash.slice(1);
+  return TAB_IDS.has(hash as TabId) ? (hash as TabId) : null;
+}
+
 export default function MainServer({ isAuthed = false }: { isAuthed?: boolean }) {
   const [activeTab, setActiveTab] = useState<TabId>('lucky');
+
+  useEffect(() => {
+    const syncTabFromHash = () => {
+      const tab = getTabFromHash();
+      if (tab) setActiveTab(tab);
+    };
+
+    syncTabFromHash();
+    window.addEventListener('hashchange', syncTabFromHash);
+
+    return () => window.removeEventListener('hashchange', syncTabFromHash);
+  }, []);
 
   const ActiveComponent =
     TABS.find((tab) => tab.id === activeTab)?.Component ?? LuckySurvival;
