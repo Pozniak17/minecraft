@@ -64,5 +64,19 @@
   "shop_toastError": "Could not add to cart. Please try again.",
   "shop_toastUnavailable": "This item is not available yet.",
   "shop_toastPrivAdded": "{title} privilege added to cart",
-  "shop_toastPrivExists": "{title} is already in your cart"
+  "shop_toastPrivExists": "{title} is already in your cart",
+
+  "currency_title": "Currency Info",
+  "currency_colCurrency": "Currency",
+  "currency_colType": "Type",
+  "currency_colObtain": "How to obtain",
+  "currency_colSpend": "What to spend on",
+  "currency_crystals_name": "Crystals",
+  "currency_crystals_type": "Donation",
+  "currency_crystals_obtain": "In-store purchase",
+  "currency_crystals_spend": "Rare resources, special items",
+  "currency_dollars_name": "Dollars",
+  "currency_dollars_type": "Gaming",
+  "currency_dollars_obtain": "Earnings in the game",
+  "currency_dollars_spend": "Trading with players"
 }

@@ -64,5 +64,19 @@
   "shop_toastError": "Hinzuf\u00fcgen fehlgeschlagen. Bitte erneut versuchen.",
   "shop_toastUnavailable": "Dieser Artikel ist noch nicht verf\u00fcgbar.",
   "shop_toastPrivAdded": "Privileg {title} in den Warenkorb gelegt",
-  "shop_toastPrivExists": "{title} ist bereits in deinem Warenkorb"
+  "shop_toastPrivExists": "{title} ist bereits in deinem Warenkorb",
+
+  "currency_title": "W\u00e4hrungsinfo",
+  "currency_colCurrency": "W\u00e4hrung",
+  "currency_colType": "Typ",
+  "currency_colObtain": "Wie man sie erh\u00e4lt",
+  "currency_colSpend": "Wof\u00fcr ausgeben",
+  "currency_crystals_name": "Kristalle",
+  "currency_crystals_type": "Spende",
+  "currency_crystals_obtain": "Im Shop kaufen",
+  "currency_crystals_spend": "Seltene Ressourcen, Spezialitems",
+  "currency_dollars_name": "Dollar",
+  "currency_dollars_type": "Spielw\u00e4hrung",
+  "currency_dollars_obtain": "Einnahmen im Spiel",
+  "currency_dollars_spend": "Handel mit Spielern"
 }

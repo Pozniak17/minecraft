@@ -64,5 +64,19 @@
   "shop_toastError": "Impossible d\u2019ajouter au panier. Veuillez r\u00e9essayer.",
   "shop_toastUnavailable": "Cet article n\u2019est pas encore disponible.",
   "shop_toastPrivAdded": "Privil\u00e8ge {title} ajout\u00e9 au panier",
-  "shop_toastPrivExists": "{title} est d\u00e9j\u00e0 dans votre panier"
+  "shop_toastPrivExists": "{title} est d\u00e9j\u00e0 dans votre panier",
+
+  "currency_title": "Infos sur les devises",
+  "currency_colCurrency": "Devise",
+  "currency_colType": "Type",
+  "currency_colObtain": "Comment l\u2019obtenir",
+  "currency_colSpend": "\u00c0 quoi le d\u00e9penser",
+  "currency_crystals_name": "Cristaux",
+  "currency_crystals_type": "Don",
+  "currency_crystals_obtain": "Achat dans la boutique",
+  "currency_crystals_spend": "Ressources rares, objets sp\u00e9ciaux",
+  "currency_dollars_name": "Dollars",
+  "currency_dollars_type": "Jeu",
+  "currency_dollars_obtain": "Gains en jeu",
+  "currency_dollars_spend": "\u00c9changes entre joueurs"
 }

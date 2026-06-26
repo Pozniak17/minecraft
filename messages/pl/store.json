@@ -64,5 +64,19 @@
   "shop_toastError": "Nie uda\u0142o si\u0119 doda\u0107 do koszyka. Spr\u00f3buj ponownie.",
   "shop_toastUnavailable": "Ten przedmiot nie jest jeszcze dost\u0119pny.",
   "shop_toastPrivAdded": "Przywilejy {title} dodane do koszyka",
-  "shop_toastPrivExists": "{title} jest ju\u017c w Twoim koszyku"
+  "shop_toastPrivExists": "{title} jest ju\u017c w Twoim koszyku",
+
+  "currency_title": "Informacje o walutach",
+  "currency_colCurrency": "Waluta",
+  "currency_colType": "Typ",
+  "currency_colObtain": "Jak zdoby\u0107",
+  "currency_colSpend": "Na co wyda\u0107",
+  "currency_crystals_name": "Kryszta\u0142y",
+  "currency_crystals_type": "Donacja",
+  "currency_crystals_obtain": "Zakup w sklepie",
+  "currency_crystals_spend": "Rzadkie zasoby, specjalne przedmioty",
+  "currency_dollars_name": "Dolary",
+  "currency_dollars_type": "Grywalna",
+  "currency_dollars_obtain": "Zarobki w grze",
+  "currency_dollars_spend": "Handel z graczami"
 }

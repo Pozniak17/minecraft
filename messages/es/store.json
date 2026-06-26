@@ -64,5 +64,19 @@
   "shop_toastError": "No se pudo a\u00f1adir al carrito. Int\u00e9ntalo de nuevo.",
   "shop_toastUnavailable": "Este art\u00edculo a\u00fan no est\u00e1 disponible.",
   "shop_toastPrivAdded": "Privilegio {title} a\u00f1adido al carrito",
-  "shop_toastPrivExists": "{title} ya est\u00e1 en tu carrito"
+  "shop_toastPrivExists": "{title} ya est\u00e1 en tu carrito",
+
+  "currency_title": "Informaci\u00f3n sobre monedas",
+  "currency_colCurrency": "Moneda",
+  "currency_colType": "Tipo",
+  "currency_colObtain": "C\u00f3mo obtenerla",
+  "currency_colSpend": "En qu\u00e9 gastarla",
+  "currency_crystals_name": "Cristales",
+  "currency_crystals_type": "Donaci\u00f3n",
+  "currency_crystals_obtain": "Compra en la tienda",
+  "currency_crystals_spend": "Recursos raros, objetos especiales",
+  "currency_dollars_name": "D\u00f3lares",
+  "currency_dollars_type": "Juego",
+  "currency_dollars_obtain": "Ganancias en el juego",
+  "currency_dollars_spend": "Comercio con jugadores"
 }

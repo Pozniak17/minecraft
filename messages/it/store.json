@@ -64,5 +64,19 @@
   "shop_toastError": "Impossibile aggiungere al carrello. Riprova.",
   "shop_toastUnavailable": "Questo articolo non \u00e8 ancora disponibile.",
   "shop_toastPrivAdded": "Privilegio {title} aggiunto al carrello",
-  "shop_toastPrivExists": "{title} \u00e8 gi\u00e0 nel tuo carrello"
+  "shop_toastPrivExists": "{title} \u00e8 gi\u00e0 nel tuo carrello",
+
+  "currency_title": "Info valute",
+  "currency_colCurrency": "Valuta",
+  "currency_colType": "Tipo",
+  "currency_colObtain": "Come ottenerla",
+  "currency_colSpend": "Per cosa spenderla",
+  "currency_crystals_name": "Cristalli",
+  "currency_crystals_type": "Donazione",
+  "currency_crystals_obtain": "Acquisto nel negozio",
+  "currency_crystals_spend": "Risorse rare, oggetti speciali",
+  "currency_dollars_name": "Dollari",
+  "currency_dollars_type": "Gioco",
+  "currency_dollars_obtain": "Guadagni nel gioco",
+  "currency_dollars_spend": "Commercio con i giocatori"
 }
