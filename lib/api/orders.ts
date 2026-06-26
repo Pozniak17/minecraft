@@ -52,6 +52,12 @@ export function orderHasBill(order: Pick<OrderListItem, 'has_bill'>): boolean {
   return normalized === 'true' || normalized === '1' || normalized === 'yes';
 }
 
+export type OrderPaymentStatus = 'paid' | 'failed';
+
+export function mapOrderStatus(order: Pick<OrderListItem, 'has_bill'>): OrderPaymentStatus {
+  return orderHasBill(order) ? 'paid' : 'failed';
+}
+
 export async function downloadOrderBill(orderId: string): Promise<void> {
   const { blob, filename } = await fetchOrderBill(orderId);
   const url = URL.createObjectURL(blob);

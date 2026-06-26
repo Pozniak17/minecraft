@@ -4,7 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { getOrders, downloadOrderBill, openOrderBill, orderHasBill } from '@/lib/api/orders';
+import {
+  getOrders,
+  downloadOrderBill,
+  openOrderBill,
+  orderHasBill,
+  mapOrderStatus,
+} from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import {
@@ -47,7 +53,7 @@ function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
     player: order.user_nickname ?? '—',
     server: order.server ?? '—',
     total: formatOrderAmount(order.total_price, currency),
-    status: 'paid',
+    status: mapOrderStatus(order),
     items: (order.order_item ?? []).map(oi =>
       formatOrderLineItem(oi.product_id, oi.image_name, oi.amount, meta),
     ),
@@ -184,6 +190,8 @@ export default function PurchaseHistory() {
     let currency = 'EUR';
 
     for (const order of filteredOrders) {
+      // Невдалі платежі (has_bill: false) не враховуємо у витратах та доставлених товарах.
+      if (!orderHasBill(order)) continue;
       spent += Number(order.total_price) || 0;
       for (const item of order.order_item ?? []) {
         if (item.currency) currency = item.currency;
