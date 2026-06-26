@@ -129,15 +129,15 @@
     "05": "Pourquoi j'obtiens une erreur de connexion perdue ?"
   },
   "support": {
-    "liveLabel": "Support en direct en ligne",
+    "liveLabel": "Nous contacter",
     "title": "Besoin d'aide supplémentaire ?",
-    "desc": "Chattez avec nous 24h/24, 7j/7 ou envoyez un ticket \u2014 nous répondons généralement en moins de 4 heures.",
+    "desc": "Parcourez la FAQ \u2014 vous y trouverez des guides pas \u00e0 pas et des r\u00e9ponses aux questions les plus courantes.",
     "sendTicket": "Envoyer un ticket"
   },
   "cta": {
     "title": "Besoin d'aide supplémentaire ?",
-    "descMobile": "L'équipe de support répond en moins de 4 h, 24h/24.",
-    "descDesktop": "Notre équipe de support répond en moins de 4 heures, 24h/24, 7j/7. Chat en direct, ticket par e-mail ou Discord \u2014 choisissez ce qui vous convient le mieux.",
+    "descMobile": "Parcourez la FAQ \u2014 guides et conseils de d\u00e9pannage.",
+    "descDesktop": "Parcourez la FAQ \u2014 guides pas \u00e0 pas, conseils et r\u00e9ponses aux questions les plus fr\u00e9quentes des joueurs.",
     "contactUs": "Nous contacter"
   },
   "suggest": {
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} sur {total} joueurs ({percent}%) ont trouvé cela utile"
   },
   "contentCta": {
-    "primary": "Ouvrir le chat en direct",
+    "primary": "Nous contacter",
     "secondary": "Parcourir toute la FAQ"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "La plupart des problèmes entrent dans l'une des quatre catégories suivantes. Chaque élément ci-dessous a une solution en 30 secondes."
     },
     "troubleMobileItems": [
-      { "title": "\"Serveur / client obsolète\"", "text": "Mettez à jour Minecraft vers la version 1.20.4 (Java) ou la dernière version Bedrock." },
-      { "title": "\"Connexion perdue\"", "text": "Vérifiez le pare-feu et désactivez les VPN bloquant le port 25565." },
-      { "title": "Pack de ressources bloqué", "text": "Redémarrez Minecraft. Si toujours bloqué \u2014 /resourcepack reload après l'apparition." },
-      { "title": "Serveur non visible", "text": "Vérifiez l'IP \u2014 pas d'espaces au début ou à la fin." }
+      {
+        "title": "\"Serveur / client obsolète\"",
+        "text": "Mettez à jour Minecraft vers la version 1.20.4 (Java) ou la dernière version Bedrock."
+      },
+      {
+        "title": "\"Connexion perdue\"",
+        "text": "Vérifiez le pare-feu et désactivez les VPN bloquant le port 25565."
+      },
+      {
+        "title": "Pack de ressources bloqué",
+        "text": "Redémarrez Minecraft. Si toujours bloqué \u2014 /resourcepack reload après l'apparition."
+      },
+      {
+        "title": "Serveur non visible",
+        "text": "Vérifiez l'IP \u2014 pas d'espaces au début ou à la fin."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "\"Serveur obsolète\" ou \"Client obsolète\"", "text": "Votre version de Minecraft ne correspond pas au serveur. Mettez à jour Minecraft vers la version 1.20.4 (Java) ou la dernière version Bedrock, puis reconnectez-vous." },
-      { "title": "\"Connexion perdue\" juste après la connexion", "text": "Vérifiez votre pare-feu \u2014 Minecraft utilise le port 25565 (Java) par défaut. Désactivez les VPN bloquant le trafic de jeu, puis réessayez." },
-      { "title": "Pack de ressources bloqué à 0%", "text": "Annulez la connexion, redémarrez Minecraft et reconnectez-vous. S'il est toujours bloqué, tapez /resourcepack reload dans le chat après votre apparition." },
-      { "title": "Serveur non visible dans la liste", "text": "Assurez-vous d'avoir collé l'IP exactement \u2014 sans espaces au début ou à la fin. L'adresse est insensible à la casse." }
+      {
+        "title": "\"Serveur obsolète\" ou \"Client obsolète\"",
+        "text": "Votre version de Minecraft ne correspond pas au serveur. Mettez à jour Minecraft vers la version 1.20.4 (Java) ou la dernière version Bedrock, puis reconnectez-vous."
+      },
+      {
+        "title": "\"Connexion perdue\" juste après la connexion",
+        "text": "Vérifiez votre pare-feu \u2014 Minecraft utilise le port 25565 (Java) par défaut. Désactivez les VPN bloquant le trafic de jeu, puis réessayez."
+      },
+      {
+        "title": "Pack de ressources bloqué à 0%",
+        "text": "Annulez la connexion, redémarrez Minecraft et reconnectez-vous. S'il est toujours bloqué, tapez /resourcepack reload dans le chat après votre apparition."
+      },
+      {
+        "title": "Serveur non visible dans la liste",
+        "text": "Assurez-vous d'avoir collé l'IP exactement \u2014 sans espaces au début ou à la fin. L'adresse est insensible à la casse."
+      }
     ],
     "nextTitle": "Et maintenant ?",
     "nextLead": {
@@ -549,7 +573,7 @@
         ],
         "calloutTitle": "Conseil",
         "calloutMobile": "Mettez à jour Minecraft avant de copier une IP de serveur \u2014 cela évite un écran d'erreur déroutant.",
-        "calloutDesktop": "Mettez à jour Minecraft vers le dernier correctif avant de copier une IP de serveur. Cela évite un écran d'erreur déroutant et des tickets de support que nous traitons toutes les heures."
+        "calloutDesktop": "Mettez à jour Minecraft vers le dernier correctif avant de copier une IP de serveur. Cela évite un écran d'erreur déroutant et une impasse support fréquente."
       },
       "s3": {
         "title": "Vérifier votre version",
@@ -1393,12 +1417,24 @@
         "leadMobile": "Lancez un test de ping vers l'IP depuis Tableau de bord \u2192 Serveurs \u2192 Diagnostics.",
         "leadDesktop": "Lancez le test de ping vers l'IP depuis Tableau de bord \u2192 Serveurs \u2192 Diagnostics et joignez les résultats à un ticket de support.",
         "troubleMobile": [
-          { "title": "Déconnexion instantanée", "text": "Généralement une incompatibilité de version ou une plage IP bannie." },
-          { "title": "Timeout au pack de ressources", "text": "Consultez l'article sur le pack de ressources \u2014 solution différente." }
+          {
+            "title": "Déconnexion instantanée",
+            "text": "Généralement une incompatibilité de version ou une plage IP bannie."
+          },
+          {
+            "title": "Timeout au pack de ressources",
+            "text": "Consultez l'article sur le pack de ressources \u2014 solution différente."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Déconnexion instantanée après la poignée de main", "text": "Généralement une incompatibilité de version, une plage IP bannie ou un flag anti-triche \u2014 incluez votre journal client dans les tickets." },
-          { "title": "Timeout pendant le pack de ressources", "text": "Consultez l'article sur le pack de ressources \u2014 les pare-feux CDN bloquent les hôtes de pack séparément du port de jeu 25565." }
+          {
+            "title": "Déconnexion instantanée après la poignée de main",
+            "text": "Généralement une incompatibilité de version, une plage IP bannie ou un flag anti-triche \u2014 incluez votre journal client dans les tickets."
+          },
+          {
+            "title": "Timeout pendant le pack de ressources",
+            "text": "Consultez l'article sur le pack de ressources \u2014 les pare-feux CDN bloquent les hôtes de pack séparément du port de jeu 25565."
+          }
         ]
       }
     },

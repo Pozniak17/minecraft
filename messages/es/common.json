@@ -85,6 +85,6 @@
     "descDesktop": "Deber\u00e1 iniciar sesi\u00f3n de nuevo para acceder al panel, carrito y privilegios activos. Las sesiones en el juego no se ven afectadas.",
     "signedInAs": "Conectado como",
     "cancel": "Cancelar",
-    "autoExpire": "Las sesiones expiran autom\u00e1ticamente despu\u00e9s de 30 d\u00edas"
+    "autoExpire": "Las sesiones expiran tras 7 d\u00edas de inactividad"
   }
 }

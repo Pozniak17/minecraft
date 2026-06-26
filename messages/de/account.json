@@ -201,8 +201,8 @@
         "In Minecraft: Mehrspieler \u2192 Server hinzuf\u00fcgen \u2192 IP einf\u00fcgen.",
         "Auf die Server-Karte klicken, um zu verbinden."
       ],
-      "callout": "Erste Verbindung l\u00e4dt unser 80\u00a0MB Ressourcenpaket herunter.",
-      "calloutDesktop": "Die erste Verbindung l\u00e4dt unser ~80\u00a0MB Ressourcenpaket herunter. Danach ist der Beitritt sofort."
+      "callout": "Beim ersten Beitritt l\u00e4dt sich das eigene Server-Feeling \u2014 gib ihm einen Moment.",
+      "calloutDesktop": "Beim ersten Besuch laden sich eigene Texturen und Atmosph\u00e4re \u2014 danach bist du mit einem Klick wieder in der Welt."
     },
     "s4": {
       "nav": "Account verkn\u00fcpfen",

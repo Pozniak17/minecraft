@@ -14,7 +14,7 @@ function buildSimpleSection(
   slug: string,
   t: TFn,
   tRaw: TRawFn,
-  tHas: THasFn,
+  tHas: THasFn
 ): FaqSectionContent {
   const sKey = `content.${slug}.s${index}`;
 
@@ -29,8 +29,12 @@ function buildSimpleSection(
   const steps = Array.isArray(rawSteps) ? rawSteps : undefined;
 
   // trouble items for connection-lost s3
-  const rawTroubleMobile = tRaw(`${sKey}.troubleMobile`) as Array<{ title: string; text: string }> | undefined;
-  const rawTroubleDesktop = tRaw(`${sKey}.troubleDesktop`) as Array<{ title: string; text: string }> | undefined;
+  const rawTroubleMobile = tRaw(`${sKey}.troubleMobile`) as
+    | Array<{ title: string; text: string }>
+    | undefined;
+  const rawTroubleDesktop = tRaw(`${sKey}.troubleDesktop`) as
+    | Array<{ title: string; text: string }>
+    | undefined;
   const troubleItems =
     Array.isArray(rawTroubleMobile) && Array.isArray(rawTroubleDesktop)
       ? { mobile: rawTroubleMobile, desktop: rawTroubleDesktop }
@@ -64,13 +68,18 @@ function buildSimpleSection(
 }
 
 /** Builds a translated FaqArticleFullContent for simple articles (all except 'join'). */
-function buildSimpleArticleContent(slug: string, t: TFn, tRaw: TRawFn, tHas: THasFn): FaqArticleFullContent {
+function buildSimpleArticleContent(
+  slug: string,
+  t: TFn,
+  tRaw: TRawFn,
+  tHas: THasFn
+): FaqArticleFullContent {
   const leadMobile = t(`content.${slug}.lead.mobile`);
   const leadDesktop = t(`content.${slug}.lead.desktop`);
 
   const sections = [1, 2, 3].map(i => buildSimpleSection(i, slug, t, tRaw, tHas));
 
-  const helpful = Math.round((100 * 0.9)); // placeholder, stats are generic
+  const helpful = Math.round(100 * 0.9); // placeholder, stats are generic
   const percent = 90;
   const total = 100;
 
@@ -84,7 +93,7 @@ function buildSimpleArticleContent(slug: string, t: TFn, tRaw: TRawFn, tHas: THa
       no: b(t('feedback.noMobile'), t('feedback.noDesktop')),
       stats: b(
         t('feedback.statsMobile', { helpful, total, percent }),
-        t('feedback.statsDesktop', { helpful, total, percent }),
+        t('feedback.statsDesktop', { helpful, total, percent })
       ),
     },
     cta: {
@@ -110,7 +119,12 @@ function buildJoinContent(t: TFn, tRaw: TRawFn): FaqArticleFullContent {
 
   return {
     lead: b(t('join.lead.mobile'), t('join.lead.desktop')),
-    sidebarRelatedSlugs: ['supported-versions', 'reset-password', 'connection-lost', 'link-microsoft'],
+    sidebarRelatedSlugs: [
+      'supported-versions',
+      'reset-password',
+      'connection-lost',
+      'link-microsoft',
+    ],
     feedback: {
       hint: b(t('join.feedbackHintMobile'), t('join.feedbackHintDesktop')),
       yes: b(t('join.feedbackYesMobile'), t('join.feedbackYesDesktop')),
@@ -130,7 +144,10 @@ function buildJoinContent(t: TFn, tRaw: TRawFn): FaqArticleFullContent {
         tocLabel: t('join.beforeTitle'),
         title: t('join.beforeTitle'),
         lead: b(t('join.beforeLead.mobile'), t('join.beforeLead.desktop')),
-        bullets: { mobile: ra('join.beforeBulletsMobile'), desktop: ra('join.beforeBulletsDesktop') },
+        bullets: {
+          mobile: ra('join.beforeBulletsMobile'),
+          desktop: ra('join.beforeBulletsDesktop'),
+        },
         callout: {
           variant: 'info',
           title: t('join.beforeCallout.title'),
@@ -156,7 +173,10 @@ function buildJoinContent(t: TFn, tRaw: TRawFn): FaqArticleFullContent {
         tocLabel: t('join.chooseTitle'),
         title: t('join.chooseTitle'),
         lead: b(t('join.chooseLead.mobile'), t('join.chooseLead.desktop')),
-        bullets: { mobile: ra('join.chooseBulletsMobile'), desktop: ra('join.chooseBulletsDesktop') },
+        bullets: {
+          mobile: ra('join.chooseBulletsMobile'),
+          desktop: ra('join.chooseBulletsDesktop'),
+        },
         callout: {
           variant: 'info',
           title: t('join.chooseCallout.title'),
@@ -221,7 +241,7 @@ export function getTranslatedFaqArticleContent(
   slug: string,
   t: TFn,
   tRaw: TRawFn,
-  tHas: THasFn,
+  tHas: THasFn
 ): FaqArticleFullContent | undefined {
   try {
     if (slug === 'join') {

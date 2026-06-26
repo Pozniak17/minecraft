@@ -129,15 +129,15 @@
     "05": "¿Por qué me sale «conexión perdida»?"
   },
   "support": {
-    "liveLabel": "Soporte en vivo disponible",
+    "liveLabel": "Contáctanos",
     "title": "¿Aún necesitas ayuda?",
-    "desc": "Chatea con nosotros 24/7 o envía un ticket \u2014 normalmente respondemos en 4 horas.",
+    "desc": "Consulta las FAQ — encontrarás guías paso a paso y respuestas a las preguntas más frecuentes.",
     "sendTicket": "Enviar un ticket"
   },
   "cta": {
     "title": "¿Aún necesitas ayuda?",
-    "descMobile": "El equipo de soporte responde en 4 h, 24/7.",
-    "descDesktop": "Nuestro equipo de soporte responde en 4 horas, a cualquier hora. Chat en vivo, ticket por correo o Discord \u2014 elige lo que sea más rápido para ti.",
+    "descMobile": "Consulta las FAQ — guías y consejos para resolver problemas.",
+    "descDesktop": "Consulta las FAQ — guías paso a paso, consejos y respuestas a las preguntas más comunes de los jugadores.",
     "contactUs": "Contáctanos"
   },
   "suggest": {
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} de {total} jugadores ({percent}%) lo encontró útil"
   },
   "contentCta": {
-    "primary": "Abrir chat en vivo",
+    "primary": "Contáctanos",
     "secondary": "Ver todo el FAQ"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "La mayoría de los problemas entran en una de cuatro categorías. Cada punto a continuación tiene una solución de 30 segundos."
     },
     "troubleMobileItems": [
-      { "title": "«Servidor / cliente desactualizado»", "text": "Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock." },
-      { "title": "«Conexión perdida»", "text": "Revisa el firewall y desactiva las VPN que bloqueen el puerto 25565." },
-      { "title": "Paquete de recursos bloqueado", "text": "Reinicia Minecraft. Si sigue bloqueado \u2014 /resourcepack reload después de aparecer." },
-      { "title": "Servidor no visible", "text": "Verifica la IP \u2014 sin espacios al inicio ni al final." }
+      {
+        "title": "«Servidor / cliente desactualizado»",
+        "text": "Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock."
+      },
+      {
+        "title": "«Conexión perdida»",
+        "text": "Revisa el firewall y desactiva las VPN que bloqueen el puerto 25565."
+      },
+      {
+        "title": "Paquete de recursos bloqueado",
+        "text": "Reinicia Minecraft. Si sigue bloqueado \u2014 /resourcepack reload después de aparecer."
+      },
+      {
+        "title": "Servidor no visible",
+        "text": "Verifica la IP \u2014 sin espacios al inicio ni al final."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "«Servidor desactualizado» o «Cliente desactualizado»", "text": "Tu versión de Minecraft no coincide con la del servidor. Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock y vuelve a conectarte." },
-      { "title": "«Conexión perdida» justo al unirse", "text": "Revisa tu firewall \u2014 Minecraft usa el puerto 25565 (Java) por defecto. Desactiva las VPN que bloqueen el tráfico de juegos y vuelve a intentarlo." },
-      { "title": "Paquete de recursos bloqueado en 0%", "text": "Cancela la conexión, reinicia Minecraft y vuelve a unirte. Si sigue bloqueado, escribe /resourcepack reload en el chat después de aparecer." },
-      { "title": "Servidor no visible en la lista", "text": "Asegúrate de haber pegado la IP exactamente \u2014 sin espacios al inicio ni al final. La dirección no distingue mayúsculas de minúsculas." }
+      {
+        "title": "«Servidor desactualizado» o «Cliente desactualizado»",
+        "text": "Tu versión de Minecraft no coincide con la del servidor. Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock y vuelve a conectarte."
+      },
+      {
+        "title": "«Conexión perdida» justo al unirse",
+        "text": "Revisa tu firewall \u2014 Minecraft usa el puerto 25565 (Java) por defecto. Desactiva las VPN que bloqueen el tráfico de juegos y vuelve a intentarlo."
+      },
+      {
+        "title": "Paquete de recursos bloqueado en 0%",
+        "text": "Cancela la conexión, reinicia Minecraft y vuelve a unirte. Si sigue bloqueado, escribe /resourcepack reload en el chat después de aparecer."
+      },
+      {
+        "title": "Servidor no visible en la lista",
+        "text": "Asegúrate de haber pegado la IP exactamente \u2014 sin espacios al inicio ni al final. La dirección no distingue mayúsculas de minúsculas."
+      }
     ],
     "nextTitle": "¿Qué sigue?",
     "nextLead": {
@@ -549,7 +573,7 @@
         ],
         "calloutTitle": "Consejo",
         "calloutMobile": "Actualiza Minecraft antes de copiar una IP de servidor \u2014 te ahorra una pantalla de error confusa.",
-        "calloutDesktop": "Actualiza Minecraft al último parche antes de copiar una IP de servidor. Te ahorra una pantalla de error confusa y evita tickets de soporte que respondemos cada hora."
+        "calloutDesktop": "Actualiza Minecraft al último parche antes de copiar una IP de servidor. Te ahorra una pantalla de error confusa y un callejón sin salida habitual con soporte."
       },
       "s3": {
         "title": "Comprueba tu versión",
@@ -1393,12 +1417,24 @@
         "leadMobile": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos.",
         "leadDesktop": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos y adjunta los resultados a un ticket de soporte.",
         "troubleMobile": [
-          { "title": "Desconexión instantánea", "text": "Normalmente es incompatibilidad de versión o un rango de IP baneado." },
-          { "title": "Tiempo de espera en el paquete de recursos", "text": "Consulta el artículo del paquete de recursos \u2014 el proceso de solución es diferente." }
+          {
+            "title": "Desconexión instantánea",
+            "text": "Normalmente es incompatibilidad de versión o un rango de IP baneado."
+          },
+          {
+            "title": "Tiempo de espera en el paquete de recursos",
+            "text": "Consulta el artículo del paquete de recursos \u2014 el proceso de solución es diferente."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Desconexión instantánea tras el handshake", "text": "Normalmente es incompatibilidad de versión, rango de IP baneado o marca del anti-trampa \u2014 incluye tu registro de cliente en los tickets." },
-          { "title": "Tiempo de espera durante el paquete de recursos", "text": "Consulta el artículo del paquete de recursos \u2014 los firewalls de CDN bloquean los hosts de paquetes de forma independiente al puerto de juego 25565." }
+          {
+            "title": "Desconexión instantánea tras el handshake",
+            "text": "Normalmente es incompatibilidad de versión, rango de IP baneado o marca del anti-trampa \u2014 incluye tu registro de cliente en los tickets."
+          },
+          {
+            "title": "Tiempo de espera durante el paquete de recursos",
+            "text": "Consulta el artículo del paquete de recursos \u2014 los firewalls de CDN bloquean los hosts de paquetes de forma independiente al puerto de juego 25565."
+          }
         ]
       }
     },

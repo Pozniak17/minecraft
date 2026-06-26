@@ -11,11 +11,10 @@ export default async function Support() {
       <Container variant="faq">
         <div className={styles.content}>
           <div className={styles.card}>
-            <p className={styles.label}>{t('support.liveLabel')}</p>
             <h2 className={styles.title}>{t('support.title')}</h2>
             <p className={styles.description}>{t('support.desc')}</p>
             <Link href="/contacts" className={styles.primaryButton}>
-              {t('support.sendTicket')}
+              {t('cta.contactUs')}
             </Link>
           </div>
         </div>

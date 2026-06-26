@@ -17,8 +17,7 @@ export const HOME_FAQ: QuestionsCardProps[] = [
   },
   {
     question: 'Can I play on multiple servers?',
-    answer:
-      'Yes. One account works across LuckySurvival, MineWars, and CalmSky — switch anytime.',
+    answer: 'Yes. One account works across LuckySurvival, MineWars, and CalmSky — switch anytime.',
   },
   {
     question: 'Do you support Java Edition?',

@@ -4,10 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Container } from '@/app/_components/Container/Container';
-import {
-  getFaqArticleBySlug,
-  getFaqArticleHref,
-} from '@/app/faq/_data/faqArticles';
+import { getFaqArticleBySlug, getFaqArticleHref } from '@/app/faq/_data/faqArticles';
 import { getTranslatedFaqArticleContent } from '@/app/faq/_data/faqArticleContentI18n';
 import type { FaqArticleContentBlock } from '@/app/faq/_data/joinArticleContent';
 import type { FaqSectionContent } from '@/app/faq/_data/faqArticleTypes';
@@ -17,21 +14,30 @@ import styles from './ArticleBody.module.css';
 import { useFaqArticleToc } from './useFaqArticleToc';
 
 const SOCIAL_LINKS = [
-  { icon: '/icons/social/prime_twitter.svg', alt: 'X', href: 'https://x.com/Minecrafts_Game', size: 18 },
+  {
+    icon: '/icons/social/prime_twitter.svg',
+    alt: 'X',
+    href: 'https://x.com/Minecrafts_Game',
+    size: 18,
+  },
   { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
-  { icon: '/icons/social/ic_round-facebook.svg', alt: 'Facebook', href: 'https://www.facebook.com/minecraftsgame/', size: 18 },
-  { icon: '/icons/social/ri_instagram-fill.svg', alt: 'Instagram', href: 'https://www.instagram.com/minecraftsgame', size: 18 },
+  {
+    icon: '/icons/social/ic_round-facebook.svg',
+    alt: 'Facebook',
+    href: 'https://www.facebook.com/minecraftsgame/',
+    size: 18,
+  },
+  {
+    icon: '/icons/social/ri_instagram-fill.svg',
+    alt: 'Instagram',
+    href: 'https://www.instagram.com/minecraftsgame',
+    size: 18,
+  },
 ] as const;
 
 const EXAMPLE_IP = GAME_SERVERS.luckysurvival.ip;
 
-function TextBlock({
-  text,
-  className,
-}: {
-  text: FaqArticleContentBlock;
-  className: string;
-}) {
+function TextBlock({ text, className }: { text: FaqArticleContentBlock; className: string }) {
   return (
     <>
       <p className={`${className} ${text.desktop ? styles.mobileOnly : ''}`}>{text.mobile}</p>
@@ -114,7 +120,9 @@ function InfoCallout({
   return (
     <aside className={styles.calloutInfo}>
       <p className={styles.calloutTitle}>{title}</p>
-      <p className={`${styles.calloutText} ${desktopChildren ? styles.mobileOnly : ''}`}>{children}</p>
+      <p className={`${styles.calloutText} ${desktopChildren ? styles.mobileOnly : ''}`}>
+        {children}
+      </p>
       {desktopChildren && (
         <p className={`${styles.calloutText} ${styles.desktopOnly}`}>{desktopChildren}</p>
       )}
@@ -140,7 +148,9 @@ function SuccessCallout({
         <span className={styles.mobileOnly}>{title}</span>
         {desktopTitle && <span className={styles.desktopOnly}>{desktopTitle}</span>}
       </p>
-      <p className={`${styles.calloutText} ${desktopChildren ? styles.mobileOnly : ''}`}>{children}</p>
+      <p className={`${styles.calloutText} ${desktopChildren ? styles.mobileOnly : ''}`}>
+        {children}
+      </p>
       {desktopChildren && (
         <p className={`${styles.calloutText} ${styles.desktopOnly}`}>{desktopChildren}</p>
       )}
@@ -190,7 +200,9 @@ function SectionRenderer({ section }: { section: FaqSectionContent }) {
       )}
 
       {section.figure && (
-        <figure className={`${styles.figure} ${section.figure.desktopOnly ? styles.desktopOnly : ''}`}>
+        <figure
+          className={`${styles.figure} ${section.figure.desktopOnly ? styles.desktopOnly : ''}`}
+        >
           <div className={styles.figureFrame}>
             <Image
               src={section.figure.src}
@@ -289,7 +301,9 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
   const sectionIds = content.sections.map(section => section.id);
   const { activeId, scrollToSection } = useFaqArticleToc(sectionIds);
   const primaryCtaHref =
-    content.cta?.primary === t('join.ctaPrimary') ? TWITCH_URL : content.cta?.primaryHref ?? '/faq';
+    content.cta?.primary === t('join.ctaPrimary')
+      ? TWITCH_URL
+      : (content.cta?.primaryHref ?? '/faq');
 
   return (
     <section className={styles.article}>
@@ -325,7 +339,10 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
                 {content.sidebarRelatedSlugs.map(relatedSlug => {
                   return (
                     <li key={relatedSlug}>
-                      <Link href={getFaqArticleHref(relatedSlug)} className={styles.relatedCardLink}>
+                      <Link
+                        href={getFaqArticleHref(relatedSlug)}
+                        className={styles.relatedCardLink}
+                      >
                         <span aria-hidden="true">→</span>
                         {t(`articles.${relatedSlug}.question` as Parameters<typeof t>[0])}
                       </Link>
@@ -337,7 +354,10 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
           </aside>
 
           <div className={styles.main}>
-            <nav className={`${styles.toc} ${styles.mobileOnly}`} aria-label={t('article.onThisPage')}>
+            <nav
+              className={`${styles.toc} ${styles.mobileOnly}`}
+              aria-label={t('article.onThisPage')}
+            >
               <div className={styles.tocHead}>
                 <span className={styles.tocLabel}>{t('article.onThisPage')}</span>
                 <span className={styles.tocChevron} aria-hidden="true">
@@ -378,7 +398,10 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
                 </a>
                 <Link href={content.cta.secondaryHref} className={styles.ctaSecondary}>
                   <span className={styles.mobileOnly}>
-                    {content.cta.secondary} <span className={styles.ctaArrow} aria-hidden="true">→</span>
+                    {content.cta.secondary}{' '}
+                    <span className={styles.ctaArrow} aria-hidden="true">
+                      →
+                    </span>
                   </span>
                   <span className={styles.desktopOnly}>{content.cta.secondary}</span>
                   <span className={`${styles.ctaArrow} ${styles.desktopOnly}`} aria-hidden="true">
@@ -387,7 +410,6 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
                 </Link>
               </div>
             )}
-
           </div>
         </div>
       </Container>

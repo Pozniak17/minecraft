@@ -14,9 +14,7 @@ export default async function ArticleCta() {
             <div className={styles.content}>
               <h2 className={styles.title}>{t('cta.title')}</h2>
 
-              <p className={`${styles.description} ${styles.mobileOnly}`}>
-                {t('cta.descMobile')}
-              </p>
+              <p className={`${styles.description} ${styles.mobileOnly}`}>{t('cta.descMobile')}</p>
               <p className={`${styles.description} ${styles.desktopOnly}`}>
                 {t('cta.descDesktop')}
               </p>

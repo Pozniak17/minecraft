@@ -85,6 +85,6 @@
     "descDesktop": "Vous devrez vous reconnecter pour acc\u00e9der au tableau de bord, panier et privil\u00e8ges actifs. Les sessions en jeu restent inchang\u00e9es.",
     "signedInAs": "Connect\u00e9 en tant que",
     "cancel": "Annuler",
-    "autoExpire": "Les sessions expirent automatiquement apr\u00e8s 30\u00a0jours"
+    "autoExpire": "Les sessions expirent apr\u00e8s 7\u00a0jours d'inactivit\u00e9"
   }
 }

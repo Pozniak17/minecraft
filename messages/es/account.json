@@ -201,8 +201,8 @@
         "En Minecraft: Multijugador \u2192 A\u00f1adir servidor \u2192 pegar la IP.",
         "Hacer clic en la tarjeta del servidor para conectar."
       ],
-      "callout": "La primera conexi\u00f3n descarga nuestro paquete de recursos de 80\u00a0MB.",
-      "calloutDesktop": "La primera conexi\u00f3n descarga nuestro paquete de recursos de ~80\u00a0MB. Despu\u00e9s, la conexi\u00f3n es instant\u00e1nea."
+      "callout": "La primera conexi\u00f3n carga el ambiente \u00fanico del servidor \u2014 dale un momento.",
+      "calloutDesktop": "Tu primera visita descarga texturas y atm\u00f3sfera personalizadas \u2014 despu\u00e9s, cada regreso es un salto r\u00e1pido al mundo."
     },
     "s4": {
       "nav": "Vincular tu cuenta",

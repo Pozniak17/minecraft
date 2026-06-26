@@ -9,11 +9,10 @@ export default function FaqSupportCard() {
 
   return (
     <div className={`${cardStyles.card} ${cardStyles.cardFill}`}>
-      <p className={cardStyles.label}>{t('support.liveLabel')}</p>
       <h3 className={cardStyles.title}>{t('support.title')}</h3>
       <p className={cardStyles.description}>{t('support.desc')}</p>
       <Link href="/contacts" className={cardStyles.primaryButton}>
-        {t('support.sendTicket')}
+        {t('cta.contactUs')}
       </Link>
     </div>
   );

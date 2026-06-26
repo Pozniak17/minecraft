@@ -85,6 +85,6 @@
     "descDesktop": "Sie m\u00fcssen sich erneut anmelden, um auf Dashboard, Warenkorb und Privilegien zuzugreifen. Aktive Spielsitzungen bleiben unber\u00fchrt.",
     "signedInAs": "Angemeldet als",
     "cancel": "Abbrechen",
-    "autoExpire": "Sitzungen laufen nach 30 Tagen ab"
+    "autoExpire": "Sitzungen laufen nach 7 Tagen Inaktivit\u00e4t ab"
   }
 }

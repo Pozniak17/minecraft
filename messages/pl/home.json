@@ -8,12 +8,27 @@
   },
   "benefits": {
     "title": "Dlaczego grać z nami?",
-    "stableServers": { "title": "Stabilne serwery", "text": "Wysoka dostępność i płynna wydajność — zero lagów, zero awarii." },
-    "regularUpdates": { "title": "Regularne aktualizacje", "text": "Nowe funkcje, poprawki i ulepszenia co miesiąc." },
-    "highOnline": { "title": "Wysoka liczba graczy", "text": "Aktywna społeczność grająca codziennie na wszystkich serwerach." },
+    "stableServers": {
+      "title": "Stabilne serwery",
+      "text": "Wysoka dostępność i płynna wydajność — zero lagów, zero awarii."
+    },
+    "regularUpdates": {
+      "title": "Regularne aktualizacje",
+      "text": "Nowe funkcje, poprawki i ulepszenia co miesiąc."
+    },
+    "highOnline": {
+      "title": "Wysoka liczba graczy",
+      "text": "Aktywna społeczność grająca codziennie na wszystkich serwerach."
+    },
     "fairEconomy": { "title": "Fair ekonomia", "text": "Bez pay-to-win. Balans przede wszystkim." },
-    "activeTeam": { "title": "Aktywny zespół", "text": "Moderacja, wsparcie i development zawsze online." },
-    "playerSupport": { "title": "Wsparcie graczy", "text": "Szybka pomoc przez Discord i wsparcie w grze." }
+    "activeTeam": {
+      "title": "Aktywny zespół",
+      "text": "Moderacja, wsparcie i development zawsze online."
+    },
+    "playerSupport": {
+      "title": "Wsparcie graczy",
+      "text": "Szybka pomoc przez Discord i wsparcie w grze."
+    }
   },
   "features": {
     "title": "Funkcje gry",

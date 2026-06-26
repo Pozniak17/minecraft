@@ -201,8 +201,8 @@
         "In Minecraft: Multigiocatore \u2192 Aggiungi server \u2192 incolla l\u2019IP.",
         "Fare clic sulla scheda server per connettersi."
       ],
-      "callout": "La prima connessione scarica il nostro pacchetto risorse da 80\u00a0MB.",
-      "calloutDesktop": "La prima connessione scarica il nostro pacchetto risorse da ~80\u00a0MB. Dopo, la connessione \u00e8 istantanea."
+      "callout": "La prima connessione carica l\u2019atmosfera unica del server \u2014 dagli un attimo.",
+      "calloutDesktop": "La prima visita scarica texture e atmosfera personalizzate \u2014 dopo, ogni ritorno \u00e8 un salto veloce nel mondo."
     },
     "s4": {
       "nav": "Collega il tuo account",

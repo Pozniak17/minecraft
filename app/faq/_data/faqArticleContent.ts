@@ -22,19 +22,27 @@ function list(mobile: readonly string[], desktop?: readonly string[]) {
 function feedbackStats(percent: number, total: number) {
   const helpful = Math.round((total * percent) / 100);
   return {
-    hint: block('Your vote helps us improve.', 'Your vote helps us prioritise which answers to expand and re-write.'),
+    hint: block(
+      'Your vote helps us improve.',
+      'Your vote helps us prioritise which answers to expand and re-write.'
+    ),
     yes: block('Yes', 'Yes, helpful'),
     no: block('Not really', 'Could be better'),
     stats: block(
       `${helpful} out of ${total} (${percent}%) found this helpful`,
-      `${helpful} out of ${total} players (${percent}%) found this helpful`,
+      `${helpful} out of ${total} players (${percent}%) found this helpful`
     ),
   };
 }
 
 const JOIN_CONTENT: FaqArticleFullContent = {
   lead: JOIN_LEAD,
-  sidebarRelatedSlugs: ['supported-versions', 'reset-password', 'connection-lost', 'link-microsoft'],
+  sidebarRelatedSlugs: [
+    'supported-versions',
+    'reset-password',
+    'connection-lost',
+    'link-microsoft',
+  ],
   feedback: JOIN_FEEDBACK,
   cta: {
     primary: 'Join Twitch',
@@ -167,7 +175,7 @@ function buildSimpleArticle(seed: SimpleArticleSeed): FaqArticleFullContent {
     sidebarRelatedSlugs: seed.related,
     feedback: feedbackStats(seed.feedbackPercent, seed.feedbackTotal),
     cta: {
-      primary: 'Open live chat',
+      primary: 'Contact us',
       primaryHref: '/faq',
       secondary: 'Browse all FAQ',
       secondaryHref: '/faq',
@@ -179,7 +187,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'supported-versions',
     lead: {
-      mobile: 'We run custom plugins that require a current Minecraft client. Here is what works today.',
+      mobile:
+        'We run custom plugins that require a current Minecraft client. Here is what works today.',
       desktop:
         'We run custom plugins, anti-cheat, and economy systems that require a current Minecraft client. Here is exactly what works today — and what does not.',
     },
@@ -211,15 +220,17 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
         ],
         callout: {
           title: 'Tip',
-          mobile: 'Update Minecraft before copying a server IP — it saves a confusing error screen.',
+          mobile:
+            'Update Minecraft before copying a server IP — it saves a confusing error screen.',
           desktop:
-            'Update Minecraft to the latest patch before copying a server IP. It saves a confusing error screen and avoids support tickets we answer every hour.',
+            'Update Minecraft to the latest patch before copying a server IP. It saves a confusing error screen and a common support dead-end.',
         },
       },
       {
         title: 'Check your version',
         lead: {
-          mobile: 'Java: main menu bottom-left shows the version string. Bedrock: Settings → About.',
+          mobile:
+            'Java: main menu bottom-left shows the version string. Bedrock: Settings → About.',
           desktop:
             'Java Edition shows the version string on the main menu bottom-left. Bedrock lists the build under Settings → About. Match it against the supported list above.',
         },
@@ -238,7 +249,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'first-day-checklist',
     lead: {
-      mobile: 'Your first session sets the pace for everything after. These four steps cover what most new players miss.',
+      mobile:
+        'Your first session sets the pace for everything after. These four steps cover what most new players miss.',
       desktop:
         'Your first session sets the pace for everything after. These four steps cover what most new players miss before they ask in chat — homes, claims, quests, and community.',
     },
@@ -259,7 +271,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Claim your land',
         lead: {
-          mobile: 'A golden shovel defines your protected area. Other players cannot grief inside it.',
+          mobile:
+            'A golden shovel defines your protected area. Other players cannot grief inside it.',
           desktop:
             'Craft or buy a golden shovel to define your protected area. Other players cannot break blocks inside unless you /trust them explicitly.',
         },
@@ -272,7 +285,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Open the shop and quests',
         lead: {
-          mobile: '/shop lists daily quests that pay coins for simple tasks — mine stone, catch fish, deliver items.',
+          mobile:
+            '/shop lists daily quests that pay coins for simple tasks — mine stone, catch fish, deliver items.',
           desktop:
             '/shop lists daily quests that pay coins for simple tasks like mining stone, catching fish, or delivering items to NPCs at spawn.',
         },
@@ -290,7 +304,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'dashboard-guide',
     lead: {
-      mobile: 'The dashboard is your control panel outside Minecraft — servers, purchases, tournaments, and settings.',
+      mobile:
+        'The dashboard is your control panel outside Minecraft — servers, purchases, tournaments, and settings.',
       desktop:
         'The dashboard is your control panel outside Minecraft. Everything tied to your account lives here: server IPs, purchases, tournament brackets, and profile settings.',
     },
@@ -404,7 +419,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
         title: 'Request a reset link',
         lead: {
           mobile: 'Use Forgot password on the login page.',
-          desktop: 'On the login page, click Forgot password and enter the email tied to your account.',
+          desktop:
+            'On the login page, click Forgot password and enter the email tied to your account.',
         },
         steps: [
           'Open the login page and click Forgot password.',
@@ -483,7 +499,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Troubleshooting',
         lead: {
-          mobile: 'If the popup closes instantly, disable ad blockers and allow popups for our domain.',
+          mobile:
+            'If the popup closes instantly, disable ad blockers and allow popups for our domain.',
           desktop:
             'If the Microsoft popup closes instantly, disable ad blockers, allow popups for our domain, and try an incognito window.',
         },
@@ -524,7 +541,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'When it is required',
         lead: {
-          mobile: 'High-value shop checkouts and rank gifts may prompt for 2FA even if you are already logged in.',
+          mobile:
+            'High-value shop checkouts and rank gifts may prompt for 2FA even if you are already logged in.',
           desktop:
             'High-value shop checkouts, rank gifts, and account deletion requests may prompt for 2FA even if you are already logged in.',
         },
@@ -556,7 +574,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'delete-account',
     lead: {
-      mobile: 'Account deletion is permanent after the grace period. Export anything you need first.',
+      mobile:
+        'Account deletion is permanent after the grace period. Export anything you need first.',
       desktop:
         'Account deletion is permanent after the grace period. Export schematics, download invoices, and cancel active subscriptions before you confirm.',
     },
@@ -619,7 +638,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
         title: 'Accepted methods',
         lead: {
           mobile: 'Pick any option shown at checkout for your country.',
-          desktop: 'Pick any option shown at checkout for your country — availability varies by region.',
+          desktop:
+            'Pick any option shown at checkout for your country — availability varies by region.',
         },
         bullets: [
           'Visa and Mastercard debit/credit cards.',
@@ -630,7 +650,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Currency and taxes',
         lead: {
-          mobile: 'Prices display in USD by default; local currency conversion happens at checkout.',
+          mobile:
+            'Prices display in USD by default; local currency conversion happens at checkout.',
           desktop:
             'Prices display in USD by default. Your bank or wallet converts to local currency and may add foreign transaction fees.',
         },
@@ -767,7 +788,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'payment-failed',
     lead: {
-      mobile: 'Failed payments usually mean a bank block, wrong billing zip, or temporary processor outage.',
+      mobile:
+        'Failed payments usually mean a bank block, wrong billing zip, or temporary processor outage.',
       desktop:
         'Failed payments usually mean a bank block, wrong billing zip, or temporary processor outage. No privilege is granted until checkout succeeds.',
     },
@@ -914,7 +936,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
         },
         callout: {
           title: 'Tip',
-          mobile: 'Use /mail on supported servers to send items between your own characters via escrow.',
+          mobile:
+            'Use /mail on supported servers to send items between your own characters via escrow.',
           desktop:
             'On supported servers, use /mail to send items between your own characters through the escrow system before you migrate.',
         },
@@ -961,7 +984,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Notifications',
         lead: {
-          mobile: 'Subscribe to email alerts on Dashboard → Servers for maintenance and reset windows.',
+          mobile:
+            'Subscribe to email alerts on Dashboard → Servers for maintenance and reset windows.',
           desktop:
             'Subscribe to email alerts on Dashboard → Servers for maintenance and reset windows. Discord #announcements mirrors the same schedule.',
         },
@@ -1216,7 +1240,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Rules',
         lead: {
-          mobile: 'Gifts are non-refundable once claimed unless purchased in error within one hour.',
+          mobile:
+            'Gifts are non-refundable once claimed unless purchased in error within one hour.',
           desktop:
             'Gifts are non-refundable once claimed unless purchased in error within one hour and the recipient agrees to transfer back via ticket.',
         },
@@ -1283,7 +1308,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Grief reports',
         lead: {
-          mobile: 'If damage happens outside claims, staff roll back using logs when you report quickly.',
+          mobile:
+            'If damage happens outside claims, staff roll back using logs when you report quickly.',
           desktop:
             'If damage happens outside claims, staff roll back using block logs when you report within 48 hours with coordinates.',
         },
@@ -1463,7 +1489,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'connection-lost',
     lead: {
-      mobile: 'Connection lost usually means network filtering, VPN issues, or version mismatch — not a ban.',
+      mobile:
+        'Connection lost usually means network filtering, VPN issues, or version mismatch — not a ban.',
       desktop:
         'Connection lost usually means network filtering, VPN issues, or version mismatch — not a ban. Check status page before reinstalling.',
     },
@@ -1504,7 +1531,10 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
         troubleItems: {
           mobile: [
             { title: 'Instant disconnect', text: 'Usually version mismatch or banned IP range.' },
-            { title: 'Timeout at resource pack', text: 'See resource pack article — different fix path.' },
+            {
+              title: 'Timeout at resource pack',
+              text: 'See resource pack article — different fix path.',
+            },
           ],
           desktop: [
             {
@@ -1547,7 +1577,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Stuck at 0%',
         lead: {
-          mobile: 'Cancel, restart Minecraft, and rejoin. If still stuck, run /resourcepack reload after spawn.',
+          mobile:
+            'Cancel, restart Minecraft, and rejoin. If still stuck, run /resourcepack reload after spawn.',
           desktop:
             'Cancel, restart Minecraft, and rejoin. If still stuck, run /resourcepack reload in chat after you spawn.',
         },
@@ -1560,7 +1591,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
       {
         title: 'Manual override',
         lead: {
-          mobile: 'If automatic delivery fails twice, support can link a direct download for manual install.',
+          mobile:
+            'If automatic delivery fails twice, support can link a direct download for manual install.',
           desktop:
             'If automatic delivery fails twice, support can link a direct download for manual install — open a ticket with your client edition.',
         },
@@ -1579,7 +1611,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'lag-performance',
     lead: {
-      mobile: 'Lag can be client-side (FPS) or server-side (TPS). Diagnose which before you tweak settings.',
+      mobile:
+        'Lag can be client-side (FPS) or server-side (TPS). Diagnose which before you tweak settings.',
       desktop:
         'Lag can be client-side (FPS) or server-side (TPS). Diagnose which before you tweak settings — the fixes differ completely.',
     },
@@ -1686,7 +1719,8 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
   {
     slug: 'ban-appeal',
     lead: {
-      mobile: 'Appeals review punishments for mistakes or outdated context — not to retry the same behavior.',
+      mobile:
+        'Appeals review punishments for mistakes or outdated context — not to retry the same behavior.',
       desktop:
         'Appeals review punishments for mistakes or outdated context — not to retry the same behavior. One appeal per case ID.',
     },
@@ -1740,7 +1774,7 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
 ];
 
 const SIMPLE_CONTENT = Object.fromEntries(
-  SIMPLE_ARTICLES.map(article => [article.slug, buildSimpleArticle(article)]),
+  SIMPLE_ARTICLES.map(article => [article.slug, buildSimpleArticle(article)])
 ) as Record<string, FaqArticleFullContent>;
 
 const FAQ_ARTICLE_CONTENT: Record<string, FaqArticleFullContent> = {

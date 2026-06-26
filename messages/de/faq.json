@@ -129,15 +129,15 @@
     "05": "Warum erhalte ich \u201eVerbindung getrennt\u201c-Fehler?"
   },
   "support": {
-    "liveLabel": "Live-Support online",
+    "liveLabel": "Kontakt aufnehmen",
     "title": "Noch Hilfe n\u00f6tig?",
-    "desc": "Chatte rund um die Uhr mit uns oder sende ein Ticket \u2014 wir antworten meist innerhalb von 4 Stunden.",
+    "desc": "Durchst\u00f6bere die FAQ \u2014 dort findest du Schritt-f\u00fcr-Schritt-Anleitungen und Antworten auf h\u00e4ufige Fragen.",
     "sendTicket": "Ticket senden"
   },
   "cta": {
     "title": "Noch Hilfe n\u00f6tig?",
-    "descMobile": "Support antwortet innerhalb von 4\u00a0h, rund um die Uhr.",
-    "descDesktop": "Unser Support-Team antwortet innerhalb von 4 Stunden, rund um die Uhr. Live-Chat, E-Mail-Ticket oder Discord \u2014 w\u00e4hle, was am schnellsten ist.",
+    "descMobile": "Durchst\u00f6bere die FAQ \u2014 Anleitungen und Tipps zur Fehlerbehebung.",
+    "descDesktop": "Durchst\u00f6bere die FAQ \u2014 Schritt-f\u00fcr-Schritt-Anleitungen, Tipps und Antworten auf die h\u00e4ufigsten Spielerfragen.",
     "contactUs": "Kontakt aufnehmen"
   },
   "suggest": {
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} von {total} Spielern ({percent}\u00a0%) fanden das hilfreich"
   },
   "contentCta": {
-    "primary": "Live-Chat \u00f6ffnen",
+    "primary": "Kontakt aufnehmen",
     "secondary": "Alle FAQ durchsuchen"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "Die meisten Probleme fallen in eine von vier Kategorien. Jeder Punkt unten hat eine 30-Sekunden-L\u00f6sung."
     },
     "troubleMobileItems": [
-      { "title": "\u201eVeralteter Server / Client\u201c", "text": "Minecraft auf 1.20.4 (Java) oder den neuesten Bedrock-Build aktualisieren." },
-      { "title": "\u201eVerbindung getrennt\u201c", "text": "Firewall pr\u00fcfen und VPNs deaktivieren, die Port 25565 blockieren." },
-      { "title": "Ressourcenpaket h\u00e4ngt", "text": "Minecraft neu starten. Wenn es noch h\u00e4ngt \u2014 /resourcepack reload nach dem Spawn." },
-      { "title": "Server nicht sichtbar", "text": "IP nochmals pr\u00fcfen \u2014 keine f\u00fchrenden/nachfolgenden Leerzeichen." }
+      {
+        "title": "\u201eVeralteter Server / Client\u201c",
+        "text": "Minecraft auf 1.20.4 (Java) oder den neuesten Bedrock-Build aktualisieren."
+      },
+      {
+        "title": "\u201eVerbindung getrennt\u201c",
+        "text": "Firewall pr\u00fcfen und VPNs deaktivieren, die Port 25565 blockieren."
+      },
+      {
+        "title": "Ressourcenpaket h\u00e4ngt",
+        "text": "Minecraft neu starten. Wenn es noch h\u00e4ngt \u2014 /resourcepack reload nach dem Spawn."
+      },
+      {
+        "title": "Server nicht sichtbar",
+        "text": "IP nochmals pr\u00fcfen \u2014 keine f\u00fchrenden/nachfolgenden Leerzeichen."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "\u201eVeralteter Server\u201c oder \u201eVeralteter Client\u201c", "text": "Deine Minecraft-Version stimmt nicht mit dem Server \u00fcberein. Minecraft auf 1.20.4 (Java) oder den neuesten Bedrock-Build aktualisieren und erneut verbinden." },
-      { "title": "\u201eVerbindung getrennt\u201c direkt nach dem Beitritt", "text": "Firewall pr\u00fcfen \u2014 Minecraft nutzt standardm\u00e4\u00dfig Port 25565 (Java). VPNs deaktivieren, die Spielverkehr blockieren, dann erneut versuchen." },
-      { "title": "Ressourcenpaket h\u00e4ngt bei 0\u00a0%", "text": "Verbindung abbrechen, Minecraft neu starten und erneut beitreten. Wenn es noch h\u00e4ngt: /resourcepack reload im Chat nach dem Spawnen eingeben." },
-      { "title": "Server in der Liste nicht sichtbar", "text": "Sicherstellen, dass die IP genau eingef\u00fcgt wurde \u2014 keine f\u00fchrenden oder nachfolgenden Leerzeichen. Die Adresse ber\u00fccksichtigt keine Gro\u00df-/Kleinschreibung." }
+      {
+        "title": "\u201eVeralteter Server\u201c oder \u201eVeralteter Client\u201c",
+        "text": "Deine Minecraft-Version stimmt nicht mit dem Server \u00fcberein. Minecraft auf 1.20.4 (Java) oder den neuesten Bedrock-Build aktualisieren und erneut verbinden."
+      },
+      {
+        "title": "\u201eVerbindung getrennt\u201c direkt nach dem Beitritt",
+        "text": "Firewall pr\u00fcfen \u2014 Minecraft nutzt standardm\u00e4\u00dfig Port 25565 (Java). VPNs deaktivieren, die Spielverkehr blockieren, dann erneut versuchen."
+      },
+      {
+        "title": "Ressourcenpaket h\u00e4ngt bei 0\u00a0%",
+        "text": "Verbindung abbrechen, Minecraft neu starten und erneut beitreten. Wenn es noch h\u00e4ngt: /resourcepack reload im Chat nach dem Spawnen eingeben."
+      },
+      {
+        "title": "Server in der Liste nicht sichtbar",
+        "text": "Sicherstellen, dass die IP genau eingef\u00fcgt wurde \u2014 keine f\u00fchrenden oder nachfolgenden Leerzeichen. Die Adresse ber\u00fccksichtigt keine Gro\u00df-/Kleinschreibung."
+      }
     ],
     "nextTitle": "Was als N\u00e4chstes?",
     "nextLead": {
@@ -1393,12 +1417,24 @@
         "leadMobile": "Ping-Test zur IP von Dashboard \u2192 Server \u2192 Diagnose ausf\u00fchren.",
         "leadDesktop": "Den Ping-Test zur IP von Dashboard \u2192 Server \u2192 Diagnose ausf\u00fchren und Ergebnisse einem Support-Ticket beilegen.",
         "troubleMobile": [
-          { "title": "Sofortiger Verbindungsabbruch", "text": "Meist Versionskonflikt oder gesperrter IP-Bereich." },
-          { "title": "Timeout beim Ressourcenpaket", "text": "Ressourcenpaket-Artikel lesen \u2014 anderer L\u00f6sungsweg." }
+          {
+            "title": "Sofortiger Verbindungsabbruch",
+            "text": "Meist Versionskonflikt oder gesperrter IP-Bereich."
+          },
+          {
+            "title": "Timeout beim Ressourcenpaket",
+            "text": "Ressourcenpaket-Artikel lesen \u2014 anderer L\u00f6sungsweg."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Sofortiger Verbindungsabbruch nach dem Handshake", "text": "Meist Versionskonflikt, gesperrter IP-Bereich oder Anti-Cheat-Markierung \u2014 Client-Log in Tickets einf\u00fcgen." },
-          { "title": "Timeout beim Ressourcenpaket", "text": "Ressourcenpaket-Artikel lesen \u2014 Firewall-CDNs blockieren Pack-Hosts separat von Spielport 25565." }
+          {
+            "title": "Sofortiger Verbindungsabbruch nach dem Handshake",
+            "text": "Meist Versionskonflikt, gesperrter IP-Bereich oder Anti-Cheat-Markierung \u2014 Client-Log in Tickets einf\u00fcgen."
+          },
+          {
+            "title": "Timeout beim Ressourcenpaket",
+            "text": "Ressourcenpaket-Artikel lesen \u2014 Firewall-CDNs blockieren Pack-Hosts separat von Spielport 25565."
+          }
         ]
       }
     },

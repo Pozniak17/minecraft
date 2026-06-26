@@ -201,8 +201,8 @@
         "In Minecraft, choose Multiplayer \u2192 Add Server \u2192 paste the IP.",
         "Click the server card to connect."
       ],
-      "callout": "First connection downloads our 80 MB resource pack.",
-      "calloutDesktop": "First connection downloads our ~80 MB resource pack. After that, joining is instant."
+      "callout": "The first join loads the server's custom look — give it a moment to settle in.",
+      "calloutDesktop": "Your first visit pulls in custom textures and atmosphere — after that, every return is a quick hop back into the world."
     },
     "s4": {
       "nav": "Link your account",

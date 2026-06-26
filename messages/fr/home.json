@@ -8,12 +8,30 @@
   },
   "benefits": {
     "title": "Pourquoi jouer avec nous ?",
-    "stableServers": { "title": "Serveurs stables", "text": "Haute disponibilité et performances fluides — pas de lag, pas de crash." },
-    "regularUpdates": { "title": "Mises à jour régulières", "text": "Nouvelles fonctionnalités, correctifs et améliorations chaque mois." },
-    "highOnline": { "title": "Grande communauté", "text": "Une communauté active qui joue chaque jour sur tous les serveurs." },
-    "fairEconomy": { "title": "Économie équitable", "text": "Pas de pay-to-win. L'équilibre avant tout." },
-    "activeTeam": { "title": "Équipe active", "text": "Modération, support et développement toujours disponibles." },
-    "playerSupport": { "title": "Support joueurs", "text": "Aide rapide via Discord et support en jeu." }
+    "stableServers": {
+      "title": "Serveurs stables",
+      "text": "Haute disponibilité et performances fluides — pas de lag, pas de crash."
+    },
+    "regularUpdates": {
+      "title": "Mises à jour régulières",
+      "text": "Nouvelles fonctionnalités, correctifs et améliorations chaque mois."
+    },
+    "highOnline": {
+      "title": "Grande communauté",
+      "text": "Une communauté active qui joue chaque jour sur tous les serveurs."
+    },
+    "fairEconomy": {
+      "title": "Économie équitable",
+      "text": "Pas de pay-to-win. L'équilibre avant tout."
+    },
+    "activeTeam": {
+      "title": "Équipe active",
+      "text": "Modération, support et développement toujours disponibles."
+    },
+    "playerSupport": {
+      "title": "Support joueurs",
+      "text": "Aide rapide via Discord et support en jeu."
+    }
   },
   "features": {
     "title": "Fonctionnalités du jeu",

@@ -129,15 +129,15 @@
     "05": "Perché ricevo \"connessione persa\"?"
   },
   "support": {
-    "liveLabel": "Supporto live online",
+    "liveLabel": "Contattaci",
     "title": "Hai ancora bisogno di aiuto?",
-    "desc": "Chatta con noi 24/7 o invia un ticket \u2014 di solito rispondiamo entro 4 ore.",
+    "desc": "Sfoglia le FAQ \u2014 troverai guide passo passo e risposte alle domande pi\u00f9 comuni.",
     "sendTicket": "Invia un ticket"
   },
   "cta": {
     "title": "Hai ancora bisogno di aiuto?",
-    "descMobile": "Il team di supporto risponde entro 4 h, 24/7.",
-    "descDesktop": "Il nostro team di supporto risponde entro 4 ore, tutto il giorno. Chat live, ticket email o Discord \u2014 scegli il più comodo per te.",
+    "descMobile": "Sfoglia le FAQ — guide e consigli per la risoluzione dei problemi.",
+    "descDesktop": "Sfoglia le FAQ — guide passo passo, consigli e risposte alle domande più frequenti dei giocatori.",
     "contactUs": "Contattaci"
   },
   "suggest": {
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} su {total} giocatori ({percent}%) l'hanno trovato utile"
   },
   "contentCta": {
-    "primary": "Apri la chat live",
+    "primary": "Contattaci",
     "secondary": "Sfoglia tutta la FAQ"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "La maggior parte dei problemi rientra in una di quattro categorie. Ogni punto qui sotto ha una soluzione in 30 secondi."
     },
     "troubleMobileItems": [
-      { "title": "\"Server/client obsoleto\"", "text": "Aggiorna Minecraft alla versione 1.20.4 (Java) o all'ultima build Bedrock." },
-      { "title": "\"Connessione persa\"", "text": "Controlla il firewall e disabilita le VPN che bloccano la porta 25565." },
-      { "title": "Resource pack bloccato", "text": "Riavvia Minecraft. Se è ancora bloccato \u2014 /resourcepack reload dopo lo spawn." },
-      { "title": "Server non visibile", "text": "Ricontrolla l'IP \u2014 nessuno spazio iniziale o finale." }
+      {
+        "title": "\"Server/client obsoleto\"",
+        "text": "Aggiorna Minecraft alla versione 1.20.4 (Java) o all'ultima build Bedrock."
+      },
+      {
+        "title": "\"Connessione persa\"",
+        "text": "Controlla il firewall e disabilita le VPN che bloccano la porta 25565."
+      },
+      {
+        "title": "Resource pack bloccato",
+        "text": "Riavvia Minecraft. Se è ancora bloccato \u2014 /resourcepack reload dopo lo spawn."
+      },
+      {
+        "title": "Server non visibile",
+        "text": "Ricontrolla l'IP \u2014 nessuno spazio iniziale o finale."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "\"Server obsoleto\" o \"Client obsoleto\"", "text": "La tua versione di Minecraft non corrisponde al server. Aggiorna Minecraft alla versione 1.20.4 (Java) o all'ultima build Bedrock, poi riconnettiti." },
-      { "title": "\"Connessione persa\" subito dopo l'accesso", "text": "Controlla il firewall \u2014 Minecraft usa la porta 25565 (Java) per impostazione predefinita. Disabilita le VPN che bloccano il traffico di gioco, poi riprova." },
-      { "title": "Resource pack bloccato allo 0%", "text": "Annulla la connessione, riavvia Minecraft e rientra nel server. Se è ancora bloccato, digita /resourcepack reload in chat dopo lo spawn." },
-      { "title": "Server non visibile nella lista", "text": "Assicurati di aver incollato l'IP correttamente \u2014 nessuno spazio iniziale o finale. L'indirizzo non fa distinzione tra maiuscole e minuscole." }
+      {
+        "title": "\"Server obsoleto\" o \"Client obsoleto\"",
+        "text": "La tua versione di Minecraft non corrisponde al server. Aggiorna Minecraft alla versione 1.20.4 (Java) o all'ultima build Bedrock, poi riconnettiti."
+      },
+      {
+        "title": "\"Connessione persa\" subito dopo l'accesso",
+        "text": "Controlla il firewall \u2014 Minecraft usa la porta 25565 (Java) per impostazione predefinita. Disabilita le VPN che bloccano il traffico di gioco, poi riprova."
+      },
+      {
+        "title": "Resource pack bloccato allo 0%",
+        "text": "Annulla la connessione, riavvia Minecraft e rientra nel server. Se è ancora bloccato, digita /resourcepack reload in chat dopo lo spawn."
+      },
+      {
+        "title": "Server non visibile nella lista",
+        "text": "Assicurati di aver incollato l'IP correttamente \u2014 nessuno spazio iniziale o finale. L'indirizzo non fa distinzione tra maiuscole e minuscole."
+      }
     ],
     "nextTitle": "Cosa fare adesso?",
     "nextLead": {
@@ -549,7 +573,7 @@
         ],
         "calloutTitle": "Suggerimento",
         "calloutMobile": "Aggiorna Minecraft prima di copiare un IP del server \u2014 ti evita una schermata di errore confusa.",
-        "calloutDesktop": "Aggiorna Minecraft all'ultima patch prima di copiare un IP del server. Ti evita una schermata di errore confusa e riduce i ticket che riceviamo ogni ora."
+        "calloutDesktop": "Aggiorna Minecraft all'ultima patch prima di copiare un IP del server. Ti evita una schermata di errore confusa e un vicolo cieco frequente con il supporto."
       },
       "s3": {
         "title": "Controlla la tua versione",
@@ -1393,12 +1417,24 @@
         "leadMobile": "Esegui il ping test all'IP da Dashboard \u2192 Server \u2192 Diagnostica.",
         "leadDesktop": "Esegui il ping test all'IP da Dashboard \u2192 Server \u2192 Diagnostica e allega i risultati a un ticket di supporto.",
         "troubleMobile": [
-          { "title": "Disconnessione immediata", "text": "Di solito versione non corrispondente o intervallo IP bannato." },
-          { "title": "Timeout al resource pack", "text": "Consulta l'articolo sul resource pack \u2014 procedura di correzione diversa." }
+          {
+            "title": "Disconnessione immediata",
+            "text": "Di solito versione non corrispondente o intervallo IP bannato."
+          },
+          {
+            "title": "Timeout al resource pack",
+            "text": "Consulta l'articolo sul resource pack \u2014 procedura di correzione diversa."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Disconnessione immediata dopo l'handshake", "text": "Di solito versione non corrispondente, intervallo IP bannato o flag anti-cheat \u2014 includi il log del client nei ticket." },
-          { "title": "Timeout durante il resource pack", "text": "Consulta l'articolo sul resource pack \u2014 i CDN del firewall bloccano i server dei pack separatamente dalla porta di gioco 25565." }
+          {
+            "title": "Disconnessione immediata dopo l'handshake",
+            "text": "Di solito versione non corrispondente, intervallo IP bannato o flag anti-cheat \u2014 includi il log del client nei ticket."
+          },
+          {
+            "title": "Timeout durante il resource pack",
+            "text": "Consulta l'articolo sul resource pack \u2014 i CDN del firewall bloccano i server dei pack separatamente dalla porta di gioco 25565."
+          }
         ]
       }
     },

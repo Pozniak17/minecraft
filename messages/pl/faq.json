@@ -129,16 +129,16 @@
     "05": "Dlaczego tracę połączenie z serwerem?"
   },
   "support": {
-    "liveLabel": "Wsparcie na żywo dostępne",
+    "liveLabel": "Skontaktuj si\u0119",
     "title": "Nadal potrzebujesz pomocy?",
-    "desc": "Czatuj z nami 24/7 lub wyślij zgłoszenie \u2014 zwykle odpowiadamy w ciągu 4 godzin.",
+    "desc": "Przegl\u0105daj FAQ \u2014 znajdziesz tam przewodniki krok po kroku i odpowiedzi na najcz\u0119stsze pytania.",
     "sendTicket": "Wyślij zgłoszenie"
   },
   "cta": {
     "title": "Nadal potrzebujesz pomocy?",
-    "descMobile": "Zespół wsparcia odpowiada w ciągu 4 h, 24/7.",
-    "descDesktop": "Nasz zespół wsparcia odpowiada w ciągu 4 godzin, przez całą dobę. Czat na żywo, zgłoszenie e-mail lub Discord \u2014 wybierz najwygodniejszą opcję.",
-    "contactUs": "Skontaktuj się z nami"
+    "descMobile": "Przegl\u0105daj FAQ \u2014 przewodniki i wskaz\u00f3wki rozwi\u0105zywania problem\u00f3w.",
+    "descDesktop": "Przegl\u0105daj FAQ \u2014 przewodniki krok po kroku, wskaz\u00f3wki i odpowiedzi na najcz\u0119stsze pytania graczy.",
+    "contactUs": "Skontaktuj si\u0119"
   },
   "suggest": {
     "improvePage": "Pomóż ulepszyć tę stronę",
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} z {total} graczy ({percent}%) uznało to za pomocne"
   },
   "contentCta": {
-    "primary": "Otwórz czat na żywo",
+    "primary": "Skontaktuj się",
     "secondary": "Przeglądaj wszystkie FAQ"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "Większość problemów mieści się w jednej z czterech kategorii. Każdy element poniżej ma 30-sekundowe rozwiązanie."
     },
     "troubleMobileItems": [
-      { "title": "\u201cPrzestarzały serwer / klient\u201d", "text": "Zaktualizuj Minecrafta do wersji 1.20.4 (Java) lub najnowszego Bedrocka." },
-      { "title": "\u201cUtracono połączenie\u201d", "text": "Sprawdź zaporę sieciową i wyłącz VPN blokujący port 25565." },
-      { "title": "Paczka zasobów utknęła", "text": "Zrestartuj Minecraft. Jeśli nadal się nie pobiera \u2014 /resourcepack reload po pojawieniu się na serwerze." },
-      { "title": "Serwer niewidoczny", "text": "Sprawdź dokładność IP \u2014 bez spacji na początku i na końcu." }
+      {
+        "title": "\u201cPrzestarzały serwer / klient\u201d",
+        "text": "Zaktualizuj Minecrafta do wersji 1.20.4 (Java) lub najnowszego Bedrocka."
+      },
+      {
+        "title": "\u201cUtracono połączenie\u201d",
+        "text": "Sprawdź zaporę sieciową i wyłącz VPN blokujący port 25565."
+      },
+      {
+        "title": "Paczka zasobów utknęła",
+        "text": "Zrestartuj Minecraft. Jeśli nadal się nie pobiera \u2014 /resourcepack reload po pojawieniu się na serwerze."
+      },
+      {
+        "title": "Serwer niewidoczny",
+        "text": "Sprawdź dokładność IP \u2014 bez spacji na początku i na końcu."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "\u201cPrzestarzały serwer\u201d lub \u201cPrzestarzały klient\u201d", "text": "Twoja wersja Minecrafta nie pasuje do serwera. Zaktualizuj Minecrafta do wersji 1.20.4 (Java) lub najnowszego Bedrocka, a następnie połącz się ponownie." },
-      { "title": "\u201cUtracono połączenie\u201d zaraz po dołączeniu", "text": "Sprawdź zaporę sieciową \u2014 Minecraft domyślnie używa portu 25565 (Java). Wyłącz VPN blokujące ruch gier, a następnie spróbuj ponownie." },
-      { "title": "Paczka zasobów utknęła na 0%", "text": "Anuluj połączenie, zrestartuj Minecrafta i dołącz ponownie. Jeśli nadal nie działa, wpisz /resourcepack reload w czacie po pojawieniu się na serwerze." },
-      { "title": "Serwer niewidoczny na liście", "text": "Upewnij się, że wkleiłeś IP dokładnie \u2014 bez spacji na początku ani na końcu. Adres nie rozróżnia wielkości liter." }
+      {
+        "title": "\u201cPrzestarzały serwer\u201d lub \u201cPrzestarzały klient\u201d",
+        "text": "Twoja wersja Minecrafta nie pasuje do serwera. Zaktualizuj Minecrafta do wersji 1.20.4 (Java) lub najnowszego Bedrocka, a następnie połącz się ponownie."
+      },
+      {
+        "title": "\u201cUtracono połączenie\u201d zaraz po dołączeniu",
+        "text": "Sprawdź zaporę sieciową \u2014 Minecraft domyślnie używa portu 25565 (Java). Wyłącz VPN blokujące ruch gier, a następnie spróbuj ponownie."
+      },
+      {
+        "title": "Paczka zasobów utknęła na 0%",
+        "text": "Anuluj połączenie, zrestartuj Minecrafta i dołącz ponownie. Jeśli nadal nie działa, wpisz /resourcepack reload w czacie po pojawieniu się na serwerze."
+      },
+      {
+        "title": "Serwer niewidoczny na liście",
+        "text": "Upewnij się, że wkleiłeś IP dokładnie \u2014 bez spacji na początku ani na końcu. Adres nie rozróżnia wielkości liter."
+      }
     ],
     "nextTitle": "Co dalej?",
     "nextLead": {
@@ -549,7 +573,7 @@
         ],
         "calloutTitle": "Wskazówka",
         "calloutMobile": "Zaktualizuj Minecrafta przed skopiowaniem IP serwera \u2014 oszczędzi Ci to mylącego ekranu błędu.",
-        "calloutDesktop": "Zaktualizuj Minecrafta do najnowszej łatki przed skopiowaniem IP serwera. Oszczędzi Ci to mylącego ekranu błędu i zgłoszeń, które obsługujemy co godzinę."
+        "calloutDesktop": "Zaktualizuj Minecrafta do najnowszej łatki przed skopiowaniem IP serwera. Oszczędzi Ci to mylącego ekranu błędu i zbędnych zgłoszeń do wsparcia."
       },
       "s3": {
         "title": "Sprawdź swoją wersję",
@@ -1393,12 +1417,24 @@
         "leadMobile": "Uruchom test ping do IP z Panelu \u2192 Serwery \u2192 Diagnostyka.",
         "leadDesktop": "Uruchom test ping do IP z Panelu \u2192 Serwery \u2192 Diagnostyka i dołącz wyniki do zgłoszenia wsparcia.",
         "troubleMobile": [
-          { "title": "Natychmiastowe rozłączenie", "text": "Zazwyczaj niezgodność wersji lub zablokowany zakres IP." },
-          { "title": "Timeout przy paczce zasobów", "text": "Sprawdź artykuł o paczce zasobów \u2014 inna ścieżka naprawy." }
+          {
+            "title": "Natychmiastowe rozłączenie",
+            "text": "Zazwyczaj niezgodność wersji lub zablokowany zakres IP."
+          },
+          {
+            "title": "Timeout przy paczce zasobów",
+            "text": "Sprawdź artykuł o paczce zasobów \u2014 inna ścieżka naprawy."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Natychmiastowe rozłączenie po handshake", "text": "Zazwyczaj niezgodność wersji, zablokowany zakres IP lub flaga antycheat \u2014 dołącz log klienta do zgłoszeń." },
-          { "title": "Timeout podczas paczki zasobów", "text": "Sprawdź artykuł o paczce zasobów \u2014 zapory blokują hosty CDN osobno od portu gry 25565." }
+          {
+            "title": "Natychmiastowe rozłączenie po handshake",
+            "text": "Zazwyczaj niezgodność wersji, zablokowany zakres IP lub flaga antycheat \u2014 dołącz log klienta do zgłoszeń."
+          },
+          {
+            "title": "Timeout podczas paczki zasobów",
+            "text": "Sprawdź artykuł o paczce zasobów \u2014 zapory blokują hosty CDN osobno od portu gry 25565."
+          }
         ]
       }
     },

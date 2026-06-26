@@ -85,6 +85,6 @@
     "descDesktop": "You will need to sign in again to access your dashboard, cart, and active privileges. Active in-game sessions remain unaffected.",
     "signedInAs": "Signed in as",
     "cancel": "Cancel",
-    "autoExpire": "Sessions auto-expire after 30 days"
+    "autoExpire": "Sessions expire after 7 days of inactivity"
   }
 }

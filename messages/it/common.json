@@ -85,6 +85,6 @@
     "descDesktop": "Dovrai accedere di nuovo per accedere alla dashboard, al carrello e ai privilegi attivi. Le sessioni di gioco attive non vengono influenzate.",
     "signedInAs": "Acceduto come",
     "cancel": "Annulla",
-    "autoExpire": "Le sessioni scadono automaticamente dopo 30 giorni"
+    "autoExpire": "Le sessioni scadono dopo 7 giorni di inattivit\u00e0"
   }
 }

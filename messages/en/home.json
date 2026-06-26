@@ -8,12 +8,27 @@
   },
   "benefits": {
     "title": "Why Play With Us?",
-    "stableServers": { "title": "Stable servers", "text": "High uptime and smooth performance — no lag, no crashes." },
-    "regularUpdates": { "title": "Regular updates", "text": "New features, fixes, and improvements every month." },
-    "highOnline": { "title": "High online", "text": "An active community playing daily across all servers." },
+    "stableServers": {
+      "title": "Stable servers",
+      "text": "High uptime and smooth performance — no lag, no crashes."
+    },
+    "regularUpdates": {
+      "title": "Regular updates",
+      "text": "New features, fixes, and improvements every month."
+    },
+    "highOnline": {
+      "title": "High online",
+      "text": "An active community playing daily across all servers."
+    },
     "fairEconomy": { "title": "Fair economy", "text": "No pay-to-win. Balance comes first." },
-    "activeTeam": { "title": "Active team", "text": "Moderation, support, and development always online." },
-    "playerSupport": { "title": "Player support", "text": "Fast help via Discord and in-game support." }
+    "activeTeam": {
+      "title": "Active team",
+      "text": "Moderation, support, and development always online."
+    },
+    "playerSupport": {
+      "title": "Player support",
+      "text": "Fast help via Discord and in-game support."
+    }
   },
   "features": {
     "title": "Game Features",

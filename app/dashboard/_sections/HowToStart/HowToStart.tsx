@@ -32,13 +32,19 @@ type StepDef = {
 };
 
 const STEP_DEFS: StepDef[] = [
-  { id: 1, status: 'completed', hasTitleDesktop: false, hasCallout: true, image: '/how-to-start/private-image-desktop.webp' },
+  {
+    id: 1,
+    status: 'completed',
+    hasTitleDesktop: false,
+    hasCallout: true,
+    image: '/how-to-start/private-image-desktop.webp',
+  },
   { id: 2, status: 'completed', hasTitleDesktop: false, hasCallout: false },
-  { id: 3, status: 'current',   hasTitleDesktop: false, hasCallout: true },
-  { id: 4, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
-  { id: 5, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
-  { id: 6, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
-  { id: 7, status: 'pending',   hasTitleDesktop: true,  hasCallout: true },
+  { id: 3, status: 'current', hasTitleDesktop: false, hasCallout: true },
+  { id: 4, status: 'pending', hasTitleDesktop: true, hasCallout: false },
+  { id: 5, status: 'pending', hasTitleDesktop: true, hasCallout: false },
+  { id: 6, status: 'pending', hasTitleDesktop: true, hasCallout: false },
+  { id: 7, status: 'pending', hasTitleDesktop: true, hasCallout: true },
 ];
 
 const TOTAL_STEPS = STEP_DEFS.length;
@@ -126,15 +132,13 @@ export default function HowToStart() {
           descriptionDesktop: t(`${sk}.descDesktop` as Parameters<typeof t>[0]),
           bullets: t.raw(`${sk}.bullets` as Parameters<typeof t>[0]) as string[],
           bulletsDesktop: t.raw(`${sk}.bulletsDesktop` as Parameters<typeof t>[0]) as string[],
-          callout: def.hasCallout
-            ? t(`${sk}.callout` as Parameters<typeof t>[0])
-            : undefined,
+          callout: def.hasCallout ? t(`${sk}.callout` as Parameters<typeof t>[0]) : undefined,
           calloutDesktop: def.hasCallout
             ? t(`${sk}.calloutDesktop` as Parameters<typeof t>[0])
             : undefined,
         };
       }),
-    [t],
+    [t]
   );
 
   const scrollToStep = useCallback((id: number) => {
@@ -159,7 +163,7 @@ export default function HowToStart() {
 
     const resolveActiveStep = () => {
       const headerHeight = Number.parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
+        getComputedStyle(document.documentElement).getPropertyValue('--header-height')
       );
       const marker = (Number.isFinite(headerHeight) ? headerHeight : 72) + 40;
       let nextActiveStep = steps[0].id;
@@ -229,10 +233,7 @@ export default function HowToStart() {
             aria-valuemax={TOTAL_STEPS}
             aria-label={t('hts.progressAriaLabel', { done: DONE_COUNT, total: TOTAL_STEPS })}
           >
-            <span
-              className={styles.progressFill}
-              style={{ width: `${PROGRESS_PERCENT}%` }}
-            />
+            <span className={styles.progressFill} style={{ width: `${PROGRESS_PERCENT}%` }} />
           </div>
         </section>
 
@@ -298,9 +299,7 @@ export default function HowToStart() {
                     <span className={styles.stepNumberDesktop} aria-hidden="true">
                       {String(step.id).padStart(2, '0')}
                     </span>
-                    <h2 className={styles.stepTitleDesktop}>
-                      {step.titleDesktop ?? step.title}
-                    </h2>
+                    <h2 className={styles.stepTitleDesktop}>{step.titleDesktop ?? step.title}</h2>
                   </div>
 
                   <p className={styles.stepDescriptionMobile}>{step.description}</p>
@@ -334,9 +333,7 @@ export default function HowToStart() {
                     </div>
                   ) : null}
 
-                  {step.callout ? (
-                    <p className={styles.stepCalloutMobile}>{step.callout}</p>
-                  ) : null}
+                  {step.callout ? <p className={styles.stepCalloutMobile}>{step.callout}</p> : null}
                   {step.calloutDesktop ? (
                     <p className={styles.stepCalloutDesktop}>{step.calloutDesktop}</p>
                   ) : null}

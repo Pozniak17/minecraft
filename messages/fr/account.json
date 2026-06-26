@@ -201,8 +201,8 @@
         "Dans Minecraft\u00a0: Multijoueur \u2192 Ajouter un serveur \u2192 coller l\u2019IP.",
         "Cliquer sur la carte du serveur pour se connecter."
       ],
-      "callout": "La premi\u00e8re connexion t\u00e9l\u00e9charge notre pack de ressources de 80\u00a0Mo.",
-      "calloutDesktop": "La premi\u00e8re connexion t\u00e9l\u00e9charge notre pack de ressources de ~80\u00a0Mo. Ensuite, la connexion est instantan\u00e9e."
+      "callout": "La premi\u00e8re connexion charge l\u2019ambiance unique du serveur \u2014 laissez-lui un instant.",
+      "calloutDesktop": "Votre premi\u00e8re visite t\u00e9l\u00e9charge textures et atmosph\u00e8re personnalis\u00e9es \u2014 ensuite, chaque retour est un saut rapide dans le monde."
     },
     "s4": {
       "nav": "Lier votre compte",

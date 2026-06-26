@@ -129,15 +129,15 @@
     "05": "Why am I getting connection lost?"
   },
   "support": {
-    "liveLabel": "Live support online",
+    "liveLabel": "Contact us",
     "title": "Still need help?",
-    "desc": "Chat with us 24/7 or send a ticket \u2014 we usually reply within 4 hours.",
+    "desc": "Browse the FAQ for step-by-step guides and answers to common questions.",
     "sendTicket": "Send a ticket"
   },
   "cta": {
     "title": "Still need help?",
-    "descMobile": "Support team replies within 4 h, 24/7.",
-    "descDesktop": "Our support team replies within 4 hours, around the clock. Live chat, email ticket, or Discord \u2014 pick whichever is fastest for you.",
+    "descMobile": "Browse the FAQ for guides and troubleshooting tips.",
+    "descDesktop": "Browse the FAQ for step-by-step guides, troubleshooting tips, and answers to the most common player questions.",
     "contactUs": "Contact us"
   },
   "suggest": {
@@ -185,7 +185,7 @@
     "statsDesktop": "{helpful} out of {total} players ({percent}%) found this helpful"
   },
   "contentCta": {
-    "primary": "Open live chat",
+    "primary": "Contact us",
     "secondary": "Browse all FAQ"
   },
   "articles": {
@@ -485,16 +485,40 @@
       "desktop": "Most issues fall into one of four buckets. Each item below has a 30-second fix."
     },
     "troubleMobileItems": [
-      { "title": "\u201cOutdated server / client\u201d", "text": "Update Minecraft to 1.20.4 (Java) or the latest Bedrock build." },
-      { "title": "\u201cConnection lost\u201d", "text": "Check firewall and disable VPNs blocking port 25565." },
-      { "title": "Resource pack stuck", "text": "Restart Minecraft. If still hanging \u2014 /resourcepack reload after spawn." },
-      { "title": "Server not visible", "text": "Re-check the IP \u2014 no leading/trailing spaces." }
+      {
+        "title": "\u201cOutdated server / client\u201d",
+        "text": "Update Minecraft to 1.20.4 (Java) or the latest Bedrock build."
+      },
+      {
+        "title": "\u201cConnection lost\u201d",
+        "text": "Check firewall and disable VPNs blocking port 25565."
+      },
+      {
+        "title": "Resource pack stuck",
+        "text": "Restart Minecraft. If still hanging \u2014 /resourcepack reload after spawn."
+      },
+      {
+        "title": "Server not visible",
+        "text": "Re-check the IP \u2014 no leading/trailing spaces."
+      }
     ],
     "troubleDesktopItems": [
-      { "title": "\u201cOutdated server\u201d or \u201cOutdated client\u201d", "text": "Your Minecraft version does not match the server. Update Minecraft to 1.20.4 (Java) or the latest Bedrock build, then reconnect." },
-      { "title": "\u201cConnection lost\u201d right after joining", "text": "Check your firewall \u2014 Minecraft uses port 25565 (Java) by default. Disable VPNs that block game traffic, then try again." },
-      { "title": "Resource pack stuck at 0%", "text": "Cancel the connection, restart Minecraft, and rejoin. If it still hangs, type /resourcepack reload in chat after spawning." },
-      { "title": "Server not visible in the list", "text": "Make sure you pasted the IP exactly \u2014 no leading or trailing spaces. The address is case-insensitive." }
+      {
+        "title": "\u201cOutdated server\u201d or \u201cOutdated client\u201d",
+        "text": "Your Minecraft version does not match the server. Update Minecraft to 1.20.4 (Java) or the latest Bedrock build, then reconnect."
+      },
+      {
+        "title": "\u201cConnection lost\u201d right after joining",
+        "text": "Check your firewall \u2014 Minecraft uses port 25565 (Java) by default. Disable VPNs that block game traffic, then try again."
+      },
+      {
+        "title": "Resource pack stuck at 0%",
+        "text": "Cancel the connection, restart Minecraft, and rejoin. If it still hangs, type /resourcepack reload in chat after spawning."
+      },
+      {
+        "title": "Server not visible in the list",
+        "text": "Make sure you pasted the IP exactly \u2014 no leading or trailing spaces. The address is case-insensitive."
+      }
     ],
     "nextTitle": "What\u2019s next?",
     "nextLead": {
@@ -549,7 +573,7 @@
         ],
         "calloutTitle": "Tip",
         "calloutMobile": "Update Minecraft before copying a server IP \u2014 it saves a confusing error screen.",
-        "calloutDesktop": "Update Minecraft to the latest patch before copying a server IP. It saves a confusing error screen and avoids support tickets we answer every hour."
+        "calloutDesktop": "Update Minecraft to the latest patch before copying a server IP. It saves a confusing error screen and a common support dead-end."
       },
       "s3": {
         "title": "Check your version",
@@ -1394,11 +1418,20 @@
         "leadDesktop": "Run the ping test to the IP from Dashboard \u2192 Servers \u2192 Diagnostics and attach results to a support ticket.",
         "troubleMobile": [
           { "title": "Instant disconnect", "text": "Usually version mismatch or banned IP range." },
-          { "title": "Timeout at resource pack", "text": "See resource pack article \u2014 different fix path." }
+          {
+            "title": "Timeout at resource pack",
+            "text": "See resource pack article \u2014 different fix path."
+          }
         ],
         "troubleDesktop": [
-          { "title": "Instant disconnect after handshake", "text": "Usually version mismatch, banned IP range, or anti-cheat flag \u2014 include your client log in tickets." },
-          { "title": "Timeout during resource pack", "text": "See the resource pack article \u2014 firewall CDNs block pack hosts separately from game port 25565." }
+          {
+            "title": "Instant disconnect after handshake",
+            "text": "Usually version mismatch, banned IP range, or anti-cheat flag \u2014 include your client log in tickets."
+          },
+          {
+            "title": "Timeout during resource pack",
+            "text": "See the resource pack article \u2014 firewall CDNs block pack hosts separately from game port 25565."
+          }
         ]
       }
     },

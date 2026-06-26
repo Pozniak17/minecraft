@@ -85,6 +85,6 @@
     "descDesktop": "B\u0119dziesz musia\u0142 zalogowa\u0107 si\u0119 ponownie, aby uzyska\u0107 dost\u0119p do panelu, koszyka i aktywnych przywilej\u00f3w. Aktywne sesje w grze pozostaj\u0105 bez zmian.",
     "signedInAs": "Zalogowany jako",
     "cancel": "Anuluj",
-    "autoExpire": "Sesje wygasaj\u0105 automatycznie po 30 dniach"
+    "autoExpire": "Sesje wygasaj\u0105 po 7 dniach braku aktywno\u015bci"
   }
 }
