@@ -8,6 +8,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Terms and Conditions',
   description: 'The terms that govern your use of the Adventures in Minecraft website and servers.',
   path: '/terms',
+  noindex: true,
 });
 
 export default async function TermsPage() {

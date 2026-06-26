@@ -8,6 +8,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Privacy Policy',
   description: 'How Adventures in Minecraft collects, uses, and protects your personal information.',
   path: '/privacy-policy',
+  noindex: true,
 });
 
 export default async function PrivacyPolicyPage() {

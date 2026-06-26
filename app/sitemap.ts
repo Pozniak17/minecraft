@@ -15,9 +15,6 @@ const staticRoutes: { path: string; priority: number; changeFrequency: Entry['ch
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/blog/updates', priority: 0.6, changeFrequency: 'weekly' },
   { path: '/contacts', priority: 0.5, changeFrequency: 'monthly' },
-  { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

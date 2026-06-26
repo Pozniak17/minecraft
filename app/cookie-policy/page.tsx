@@ -8,6 +8,7 @@ export const metadata: Metadata = buildMetadata({
   title: 'Cookie Policy',
   description: 'What cookies Adventures in Minecraft uses and the choices you have regarding them.',
   path: '/cookie-policy',
+  noindex: true,
 });
 
 export default async function CookiePolicyPage() {
