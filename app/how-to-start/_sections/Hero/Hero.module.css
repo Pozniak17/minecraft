@@ -195,6 +195,29 @@
   display: none;
 }
 
+/* Mobile stepper: однакова ширина кроків + лінія через padding замість фіксованого gap */
+@media (max-width: 1279px) {
+  .stepperList {
+    --stepper-gap: 32px;
+    gap: 0;
+  }
+
+  .stepperItem {
+    width: min(100%, 335px);
+    margin-inline: auto;
+    padding-bottom: var(--stepper-gap);
+  }
+
+  .stepperItem:not(:last-child)::after {
+    bottom: calc(-1 * var(--stepper-gap));
+  }
+
+  .stepperContent {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 /* Stepper */
 
 @media (min-width: 1280px) {

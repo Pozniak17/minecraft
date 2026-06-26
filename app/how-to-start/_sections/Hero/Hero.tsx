@@ -117,11 +117,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
               <div className={styles.stepperContent}>
                 <h3 className={styles.stepperTitle}>{t('howToStart.step6Title')}</h3>
                 <p className={styles.stepperDescription}>{t('howToStart.step6Desc')}</p>
-                <AuthAwareLink
-                  isAuthed={isAuthed}
-                  intent="play"
-                  className={styles.stepperButton}
-                >
+                <AuthAwareLink isAuthed={isAuthed} intent="play" className={styles.stepperButton}>
                   {t('howToStart.step6Button')}
                 </AuthAwareLink>
               </div>
@@ -135,11 +131,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
               <div className={styles.stepperContent}>
                 <h3 className={styles.stepperTitle}>{t('howToStart.step7Title')}</h3>
                 <p className={styles.stepperDescription}>{t('howToStart.step7Desc')}</p>
-                <AuthAwareLink
-                  isAuthed={isAuthed}
-                  intent="store"
-                  className={styles.stepperButton}
-                >
+                <AuthAwareLink isAuthed={isAuthed} intent="store" className={styles.stepperButton}>
                   {t('howToStart.step7Button')}
                 </AuthAwareLink>
               </div>
