@@ -14,6 +14,8 @@ type MobileNavProps = {
   pathname: string;
   isAuthed?: boolean;
   nick?: string;
+  avatarInitial?: string;
+  photoUrl?: string | null;
 };
 
 export function MobileNav({
@@ -22,6 +24,8 @@ export function MobileNav({
   pathname,
   isAuthed = false,
   nick = 'Player',
+  avatarInitial,
+  photoUrl = null,
 }: MobileNavProps) {
   const t = useTranslations('common');
 
@@ -79,9 +83,14 @@ export function MobileNav({
         <div className={styles.authRow}>
           {isAuthed ? (
             <Link href="/dashboard" className={styles.account} onClick={onClose}>
-              <span className={styles.avatar} aria-hidden="true">
-                {nick.charAt(0).toUpperCase()}
-              </span>
+              {photoUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className={styles.avatar} src={photoUrl} alt={t('shared.profileAlt')} />
+              ) : (
+                <span className={styles.avatar} aria-hidden="true">
+                  {avatarInitial ?? nick.charAt(0).toUpperCase()}
+                </span>
+              )}
               <span className={styles.nick}>{nick}</span>
             </Link>
           ) : (

@@ -33,25 +33,27 @@ export function SiteChrome({
     return children;
   }
 
-  if (isAuthed && matchesRoute(pathname, DASHBOARD_ROUTES)) {
-    return (
-      <ProfileProvider initial={initialProfile}>
-        <div className={styles.dashboard}>
-          <DashboardSidebar />
-          <div className={styles.dashboardMain}>
-            <DashboardHeader />
-            <main className={styles.dashboardContent}>{children}</main>
-          </div>
-        </div>
-      </ProfileProvider>
-    );
-  }
+  const isDashboard = isAuthed && matchesRoute(pathname, DASHBOARD_ROUTES);
 
-  return (
+  const content = isDashboard ? (
+    <div className={styles.dashboard}>
+      <DashboardSidebar />
+      <div className={styles.dashboardMain}>
+        <DashboardHeader />
+        <main className={styles.dashboardContent}>{children}</main>
+      </div>
+    </div>
+  ) : (
     <>
       <Header isAuthed={isAuthed} />
       <main>{children}</main>
       <Footer />
     </>
   );
+
+  if (isAuthed) {
+    return <ProfileProvider initial={initialProfile}>{content}</ProfileProvider>;
+  }
+
+  return content;
 }

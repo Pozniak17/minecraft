@@ -143,6 +143,11 @@
   font-size: 14px;
   line-height: 1;
   color: var(--color-primary);
+  overflow: hidden;
+}
+
+img.avatar {
+  object-fit: cover;
 }
 
 .nick {

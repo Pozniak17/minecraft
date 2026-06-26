@@ -5,26 +5,40 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { Container } from '../Container/Container';
 import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { MobileNav } from './MobileNav/MobileNav';
 import { isNavLinkActive, NAV_LINKS } from './navLinks';
 import styles from './Header.module.css';
 
+function HeaderAccount() {
+  const t = useTranslations('common');
+  const { displayName, initial, photoUrl } = useProfile();
+
+  return (
+    <Link href="/dashboard" className={styles.account} aria-label={t('header.goToDashboard')}>
+      {photoUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={styles.avatar} src={photoUrl} alt={t('shared.profileAlt')} />
+      ) : (
+        <span className={styles.avatar} aria-hidden="true">
+          {initial}
+        </span>
+      )}
+      <span className={styles.nick}>{displayName}</span>
+    </Link>
+  );
+}
+
 export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
   const pathname = usePathname();
   const t = useTranslations('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [nick, setNick] = useState('Player');
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    setNick(email ? email.split('@')[0] : 'Player');
-  }, []);
 
   return (
     <header className={styles.header}>
@@ -70,12 +84,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
 
         <div className={styles.authButtons}>
           {isAuthed ? (
-            <Link href="/dashboard" className={styles.account} aria-label={t('header.goToDashboard')}>
-              <span className={styles.avatar} aria-hidden="true">
-                {nick.charAt(0).toUpperCase()}
-              </span>
-              <span className={styles.nick}>{nick}</span>
-            </Link>
+            <HeaderAccount />
           ) : (
             <>
               <Link href="/login" className={styles.btnSecondary}>
@@ -107,13 +116,44 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
       </Container>
 
-      <MobileNav
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        pathname={pathname}
-        isAuthed={isAuthed}
-        nick={nick}
-      />
+      {isAuthed ? (
+        <AuthenticatedMobileNav
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          pathname={pathname}
+        />
+      ) : (
+        <MobileNav
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          pathname={pathname}
+          isAuthed={false}
+        />
+      )}
     </header>
+  );
+}
+
+function AuthenticatedMobileNav({
+  isOpen,
+  onClose,
+  pathname,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  pathname: string;
+}) {
+  const { displayName, initial, photoUrl } = useProfile();
+
+  return (
+    <MobileNav
+      isOpen={isOpen}
+      onClose={onClose}
+      pathname={pathname}
+      isAuthed
+      nick={displayName}
+      avatarInitial={initial}
+      photoUrl={photoUrl}
+    />
   );
 }
