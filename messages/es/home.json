@@ -75,15 +75,15 @@
     "goToServer": "Ir a {title}",
     "luckysurvival": {
       "text": "Supervivencia clásica con PvP equilibrado",
-      "description": "Supervivencia vanilla con PvP y TNT desactivados. Perfecto para combates justos, progresión y juego a largo plazo."
+      "description": "Survival vanilla con PvP y TNT desactivados. Combates justos, progresión y juego duradero."
     },
     "minewars": {
       "text": "Libertad total. Caos total.",
-      "description": "Supervivencia vanilla con PvP y TNT activados. Construye, destruye, saquea o domina — sin límites en el estilo de juego."
+      "description": "Survival vanilla con PvP y TNT activados. Construye, destruye, saquea o domina — sin límites."
     },
     "calmsky": {
       "text": "Construir, relajarse y conectar",
-      "description": "Servidor vanilla pacífico sin PvP ni TNT. Céntrate en la creatividad, el juego social y las bellas construcciones."
+      "description": "Servidor vanilla pacífico sin PvP ni TNT. Creatividad, juego social y bellas construcciones."
     },
     "cardStatus": "Estado",
     "cardOnline": "En línea",

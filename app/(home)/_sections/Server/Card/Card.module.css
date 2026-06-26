@@ -1,5 +1,7 @@
 .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 337px;
   height: 417px;
   border-radius: 20px;
@@ -82,7 +84,7 @@
 }
 
 .description {
-  margin-bottom: 23px;
+  margin-bottom: 0;
   color: #fff;
   font-family: var(--Font-Serif-Typography, Montserrat);
   font-size: var(--Size-Mobile-Body-xsmall, 12px);
@@ -96,7 +98,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 17px;
+  margin-bottom: 0;
+  margin-top: 23px;
 }
 
 .item {
@@ -159,8 +162,10 @@
   display: flex;
   width: 299px;
   height: 47px;
+  margin-top: auto;
   margin-left: auto;
   margin-right: auto;
+  flex-shrink: 0;
   padding: 0 20px;
   justify-content: center;
   align-items: center;
@@ -244,8 +249,13 @@
   }
 
   .description {
-    margin-bottom: 37px;
+    margin-bottom: 0;
     font-size: var(--Size-Desk-Body-xsmall, 16px);
+  }
+
+  .list {
+    gap: 9px;
+    margin-top: 37px;
   }
 
   .item {
@@ -254,10 +264,6 @@
 
   .item + .item {
     padding-top: 9px;
-  }
-
-  .list {
-    gap: 9px;
   }
 
   .linkButton {
