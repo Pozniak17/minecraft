@@ -221,18 +221,10 @@ export default function LoginForm() {
           <div className={styles.heroFade} />
         </div>
 
-        <blockquote className={styles.quoteCard}>
-          <p className={styles.quoteText}>
-            &ldquo;{t('login.quoteText')}&rdquo;
-          </p>
-          <footer className={styles.quoteMeta}>
-            <span className={styles.quoteAvatar}>R</span>
-            <span className={styles.quoteAuthor}>
-              <span className={styles.quoteName}>RedstoneKing</span>
-              <span className={styles.quoteSince}>{t('login.quoteSince')}</span>
-            </span>
-          </footer>
-        </blockquote>
+        <div className={styles.quoteCard}>
+          <p className={styles.quoteText}>{t('login.panelTagline')}</p>
+          <p className={styles.quoteSince}>{t('login.panelCaption')}</p>
+        </div>
       </div>
     </div>
   );
