@@ -36,7 +36,8 @@
   font-size: var(--Size-Mobile-Body-xxsmall, 10.5px);
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 15.75px */
+  line-height: 150%;
+  /* 15.75px */
 }
 
 @media (min-width: 1280px) {
@@ -44,12 +45,15 @@
     width: 100%;
     max-width: none;
     height: 93px;
-    padding: 19px 22px 21px 23px;
+    padding: 19px 19px 19px 19px;
+
   }
+
   .title {
     margin-bottom: 3px;
     font-size: var(--Size-Desk-H3-Small, 24px);
   }
+
   .text {
     font-size: var(--Size-Desk-Body-xxsmall, 14px);
   }
