@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import { isAxiosError } from 'axios';
 import { getCurrencies, getProducts } from '@/lib/api/shop';
@@ -28,13 +28,13 @@ type Tab = (typeof TABS)[number];
 const MIN = 10;
 const MAX = 15_000;
 const STEP = 10;
-// Жорсткий ліміт кількості за позицію на бекенді (AddToCart.amount max).
+// Hard backend limit per line item (AddToCart.amount max).
 const BACKEND_MAX_QTY = 20_000;
 
 type CrystalPack = {
   amount: number;
   img: string;
-  save?: number; // знижка у відсотках («більше береш — більша знижка»)
+  save?: number;
   popular?: boolean;
 };
 
@@ -62,8 +62,6 @@ const PRIVILEGE_TITLES = [
 
 const nf = new Intl.NumberFormat('en-US');
 
-// Ціна за кількість кристалів: реальний курс бекенду (за 1 кристал), якщо відомий,
-// інакше — лінійна оцінка з lib/pricing.ts (для публічної вітрини без авторизації).
 function crystalsPrice(
   amount: number,
   pricePerCrystal: number | null,
@@ -84,7 +82,6 @@ function formatSliderLabel(value: number): string {
   return nf.format(value);
 }
 
-// Мітки на рівних відстанях = значення на лінійній шкалі MIN…MAX.
 const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
   t => Math.round(MIN + t * (MAX - MIN)),
 );
@@ -92,27 +89,23 @@ const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
 export default function Shop() {
   const pathname = usePathname();
   const locale = useLocale();
+  const t = useTranslations('store');
   const isDashboard = pathname?.startsWith('/dashboard') ?? false;
   const [tab, setTab] = useState<Tab>('All');
   const [amount, setAmount] = useState(2500);
-  // Окреме текстове значення поля — щоб дати вводити суму вручну (в одиницях кристалів).
   const [amountInput, setAmountInput] = useState('2500');
 
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
   const [currencies, setCurrencies] = useState<Currency[]>([]);
 
-  // Зміна валюти + збереження вибору між сесіями.
   const handleCurrencyChange = useCallback((next: string) => {
     setCurrency(next);
     setStoredCurrency(next);
   }, []);
 
-  // Мапа продуктів бекенду: title(lowercase) → id; окремо id товару «Crystals».
   const [productIdByTitle, setProductIdByTitle] = useState<Map<string, string>>(new Map());
   const [crystalId, setCrystalId] = useState<string | null>(null);
-  // Реальна ціна за 1 кристал з бекенду (лише в кабінеті, де є авторизація).
   const [pricePerCrystal, setPricePerCrystal] = useState<number | null>(null);
-  // Відформатовані ціни привілеїв за назвою тиру (лише в кабінеті, де є ціни).
   const [privilegePrices, setPrivilegePrices] = useState<Record<string, string>>({});
   const [addingKey, setAddingKey] = useState<string | null>(null);
   const [doneKeys, setDoneKeys] = useState<Set<string>>(new Set());
@@ -132,9 +125,9 @@ export default function Shop() {
   const showPrivileges = tab === 'All' || tab === 'Privileges';
 
   const crystalAddLabel = (key: string, full = false) => {
-    if (addingKey === key) return 'Adding…';
-    if (doneKeys.has(key)) return 'Added ✓';
-    return full ? 'Add to cart' : 'Add';
+    if (addingKey === key) return t('shop_adding');
+    if (doneKeys.has(key)) return t('shop_added');
+    return full ? t('shop_addFull') : t('shop_addShort');
   };
 
   const markCrystalAdded = useCallback((key: string) => {
@@ -155,17 +148,14 @@ export default function Shop() {
     doneTimers.current.set(key, timer);
   }, []);
 
-  // Єдина точка зміни кількості: клемп у [MIN..MAX] + синхронізація текстового поля.
   const applyAmount = useCallback((next: number) => {
     const clamped = Math.min(MAX, Math.max(MIN, Math.round(next)));
     setAmount(clamped);
     setAmountInput(String(clamped));
   }, []);
 
-  // Кнопки + / − крокують по 10 (STEP).
   const step = (dir: 1 | -1) => applyAmount(amount + dir * STEP);
 
-  // Вільний ввід суми вручну: лишаємо тільки цифри, верх обмежуємо одразу, низ — на blur.
   const onAmountInput = (raw: string) => {
     const digits = raw.replace(/\D/g, '').slice(0, 5);
     setAmountInput(digits);
@@ -225,8 +215,6 @@ export default function Shop() {
     };
   }, [locale]);
 
-  // У кабінеті (authed) тягнемо приватний список із цінами, щоб показувати реальний
-  // курс кристалів (price за 1 кристал) — узгоджено з тим, що порахує бекенд у кошику.
   useEffect(() => {
     if (!isDashboard) {
       setPrivilegePrices({});
@@ -263,9 +251,6 @@ export default function Shop() {
     };
   }, [isDashboard, currency, locale]);
 
-  // amount = кількість кристалів (бекенд тарифікує за одиницю товару «Crystals»).
-  // Бекенд сам зводить кошик до однієї валюти (курс оновлюється раз на день),
-  // тож мікс валют тут не блокуємо.
   const addCrystals = useCallback(
     async (qty: number) => {
       if (!crystalId || addingKey) return;
@@ -275,55 +260,51 @@ export default function Shop() {
         await addToCart({ amount: qty, item_id: crystalId, currency });
         notifyCartUpdated();
         markCrystalAdded(key);
-        flash(`Added ${nf.format(qty)} crystals to cart`);
+        flash(t('shop_toastAdded', { amount: nf.format(qty) }));
       } catch (err) {
-        // Бекенд відхиляє повторний add того ж товару (403/400) — кристали вже в кошику.
-        // У такому разі оновлюємо кількість позиції замість додавання нової.
         if (isAxiosError(err) && (err.response?.status === 403 || err.response?.status === 400)) {
           try {
-            // Кристали вже в кошику — додаємо до наявної кількості (не перезаписуємо).
             const items = await getOrderItems();
             const existing = items.find(it => it.product_id === crystalId);
             const nextQty = Math.min(BACKEND_MAX_QTY, (existing?.amount ?? 0) + qty);
             await changeItemAmount(crystalId, nextQty);
             notifyCartUpdated();
             markCrystalAdded(key);
-            flash(`Added ${nf.format(qty)} crystals (cart: ${nf.format(nextQty)})`);
+            flash(t('shop_toastUpdated', { amount: nf.format(qty), total: nf.format(nextQty) }));
             return;
           } catch {
-            // падаємо у загальний фолбек нижче
+            // fall through to generic error
           }
         }
-        flash('Could not add to cart. Please try again.');
+        flash(t('shop_toastError'));
       } finally {
         setAddingKey(null);
       }
     },
-    [crystalId, addingKey, currency, flash, markCrystalAdded]
+    [crystalId, addingKey, currency, flash, markCrystalAdded, t]
   );
 
   const addPrivilege = useCallback(
     async (title: string) => {
       const id = productIdByTitle.get(title.toLowerCase());
       if (!id) {
-        flash('This item is not available yet.');
+        flash(t('shop_toastUnavailable'));
         return;
       }
       try {
         await addToCart({ amount: 1, item_id: id, currency });
         notifyCartUpdated();
-        flash(`${title} privilege added to cart`);
+        flash(t('shop_toastPrivAdded', { title }));
       } catch (err) {
-        // 403 — привілей уже в кошику (або вже придбано); для користувача це не помилка.
         if (isAxiosError(err) && err.response?.status === 403) {
-          flash(`${title} is already in your cart`);
+          flash(t('shop_toastPrivExists', { title }));
           return;
         }
-        flash('Could not add to cart. Please try again.');
+        flash(t('shop_toastError'));
         throw new Error('add-failed');
       }
     },
-    [productIdByTitle, currency, flash]
+    [productIdByTitle, currency, flash, t]
   );
 
   return (
@@ -332,13 +313,13 @@ export default function Shop() {
       <header className={styles.shopHeader}>
         <div className={styles.hdrTop}>
           <div className={styles.headerLeft}>
-            <span className={styles.eyebrow}>Shop</span>
-            <h1 className={styles.title}>Crystals &amp; privileges</h1>
+            <span className={styles.eyebrow}>{t('shop_eyebrow')}</span>
+            <h1 className={styles.title}>{t('shop_heading')}</h1>
             <p className={styles.subtitle}>
-              Top up your wallet or upgrade your account.
+              {t('shop_subtitle')}
               <span className={styles.subtitleExtra}>
                 {' '}
-                All purchases activate instantly across every server.
+                {t('shop_subtitleExtra')}
               </span>
             </p>
           </div>
@@ -362,10 +343,12 @@ export default function Shop() {
             >
               {item === 'All' ? (
                 <>
-                  All<span className={styles.tabSuffix}> items</span>
+                  {t('shop_tabAll')}<span className={styles.tabSuffix}>{t('shop_tabAllItems')}</span>
                 </>
+              ) : item === 'Crystals' ? (
+                t('shop_tabCrystals')
               ) : (
-                item
+                t('shop_tabPrivileges')
               )}
             </button>
           ))}
@@ -375,14 +358,14 @@ export default function Shop() {
       {showCrystals && (
         <>
           <div className={styles.crysTitle}>
-            <h2 className={styles.crysHeading}>Crystals — top up your wallet</h2>
-            <p className={styles.bestValue}>Best value: 5,000 pack saves 20%</p>
+            <h2 className={styles.crysHeading}>{t('shop_crysHeading')}</h2>
+            <p className={styles.bestValue}>{t('shop_bestValue')}</p>
           </div>
 
           <div className={styles.crysRow}>
             <div className={styles.calc}>
-              <span className={styles.calcHead}>Custom amount</span>
-              <p className={styles.calcDesc}>Pick exactly how many crystals you need</p>
+              <span className={styles.calcHead}>{t('shop_customAmount')}</span>
+              <p className={styles.calcDesc}>{t('shop_customDesc')}</p>
 
               <div className={styles.stepper}>
                 <button
@@ -404,7 +387,7 @@ export default function Shop() {
                     onFocus={e => e.target.select()}
                     aria-label="Crystals amount"
                   />
-                  <span className={styles.stepUnit}>crystals</span>
+                  <span className={styles.stepUnit}>{t('shop_unit')}</span>
                 </div>
                 <button
                   type="button"
@@ -439,7 +422,7 @@ export default function Shop() {
 
               <div className={styles.calcPrice}>
                 <div className={styles.calcTotal}>
-                  <span className={styles.calcTotalLabel}>Total</span>
+                  <span className={styles.calcTotalLabel}>{t('shop_total')}</span>
                   <span className={styles.calcPriceValue}>
                     {price} {currency}
                   </span>
@@ -475,7 +458,7 @@ export default function Shop() {
             </div>
 
             <div className={styles.packsCol}>
-              <h2 className={styles.packsHeading}>Crystal packs</h2>
+              <h2 className={styles.packsHeading}>{t('shop_packsHeading')}</h2>
               <div className={styles.packs}>
                 {PACKS.map(pack => {
                   const packKey = `crystals-${pack.amount}`;
@@ -489,20 +472,21 @@ export default function Shop() {
                   >
                     {pack.popular && (
                       <span className={styles.popular}>
-                        <span className={styles.popPrefix}>Most </span>popular
+                        <span className={styles.popPrefix}>{t('shop_mostPrefix')}</span>
+                        {t('shop_popularSuffix')}
                       </span>
                     )}
                     {pack.save && (
                       <div className={styles.saveWrap}>
                         <span className={styles.save}>
-                          <span className={styles.savePrefix}>Save </span>
+                          <span className={styles.savePrefix}>{t('shop_savePrefix')}</span>
                           {pack.save}%
                         </span>
                       </div>
                     )}
                     <span className={styles.packAmount}>
                       {nf.format(pack.amount)}
-                      <span className={styles.packUnit}> crystals</span>
+                      <span className={styles.packUnit}>{t('shop_packUnit')}</span>
                     </span>
                     <div className={styles.packPriceRow}>
                       <span className={styles.packPrice}>
@@ -537,8 +521,8 @@ export default function Shop() {
       {showPrivileges && (
         <>
           <div className={styles.prTitle}>
-            <h2 className={styles.prHeading}>Privileges — 8 tiers</h2>
-            <p className={styles.prNote}>All tiers stack with crystals balance</p>
+            <h2 className={styles.prHeading}>{t('shop_privHeading')}</h2>
+            <p className={styles.prNote}>{t('shop_privNote')}</p>
           </div>
           <div className={styles.privilegesFull}>
             <PrivilegesCards

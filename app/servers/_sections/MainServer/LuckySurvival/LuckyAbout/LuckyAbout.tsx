@@ -1,26 +1,26 @@
+import { useTranslations } from 'next-intl';
 import styles from './LuckyAbout.module.css';
 
 export default function LuckyAbout() {
+  const t = useTranslations('servers');
+
   return (
     <section className={styles.card}>
-      <p className={styles.eyebrow}>About the Server</p>
-      <h3 className={styles.title}>Classic Survival with Modern Twist</h3>
+      <p className={styles.eyebrow}>{t('shared.aboutEyebrow')}</p>
+      <h3 className={styles.title}>{t('lucky.aboutTitle')}</h3>
       <p className={styles.description}>
-        LuckySurvival offers a classic Minecraft survival experience with fair
-        PvP, a balanced in-game economy, and an active community. Built for both
-        casual and competitive players
+        {t('lucky.aboutDescription')}
         <span className={styles.descriptionDesktop}>
-          {' '}— find your place in the world
+          {t('lucky.aboutDescriptionDesktopSuffix')}
         </span>
         .
       </p>
       <p className={styles.target}>
         <span className={styles.targetMobile}>
-          Target: Balanced / chill players, active gameplay
+          {t('lucky.aboutTargetMobile')}
         </span>
         <span className={styles.targetDesktop}>
-          Target audience: Balanced / chill players who enjoy active gameplay,
-          fair competition and economic strategy.
+          {t('lucky.aboutTargetDesktop')}
         </span>
       </p>
     </section>

@@ -1,0 +1,277 @@
+{
+  "ph": {
+    "eyebrow": "History",
+    "title": "Purchase history",
+    "subtitle": "Every order across every server. Open or download receipts any time.",
+    "periodPrefix": "Period:",
+    "periodMenuLabel": "Select period",
+    "period": {
+      "last90": "Last 90 days",
+      "last30": "Last 30 days",
+      "last7": "Last 7 days",
+      "allTime": "All time"
+    },
+    "stat": {
+      "ordersMobile": "Orders",
+      "ordersDesktop": "Orders",
+      "spentMobile": "Spent",
+      "spentDesktop": "Total spent",
+      "crystalsMobile": "Crystals",
+      "crystalsDesktop": "Crystals bought",
+      "privilegesMobile": "Privileges",
+      "privilegesDesktop": "Privileges"
+    },
+    "loading": "Loading your orders\u2026",
+    "empty": {
+      "title": "No orders yet",
+      "text": "Your purchases will appear here once you complete your first order.",
+      "cta": "Go to shop \u2192"
+    },
+    "emptyPeriod": {
+      "title": "No orders in this period",
+      "text": "Try a longer period or choose \u201cAll time\u201d to see your full history."
+    },
+    "table": {
+      "ariaLabel": "Purchase history"
+    },
+    "col": {
+      "date": "Date",
+      "items": "Items",
+      "server": "Server",
+      "nickname": "Nickname",
+      "amount": "Amount",
+      "status": "Status",
+      "receipt": "Receipt"
+    },
+    "status": {
+      "paid": "paid",
+      "refund": "refund",
+      "failed": "failed"
+    },
+    "btn": {
+      "open": "Open",
+      "opening": "Opening\u2026",
+      "receipt": "Receipt",
+      "downloading": "Downloading\u2026",
+      "downloadAriaLabel": "Download receipt"
+    },
+    "error": {
+      "openFallback": "Could not open receipt.",
+      "downloadFallback": "Could not download receipt."
+    }
+  },
+  "tr": {
+    "eyebrow": "Top / Ratings",
+    "title": "Player leaderboard",
+    "subtitleMobile": "Updated weekly. 200+ active players ranked across every server.",
+    "subtitleDesktop": "Top players by playtime, updated automatically. 200+ active players ranked across every server.",
+    "autoRefresh": "Auto refresh \u2014 weekly",
+    "tabsAriaLabel": "Leaderboard metrics",
+    "tab": {
+      "playtimeMobile": "Playtime",
+      "playtimeDesktop": "Playtime",
+      "killsMobile": "Kills",
+      "killsDesktop": "Kills",
+      "wealthMobile": "Wealth",
+      "wealthDesktop": "Wealth",
+      "achievMobile": "Achiev",
+      "achievDesktop": "Achievements"
+    },
+    "filter": {
+      "periodPrefix": "Period:",
+      "periodLabel": "Select period",
+      "serverPrefix": "Server:",
+      "serverLabel": "Select server"
+    },
+    "period": {
+      "thisWeek": "This week",
+      "thisMonth": "This month",
+      "allTime": "All time"
+    },
+    "server": {
+      "allServers": "All servers"
+    },
+    "top3Label": "Top 3 players",
+    "listLabel": "Leaderboard rankings",
+    "emptyFilter": "No players match these filters.",
+    "col": {
+      "hash": "#",
+      "player": "Player",
+      "server": "Server",
+      "playtime": "Playtime",
+      "kills": "Kills",
+      "wealth": "Wealth"
+    }
+  },
+  "tournaments": {
+    "comingSoon": "Coming soon",
+    "title": "Tournaments are coming",
+    "descMobile": "Weekly brackets, real prize pools, seasonal trophies. Full launch in June 2026.",
+    "descDesktop": "Weekly brackets, real prize pools, and seasonal trophies. We are testing the system right now \u2014 full launch in June 2026.",
+    "countdownLabel": "Time until launch",
+    "countdown": {
+      "daysMobile": "d",
+      "daysDesktop": "days",
+      "hoursMobile": "h",
+      "hoursDesktop": "hours",
+      "minutesMobile": "m",
+      "minutesDesktop": "minutes",
+      "secondsMobile": "s",
+      "secondsDesktop": "seconds"
+    },
+    "featuresLabel": "Tournament features",
+    "f0": {
+      "title": "Weekly brackets",
+      "desc": "New tournaments every Friday at 18:00 UTC, running through Sunday 23:59."
+    },
+    "f1": {
+      "title": "Real prize pools",
+      "desc": "Top finishers earn crystals, trophies, and exclusive cosmetic skins."
+    },
+    "f2": {
+      "title": "Fair matchmaking",
+      "desc": "Auto-balanced brackets by playtime and historical performance."
+    },
+    "blogNote": "For more details, follow our <link>blog</link>."
+  },
+  "hts": {
+    "eyebrow": "How to Start",
+    "title": "Get started in under 2 minutes",
+    "subtitleMobile": "Quick step-by-step guide for new players. Support chat is one click away if you get stuck.",
+    "subtitleDesktop": "A quick step-by-step guide for new players. If you get stuck at any step, the in-app support chat is one click away.",
+    "progressLabel": "Your progress",
+    "progressValue": "{done} of {total} done",
+    "progressAriaLabel": "{done} of {total} steps completed",
+    "sidebarLabel": "Steps",
+    "sidebarAriaLabel": "Steps",
+    "allDoneLabel": "All steps complete",
+    "doneTitle": "All set \u2014 welcome aboard.",
+    "doneText": "Need help? The support chat is one click away.",
+    "openSupport": "Open support",
+    "goToDashboard": "Go to dashboard",
+    "downloadIllustrationAlt": "Minecraft download illustration",
+    "s1": {
+      "nav": "Download Minecraft",
+      "title": "Download Minecraft",
+      "descMobile": "You need Minecraft Java or Bedrock. Java has more plugins.",
+      "descDesktop": "You need a legal copy of Minecraft (Java or Bedrock edition). The Java edition is what most of our players use because it supports more plugins and custom crafts.",
+      "bullets": [
+        "Open minecraft.net and sign in.",
+        "Install 1.20.4 (Java) or latest Bedrock.",
+        "Launch once to verify."
+      ],
+      "bulletsDesktop": [
+        "Open minecraft.net and sign in with your Microsoft account.",
+        "Download the launcher and install Minecraft 1.20.4 (Java) or the latest Bedrock release.",
+        "Launch the game once to verify everything loads."
+      ],
+      "callout": "Cosmetics and tournaments ship to Java first.",
+      "calloutDesktop": "Both editions work on our servers, but cosmetics and tournament features ship to Java first. Bedrock support arrives 1-2 weeks later."
+    },
+    "s2": {
+      "nav": "Create your account",
+      "title": "Create your account",
+      "descMobile": "Sign up with email + password. One-minute activation.",
+      "descDesktop": "Sign up on our website with your email and password. Activation takes one minute.",
+      "bullets": [
+        "Open Sign Up, enter email + password.",
+        "Confirm via the link in your email.",
+        "Pick an in-game nickname."
+      ],
+      "bulletsDesktop": [
+        "Open the Sign Up page and enter your email + password.",
+        "Confirm your email via the link we send (check spam if it does not arrive in 2 min).",
+        "Set an in-game nickname \u2014 this is what other players will see."
+      ]
+    },
+    "s3": {
+      "nav": "Buy or join a server",
+      "title": "Buy or join a server",
+      "descMobile": "Pick a server, copy the IP, paste in Minecraft.",
+      "descDesktop": "Pick a server from the Servers page \u2014 LuckySurvival, MineWars, or CalmSky. Copy the IP and paste it into Minecraft \u2192 Multiplayer \u2192 Add Server.",
+      "bullets": [
+        "Open Servers page.",
+        "Click Copy IP.",
+        "Minecraft \u2192 Multiplayer \u2192 Add Server.",
+        "Click to connect."
+      ],
+      "bulletsDesktop": [
+        "Open the Servers page in your dashboard.",
+        "Click \u201cCopy IP\u201d on the card you want.",
+        "In Minecraft, choose Multiplayer \u2192 Add Server \u2192 paste the IP.",
+        "Click the server card to connect."
+      ],
+      "callout": "First connection downloads our 80 MB resource pack.",
+      "calloutDesktop": "First connection downloads our ~80 MB resource pack. After that, joining is instant."
+    },
+    "s4": {
+      "nav": "Link your account",
+      "title": "Link your nickname",
+      "titleDesktop": "Link your in-game nickname",
+      "descMobile": "Connect your in-game name to your account for delivery.",
+      "descDesktop": "After joining for the first time, link your in-game nickname to your account so privileges and crystals deliver to the right player.",
+      "bullets": [
+        "In game: /link <your email>",
+        "Check your email for a link.",
+        "Click the link to finish linking."
+      ],
+      "bulletsDesktop": [
+        "In game, run /link followed by your account email.",
+        "We send an activation link to your email.",
+        "Open the link in your browser \u2014 your nickname is linked automatically."
+      ]
+    },
+    "s5": {
+      "nav": "Pick a privilege",
+      "title": "Pick a privilege",
+      "titleDesktop": "Pick a privilege (optional)",
+      "descMobile": "Unlock cosmetics, cooldowns, and home points.",
+      "descDesktop": "Privileges unlock cosmetics, faster cooldowns, and extra home points. All eight tiers are listed in the Shop with descriptions and live preview.",
+      "bullets": [
+        "Shop \u2192 Privileges, pick a tier.",
+        "Add to cart, pay."
+      ],
+      "bulletsDesktop": [
+        "Open Shop \u2192 Privileges.",
+        "Hover any tier to see the full perk list.",
+        "Add to cart, pick the server, pay."
+      ]
+    },
+    "s6": {
+      "nav": "Top up crystals",
+      "title": "Top up crystals",
+      "titleDesktop": "Top up crystals (optional)",
+      "descMobile": "Buy a pack or use the slider for custom amount.",
+      "descDesktop": "Crystals are our in-game currency for cosmetics, tournament entries, and time-limited items. Buy a pack or use the custom-amount slider.",
+      "bullets": [
+        "Shop \u2192 Crystals.",
+        "Pick a preset or set amount.",
+        "Instant delivery."
+      ],
+      "bulletsDesktop": [
+        "Open Shop \u2192 Crystals.",
+        "Pick a preset pack or use the slider to set exact amount.",
+        "Crystals deliver instantly to your nickname."
+      ]
+    },
+    "s7": {
+      "nav": "Join community Discord",
+      "title": "Join community Discord",
+      "titleDesktop": "Join the community Discord",
+      "descMobile": "Updates, announcements, support \u2014 all live on Discord.",
+      "descDesktop": "Most of our updates, tournament announcements, and player support happen on Discord. Free to join, easy to leave.",
+      "bullets": [
+        "Tap the Discord button.",
+        "Run /verify in Discord.",
+        "Pick your server role."
+      ],
+      "bulletsDesktop": [
+        "Click the Discord button in the sidebar.",
+        "Use the /verify command to link your accounts.",
+        "Pick your favourite-server role and you are set."
+      ],
+      "callout": "Average first-response on support: under 4 hours.",
+      "calloutDesktop": "Live support is available on Discord 24/7. Average first-response time is under 4 hours."
+    }
+  }
+}

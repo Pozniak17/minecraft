@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Home",
+    "servers": "Servers",
+    "store": "Store",
+    "howToStart": "How to Start",
+    "blog": "Blog",
+    "about": "About",
+    "faq": "FAQ"
+  },
+  "legal": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies"
+  },
+  "shared": {
+    "logoAlt": "Minecraft game logo",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation",
+    "browseSite": "Browse the site",
+    "myWorkspace": "My workspace",
+    "settings": "Settings",
+    "logOut": "Log out",
+    "loggingOut": "Logging out\u2026",
+    "soon": "Soon",
+    "profileAlt": "Profile"
+  },
+  "header": {
+    "goToDashboard": "Go to dashboard",
+    "logIn": "Log In",
+    "signUp": "Sign UP"
+  },
+  "mobileNav": {
+    "mobileNavLabel": "Mobile navigation",
+    "logIn": "Log in",
+    "signUp": "Sign up",
+    "serversOnline": "Servers online \u2014 2 of 3",
+    "playersOnline": "212 players exploring right now",
+    "community": "Community"
+  },
+  "footer": {
+    "description": "Building a modern Minecraft ecosystem with stable servers, fair gameplay, and an active community.",
+    "mainTitle": "Main",
+    "supportTitle": "Support",
+    "contacts": "Contacts",
+    "howToStartPlaying": "How to Start Playing",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsAndConditions": "Terms and Conditions",
+    "copyright": "\u00a9 2026 Adventures in Minecraft. All rights reserved."
+  },
+  "dash": {
+    "dashboard": "Dashboard",
+    "shop": "Shop",
+    "servers": "Servers",
+    "cart": "Cart",
+    "history": "Purchase History",
+    "top": "Top / Ratings",
+    "tournaments": "Tournaments",
+    "howToStart": "How to Start"
+  },
+  "dashNav": {
+    "dashboardNav": "Dashboard navigation",
+    "dashboardHome": "Dashboard home",
+    "topUpCrystals": "Top up crystals"
+  },
+  "cookie": {
+    "ariaLabel": "Cookie consent",
+    "title": "We use cookies",
+    "text": "We use cookies to keep you signed in, secure your session, and improve your experience. Read more in our <link>Cookie Policy</link>.",
+    "reject": "Reject",
+    "accept": "Accept all"
+  },
+  "lang": {
+    "changeLanguage": "Change language"
+  },
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb"
+  },
+  "logout": {
+    "closeDialog": "Close logout dialog",
+    "title": "Log out of your account?",
+    "descMobile": "You will need to sign in again. In-game sessions remain unaffected.",
+    "descDesktop": "You will need to sign in again to access your dashboard, cart, and active privileges. Active in-game sessions remain unaffected.",
+    "signedInAs": "Signed in as",
+    "cancel": "Cancel",
+    "autoExpire": "Sessions auto-expire after 30 days"
+  }
+}

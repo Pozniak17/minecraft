@@ -1,18 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { getPlayNowHref } from '@/lib/data/servers';
 import { TWITCH_URL } from '@/lib/data/social';
 import styles from './CalmSkyActions.module.css';
 
 export default function CalmSkyActions({ isAuthed = false }: { isAuthed?: boolean }) {
+  const t = useTranslations('servers');
   const playHref = getPlayNowHref('calmsky', isAuthed);
 
   return (
     <section className={styles.card}>
-      <h3 className={styles.eyebrow}>Quick Actions</h3>
+      <h3 className={styles.eyebrow}>{t('shared.quickActions')}</h3>
 
       <Link href={playHref} className={`${styles.button} ${styles.primary}`}>
-        Play Now
+        {t('shared.playNow')}
       </Link>
 
       <a
@@ -28,7 +30,7 @@ export default function CalmSkyActions({ isAuthed = false }: { isAuthed?: boolea
           height={24}
           className={styles.discordIcon}
         />
-        Join Twitch
+        {t('shared.joinTwitch')}
       </a>
     </section>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import useEmblaCarousel from 'embla-carousel-react';
 import Card from './Card/Card';
 import styles from './CrystalsCards.module.css';
@@ -11,25 +12,16 @@ export type CrystalsCardProps = {
   icon: string;
 };
 
-const Data: CrystalsCardProps[] = [
-  {
-    title: '500 Crystals',
-    text: 'Start your journey.',
-    icon: '/icons/illustrations/preview-green.svg',
-  },
-  {
-    title: '1,500 Crystals',
-    text: 'Best value for active players.',
-    icon: '/icons/illustrations/preview-yellow.svg',
-  },
-  {
-    title: '5,000 Crystals',
-    text: 'For serious progression.',
-    icon: '/icons/illustrations/preview-blue.svg',
-  },
+type PackKey = 'pack1' | 'pack2' | 'pack3';
+
+const PACK_DATA: { key: PackKey; icon: string }[] = [
+  { key: 'pack1', icon: '/icons/illustrations/preview-green.svg' },
+  { key: 'pack2', icon: '/icons/illustrations/preview-yellow.svg' },
+  { key: 'pack3', icon: '/icons/illustrations/preview-blue.svg' },
 ];
 
 export default function CrystalsCards({ seeMoreHref }: { seeMoreHref: string }) {
+  const t = useTranslations('store');
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
     loop: false,
@@ -60,11 +52,11 @@ export default function CrystalsCards({ seeMoreHref }: { seeMoreHref: string }) 
     <div className={styles.root}>
       <div className={styles.viewport} ref={emblaRef}>
         <ul className={styles.cards}>
-          {Data.map((item, index) => (
+          {PACK_DATA.map((item, index) => (
             <Card
               key={index}
-              title={item.title}
-              text={item.text}
+              title={t(`crystalCard_${item.key}_title`)}
+              text={t(`crystalCard_${item.key}_text`)}
               icon={item.icon}
               seeMoreHref={seeMoreHref}
             />
@@ -72,13 +64,13 @@ export default function CrystalsCards({ seeMoreHref }: { seeMoreHref: string }) 
         </ul>
       </div>
 
-      <div className={styles.dots} role="tablist" aria-label="Store items">
-        {Data.map((item, i) => (
+      <div className={styles.dots} role="tablist" aria-label={t('storeItems_ariaLabel')}>
+        {PACK_DATA.map((item, i) => (
           <button
             key={i}
             type="button"
             role="tab"
-            aria-label={`Go to ${item.title}`}
+            aria-label={`Go to ${t(`crystalCard_${item.key}_title`)}`}
             aria-selected={i === selectedIndex}
             className={`${styles.dot} ${i === selectedIndex ? styles.dotActive : ''}`}
             onClick={() => scrollTo(i)}

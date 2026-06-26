@@ -2,39 +2,36 @@
 
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { buildArticleShareLinks } from '@/lib/client/articleShare';
 import styles from './ArticleShareLinks.module.css';
 
 const SHARE_ITEMS = [
   {
-    id: 'x',
+    id: 'x' as const,
     icon: '/icons/social/prime_twitter.svg',
-    alt: 'Share on X',
     size: 18,
-    action: 'share-x',
+    action: 'share-x' as const,
   },
   {
-    id: 'twitch',
+    id: 'twitch' as const,
     icon: '/icons/social/twitch.svg',
-    alt: 'Copy link to share on Twitch',
     size: 18,
-    action: 'copy',
+    action: 'copy' as const,
   },
   {
-    id: 'facebook',
+    id: 'facebook' as const,
     icon: '/icons/social/ic_round-facebook.svg',
-    alt: 'Share on Facebook',
     size: 18,
-    action: 'share-facebook',
+    action: 'share-facebook' as const,
   },
   {
-    id: 'instagram',
+    id: 'instagram' as const,
     icon: '/icons/social/ri_instagram-fill.svg',
-    alt: 'Copy link to share on Instagram',
     size: 18,
-    action: 'copy',
+    action: 'copy' as const,
   },
-] as const;
+];
 
 type ArticleShareLinksProps = {
   title: string;
@@ -55,6 +52,7 @@ export default function ArticleShareLinks({
   linkClassName,
 }: ArticleShareLinksProps) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const t = useTranslations('blog');
   const itemClassName = linkClassName ?? styles.link;
 
   const copyLink = useCallback(async (id: string) => {
@@ -108,13 +106,14 @@ export default function ArticleShareLinks({
     <div className={[styles.root, className].filter(Boolean).join(' ')}>
       {SHARE_ITEMS.map(item => {
         const isCopied = copiedId === item.id;
+        const labelKey = `share.${item.id}` as Parameters<typeof t>[0];
 
         return (
           <button
             key={item.id}
             type="button"
             className={[itemClassName, isCopied && styles.linkCopied].filter(Boolean).join(' ')}
-            aria-label={isCopied ? 'Link copied' : item.alt}
+            aria-label={isCopied ? t('share.copied') : t(labelKey)}
             onClick={() => handleClick(item)}
           >
             <Image src={item.icon} alt="" width={item.size} height={item.size} />

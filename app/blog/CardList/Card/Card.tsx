@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import styles from './Card.module.css';
 
 export interface ArticleCardProps {
@@ -21,13 +24,15 @@ export default function Card({
   date,
   slug,
 }: ArticleCardProps) {
+  const t = useTranslations('blog');
+
   const content = (
     <>
       <Image src={image} className={styles.image} alt={title} width={335} height={200} />
       <div className={styles.card_content}>
         <div className={styles.content_header}>
-          <span className={styles.genre}>{genre}</span>
-          <span className={styles.time}>⏱️ {time} min</span>
+          <span className={styles.genre}>{t(`categories.${genre}` as Parameters<typeof t>[0])}</span>
+          <span className={styles.time}>⏱️ {t('card.readTime', { time })}</span>
         </div>
 
         <h3 className={styles.title}>{title}</h3>

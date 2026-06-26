@@ -1,7 +1,10 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Suggest.module.css';
 
-export default function Suggest() {
+export default async function Suggest() {
+  const t = await getTranslations('faq');
+
   return (
     <section className={styles.suggest}>
       <Container variant="faq">
@@ -11,36 +14,34 @@ export default function Suggest() {
             <span className={styles.icon} aria-hidden="true">
               💡
             </span>
-            <span className={styles.topLabel}>Help improve this page</span>
+            <span className={styles.topLabel}>{t('suggest.improvePage')}</span>
           </div>
 
-          <h2 className={styles.title}>Suggest a question</h2>
-          <p className={styles.description}>
-            Missing something? Tell us what you searched for and we will add it within a week.
-          </p>
+          <h2 className={styles.title}>{t('suggest.title')}</h2>
+          <p className={styles.description}>{t('suggest.desc')}</p>
 
           <label className={styles.fieldLabel} htmlFor="faq-suggest-question">
-            Your question
+            {t('suggest.yourQuestion')}
           </label>
           <input
             id="faq-suggest-question"
             className={styles.input}
             type="text"
-            placeholder="Your question"
+            placeholder={t('suggest.placeholder')}
           />
 
           <label className={styles.fieldLabel} htmlFor="faq-suggest-category">
-            Category
+            {t('suggest.category')}
           </label>
           <button id="faq-suggest-category" type="button" className={styles.select}>
-            <span className={styles.selectPlaceholder}>Category — pick one</span>
+            <span className={styles.selectPlaceholder}>{t('suggest.pickOne')}</span>
             <span className={styles.chevron} aria-hidden="true">
               ▾
             </span>
           </button>
 
           <button type="button" className={styles.submit}>
-            Submit suggestion
+            {t('suggest.submit')}
           </button>
         </div>
         </div>

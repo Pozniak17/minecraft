@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useTranslations } from 'next-intl';
 import {
   getServerConnectAddress,
   MINECRAFT_VERSION_LABEL,
@@ -11,34 +12,24 @@ import type { CardProps } from '../Card/Card';
 import { Card } from '../Card/Card';
 import styles from './CardList.module.css';
 
-const CARDS: (Omit<CardProps, 'connectAddress' | 'version'> & { id: GameServerKey })[] = [
-  {
-    id: 'luckysurvival',
-    title: 'LuckySurvival',
-    text: 'Classic survival with balanced PvP',
-    description:
-      'Vanilla survival with PvP and TNT disabled. Perfect for fair fights, progression, and long-term gameplay.',
-    icon: '/home/images/server-1.webp',
-  },
-  {
-    id: 'minewars',
-    title: 'MineWars',
-    text: 'Total freedom. Total chaos.',
-    description:
-      'Vanilla survival with PvP and TNT enabled. Build, destroy, raid, or dominate — no limits on playstyle.',
-    icon: '/home/images/server-2.webp',
-  },
-  {
-    id: 'calmsky',
-    title: 'CalmSky',
-    text: 'Build, relax, and connect',
-    description:
-      'Peaceful vanilla server without PvP or TNT. Focus on creativity, social play, and beautiful builds.',
-    icon: '/home/images/server-3.webp',
-  },
+const SERVER_IDS: { id: GameServerKey; title: string; icon: string }[] = [
+  { id: 'luckysurvival', title: 'LuckySurvival', icon: '/home/images/server-1.webp' },
+  { id: 'minewars', title: 'MineWars', icon: '/home/images/server-2.webp' },
+  { id: 'calmsky', title: 'CalmSky', icon: '/home/images/server-3.webp' },
 ];
 
 export default function CardList() {
+  const t = useTranslations('home');
+
+  const CARDS: (Omit<CardProps, 'connectAddress' | 'version'> & { id: GameServerKey })[] =
+    SERVER_IDS.map(({ id, title, icon }) => ({
+      id,
+      title,
+      icon,
+      text: t(`server.${id}.text`),
+      description: t(`server.${id}.description`),
+    }));
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
     loop: false,
@@ -81,13 +72,13 @@ export default function CardList() {
         </div>
       </div>
 
-      <div className={styles.dots} role="tablist" aria-label="Servers">
+      <div className={styles.dots} role="tablist" aria-label={t('server.carouselAriaLabel')}>
         {CARDS.map((card, i) => (
           <button
             key={card.id}
             type="button"
             role="tab"
-            aria-label={`Go to ${card.title}`}
+            aria-label={t('server.goToServer', { title: card.title })}
             aria-selected={i === selectedIndex}
             className={`${styles.dot} ${i === selectedIndex ? styles.dotActive : ''}`}
             onClick={() => scrollTo(i)}

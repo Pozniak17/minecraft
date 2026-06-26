@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import VerifyEmail from './_sections/VerifyEmail/VerifyEmail';
 
-export const metadata: Metadata = {
-  title: 'Verify Email',
-  description: 'Activate your account to start playing.',
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('auth');
+  return {
+    title: t('verifyEmail.meta.title'),
+    description: t('verifyEmail.meta.description'),
+    robots: { index: false, follow: false },
+  };
+}
 
 export default async function VerifyEmailPage({
   params,

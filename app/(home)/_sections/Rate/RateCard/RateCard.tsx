@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { RateCardProps } from '../Rate';
 import styles from './RateCard.module.css';
 
-export default function RateCard({
+export default async function RateCard({
   rank,
   player,
   server,
@@ -10,10 +11,12 @@ export default function RateCard({
   play_time,
   active_score,
 }: RateCardProps) {
+  const t = await getTranslations('home');
+
   return (
     <li className={styles.rateCard}>
       <div className={`${styles.cell} ${styles.cellRank}`}>
-        <span className={styles.label}>Rank</span>
+        <span className={styles.label}>{t('rate.rank')}</span>
         <span className={styles.value}>
           <Image
             src="/icons/illustrations/champ-cup.webp"
@@ -27,12 +30,12 @@ export default function RateCard({
       </div>
 
       <div className={`${styles.cell} ${styles.cellPlayer}`}>
-        <span className={styles.label}>Player</span>
+        <span className={styles.label}>{t('rate.player')}</span>
         <span className={styles.value}>{player}</span>
       </div>
 
       <div className={`${styles.cell} ${styles.cellServer}`}>
-        <span className={styles.label}>Server</span>
+        <span className={styles.label}>{t('rate.server')}</span>
         <span className={styles.value}>
           <Image
             src="/icons/icons/ellipse.svg"
@@ -47,17 +50,17 @@ export default function RateCard({
       </div>
 
       <div className={`${styles.cell} ${styles.cellLevel}`}>
-        <span className={styles.label}>Level</span>
+        <span className={styles.label}>{t('rate.level')}</span>
         <span className={styles.value}>{level}</span>
       </div>
 
       <div className={`${styles.cell} ${styles.cellPlaytime}`}>
-        <span className={styles.label}>Playtime</span>
+        <span className={styles.label}>{t('rate.playtime')}</span>
         <span className={styles.value}>{play_time}</span>
       </div>
 
       <div className={`${styles.cell} ${styles.cellScore}`}>
-        <span className={styles.label}>Activity Score</span>
+        <span className={styles.label}>{t('rate.activityScore')}</span>
         <span className={styles.value}>{active_score}</span>
       </div>
     </li>

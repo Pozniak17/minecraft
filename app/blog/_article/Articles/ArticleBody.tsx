@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Container } from '@/app/_components/Container/Container';
 import ArticleShareLinks from '@/app/blog/_components/ArticleShareLinks/ArticleShareLinks';
 import type { ArticleBlock, ArticleSection, BlogPostFull, ResponsiveText } from '../types';
@@ -190,6 +191,7 @@ function ArticleSectionRenderer({
 type ArticleBodyProps = Pick<BlogPostFull, 'title' | 'lead' | 'sections' | 'sidebarTags'>;
 
 export default function ArticleBody({ title, lead, sections, sidebarTags }: ArticleBodyProps) {
+  const t = useTranslations('blog');
   const tocItems = sections.map(section => ({ id: section.id, label: section.tocLabel }));
   const sectionIds = tocItems.map(item => item.id);
   const { activeId, readingProgress, setActiveId } = useArticleToc(sectionIds);
@@ -204,9 +206,9 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
       <Container variant="blog">
         <div className={styles.body}>
           <aside className={styles.sidebar}>
-            <nav className={styles.card} aria-label="On this page">
+            <nav className={styles.card} aria-label={t('sidebar.onThisPage')}>
               <div className={styles.head}>
-                <span className={styles.headLabel}>On this page</span>
+                <span className={styles.headLabel}>{t('sidebar.onThisPage')}</span>
                 <span className={styles.headIcon} aria-hidden="true">
                   ▾
                 </span>
@@ -234,7 +236,7 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
 
               <div className={styles.progressBlock}>
                 <div className={styles.progressRow}>
-                  <span className={styles.progressLabel}>Reading progress</span>
+                  <span className={styles.progressLabel}>{t('sidebar.readingProgress')}</span>
                   <span className={styles.progressValue}>{readingProgress}%</span>
                 </div>
 
@@ -244,7 +246,7 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
                   aria-valuenow={readingProgress}
                   aria-valuemin={0}
                   aria-valuemax={100}
-                  aria-label="Reading progress"
+                  aria-label={t('sidebar.readingProgress')}
                 >
                   <span className={styles.progressFill} style={{ width: `${readingProgress}%` }} />
                 </div>
@@ -252,7 +254,7 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
             </nav>
 
             <div className={styles.shareCard}>
-              <p className={styles.shareCardTitle}>Share this article</p>
+              <p className={styles.shareCardTitle}>{t('sidebar.shareTitle')}</p>
               <ArticleShareLinks
                 title={title}
                 className={styles.shareCardLinks}
@@ -261,7 +263,7 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
             </div>
 
             <div className={styles.tagsCard}>
-              <p className={styles.tagsCardTitle}>Tags</p>
+              <p className={styles.tagsCardTitle}>{t('sidebar.tagsTitle')}</p>
               <ul className={styles.tagsList}>
                 {sidebarTags.map(tag => (
                   <li key={tag}>
@@ -274,7 +276,7 @@ export default function ArticleBody({ title, lead, sections, sidebarTags }: Arti
 
           <div className={styles.main}>
             <div className={styles.shareRow}>
-              <span className={styles.shareLabel}>Share:</span>
+              <span className={styles.shareLabel}>{t('sidebar.shareLabel')}</span>
               <ArticleShareLinks
                 title={title}
                 className={styles.shareRowLinks}

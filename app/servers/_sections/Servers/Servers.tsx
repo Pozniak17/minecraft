@@ -3,11 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { DASHBOARD_SERVERS, type DashboardServer } from '@/lib/data/dashboardServers';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './Servers.module.css';
 
 function ServerCard({ server }: { server: DashboardServer }) {
+  const t = useTranslations('serversData');
   const [copied, setCopied] = useState(false);
   const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const live = useServerOnline(server.id);
@@ -17,10 +19,12 @@ function ServerCard({ server }: { server: DashboardServer }) {
   const ratio = server.max > 0 ? current / server.max : 0;
   const mobileTitle = server.nameMobile ?? server.name;
   const playersMobile =
-    live.online !== null ? `${live.online}/${server.max} players` : `—/${server.max} players`;
+    live.online !== null
+      ? `${live.online}/${server.max} ${t('ui.players')}`
+      : `—/${server.max} ${t('ui.players')}`;
   const playersDesktop =
     live.online !== null ? `${live.online} / ${server.max}` : `— / ${server.max}`;
-  const statusLabel = isLoading ? 'checking…' : isOnline ? 'online' : 'offline';
+  const statusLabel = isLoading ? t('ui.checking') : isOnline ? t('ui.online') : t('ui.offline');
 
   useEffect(() => {
     return () => {
@@ -57,7 +61,7 @@ function ServerCard({ server }: { server: DashboardServer }) {
             <span className={styles.statusDot} aria-hidden />
             {statusLabel}
           </span>
-          <span className={styles.latency}>{isOnline ? server.latency : 'Offline'}</span>
+          <span className={styles.latency}>{isOnline ? server.latency : t('ui.offlineLabel')}</span>
         </div>
 
         <h2 className={styles.cardTitle}>
@@ -67,10 +71,10 @@ function ServerCard({ server }: { server: DashboardServer }) {
 
         <p className={styles.playersMobile}>{playersMobile}</p>
 
-        <p className={styles.description}>{server.description}</p>
+        <p className={styles.description}>{t(`${server.id}.description`)}</p>
 
         <div className={styles.playersRow}>
-          <span className={styles.playersLabel}>Players online</span>
+          <span className={styles.playersLabel}>{t('ui.playersOnline')}</span>
           <span className={styles.playersCount}>{playersDesktop}</span>
         </div>
 
@@ -85,18 +89,18 @@ function ServerCard({ server }: { server: DashboardServer }) {
       <div className={styles.actions}>
         <button type="button" className={styles.join} onClick={handleCopyIp}>
           {copied ? (
-            'Copied'
+            t('ui.copied')
           ) : (
             <>
-              <span className={styles.joinMobile}>{server.joinLabel}</span>
-              <span className={styles.joinDesktop}>{server.joinLabelDesktop}</span>
+              <span className={styles.joinMobile}>{t('ui.copyIp')}</span>
+              <span className={styles.joinDesktop}>{t('ui.copyIp')}</span>
             </>
           )}
         </button>
         <Link href={`/dashboard/servers/${server.id}`} className={styles.open}>
-          <span className={styles.openMobile}>Open</span>
+          <span className={styles.openMobile}>{t('ui.open')}</span>
           <span className={styles.openDesktop}>
-            Open page <span className={styles.openArrow}>→</span>
+            {t('ui.openPage')} <span className={styles.openArrow}>→</span>
           </span>
         </Link>
       </div>
@@ -105,25 +109,24 @@ function ServerCard({ server }: { server: DashboardServer }) {
 }
 
 export default function Servers() {
+  const t = useTranslations('serversData');
+
   return (
     <section className={styles.root}>
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <span className={styles.eyebrow}>Servers</span>
-          <h1 className={styles.title}>Pick your world</h1>
+          <span className={styles.eyebrow}>{t('ui.serversEyebrow')}</span>
+          <h1 className={styles.title}>{t('ui.pickYourWorld')}</h1>
           <p className={styles.subtitle}>
-            Live status, current load, latency.
-            <span className={styles.subtitleExtra}> Tap a card to open the server.</span>
-            <span className={styles.subtitleDesktop}>
-              {' '}
-              Click a server to see details and copy IP.
-            </span>
+            {t('ui.subtitleMain')}
+            <span className={styles.subtitleExtra}> {t('ui.subtitleTap')}</span>
+            <span className={styles.subtitleDesktop}> {t('ui.subtitleClick')}</span>
           </p>
         </div>
 
         <div className={styles.refresh}>
           <span className={styles.refreshDot} aria-hidden />
-          Auto refresh — 10 s
+          {t('ui.autoRefresh')}
         </div>
       </header>
 

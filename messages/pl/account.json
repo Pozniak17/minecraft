@@ -1,0 +1,277 @@
+{
+  "ph": {
+    "eyebrow": "Historia",
+    "title": "Historia zakup\u00f3w",
+    "subtitle": "Wszystkie zam\u00f3wienia z ka\u017cdego serwera. Otwieraj lub pobieraj paragony w dowolnym momencie.",
+    "periodPrefix": "Okres:",
+    "periodMenuLabel": "Wybierz okres",
+    "period": {
+      "last90": "Ostatnie 90 dni",
+      "last30": "Ostatnie 30 dni",
+      "last7": "Ostatnie 7 dni",
+      "allTime": "Ca\u0142y czas"
+    },
+    "stat": {
+      "ordersMobile": "Zam\u00f3wienia",
+      "ordersDesktop": "Zam\u00f3wienia",
+      "spentMobile": "Wydano",
+      "spentDesktop": "\u0141\u0105cznie wydano",
+      "crystalsMobile": "Krysztaty",
+      "crystalsDesktop": "Kupione krysztaty",
+      "privilegesMobile": "Przywileje",
+      "privilegesDesktop": "Przywileje"
+    },
+    "loading": "\u0141adowanie zam\u00f3wie\u0144\u2026",
+    "empty": {
+      "title": "Brak zam\u00f3wie\u0144",
+      "text": "Twoje zakupy pojawi\u0105 si\u0119 tutaj po pierwszym zam\u00f3wieniu.",
+      "cta": "Przejd\u017a do sklepu \u2192"
+    },
+    "emptyPeriod": {
+      "title": "Brak zam\u00f3wie\u0144 w tym okresie",
+      "text": "Wybierz d\u0142u\u017cszy okres lub \u201eCa\u0142y czas\u201d, aby zobaczy\u0107 pe\u0142n\u0105 histori\u0119."
+    },
+    "table": {
+      "ariaLabel": "Historia zakup\u00f3w"
+    },
+    "col": {
+      "date": "Data",
+      "items": "Artyku\u0142y",
+      "server": "Serwer",
+      "nickname": "Nick",
+      "amount": "Kwota",
+      "status": "Status",
+      "receipt": "Paragon"
+    },
+    "status": {
+      "paid": "op\u0142acone",
+      "refund": "zwrot",
+      "failed": "nieudane"
+    },
+    "btn": {
+      "open": "Otw\u00f3rz",
+      "opening": "Otwieranie\u2026",
+      "receipt": "Paragon",
+      "downloading": "Pobieranie\u2026",
+      "downloadAriaLabel": "Pobierz paragon"
+    },
+    "error": {
+      "openFallback": "Nie mo\u017cna otworzy\u0107 paragonu.",
+      "downloadFallback": "Nie mo\u017cna pobra\u0107 paragonu."
+    }
+  },
+  "tr": {
+    "eyebrow": "Top / Rankingi",
+    "title": "Ranking graczy",
+    "subtitleMobile": "Aktualizowany co tydzie\u0144. 200+ aktywnych graczy sklasyfikowanych na ka\u017cdym serwerze.",
+    "subtitleDesktop": "Najlepsi gracze wed\u0142ug czasu gry, aktualizowani automatycznie. 200+ aktywnych graczy na wszystkich serwerach.",
+    "autoRefresh": "Automatyczne od\u015bwie\u017canie \u2014 co tydzie\u0144",
+    "tabsAriaLabel": "Metryki rankingu",
+    "tab": {
+      "playtimeMobile": "Czas",
+      "playtimeDesktop": "Czas gry",
+      "killsMobile": "Zabicia",
+      "killsDesktop": "Zabicia",
+      "wealthMobile": "Bogactwo",
+      "wealthDesktop": "Bogactwo",
+      "achievMobile": "Osi\u0105gn.",
+      "achievDesktop": "Osi\u0105gni\u0119cia"
+    },
+    "filter": {
+      "periodPrefix": "Okres:",
+      "periodLabel": "Wybierz okres",
+      "serverPrefix": "Serwer:",
+      "serverLabel": "Wybierz serwer"
+    },
+    "period": {
+      "thisWeek": "Ten tydzie\u0144",
+      "thisMonth": "Ten miesi\u0105c",
+      "allTime": "Ca\u0142y czas"
+    },
+    "server": {
+      "allServers": "Wszystkie serwery"
+    },
+    "top3Label": "Top 3 graczy",
+    "listLabel": "Ranking graczy",
+    "emptyFilter": "\u017badni gracze nie pasuj\u0105 do tych filtr\u00f3w.",
+    "col": {
+      "hash": "#",
+      "player": "Gracz",
+      "server": "Serwer",
+      "playtime": "Czas gry",
+      "kills": "Zabicia",
+      "wealth": "Bogactwo"
+    }
+  },
+  "tournaments": {
+    "comingSoon": "Wkr\u00f3tce",
+    "title": "Turnieje s\u0105 w drodze",
+    "descMobile": "Tygodniowe drabinki, realne nagrody, sezonowe trofea. Pe\u0142ny start w czerwcu 2026.",
+    "descDesktop": "Tygodniowe drabinki, realne nagrody i sezonowe trofea. Testujemy system \u2014 pe\u0142ny start w czerwcu 2026.",
+    "countdownLabel": "Czas do startu",
+    "countdown": {
+      "daysMobile": "d",
+      "daysDesktop": "dni",
+      "hoursMobile": "g",
+      "hoursDesktop": "godziny",
+      "minutesMobile": "min",
+      "minutesDesktop": "minuty",
+      "secondsMobile": "s",
+      "secondsDesktop": "sekundy"
+    },
+    "featuresLabel": "Funkcje turniej\u00f3w",
+    "f0": {
+      "title": "Tygodniowe drabinki",
+      "desc": "Nowe turnieje ka\u017cdego pi\u0105tku o 18:00 UTC, do niedzieli 23:59."
+    },
+    "f1": {
+      "title": "Realne nagrody",
+      "desc": "Najlepsi zdobywaj\u0105 krysztaty, trofea i ekskluzywne skiny kosmetyczne."
+    },
+    "f2": {
+      "title": "Fair matchmaking",
+      "desc": "Automatycznie zbalansowane drabinki wed\u0142ug czasu gry i historii wynik\u00f3w."
+    },
+    "blogNote": "Wi\u0119cej szczeg\u00f3\u0142\u00f3w znajdziesz na naszym <link>blogu</link>."
+  },
+  "hts": {
+    "eyebrow": "Jak zacz\u0105\u0107",
+    "title": "Zacznij w mniej ni\u017c 2 minuty",
+    "subtitleMobile": "Szybki przewodnik krok po kroku dla nowych graczy. Wsparcie jest na jeden klik.",
+    "subtitleDesktop": "Szybki przewodnik krok po kroku dla nowych graczy. Je\u015bli utkniesz, czat wsparcia jest na jeden klik.",
+    "progressLabel": "Tw\u00f3j post\u0119p",
+    "progressValue": "{done} z {total} gotowe",
+    "progressAriaLabel": "{done} z {total} krok\u00f3w uko\u0144czonych",
+    "sidebarLabel": "Kroki",
+    "sidebarAriaLabel": "Kroki",
+    "allDoneLabel": "Wszystkie kroki uko\u0144czone",
+    "doneTitle": "Wszystko gotowe \u2014 witamy na pok\u0142adzie.",
+    "doneText": "Potrzebujesz pomocy? Czat wsparcia jest na jeden klik.",
+    "openSupport": "Otw\u00f3rz wsparcie",
+    "goToDashboard": "Przejd\u017a do panelu",
+    "downloadIllustrationAlt": "Ilustracja pobierania Minecraft",
+    "s1": {
+      "nav": "Pobierz Minecraft",
+      "title": "Pobierz Minecraft",
+      "descMobile": "Potrzebujesz Minecraft Java lub Bedrock. Java ma wi\u0119cej plugin\u00f3w.",
+      "descDesktop": "Potrzebujesz legalnej kopii Minecraft (Java lub Bedrock). Wi\u0119kszo\u015b\u0107 naszych graczy u\u017cywa Java, bo obs\u0142uguje wi\u0119cej plugin\u00f3w i niestandardowych craftingu.",
+      "bullets": [
+        "Otworzy\u0107 minecraft.net i si\u0119 zalogowa\u0107.",
+        "Zainstalowa\u0107 wersj\u0119 1.20.4 (Java) lub najnowszy Bedrock.",
+        "Uruchomi\u0107 raz, aby sprawdzi\u0107."
+      ],
+      "bulletsDesktop": [
+        "Otworzy\u0107 minecraft.net i zalogowa\u0107 si\u0119 kontem Microsoft.",
+        "Pobra\u0107 launcher i zainstalowa\u0107 Minecraft 1.20.4 (Java) lub najnowszy Bedrock.",
+        "Uruchomi\u0107 gr\u0119 raz, aby upewni\u0107 si\u0119, \u017ce wszystko dzia\u0142a."
+      ],
+      "callout": "Kosmetyki i turnieje trafiaj\u0105 najpierw na Java.",
+      "calloutDesktop": "Obie edycje dzia\u0142aj\u0105 na naszych serwerach, ale kosmetyki i turnieje trafiaj\u0105 najpierw na Java. Wsparcie Bedrock przybywa 1-2 tygodnie p\u00f3\u017aniej."
+    },
+    "s2": {
+      "nav": "Utw\u00f3rz konto",
+      "title": "Utw\u00f3rz konto",
+      "descMobile": "Zarejestruj si\u0119 przez email + has\u0142o. Aktywacja w minut\u0119.",
+      "descDesktop": "Zarejestruj si\u0119 na naszej stronie podaj\u0105c email i has\u0142o. Aktywacja zajmuje minut\u0119.",
+      "bullets": [
+        "Otworzy\u0107 Rejestracj\u0119, wprowadzi\u0107 email + has\u0142o.",
+        "Potwierdzi\u0107 poprzez link w mailu.",
+        "Wybra\u0107 nick w grze."
+      ],
+      "bulletsDesktop": [
+        "Otworzy\u0107 stron\u0119 Rejestracji i wprowadzi\u0107 email + has\u0142o.",
+        "Potwierdzi\u0107 email przez wys\u0142any link (sprawdzi\u0107 spam, je\u015bli nie dotrze w ci\u0105gu 2 min).",
+        "Ustawi\u0107 nick w grze \u2014 to widz\u0105 inni gracze."
+      ]
+    },
+    "s3": {
+      "nav": "Do\u0142\u0105cz do serwera",
+      "title": "Do\u0142\u0105cz do serwera",
+      "descMobile": "Wybierz serwer, skopiuj IP, wklej w Minecraft.",
+      "descDesktop": "Wybierz serwer \u2014 LuckySurvival, MineWars lub CalmSky. Skopiuj IP i wklej w Minecraft \u2192 Wieloosobowa \u2192 Dodaj serwer.",
+      "bullets": [
+        "Otworzy\u0107 stron\u0119 Serwer\u00f3w.",
+        "Klikn\u0105\u0107 Kopiuj IP.",
+        "Minecraft \u2192 Wieloosobowa \u2192 Dodaj serwer.",
+        "Klikn\u0105\u0107, aby po\u0142\u0105czy\u0107."
+      ],
+      "bulletsDesktop": [
+        "Otworzy\u0107 stron\u0119 Serwer\u00f3w w panelu.",
+        "Klikn\u0105\u0107 \u201eKopiuj IP\u201d na wybranej karcie.",
+        "W Minecraft: Wieloosobowa \u2192 Dodaj serwer \u2192 wklej IP.",
+        "Klikn\u0105\u0107 kart\u0119 serwera, aby si\u0119 po\u0142\u0105czy\u0107."
+      ],
+      "callout": "Pierwsze po\u0142\u0105czenie pobiera nasz paczk\u0119 zasob\u00f3w 80\u00a0MB.",
+      "calloutDesktop": "Pierwsze po\u0142\u0105czenie pobiera nasz\u0105 paczk\u0119 zasob\u00f3w ~80\u00a0MB. P\u00f3\u017aniej do\u0142\u0105czanie jest natychmiastowe."
+    },
+    "s4": {
+      "nav": "Po\u0142\u0105cz konto",
+      "title": "Po\u0142\u0105cz nick",
+      "titleDesktop": "Po\u0142\u0105cz nick w grze",
+      "descMobile": "Po\u0142\u0105cz swoj\u0105 nazw\u0119 z gry z kontem dla dostaw.",
+      "descDesktop": "Po pierwszym do\u0142\u0105czeniu po\u0142\u0105cz nick w grze z kontem, \u017ceby przywileje i krysztaty trafi\u0142y do w\u0142a\u015bciwego gracza.",
+      "bullets": [
+        "W grze: /link <tw\u00f3j email>",
+        "Sprawdzi\u0107 email z linkiem.",
+        "Klikn\u0105\u0107 link, aby zako\u0144czy\u0107."
+      ],
+      "bulletsDesktop": [
+        "W grze wykona\u0107 /link ze swoim emailem konta.",
+        "Wysy\u0142amy link aktywacyjny na tw\u00f3j email.",
+        "Otworzy\u0107 link w przegl\u0105darce \u2014 nick zostaje po\u0142\u0105czony automatycznie."
+      ]
+    },
+    "s5": {
+      "nav": "Wybierz przywilej",
+      "title": "Wybierz przywilej",
+      "titleDesktop": "Wybierz przywilej (opcjonalnie)",
+      "descMobile": "Odblokuj kosmetyki, cooldowny i punkty domu.",
+      "descDesktop": "Przywileje odblokowuj\u0105 kosmetyki, kr\u00f3tsze cooldowny i dodatkowe punkty domu. Wszystkie osiem poziom\u00f3w jest w Sklepie z opisami.",
+      "bullets": [
+        "Sklep \u2192 Przywileje, wybierz poziom.",
+        "Dodaj do koszyka, zap\u0142a\u0107."
+      ],
+      "bulletsDesktop": [
+        "Otworzy\u0107 Sklep \u2192 Przywileje.",
+        "Najecha\u0107 kursorem na poziom, aby zobaczy\u0107 pe\u0142n\u0105 list\u0119 korzy\u015bci.",
+        "Doda\u0107 do koszyka, wybra\u0107 serwer, zap\u0142aci\u0107."
+      ]
+    },
+    "s6": {
+      "nav": "Do\u0142aduj krysztaty",
+      "title": "Do\u0142aduj krysztaty",
+      "titleDesktop": "Do\u0142aduj krysztaty (opcjonalnie)",
+      "descMobile": "Kup pakiet lub u\u017cyj suwaka dla niestandardowej kwoty.",
+      "descDesktop": "Krysztaty to nasza waluta w grze na kosmetyki, udzia\u0142 w turniejach i przedmioty czasowe. Kup pakiet lub u\u017cyj suwaka kwoty.",
+      "bullets": [
+        "Sklep \u2192 Krysztaty.",
+        "Wybierz pakiet lub ustaw kwot\u0119.",
+        "Natychmiastowa dostawa."
+      ],
+      "bulletsDesktop": [
+        "Otworzy\u0107 Sklep \u2192 Krysztaty.",
+        "Wybra\u0107 gotowy pakiet lub u\u017cy\u0107 suwaka do ustawienia dok\u0142adnej kwoty.",
+        "Krysztaty trafiaj\u0105 natychmiast na tw\u00f3j nick."
+      ]
+    },
+    "s7": {
+      "nav": "Do\u0142\u0105cz do Discord",
+      "title": "Do\u0142\u0105cz do Discord",
+      "titleDesktop": "Do\u0142\u0105cz do spo\u0142eczno\u015bci Discord",
+      "descMobile": "Aktualizacje, og\u0142oszenia, wsparcie \u2014 wszystko na Discord.",
+      "descDesktop": "Wi\u0119kszo\u015b\u0107 aktualizacji, og\u0142osze\u0144 turniejowych i wsparcia graczy odbywa si\u0119 na Discord. Bezp\u0142atne do\u0142\u0105czenie, \u0142atwe wyj\u015bcie.",
+      "bullets": [
+        "Naci\u015bn\u0105\u0107 przycisk Discord.",
+        "Wykona\u0107 /verify w Discord.",
+        "Wybra\u0107 rol\u0119 serwera."
+      ],
+      "bulletsDesktop": [
+        "Klikn\u0105\u0107 przycisk Discord na pasku bocznym.",
+        "U\u017cy\u0107 komendy /verify do po\u0142\u0105czenia kont.",
+        "Wybra\u0107 ulubon\u0105 rol\u0119 serwera i gotowe."
+      ],
+      "callout": "\u015arednio pierwsza odpowied\u017a wsparcia: poni\u017cej 4 godzin.",
+      "calloutDesktop": "Wsparcie live na Discord 24/7. \u015arednio pierwsza odpowied\u017a: poni\u017cej 4 godzin."
+    }
+  }
+}

@@ -1,28 +1,30 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './ArticleCta.module.css';
 
-export default function ArticleCta() {
+export default async function ArticleCta() {
+  const t = await getTranslations('faq');
+
   return (
     <section className={styles.cta}>
       <Container variant="faq">
         <div className={styles.inner}>
           <div className={styles.card}>
             <div className={styles.content}>
-              <h2 className={styles.title}>Still need help?</h2>
+              <h2 className={styles.title}>{t('cta.title')}</h2>
 
               <p className={`${styles.description} ${styles.mobileOnly}`}>
-                Support team replies within 4 h, 24/7.
+                {t('cta.descMobile')}
               </p>
               <p className={`${styles.description} ${styles.desktopOnly}`}>
-                Our support team replies within 4 hours, around the clock. Live chat, email ticket, or
-                Discord — pick whichever is fastest for you.
+                {t('cta.descDesktop')}
               </p>
             </div>
 
             <div className={styles.action}>
               <Link href="/contacts" className={styles.button}>
-                Contact us
+                {t('cta.contactUs')}
               </Link>
             </div>
           </div>
@@ -31,4 +33,3 @@ export default function ArticleCta() {
     </section>
   );
 }
-

@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Home",
+    "servers": "Server",
+    "store": "Negozio",
+    "howToStart": "Come iniziare",
+    "blog": "Blog",
+    "about": "Chi siamo",
+    "faq": "FAQ"
+  },
+  "legal": {
+    "privacy": "Privacy",
+    "terms": "Termini",
+    "cookies": "Cookie"
+  },
+  "shared": {
+    "logoAlt": "Logo del gioco Minecraft",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "mainNav": "Navigazione principale",
+    "browseSite": "Sfoglia il sito",
+    "myWorkspace": "Il mio spazio",
+    "settings": "Impostazioni",
+    "logOut": "Esci",
+    "loggingOut": "Disconnessione\u2026",
+    "soon": "Presto",
+    "profileAlt": "Profilo"
+  },
+  "header": {
+    "goToDashboard": "Vai alla dashboard",
+    "logIn": "Accedi",
+    "signUp": "Registrati"
+  },
+  "mobileNav": {
+    "mobileNavLabel": "Navigazione mobile",
+    "logIn": "Accedi",
+    "signUp": "Registrati",
+    "serversOnline": "Server online \u2014 2 di 3",
+    "playersOnline": "212 giocatori esplorano ora",
+    "community": "Comunit\u00e0"
+  },
+  "footer": {
+    "description": "Un ecosistema Minecraft moderno con server stabili, gameplay equo e una community attiva.",
+    "mainTitle": "Menu",
+    "supportTitle": "Supporto",
+    "contacts": "Contatti",
+    "howToStartPlaying": "Come iniziare a giocare",
+    "privacyPolicy": "Informativa sulla privacy",
+    "cookiePolicy": "Informativa sui cookie",
+    "termsAndConditions": "Termini e condizioni",
+    "copyright": "\u00a9 2026 Adventures in Minecraft. Tutti i diritti riservati."
+  },
+  "dash": {
+    "dashboard": "Dashboard",
+    "shop": "Negozio",
+    "servers": "Server",
+    "cart": "Carrello",
+    "history": "Cronologia acquisti",
+    "top": "Top / Classifiche",
+    "tournaments": "Tornei",
+    "howToStart": "Come iniziare"
+  },
+  "dashNav": {
+    "dashboardNav": "Navigazione dashboard",
+    "dashboardHome": "Home dashboard",
+    "topUpCrystals": "Ricarica cristalli"
+  },
+  "cookie": {
+    "ariaLabel": "Consenso cookie",
+    "title": "Utilizziamo i cookie",
+    "text": "Utilizziamo i cookie per mantenerti connesso, proteggere la sessione e migliorare la tua esperienza. Scopri di pi\u00f9 nella nostra <link>Informativa sui cookie</link>.",
+    "reject": "Rifiuta",
+    "accept": "Accetta tutto"
+  },
+  "lang": {
+    "changeLanguage": "Cambia lingua"
+  },
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb"
+  },
+  "logout": {
+    "closeDialog": "Chiudi finestra",
+    "title": "Disconnettersi dall\u2019account?",
+    "descMobile": "Dovrai accedere di nuovo. Le sessioni di gioco non vengono influenzate.",
+    "descDesktop": "Dovrai accedere di nuovo per accedere alla dashboard, al carrello e ai privilegi attivi. Le sessioni di gioco attive non vengono influenzate.",
+    "signedInAs": "Acceduto come",
+    "cancel": "Annulla",
+    "autoExpire": "Le sessioni scadono automaticamente dopo 30 giorni"
+  }
+}

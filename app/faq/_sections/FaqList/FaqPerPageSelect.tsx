@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { FAQ_PAGE_SIZE_OPTIONS, type FaqPageSize } from '../faqCategories';
 import styles from './FaqList.module.css';
 
@@ -10,6 +11,7 @@ type FaqPerPageSelectProps = {
 };
 
 export default function FaqPerPageSelect({ value, onChange }: FaqPerPageSelectProps) {
+  const t = useTranslations('faq');
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +58,7 @@ export default function FaqPerPageSelect({ value, onChange }: FaqPerPageSelectPr
         aria-expanded={open}
         onClick={() => setOpen(current => !current)}
       >
-        <span className={styles.pagPerPageLabel}>Per page:</span>
+        <span className={styles.pagPerPageLabel}>{t('list.perPage')}</span>
         <span className={styles.pagPerPageValue}>{value}</span>
         <span className={`${styles.pagPerPageChevron} ${open ? styles.pagPerPageChevronOpen : ''}`} aria-hidden="true">
           ▾
@@ -64,7 +66,7 @@ export default function FaqPerPageSelect({ value, onChange }: FaqPerPageSelectPr
       </button>
 
       {open && (
-        <ul className={styles.perPageMenu} role="listbox" aria-label="Items per page">
+        <ul className={styles.perPageMenu} role="listbox" aria-label={t('list.perPageAriaLabel')}>
           {FAQ_PAGE_SIZE_OPTIONS.map(size => (
             <li key={size} role="presentation">
               <button

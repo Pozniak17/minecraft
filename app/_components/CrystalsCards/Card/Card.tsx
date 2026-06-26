@@ -1,5 +1,7 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { CrystalsCardProps } from '../CrystalsCards';
 import styles from './Card.module.css';
 
@@ -8,6 +10,7 @@ type CardProps = CrystalsCardProps & {
 };
 
 export default function Card({ title, text, icon, seeMoreHref }: CardProps) {
+  const t = useTranslations('store');
   return (
     <li className={styles.slide}>
       <article className={styles.card}>
@@ -22,7 +25,7 @@ export default function Card({ title, text, icon, seeMoreHref }: CardProps) {
             height={24}
             aria-hidden
           />
-          See More
+          {t('crystalCard_seeMore')}
         </Link>
       </article>
     </li>

@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import styles from './Card.module.css';
-
-const COPY_NOTICE = 'IP copied! Launch Minecraft and connect now';
 
 export type CardProps = {
   title: string;
@@ -23,6 +22,7 @@ export function Card({
   version,
   connectAddress,
 }: CardProps) {
+  const t = useTranslations('home');
   const [copied, setCopied] = useState(false);
   const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -60,25 +60,25 @@ export function Card({
 
       <ul className={styles.list}>
         <li className={styles.item}>
-          Status
+          {t('server.cardStatus')}
           <div className={styles.status}>
             <Image
               className={styles.statusDot}
               src="/icons/icons/ellipse.svg"
-              alt="Online"
+              alt={t('server.cardOnlineAlt')}
               width={7}
               height={7}
             />
-            Online
+            {t('server.cardOnline')}
           </div>
         </li>
         <li className={styles.item}>
-          Players online:
+          {t('server.cardPlayersOnline')}
           <div className={styles.status}>
             <Image
               className={styles.statusIcon}
               src="/icons/icons/user.svg"
-              alt="Players"
+              alt={t('server.cardPlayersAlt')}
               width={13}
               height={13}
             />
@@ -86,7 +86,7 @@ export function Card({
           </div>
         </li>
         <li className={`${styles.item} ${styles.itemIp}`}>
-          Server IP:
+          {t('server.cardServerIp')}
           <div className={styles.status}>{connectAddress}</div>
         </li>
       </ul>
@@ -101,7 +101,7 @@ export function Card({
           <Image src="/icons/icons/arrow-up.svg" alt="" width={24} height={24} />
         )}
         <span className={styles.linkButtonText}>
-          {copied ? COPY_NOTICE : `Join ${title}`}
+          {copied ? t('server.cardCopyNotice') : t('server.cardJoin', { title })}
         </span>
       </button>
     </div>

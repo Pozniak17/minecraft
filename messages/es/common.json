@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "servers": "Servidores",
+    "store": "Tienda",
+    "howToStart": "C\u00f3mo empezar",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "faq": "FAQ"
+  },
+  "legal": {
+    "privacy": "Privacidad",
+    "terms": "T\u00e9rminos",
+    "cookies": "Cookies"
+  },
+  "shared": {
+    "logoAlt": "Logo del juego Minecraft",
+    "openMenu": "Abrir men\u00fa",
+    "closeMenu": "Cerrar men\u00fa",
+    "mainNav": "Navegaci\u00f3n principal",
+    "browseSite": "Explorar el sitio",
+    "myWorkspace": "Mi espacio",
+    "settings": "Configuraci\u00f3n",
+    "logOut": "Cerrar sesi\u00f3n",
+    "loggingOut": "Cerrando sesi\u00f3n\u2026",
+    "soon": "Pr\u00f3ximamente",
+    "profileAlt": "Perfil"
+  },
+  "header": {
+    "goToDashboard": "Ir al panel",
+    "logIn": "Iniciar sesi\u00f3n",
+    "signUp": "Registrarse"
+  },
+  "mobileNav": {
+    "mobileNavLabel": "Navegaci\u00f3n m\u00f3vil",
+    "logIn": "Iniciar sesi\u00f3n",
+    "signUp": "Registrarse",
+    "serversOnline": "Servidores en l\u00ednea \u2014 2 de 3",
+    "playersOnline": "212 jugadores explorando ahora",
+    "community": "Comunidad"
+  },
+  "footer": {
+    "description": "Un ecosistema Minecraft moderno con servidores estables, juego justo y una comunidad activa.",
+    "mainTitle": "Men\u00fa",
+    "supportTitle": "Soporte",
+    "contacts": "Contacto",
+    "howToStartPlaying": "C\u00f3mo empezar a jugar",
+    "privacyPolicy": "Pol\u00edtica de privacidad",
+    "cookiePolicy": "Pol\u00edtica de cookies",
+    "termsAndConditions": "T\u00e9rminos y condiciones",
+    "copyright": "\u00a9 2026 Adventures in Minecraft. Todos los derechos reservados."
+  },
+  "dash": {
+    "dashboard": "Panel",
+    "shop": "Tienda",
+    "servers": "Servidores",
+    "cart": "Carrito",
+    "history": "Historial de compras",
+    "top": "Top / Clasificaci\u00f3n",
+    "tournaments": "Torneos",
+    "howToStart": "C\u00f3mo empezar"
+  },
+  "dashNav": {
+    "dashboardNav": "Navegaci\u00f3n del panel",
+    "dashboardHome": "Inicio del panel",
+    "topUpCrystals": "Recargar cristales"
+  },
+  "cookie": {
+    "ariaLabel": "Consentimiento de cookies",
+    "title": "Usamos cookies",
+    "text": "Usamos cookies para mantenerle conectado, proteger su sesi\u00f3n y mejorar su experiencia. M\u00e1s informaci\u00f3n en nuestra <link>Pol\u00edtica de cookies</link>.",
+    "reject": "Rechazar",
+    "accept": "Aceptar todo"
+  },
+  "lang": {
+    "changeLanguage": "Cambiar idioma"
+  },
+  "breadcrumb": {
+    "ariaLabel": "Ruta de navegaci\u00f3n"
+  },
+  "logout": {
+    "closeDialog": "Cerrar di\u00e1logo",
+    "title": "\u00bfCerrar sesi\u00f3n?",
+    "descMobile": "Deber\u00e1 iniciar sesi\u00f3n de nuevo. Las sesiones en el juego no se ven afectadas.",
+    "descDesktop": "Deber\u00e1 iniciar sesi\u00f3n de nuevo para acceder al panel, carrito y privilegios activos. Las sesiones en el juego no se ven afectadas.",
+    "signedInAs": "Conectado como",
+    "cancel": "Cancelar",
+    "autoExpire": "Las sesiones expiran autom\u00e1ticamente despu\u00e9s de 30 d\u00edas"
+  }
+}

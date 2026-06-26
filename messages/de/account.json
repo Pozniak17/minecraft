@@ -1,0 +1,277 @@
+{
+  "ph": {
+    "eyebrow": "Verlauf",
+    "title": "Kaufhistorie",
+    "subtitle": "Alle Bestellungen von jedem Server. Quittungen jederzeit \u00f6ffnen oder herunterladen.",
+    "periodPrefix": "Zeitraum:",
+    "periodMenuLabel": "Zeitraum w\u00e4hlen",
+    "period": {
+      "last90": "Letzte 90 Tage",
+      "last30": "Letzte 30 Tage",
+      "last7": "Letzte 7 Tage",
+      "allTime": "Gesamtzeit"
+    },
+    "stat": {
+      "ordersMobile": "Bestellungen",
+      "ordersDesktop": "Bestellungen",
+      "spentMobile": "Ausgaben",
+      "spentDesktop": "Gesamt ausgegeben",
+      "crystalsMobile": "Kristalle",
+      "crystalsDesktop": "Kristalle gekauft",
+      "privilegesMobile": "Privilegien",
+      "privilegesDesktop": "Privilegien"
+    },
+    "loading": "Bestellungen werden geladen\u2026",
+    "empty": {
+      "title": "Noch keine Bestellungen",
+      "text": "Deine Eink\u00e4ufe erscheinen hier nach der ersten Bestellung.",
+      "cta": "Zum Shop \u2192"
+    },
+    "emptyPeriod": {
+      "title": "Keine Bestellungen in diesem Zeitraum",
+      "text": "W\u00e4hle einen l\u00e4ngeren Zeitraum oder \u201eGesamtzeit\u201c f\u00fcr die vollst\u00e4ndige Historie."
+    },
+    "table": {
+      "ariaLabel": "Kaufhistorie"
+    },
+    "col": {
+      "date": "Datum",
+      "items": "Artikel",
+      "server": "Server",
+      "nickname": "Nickname",
+      "amount": "Betrag",
+      "status": "Status",
+      "receipt": "Quittung"
+    },
+    "status": {
+      "paid": "bezahlt",
+      "refund": "R\u00fcckerstattung",
+      "failed": "fehlgeschlagen"
+    },
+    "btn": {
+      "open": "\u00d6ffnen",
+      "opening": "\u00d6ffne\u2026",
+      "receipt": "Quittung",
+      "downloading": "L\u00e4dt herunter\u2026",
+      "downloadAriaLabel": "Quittung herunterladen"
+    },
+    "error": {
+      "openFallback": "Quittung konnte nicht ge\u00f6ffnet werden.",
+      "downloadFallback": "Quittung konnte nicht heruntergeladen werden."
+    }
+  },
+  "tr": {
+    "eyebrow": "Top / Rangliste",
+    "title": "Spielerrangliste",
+    "subtitleMobile": "W\u00f6chentlich aktualisiert. 200+ aktive Spieler server\u00fcbergreifend gerankt.",
+    "subtitleDesktop": "Top-Spieler nach Spielzeit, automatisch aktualisiert. 200+ aktive Spieler auf allen Servern gerankt.",
+    "autoRefresh": "Automatisch \u2014 w\u00f6chentlich",
+    "tabsAriaLabel": "Ranglisten-Metriken",
+    "tab": {
+      "playtimeMobile": "Spielzeit",
+      "playtimeDesktop": "Spielzeit",
+      "killsMobile": "Kills",
+      "killsDesktop": "Kills",
+      "wealthMobile": "Reichtum",
+      "wealthDesktop": "Reichtum",
+      "achievMobile": "Errung.",
+      "achievDesktop": "Errungenschaften"
+    },
+    "filter": {
+      "periodPrefix": "Zeitraum:",
+      "periodLabel": "Zeitraum w\u00e4hlen",
+      "serverPrefix": "Server:",
+      "serverLabel": "Server w\u00e4hlen"
+    },
+    "period": {
+      "thisWeek": "Diese Woche",
+      "thisMonth": "Diesen Monat",
+      "allTime": "Gesamtzeit"
+    },
+    "server": {
+      "allServers": "Alle Server"
+    },
+    "top3Label": "Top-3-Spieler",
+    "listLabel": "Ranglisten-Ergebnisse",
+    "emptyFilter": "Keine Spieler f\u00fcr diese Filter.",
+    "col": {
+      "hash": "#",
+      "player": "Spieler",
+      "server": "Server",
+      "playtime": "Spielzeit",
+      "kills": "Kills",
+      "wealth": "Reichtum"
+    }
+  },
+  "tournaments": {
+    "comingSoon": "Bald verf\u00fcgbar",
+    "title": "Turniere kommen bald",
+    "descMobile": "W\u00f6chentliche Brackets, echte Preispools, saisonale Troph\u00e4en. Vollstart im Juni 2026.",
+    "descDesktop": "W\u00f6chentliche Brackets, echte Preispools und saisonale Troph\u00e4en. Wir testen das System gerade \u2014 Vollstart im Juni 2026.",
+    "countdownLabel": "Zeit bis zum Start",
+    "countdown": {
+      "daysMobile": "T",
+      "daysDesktop": "Tage",
+      "hoursMobile": "Std",
+      "hoursDesktop": "Stunden",
+      "minutesMobile": "Min",
+      "minutesDesktop": "Minuten",
+      "secondsMobile": "Sek",
+      "secondsDesktop": "Sekunden"
+    },
+    "featuresLabel": "Turnierfunktionen",
+    "f0": {
+      "title": "W\u00f6chentliche Brackets",
+      "desc": "Neue Turniere jeden Freitag um 18:00 UTC, bis Sonntag 23:59."
+    },
+    "f1": {
+      "title": "Echte Preispools",
+      "desc": "Bestplatzierte erhalten Kristalle, Troph\u00e4en und exklusive kosmetische Skins."
+    },
+    "f2": {
+      "title": "Faires Matchmaking",
+      "desc": "Automatisch ausgeglichene Brackets nach Spielzeit und Leistungshistorie."
+    },
+    "blogNote": "Weitere Details im <link>Blog</link>."
+  },
+  "hts": {
+    "eyebrow": "Erste Schritte",
+    "title": "In unter 2 Minuten starten",
+    "subtitleMobile": "Schnelle Schritt-f\u00fcr-Schritt-Anleitung f\u00fcr neue Spieler. Support ist einen Klick entfernt.",
+    "subtitleDesktop": "Eine schnelle Schritt-f\u00fcr-Schritt-Anleitung f\u00fcr neue Spieler. Wenn du feststeckst, ist der Support-Chat einen Klick entfernt.",
+    "progressLabel": "Dein Fortschritt",
+    "progressValue": "{done} von {total} erledigt",
+    "progressAriaLabel": "{done} von {total} Schritten abgeschlossen",
+    "sidebarLabel": "Schritte",
+    "sidebarAriaLabel": "Schritte",
+    "allDoneLabel": "Alle Schritte abgeschlossen",
+    "doneTitle": "Alles erledigt \u2014 willkommen an Bord.",
+    "doneText": "Brauchst du Hilfe? Der Support-Chat ist einen Klick entfernt.",
+    "openSupport": "Support \u00f6ffnen",
+    "goToDashboard": "Zum Dashboard",
+    "downloadIllustrationAlt": "Minecraft-Download-Illustration",
+    "s1": {
+      "nav": "Minecraft herunterladen",
+      "title": "Minecraft herunterladen",
+      "descMobile": "Du ben\u00f6tigst Minecraft Java oder Bedrock. Java hat mehr Plugins.",
+      "descDesktop": "Du ben\u00f6tigst eine legale Kopie von Minecraft (Java oder Bedrock). Die Java-Edition nutzen die meisten unserer Spieler, da sie mehr Plugins und Custom-Crafts unterst\u00fctzt.",
+      "bullets": [
+        "Minecraft.net \u00f6ffnen und anmelden.",
+        "1.20.4 (Java) oder aktuelles Bedrock installieren.",
+        "Einmal starten zum \u00dcberpr\u00fcfen."
+      ],
+      "bulletsDesktop": [
+        "Minecraft.net \u00f6ffnen und mit deinem Microsoft-Konto anmelden.",
+        "Launcher herunterladen und Minecraft 1.20.4 (Java) oder das neueste Bedrock installieren.",
+        "Das Spiel einmal starten, um alles zu \u00fcberpr\u00fcfen."
+      ],
+      "callout": "Kosmetik und Turniere erscheinen zuerst f\u00fcr Java.",
+      "calloutDesktop": "Beide Editionen funktionieren auf unseren Servern, aber Kosmetik und Turnier-Features kommen zuerst f\u00fcr Java. Bedrock-Support folgt 1-2 Wochen sp\u00e4ter."
+    },
+    "s2": {
+      "nav": "Account erstellen",
+      "title": "Account erstellen",
+      "descMobile": "Registriere dich mit E-Mail + Passwort. Aktivierung in einer Minute.",
+      "descDesktop": "Registriere dich auf unserer Website mit E-Mail und Passwort. Aktivierung dauert eine Minute.",
+      "bullets": [
+        "Registrieren \u00f6ffnen, E-Mail + Passwort eingeben.",
+        "\u00dcber den Link in der E-Mail best\u00e4tigen.",
+        "Ingame-Nickname w\u00e4hlen."
+      ],
+      "bulletsDesktop": [
+        "Registrierungsseite \u00f6ffnen und E-Mail + Passwort eingeben.",
+        "E-Mail \u00fcber den gesendeten Link best\u00e4tigen (Spam pr\u00fcfen, falls er nach 2 min nicht ankommt).",
+        "Ingame-Nickname festlegen \u2014 das sehen andere Spieler."
+      ]
+    },
+    "s3": {
+      "nav": "Server beitreten",
+      "title": "Server beitreten",
+      "descMobile": "Server w\u00e4hlen, IP kopieren, in Minecraft einf\u00fcgen.",
+      "descDesktop": "W\u00e4hle einen Server \u2014 LuckySurvival, MineWars oder CalmSky. Kopiere die IP und f\u00fcge sie in Minecraft \u2192 Mehrspieler \u2192 Server hinzuf\u00fcgen ein.",
+      "bullets": [
+        "Seite Server \u00f6ffnen.",
+        "Auf IP kopieren klicken.",
+        "Minecraft \u2192 Mehrspieler \u2192 Server hinzuf\u00fcgen.",
+        "Zum Verbinden klicken."
+      ],
+      "bulletsDesktop": [
+        "Seite Server im Dashboard \u00f6ffnen.",
+        "\u201eIP kopieren\u201c auf der gew\u00fcnschten Karte klicken.",
+        "In Minecraft: Mehrspieler \u2192 Server hinzuf\u00fcgen \u2192 IP einf\u00fcgen.",
+        "Auf die Server-Karte klicken, um zu verbinden."
+      ],
+      "callout": "Erste Verbindung l\u00e4dt unser 80\u00a0MB Ressourcenpaket herunter.",
+      "calloutDesktop": "Die erste Verbindung l\u00e4dt unser ~80\u00a0MB Ressourcenpaket herunter. Danach ist der Beitritt sofort."
+    },
+    "s4": {
+      "nav": "Account verkn\u00fcpfen",
+      "title": "Nickname verkn\u00fcpfen",
+      "titleDesktop": "Ingame-Nickname verkn\u00fcpfen",
+      "descMobile": "Verbinde deinen Ingame-Namen mit deinem Account.",
+      "descDesktop": "Nach dem ersten Beitritt verkn\u00fcpfe deinen Ingame-Nickname mit deinem Account, damit Privilegien und Kristalle korrekt zugestellt werden.",
+      "bullets": [
+        "Im Spiel: /link <deine E-Mail>",
+        "E-Mail auf den Link pr\u00fcfen.",
+        "Auf den Link klicken zum Fertigstellen."
+      ],
+      "bulletsDesktop": [
+        "Im Spiel /link gefolgt von deiner Account-E-Mail eingeben.",
+        "Wir senden einen Aktivierungslink an deine E-Mail.",
+        "Link im Browser \u00f6ffnen \u2014 dein Nickname wird automatisch verkn\u00fcpft."
+      ]
+    },
+    "s5": {
+      "nav": "Privileg w\u00e4hlen",
+      "title": "Privileg w\u00e4hlen",
+      "titleDesktop": "Privileg w\u00e4hlen (optional)",
+      "descMobile": "Schalte Kosmetik, Cooldowns und Home-Punkte frei.",
+      "descDesktop": "Privilegien schalten Kosmetik, schnellere Cooldowns und zus\u00e4tzliche Home-Punkte frei. Alle acht Stufen sind im Shop mit Beschreibungen aufgelistet.",
+      "bullets": [
+        "Shop \u2192 Privilegien, Stufe w\u00e4hlen.",
+        "In den Warenkorb, bezahlen."
+      ],
+      "bulletsDesktop": [
+        "Shop \u2192 Privilegien \u00f6ffnen.",
+        "\u00dcber eine Stufe hovern, um die vollst\u00e4ndige Vorteilliste zu sehen.",
+        "In den Warenkorb, Server w\u00e4hlen, bezahlen."
+      ]
+    },
+    "s6": {
+      "nav": "Kristalle aufladen",
+      "title": "Kristalle aufladen",
+      "titleDesktop": "Kristalle aufladen (optional)",
+      "descMobile": "Paket kaufen oder Schieberegler f\u00fcr benutzerdefinierten Betrag nutzen.",
+      "descDesktop": "Kristalle sind unsere Ingame-W\u00e4hrung f\u00fcr Kosmetik, Turnierteilnahmen und zeitbegrenzte Items. Kaufe ein Paket oder nutze den Betragsregler.",
+      "bullets": [
+        "Shop \u2192 Kristalle.",
+        "Preset oder Betrag w\u00e4hlen.",
+        "Sofortige Lieferung."
+      ],
+      "bulletsDesktop": [
+        "Shop \u2192 Kristalle \u00f6ffnen.",
+        "Preset-Paket w\u00e4hlen oder Regler f\u00fcr genauen Betrag nutzen.",
+        "Kristalle werden sofort an deinen Nickname geliefert."
+      ]
+    },
+    "s7": {
+      "nav": "Discord beitreten",
+      "title": "Discord beitreten",
+      "titleDesktop": "Community-Discord beitreten",
+      "descMobile": "Updates, Ank\u00fcndigungen, Support \u2014 alles live auf Discord.",
+      "descDesktop": "Die meisten Updates, Turnier-Ank\u00fcndigungen und Spieler-Support finden auf Discord statt. Kostenlos beitreten, einfach verlassen.",
+      "bullets": [
+        "Discord-Button tippen.",
+        "/verify in Discord ausf\u00fchren.",
+        "Server-Rolle w\u00e4hlen."
+      ],
+      "bulletsDesktop": [
+        "Auf den Discord-Button in der Seitenleiste klicken.",
+        "Den Befehl /verify zum Verkn\u00fcpfen der Accounts nutzen.",
+        "Lieblings-Server-Rolle w\u00e4hlen und fertig."
+      ],
+      "callout": "Durchschnittliche Erstantwort im Support: unter 4 Stunden.",
+      "calloutDesktop": "Live-Support auf Discord rund um die Uhr. Durchschnittliche Erstantwortzeit unter 4 Stunden."
+    }
+  }
+}

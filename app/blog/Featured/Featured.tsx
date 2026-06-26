@@ -1,9 +1,12 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Featured.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Featured() {
+export default async function Featured() {
+  const t = await getTranslations('blog');
+
   return (
     <section className={styles.featured}>
       <Container variant="blog">
@@ -12,7 +15,7 @@ export default function Featured() {
             <Image
               className={styles.image}
               src="/blog/blog-featured.webp"
-              alt="Featured"
+              alt={t('featured.tagFeatured')}
               width={1440}
               height={836}
               sizes="(min-width: 1280px) 720px, 335px"
@@ -21,39 +24,31 @@ export default function Featured() {
           <div className={styles.wrapper}>
             <ul className={styles.tags}>
               <li>
-                <p className={styles.tag}>Featured</p>
+                <p className={styles.tag}>{t('featured.tagFeatured')}</p>
               </li>
-
               <li>
-                <p className={styles.tag}>Updates</p>
+                <p className={styles.tag}>{t('featured.tagUpdates')}</p>
               </li>
             </ul>
 
-            <h2 className={styles.title}>
-              Server Update 2.6 — custom crafts, economy rebalance, and the biggest patch of
-              the season
-            </h2>
+            <h2 className={styles.title}>{t('featured.title')}</h2>
 
-            <p className={styles.description}>
-              We refreshed spawn hubs on LuckySurvival, MineWars, and CalmSky, added 12 new custom crafts, rebalanced the
-              economy, and shipped a brand-new tournament mode. Here is everything you need to know
-              — and the changes you can already test on the public branch tonight.
-            </p>
+            <p className={styles.description}>{t('featured.description')}</p>
 
             <div className={styles.meta}>
-              <span className={styles.date}>Apr 28, 2026</span>
+              <span className={styles.date}>{t('featured.date')}</span>
               <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.readTime}>7 min read</span>
+              <span className={styles.readTime}>{t('featured.readTime')}</span>
             </div>
 
             <ul className={styles.button_list}>
               <li>
                 <Link
                   href="/blog/updates"
-                  aria-label="Read Server Update 2.6 article"
+                  aria-label={t('featured.readArticleAriaLabel')}
                   className={styles.first_button}
                 >
-                  Read article
+                  {t('featured.readArticle')}
                 </Link>
               </li>
             </ul>

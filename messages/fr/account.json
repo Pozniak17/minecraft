@@ -1,0 +1,277 @@
+{
+  "ph": {
+    "eyebrow": "Historique",
+    "title": "Historique d\u2019achats",
+    "subtitle": "Toutes les commandes, tous serveurs. Ouvrez ou t\u00e9l\u00e9chargez les re\u00e7us \u00e0 tout moment.",
+    "periodPrefix": "P\u00e9riode\u00a0:",
+    "periodMenuLabel": "Choisir la p\u00e9riode",
+    "period": {
+      "last90": "90 derniers jours",
+      "last30": "30 derniers jours",
+      "last7": "7 derniers jours",
+      "allTime": "Depuis le d\u00e9but"
+    },
+    "stat": {
+      "ordersMobile": "Commandes",
+      "ordersDesktop": "Commandes",
+      "spentMobile": "D\u00e9pens\u00e9",
+      "spentDesktop": "Total d\u00e9pens\u00e9",
+      "crystalsMobile": "Cristaux",
+      "crystalsDesktop": "Cristaux achet\u00e9s",
+      "privilegesMobile": "Privil\u00e8ges",
+      "privilegesDesktop": "Privil\u00e8ges"
+    },
+    "loading": "Chargement de vos commandes\u2026",
+    "empty": {
+      "title": "Aucune commande",
+      "text": "Vos achats appara\u00eetront ici d\u00e8s votre premi\u00e8re commande.",
+      "cta": "Aller \u00e0 la boutique \u2192"
+    },
+    "emptyPeriod": {
+      "title": "Aucune commande sur cette p\u00e9riode",
+      "text": "Essayez une p\u00e9riode plus longue ou \u00ab\u00a0Depuis le d\u00e9but\u00a0\u00bb pour voir tout votre historique."
+    },
+    "table": {
+      "ariaLabel": "Historique d\u2019achats"
+    },
+    "col": {
+      "date": "Date",
+      "items": "Articles",
+      "server": "Serveur",
+      "nickname": "Pseudo",
+      "amount": "Montant",
+      "status": "Statut",
+      "receipt": "Re\u00e7u"
+    },
+    "status": {
+      "paid": "pay\u00e9",
+      "refund": "rembours\u00e9",
+      "failed": "\u00e9chou\u00e9"
+    },
+    "btn": {
+      "open": "Ouvrir",
+      "opening": "Ouverture\u2026",
+      "receipt": "Re\u00e7u",
+      "downloading": "T\u00e9l\u00e9chargement\u2026",
+      "downloadAriaLabel": "T\u00e9l\u00e9charger le re\u00e7u"
+    },
+    "error": {
+      "openFallback": "Impossible d\u2019ouvrir le re\u00e7u.",
+      "downloadFallback": "Impossible de t\u00e9l\u00e9charger le re\u00e7u."
+    }
+  },
+  "tr": {
+    "eyebrow": "Top / Classements",
+    "title": "Classement des joueurs",
+    "subtitleMobile": "Mis \u00e0 jour chaque semaine. 200+ joueurs actifs class\u00e9s sur tous les serveurs.",
+    "subtitleDesktop": "Meilleurs joueurs par temps de jeu, mis \u00e0 jour automatiquement. 200+ joueurs actifs class\u00e9s sur tous les serveurs.",
+    "autoRefresh": "Actualisation auto \u2014 hebdomadaire",
+    "tabsAriaLabel": "M\u00e9triques du classement",
+    "tab": {
+      "playtimeMobile": "Temps",
+      "playtimeDesktop": "Temps de jeu",
+      "killsMobile": "\u00c9lim.",
+      "killsDesktop": "\u00c9liminations",
+      "wealthMobile": "Richesse",
+      "wealthDesktop": "Richesse",
+      "achievMobile": "Succ\u00e8s",
+      "achievDesktop": "Succ\u00e8s"
+    },
+    "filter": {
+      "periodPrefix": "P\u00e9riode\u00a0:",
+      "periodLabel": "Choisir la p\u00e9riode",
+      "serverPrefix": "Serveur\u00a0:",
+      "serverLabel": "Choisir le serveur"
+    },
+    "period": {
+      "thisWeek": "Cette semaine",
+      "thisMonth": "Ce mois-ci",
+      "allTime": "Depuis le d\u00e9but"
+    },
+    "server": {
+      "allServers": "Tous les serveurs"
+    },
+    "top3Label": "Top 3 joueurs",
+    "listLabel": "Classement des joueurs",
+    "emptyFilter": "Aucun joueur ne correspond \u00e0 ces filtres.",
+    "col": {
+      "hash": "#",
+      "player": "Joueur",
+      "server": "Serveur",
+      "playtime": "Temps de jeu",
+      "kills": "\u00c9liminations",
+      "wealth": "Richesse"
+    }
+  },
+  "tournaments": {
+    "comingSoon": "Bient\u00f4t disponible",
+    "title": "Les tournois arrivent",
+    "descMobile": "Brackets hebdomadaires, vrais prix, troph\u00e9es saisonniers. Lancement complet en juin 2026.",
+    "descDesktop": "Brackets hebdomadaires, vrais prix et troph\u00e9es saisonniers. Nous testons le syst\u00e8me en ce moment \u2014 lancement complet en juin 2026.",
+    "countdownLabel": "Temps avant le lancement",
+    "countdown": {
+      "daysMobile": "j",
+      "daysDesktop": "jours",
+      "hoursMobile": "h",
+      "hoursDesktop": "heures",
+      "minutesMobile": "min",
+      "minutesDesktop": "minutes",
+      "secondsMobile": "s",
+      "secondsDesktop": "secondes"
+    },
+    "featuresLabel": "Fonctionnalit\u00e9s des tournois",
+    "f0": {
+      "title": "Brackets hebdomadaires",
+      "desc": "Nouveaux tournois chaque vendredi \u00e0 18:00 UTC, jusqu\u2019au dimanche 23:59."
+    },
+    "f1": {
+      "title": "Vraies cagnottes",
+      "desc": "Les meilleurs remportent cristaux, troph\u00e9es et skins cosm\u00e9tiques exclusifs."
+    },
+    "f2": {
+      "title": "Matchmaking \u00e9quitable",
+      "desc": "Brackets \u00e9quilibr\u00e9s automatiquement selon le temps de jeu et les performances."
+    },
+    "blogNote": "Pour plus de d\u00e9tails, suivez notre <link>blog</link>."
+  },
+  "hts": {
+    "eyebrow": "Comment commencer",
+    "title": "D\u00e9marrez en moins de 2 minutes",
+    "subtitleMobile": "Guide pas \u00e0 pas pour les nouveaux joueurs. Le support est \u00e0 port\u00e9e de clic.",
+    "subtitleDesktop": "Un guide pas \u00e0 pas pour les nouveaux joueurs. Si vous bloquez \u00e0 une \u00e9tape, le chat de support est \u00e0 port\u00e9e de clic.",
+    "progressLabel": "Votre progression",
+    "progressValue": "{done} sur {total} termin\u00e9",
+    "progressAriaLabel": "{done} sur {total} \u00e9tapes termin\u00e9es",
+    "sidebarLabel": "\u00c9tapes",
+    "sidebarAriaLabel": "\u00c9tapes",
+    "allDoneLabel": "Toutes les \u00e9tapes termin\u00e9es",
+    "doneTitle": "Tout est pr\u00eat \u2014 bienvenue \u00e0 bord.",
+    "doneText": "Besoin d\u2019aide\u00a0? Le chat de support est \u00e0 port\u00e9e de clic.",
+    "openSupport": "Ouvrir le support",
+    "goToDashboard": "Tableau de bord",
+    "downloadIllustrationAlt": "Illustration du t\u00e9l\u00e9chargement Minecraft",
+    "s1": {
+      "nav": "T\u00e9l\u00e9charger Minecraft",
+      "title": "T\u00e9l\u00e9charger Minecraft",
+      "descMobile": "Il vous faut Minecraft Java ou Bedrock. Java dispose de plus de plugins.",
+      "descDesktop": "Il vous faut une copie l\u00e9gale de Minecraft (Java ou Bedrock). La plupart de nos joueurs utilisent Java car il supporte plus de plugins et de crafts personnalis\u00e9s.",
+      "bullets": [
+        "Ouvrir minecraft.net et se connecter.",
+        "Installer la version 1.20.4 (Java) ou le dernier Bedrock.",
+        "Lancer une fois pour v\u00e9rifier."
+      ],
+      "bulletsDesktop": [
+        "Ouvrir minecraft.net et se connecter avec votre compte Microsoft.",
+        "T\u00e9l\u00e9charger le launcher et installer Minecraft 1.20.4 (Java) ou la derni\u00e8re version Bedrock.",
+        "Lancer le jeu une fois pour v\u00e9rifier que tout fonctionne."
+      ],
+      "callout": "Les cosm\u00e9tiques et tournois arrivent d\u2019abord sur Java.",
+      "calloutDesktop": "Les deux \u00e9ditions fonctionnent sur nos serveurs, mais les cosm\u00e9tiques et tournois arrivent d\u2019abord sur Java. Le support Bedrock suit 1-2 semaines plus tard."
+    },
+    "s2": {
+      "nav": "Cr\u00e9er votre compte",
+      "title": "Cr\u00e9er votre compte",
+      "descMobile": "Inscrivez-vous avec email + mot de passe. Activation en une minute.",
+      "descDesktop": "Inscrivez-vous sur notre site avec votre email et mot de passe. L\u2019activation prend une minute.",
+      "bullets": [
+        "Ouvrir Inscription, saisir email + mot de passe.",
+        "Confirmer via le lien dans votre email.",
+        "Choisir un pseudo en jeu."
+      ],
+      "bulletsDesktop": [
+        "Ouvrir la page Inscription et saisir votre email + mot de passe.",
+        "Confirmer votre email via le lien envoy\u00e9 (v\u00e9rifier les spams si absent apr\u00e8s 2 min).",
+        "D\u00e9finir un pseudo en jeu \u2014 c\u2019est ce que verront les autres joueurs."
+      ]
+    },
+    "s3": {
+      "nav": "Rejoindre un serveur",
+      "title": "Rejoindre un serveur",
+      "descMobile": "Choisir un serveur, copier l\u2019IP, coller dans Minecraft.",
+      "descDesktop": "Choisissez un serveur \u2014 LuckySurvival, MineWars ou CalmSky. Copiez l\u2019IP et collez-la dans Minecraft \u2192 Multijoueur \u2192 Ajouter un serveur.",
+      "bullets": [
+        "Ouvrir la page Serveurs.",
+        "Cliquer sur Copier IP.",
+        "Minecraft \u2192 Multijoueur \u2192 Ajouter un serveur.",
+        "Cliquer pour se connecter."
+      ],
+      "bulletsDesktop": [
+        "Ouvrir la page Serveurs dans votre tableau de bord.",
+        "Cliquer sur \u00ab\u00a0Copier IP\u00a0\u00bb sur la carte souhait\u00e9e.",
+        "Dans Minecraft\u00a0: Multijoueur \u2192 Ajouter un serveur \u2192 coller l\u2019IP.",
+        "Cliquer sur la carte du serveur pour se connecter."
+      ],
+      "callout": "La premi\u00e8re connexion t\u00e9l\u00e9charge notre pack de ressources de 80\u00a0Mo.",
+      "calloutDesktop": "La premi\u00e8re connexion t\u00e9l\u00e9charge notre pack de ressources de ~80\u00a0Mo. Ensuite, la connexion est instantan\u00e9e."
+    },
+    "s4": {
+      "nav": "Lier votre compte",
+      "title": "Lier votre pseudo",
+      "titleDesktop": "Lier votre pseudo en jeu",
+      "descMobile": "Reliez votre nom en jeu \u00e0 votre compte pour les livraisons.",
+      "descDesktop": "Apr\u00e8s votre premi\u00e8re connexion, liez votre pseudo en jeu \u00e0 votre compte pour que les privil\u00e8ges et cristaux soient livr\u00e9s au bon joueur.",
+      "bullets": [
+        "En jeu\u00a0: /link <votre email>",
+        "V\u00e9rifier votre email pour le lien.",
+        "Cliquer sur le lien pour finaliser."
+      ],
+      "bulletsDesktop": [
+        "En jeu, ex\u00e9cuter /link suivi de votre email de compte.",
+        "Nous envoyons un lien d\u2019activation \u00e0 votre email.",
+        "Ouvrir le lien dans votre navigateur \u2014 votre pseudo est li\u00e9 automatiquement."
+      ]
+    },
+    "s5": {
+      "nav": "Choisir un privil\u00e8ge",
+      "title": "Choisir un privil\u00e8ge",
+      "titleDesktop": "Choisir un privil\u00e8ge (optionnel)",
+      "descMobile": "D\u00e9bloquez cosm\u00e9tiques, cooldowns et points de maison.",
+      "descDesktop": "Les privil\u00e8ges d\u00e9bloquent des cosm\u00e9tiques, des cooldowns r\u00e9duits et des points de maison suppl\u00e9mentaires. Les huit niveaux sont list\u00e9s dans la Boutique.",
+      "bullets": [
+        "Boutique \u2192 Privil\u00e8ges, choisir un niveau.",
+        "Ajouter au panier, payer."
+      ],
+      "bulletsDesktop": [
+        "Ouvrir Boutique \u2192 Privil\u00e8ges.",
+        "Survoler un niveau pour voir la liste compl\u00e8te des avantages.",
+        "Ajouter au panier, choisir le serveur, payer."
+      ]
+    },
+    "s6": {
+      "nav": "Recharger des cristaux",
+      "title": "Recharger des cristaux",
+      "titleDesktop": "Recharger des cristaux (optionnel)",
+      "descMobile": "Achetez un pack ou utilisez le curseur pour un montant personnalis\u00e9.",
+      "descDesktop": "Les cristaux sont notre monnaie en jeu pour les cosm\u00e9tiques, les entr\u00e9es en tournoi et les objets \u00e0 dur\u00e9e limit\u00e9e. Achetez un pack ou utilisez le curseur.",
+      "bullets": [
+        "Boutique \u2192 Cristaux.",
+        "Choisir un pack ou d\u00e9finir un montant.",
+        "Livraison instantan\u00e9e."
+      ],
+      "bulletsDesktop": [
+        "Ouvrir Boutique \u2192 Cristaux.",
+        "Choisir un pack pr\u00e9d\u00e9fini ou utiliser le curseur pour d\u00e9finir un montant exact.",
+        "Les cristaux sont livr\u00e9s instantan\u00e9ment \u00e0 votre pseudo."
+      ]
+    },
+    "s7": {
+      "nav": "Rejoindre Discord",
+      "title": "Rejoindre Discord",
+      "titleDesktop": "Rejoindre le Discord communautaire",
+      "descMobile": "Mises \u00e0 jour, annonces, support \u2014 tout est sur Discord.",
+      "descDesktop": "Nos mises \u00e0 jour, annonces de tournois et support joueur se passent sur Discord. Gratuit \u00e0 rejoindre, facile \u00e0 quitter.",
+      "bullets": [
+        "Appuyer sur le bouton Discord.",
+        "Ex\u00e9cuter /verify dans Discord.",
+        "Choisir votre r\u00f4le de serveur."
+      ],
+      "bulletsDesktop": [
+        "Cliquer sur le bouton Discord dans la barre lat\u00e9rale.",
+        "Utiliser la commande /verify pour lier vos comptes.",
+        "Choisir votre r\u00f4le de serveur pr\u00e9f\u00e9r\u00e9 et c\u2019est parti."
+      ],
+      "callout": "Premi\u00e8re r\u00e9ponse support en moyenne\u00a0: moins de 4 heures.",
+      "calloutDesktop": "Le support live est disponible sur Discord 24/7. D\u00e9lai moyen de premi\u00e8re r\u00e9ponse\u00a0: moins de 4 heures."
+    }
+  }
+}

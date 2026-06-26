@@ -3,7 +3,13 @@ import styles from './CardList.module.css';
 
 const PAGINATION_STUB = [1, 2, 3] as const;
 
-export default function CardList({ articles }: { articles: ArticleCardProps[] }) {
+export default function CardList({
+  articles,
+  paginationLabel = 'Articles pagination',
+}: {
+  articles: ArticleCardProps[];
+  paginationLabel?: string;
+}) {
   return (
     <>
       <ul className={styles.list}>
@@ -12,7 +18,7 @@ export default function CardList({ articles }: { articles: ArticleCardProps[] })
         ))}
       </ul>
 
-      <nav className={styles.pagination} aria-label="Articles pagination">
+      <nav className={styles.pagination} aria-label={paginationLabel}>
         <div className={styles.pagRow}>
           {PAGINATION_STUB.map(number => (
             <button

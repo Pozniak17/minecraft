@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Container } from './_components/Container/Container';
 import styles from './error.module.css';
 
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export default function Error({ error, reset }: Props) {
+  const t = useTranslations('system');
+
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -21,22 +24,20 @@ export default function Error({ error, reset }: Props) {
         <div className={styles.content}>
           <span className={styles.badge}>
             <span />
-            Error — something went wrong
+            {t('error_badge')}
           </span>
 
-          <h1 className={styles.title}>Crafty hit a wall</h1>
-          <p className={styles.text}>
-            An unexpected error stopped this page from loading. You can try again or head back home.
-          </p>
+          <h1 className={styles.title}>{t('error_title')}</h1>
+          <p className={styles.text}>{t('error_text')}</p>
 
           {error?.message ? <p className={styles.details}>{error.message}</p> : null}
 
           <div className={styles.actions}>
             <button type="button" onClick={reset} className={styles.button}>
-              <span>↻</span>Try again
+              <span>↻</span>{t('error_tryAgain')}
             </button>
             <Link href="/" className={styles.backLink}>
-              <span>←</span>Go back
+              <span>←</span>{t('error_goBack')}
             </Link>
           </div>
         </div>

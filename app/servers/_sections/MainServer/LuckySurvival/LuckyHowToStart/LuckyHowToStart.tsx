@@ -1,17 +1,20 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import styles from './LuckyHowToStart.module.css';
 
-const STEPS = [
-  'Install Minecraft Java/Bedrock Edition',
-  'Register on our website',
-  'Connect to the server IP',
-  'Start playing & exploring!',
-];
-
 export default function LuckyHowToStart() {
+  const t = useTranslations('servers');
+
+  const STEPS = [
+    t('lucky.step1'),
+    t('lucky.step2'),
+    t('lucky.step3'),
+    t('lucky.step4'),
+  ];
+
   return (
     <section className={styles.card}>
-      <h3 className={styles.title}>How to Start Playing</h3>
+      <h3 className={styles.title}>{t('shared.howToStartTitle')}</h3>
 
       <ol className={styles.steps}>
         {STEPS.map((step) => (
@@ -24,7 +27,7 @@ export default function LuckyHowToStart() {
 
       <Link href="/how-to-start" className={styles.cta}>
         <span aria-hidden="true">📖</span>
-        View Full Instructions →
+        {t('shared.viewFullInstructions')}
       </Link>
     </section>
   );

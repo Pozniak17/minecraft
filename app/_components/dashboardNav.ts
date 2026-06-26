@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
 export type WorkspaceLink = {
-  label: string;
+  key: string;
   href: string;
   icon: string;
   badge?: number;
@@ -9,14 +9,14 @@ export type WorkspaceLink = {
 };
 
 export const WORKSPACE_LINKS: WorkspaceLink[] = [
-  { label: 'Dashboard', href: '/dashboard', icon: 'home-2-outline' },
-  { label: 'Shop', href: '/dashboard/shop', icon: 'shop-minimalistic-outline' },
-  { label: 'Servers', href: '/dashboard/servers', icon: 'server-2-outline' },
-  { label: 'Cart', href: '/dashboard/cart', icon: 'cart-large-minimalistic-outline' },
-  { label: 'Purchase History', href: '/dashboard/history', icon: 'history-outline' },
-  { label: 'Top / Ratings', href: '/dashboard/top', icon: 'bill-check-outline' },
-  { label: 'Tournaments', href: '/dashboard/tournaments', icon: 'cup-first-outline', soon: true },
-  { label: 'How to Start', href: '/dashboard/how-to-start', icon: 'flag-2-outline' },
+  { key: 'dashboard', href: '/dashboard', icon: 'home-2-outline' },
+  { key: 'shop', href: '/dashboard/shop', icon: 'shop-minimalistic-outline' },
+  { key: 'servers', href: '/dashboard/servers', icon: 'server-2-outline' },
+  { key: 'cart', href: '/dashboard/cart', icon: 'cart-large-minimalistic-outline' },
+  { key: 'history', href: '/dashboard/history', icon: 'history-outline' },
+  { key: 'top', href: '/dashboard/top', icon: 'bill-check-outline' },
+  { key: 'tournaments', href: '/dashboard/tournaments', icon: 'cup-first-outline', soon: true },
+  { key: 'howToStart', href: '/dashboard/how-to-start', icon: 'flag-2-outline' },
 ];
 
 export function dashboardIconStyle(name: string): CSSProperties {

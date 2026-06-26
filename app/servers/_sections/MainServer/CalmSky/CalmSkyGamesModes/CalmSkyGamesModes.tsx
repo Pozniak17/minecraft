@@ -1,21 +1,24 @@
+import { useTranslations } from 'next-intl';
 import styles from './CalmSkyGamesModes.module.css';
 
 export default function CalmSkyGamesModes() {
+  const t = useTranslations('servers');
+
   return (
     <section className={styles.section}>
-      <h3 className={styles.title}>Game Modes</h3>
+      <h3 className={styles.title}>{t('shared.gameModes')}</h3>
       <ul className={styles.list}>
         <li className={styles.badgeActive}>
-          🌿 Survival <span className={styles.badgeActiveText}>ON</span>
+          🌿 {t('shared.survival')} <span className={styles.badgeActiveText}>{t('shared.on')}</span>
         </li>
         <li className={styles.badgeActive}>
-          🏗️ Creative <span className={styles.badgeActiveText}>ON</span>
+          🏗️ {t('shared.creative')} <span className={styles.badgeActiveText}>{t('shared.on')}</span>
         </li>
         <li className={styles.badgeNoActive}>
-          ⚔️ PvP <span className={styles.badgeNoActiveText}>OFF</span>
+          ⚔️ PvP <span className={styles.badgeNoActiveText}>{t('shared.off')}</span>
         </li>
         <li className={styles.badgeNoActive}>
-          💣 TNT <span className={styles.badgeNoActiveText}>OFF</span>
+          💣 TNT <span className={styles.badgeNoActiveText}>{t('shared.off')}</span>
         </li>
       </ul>
     </section>

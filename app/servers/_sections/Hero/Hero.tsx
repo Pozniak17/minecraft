@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Hero.module.css';
 
-export default function Hero() {
+export default async function Hero() {
+  const t = await getTranslations('servers');
+
   return (
     <div className={styles.hero}>
       <Image
@@ -24,16 +27,16 @@ export default function Hero() {
               height={7}
               className={styles.badgeFirstDot}
             />
-            MINECRAFT SERVERS
+            {t('hero.badge')}
           </div>
 
-          <h1 className={styles.title}>Explore Our Servers</h1>
+          <h1 className={styles.title}>{t('hero.title')}</h1>
 
           <p className={styles.description}>
             <span className={styles.descriptionDesktopLine}>
-              Explore all Minecraft servers and their unique features.
+              {t('hero.descriptionDesktop')}
             </span>
-            Choose your playstyle — survival, PvP, or peaceful building.
+            {t('hero.description')}
           </p>
 
           <div className={styles.badgeSecond}>
@@ -44,7 +47,7 @@ export default function Hero() {
               height={8}
               className={styles.badgeSecondDot}
             />
-            All servers online&nbsp;&nbsp;•&nbsp;&nbsp;Join the adventure
+            {t('hero.statusBadge')}
           </div>
         </div>
       </Container>

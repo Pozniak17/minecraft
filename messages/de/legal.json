@@ -1,0 +1,138 @@
+{
+  "lastUpdatedLabel": "Zuletzt aktualisiert",
+  "privacy": {
+    "badge": "Rechtliches",
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "18. Juni 2026",
+    "intro": "Diese Datenschutzerklärung erläutert, wie Adventures in Minecraft die personenbezogenen Daten, die Sie uns bei der Nutzung unserer Website und Spielserver bereitstellen, erhebt, verwendet und schützt.",
+    "sections": [
+      {
+        "heading": "Erhobene Daten",
+        "paragraphs": [
+          "Wir erheben Daten, die Sie uns direkt mitteilen, wie Ihren Benutzernamen, Ihre E-Mail-Adresse und Ihr Passwort bei der Kontoerstellung.",
+          "Darüber hinaus erfassen wir automatisch technische Daten, darunter Ihre IP-Adresse, Geräteinformationen, Browsertyp und In-Game-Aktivitäten, um unsere Dienste zu betreiben und abzusichern."
+        ]
+      },
+      {
+        "heading": "Verwendung Ihrer Daten",
+        "paragraphs": [
+          "Wir verwenden Ihre Daten, um unsere Dienste bereitzustellen und aufrechtzuerhalten, Ihr Konto zu authentifizieren, Käufe abzuwickeln, Betrug und Missbrauch zu verhindern sowie wichtige Informationen zu übermitteln.",
+          "Wir können aggregierte, anonymisierte Daten verwenden, um das Nutzungsverhalten auf unseren Servern zu verstehen und das Spielerlebnis sowie die Performance zu verbessern."
+        ]
+      },
+      {
+        "heading": "Weitergabe von Daten",
+        "paragraphs": [
+          "Wir verkaufen Ihre personenbezogenen Daten nicht. Wir können Daten an vertrauenswürdige Dienstleister weitergeben, die uns beim Betrieb unserer Plattform unterstützen, sowie wenn dies gesetzlich vorgeschrieben ist."
+        ]
+      },
+      {
+        "heading": "Datenspeicherung",
+        "paragraphs": [
+          "Wir speichern Ihre personenbezogenen Daten so lange, wie Ihr Konto aktiv ist oder soweit dies zur Erbringung unserer Dienste und zur Erfüllung unserer rechtlichen Verpflichtungen erforderlich ist."
+        ]
+      },
+      {
+        "heading": "Ihre Rechte",
+        "paragraphs": [
+          "Je nach Ihrem Standort haben Sie möglicherweise das Recht, auf Ihre personenbezogenen Daten zuzugreifen, diese zu berichtigen oder zu löschen sowie bestimmter Verarbeitungen zu widersprechen oder diese einzuschränken.",
+          "Um diese Rechte auszuüben, wenden Sie sich bitte über die auf unserer Kontaktseite aufgeführten Kanäle an unser Support-Team."
+        ]
+      },
+      {
+        "heading": "Kontakt",
+        "paragraphs": [
+          "Wenn Sie Fragen zu dieser Datenschutzerklärung oder zur Verarbeitung Ihrer Daten haben, kontaktieren Sie uns bitte über Discord oder unsere Support-E-Mail-Adresse."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "badge": "Rechtliches",
+    "title": "Allgemeine Geschäftsbedingungen",
+    "lastUpdated": "18. Juni 2026",
+    "intro": "Diese Allgemeinen Geschäftsbedingungen regeln Ihren Zugang zur und die Nutzung der Website, der Spielserver und der damit verbundenen Dienste von Adventures in Minecraft. Durch die Nutzung unserer Dienste stimmen Sie diesen Bedingungen zu.",
+    "sections": [
+      {
+        "heading": "Annahme der Bedingungen",
+        "paragraphs": [
+          "Durch die Erstellung eines Kontos oder die sonstige Nutzung unserer Dienste bestätigen Sie, dass Sie diese Allgemeinen Geschäftsbedingungen akzeptieren und sich zu deren Einhaltung verpflichten.",
+          "Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, dürfen Sie unsere Dienste nicht nutzen."
+        ]
+      },
+      {
+        "heading": "Konten und Nutzungsberechtigung",
+        "paragraphs": [
+          "Sie sind dafür verantwortlich, die Vertraulichkeit Ihrer Zugangsdaten zu wahren und für alle Aktivitäten, die unter Ihrem Konto stattfinden.",
+          "Sie müssen bei der Registrierung genaue Angaben machen und diese stets auf dem neuesten Stand halten."
+        ]
+      },
+      {
+        "heading": "Zulässige Nutzung",
+        "paragraphs": [
+          "Sie verpflichten sich, nicht zu betrügen, Fehler auszunutzen, nicht autorisierte Drittanbietersoftware zu verwenden, andere Spieler zu belästigen oder Aktivitäten durchzuführen, die das Spielerlebnis anderer beeinträchtigen.",
+          "Wir behalten uns das Recht vor, Konten, die gegen diese Regeln verstoßen, zu sperren oder zu kündigen."
+        ]
+      },
+      {
+        "heading": "Käufe und virtuelle Gegenstände",
+        "paragraphs": [
+          "Erworbene In-Game-Gegenstände oder Dienste werden Ihnen lizenziert, nicht verkauft, und haben keinen realen Geldwert.",
+          "Alle Käufe sind endgültig, sofern das geltende Recht nichts anderes vorschreibt."
+        ]
+      },
+      {
+        "heading": "Haftungsbeschränkung",
+        "paragraphs": [
+          "Unsere Dienste werden auf einer „Wie-ist“-Basis und „Wie-verfügbar“-Basis bereitgestellt. Im größtmöglichen gesetzlich zulässigen Umfang haften wir nicht für indirekte oder Folgeschäden, die aus der Nutzung unserer Dienste entstehen."
+        ]
+      },
+      {
+        "heading": "Änderungen dieser Bedingungen",
+        "paragraphs": [
+          "Wir können diese Allgemeinen Geschäftsbedingungen von Zeit zu Zeit aktualisieren. Die fortgesetzte Nutzung unserer Dienste nach Inkrafttreten der Änderungen gilt als Annahme der aktualisierten Bedingungen."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "badge": "Rechtliches",
+    "title": "Cookie-Richtlinie",
+    "lastUpdated": "18. Juni 2026",
+    "intro": "Diese Cookie-Richtlinie erläutert, was Cookies sind, wie Adventures in Minecraft sie verwendet und welche Wahlmöglichkeiten Sie bezüglich ihrer Nutzung haben.",
+    "sections": [
+      {
+        "heading": "Was sind Cookies",
+        "paragraphs": [
+          "Cookies sind kleine Textdateien, die beim Besuch einer Website auf Ihrem Gerät gespeichert werden. Sie helfen der Website, Ihre Einstellungen zu speichern und Ihr Nutzungserlebnis zu verbessern."
+        ]
+      },
+      {
+        "heading": "Von uns verwendete Cookie-Typen",
+        "paragraphs": [
+          "Notwendige Cookies sind für das Funktionieren der Website unerlässlich, beispielsweise um Sie angemeldet zu halten und Ihre Sitzung zu sichern. Diese können nicht deaktiviert werden.",
+          "Analyse-Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, damit wir sie verbessern können. Marketing-Cookies können verwendet werden, um relevante Inhalte bereitzustellen und die Kampagnenleistung zu messen."
+        ]
+      },
+      {
+        "heading": "Verwaltung Ihrer Einstellungen",
+        "paragraphs": [
+          "Beim ersten Besuch unserer Website können Sie über unser Cookie-Banner wählen, ob Sie nicht notwendige Cookies akzeptieren oder ablehnen möchten.",
+          "Sie können Cookies jederzeit über Ihre Browsereinstellungen kontrollieren und löschen. Das Deaktivieren bestimmter Cookies kann die Funktionsweise der Website beeinträchtigen."
+        ]
+      },
+      {
+        "heading": "Drittanbieter-Cookies",
+        "paragraphs": [
+          "Einige Cookies können von Drittanbieterdiensten gesetzt werden, die auf unseren Seiten erscheinen. Wir haben keine Kontrolle über die Verwendung von Cookies durch diese Drittanbieter."
+        ]
+      },
+      {
+        "heading": "Aktualisierungen dieser Richtlinie",
+        "paragraphs": [
+          "Wir können diese Cookie-Richtlinie regelmäßig aktualisieren, um Änderungen in Technologie oder Regulierung widerzuspiegeln. Bitte überprüfen Sie sie regelmäßig, um stets informiert zu bleiben."
+        ]
+      }
+    ]
+  }
+}

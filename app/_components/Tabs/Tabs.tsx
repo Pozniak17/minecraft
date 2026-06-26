@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import styles from './Tabs.module.css';
 
 const TABS = ['Crystals', 'Privileges'] as const;
@@ -10,10 +11,13 @@ type TabsProps = {
 };
 
 export default function Tabs({ value, onChange }: TabsProps) {
+  const t = useTranslations('store');
+
   return (
-    <div className={styles.tabs} role="tablist" aria-label="Store categories">
+    <div className={styles.tabs} role="tablist" aria-label={t('tabs_ariaLabel')}>
       {TABS.map(tab => {
         const isActive = tab === value;
+        const label = tab === 'Crystals' ? t('tabs_crystals') : t('tabs_privileges');
         return (
           <button
             key={tab}
@@ -23,7 +27,7 @@ export default function Tabs({ value, onChange }: TabsProps) {
             className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
             onClick={() => onChange(tab)}
           >
-            {tab}
+            {label}
           </button>
         );
       })}

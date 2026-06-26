@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Dashboard",
+  "welcomeBack": "Welcome back, {name}",
+  "subtitle": "Here is what is happening across your worlds today.",
+  "topUp": "Top up",
+  "listConnector": "and",
+  "notifications": {
+    "ariaLabel": "Notifications",
+    "ariaLabelAlert": "Notifications — server alert",
+    "ariaLabelSuccess": "Notifications — purchase complete",
+    "panelTitle": "Notifications",
+    "empty": "No recent notifications"
+  },
+  "stats": {
+    "activeServers": "Active servers",
+    "onlineHint": "{names} online",
+    "checkingStatus": "Checking server status…"
+  },
+  "serverStatus": {
+    "title": "Server status",
+    "seeAll": "See all servers",
+    "online": "online",
+    "offline": "offline",
+    "playersOnline": "Players online",
+    "join": "Join"
+  },
+  "offline": {
+    "allTitle": "All servers offline",
+    "allBody": "We're working on it. Please check back shortly.",
+    "oneTitle": "{name} is offline",
+    "oneBody": "We're restoring access. Status refreshes every 10 seconds.",
+    "multipleTitle": "{count} servers offline",
+    "multipleBody": "{servers} are temporarily unavailable."
+  },
+  "purchase": {
+    "completeTitle": "Purchase complete",
+    "completeBodyItem": "{item}. Delivered to your in-game nickname.",
+    "completeBodyGeneric": "Your payment went through. Crystals and privileges are on their way."
+  },
+  "activity": {
+    "title": "Recent activity",
+    "viewAll": "View all",
+    "loading": "Loading…",
+    "empty": "No activity yet. Your purchases will show up here."
+  },
+  "time": {
+    "live": "Live",
+    "recently": "Recently",
+    "justNow": "Just now",
+    "minutesAgo": "{mins} min ago",
+    "hoursAgo": "{hours} h ago",
+    "yesterday": "Yesterday",
+    "daysAgo": "{days} days ago",
+    "monthsAgo": "{months} mo ago"
+  },
+  "crystals": {
+    "label": "Top up",
+    "title": "Need more crystals?",
+    "text": "Buy a pack and unlock privileges, cosmetics, and tournament entries.",
+    "openShop": "Open Shop"
+  },
+  "servers": {
+    "luckysurvival": {
+      "description": "Vanilla survival with PvP — TNT disabled."
+    },
+    "minewars": {
+      "description": "Vanilla survival, PvP and TNT enabled."
+    },
+    "calmsky": {
+      "description": "Peaceful — no PvP, no TNT. Build and socialize."
+    }
+  }
+}

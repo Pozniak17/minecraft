@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useTranslations } from 'next-intl';
 import FeaturesCard from '../FeaturesCard/FeaturesCard';
 import styles from './FeaturesList.module.css';
 import type { FeaturesCardProps } from '../Features';
@@ -11,6 +12,7 @@ export type FeaturesListProps = {
 };
 
 export default function FeaturesList({ items }: FeaturesListProps) {
+  const t = useTranslations('home');
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
     loop: false,
@@ -54,13 +56,13 @@ export default function FeaturesList({ items }: FeaturesListProps) {
         </div>
       </div>
 
-      <div className={styles.dots} role="tablist" aria-label="Game features">
+      <div className={styles.dots} role="tablist" aria-label={t('features.carouselAriaLabel')}>
         {items.map((card, i) => (
           <button
             key={i}
             type="button"
             role="tab"
-            aria-label={`Go to ${card.title}`}
+            aria-label={t('features.goToFeature', { title: card.title })}
             aria-selected={i === selectedIndex}
             className={`${styles.dot} ${i === selectedIndex ? styles.dotActive : ''}`}
             onClick={() => scrollTo(i)}

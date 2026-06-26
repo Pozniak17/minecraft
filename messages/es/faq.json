@@ -1,0 +1,1544 @@
+{
+  "hero": {
+    "badge": "Centro de ayuda",
+    "title": "Preguntas frecuentes",
+    "descMobile": "Las respuestas que nuestro equipo da con más frecuencia. Busca por tema, por palabra clave o contáctanos directamente.",
+    "descDesktop": "Las respuestas que nuestro equipo da con más frecuencia. Busca por tema, por palabra clave o contáctanos directamente si no encuentras lo que necesitas.",
+    "questions": "preguntas",
+    "categories": "categorías",
+    "avgReply": "tiempo de respuesta"
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "support": "Soporte",
+    "faq": "FAQ"
+  },
+  "search": {
+    "placeholderMobile": "Buscar entre {count} preguntas\u2026",
+    "placeholderDesktop": "Buscar entre {count} preguntas \u2014 \"restablecer contraseña\", \"reembolso de pago\"\u2026",
+    "ariaLabel": "Buscar en el FAQ",
+    "go": "Ir",
+    "search": "Buscar"
+  },
+  "topics": {
+    "label": "Temas populares",
+    "ariaLabel": "Temas populares del FAQ"
+  },
+  "categories": {
+    "all": "Todas las preguntas",
+    "allMobile": "Todas",
+    "gettingStarted": "Primeros pasos",
+    "account": "Cuenta e inicio de sesión",
+    "accountMobile": "Cuenta",
+    "payments": "Pagos",
+    "servers": "Servidores y mundos",
+    "serversMobile": "Servidores",
+    "privileges": "Privilegios",
+    "gameplay": "Gameplay",
+    "technical": "Problemas técnicos",
+    "rules": "Reglas y moderación",
+    "rulesMobile": "Reglas"
+  },
+  "categoryMeta": {
+    "getting-started": {
+      "label": "Primeros pasos",
+      "listLabel": "Primeros pasos",
+      "breadcrumb": "Primeros pasos"
+    },
+    "account": {
+      "label": "Cuenta e inicio de sesión",
+      "listLabel": "Cuenta",
+      "breadcrumb": "Cuenta e inicio de sesión"
+    },
+    "payments": {
+      "label": "Pagos",
+      "listLabel": "Pagos",
+      "breadcrumb": "Pagos"
+    },
+    "servers": {
+      "label": "Servidores y mundos",
+      "listLabel": "Servidores",
+      "breadcrumb": "Servidores y mundos"
+    },
+    "privileges": {
+      "label": "Privilegios",
+      "listLabel": "Privilegios",
+      "breadcrumb": "Privilegios"
+    },
+    "gameplay": {
+      "label": "Gameplay",
+      "listLabel": "Gameplay",
+      "breadcrumb": "Gameplay"
+    },
+    "technical": {
+      "label": "Problemas técnicos",
+      "listLabel": "Técnico",
+      "breadcrumb": "Problemas técnicos"
+    },
+    "rules": {
+      "label": "Reglas y moderación",
+      "listLabel": "Reglas",
+      "breadcrumb": "Reglas y moderación"
+    }
+  },
+  "sort": {
+    "all": "Todas",
+    "mostHelpful": "Más útiles",
+    "latest": "Más recientes",
+    "label": "Ordenar:",
+    "ariaLabel": "Ordenar preguntas"
+  },
+  "filters": {
+    "categoryLabel": "Categoría:",
+    "allCategories": "Todas las categorías",
+    "clear": "Limpiar",
+    "zeroResults": "0 resultados",
+    "zeroResultsWithQuery": "0 resultados para \"{query}\"",
+    "resultsRange": "{from}-{to} de {total}",
+    "resultsWithQuery": "{from}-{to} de {total} para \"{query}\""
+  },
+  "list": {
+    "noMatch": "Sin preguntas coincidentes",
+    "noMatchDesc": "Ninguna pregunta coincide con tu búsqueda. Prueba otra palabra clave o elimina el filtro para ver todos los temas.",
+    "showing": "Mostrando {from}\u2013{to} de {total} preguntas",
+    "resultsFor": "Resultados para \"{query}\"",
+    "rangeOf": "{from}-{to} de {total}",
+    "clearSearch": "Limpiar búsqueda",
+    "updMobile": "Act.",
+    "updDesktop": "Actualizado",
+    "readNow": "Leer ahora",
+    "prevAriaLabel": "Página anterior",
+    "nextAriaLabel": "Página siguiente",
+    "paginationAriaLabel": "Paginación del FAQ",
+    "pageCaption": "Página {page} de {total} \u2014 {count} preguntas",
+    "perPage": "Por página:",
+    "perPageAriaLabel": "Elementos por página",
+    "prev": "Anterior",
+    "next": "Siguiente"
+  },
+  "sidebar": {
+    "browseByTopic": "Explorar por tema",
+    "mostAsked": "Más consultadas",
+    "ariaLabel": "Navegación del FAQ"
+  },
+  "mostAsked": {
+    "01": "¿Cómo me uno al servidor?",
+    "02": "¿Qué versiones son compatibles?",
+    "03": "¿Cómo restablezco mi contraseña?",
+    "04": "¿Cómo funcionan los reembolsos?",
+    "05": "¿Por qué me sale «conexión perdida»?"
+  },
+  "support": {
+    "liveLabel": "Soporte en vivo disponible",
+    "title": "¿Aún necesitas ayuda?",
+    "desc": "Chatea con nosotros 24/7 o envía un ticket \u2014 normalmente respondemos en 4 horas.",
+    "sendTicket": "Enviar un ticket"
+  },
+  "cta": {
+    "title": "¿Aún necesitas ayuda?",
+    "descMobile": "El equipo de soporte responde en 4 h, 24/7.",
+    "descDesktop": "Nuestro equipo de soporte responde en 4 horas, a cualquier hora. Chat en vivo, ticket por correo o Discord \u2014 elige lo que sea más rápido para ti.",
+    "contactUs": "Contáctanos"
+  },
+  "suggest": {
+    "improvePage": "Ayúdanos a mejorar esta página",
+    "title": "Sugiere una pregunta",
+    "desc": "¿Falta algo? Dinos qué buscaste y lo añadiremos en una semana.",
+    "descSidebar": "¿Falta algo? Dinos qué buscaste y lo añadiremos al FAQ en una semana.",
+    "yourQuestion": "Tu pregunta",
+    "placeholder": "Tu pregunta",
+    "placeholderSidebar": "Tu pregunta (p. ej. \u201c¿Cómo creo un mundo privado?\u201d)",
+    "category": "Categoría",
+    "pickOne": "Categoría \u2014 elige una",
+    "submit": "Enviar sugerencia"
+  },
+  "article": {
+    "onThisPage": "En esta página",
+    "share": "Compartir este artículo",
+    "relatedQuestions": "Preguntas relacionadas",
+    "exampleIp": "IP de ejemplo",
+    "copy": "Copiar",
+    "tagTop": "Top",
+    "tagTopDesktop": "Pregunta destacada",
+    "views": "{count} vistas",
+    "helpfulPct": "{percent}% lo encontró útil",
+    "minRead": "{min} min de lectura",
+    "updatedFull": "Actualizado el {date}, 2026"
+  },
+  "related": {
+    "badgeMobile": "Relacionado",
+    "badgeDesktop": "Más de {category}",
+    "titleMobile": "Más preguntas",
+    "titleDesktop": "Preguntas relacionadas",
+    "allFaq": "Todo el FAQ",
+    "readMobile": "Leer",
+    "readDesktop": "Ver respuesta"
+  },
+  "feedback": {
+    "hintMobile": "Tu voto nos ayuda a mejorar.",
+    "hintDesktop": "Tu voto nos ayuda a priorizar qué respuestas ampliar y reescribir.",
+    "yesMobile": "Sí",
+    "yesDesktop": "Sí, útil",
+    "noMobile": "No mucho",
+    "noDesktop": "Podría mejorar",
+    "statsMobile": "{helpful} de {total} ({percent}%) lo encontró útil",
+    "statsDesktop": "{helpful} de {total} jugadores ({percent}%) lo encontró útil"
+  },
+  "contentCta": {
+    "primary": "Abrir chat en vivo",
+    "secondary": "Ver todo el FAQ"
+  },
+  "articles": {
+    "join": {
+      "question": "¿Cómo me uno al servidor por primera vez?",
+      "breadcrumb": "Cómo unirse",
+      "quickAnswer": "Regístrate \u2192 elige un servidor \u2192 copia la IP \u2192 pégala en Minecraft \u2192 Multijugador \u2192 Añadir servidor. Todo el proceso lleva unos 2 minutos si Minecraft ya está instalado.",
+      "excerpt": "Regístrate en el sitio web, elige un servidor, copia la IP desde tu panel y añádela en Minecraft Multijugador. La primera unión tarda unos dos minutos."
+    },
+    "supported-versions": {
+      "question": "¿Qué versiones de Minecraft son compatibles?",
+      "breadcrumb": "Versiones compatibles",
+      "quickAnswer": "Java 1.20.4 y la última versión de Bedrock. Las versiones anteriores no son compatibles debido a los plugins personalizados que usamos.",
+      "excerpt": "Admitimos Java 1.20.4 y la última versión de Bedrock. Los plugins personalizados requieren un cliente actualizado \u2014 las versiones antiguas no pueden conectarse."
+    },
+    "first-day-checklist": {
+      "question": "¿Qué debo hacer en mi primer día?",
+      "breadcrumb": "Lista del primer día",
+      "quickAnswer": "Establece un hogar, reclama terreno, abre /shop para las misiones diarias y únete a Discord. Esos cuatro pasos cubren el 90% de las dudas de los nuevos jugadores.",
+      "excerpt": "Establece un hogar con /sethome, reclama tu base, revisa /shop para las misiones diarias y únete a Discord para conocer a otros jugadores."
+    },
+    "dashboard-guide": {
+      "question": "¿Cómo uso el panel del jugador?",
+      "breadcrumb": "Guía del panel",
+      "quickAnswer": "El panel muestra las IPs de los servidores, el historial de compras, los brackets de torneos y la configuración de la cuenta \u2014 todo vinculado a un solo inicio de sesión.",
+      "excerpt": "Tu panel contiene las IPs de los servidores, el historial de la tienda, el estado de los torneos y la configuración del perfil. Inicia sesión una vez para gestionar todo."
+    },
+    "change-nickname": {
+      "question": "¿Puedo cambiar mi apodo en el juego?",
+      "breadcrumb": "Cambiar apodo",
+      "quickAnswer": "Sí \u2014 una vez cada 30 días desde Panel \u2192 Configuración. El cambio se aplica en el siguiente inicio de sesión en todos los servidores.",
+      "excerpt": "Puedes cambiar tu apodo visible una vez cada 30 días desde Panel \u2192 Configuración. Se actualiza en tu siguiente inicio de sesión."
+    },
+    "reset-password": {
+      "question": "Olvidé mi contraseña \u2014 ¿cómo la restablezco?",
+      "breadcrumb": "Restablecer contraseña",
+      "quickAnswer": "Usa Olvidé mi contraseña en la página de inicio de sesión. Te enviamos un enlace de un solo uso válido durante 30 minutos.",
+      "excerpt": "Haz clic en Olvidé mi contraseña en la página de inicio de sesión. Te enviamos un enlace de restablecimiento de un solo uso a tu correo \u2014 válido durante 30 minutos."
+    },
+    "link-microsoft": {
+      "question": "¿Cómo vinculo mi cuenta de Microsoft / Mojang?",
+      "breadcrumb": "Vincular Microsoft",
+      "quickAnswer": "Panel \u2192 Configuración \u2192 Cuentas vinculadas \u2192 Conectar Microsoft. Después de vincular, podrás iniciar sesión tanto en Java como en Bedrock.",
+      "excerpt": "Abre Panel \u2192 Configuración \u2192 Cuentas vinculadas y conecta Microsoft. Un solo enlace cubre el inicio de sesión en Java y Bedrock."
+    },
+    "two-factor-auth": {
+      "question": "¿Admiten la autenticación en dos pasos?",
+      "breadcrumb": "Autenticación en dos pasos",
+      "quickAnswer": "Sí \u2014 activa TOTP desde Panel \u2192 Seguridad. Es obligatorio para compras grandes en la tienda cuando tu cuenta supera los $50 acumulados.",
+      "excerpt": "Activa la autenticación en dos pasos desde Panel \u2192 Seguridad. La exigimos en compras de alto valor en cuentas activas."
+    },
+    "delete-account": {
+      "question": "¿Cómo elimino mi cuenta?",
+      "breadcrumb": "Eliminar cuenta",
+      "quickAnswer": "Panel \u2192 Configuración \u2192 Eliminar cuenta. El progreso se elimina tras un período de gracia de 14 días; las compras no se reembolsan automáticamente.",
+      "excerpt": "Solicita la eliminación desde Panel \u2192 Configuración. Hay un período de gracia de 14 días antes de que el progreso se elimine de forma permanente."
+    },
+    "payment-methods": {
+      "question": "¿Qué métodos de pago aceptan?",
+      "breadcrumb": "Métodos de pago",
+      "quickAnswer": "Visa, Mastercard, PayPal, Apple Pay y Google Pay en las regiones admitidas. No se acepta criptomoneda.",
+      "excerpt": "Aceptamos Visa, Mastercard, PayPal, Apple Pay y Google Pay donde estén disponibles. Todo el proceso de pago se realiza a través de nuestro procesador seguro."
+    },
+    "donations-privileges": {
+      "question": "¿Cómo funcionan las donaciones y los privilegios?",
+      "breadcrumb": "Donaciones y privilegios",
+      "quickAnswer": "Los privilegios son ventajas cosméticas y de comodidad \u2014 nunca de pago para ganar. Se activan al instante tras el pago y se sincronizan en todos los servidores.",
+      "excerpt": "Las compras en la tienda otorgan rangos y cosméticos que se sincronizan en todos los servidores. Los privilegios son ventajas de comodidad, no de combate."
+    },
+    "refund-policy": {
+      "question": "¿Puedo pedir reembolso de una compra o privilegio?",
+      "breadcrumb": "Política de reembolsos",
+      "quickAnswer": "Reembolsos dentro de las 48 horas si el privilegio no fue usado en el juego. Abre un ticket con tu ID de pedido desde Panel \u2192 Historial.",
+      "excerpt": "Los privilegios no utilizados pueden reembolsarse dentro de las 48 horas. Abre un ticket de soporte con tu ID de pedido desde Panel \u2192 Historial."
+    },
+    "payment-failed": {
+      "question": "Mi pago falló \u2014 ¿qué debo hacer?",
+      "breadcrumb": "Pago fallido",
+      "quickAnswer": "Revisa si tu banco ha bloqueado el pago, prueba otro método o espera 15 minutos y vuelve a intentarlo. Los dobles cobros se revierten automáticamente en una hora.",
+      "excerpt": "Verifica que tu banco permite compras de juegos, prueba otro método de pago o espera quince minutos antes de reintentar."
+    },
+    "server-differences": {
+      "question": "¿Cuál es la diferencia entre LuckySurvival, MineWars y CalmSky?",
+      "breadcrumb": "Diferencias entre servidores",
+      "quickAnswer": "LuckySurvival \u2014 PvP equilibrado, TNT desactivado. MineWars \u2014 PvP clasificado, TNT activado. CalmSky \u2014 construcción tranquila, sin PvP.",
+      "excerpt": "LuckySurvival es supervivencia equilibrada, MineWars es PvP competitivo con TNT y CalmSky es un servidor de construcción pacífica."
+    },
+    "switch-servers": {
+      "question": "¿Puedo cambiar de servidor con una sola cuenta?",
+      "breadcrumb": "Cambiar de servidor",
+      "quickAnswer": "Sí \u2014 una cuenta, inventarios separados por servidor. Copia la nueva IP desde Panel \u2192 Servidores y añádela en Minecraft.",
+      "excerpt": "Una cuenta funciona en todos los servidores. Cada mundo tiene su propio inventario \u2014 copia la nueva IP desde el panel al cambiar."
+    },
+    "world-resets": {
+      "question": "¿Se reinician los mundos? ¿Con qué frecuencia?",
+      "breadcrumb": "Reinicios de mundos",
+      "quickAnswer": "Los mundos principales no se reinician con un calendario fijo. Los mundos de eventos de temporada se reinician tras cada temporada de torneos \u2014 generalmente cada tres meses.",
+      "excerpt": "Los mundos de supervivencia principales persisten indefinidamente. Los mapas de eventos de temporada se reinician tras cada temporada de torneos, aproximadamente cada tres meses."
+    },
+    "download-world": {
+      "question": "¿Puedo descargar mi mundo o construcciones?",
+      "breadcrumb": "Descargar mundo",
+      "quickAnswer": "Los propietarios de reclamaciones pueden solicitar una exportación de esquema de su área reclamada una vez por temporada desde Panel \u2192 Servidores \u2192 Exportar.",
+      "excerpt": "Si eres propietario de una reclamación, solicita una exportación de esquema una vez por temporada desde Panel \u2192 Servidores \u2192 Exportar."
+    },
+    "server-status": {
+      "question": "¿Cómo compruebo si un servidor está en línea?",
+      "breadcrumb": "Estado del servidor",
+      "quickAnswer": "Panel \u2192 Servidores muestra el estado en tiempo real. Punto verde = en línea. También puedes suscribirte a alertas de estado por correo.",
+      "excerpt": "Abre Panel \u2192 Servidores para ver los indicadores de estado en tiempo real o activa las alertas por correo cuando un servidor se desconecte por mantenimiento."
+    },
+    "rank-benefits": {
+      "question": "¿Qué beneficios incluyen los rangos VIP?",
+      "breadcrumb": "Beneficios VIP",
+      "quickAnswer": "Hogares adicionales, cosméticos de chat, prioridad de cola y rastros de partículas. Sin ventajas de combate ni de economía en ningún servidor.",
+      "excerpt": "Los rangos VIP añaden hogares, estilo de chat, prioridad de cola y cosméticos. Nunca otorgan ventajas de combate ni económicas."
+    },
+    "rank-duration": {
+      "question": "¿Cuánto tiempo duran los rangos comprados?",
+      "breadcrumb": "Duración del rango",
+      "quickAnswer": "La mayoría de los rangos duran 30 o 90 días. Existen niveles vitalicios para los mecenas. Las fechas de vencimiento aparecen en Panel \u2192 Historial.",
+      "excerpt": "Los rangos estándar duran 30 o 90 días. Los niveles vitalicios están disponibles en la tienda \u2014 las fechas de vencimiento aparecen en tu historial de compras."
+    },
+    "gift-rank": {
+      "question": "¿Puedo regalar un rango a otro jugador?",
+      "breadcrumb": "Regalar un rango",
+      "quickAnswer": "Sí \u2014 elige Regalar al pagar e introduce el nombre de usuario del destinatario. Recibirá una notificación en el juego cuando se active.",
+      "excerpt": "Selecciona Regalar al pagar e introduce el nombre de usuario del destinatario. Recibe una notificación en el juego cuando se active el rango."
+    },
+    "claims-protection": {
+      "question": "¿Cómo funcionan las reclamaciones y la protección contra griefing?",
+      "breadcrumb": "Reclamaciones y protección",
+      "quickAnswer": "Usa una pala de oro para reclamar terreno. Los bloques dentro de tu reclamación no pueden ser rotos por otros jugadores a menos que los autorices.",
+      "excerpt": "Reclama terreno con una pala de oro. Otros jugadores no pueden romper bloques dentro de tu reclamación a menos que los autorices explícitamente."
+    },
+    "economy-basics": {
+      "question": "¿Cómo funciona la economía del juego?",
+      "breadcrumb": "Bases de la economía",
+      "quickAnswer": "Gana monedas con misiones, comercio y eventos. Gástalas en /shop y mercados de jugadores. Los impuestos solo aplican a grandes ventas en tiendas de cofres.",
+      "excerpt": "Gana monedas mediante misiones, comercio y eventos. Gástalas en /shop o en mercados de jugadores \u2014 los intercambios pequeños no tienen impuesto."
+    },
+    "tournaments": {
+      "question": "¿Cómo funcionan los torneos semanales?",
+      "breadcrumb": "Torneos",
+      "quickAnswer": "Los brackets abren el viernes a las 18:00 UTC y cierran el domingo a las 23:59 UTC. Inscríbete desde Panel \u2192 Torneos o con /tournament en el juego.",
+      "excerpt": "Los brackets semanales van del viernes al domingo UTC. Regístrate desde Panel \u2192 Torneos o escribe /tournament en el juego."
+    },
+    "report-player": {
+      "question": "¿Cómo reporto a otro jugador?",
+      "breadcrumb": "Reportar a un jugador",
+      "quickAnswer": "Escribe /report <usuario> <motivo> en el juego o abre un ticket con capturas de pantalla. Los reportes se revisan en 24 horas.",
+      "excerpt": "Usa /report en el juego o abre un ticket de soporte con capturas de pantalla. Los moderadores revisan los reportes en veinticuatro horas."
+    },
+    "connection-lost": {
+      "question": "¿Por qué me aparece el error «conexión perdida»?",
+      "breadcrumb": "Conexión perdida",
+      "quickAnswer": "Normalmente es un firewall, VPN o incompatibilidad de versión. Permite el puerto 25565, desactiva la VPN y confirma que usas Java 1.20.4 o la última versión de Bedrock.",
+      "excerpt": "Los errores de conexión perdida suelen deberse a un firewall, VPN o incompatibilidad de versión. Permite el puerto 25565 y actualiza tu cliente."
+    },
+    "resource-pack-issues": {
+      "question": "El paquete de recursos no se descarga \u2014 ¿qué hago?",
+      "breadcrumb": "Problemas con el paquete de recursos",
+      "quickAnswer": "Reinicia Minecraft, vuelve a unirte y espera en la pantalla de carga. Si se queda en 0%, escribe /resourcepack reload después de aparecer.",
+      "excerpt": "Reinicia Minecraft y vuelve a unirte. Si el paquete se queda en cero por ciento, escribe /resourcepack reload después de aparecer en el mundo."
+    },
+    "lag-performance": {
+      "question": "¿Cómo soluciono el lag o los FPS bajos en el servidor?",
+      "breadcrumb": "Lag y rendimiento",
+      "quickAnswer": "Reduce la distancia de renderizado a 12 chunks, desactiva shaders pesados y cierra aplicaciones en segundo plano. Las caídas de TPS del servidor se publican en Discord.",
+      "excerpt": "Reduce la distancia de renderizado, desactiva shaders pesados y cierra aplicaciones en segundo plano. Revisa Discord para ver eventos de lag conocidos del servidor."
+    },
+    "server-rules": {
+      "question": "¿Cuáles son las reglas principales del servidor?",
+      "breadcrumb": "Reglas del servidor",
+      "quickAnswer": "Prohibido hacer trampa, acosar o comerciar con dinero real. Respeta las reclamaciones, sigue las pautas del chat y obedece las instrucciones del personal.",
+      "excerpt": "Prohibido hacer trampa, acosar o comerciar con dinero real. Respeta las reclamaciones, mantén el chat en orden y sigue las indicaciones del personal."
+    },
+    "ban-appeal": {
+      "question": "¿Cómo apelo un baneo o un silencio?",
+      "breadcrumb": "Apelar un baneo",
+      "quickAnswer": "Abre Panel \u2192 Soporte \u2192 Apelación con tu ID de caso. Las apelaciones se revisan en 72 horas \u2014 solo se permite una apelación por sanción.",
+      "excerpt": "Envía una apelación desde Panel \u2192 Soporte con tu ID de caso. Cada sanción permite una apelación, revisada en 72 horas."
+    }
+  },
+  "join": {
+    "lead": {
+      "mobile": "Unirse a un servidor de Minecraft Ecosystem tarda unos dos minutos una vez que tienes Minecraft instalado. Esta guía explica cada paso.",
+      "desktop": "Unirse a un servidor de Minecraft Ecosystem tarda unos dos minutos una vez que tienes Minecraft instalado. Esta guía explica cada paso, desde el registro hasta tu primera conexión \u2014 más qué hacer si algo no funciona."
+    },
+    "beforeTitle": "Antes de empezar",
+    "beforeLead": {
+      "mobile": "Asegúrate de tener esto listo antes de comenzar.",
+      "desktop": "Asegúrate de tener lo siguiente listo antes de comenzar. Si falta algo, los enlaces a continuación te llevan al lugar correcto."
+    },
+    "beforeBulletsMobile": [
+      "Una copia legal de Minecraft (Java 1.20.4 o la última versión de Bedrock).",
+      "Una dirección de correo válida a la que puedas acceder ahora.",
+      "Un apodo para que otros jugadores te vean.",
+      "Conexión a internet estable."
+    ],
+    "beforeBulletsDesktop": [
+      "Una copia legal de Minecraft (Java 1.20.4 o la última versión de Bedrock).",
+      "Una dirección de correo válida a la que puedas acceder ahora mismo (para la verificación).",
+      "Un apodo que quieras que otros jugadores vean \u2014 puede ser diferente a tu nombre de usuario de Microsoft.",
+      "Una conexión a internet estable (cualquier banda ancha moderna funciona)."
+    ],
+    "beforeCallout": {
+      "title": "Ten en cuenta",
+      "mobile": "Tanto Java como Bedrock funcionan. Java tiene algunos cosméticos adicionales, pero todas las funciones principales están disponibles en ambos.",
+      "desktop": "Las ediciones Java y Bedrock funcionan en nuestros servidores. Java admite algunos plugins cosméticos adicionales, pero todas las funciones principales \u2014 economía, reclamaciones, torneos \u2014 funcionan igual en ambas."
+    },
+    "createTitle": "1. Crea una cuenta",
+    "createLead": {
+      "mobile": "Regístrate con correo y contraseña. Unos 30 segundos en total.",
+      "desktop": "Regístrate en nuestro sitio web con correo y contraseña. Todo el paso tarda unos 30 segundos. Tu progreso en el juego, compras y lista de amigos están vinculados a esta cuenta."
+    },
+    "createStepsMobile": [
+      "Abre Registrarse, introduce correo + contraseña.",
+      "Haz clic en «Crear cuenta» \u2014 te enviamos un enlace de verificación.",
+      "Abre el correo y haz clic en el enlace.",
+      "Establece un apodo en el juego."
+    ],
+    "createStepsDesktop": [
+      "Abre la página Registrarse e introduce tu correo + contraseña.",
+      "Haz clic en «Crear cuenta». Te enviaremos un enlace de verificación.",
+      "Abre el correo (revisa la carpeta de spam si no llega en 2 minutos) y haz clic en el enlace.",
+      "Llegarás al panel. Elige un apodo en el juego cuando se te solicite."
+    ],
+    "createCaption": "Leyenda: El formulario de registro \u2014 campos mínimos, validación sencilla.",
+    "chooseTitle": "2. Elige tu servidor",
+    "chooseLead": {
+      "mobile": "Tres servidores, cada uno pensado para un estilo de juego diferente. Cambia cuando quieras.",
+      "desktop": "Ofrecemos tres servidores en paralelo, cada uno pensado para un estilo de juego diferente. Elige el que mejor se adapte a tu forma de jugar \u2014 siempre puedes cambiar después."
+    },
+    "chooseBulletsMobile": [
+      "LuckySurvival \u2014 PvP equilibrado, economía balanceada, TNT desactivado.",
+      "MineWars \u2014 PvP competitivo, TNT activado, torneos.",
+      "CalmSky \u2014 construcción tranquila, sin PvP ni TNT."
+    ],
+    "chooseBulletsDesktop": [
+      "LuckySurvival \u2014 supervivencia vainilla con PvP equilibrado, economía balanceada y TNT desactivado.",
+      "MineWars \u2014 supervivencia vainilla con PvP y TNT activados, partidas clasificadas y torneos.",
+      "CalmSky \u2014 servidor vainilla pacífico sin PvP ni TNT, centrado en la construcción y la comunidad."
+    ],
+    "chooseCallout": {
+      "title": "Consejo",
+      "mobile": "Los nuevos jugadores llegan a LuckySurvival por defecto. Empieza ahí si no estás seguro.",
+      "desktop": "Los nuevos jugadores llegan a LuckySurvival por defecto. Si no estás seguro, empieza ahí \u2014 es el lugar más seguro para aprender los conceptos básicos."
+    },
+    "addTitleMobile": "3. Añade el servidor",
+    "addTitleDesktop": "3. Añade el servidor en Minecraft",
+    "addLead": {
+      "mobile": "Copia la IP desde tu panel y añádela como servidor multijugador en Minecraft.",
+      "desktop": "Cada servidor tiene una dirección IP única. Cópiala desde la tarjeta del servidor en tu panel y añádela como servidor multijugador en Minecraft."
+    },
+    "addStepsMobile": [
+      "Haz clic en «Copiar IP» en la tarjeta del servidor.",
+      "Minecraft \u2192 Multijugador.",
+      "Haz clic en «Añadir servidor».",
+      "Pega la IP. Añade cualquier nombre.",
+      "Haz clic en «Listo»."
+    ],
+    "addStepsDesktop": [
+      "En la página de Servidores, haz clic en el botón «Copiar IP» de la tarjeta del servidor que elegiste.",
+      "Abre Minecraft y elige «Multijugador» en el menú principal.",
+      "Haz clic en «Añadir servidor» en la parte inferior de la pantalla.",
+      "Pega la IP en el campo «Dirección del servidor». Añade el nombre que quieras.",
+      "Haz clic en «Listo». El servidor aparecerá en tu lista."
+    ],
+    "connectTitle": "4. Conéctate por primera vez",
+    "connectLead": {
+      "mobile": "La primera conexión descarga un paquete de recursos de ~80\u00a0MB (20\u201340\u00a0seg). Después, la unión es instantánea.",
+      "desktop": "Estás a un clic. La primera conexión descarga nuestro paquete de recursos \u2014 unos 80\u00a0MB \u2014 lo que tarda 20\u201340 segundos con una conexión normal. Después, la unión es instantánea."
+    },
+    "connectStepsMobile": [
+      "Haz clic en la tarjeta del servidor.",
+      "Espera a «Descargando paquete de recursos del servidor».",
+      "Llega al lobby de spawn.",
+      "Escribe /tutorial para ver los consejos del juego."
+    ],
+    "connectStepsDesktop": [
+      "Haz clic en la tarjeta del servidor en tu lista de multijugador de Minecraft.",
+      "Espera a «Descargando paquete de recursos del servidor» \u2014 aparece una sola vez.",
+      "Llegarás al lobby de spawn. Pulsa / para los comandos del chat.",
+      "Escribe /tutorial para ver los consejos del juego, o simplemente empieza a explorar."
+    ],
+    "connectCallout": {
+      "mobile": "El paquete se descarga dentro de Minecraft y se elimina automáticamente al salir.",
+      "desktop": "No necesitas instalar nada manualmente. El paquete se descarga dentro de Minecraft y se elimina automáticamente cuando te desconectas de nuestro servidor."
+    },
+    "connectSuccessMobile": "Instalación automática",
+    "connectSuccessDesktop": "El paquete de recursos es automático",
+    "connectCaption": "Leyenda: El lobby de spawn \u2014 elige tu kit inicial o abre el menú del juego.",
+    "troubleTitle": "Solución de problemas",
+    "troubleLead": {
+      "mobile": "La mayoría de los problemas tienen una solución de 30 segundos.",
+      "desktop": "La mayoría de los problemas entran en una de cuatro categorías. Cada punto a continuación tiene una solución de 30 segundos."
+    },
+    "troubleMobileItems": [
+      { "title": "«Servidor / cliente desactualizado»", "text": "Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock." },
+      { "title": "«Conexión perdida»", "text": "Revisa el firewall y desactiva las VPN que bloqueen el puerto 25565." },
+      { "title": "Paquete de recursos bloqueado", "text": "Reinicia Minecraft. Si sigue bloqueado \u2014 /resourcepack reload después de aparecer." },
+      { "title": "Servidor no visible", "text": "Verifica la IP \u2014 sin espacios al inicio ni al final." }
+    ],
+    "troubleDesktopItems": [
+      { "title": "«Servidor desactualizado» o «Cliente desactualizado»", "text": "Tu versión de Minecraft no coincide con la del servidor. Actualiza Minecraft a 1.20.4 (Java) o la última versión de Bedrock y vuelve a conectarte." },
+      { "title": "«Conexión perdida» justo al unirse", "text": "Revisa tu firewall \u2014 Minecraft usa el puerto 25565 (Java) por defecto. Desactiva las VPN que bloqueen el tráfico de juegos y vuelve a intentarlo." },
+      { "title": "Paquete de recursos bloqueado en 0%", "text": "Cancela la conexión, reinicia Minecraft y vuelve a unirte. Si sigue bloqueado, escribe /resourcepack reload en el chat después de aparecer." },
+      { "title": "Servidor no visible en la lista", "text": "Asegúrate de haber pegado la IP exactamente \u2014 sin espacios al inicio ni al final. La dirección no distingue mayúsculas de minúsculas." }
+    ],
+    "nextTitle": "¿Qué sigue?",
+    "nextLead": {
+      "mobile": "Tres cosas que hacer en tus primeros 10 minutos.",
+      "desktop": "Ahora que estás dentro, estas son las tres cosas que todo nuevo jugador debería hacer en los primeros 10 minutos."
+    },
+    "nextBulletsMobile": [
+      "Ejecuta /sethome \u2014 3 hogares gratuitos para teletransportarte.",
+      "/shop para ver las misiones diarias.",
+      "Únete al Discord de la comunidad."
+    ],
+    "nextBulletsDesktop": [
+      "Ejecuta /sethome en tu primera base \u2014 tienes 3 hogares gratuitos para teletransportarte.",
+      "Abre la tienda del juego con /shop y revisa las misiones diarias.",
+      "Únete al Discord de la comunidad \u2014 la mayoría de constructores, comerciantes y jugadores de PvP están allí."
+    ],
+    "feedbackHintMobile": "Tu voto nos ayuda a mejorar.",
+    "feedbackHintDesktop": "Tu voto nos ayuda a priorizar qué respuestas ampliar y reescribir.",
+    "feedbackYesMobile": "Sí",
+    "feedbackYesDesktop": "Sí, útil",
+    "feedbackNoMobile": "No mucho",
+    "feedbackNoDesktop": "Podría mejorar",
+    "feedbackStatsMobile": "243 de 258 (94%) lo encontraron útil",
+    "feedbackStatsDesktop": "243 de 258 jugadores (94%) lo encontraron útil",
+    "ctaPrimary": "Unirse a Twitch",
+    "ctaSecondary": "Ver todo el FAQ"
+  },
+  "content": {
+    "supported-versions": {
+      "lead": {
+        "mobile": "Usamos plugins personalizados que requieren un cliente de Minecraft actualizado. Esto es lo que funciona hoy.",
+        "desktop": "Usamos plugins personalizados, anti-trampa y sistemas de economía que requieren un cliente de Minecraft actualizado. Esto es exactamente lo que funciona hoy \u2014 y lo que no."
+      },
+      "s1": {
+        "title": "Clientes compatibles",
+        "leadMobile": "Estas versiones se conectan sin advertencias de compatibilidad.",
+        "leadDesktop": "Estas versiones de cliente se conectan sin advertencias de compatibilidad y reciben el conjunto completo de funciones, incluidos torneos y la tienda del juego.",
+        "bullets": [
+          "Java Edition 1.20.4 \u2014 recomendado para jugadores de PC.",
+          "Última versión de Bedrock en Windows, iOS, Android y consola.",
+          "Nuestro lanzador selecciona automáticamente el perfil correcto tras iniciar sesión."
+        ]
+      },
+      "s2": {
+        "title": "Versiones no compatibles",
+        "leadMobile": "Los clientes más antiguos no pueden unirse porque las APIs de plugins difieren entre versiones principales.",
+        "leadDesktop": "Los clientes más antiguos no pueden unirse porque nuestras APIs de plugins difieren entre versiones principales. Al intentar conectarse aparece un mensaje de cliente o servidor desactualizado.",
+        "bullets": [
+          "Versiones de Java anteriores a 1.20.4.",
+          "Ediciones de consola heredadas sin cross-play de Bedrock.",
+          "Clientes crackeados o modificados detectados por el anti-trampa."
+        ],
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Actualiza Minecraft antes de copiar una IP de servidor \u2014 te ahorra una pantalla de error confusa.",
+        "calloutDesktop": "Actualiza Minecraft al último parche antes de copiar una IP de servidor. Te ahorra una pantalla de error confusa y evita tickets de soporte que respondemos cada hora."
+      },
+      "s3": {
+        "title": "Comprueba tu versión",
+        "leadMobile": "Java: la versión aparece en la parte inferior izquierda del menú principal. Bedrock: Configuración \u2192 Acerca de.",
+        "leadDesktop": "Java Edition muestra la versión en la parte inferior izquierda del menú principal. Bedrock la lista bajo Configuración \u2192 Acerca de. Compárala con la lista de versiones compatibles.",
+        "steps": [
+          "Abre Minecraft y anota tu número de versión.",
+          "Compáralo con Java 1.20.4 o la última versión de Bedrock.",
+          "Actualiza mediante el lanzador oficial si es necesario.",
+          "Vuelve a conectarte al servidor desde la IP de tu panel."
+        ]
+      }
+    },
+    "first-day-checklist": {
+      "lead": {
+        "mobile": "Tu primera sesión marca el ritmo de todo lo que viene después. Estos cuatro pasos cubren lo que más se pasan los nuevos jugadores.",
+        "desktop": "Tu primera sesión marca el ritmo de todo lo que viene después. Estos cuatro pasos cubren lo que más se pasan los nuevos jugadores antes de preguntar en el chat \u2014 hogares, reclamaciones, misiones y comunidad."
+      },
+      "s1": {
+        "title": "Establece una base",
+        "leadMobile": "Ejecuta /sethome donde quieras volver. Empiezas con tres ranuras de hogar gratuitas.",
+        "leadDesktop": "Ejecuta /sethome donde quieras volver después de minar o morir. Cada cuenta empieza con tres ranuras de hogar gratuitas en todos los servidores de supervivencia.",
+        "steps": [
+          "Construye o encuentra un lugar seguro sobre el suelo.",
+          "Párate en el centro y escribe /sethome base.",
+          "Prueba con /home base antes de explorar lejos."
+        ]
+      },
+      "s2": {
+        "title": "Reclama tu terreno",
+        "leadMobile": "Una pala de oro define tu área protegida. Otros jugadores no pueden hacer griefing dentro de ella.",
+        "leadDesktop": "Fabrica o compra una pala de oro para definir tu área protegida. Otros jugadores no pueden romper bloques dentro a menos que uses /trust explícitamente.",
+        "bullets": [
+          "Haz clic derecho en dos esquinas opuestas con la pala de oro.",
+          "Las reclamaciones muestran bordes de partículas solo para ti.",
+          "Amplía después con /claim expand cuando tengas bloques de reclamación."
+        ]
+      },
+      "s3": {
+        "title": "Abre la tienda y las misiones",
+        "leadMobile": "/shop muestra misiones diarias que pagan monedas por tareas sencillas \u2014 minar piedra, pescar, entregar objetos.",
+        "leadDesktop": "/shop muestra misiones diarias que pagan monedas por tareas sencillas como minar piedra, pescar o entregar objetos a los NPC en el spawn.",
+        "bullets": [
+          "Las misiones diarias se reinician a las 00:00 UTC.",
+          "Las monedas se gastan en mercados de jugadores y en la tienda oficial.",
+          "El progreso de las misiones se sincroniza si cambias de servidor el mismo día."
+        ]
+      }
+    },
+    "dashboard-guide": {
+      "lead": {
+        "mobile": "El panel es tu centro de control fuera de Minecraft \u2014 servidores, compras, torneos y configuración.",
+        "desktop": "El panel es tu centro de control fuera de Minecraft. Todo lo vinculado a tu cuenta está aquí: IPs de servidores, compras, brackets de torneos y configuración del perfil."
+      },
+      "s1": {
+        "title": "Página de servidores",
+        "leadMobile": "Copia IPs, consulta el estado en tiempo real y accede a guías específicas de cada servidor.",
+        "leadDesktop": "La página de Servidores lista todos los mundos a los que puedes unirte con copia de IP con un clic, indicadores de estado en tiempo real y enlaces a guías específicas.",
+        "bullets": [
+          "Punto verde = servidor en línea y aceptando jugadores.",
+          "Copiar IP añade la dirección a tu portapapeles.",
+          "La marca de último acceso te ayuda a retomar donde lo dejaste."
+        ]
+      },
+      "s2": {
+        "title": "Tienda e historial",
+        "leadMobile": "Compra rangos y cosméticos. El historial guarda recibos y fechas de vencimiento.",
+        "leadDesktop": "Compra rangos y cosméticos desde la tienda integrada. El historial guarda recibos, fechas de vencimiento y ventanas de elegibilidad de reembolso.",
+        "bullets": [
+          "Los privilegios se activan en segundos tras el pago.",
+          "El proceso de regalo permite enviar rangos a amigos.",
+          "Descarga facturas desde cualquier fila del pedido."
+        ]
+      },
+      "s3": {
+        "title": "Torneos y configuración",
+        "leadMobile": "Inscríbete en brackets y gestiona apodo, seguridad y cuentas vinculadas.",
+        "leadDesktop": "Inscríbete en brackets activos, consulta la clasificación y gestiona cambios de apodo, autenticación en dos pasos y cuentas de Microsoft vinculadas.",
+        "steps": [
+          "Abre Torneos durante una ventana de temporada activa.",
+          "Haz clic en Inscribirse en el bracket para el que clasificas.",
+          "Ajusta la configuración del perfil en Configuración \u2192 Perfil."
+        ]
+      }
+    },
+    "change-nickname": {
+      "lead": {
+        "mobile": "Tu apodo es lo que otros jugadores ven en el chat, la lista de jugadores y los clasificadores.",
+        "desktop": "Tu apodo es lo que otros jugadores ven en el chat, la lista de jugadores y los clasificadores. Puede ser diferente a tu gamertag de Microsoft o al nombre de usuario de tu correo."
+      },
+      "s1": {
+        "title": "Cambia tu apodo",
+        "leadMobile": "Panel \u2192 Configuración \u2192 Perfil \u2192 Editar apodo.",
+        "leadDesktop": "Ve a Panel \u2192 Configuración \u2192 Perfil y haz clic en Editar apodo. Confirma con tu contraseña si tienes la autenticación en dos pasos activada.",
+        "steps": [
+          "Abre Configuración \u2192 Perfil en el panel.",
+          "Haz clic en Editar apodo e introduce el nuevo nombre.",
+          "Guarda \u2014 el cambio se aplica en tu siguiente inicio de sesión."
+        ]
+      },
+      "s2": {
+        "title": "Reglas de nomenclatura",
+        "leadMobile": "Los nombres deben tener entre 3 y 16 caracteres, alfanuméricos y guiones bajos.",
+        "leadDesktop": "Los nombres deben tener entre 3 y 16 caracteres, alfanuméricos y guiones bajos, y no pueden suplantar al personal ni contener insultos filtrados por nuestro sistema de chat.",
+        "bullets": [
+          "Los nombres ofensivos se rechazan automáticamente.",
+          "Los nombres del personal y los prefijos de rango están reservados.",
+          "No puedes tomar un nombre ya vinculado a otra cuenta."
+        ]
+      },
+      "s3": {
+        "title": "Período de espera",
+        "leadMobile": "Los cambios de apodo están limitados a una vez cada 30 días por cuenta.",
+        "leadDesktop": "Los cambios de apodo están limitados a una vez cada 30 días por cuenta para evitar confusiones en intercambios y registros de torneos.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "Las temporadas de torneos bloquean los apodos 24 horas antes de las finales.",
+        "calloutDesktop": "Las temporadas de torneos activas bloquean los cambios de apodo 24 horas antes de las finales \u2014 planifica los cambios fuera de esa ventana."
+      }
+    },
+    "reset-password": {
+      "lead": {
+        "mobile": "El restablecimiento de contraseña se hace por correo y caduca rápidamente por seguridad.",
+        "desktop": "El restablecimiento de contraseña se hace por correo, caduca rápidamente por seguridad y nunca te pediremos que compartas la nueva contraseña con el personal."
+      },
+      "s1": {
+        "title": "Solicita un enlace de restablecimiento",
+        "leadMobile": "Usa Olvidé mi contraseña en la página de inicio de sesión.",
+        "leadDesktop": "En la página de inicio de sesión, haz clic en Olvidé mi contraseña e introduce el correo vinculado a tu cuenta.",
+        "steps": [
+          "Abre la página de inicio de sesión y haz clic en Olvidé mi contraseña.",
+          "Introduce el correo de tu cuenta y envíalo.",
+          "Revisa la bandeja de entrada y el spam para encontrar el correo de restablecimiento.",
+          "Haz clic en el enlace dentro de los 30 minutos."
+        ]
+      },
+      "s2": {
+        "title": "Elige una nueva contraseña",
+        "leadMobile": "Elige al menos 10 caracteres con mayúsculas, minúsculas y números.",
+        "leadDesktop": "Elige al menos 10 caracteres con mayúsculas, minúsculas, números y un símbolo. Se desaconseja reutilizar la contraseña de Minecraft o del correo.",
+        "bullets": [
+          "Confirma la contraseña dos veces en el formulario de restablecimiento.",
+          "Iniciarás sesión en todos los dispositivos con la nueva contraseña.",
+          "Activa la autenticación en dos pasos después si está disponible."
+        ]
+      },
+      "s3": {
+        "title": "¿Aún sin acceso?",
+        "leadMobile": "Si el correo no llega, abre un ticket con tu nombre de usuario y la fecha de registro.",
+        "leadDesktop": "Si el correo no llega después de cinco minutos, abre un ticket de soporte con tu nombre de usuario y la fecha aproximada de registro para la verificación manual.",
+        "calloutTitle": "Nota de seguridad",
+        "calloutMobile": "El personal nunca te pedirá tu contraseña en el chat o en Discord.",
+        "calloutDesktop": "El personal y los moderadores nunca te pedirán tu contraseña en el chat, Discord o por correo. Reporta a los suplantadores de inmediato."
+      }
+    },
+    "link-microsoft": {
+      "lead": {
+        "mobile": "Vincular Microsoft une tu identidad del lanzador con tu cuenta del sitio web.",
+        "desktop": "Vincular Microsoft une tu identidad del lanzador con tu cuenta del sitio web para que las compras, los baneos y el progreso estén en un solo perfil."
+      },
+      "s1": {
+        "title": "Inicia el proceso de vinculación",
+        "leadMobile": "Panel \u2192 Configuración \u2192 Cuentas vinculadas \u2192 Conectar Microsoft.",
+        "leadDesktop": "Desde Panel \u2192 Configuración \u2192 Cuentas vinculadas, haz clic en Conectar Microsoft e inicia sesión con la cuenta que usas en Minecraft.",
+        "steps": [
+          "Abre Cuentas vinculadas en la configuración del panel.",
+          "Haz clic en Conectar Microsoft.",
+          "Inicia sesión en la ventana emergente de Microsoft.",
+          "Confirma el banner de éxito en el panel."
+        ]
+      },
+      "s2": {
+        "title": "Después de vincular",
+        "leadMobile": "Tu rango, monedas e historial de torneos siguen al perfil vinculado.",
+        "leadDesktop": "Tu rango, saldo de monedas e historial de torneos siguen al perfil vinculado en sesiones de Java y Bedrock.",
+        "bullets": [
+          "Desvincular requiere un ticket de soporte si necesitas cambiar de cuenta.",
+          "Solo se puede vincular una cuenta de Microsoft a la vez.",
+          "Bedrock y Java comparten la misma entrada de vinculación."
+        ]
+      },
+      "s3": {
+        "title": "Solución de problemas",
+        "leadMobile": "Si la ventana emergente se cierra instantáneamente, desactiva los bloqueadores de anuncios y permite ventanas emergentes en nuestro dominio.",
+        "leadDesktop": "Si la ventana emergente de Microsoft se cierra instantáneamente, desactiva los bloqueadores de anuncios, permite ventanas emergentes en nuestro dominio y prueba en una ventana de incógnito.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Usa el mismo inicio de sesión de Microsoft que seleccionas en el lanzador de Minecraft.",
+        "calloutDesktop": "Usa exactamente el mismo inicio de sesión de Microsoft que seleccionas en el lanzador de Minecraft \u2014 las cuentas que no coinciden son el principal fallo de vinculación que vemos."
+      }
+    },
+    "two-factor-auth": {
+      "lead": {
+        "mobile": "La autenticación en dos pasos añade un código de seis dígitos de una aplicación de autenticación al iniciar sesión.",
+        "desktop": "La autenticación en dos pasos añade un código TOTP de seis dígitos de una aplicación de autenticación cada vez que inicias sesión o confirmas acciones sensibles en la tienda."
+      },
+      "s1": {
+        "title": "Activa el 2FA",
+        "leadMobile": "Panel \u2192 Seguridad \u2192 Activar autenticación en dos pasos.",
+        "leadDesktop": "Abre Panel \u2192 Seguridad, haz clic en Activar autenticación en dos pasos y escanea el código QR con Google Authenticator, Authy o 1Password.",
+        "steps": [
+          "Instala una aplicación de autenticación en tu teléfono.",
+          "Escanea el código QR que aparece en la configuración de Seguridad.",
+          "Introduce el código de seis dígitos para confirmar.",
+          "Guarda los códigos de respaldo en un lugar seguro."
+        ]
+      },
+      "s2": {
+        "title": "Cuándo se requiere",
+        "leadMobile": "Los pagos de alto valor en la tienda y los regalos de rangos pueden solicitar el 2FA incluso si ya has iniciado sesión.",
+        "leadDesktop": "Los pagos de alto valor en la tienda, los regalos de rangos y las solicitudes de eliminación de cuenta pueden solicitar el 2FA incluso si ya has iniciado sesión.",
+        "bullets": [
+          "El inicio de sesión siempre acepta TOTP tras introducir la contraseña.",
+          "Los códigos de respaldo funcionan una vez cada uno si pierdes tu teléfono.",
+          "Desactivar el 2FA requiere confirmación por correo."
+        ]
+      },
+      "s3": {
+        "title": "Sin acceso",
+        "leadMobile": "Abre un ticket con verificación de identidad si pierdes tanto el teléfono como los códigos de respaldo.",
+        "leadDesktop": "Abre un ticket de soporte con verificación de identidad si pierdes tanto tu teléfono como los códigos de respaldo. La recuperación tarda 24\u201348 horas.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "El personal no puede leer ni restablecer tu secreto TOTP por chat.",
+        "calloutDesktop": "El personal no puede leer ni restablecer tu secreto TOTP por chat \u2014 el proceso de recuperación existe para proteger tus compras."
+      }
+    },
+    "delete-account": {
+      "lead": {
+        "mobile": "La eliminación de la cuenta es permanente tras el período de gracia. Exporta todo lo que necesites antes.",
+        "desktop": "La eliminación de la cuenta es permanente tras el período de gracia. Exporta esquemas, descarga facturas y cancela suscripciones activas antes de confirmar."
+      },
+      "s1": {
+        "title": "Solicita la eliminación",
+        "leadMobile": "Panel \u2192 Configuración \u2192 Eliminar cuenta.",
+        "leadDesktop": "Panel \u2192 Configuración \u2192 Eliminar cuenta. Debes confirmar con contraseña y 2FA si está activado.",
+        "steps": [
+          "Lee el resumen de eliminación con atención.",
+          "Confirma con tu contraseña.",
+          "Introduce el 2FA si se te solicita.",
+          "Revisa tu correo para el enlace de confirmación final."
+        ]
+      },
+      "s2": {
+        "title": "Período de gracia",
+        "leadMobile": "Tienes 14 días para cancelar iniciando sesión y haciendo clic en Restaurar cuenta.",
+        "leadDesktop": "Tienes 14 días para cancelar la eliminación iniciando sesión y haciendo clic en Restaurar cuenta en el banner que aparece en la parte superior del panel.",
+        "bullets": [
+          "El progreso, las reclamaciones y los rangos se eliminan al finalizar el período de gracia.",
+          "El historial de compras se anonimiza, no se elimina, por motivos fiscales.",
+          "Las inscripciones activas en torneos se cancelan de inmediato."
+        ]
+      },
+      "s3": {
+        "title": "Antes de irte",
+        "leadMobile": "Considera un cambio de apodo o una pausa del servidor si solo necesitas un descanso.",
+        "leadDesktop": "Considera un cambio de apodo o una pausa del servidor si solo necesitas un descanso \u2014 la eliminación no se puede revertir después del día 14.",
+        "calloutTitle": "Reembolsos",
+        "calloutMobile": "La eliminación no reembolsa automáticamente los rangos no utilizados.",
+        "calloutDesktop": "La eliminación no reembolsa automáticamente los rangos no utilizados. Solicita los reembolsos por separado antes de iniciar la eliminación si eres elegible."
+      }
+    },
+    "payment-methods": {
+      "lead": {
+        "mobile": "El proceso de pago admite las principales tarjetas y monederos en la mayoría de las regiones donde operamos.",
+        "desktop": "El proceso de pago admite las principales tarjetas y monederos en la mayoría de las regiones donde operamos. Todos los pagos pasan por nuestro procesador con certificación PCI."
+      },
+      "s1": {
+        "title": "Métodos aceptados",
+        "leadMobile": "Elige cualquier opción que aparezca en el proceso de pago para tu país.",
+        "leadDesktop": "Elige cualquier opción que aparezca en el proceso de pago para tu país \u2014 la disponibilidad varía por región.",
+        "bullets": [
+          "Tarjetas de débito/crédito Visa y Mastercard.",
+          "PayPal donde esté disponible.",
+          "Apple Pay y Google Pay en navegadores móviles."
+        ]
+      },
+      "s2": {
+        "title": "Moneda e impuestos",
+        "leadMobile": "Los precios se muestran en USD por defecto; la conversión a moneda local se realiza al pagar.",
+        "leadDesktop": "Los precios se muestran en USD por defecto. Tu banco o monedero convierte a moneda local y puede añadir comisiones por transacción en el extranjero.",
+        "bullets": [
+          "El IVA o el impuesto sobre ventas aparece antes del pago cuando corresponde.",
+          "Las facturas se envían por correo automáticamente tras una compra exitosa.",
+          "Las autorizaciones fallidas no generan ningún cargo en tu estado de cuenta."
+        ]
+      },
+      "s3": {
+        "title": "No aceptados",
+        "leadMobile": "No aceptamos criptomonedas, transferencias bancarias ni tarjetas regalo de terceros.",
+        "leadDesktop": "No aceptamos criptomonedas, transferencias bancarias manuales ni tarjetas regalo de terceros vendidas fuera de nuestra tienda oficial.",
+        "calloutTitle": "Seguridad",
+        "calloutMobile": "Nunca pedimos números de tarjeta en Discord ni en el chat del juego.",
+        "calloutDesktop": "Nunca pedimos números de tarjeta en Discord ni en el chat del juego. El proceso de pago siempre ocurre en nuestro dominio HTTPS de la tienda."
+      }
+    },
+    "donations-privileges": {
+      "lead": {
+        "mobile": "Las compras en la tienda financian el hardware del servidor y otorgan ventajas cosméticas y de comodidad.",
+        "desktop": "Las compras en la tienda financian el hardware del servidor, la moderación y los premios de eventos. Los privilegios son ventajas cosméticas y de comodidad \u2014 nunca de pago para ganar en combate."
+      },
+      "s1": {
+        "title": "Qué puedes comprar",
+        "leadMobile": "Rangos, rastros de partículas, colores de chat, hogares adicionales y prioridad de cola.",
+        "leadDesktop": "Rangos, rastros de partículas, colores de chat, hogares adicionales y prioridad de cola en horas punta. Cada ventaja lista exactamente qué incluye antes de pagar.",
+        "bullets": [
+          "Los cosméticos son visibles para otros jugadores pero no cambian el daño.",
+          "Los hogares adicionales ahorran tiempo \u2014 no otorgan objetos.",
+          "La prioridad de cola salta las filas de inicio de sesión, no el balance de combate."
+        ]
+      },
+      "s2": {
+        "title": "Activación",
+        "leadMobile": "Los privilegios se aplican en segundos en todos los servidores vinculados a tu cuenta.",
+        "leadDesktop": "Los privilegios se aplican en segundos en todos los servidores vinculados a tu cuenta. Vuelve a conectarte si un cosmético no aparece de inmediato.",
+        "steps": [
+          "Completa el proceso de pago en la página de la tienda.",
+          "Espera la pantalla de éxito y el recibo por correo.",
+          "Vuelve a unirte a cualquier servidor para sincronizar los permisos."
+        ]
+      },
+      "s3": {
+        "title": "Promesa de juego limpio",
+        "leadMobile": "Publicamos un diferencial de ventajas cada vez que un rango cambia para que los jugadores puedan auditar el equilibrio.",
+        "leadDesktop": "Publicamos un diferencial de ventajas cada vez que un rango cambia para que los jugadores puedan auditar el equilibrio. Reporta preocupaciones de pago para ganar al personal \u2014 se investigan en 24 horas.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Compara las tarjetas de rango lado a lado en la tienda antes de comprar.",
+        "calloutDesktop": "Compara las tarjetas de rango lado a lado en la tienda antes de comprar \u2014 la duración y los descuentos de renovación aparecen en cada ficha."
+      }
+    },
+    "refund-policy": {
+      "lead": {
+        "mobile": "Los reembolsos se limitan a privilegios no utilizados dentro de las 48 horas tras la compra.",
+        "desktop": "Los reembolsos se limitan a privilegios no utilizados dentro de las 48 horas tras la compra. Los cosméticos usados, el tiempo de rango consumido o los artículos regalados no son elegibles."
+      },
+      "s1": {
+        "title": "Reembolsos elegibles",
+        "leadMobile": "Puedes solicitar un reembolso si la ventaja nunca se activó en el juego.",
+        "leadDesktop": "Puedes solicitar un reembolso si la ventaja nunca se activó en el juego o si compraste el nivel de servidor equivocado por error dentro de las 48 horas.",
+        "bullets": [
+          "Incluye tu ID de pedido desde Panel \u2192 Historial.",
+          "Explica si la ventaja apareció en el juego.",
+          "Los reembolsos se devuelven al método de pago original."
+        ]
+      },
+      "s2": {
+        "title": "No elegibles",
+        "leadMobile": "El tiempo de rango parcialmente usado, las cajas de botín abiertas y los regalos son definitivos.",
+        "leadDesktop": "El tiempo de rango parcialmente usado, las cajas de botín abiertas y los regalos son definitivos a menos que el destinatario nunca haya reclamado el regalo.",
+        "bullets": [
+          "Los contracargos pueden resultar en un baneo permanente de la tienda.",
+          "Los artículos de bonificación promocionales no son reembolsables.",
+          "Los impuestos solo se reembolsan donde lo exige la ley."
+        ]
+      },
+      "s3": {
+        "title": "Envía una solicitud",
+        "leadMobile": "Panel \u2192 Historial \u2192 Solicitar reembolso en la fila del pedido.",
+        "leadDesktop": "Panel \u2192 Historial \u2192 Solicitar reembolso en la fila del pedido, o abre un ticket de soporte si el botón aparece en gris.",
+        "steps": [
+          "Localiza el pedido en Historial.",
+          "Haz clic en Solicitar reembolso y selecciona un motivo.",
+          "Espera la confirmación por correo \u2014 normalmente en un día hábil."
+        ]
+      }
+    },
+    "payment-failed": {
+      "lead": {
+        "mobile": "Los pagos fallidos suelen deberse a un bloqueo bancario, un código postal de facturación incorrecto o una interrupción temporal del procesador.",
+        "desktop": "Los pagos fallidos suelen deberse a un bloqueo bancario, un código postal de facturación incorrecto o una interrupción temporal del procesador. No se otorga ningún privilegio hasta que el proceso de pago se complete con éxito."
+      },
+      "s1": {
+        "title": "Soluciones rápidas",
+        "leadMobile": "Prueba esto antes de abrir un ticket.",
+        "leadDesktop": "Prueba esto antes de abrir un ticket \u2014 resuelven la mayoría de los errores en el proceso de pago.",
+        "steps": [
+          "Verifica que tu tarjeta permite compras de juegos en línea.",
+          "Comprueba que el código postal de facturación coincide con los registros de tu banco.",
+          "Prueba PayPal u otro monedero si las tarjetas fallan.",
+          "Espera 15 minutos y vuelve a intentarlo una vez."
+        ]
+      },
+      "s2": {
+        "title": "Dobles cobros",
+        "leadMobile": "Si hiciste clic en pagar dos veces, las autorizaciones pendientes caen en una hora.",
+        "leadDesktop": "Si hiciste doble clic en pagar, las autorizaciones pendientes suelen caer en una hora. Solo un pedido completado crea un rango.",
+        "bullets": [
+          "Revisa el Historial antes de volver a pagar.",
+          "Envía los ID de pedido si dos cargos se publican.",
+          "Anulamos automáticamente los cargos duplicados pendientes cuando los detectamos."
+        ]
+      },
+      "s3": {
+        "title": "Contacta con soporte",
+        "leadMobile": "Abre un ticket con el código de error que aparece en el banner rojo del proceso de pago.",
+        "leadDesktop": "Abre un ticket con el código de error que aparece en el banner rojo del proceso de pago y una captura de pantalla del Historial si el dinero salió de tu cuenta sin recibir el pedido.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "Nunca compres rangos a través de jugadores que ofrezcan «PayPal más barato» \u2014 son estafas.",
+        "calloutDesktop": "Nunca compres rangos a través de jugadores que ofrezcan PayPal más barato o criptomonedas \u2014 son estafas y el personal no las recuperará."
+      }
+    },
+    "server-differences": {
+      "lead": {
+        "mobile": "Tres servidores, tres estilos de juego \u2014 misma cuenta, reglas diferentes.",
+        "desktop": "Ofrecemos tres servidores paralelos pensados para distintos estilos de juego. Una cuenta funciona en todos, pero los inventarios y los mundos son independientes."
+      },
+      "s1": {
+        "title": "LuckySurvival",
+        "leadMobile": "Recomendación por defecto para nuevos jugadores.",
+        "leadDesktop": "Nuestra recomendación por defecto para nuevos jugadores \u2014 supervivencia vainilla con PvP equilibrado, economía balanceada y TNT desactivado.",
+        "bullets": [
+          "Reclamaciones y misiones de tienda activadas.",
+          "PvP solo fuera del spawn y zonas no autorizadas.",
+          "Eventos económicos semanales con premios en monedas."
+        ]
+      },
+      "s2": {
+        "title": "MineWars",
+        "leadMobile": "PvP competitivo con TNT activado y torneos clasificados.",
+        "leadDesktop": "PvP competitivo con TNT activado, torneos clasificados y grandes guerras de clanes los fines de semana.",
+        "bullets": [
+          "Daño por explosión ACTIVADO en la naturaleza no reclamada.",
+          "Rastreador ELO separado del de LuckySurvival.",
+          "Eventos de fin de semana estilo hardcore anunciados en Discord."
+        ]
+      },
+      "s3": {
+        "title": "CalmSky",
+        "leadMobile": "Construcción tranquila \u2014 sin PvP, sin TNT, límites de parcela más grandes.",
+        "leadDesktop": "Orientado a la construcción tranquila \u2014 sin PvP, sin TNT, límites de parcela más grandes y eventos de tipo creativo.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Puedes cambiar de servidor en cualquier momento \u2014 copia la nueva IP desde el panel.",
+        "calloutDesktop": "Puedes cambiar de servidor en cualquier momento copiando la nueva IP desde el panel. Los inventarios no se transfieren entre mundos."
+      }
+    },
+    "switch-servers": {
+      "lead": {
+        "mobile": "Un inicio de sesión cubre todos los servidores. Cada mundo tiene su propio inventario y reclamaciones.",
+        "desktop": "Un inicio de sesión en el sitio web cubre todos los servidores del ecosistema. Cada mundo tiene su propio inventario, reclamaciones y saldo de economía."
+      },
+      "s1": {
+        "title": "Cómo cambiar",
+        "leadMobile": "Copia la nueva IP desde Panel \u2192 Servidores y añádela en el multijugador de Minecraft.",
+        "leadDesktop": "Copia la nueva IP desde Panel \u2192 Servidores y añádela en el multijugador de Minecraft \u2014 o selecciónala si ya guardaste la dirección.",
+        "steps": [
+          "Desconéctate de tu mundo de servidor actual.",
+          "Abre Panel \u2192 Servidores en el sitio web.",
+          "Copia la IP del servidor de destino.",
+          "Únete desde tu lista de servidores de Minecraft."
+        ]
+      },
+      "s2": {
+        "title": "Qué se transfiere",
+        "leadMobile": "Los rangos, la configuración del panel y las inscripciones en torneos siguen a tu cuenta.",
+        "leadDesktop": "Los rangos comprados, la configuración del panel y las inscripciones en torneos siguen a tu cuenta. Los objetos y reclamaciones específicos del mundo no.",
+        "bullets": [
+          "Los cosméticos de la tienda se sincronizan al iniciar sesión.",
+          "Los roles de Discord se actualizan en cinco minutos.",
+          "El estado de baneo aplica en todo el ecosistema."
+        ]
+      },
+      "s3": {
+        "title": "Qué se queda",
+        "leadMobile": "Los cofres, construcciones y monederos del mundo permanecen en el servidor que dejas.",
+        "leadDesktop": "Los cofres, construcciones y monederos del mundo permanecen en el servidor que dejas. Planifícalo antes de mudarte de forma permanente.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Usa /mail en los servidores compatibles para enviarte objetos entre tus propios personajes mediante depósito en garantía.",
+        "calloutDesktop": "En los servidores compatibles, usa /mail para enviarte objetos entre tus propios personajes a través del sistema de depósito en garantía antes de migrar."
+      }
+    },
+    "world-resets": {
+      "lead": {
+        "mobile": "Los mundos de supervivencia principales persisten. Los mapas de temporada rotan según un calendario.",
+        "desktop": "Los mundos de supervivencia principales persisten indefinidamente. Los mapas de temporada y las arenas de torneos rotan según un calendario publicado."
+      },
+      "s1": {
+        "title": "Mundos persistentes",
+        "leadMobile": "Los núcleos de LuckySurvival, MineWars y CalmSky no se reinician en un calendario.",
+        "leadDesktop": "Los mapas principales de LuckySurvival, MineWars y CalmSky no se reinician en un calendario. Tus construcciones permanecen a menos que el personal anuncie una migración.",
+        "bullets": [
+          "Las instantáneas de reclamaciones se respaldan cada noche.",
+          "Las actualizaciones importantes pueden requerir regeneración de chunks solo en áreas no reclamadas.",
+          "Los avisos de migración se publican con 30 días de antelación cuando son necesarios."
+        ]
+      },
+      "s2": {
+        "title": "Reinicios de temporada",
+        "leadMobile": "Los mundos de eventos y algunos mapas de torneos se reinician cada temporada \u2014 aproximadamente cada tres meses.",
+        "leadDesktop": "Los mundos de eventos y algunos mapas de torneos se reinician cada temporada \u2014 aproximadamente cada tres meses \u2014 con herramientas de exportación disponibles de antemano.",
+        "bullets": [
+          "Exporta los esquemas antes de la fecha límite publicada.",
+          "Los trofeos de temporada permanecen en tu perfil del panel.",
+          "Los clasificadores se archivan en el sitio web tras el reinicio."
+        ]
+      },
+      "s3": {
+        "title": "Notificaciones",
+        "leadMobile": "Suscríbete a alertas por correo en Panel \u2192 Servidores para ventanas de mantenimiento y reinicio.",
+        "leadDesktop": "Suscríbete a alertas por correo en Panel \u2192 Servidores para ventanas de mantenimiento y reinicio. Discord #announcements refleja el mismo calendario.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "El correo no leído y los listados de subastas deben recogerse antes de los reinicios de temporada.",
+        "calloutDesktop": "El correo no leído y los listados de subastas deben recogerse antes de los reinicios de temporada \u2014 el depósito en garantía devuelve los artículos a los vendedores automáticamente después."
+      }
+    },
+    "download-world": {
+      "lead": {
+        "mobile": "Los propietarios de reclamaciones pueden exportar construcciones como esquemas una vez por temporada.",
+        "desktop": "Los propietarios de reclamaciones pueden exportar construcciones como esquemas una vez por temporada para copia de seguridad personal \u2014 no para republicarlas en otras redes."
+      },
+      "s1": {
+        "title": "Solicita una exportación",
+        "leadMobile": "Panel \u2192 Servidores \u2192 selecciona mundo \u2192 Exportar esquema.",
+        "leadDesktop": "Panel \u2192 Servidores \u2192 selecciona mundo \u2192 Exportar esquema. Elige la reclamación que poseas o coposeas.",
+        "steps": [
+          "Verifica que eres propietario o de confianza en la reclamación.",
+          "Haz clic en Exportar esquema y confirma la región.",
+          "Espera el correo con el enlace de descarga.",
+          "Los enlaces caducan en 72 horas."
+        ]
+      },
+      "s2": {
+        "title": "Límites",
+        "leadMobile": "Una exportación por reclamación por temporada; volumen máximo de 256\u00d7256\u00d7256 bloques.",
+        "leadDesktop": "Una exportación por reclamación por temporada; volumen máximo de 256\u00d7256\u00d7256 bloques. Las bases más grandes requieren asistencia del personal.",
+        "bullets": [
+          "Las exportaciones excluyen el contenido de los cofres por seguridad económica.",
+          "Las entidades y marcos de objetos pueden simplificarse al importarlos en otro lugar.",
+          "La reventa comercial de las exportaciones viola los términos de servicio."
+        ]
+      },
+      "s3": {
+        "title": "Usando el archivo",
+        "leadMobile": "Importa con WorldEdit o Litematica en tu propio mundo de un solo jugador.",
+        "leadDesktop": "Importa con WorldEdit o Litematica en tu propio mundo de un solo jugador. No ofrecemos soporte para editores de terceros.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Toma capturas de pantalla antes de los reinicios de temporada aunque planees exportar.",
+        "calloutDesktop": "Toma capturas de pantalla antes de los reinicios de temporada aunque planees exportar \u2014 los renders ayudan si la conversión del esquema pierde bloques decorativos."
+      }
+    },
+    "server-status": {
+      "lead": {
+        "mobile": "Comprueba el estado en tiempo real antes de solucionar problemas en tu propia conexión.",
+        "desktop": "Comprueba el estado en tiempo real antes de solucionar problemas en tu propia conexión \u2014 el mantenimiento programado aparece aquí primero."
+      },
+      "s1": {
+        "title": "Estado en el panel",
+        "leadMobile": "Verde = en línea, amarillo = degradado, rojo = fuera de línea o en mantenimiento.",
+        "leadDesktop": "Panel \u2192 Servidores muestra verde para en línea, amarillo para rendimiento degradado y rojo para fuera de línea o en mantenimiento.",
+        "bullets": [
+          "Pasa el cursor por un punto para ver la marca de tiempo del último latido.",
+          "Haz clic en una fila de servidor para ver notas del parche y contador de jugadores.",
+          "Suscríbete a alertas por correo con el icono de campana."
+        ]
+      },
+      "s2": {
+        "title": "Anuncios en Discord",
+        "leadMobile": "#announcements publica ventanas de mantenimiento e interrupciones inesperadas.",
+        "leadDesktop": "Discord #announcements publica ventanas de mantenimiento, interrupciones inesperadas y tiempos estimados de recuperación.",
+        "bullets": [
+          "Activa el rol de ping @announcement para alertas críticas.",
+          "Los embeds de estado se actualizan automáticamente cada minuto.",
+          "Los hilos de comentarios están desactivados durante los incidentes activos."
+        ]
+      },
+      "s3": {
+        "title": "Cuando el problema eres tú",
+        "leadMobile": "Si el estado muestra en línea pero no puedes unirte, consulta el artículo de conexión perdida.",
+        "leadDesktop": "Si el estado muestra en línea pero no puedes unirte, el problema probablemente es local \u2014 consulta el artículo de conexión perdida para los pasos de firewall y VPN.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Prueba otro servidor de la lista para confirmar que tu cliente funciona.",
+        "calloutDesktop": "Prueba otro servidor de la lista para confirmar que tu cliente funciona antes de reinstalar Minecraft."
+      }
+    },
+    "rank-benefits": {
+      "lead": {
+        "mobile": "Los rangos VIP incluyen cosméticos y comodidades \u2014 nunca estadísticas de combate directas.",
+        "desktop": "Los rangos VIP incluyen cosméticos y ventajas de comodidad. Publicamos la lista completa de ventajas en cada ficha de la tienda para que puedas auditar el equilibrio antes de comprar."
+      },
+      "s1": {
+        "title": "Ventajas comunes",
+        "leadMobile": "Las ventajas exactas varían por nivel \u2014 compara las tarjetas en la página de la tienda.",
+        "leadDesktop": "Las ventajas exactas varían por nivel \u2014 compara las tarjetas en la página de la tienda. Todos los niveles comparten las reglas de juego limpio a continuación.",
+        "bullets": [
+          "Ranuras de /home adicionales y reducción del tiempo de espera de /back.",
+          "Colores de prefijo en el chat y mensajes de entrada/salida.",
+          "Rastros de partículas y animaciones de emote.",
+          "Cola de inicio de sesión prioritaria en horas punta."
+        ]
+      },
+      "s2": {
+        "title": "Nunca incluido",
+        "leadMobile": "Los rangos no venden armas, armadura, generadores ni kits desequilibrados.",
+        "leadDesktop": "Los rangos no venden armas, armadura, generadores ni kits desequilibrados. Cualquier ventaja que tocaba el combate fue eliminada en el balance de 2025.",
+        "bullets": [
+          "Sin llaves de caja de pago para ganar en servidores de supervivencia.",
+          "Sin trampas protegidas ni x-ray disfrazado de ventajas.",
+          "Sin drops exclusivos de mobs vinculados solo al rango."
+        ]
+      },
+      "s3": {
+        "title": "Prueba antes de comprar",
+        "leadMobile": "Pregunta en Discord #vip-showcase \u2014 los jugadores demuestran rastros y estilos de chat en vivo.",
+        "leadDesktop": "Pregunta en Discord #vip-showcase \u2014 los jugadores demuestran rastros y estilos de chat en vivo cada sábado.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Los niveles inferiores se actualizan a prorrata dentro de los siete días tras la compra.",
+        "calloutDesktop": "Los niveles inferiores se actualizan a prorrata dentro de los siete días tras la compra \u2014 contacta con soporte con tu ID de pedido si el botón de actualización falla."
+      }
+    },
+    "rank-duration": {
+      "lead": {
+        "mobile": "La mayoría de los rangos duran 30 o 90 días. Existen niveles vitalicios para los mecenas a largo plazo.",
+        "desktop": "La mayoría de los rangos duran 30 o 90 días desde la activación. Existen niveles vitalicios para los mecenas a largo plazo y muestran un precio de compra único."
+      },
+      "s1": {
+        "title": "Comprobar vencimiento",
+        "leadMobile": "Panel \u2192 Historial lista los privilegios activos y las fechas de renovación.",
+        "leadDesktop": "Panel \u2192 Historial lista los privilegios activos, las fechas de renovación y una insignia de cuenta regresiva en el encabezado del perfil.",
+        "bullets": [
+          "Se envían recordatorios por correo siete días antes del vencimiento.",
+          "Los rangos vencidos eliminan los cosméticos en el siguiente inicio de sesión.",
+          "Los niveles vitalicios muestran «Permanente» en Historial."
+        ]
+      },
+      "s2": {
+        "title": "Renovaciones",
+        "leadMobile": "Activa la renovación automática al pagar o renueva manualmente desde Historial.",
+        "leadDesktop": "Activa la renovación automática al pagar o renueva manualmente desde Historial. La renovación automática usa el mismo método de pago que el pedido original.",
+        "steps": [
+          "Abre Historial y localiza la fila del rango.",
+          "Haz clic en Renovar o Gestionar renovación automática.",
+          "Confirma el pago \u2014 las ventajas se extienden de inmediato."
+        ]
+      },
+      "s3": {
+        "title": "Rangos vencidos",
+        "leadMobile": "Conservas los trofeos del clasificador pero pierdes los cosméticos activos cuando se agota el tiempo.",
+        "leadDesktop": "Conservas los trofeos del clasificador y las insignias del foro pero pierdes los cosméticos activos y la prioridad de cola cuando se agota el tiempo.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Período de gracia: 48 horas tras el vencimiento con ventajas reducidas antes de la eliminación completa.",
+        "calloutDesktop": "Hay un período de gracia de 48 horas tras el vencimiento con ventajas reducidas antes de la eliminación completa \u2014 renueva durante el período de gracia para evitar volver a equipar los cosméticos."
+      }
+    },
+    "gift-rank": {
+      "lead": {
+        "mobile": "El proceso de regalo entrega un rango a otro nombre de usuario al instante tras el pago.",
+        "desktop": "El proceso de regalo entrega un rango a otro nombre de usuario al instante tras el pago. El destinatario recibe una notificación en el juego y por correo si su dirección es pública."
+      },
+      "s1": {
+        "title": "Envía un regalo",
+        "leadMobile": "Selecciona Regalar en la ficha de la tienda e introduce el nombre de usuario exacto del juego.",
+        "leadDesktop": "Selecciona Regalar en la ficha de la tienda, escribe el nombre de usuario exacto del juego y añade un mensaje opcional que aparecerá en la notificación.",
+        "steps": [
+          "Elige el nivel de rango y la duración.",
+          "Activa Regalar e introduce el nombre de usuario del destinatario.",
+          "Completa el proceso de pago con tu método de pago.",
+          "El destinatario sincroniza en el siguiente inicio de sesión o de inmediato si está en línea."
+        ]
+      },
+      "s2": {
+        "title": "Reglas",
+        "leadMobile": "Los regalos no son reembolsables una vez reclamados, salvo compra errónea en la primera hora.",
+        "leadDesktop": "Los regalos no son reembolsables una vez reclamados, salvo compra errónea en la primera hora y el destinatario acepta la devolución mediante ticket.",
+        "bullets": [
+          "Verifica bien la ortografía \u2014 el personal no puede mover rangos entre nombres equivocados.",
+          "No puedes regalarte a ti mismo.",
+          "Los destinatarios baneados reciben el regalo pero no pueden usarlo hasta que se les desbanee."
+        ]
+      },
+      "s3": {
+        "title": "Paquetes sorpresa",
+        "leadMobile": "Programa la entrega para una fecha futura al pagar durante eventos de temporada.",
+        "leadDesktop": "Durante los eventos de temporada puedes programar la entrega para una fecha futura al pagar \u2014 útil para cumpleaños y recompensas de clan.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Los líderes de clan hacen regalos masivos a través de facturas de soporte para 10 o más rangos.",
+        "calloutDesktop": "Los líderes de clan hacen regalos masivos a través de facturas de soporte para diez o más rangos \u2014 abre un ticket para recibir un presupuesto y un enlace de pago único."
+      }
+    },
+    "claims-protection": {
+      "lead": {
+        "mobile": "Las reclamaciones protegen los bloques que colocas de otros jugadores. Autoriza a los amigos explícitamente.",
+        "desktop": "Las reclamaciones protegen los bloques que colocas de otros jugadores. Autoriza a los amigos explícitamente \u2014 ser amigos en Discord no autoriza automáticamente en el juego."
+      },
+      "s1": {
+        "title": "Crea una reclamación",
+        "leadMobile": "Fabrica una pala de oro y haz clic derecho en dos esquinas opuestas.",
+        "leadDesktop": "Fabrica una pala de oro y haz clic derecho en dos esquinas opuestas del área que quieras proteger. Las partículas delinean el borde para ti.",
+        "steps": [
+          "Párate en una esquina y haz clic derecho con la pala.",
+          "Ve a la esquina opuesta y haz clic derecho de nuevo.",
+          "Comprueba las partículas para confirmar el límite.",
+          "Usa /claim info para ver el tamaño y los bloques restantes."
+        ]
+      },
+      "s2": {
+        "title": "Confianza y permisos",
+        "leadMobile": "/trust <jugador> otorga acceso de construcción dentro de tu reclamación.",
+        "leadDesktop": "/trust <jugador> otorga acceso de construcción dentro de tu reclamación. /untrust lo elimina al instante.",
+        "bullets": [
+          "/trustlist muestra quién puede editar tu terreno.",
+          "Los contenedores pueden bloquearse por separado con /containertrust.",
+          "Los jugadores no autorizados no pueden abrir puertas ni usar botones."
+        ]
+      },
+      "s3": {
+        "title": "Reportes de griefing",
+        "leadMobile": "Si ocurren daños fuera de las reclamaciones, el personal revierte usando registros cuando reportas rápido.",
+        "leadDesktop": "Si ocurren daños fuera de las reclamaciones, el personal revierte usando registros de bloques cuando reportas dentro de las 48 horas con las coordenadas.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Reclama tu base antes de desconectarte la primera noche.",
+        "calloutDesktop": "Reclama tu base antes de desconectarte la primera noche \u2014 el mundo salvaje no está protegido hasta que colocas una reclamación."
+      }
+    },
+    "economy-basics": {
+      "lead": {
+        "mobile": "Las monedas son la divisa del servidor \u2014 gana con misiones, comercio y eventos.",
+        "desktop": "Las monedas son la divisa del servidor. Gánalas con misiones, comercio entre jugadores y eventos; gástalas en tiendas NPC y mercados de cofres de jugadores."
+      },
+      "s1": {
+        "title": "Ganar monedas",
+        "leadMobile": "Las misiones diarias, las entregas de /shop y las ventas en subastas son las principales fuentes.",
+        "leadDesktop": "Las misiones diarias, las entregas de /shop, las ventas en la casa de subastas y las posiciones en torneos son las principales fuentes de monedas para los nuevos jugadores.",
+        "bullets": [
+          "Las rachas de misiones bonifican monedas a partir del tercer día.",
+          "Las tiendas de jugadores aplican un 2% de impuesto en ventas superiores a 10 000 monedas.",
+          "Las granjas AFK que infringen las reglas pueden ser nerfeadas sin previo aviso."
+        ]
+      },
+      "s2": {
+        "title": "Gastar monedas",
+        "leadMobile": "Las tiendas NPC venden equipo, bloques de reclamación y entradas para eventos.",
+        "leadDesktop": "Las tiendas NPC venden equipo, bloques de reclamación y entradas para eventos. Las tiendas de cofres de jugadores fijan sus propios precios \u2014 compara antes de comprar.",
+        "bullets": [
+          "/balance muestra tu monedero.",
+          "/pay <jugador> <cantidad> envía monedas directamente.",
+          "Las monedas no se transfieren entre servidores."
+        ]
+      },
+      "s3": {
+        "title": "Controles de inflación",
+        "leadMobile": "El personal ajusta los pagos de misiones por temporada según los paneles de economía.",
+        "leadDesktop": "El personal ajusta los pagos de misiones por temporada según los paneles de economía publicados en las entradas del Blog de desarrollo.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Guarda el exceso de monedas en cofres de reclamación \u2014 las caídas por muerte no afectan a los objetos guardados.",
+        "calloutDesktop": "Guarda el exceso de monedas en cofres de reclamación o en el banco NPC \u2014 las caídas por muerte no eliminan las monedas almacenadas mediante /bank deposit."
+      }
+    },
+    "tournaments": {
+      "lead": {
+        "mobile": "Los brackets semanales van del viernes al domingo UTC con premios en monedas y cosméticos.",
+        "desktop": "Los brackets semanales van del viernes a las 18:00 UTC al domingo a las 23:59 UTC con fondos en monedas, trofeos y cosméticos exclusivos para los mejores clasificados."
+      },
+      "s1": {
+        "title": "Regístrate",
+        "leadMobile": "Panel \u2192 Torneos o /tournament en el juego durante una ventana abierta.",
+        "leadDesktop": "Regístrate desde Panel \u2192 Torneos o escribe /tournament en el juego mientras el registro está abierto.",
+        "steps": [
+          "Confirma que cumples el requisito de tiempo de juego indicado en el bracket.",
+          "Haz clic en Inscribirse y elige tu kit si es necesario.",
+          "Revisa Discord #tournaments para los horarios de clasificación.",
+          "Aparece 10 minutos antes para el registro de entrada."
+        ]
+      },
+      "s2": {
+        "title": "Reglas del bracket",
+        "leadMobile": "Eliminación directa por defecto; las finales pueden ser al mejor de tres.",
+        "leadDesktop": "Eliminación directa por defecto; las finales pueden ser al mejor de tres. Las reglas de partido y la lista de objetos prohibidos se publican con cada temporada.",
+        "bullets": [
+          "Prohibidas las cuentas alternativas para rebajar el bracket.",
+          "Desconexiones: ventana de 5 minutos para la revancha con captura de pantalla como prueba.",
+          "Las decisiones del personal son definitivas durante el evento."
+        ]
+      },
+      "s3": {
+        "title": "Recompensas",
+        "leadMobile": "Los ocho primeros reciben monedas; los tres primeros reciben trofeos y insignias en el panel.",
+        "leadDesktop": "Los ocho primeros reciben pagos en monedas; los tres primeros reciben trofeos, insignias en el panel y a veces skins exclusivos.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Practica kits en el fragmento de prueba de PvP vinculado desde la página del bracket.",
+        "calloutDesktop": "Practica kits en el fragmento de prueba de PvP vinculado desde la página del bracket \u2014 las estadísticas allí no afectan a la clasificación."
+      }
+    },
+    "report-player": {
+      "lead": {
+        "mobile": "Los reportes ayudan al personal a actuar ante acoso, trampas e intentos de estafa.",
+        "desktop": "Los reportes ayudan al personal a actuar ante acoso, trampas e intentos de estafa. Los reportes falsos pueden resultar en silenciamientos \u2014 úsalos de buena fe."
+      },
+      "s1": {
+        "title": "Reporte en el juego",
+        "leadMobile": "/report <usuario> <motivo> envía los registros a los moderadores automáticamente.",
+        "leadDesktop": "/report <usuario> <motivo> envía los registros de chat y combate a los moderadores automáticamente con tu ubicación actual adjunta.",
+        "steps": [
+          "Escribe /report seguido del nombre de usuario.",
+          "Elige una categoría si aparece el menú.",
+          "Añade una oración de contexto.",
+          "Evita enviar reportes duplicados repetidamente."
+        ]
+      },
+      "s2": {
+        "title": "Ticket con evidencia",
+        "leadMobile": "Para estafas o griefing complejo, abre un ticket con capturas de pantalla.",
+        "leadDesktop": "Para estafas o griefing complejo, abre un ticket con capturas de pantalla, marcas de tiempo y coordenadas cuando sea posible.",
+        "bullets": [
+          "Sube imágenes de menos de 10 MB cada una.",
+          "Incluye la fecha y el nombre del servidor en el asunto.",
+          "No publiques la evidencia públicamente \u2014 puede alertar a los infractores."
+        ]
+      },
+      "s3": {
+        "title": "Tiempos de respuesta",
+        "leadMobile": "La mayoría de los reportes reciben una primera respuesta en 24 horas.",
+        "leadDesktop": "La mayoría de los reportes reciben una primera respuesta en 24 horas. Los reportes urgentes de trampas durante torneos tienen prioridad.",
+        "calloutTitle": "Privacidad",
+        "calloutMobile": "La identidad del denunciante no se comparte con el jugador acusado.",
+        "calloutDesktop": "La identidad del denunciante no se comparte con el jugador acusado a menos que optes por una sesión de mediación."
+      }
+    },
+    "connection-lost": {
+      "lead": {
+        "mobile": "La conexión perdida suele significar filtrado de red, problemas con VPN o incompatibilidad de versión \u2014 no un baneo.",
+        "desktop": "La conexión perdida suele significar filtrado de red, problemas con VPN o incompatibilidad de versión \u2014 no un baneo. Comprueba la página de estado antes de reinstalar."
+      },
+      "s1": {
+        "title": "Cliente y versión",
+        "leadMobile": "Confirma Java 1.20.4 o la última versión de Bedrock antes de nada.",
+        "leadDesktop": "Confirma Java 1.20.4 o la última versión de Bedrock antes de nada. Las versiones incompatibles fallan a los pocos segundos de unirse.",
+        "bullets": [
+          "Actualiza Minecraft a través del lanzador oficial.",
+          "Elimina entradas duplicadas del servidor con erratas.",
+          "Desactiva los paquetes experimentales que reescriban la red."
+        ]
+      },
+      "s2": {
+        "title": "Soluciones de red",
+        "leadMobile": "Permite Minecraft a través del Firewall de Windows o el filtrado del router.",
+        "leadDesktop": "Permite Minecraft a través del Firewall de Windows, la seguridad de macOS o el filtrado del router. Java usa el puerto 25565 por defecto.",
+        "steps": [
+          "Desactiva la VPN o prueba una región de servidor diferente.",
+          "Cambia de Wi-Fi a Ethernet si es posible.",
+          "Reinicia el router si otros juegos también fallan."
+        ]
+      },
+      "s3": {
+        "title": "Sigue fallando",
+        "leadMobile": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos.",
+        "leadDesktop": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos y adjunta los resultados a un ticket de soporte.",
+        "troubleMobile": [
+          { "title": "Desconexión instantánea", "text": "Normalmente es incompatibilidad de versión o un rango de IP baneado." },
+          { "title": "Tiempo de espera en el paquete de recursos", "text": "Consulta el artículo del paquete de recursos \u2014 el proceso de solución es diferente." }
+        ],
+        "troubleDesktop": [
+          { "title": "Desconexión instantánea tras el handshake", "text": "Normalmente es incompatibilidad de versión, rango de IP baneado o marca del anti-trampa \u2014 incluye tu registro de cliente en los tickets." },
+          { "title": "Tiempo de espera durante el paquete de recursos", "text": "Consulta el artículo del paquete de recursos \u2014 los firewalls de CDN bloquean los hosts de paquetes de forma independiente al puerto de juego 25565." }
+        ]
+      }
+    },
+    "resource-pack-issues": {
+      "lead": {
+        "mobile": "Nuestro paquete se descarga automáticamente en la primera unión \u2014 unos 80 MB.",
+        "desktop": "Nuestro paquete se descarga automáticamente en la primera unión \u2014 unos 80 MB. Se elimina solo cuando te desconectas de nuestros servidores."
+      },
+      "s1": {
+        "title": "Primera unión normal",
+        "leadMobile": "Espera entre 20 y 40 segundos con una conexión de banda ancha típica.",
+        "leadDesktop": "Espera entre 20 y 40 segundos con una conexión de banda ancha típica. No canceles \u2014 las descargas parciales provocan solicitudes repetidas.",
+        "steps": [
+          "Haz clic en el servidor y espera en «Descargando paquete de recursos».",
+          "Deja que la barra llegue al 100% una vez.",
+          "Las uniones posteriores omiten la descarga completa."
+        ]
+      },
+      "s2": {
+        "title": "Bloqueado en 0%",
+        "leadMobile": "Cancela, reinicia Minecraft y vuelve a unirte. Si sigue bloqueado, ejecuta /resourcepack reload después de aparecer.",
+        "leadDesktop": "Cancela, reinicia Minecraft y vuelve a unirte. Si sigue bloqueado, ejecuta /resourcepack reload en el chat después de aparecer.",
+        "bullets": [
+          "Desactiva la VPN \u2014 algunas bloquean los hosts CDN.",
+          "El espacio en disco libre debe superar los 200 MB.",
+          "Bedrock: asegúrate de que el permiso de almacenamiento está concedido."
+        ]
+      },
+      "s3": {
+        "title": "Instalación manual",
+        "leadMobile": "Si la entrega automática falla dos veces, el soporte puede facilitar una descarga directa para instalación manual.",
+        "leadDesktop": "Si la entrega automática falla dos veces, el soporte puede facilitar una descarga directa para instalación manual \u2014 abre un ticket con la edición de tu cliente.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "Los paquetes de x-ray de terceros están prohibidos y pueden provocar expulsiones.",
+        "calloutDesktop": "Los paquetes de x-ray o de fuego bajo de PvP de terceros están prohibidos y pueden provocar expulsiones automáticas incluso en clientes por lo demás permitidos."
+      }
+    },
+    "lag-performance": {
+      "lead": {
+        "mobile": "El lag puede ser del lado del cliente (FPS) o del servidor (TPS). Diagnostica cuál es antes de ajustar la configuración.",
+        "desktop": "El lag puede ser del lado del cliente (FPS) o del servidor (TPS). Diagnostica cuál es antes de ajustar la configuración \u2014 las soluciones son completamente diferentes."
+      },
+      "s1": {
+        "title": "FPS del cliente",
+        "leadMobile": "Reduce la distancia de renderizado, desactiva shaders y cierra aplicaciones en segundo plano.",
+        "leadDesktop": "Reduce la distancia de renderizado a 12 chunks, desactiva los shaders pesados y cierra las pestañas del navegador que consuman RAM.",
+        "bullets": [
+          "Configura los gráficos en Rápido en laptops antiguas.",
+          "Desactiva temporalmente la iluminación suave.",
+          "Usa sodium/optifine solo si está permitido para tu edición."
+        ]
+      },
+      "s2": {
+        "title": "TPS del servidor",
+        "leadMobile": "Si todos sufren lag a la vez, revisa Discord #announcements para caídas de TPS.",
+        "leadDesktop": "Si todos sufren lag a la vez, revisa Discord #announcements para caídas de TPS relacionadas con granjas de redstone o eventos.",
+        "bullets": [
+          "El personal puede limitar las granjas con gran acumulación de mobs.",
+          "Evita generar miles de entidades de objetos a la vez.",
+          "Reporta picos recurrentes con marcas de tiempo."
+        ]
+      },
+      "s3": {
+        "title": "Lag de red",
+        "leadMobile": "El ping alto se muestra como ruptura de bloques y chat retrasados.",
+        "leadDesktop": "El ping alto se muestra como ruptura de bloques y chat retrasados. Elige el servidor geográficamente más cercano si ofrecemos proxies regionales.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Pulsa F3 para ver los FPS y el ping en la edición Java.",
+        "calloutDesktop": "Pulsa F3 para ver los FPS y el ping en la edición Java \u2014 haz una captura de pantalla al abrir tickets de rendimiento."
+      }
+    },
+    "server-rules": {
+      "lead": {
+        "mobile": "Las reglas mantienen el ecosistema jugable para constructores, comerciantes y jugadores de PvP por igual.",
+        "desktop": "Las reglas mantienen el ecosistema jugable para constructores, comerciantes y jugadores de PvP por igual. La ignorancia no es una excusa \u2014 este resumen cubre lo esencial."
+      },
+      "s1": {
+        "title": "Reglas fundamentales",
+        "leadMobile": "Infringirlas puede resultar en baneos inmediatos.",
+        "leadDesktop": "Infringirlas puede resultar en baneos inmediatos sin previo aviso según la gravedad.",
+        "bullets": [
+          "Prohibidos los clientes hackeados, el x-ray y las macros de automatización.",
+          "Prohibido el acoso, el discurso de odio y el doxing.",
+          "Prohibido el comercio con dinero real de objetos del juego.",
+          "Prohibido suplantar al personal o enviar reportes falsos."
+        ]
+      },
+      "s2": {
+        "title": "Notas específicas por servidor",
+        "leadMobile": "MineWars permite TNT en la naturaleza; CalmSky prohíbe todo PvP.",
+        "leadDesktop": "MineWars permite TNT en la naturaleza no reclamada; CalmSky prohíbe todo PvP. LuckySurvival está en el medio \u2014 lee los carteles en el spawn.",
+        "bullets": [
+          "Las reclamaciones no deben atrapar jugadores en portales del Nether.",
+          "Publicitar otros servidores se silencia en la primera infracción.",
+          "Se requiere inglés en el chat global para la cobertura de moderación."
+        ]
+      },
+      "s3": {
+        "title": "Política completa",
+        "leadMobile": "El texto legal completo está en /terms y /privacy-policy en el sitio web.",
+        "leadDesktop": "El texto legal completo está en /terms y /privacy-policy en el sitio web. Los cambios importantes en las reglas se anuncian 7 días antes de su aplicación.",
+        "calloutTitle": "Consejo",
+        "calloutMobile": "Ante la duda, pregunta a un moderador antes de traspasar límites.",
+        "calloutDesktop": "Ante la duda, pregunta a un moderador antes de traspasar límites \u2014 las capturas de pantalla de las respuestas del personal pueden adjuntarse a las apelaciones."
+      }
+    },
+    "ban-appeal": {
+      "lead": {
+        "mobile": "Las apelaciones revisan sanciones por errores o contexto desactualizado \u2014 no para reintentar el mismo comportamiento.",
+        "desktop": "Las apelaciones revisan sanciones por errores o contexto desactualizado \u2014 no para reintentar el mismo comportamiento. Una apelación por ID de caso."
+      },
+      "s1": {
+        "title": "Envía una apelación",
+        "leadMobile": "Panel \u2192 Soporte \u2192 Apelación e introduce tu ID de caso del mensaje de baneo.",
+        "leadDesktop": "Panel \u2192 Soporte \u2192 Apelación e introduce tu ID de caso del mensaje de baneo o la notificación por correo.",
+        "steps": [
+          "Copia el ID de caso exactamente.",
+          "Explica lo que ocurrió con tus propias palabras.",
+          "Reconoce la regla que infringiste si corresponde.",
+          "Espera hasta 72 horas para una respuesta."
+        ]
+      },
+      "s2": {
+        "title": "Qué ayuda",
+        "leadMobile": "Las apelaciones honestas con contexto se responden más rápido que las denegaciones copiadas.",
+        "leadDesktop": "Las apelaciones honestas con contexto se responden más rápido que las denegaciones copiadas. Incluye pruebas si crees que el baneo fue incorrecto.",
+        "bullets": [
+          "Las primeras infracciones a menudo se reducen a silenciamientos temporales en la apelación.",
+          "Los reincidentes en 90 días suelen ser denegados.",
+          "Los baneos relacionados con contracargos requieren primero la resolución del pago."
+        ]
+      },
+      "s3": {
+        "title": "Si se deniega",
+        "leadMobile": "Las decisiones tras una revisión completa son definitivas para ese ID de caso.",
+        "leadDesktop": "Las decisiones tras una revisión completa son definitivas para ese ID de caso. Espera hasta la fecha de vencimiento indicada para el desbaneo automático cuando corresponda.",
+        "calloutTitle": "Ten en cuenta",
+        "calloutMobile": "Acosar al personal sobre las apelaciones puede extender el baneo.",
+        "calloutDesktop": "Acosar al personal sobre las apelaciones en Discord o con cuentas alternativas puede extender el baneo bajo la regla de evasión."
+      }
+    }
+  }
+}

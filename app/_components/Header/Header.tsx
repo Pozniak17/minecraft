@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Container } from '../Container/Container';
 import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { MobileNav } from './MobileNav/MobileNav';
@@ -12,6 +13,7 @@ import styles from './Header.module.css';
 
 export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
   const pathname = usePathname();
+  const t = useTranslations('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [nick, setNick] = useState('Player');
 
@@ -30,12 +32,12 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
 
         <Link href="/" className={styles.logo}>
-          <Image src="/icons/icons/logo.webp" alt="Minecraft game logo" width={215} height={59} />
+          <Image src="/icons/icons/logo.webp" alt={t('shared.logoAlt')} width={215} height={59} />
         </Link>
 
         <div className={styles.divider} />
 
-        <nav className={styles.nav} aria-label="Main navigation">
+        <nav className={styles.nav} aria-label={t('shared.mainNav')}>
           {NAV_LINKS.map(link => (
             <Link
               key={link.href}
@@ -48,7 +50,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
                 .join(' ')}
               aria-current={isNavLinkActive(link.href, pathname) ? 'page' : undefined}
             >
-              {link.label}
+              {t(`nav.${link.key}`).toUpperCase()}
             </Link>
           ))}
         </nav>
@@ -56,7 +58,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
         <button
           type="button"
           className={styles.menuButton}
-          aria-label="Open menu"
+          aria-label={t('shared.openMenu')}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav-drawer"
           onClick={() => setIsMenuOpen(true)}
@@ -68,7 +70,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
 
         <div className={styles.authButtons}>
           {isAuthed ? (
-            <Link href="/dashboard" className={styles.account} aria-label="Go to dashboard">
+            <Link href="/dashboard" className={styles.account} aria-label={t('header.goToDashboard')}>
               <span className={styles.avatar} aria-hidden="true">
                 {nick.charAt(0).toUpperCase()}
               </span>
@@ -77,10 +79,10 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
           ) : (
             <>
               <Link href="/login" className={styles.btnSecondary}>
-                Log In
+                {t('header.logIn')}
               </Link>
               <Link href="/register" className={styles.btnPrimary}>
-                Sign UP
+                {t('header.signUp')}
               </Link>
             </>
           )}

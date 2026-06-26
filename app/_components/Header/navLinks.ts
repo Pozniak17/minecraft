@@ -1,14 +1,16 @@
 import { TWITCH_URL } from '@/lib/data/social';
 
 export const NAV_LINKS = [
-  { label: 'HOME', drawerLabel: 'Home', href: '/' },
-  { label: 'SERVERS', drawerLabel: 'Servers', href: '/servers' },
-  { label: 'STORE', drawerLabel: 'Store', href: '/store' },
-  { label: 'HOW TO START', drawerLabel: 'How to Start', href: '/how-to-start' },
-  { label: 'BLOG', drawerLabel: 'Blog', href: '/blog' },
-  { label: 'ABOUT', drawerLabel: 'About', href: '/about' },
-  { label: 'FAQ', drawerLabel: 'FAQ', href: '/faq' },
+  { key: 'home', href: '/' },
+  { key: 'servers', href: '/servers' },
+  { key: 'store', href: '/store' },
+  { key: 'howToStart', href: '/how-to-start' },
+  { key: 'blog', href: '/blog' },
+  { key: 'about', href: '/about' },
+  { key: 'faq', href: '/faq' },
 ] as const;
+
+export type NavLinkKey = (typeof NAV_LINKS)[number]['key'];
 
 export function isNavLinkActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/';
@@ -24,9 +26,11 @@ const SOCIAL_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
-  { label: 'Privacy', href: '/privacy-policy' },
-  { label: 'Terms', href: '/terms' },
-  { label: 'Cookies', href: '/cookie-policy' },
+  { key: 'privacy', href: '/privacy-policy' },
+  { key: 'terms', href: '/terms' },
+  { key: 'cookies', href: '/cookie-policy' },
 ] as const;
+
+export type LegalLinkKey = (typeof LEGAL_LINKS)[number]['key'];
 
 export { LEGAL_LINKS, SOCIAL_LINKS };

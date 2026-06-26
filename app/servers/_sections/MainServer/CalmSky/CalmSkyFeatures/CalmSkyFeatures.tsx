@@ -1,37 +1,39 @@
+import { useTranslations } from 'next-intl';
 import styles from './CalmSkyFeatures.module.css';
 
-const FEATURES = [
-  {
-    icon: '🏗️',
-    title: 'Creative Building',
-    descriptionMobile: 'Unlimited creative mode with WorldEdit',
-    descriptionDesktop: 'Unlimited creative mode with premium WorldEdit tools',
-  },
-  {
-    icon: '🌄',
-    title: 'Exploration',
-    descriptionMobile: 'Vast unexplored worlds and custom biomes',
-    descriptionDesktop:
-      'Vast unexplored worlds with custom biomes and structures',
-  },
-  {
-    icon: '🎨',
-    title: 'Build Contests',
-    descriptionMobile: 'Regular community competitions with prizes',
-    descriptionDesktop: 'Regular community build competitions with prizes',
-  },
-  {
-    icon: '🤝',
-    title: 'Community Plots',
-    descriptionMobile: 'Claim your plot and build with neighbors',
-    descriptionDesktop: 'Claim your own plot and build with neighbors',
-  },
-];
-
 export default function CalmSkyFeatures() {
+  const t = useTranslations('servers');
+
+  const FEATURES = [
+    {
+      icon: '🏗️',
+      title: t('calmsky.feature1Title'),
+      descriptionMobile: t('calmsky.feature1DescMobile'),
+      descriptionDesktop: t('calmsky.feature1DescDesktop'),
+    },
+    {
+      icon: '🌄',
+      title: t('calmsky.feature2Title'),
+      descriptionMobile: t('calmsky.feature2DescMobile'),
+      descriptionDesktop: t('calmsky.feature2DescDesktop'),
+    },
+    {
+      icon: '🎨',
+      title: t('calmsky.feature3Title'),
+      descriptionMobile: t('calmsky.feature3DescMobile'),
+      descriptionDesktop: t('calmsky.feature3DescDesktop'),
+    },
+    {
+      icon: '🤝',
+      title: t('calmsky.feature4Title'),
+      descriptionMobile: t('calmsky.feature4DescMobile'),
+      descriptionDesktop: t('calmsky.feature4DescDesktop'),
+    },
+  ];
+
   return (
     <section className={styles.card}>
-      <h3 className={styles.eyebrow}>Gameplay Features</h3>
+      <h3 className={styles.eyebrow}>{t('shared.gameplayFeatures')}</h3>
       <ul className={styles.list}>
         {FEATURES.map((feature) => (
           <li key={feature.title} className={styles.feature}>

@@ -1,17 +1,17 @@
+import { getTranslations } from 'next-intl/server';
 import styles from './AboutServers.module.css';
 import { Container } from '@/app/_components/Container/Container';
 import CardList from './CardList/CardList';
 
-export default function AboutServers() {
+export default async function AboutServers() {
+  const t = await getTranslations('marketing');
+
   return (
     <Container>
       <main className={styles.section}>
-        <span className={styles.badge}>World</span>
-        <h2 className={styles.title}>3 unique worlds — choose your path</h2>
-        <p className={styles.description}>
-          Pick the playstyle that fits you best. Each server is hand-tuned with custom plugins and a
-          dedicated community.
-        </p>
+        <span className={styles.badge}>{t('about.servers.badge')}</span>
+        <h2 className={styles.title}>{t('about.servers.title')}</h2>
+        <p className={styles.description}>{t('about.servers.description')}</p>
         <CardList />
       </main>
     </Container>

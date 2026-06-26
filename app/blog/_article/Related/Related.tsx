@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import Card, { type ArticleCardProps } from '@/app/blog/CardList/Card/Card';
 import styles from './Related.module.css';
@@ -8,7 +9,8 @@ type RelatedProps = {
   desktopArticles?: ArticleCardProps[];
 };
 
-export default function Related({ articles, desktopArticles }: RelatedProps) {
+export default async function Related({ articles, desktopArticles }: RelatedProps) {
+  const t = await getTranslations('blog');
   const desktopList = desktopArticles ?? articles;
 
   return (
@@ -17,12 +19,12 @@ export default function Related({ articles, desktopArticles }: RelatedProps) {
         <div className={styles.inner}>
           <div className={styles.head}>
             <div className={styles.headLeft}>
-              <span className={styles.badge}>Popular this week</span>
-              <h2 className={styles.title}>Keep reading</h2>
+              <span className={styles.badge}>{t('related.badge')}</span>
+              <h2 className={styles.title}>{t('related.title')}</h2>
             </div>
 
             <Link href="/blog" className={`${styles.button} ${styles.buttonDesktop}`}>
-              All articles
+              {t('related.allArticles')}
               <span className={styles.arrow} aria-hidden="true">
                 →
               </span>
@@ -42,7 +44,7 @@ export default function Related({ articles, desktopArticles }: RelatedProps) {
           </ul>
 
           <Link href="/blog" className={`${styles.button} ${styles.buttonMobile}`}>
-            All articles
+            {t('related.allArticles')}
             <span className={styles.arrow} aria-hidden="true">
               →
             </span>

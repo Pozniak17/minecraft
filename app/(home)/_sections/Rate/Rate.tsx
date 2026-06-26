@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Rate.module.css';
 import RateCard from './RateCard/RateCard';
@@ -6,20 +7,22 @@ import { TOP_RATED_PLAYERS, type TopRatedPlayer } from '@/lib/data/topRatedPlaye
 
 export type RateCardProps = TopRatedPlayer;
 
-export default function Rate() {
+export default async function Rate() {
+  const t = await getTranslations('home');
+
   return (
     <>
       <section className={styles.rateSection}>
         <Container>
-          <h2 className={styles.title}>Top Rated Players</h2>
-          <p className={styles.text}>Play more. Progress further. Stand out.</p>
+          <h2 className={styles.title}>{t('rate.title')}</h2>
+          <p className={styles.text}>{t('rate.text')}</p>
           <div className={styles.rateHeader} aria-hidden="true">
-            <span>Rank</span>
-            <span>Player</span>
-            <span>Server</span>
-            <span>Level</span>
-            <span>Playtime</span>
-            <span>Activity Score</span>
+            <span>{t('rate.rank')}</span>
+            <span>{t('rate.player')}</span>
+            <span>{t('rate.server')}</span>
+            <span>{t('rate.level')}</span>
+            <span>{t('rate.playtime')}</span>
+            <span>{t('rate.activityScore')}</span>
           </div>
           <ul className={styles.rateList}>
             {TOP_RATED_PLAYERS.map(card => (

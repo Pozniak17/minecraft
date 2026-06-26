@@ -1,12 +1,16 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { CONTACT_TOPICS, SUPPORT_EMAIL } from '@/lib/data/contacts';
+import type { ContactTopicValue } from '@/lib/data/contacts';
 import styles from './ContactForm.module.css';
 
 type FormStatus = 'idle' | 'submitting' | 'sent';
 
 export default function ContactForm() {
+  const t = useTranslations('marketing');
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [topic, setTopic] = useState('');
@@ -19,11 +23,13 @@ export default function ContactForm() {
     setFormError(null);
 
     if (!name.trim() || !email.trim() || !topic || !message.trim()) {
-      setFormError('Please fill in all fields.');
+      setFormError(t('contacts.form.error'));
       return;
     }
 
-    const topicLabel = CONTACT_TOPICS.find(item => item.value === topic)?.label ?? topic;
+    const topicLabel = topic
+      ? t(`contacts.data.topic.${topic as ContactTopicValue}`)
+      : topic;
     const subject = encodeURIComponent(`Support: ${topicLabel}`);
     const body = encodeURIComponent(
       `Name: ${name.trim()}\nEmail: ${email.trim()}\nTopic: ${topicLabel}\n\n${message.trim()}`,
@@ -39,19 +45,17 @@ export default function ContactForm() {
 
   return (
     <article className={styles.formCard} aria-labelledby="contact-form-heading">
-      <p className={styles.formLabel}>Write to us</p>
+      <p className={styles.formLabel}>{t('contacts.form.label')}</p>
       <h2 id="contact-form-heading" className={styles.formTitle}>
-        Send a message
+        {t('contacts.form.title')}
       </h2>
-      <p className={styles.formDescription}>
-        Fill in the form and we will reply to your email within one business day.
-      </p>
+      <p className={styles.formDescription}>{t('contacts.form.description')}</p>
 
       {status === 'sent' ? (
         <div className={styles.success} role="status">
-          <p className={styles.successTitle}>Ready to send</p>
+          <p className={styles.successTitle}>{t('contacts.form.successTitle')}</p>
           <p className={styles.successText}>
-            Your email app should open with the message pre-filled. If it does not, write to{' '}
+            {t('contacts.form.successText')}{' '}
             <a href={`mailto:${SUPPORT_EMAIL}`} className={styles.successLink}>
               {SUPPORT_EMAIL}
             </a>
@@ -68,7 +72,7 @@ export default function ContactForm() {
               setMessage('');
             }}
           >
-            Send another
+            {t('contacts.form.sendAnother')}
           </button>
         </div>
       ) : (
@@ -78,14 +82,14 @@ export default function ContactForm() {
           <div className={styles.formRow}>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="contact-name">
-                Your name
+                {t('contacts.form.nameLabel')}
               </label>
               <input
                 id="contact-name"
                 name="name"
                 type="text"
                 autoComplete="name"
-                placeholder="Steve"
+                placeholder={t('contacts.form.namePlaceholder')}
                 className={styles.input}
                 value={name}
                 onChange={event => setName(event.target.value)}
@@ -95,14 +99,14 @@ export default function ContactForm() {
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="contact-email">
-                Email address
+                {t('contacts.form.emailLabel')}
               </label>
               <input
                 id="contact-email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="you@example.com"
+                placeholder={t('contacts.form.emailPlaceholder')}
                 className={styles.input}
                 value={email}
                 onChange={event => setEmail(event.target.value)}
@@ -113,7 +117,7 @@ export default function ContactForm() {
 
           <div className={styles.field}>
             <label className={styles.label} htmlFor="contact-topic">
-              Topic
+              {t('contacts.form.topicLabel')}
             </label>
             <div className={styles.selectWrap}>
               <select
@@ -125,11 +129,11 @@ export default function ContactForm() {
                 required
               >
                 <option value="" disabled>
-                  Pick a topic
+                  {t('contacts.form.topicPlaceholder')}
                 </option>
                 {CONTACT_TOPICS.map(item => (
                   <option key={item.value} value={item.value}>
-                    {item.label}
+                    {t(`contacts.data.topic.${item.value}`)}
                   </option>
                 ))}
               </select>
@@ -141,13 +145,13 @@ export default function ContactForm() {
 
           <div className={`${styles.field} ${styles.messageField}`}>
             <label className={styles.label} htmlFor="contact-message">
-              Message
+              {t('contacts.form.messageLabel')}
             </label>
             <textarea
               id="contact-message"
               name="message"
               className={styles.textarea}
-              placeholder="Tell us how we can help…"
+              placeholder={t('contacts.form.messagePlaceholder')}
               rows={5}
               value={message}
               onChange={event => setMessage(event.target.value)}
@@ -156,7 +160,7 @@ export default function ContactForm() {
           </div>
 
           <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-            {status === 'submitting' ? 'Opening email…' : 'Send message'}
+            {status === 'submitting' ? t('contacts.form.submitting') : t('contacts.form.submit')}
           </button>
         </form>
       )}

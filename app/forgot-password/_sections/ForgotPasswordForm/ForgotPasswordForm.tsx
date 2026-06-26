@@ -5,14 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { restorePassword, changePassword } from '@/lib/api/auth';
 import styles from './ForgotPasswordForm.module.css';
-
-const EXPECT_ITEMS = [
-  'You will receive an email within 1–2 minutes.',
-  'Use the temporary password to set a new one.',
-  'Old password stops working after reset.',
-] as const;
 
 function errorText(err: unknown, fallback: string): string {
   if (isAxiosError(err)) {
@@ -20,10 +15,11 @@ function errorText(err: unknown, fallback: string): string {
     if (typeof detail === 'string') return detail;
     return fallback;
   }
-  return 'Network error. Please try again.';
+  return 'network';
 }
 
 export default function ForgotPasswordForm() {
+  const t = useTranslations('auth');
   const router = useRouter();
   const [step, setStep] = useState<'request' | 'reset'>('request');
   const [email, setEmail] = useState('');
@@ -33,13 +29,19 @@ export default function ForgotPasswordForm() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
+  const expectItems = [
+    t('forgotPassword.expect1'),
+    t('forgotPassword.expect2'),
+    t('forgotPassword.expect3'),
+  ];
+
   async function handleRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
     setNotice(null);
 
     if (!email.trim()) {
-      setError('Enter your email address.');
+      setError(t('forgotPassword.errorEmpty'));
       return;
     }
 
@@ -47,9 +49,10 @@ export default function ForgotPasswordForm() {
     try {
       await restorePassword({ email: email.trim() });
       setStep('reset');
-      setNotice('We emailed you a temporary password. Enter it below with your new password.');
+      setNotice(t('forgotPassword.noticeEmailSent'));
     } catch (err) {
-      setError(errorText(err, 'Could not send reset email.'));
+      const raw = errorText(err, t('forgotPassword.errorSendFail'));
+      setError(raw === 'network' ? t('forgotPassword.errorNetwork') : raw);
     } finally {
       setStatus('idle');
     }
@@ -60,11 +63,11 @@ export default function ForgotPasswordForm() {
     setError(null);
 
     if (!tmpPassword || !newPassword) {
-      setError('Enter the temporary password and your new password.');
+      setError(t('forgotPassword.errorTmpRequired'));
       return;
     }
     if (newPassword.length < 4 || newPassword.length > 24) {
-      setError('New password must be 4–24 characters.');
+      setError(t('forgotPassword.errorNewPasswordLength'));
       return;
     }
 
@@ -77,7 +80,8 @@ export default function ForgotPasswordForm() {
       });
       router.push('/login');
     } catch (err) {
-      setError(errorText(err, 'Could not change password.'));
+      const raw = errorText(err, t('forgotPassword.errorChangeFail'));
+      setError(raw === 'network' ? t('forgotPassword.errorNetwork') : raw);
       setStatus('idle');
     }
   }
@@ -100,21 +104,20 @@ export default function ForgotPasswordForm() {
               <span className={styles.backArrow} aria-hidden="true">
                 ←
               </span>
-              Back to home
+              {t('forgotPassword.backToHome')}
             </Link>
           </div>
 
           {step === 'request' ? (
             <form className={styles.form} onSubmit={handleRequest} noValidate>
               <div className={styles.head}>
-                <h1 className={styles.title}>Reset your password</h1>
+                <h1 className={styles.title}>{t('forgotPassword.requestTitle')}</h1>
                 <p className={styles.subtitle}>
                   <span className={styles.subtitleMobile}>
-                    Enter the email you registered with. We will email a temporary password.
+                    {t('forgotPassword.requestSubtitleMobile')}
                   </span>
                   <span className={styles.subtitleDesktop}>
-                    Enter the email you registered with. We will email a temporary password you can
-                    use to set a new one.
+                    {t('forgotPassword.requestSubtitleDesktop')}
                   </span>
                 </p>
               </div>
@@ -124,40 +127,38 @@ export default function ForgotPasswordForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="forgot-email">
-                  Email address
+                  {t('forgotPassword.emailLabel')}
                 </label>
                 <input
                   id="forgot-email"
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder={t('forgotPassword.emailPlaceholder')}
                   className={styles.input}
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   required
                 />
                 <p className={styles.help}>
-                  <span className={styles.helpMobile}>We will send the reset email here.</span>
-                  <span className={styles.helpDesktop}>
-                    We will send the temporary password to this address.
-                  </span>
+                  <span className={styles.helpMobile}>{t('forgotPassword.helpMobile')}</span>
+                  <span className={styles.helpDesktop}>{t('forgotPassword.helpDesktop')}</span>
                 </p>
               </div>
 
               <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-                {status === 'submitting' ? 'Sending…' : 'Send reset email'}
+                {status === 'submitting' ? t('forgotPassword.submitting') : t('forgotPassword.submit')}
               </button>
 
               <div className={styles.loginBlock}>
                 <div className={styles.divider} role="presentation">
                   <span className={styles.dividerLine} />
-                  <span className={styles.dividerLabel}>Or</span>
+                  <span className={styles.dividerLabel}>{t('forgotPassword.divider')}</span>
                   <span className={styles.dividerLine} />
                 </div>
 
                 <p className={styles.footerLink}>
-                  <span>Already have a code?</span>
+                  <span>{t('forgotPassword.alreadyHaveCode')}</span>
                   <button
                     type="button"
                     className={styles.loginLink}
@@ -166,7 +167,7 @@ export default function ForgotPasswordForm() {
                       setStep('reset');
                     }}
                   >
-                    Enter it →
+                    {t('forgotPassword.enterIt')}
                   </button>
                 </p>
               </div>
@@ -174,14 +175,13 @@ export default function ForgotPasswordForm() {
           ) : (
             <form className={styles.form} onSubmit={handleReset} noValidate>
               <div className={styles.head}>
-                <h1 className={styles.title}>Set a new password</h1>
+                <h1 className={styles.title}>{t('forgotPassword.resetTitle')}</h1>
                 <p className={styles.subtitle}>
                   <span className={styles.subtitleMobile}>
-                    Enter the temporary password and choose a new one.
+                    {t('forgotPassword.resetSubtitleMobile')}
                   </span>
                   <span className={styles.subtitleDesktop}>
-                    Enter the temporary password from the email, then choose a new password (4–24
-                    characters).
+                    {t('forgotPassword.resetSubtitleDesktop')}
                   </span>
                 </p>
               </div>
@@ -191,14 +191,14 @@ export default function ForgotPasswordForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="reset-email">
-                  Email address
+                  {t('forgotPassword.emailLabel')}
                 </label>
                 <input
                   id="reset-email"
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder={t('forgotPassword.emailPlaceholder')}
                   className={styles.input}
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -208,14 +208,14 @@ export default function ForgotPasswordForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="reset-tmp">
-                  Temporary password
+                  {t('forgotPassword.tmpPasswordLabel')}
                 </label>
                 <input
                   id="reset-tmp"
                   name="tmp_password"
                   type="text"
                   autoComplete="one-time-code"
-                  placeholder="From the email"
+                  placeholder={t('forgotPassword.tmpPasswordPlaceholder')}
                   className={styles.input}
                   value={tmpPassword}
                   onChange={e => setTmpPassword(e.target.value)}
@@ -225,14 +225,14 @@ export default function ForgotPasswordForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="reset-new">
-                  New password
+                  {t('forgotPassword.newPasswordLabel')}
                 </label>
                 <input
                   id="reset-new"
                   name="new_password"
                   type="password"
                   autoComplete="new-password"
-                  placeholder="Choose a new password"
+                  placeholder={t('forgotPassword.newPasswordPlaceholder')}
                   className={styles.input}
                   value={newPassword}
                   onChange={e => setNewPassword(e.target.value)}
@@ -241,18 +241,18 @@ export default function ForgotPasswordForm() {
               </div>
 
               <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-                {status === 'submitting' ? 'Saving…' : 'Save new password'}
+                {status === 'submitting' ? t('forgotPassword.saving') : t('forgotPassword.save')}
               </button>
 
               <div className={styles.loginBlock}>
                 <div className={styles.divider} role="presentation">
                   <span className={styles.dividerLine} />
-                  <span className={styles.dividerLabel}>Or</span>
+                  <span className={styles.dividerLabel}>{t('forgotPassword.divider')}</span>
                   <span className={styles.dividerLine} />
                 </div>
 
                 <p className={styles.footerLink}>
-                  <span>Need a new email?</span>
+                  <span>{t('forgotPassword.needNewEmail')}</span>
                   <button
                     type="button"
                     className={styles.loginLink}
@@ -262,7 +262,7 @@ export default function ForgotPasswordForm() {
                       setStep('request');
                     }}
                   >
-                    Request again →
+                    {t('forgotPassword.requestAgain')}
                   </button>
                 </p>
               </div>
@@ -270,9 +270,9 @@ export default function ForgotPasswordForm() {
           )}
 
           <p className={styles.helpFoot}>
-            Can&apos;t access your email?{' '}
+            {t('forgotPassword.cantAccess')}{' '}
             <Link href="/faq" className={styles.supportLink}>
-              Contact support
+              {t('forgotPassword.contactSupport')}
             </Link>
           </p>
         </div>
@@ -292,9 +292,9 @@ export default function ForgotPasswordForm() {
         </div>
 
         <div className={styles.reassureCard}>
-          <p className={styles.reassureTitle}>What to expect</p>
+          <p className={styles.reassureTitle}>{t('forgotPassword.expectTitle')}</p>
           <ul className={styles.reassureList}>
-            {EXPECT_ITEMS.map(item => (
+            {expectItems.map(item => (
               <li key={item} className={styles.reassureItem}>
                 <span className={styles.reassureDot} aria-hidden="true" />
                 {item}

@@ -1,37 +1,39 @@
+import { useTranslations } from 'next-intl';
 import styles from './MineWarsFeatures.module.css';
 
-const FEATURES = [
-  {
-    icon: '⚔️',
-    title: 'PvP Combat',
-    descriptionMobile: 'Intense player vs player battles in arenas',
-    descriptionDesktop: 'Intense player vs player battles in dedicated arenas',
-  },
-  {
-    icon: '🏆',
-    title: 'Tournaments',
-    descriptionMobile: 'Weekly & seasonal tournaments with prizes',
-    descriptionDesktop:
-      'Weekly and seasonal competitive tournaments with prizes',
-  },
-  {
-    icon: '🎖️',
-    title: 'Ranked Ladder',
-    descriptionMobile: 'Climb competitive ladder, earn rewards',
-    descriptionDesktop: 'Climb the competitive ladder and earn exclusive rewards',
-  },
-  {
-    icon: '👥',
-    title: 'Team Warfare',
-    descriptionMobile: 'Faction-based combat and territory control',
-    descriptionDesktop: 'Faction-based team combat and territory control',
-  },
-];
-
 export default function MineWarsFeatures() {
+  const t = useTranslations('servers');
+
+  const FEATURES = [
+    {
+      icon: '⚔️',
+      title: t('minewars.feature1Title'),
+      descriptionMobile: t('minewars.feature1DescMobile'),
+      descriptionDesktop: t('minewars.feature1DescDesktop'),
+    },
+    {
+      icon: '🏆',
+      title: t('minewars.feature2Title'),
+      descriptionMobile: t('minewars.feature2DescMobile'),
+      descriptionDesktop: t('minewars.feature2DescDesktop'),
+    },
+    {
+      icon: '🎖️',
+      title: t('minewars.feature3Title'),
+      descriptionMobile: t('minewars.feature3DescMobile'),
+      descriptionDesktop: t('minewars.feature3DescDesktop'),
+    },
+    {
+      icon: '👥',
+      title: t('minewars.feature4Title'),
+      descriptionMobile: t('minewars.feature4DescMobile'),
+      descriptionDesktop: t('minewars.feature4DescDesktop'),
+    },
+  ];
+
   return (
     <section className={styles.card}>
-      <h3 className={styles.eyebrow}>Gameplay Features</h3>
+      <h3 className={styles.eyebrow}>{t('shared.gameplayFeatures')}</h3>
       <ul className={styles.list}>
         {FEATURES.map((feature) => (
           <li key={feature.title} className={styles.feature}>

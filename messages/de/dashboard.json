@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Dashboard",
+  "welcomeBack": "Willkommen zurück, {name}",
+  "subtitle": "Hier ist, was heute in deinen Welten passiert.",
+  "topUp": "Aufladen",
+  "listConnector": "und",
+  "notifications": {
+    "ariaLabel": "Benachrichtigungen",
+    "ariaLabelAlert": "Benachrichtigungen — Serveralarm",
+    "ariaLabelSuccess": "Benachrichtigungen — Kauf abgeschlossen",
+    "panelTitle": "Benachrichtigungen",
+    "empty": "Keine neuen Benachrichtigungen"
+  },
+  "stats": {
+    "activeServers": "Aktive Server",
+    "onlineHint": "{names} online",
+    "checkingStatus": "Serverstatus wird geprüft…"
+  },
+  "serverStatus": {
+    "title": "Serverstatus",
+    "seeAll": "Alle Server anzeigen",
+    "online": "online",
+    "offline": "offline",
+    "playersOnline": "Spieler online",
+    "join": "Beitreten"
+  },
+  "offline": {
+    "allTitle": "Alle Server offline",
+    "allBody": "Wir arbeiten daran. Bitte bald erneut prüfen.",
+    "oneTitle": "{name} ist offline",
+    "oneBody": "Wir stellen den Zugang wieder her. Status wird alle 10 Sekunden aktualisiert.",
+    "multipleTitle": "{count} Server offline",
+    "multipleBody": "{servers} sind vorübergehend nicht verfügbar."
+  },
+  "purchase": {
+    "completeTitle": "Kauf abgeschlossen",
+    "completeBodyItem": "{item}. In deinen Spielnamen geliefert.",
+    "completeBodyGeneric": "Deine Zahlung war erfolgreich. Crystals und Privilegien sind unterwegs."
+  },
+  "activity": {
+    "title": "Letzte Aktivität",
+    "viewAll": "Alle anzeigen",
+    "loading": "Lädt…",
+    "empty": "Noch keine Aktivität. Deine Käufe erscheinen hier."
+  },
+  "time": {
+    "live": "Live",
+    "recently": "Kürzlich",
+    "justNow": "Gerade eben",
+    "minutesAgo": "Vor {mins} Min.",
+    "hoursAgo": "Vor {hours} Std.",
+    "yesterday": "Gestern",
+    "daysAgo": "Vor {days} Tagen",
+    "monthsAgo": "Vor {months} Mon."
+  },
+  "crystals": {
+    "label": "Aufladen",
+    "title": "Mehr Crystals nötig?",
+    "text": "Kauf ein Paket und schalte Privilegien, Kosmetik und Turnierteilnahmen frei.",
+    "openShop": "Shop öffnen"
+  },
+  "servers": {
+    "luckysurvival": {
+      "description": "Vanilla-Survival mit PvP — TNT deaktiviert."
+    },
+    "minewars": {
+      "description": "Vanilla-Survival, PvP und TNT aktiviert."
+    },
+    "calmsky": {
+      "description": "Friedlich — kein PvP, kein TNT. Bauen und interagieren."
+    }
+  }
+}

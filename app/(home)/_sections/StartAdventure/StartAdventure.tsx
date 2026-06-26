@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { getDashboardPlayHref } from '@/lib/data/servers';
 import styles from './StartAdventure.module.css';
 import { Container } from '../../../_components/Container/Container';
 
-export default function StartAdventure({ isAuthed = false }: { isAuthed?: boolean }) {
+export default async function StartAdventure({ isAuthed = false }: { isAuthed?: boolean }) {
+  const t = await getTranslations('home');
   const playHref = getDashboardPlayHref(isAuthed);
 
   return (
@@ -12,10 +14,10 @@ export default function StartAdventure({ isAuthed = false }: { isAuthed?: boolea
       <Container>
         <div className={styles.content}>
           <div className={styles.wrapper}>
-            <h2 className={styles.title}>Ready to start your adventure?</h2>
-            <p className={styles.description}>Join the world of unique Minecraft servers.</p>
+            <h2 className={styles.title}>{t('startAdventure.title')}</h2>
+            <p className={styles.description}>{t('startAdventure.description')}</p>
             <Link href={playHref} className={styles.btn}>
-              Play Now
+              {t('startAdventure.playNow')}
             </Link>
           </div>
         </div>

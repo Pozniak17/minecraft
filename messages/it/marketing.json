@@ -1,0 +1,133 @@
+{
+  "about": {
+    "hero": {
+      "badge": "Sul progetto",
+      "title": "Benvenuto nell'ecosistema Minecraft!",
+      "description": "Molto più di Minecraft — uno spazio unico per i giocatori, creato da fan che vivono e respirano il gioco.",
+      "startPlaying": "Inizia a giocare",
+      "goToStore": "Vai allo store"
+    },
+    "mission": {
+      "badge": "Missione",
+      "title": "Chi siamo",
+      "description1": "Costruito da amici appassionati di Minecraft — diventato un ecosistema completo guidato dalla community.",
+      "description2": "Questo progetto è molto più di un insieme di server — è una vera community. Siamo partiti come un piccolo gruppo di amici amanti di Minecraft e siamo cresciuti fino a diventare un grande ecosistema. Il nostro obiettivo è offrire hosting di qualità, TPS stabile, plugin unici e — soprattutto — un'atmosfera sicura e amichevole. Continuiamo a evolverci e ascoltiamo ogni feedback."
+    },
+    "servers": {
+      "badge": "Mondo",
+      "title": "3 mondi unici — scegli il tuo percorso",
+      "description": "Trova lo stile di gioco che fa per te. Ogni server è ottimizzato con plugin personalizzati e una community dedicata.",
+      "card1Genre": "Sopravvivenza",
+      "card1Desc": "Sopravvivenza vanilla con PvP e TNT disabilitati. Combattimenti equi, economia equilibrata e gameplay a lungo termine.",
+      "card2Genre": "PvP",
+      "card2Desc": "Sopravvivenza vanilla con PvP e TNT abilitati. Partite classificate, tornei e guerra tra squadre.",
+      "card3Genre": "Pacifico",
+      "card3Desc": "Server vanilla pacifico senza PvP o TNT. Creatività, gioco sociale e costruzioni bellissime."
+    },
+    "activities": {
+      "topPlayers": "Migliori giocatori",
+      "badge": "Attività e tornei",
+      "title": "Diventa una leggenda dell'ecosistema",
+      "description": "Il nostro ecosistema non dorme mai. Ogni settimana organizziamo eventi e attività in gioco. Partecipa a tornei con premi reali, lotta per i primi posti nelle classifiche globali — per ricchezza, kill e ore giocate — e mostra a tutti chi comanda.",
+      "bullet1": "Tornei settimanali con montepremi",
+      "bullet2": "Classifiche globali: ricchezza, kill, tempo",
+      "bullet3": "Eventi stagionali e ricompense limitate"
+    }
+  },
+  "contacts": {
+    "hero": {
+      "breadcrumbHome": "Home",
+      "breadcrumbFaq": "FAQ",
+      "breadcrumbContacts": "Contatti",
+      "badge": "Mettiti in contatto",
+      "title": "Contattaci",
+      "descriptionMobile": "Il nostro team è qui per aiutarti. Scegli il canale più adatto.",
+      "descriptionDesktop": "Il nostro team di supporto è pronto ad aiutarti. Email, Twitch o FAQ — come preferisci.",
+      "emailUs": "Invia email",
+      "joinTwitch": "Unisciti a Twitch",
+      "browseFaq": "Consulta la FAQ"
+    },
+    "channels": {
+      "title": "Come possiamo aiutarti?",
+      "description": "Inviaci un messaggio, scrivici via email o seguici sui social — ti risponderemo il prima possibile.",
+      "followUs": "Seguici",
+      "socialTitle": "Resta aggiornato",
+      "socialDescription": "Aggiornamenti, tornei e notizie dalla community — seguici sulla tua piattaforma preferita."
+    },
+    "form": {
+      "label": "Scrivici",
+      "title": "Invia un messaggio",
+      "description": "Compila il modulo e ti risponderemo via email entro un giorno lavorativo.",
+      "nameLabel": "Il tuo nome",
+      "namePlaceholder": "Steve",
+      "emailLabel": "Indirizzo email",
+      "emailPlaceholder": "you@example.com",
+      "topicLabel": "Argomento",
+      "topicPlaceholder": "Scegli un argomento",
+      "messageLabel": "Messaggio",
+      "messagePlaceholder": "Dicci come possiamo aiutarti\u2026",
+      "submit": "Invia messaggio",
+      "submitting": "Apertura email\u2026",
+      "successTitle": "Pronto per inviare",
+      "successText": "La tua app email dovrebbe aprirsi con il messaggio precompilato. Se non accade, scrivi a",
+      "sendAnother": "Invia un altro messaggio",
+      "error": "Compila tutti i campi."
+    },
+    "data": {
+      "topic": {
+        "general": "Domanda generale",
+        "account": "Account e accesso",
+        "billing": "Fatturazione e pagamenti",
+        "privacy": "Privacy e dati",
+        "other": "Altro"
+      },
+      "stat": {
+        "quick": {
+          "value": "Rapido",
+          "label": "risposte",
+          "labelDesktop": "risposte rapide"
+        },
+        "direct": {
+          "value": "Diretto",
+          "label": "contatto",
+          "labelDesktop": "contatto diretto"
+        },
+        "helpful": {
+          "value": "Utile",
+          "label": "supporto",
+          "labelDesktop": "supporto amichevole"
+        }
+      },
+      "channel": {
+        "email": {
+          "title": "Supporto via email",
+          "description": "Richieste relative ad account, fatturazione e privacy. Rispondiamo entro un giorno lavorativo.",
+          "actionLabel": "Invia email"
+        }
+      }
+    }
+  },
+  "howToStart": {
+    "title": "Come iniziare",
+    "step1Title": "Installare Minecraft",
+    "step1Desc": "è necessaria una versione con licenza di Minecraft per giocare",
+    "step1Button": "Scarica ora",
+    "step2Title": "Crea un account",
+    "step2Desc": "Per iniziare, registrati sul nostro sito. Questo account è essenziale per accedere alla dashboard personale, effettuare acquisti nello store e sincronizzarti con il server.",
+    "step2Button": "Registrati",
+    "step3Title": "Accedi alla dashboard",
+    "step3Desc": "Al passaggio 2, accederai alla tua dashboard utente. Qui potrai effettuare acquisti, visualizzare la cronologia degli ordini e gestire le impostazioni del tuo account.",
+    "step3Button": "Vai alla dashboard",
+    "step4Title": "Scegli un server",
+    "step4Desc": "Benvenuto al passaggio 2! Ecco come funziona: il nostro progetto offre tre server unici con regole e stili di gioco propri. Puoi esplorarli tramite questi link: <br/> <br/> - LuckySurvival <br/> - MineWars <br/> - CalmSky <br/> <br/> Tuffati e scegli il server adatto al tuo stile!",
+    "step5Title": "Connettiti al server",
+    "step5Desc": "Avvia Minecraft e vai alla sezione Multigiocatore. Aggiungi l'indirizzo IP del server, che trovi nella pagina del server, per connetterti e giocare con gli altri!",
+    "step5Button": "Dettagli del server",
+    "step6Title": "Inizia a giocare",
+    "step6Desc": "Ora che sei pronto, registrati sul nostro sito. Il tuo account ti darà accesso alla dashboard, ti permetterà di acquistare nello store e manterrà tutto sincronizzato. Preparati per un'esperienza con sviluppo, economia e interazioni!",
+    "step6Button": "Gioca ora",
+    "step7Title": "Migliora la tua esperienza",
+    "step7Desc": "Una volta registrato, avrai accesso alla tua dashboard personale. Acquista nello store in qualsiasi momento e goditi i privilegi permanenti con i tuoi acquisti.",
+    "step7Button": "Apri lo store"
+  }
+}

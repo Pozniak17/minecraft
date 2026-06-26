@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Badge } from '../Badge/Badge';
 import { Container } from '../Container/Container';
 import styles from './LegalPage.module.css';
@@ -15,7 +16,8 @@ export type LegalDocument = {
   sections: LegalSection[];
 };
 
-export function LegalPage({ document }: { document: LegalDocument }) {
+export async function LegalPage({ document }: { document: LegalDocument }) {
+  const t = await getTranslations('legal');
   const { badge, title, lastUpdated, intro, sections } = document;
 
   return (
@@ -24,7 +26,7 @@ export function LegalPage({ document }: { document: LegalDocument }) {
         <header className={styles.header}>
           <Badge>{badge}</Badge>
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.updated}>Last updated: {lastUpdated}</p>
+          <p className={styles.updated}>{t('lastUpdatedLabel')}: {lastUpdated}</p>
           <p className={styles.intro}>{intro}</p>
         </header>
 

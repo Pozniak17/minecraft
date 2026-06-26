@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import { filterFaqArticles } from '@/app/faq/_data/faqArticles';
 import styles from './Filters.module.css';
 import {
@@ -10,6 +11,7 @@ import {
 } from '../faqCategories';
 import { useFaqPage } from '../FaqPageContext';
 import FaqSortSelect from '../FaqList/FaqSortSelect';
+import { getCategoryTranslationKey } from '../categoryTranslationKeys';
 
 type FiltersProps = {
   activeCategory: FaqCategoryId;
@@ -17,9 +19,11 @@ type FiltersProps = {
 };
 
 export default function Filters({ activeCategory, onCategoryChange }: FiltersProps) {
+  const t = useTranslations('faq');
   const active = getCategoryById(activeCategory);
   const { searchQuery, clearSearch, itemsPerPage, sortOption, setSortOption } = useFaqPage();
-  const selectedLabel = active.id === 'all' ? 'All categories' : active.mobileLabel;
+  const selectedLabel =
+    active.id === 'all' ? t('filters.allCategories') : t(getCategoryTranslationKey(active.id, 'mobile'));
   const trimmedQuery = searchQuery.trim();
 
   const totalInCategory = useMemo(
@@ -44,7 +48,7 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
                 aria-pressed={isActive}
                 onClick={() => onCategoryChange(category.id)}
               >
-                {category.mobileLabel}
+                {t(getCategoryTranslationKey(category.id, 'mobile'))}
               </button>
             );
           })}
@@ -59,7 +63,7 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
             <span className={styles.selectIcon} aria-hidden="true">
               ▦
             </span>
-            <span className={styles.selectLabel}>Category:</span>
+            <span className={styles.selectLabel}>{t('filters.categoryLabel')}</span>
             <span className={styles.selectValue}>{selectedLabel}</span>
             {active.id !== 'all' && <span className={styles.countBadge}>{active.count}</span>}
           </span>
@@ -72,15 +76,20 @@ export default function Filters({ activeCategory, onCategoryChange }: FiltersPro
           <p className={styles.result}>
             {trimmedQuery
               ? totalInCategory === 0
-                ? `0 results for "${trimmedQuery}"`
-                : `1-${visibleEnd} of ${totalInCategory} for "${trimmedQuery}"`
+                ? t('filters.zeroResultsWithQuery', { query: trimmedQuery })
+                : t('filters.resultsWithQuery', {
+                    from: 1,
+                    to: visibleEnd,
+                    total: totalInCategory,
+                    query: trimmedQuery,
+                  })
               : totalInCategory === 0
-                ? '0 results'
-                : `1-${visibleEnd} of ${totalInCategory}`}
+                ? t('filters.zeroResults')
+                : t('filters.resultsRange', { from: 1, to: visibleEnd, total: totalInCategory })}
           </p>
           {trimmedQuery ? (
             <button type="button" className={styles.clearSearch} onClick={clearSearch}>
-              Clear
+              {t('filters.clear')}
             </button>
           ) : (
             <FaqSortSelect value={sortOption} onChange={setSortOption} variant="mobile" />

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useCallback, useSyncExternalStore } from 'react';
+import { useTranslations } from 'next-intl';
 import styles from './CookieConsent.module.css';
 
 const STORAGE_KEY = 'cookie-consent';
@@ -32,6 +33,7 @@ function getServerSnapshot(): string {
 }
 
 export function CookieConsent() {
+  const t = useTranslations('common');
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const persist = useCallback((value: 'accepted' | 'rejected') => {
@@ -48,17 +50,18 @@ export function CookieConsent() {
   }
 
   return (
-    <div className={styles.root} role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div className={styles.root} role="dialog" aria-live="polite" aria-label={t('cookie.ariaLabel')}>
       <div className={styles.card}>
         <div className={styles.copy}>
-          <p className={styles.title}>We use cookies</p>
+          <p className={styles.title}>{t('cookie.title')}</p>
           <p className={styles.text}>
-            We use cookies to keep you signed in, secure your session, and improve your experience.
-            Read more in our{' '}
-            <Link href="/cookie-policy" className={styles.link}>
-              Cookie Policy
-            </Link>
-            .
+            {t.rich('cookie.text', {
+              link: chunks => (
+                <Link href="/cookie-policy" className={styles.link}>
+                  {chunks}
+                </Link>
+              ),
+            })}
           </p>
         </div>
 
@@ -68,14 +71,14 @@ export function CookieConsent() {
             className={styles.reject}
             onClick={() => persist('rejected')}
           >
-            Reject
+            {t('cookie.reject')}
           </button>
           <button
             type="button"
             className={styles.accept}
             onClick={() => persist('accepted')}
           >
-            Accept all
+            {t('cookie.accept')}
           </button>
         </div>
       </div>

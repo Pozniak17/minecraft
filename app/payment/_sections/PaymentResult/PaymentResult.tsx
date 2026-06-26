@@ -4,37 +4,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { notifyPurchaseSuccess } from '@/lib/client/purchaseNotification';
 import styles from './PaymentResult.module.css';
 
 type Status = 'success' | 'failed';
 
-const COPY: Record<Status, {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  primary: { label: string; href: string };
-  secondary: { label: string; href: string };
-}> = {
+const HREFS: Record<Status, { primary: string; secondary: string }> = {
   success: {
-    eyebrow: 'Payment complete',
-    title: 'Thank you for your purchase',
-    subtitle:
-      'Your payment went through. Privileges and crystals are delivered to your in-game nickname on the selected server.',
-    primary: { label: 'Go to dashboard', href: '/dashboard' },
-    secondary: { label: 'View purchase history', href: '/dashboard/history' },
+    primary: '/dashboard',
+    secondary: '/dashboard/history',
   },
   failed: {
-    eyebrow: 'Payment failed',
-    title: 'Your payment did not go through',
-    subtitle:
-      'No money was charged. You can return to your cart and try again, or use a different payment method.',
-    primary: { label: 'Back to cart', href: '/dashboard/cart' },
-    secondary: { label: 'Back to shop', href: '/dashboard/shop' },
+    primary: '/dashboard/cart',
+    secondary: '/dashboard/shop',
   },
 };
 
 export default function PaymentResult({ status }: { status: Status }) {
+  const t = useTranslations('system');
   const params = useSearchParams();
   // Провайдер часто додає референс платежу в query — показуємо, якщо є.
   const orderRef =
@@ -43,7 +31,7 @@ export default function PaymentResult({ status }: { status: Status }) {
     params.get('id') ??
     params.get('payment_id');
 
-  const copy = COPY[status];
+  const hrefs = HREFS[status];
 
   useEffect(() => {
     if (status === 'success') notifyPurchaseSuccess();
@@ -55,7 +43,7 @@ export default function PaymentResult({ status }: { status: Status }) {
         <Link href="/" className={styles.logo}>
           <Image
             src="/icons/icons/logo.webp"
-            alt="Minecraft game logo"
+            alt={t('payment_logoAlt')}
             width={200}
             height={55}
             priority
@@ -67,30 +55,36 @@ export default function PaymentResult({ status }: { status: Status }) {
             {status === 'success' ? '✓' : '×'}
           </span>
 
-          <span className={styles.eyebrow}>{copy.eyebrow}</span>
-          <h1 className={styles.title}>{copy.title}</h1>
-          <p className={styles.subtitle}>{copy.subtitle}</p>
+          <span className={styles.eyebrow}>
+            {status === 'success' ? t('payment_successEyebrow') : t('payment_failedEyebrow')}
+          </span>
+          <h1 className={styles.title}>
+            {status === 'success' ? t('payment_successTitle') : t('payment_failedTitle')}
+          </h1>
+          <p className={styles.subtitle}>
+            {status === 'success' ? t('payment_successSubtitle') : t('payment_failedSubtitle')}
+          </p>
 
           {orderRef && (
             <p className={styles.orderRef}>
-              Reference: <span className={styles.orderRefValue}>{orderRef}</span>
+              {t('payment_reference')} <span className={styles.orderRefValue}>{orderRef}</span>
             </p>
           )}
 
           <div className={styles.actions}>
-            <Link href={copy.primary.href} className={styles.primaryBtn}>
-              {copy.primary.label}
+            <Link href={hrefs.primary} className={styles.primaryBtn}>
+              {status === 'success' ? t('payment_successPrimary') : t('payment_failedPrimary')}
             </Link>
-            <Link href={copy.secondary.href} className={styles.secondaryBtn}>
-              {copy.secondary.label}
+            <Link href={hrefs.secondary} className={styles.secondaryBtn}>
+              {status === 'success' ? t('payment_successSecondary') : t('payment_failedSecondary')}
             </Link>
           </div>
         </div>
 
         <p className={styles.help}>
-          Something looks wrong?{' '}
+          {t('payment_helpText')}{' '}
           <Link href="/faq" className={styles.helpLink}>
-            Contact support
+            {t('payment_helpLink')}
           </Link>
         </p>
       </div>

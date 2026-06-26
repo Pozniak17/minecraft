@@ -2,6 +2,7 @@
 
 import { isAxiosError } from 'axios';
 import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   updateProfile,
   changeAccountPassword,
@@ -20,19 +21,19 @@ type PasswordStep = 'idle' | 'form' | 'done';
 
 type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
-const SECTIONS: { id: SectionId; label: string; danger?: boolean }[] = [
-  { id: 'profile', label: 'Profile' },
-  { id: 'security', label: 'Security' },
-  { id: 'danger', label: 'Danger zone', danger: true },
+const SECTION_IDS: { id: SectionId; danger?: boolean }[] = [
+  { id: 'profile' },
+  { id: 'security' },
+  { id: 'danger', danger: true },
 ];
 
-function errorText(err: unknown, fallback: string): string {
+function getErrorText(err: unknown, fallback: string, networkError: string): string {
   if (isAxiosError(err)) {
     const detail = err.response?.data?.detail;
     if (typeof detail === 'string') return detail;
     return fallback;
   }
-  return 'Network error. Please try again.';
+  return networkError;
 }
 
 function scrollSubnavItemIntoView(button: HTMLButtonElement | undefined) {
@@ -43,6 +44,8 @@ function scrollSubnavItemIntoView(button: HTMLButtonElement | undefined) {
 }
 
 export default function Settings() {
+  const t = useTranslations('settings');
+
   const sectionRefs = useRef<Partial<Record<SectionId, HTMLElement | null>>>({});
   const subnavButtonRefs = useRef(new Map<SectionId, HTMLButtonElement>());
   const isProgrammaticScroll = useRef(false);
@@ -132,7 +135,7 @@ export default function Settings() {
       await uploadPhoto(file);
       markPhotoUploaded();
     } catch (err) {
-      setPhotoError(errorText(err, 'Could not upload the photo.'));
+      setPhotoError(getErrorText(err, t('errorUploadPhoto'), t('errorNetwork')));
     } finally {
       setPhotoBusy(false);
     }
@@ -145,7 +148,7 @@ export default function Settings() {
       await deletePhoto();
       markPhotoRemoved();
     } catch (err) {
-      setPhotoError(errorText(err, 'Could not remove the photo.'));
+      setPhotoError(getErrorText(err, t('errorRemovePhoto'), t('errorNetwork')));
     } finally {
       setPhotoBusy(false);
     }
@@ -172,9 +175,9 @@ export default function Settings() {
         getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
       );
       const marker = (Number.isFinite(headerHeight) ? headerHeight : 72) + 40;
-      let nextActiveSection = SECTIONS[0].id;
+      let nextActiveSection = SECTION_IDS[0].id;
 
-      for (const section of SECTIONS) {
+      for (const section of SECTION_IDS) {
         const element = sectionRefs.current[section.id];
         if (!element) continue;
 
@@ -220,15 +223,15 @@ export default function Settings() {
     setError(null);
 
     if (!currentPassword || !newPassword) {
-      setError('Enter your current and new password.');
+      setError(t('errorMissingPasswords'));
       return;
     }
     if (newPassword.length < 10 || newPassword.length > 24) {
-      setError('New password must be 10–24 characters.');
+      setError(t('errorPasswordLength'));
       return;
     }
     if (newPassword !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError(t('errorPasswordMismatch'));
       return;
     }
 
@@ -241,7 +244,7 @@ export default function Settings() {
       });
       setPasswordStepDone();
     } catch (err) {
-      setError(errorText(err, 'Could not change the password.'));
+      setError(getErrorText(err, t('errorChangePassword'), t('errorNetwork')));
     } finally {
       setStatus('idle');
     }
@@ -272,21 +275,17 @@ export default function Settings() {
     <div className={styles.shell}>
       <div className={styles.root}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>Settings</span>
-          <h1 className={styles.title}>Account settings</h1>
-          <p className={styles.subtitleMobile}>
-            Manage profile and security. Changes save automatically.
-          </p>
-          <p className={styles.subtitleDesktop}>
-            Manage your profile and password. Changes save automatically.
-          </p>
+          <span className={styles.eyebrow}>{t('eyebrow')}</span>
+          <h1 className={styles.title}>{t('title')}</h1>
+          <p className={styles.subtitleMobile}>{t('subtitleMobile')}</p>
+          <p className={styles.subtitleDesktop}>{t('subtitleDesktop')}</p>
         </header>
 
         <div className={styles.body}>
-          <nav className={styles.subnav} aria-label="Settings sections">
-            <span className={styles.subnavLabel}>Sections</span>
+          <nav className={styles.subnav} aria-label={t('subnavAriaLabel')}>
+            <span className={styles.subnavLabel}>{t('subnavLabel')}</span>
             <div className={styles.subnavList}>
-              {SECTIONS.map(section => (
+              {SECTION_IDS.map(section => (
                 <button
                   key={section.id}
                   ref={node => {
@@ -306,7 +305,7 @@ export default function Settings() {
                     .join(' ')}
                   onClick={() => scrollToSection(section.id)}
                 >
-                  {section.label}
+                  {t(`sections.${section.id}`)}
                 </button>
               ))}
             </div>
@@ -321,13 +320,13 @@ export default function Settings() {
               className={styles.card}
             >
               <div className={styles.cardHead}>
-                <h2 className={styles.cardTitle}>Profile</h2>
+                <h2 className={styles.cardTitle}>{t('sections.profile')}</h2>
                 <span className={styles.savedBadge}>
                   <span className={styles.savedDot} aria-hidden="true" />
-                  {saveStatus === 'saving' && 'Saving…'}
-                  {saveStatus === 'saved' && 'Saved'}
-                  {saveStatus === 'error' && 'Save failed'}
-                  {saveStatus === 'idle' && 'Auto-saved'}
+                  {saveStatus === 'saving' && t('saveStatus.saving')}
+                  {saveStatus === 'saved' && t('saveStatus.saved')}
+                  {saveStatus === 'error' && t('saveStatus.error')}
+                  {saveStatus === 'idle' && t('saveStatus.idle')}
                 </span>
               </div>
 
@@ -337,7 +336,7 @@ export default function Settings() {
                   <img
                     className={styles.avatarLarge}
                     src={photoUrl}
-                    alt="Profile"
+                    alt={t('avatarAlt')}
                     style={{ objectFit: 'cover' }}
                   />
                 ) : (
@@ -346,11 +345,9 @@ export default function Settings() {
                   </span>
                 )}
                 <div className={styles.avatarMeta}>
-                  <span className={styles.avatarTitle}>Profile picture</span>
-                  <span className={styles.avatarHintMobile}>JPG/PNG/WebP, up to 5 MB.</span>
-                  <span className={styles.avatarHintDesktop}>
-                    JPEG, PNG or WebP, square format, up to 5 MB.
-                  </span>
+                  <span className={styles.avatarTitle}>{t('avatarTitle')}</span>
+                  <span className={styles.avatarHintMobile}>{t('avatarHintMobile')}</span>
+                  <span className={styles.avatarHintDesktop}>{t('avatarHintDesktop')}</span>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -365,9 +362,11 @@ export default function Settings() {
                       disabled={photoBusy}
                       onClick={() => fileInputRef.current?.click()}
                     >
-                      <span className={styles.pillMobile}>{photoBusy ? '…' : 'Upload'}</span>
+                      <span className={styles.pillMobile}>
+                        {photoBusy ? t('uploadingMobile') : t('uploadMobile')}
+                      </span>
                       <span className={styles.pillDesktop}>
-                        {photoBusy ? 'Uploading…' : 'Upload photo'}
+                        {photoBusy ? t('uploadingMobile') : t('uploadDesktop')}
                       </span>
                     </button>
                     <button
@@ -376,7 +375,7 @@ export default function Settings() {
                       disabled={photoBusy || !photoUrl}
                       onClick={handlePhotoRemove}
                     >
-                      Remove
+                      {t('remove')}
                     </button>
                   </div>
                   {photoError && <p className={styles.formError}>{photoError}</p>}
@@ -387,7 +386,7 @@ export default function Settings() {
                 <div className={styles.formCol}>
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="settings-display-name">
-                      Display name
+                      {t('displayNameLabel')}
                     </label>
                     <input
                       id="settings-display-name"
@@ -400,16 +399,14 @@ export default function Settings() {
                       }}
                     />
                     <p className={styles.help}>
-                      <span className={styles.helpMobile}>Visible on the leaderboard.</span>
-                      <span className={styles.helpDesktop}>
-                        Visible to other players on the leaderboard.
-                      </span>
+                      <span className={styles.helpMobile}>{t('displayNameHelpMobile')}</span>
+                      <span className={styles.helpDesktop}>{t('displayNameHelpDesktop')}</span>
                     </p>
                   </div>
 
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="settings-nickname">
-                      In-game nickname
+                      {t('nicknameLabel')}
                     </label>
                     <input
                       id="settings-nickname"
@@ -422,8 +419,8 @@ export default function Settings() {
                       }}
                     />
                     <p className={styles.help}>
-                      <span className={styles.helpMobile}>Must match Minecraft account.</span>
-                      <span className={styles.helpDesktop}>Must match your Minecraft account.</span>
+                      <span className={styles.helpMobile}>{t('nicknameHelpMobile')}</span>
+                      <span className={styles.helpDesktop}>{t('nicknameHelpDesktop')}</span>
                     </p>
                   </div>
                 </div>
@@ -431,7 +428,7 @@ export default function Settings() {
                 <div className={styles.formCol}>
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="settings-email-readonly">
-                      Email address
+                      {t('emailLabel')}
                     </label>
                     <div className={styles.inputWithTag}>
                       <input
@@ -440,14 +437,14 @@ export default function Settings() {
                         value={email}
                         readOnly
                       />
-                      <span className={styles.verifiedTag}>Verified</span>
+                      <span className={styles.verifiedTag}>{t('emailVerified')}</span>
                     </div>
-                    <p className={styles.helpDesktopOnly}>Contact support to change your email.</p>
+                    <p className={styles.helpDesktopOnly}>{t('emailHelp')}</p>
                   </div>
 
                   <div className={styles.field}>
                     <label className={styles.label} htmlFor="settings-country">
-                      Country / region
+                      {t('countryLabel')}
                     </label>
                     <CountrySelect
                       id="settings-country"
@@ -459,14 +456,14 @@ export default function Settings() {
                         queueSave({ country: next });
                       }}
                     />
-                    <p className={styles.helpDesktopOnly}>Used only for tax-compliant billing.</p>
+                    <p className={styles.helpDesktopOnly}>{t('countryHelp')}</p>
                   </div>
                 </div>
               </div>
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="settings-bio">
-                  Bio
+                  {t('bioLabel')}
                 </label>
                 <div className={styles.textareaWrap}>
                   <textarea
@@ -482,8 +479,8 @@ export default function Settings() {
                     }}
                   />
                   <div className={styles.textareaFoot}>
-                    <span className={styles.markdownMobile}>Markdown</span>
-                    <span className={styles.markdownDesktop}>Markdown supported</span>
+                    <span className={styles.markdownMobile}>{t('markdownMobile')}</span>
+                    <span className={styles.markdownDesktop}>{t('markdownDesktop')}</span>
                     <span>
                       {bio.length} / 240
                     </span>
@@ -499,19 +496,17 @@ export default function Settings() {
               id="settings-security"
               className={styles.card}
             >
-              <h2 className={styles.cardTitleStandalone}>Security</h2>
+              <h2 className={styles.cardTitleStandalone}>{t('sections.security')}</h2>
 
               <div className={styles.row}>
                 <div className={styles.rowText}>
-                  <span className={styles.rowTitle}>Password</span>
-                  <span className={styles.rowHintMobile}>Last changed 3 weeks ago.</span>
-                  <span className={styles.rowHintDesktop}>
-                    Last changed 3 weeks ago. We recommend changing every 90 days.
-                  </span>
+                  <span className={styles.rowTitle}>{t('passwordTitle')}</span>
+                  <span className={styles.rowHintMobile}>{t('passwordHintMobile')}</span>
+                  <span className={styles.rowHintDesktop}>{t('passwordHintDesktop')}</span>
                 </div>
                 <button type="button" className={styles.outlinePill} onClick={openPasswordChange}>
-                  <span className={styles.pillMobile}>Change</span>
-                  <span className={styles.pillDesktop}>Change password</span>
+                  <span className={styles.pillMobile}>{t('changeMobile')}</span>
+                  <span className={styles.pillDesktop}>{t('changeDesktop')}</span>
                 </button>
               </div>
 
@@ -521,21 +516,17 @@ export default function Settings() {
 
                   {passwordStep === 'done' ? (
                     <div className={styles.passwordDone}>
-                      <p className={styles.successText}>
-                        Your password has been changed successfully.
-                      </p>
+                      <p className={styles.successText}>{t('passwordDone')}</p>
                       <button type="button" className={styles.outlinePill} onClick={closePasswordChange}>
-                        Close
+                        {t('close')}
                       </button>
                     </div>
                   ) : (
                     <form className={styles.passwordForm} onSubmit={handleChangePassword} noValidate>
-                      <p className={styles.passwordIntro}>
-                        Enter your current password and choose a new one (10–24 characters).
-                      </p>
+                      <p className={styles.passwordIntro}>{t('passwordIntro')}</p>
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="settings-current">
-                          Current password
+                          {t('currentPasswordLabel')}
                         </label>
                         <input
                           id="settings-current"
@@ -549,7 +540,7 @@ export default function Settings() {
                       </div>
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="settings-new">
-                          New password
+                          {t('newPasswordLabel')}
                         </label>
                         <input
                           id="settings-new"
@@ -565,7 +556,7 @@ export default function Settings() {
                       </div>
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="settings-confirm">
-                          Confirm new password
+                          {t('confirmPasswordLabel')}
                         </label>
                         <input
                           id="settings-confirm"
@@ -584,10 +575,10 @@ export default function Settings() {
                         className={styles.primaryPillWide}
                         disabled={status !== 'idle'}
                       >
-                        {status === 'saving' ? 'Saving…' : 'Save new password'}
+                        {status === 'saving' ? t('savePasswordSaving') : t('savePasswordIdle')}
                       </button>
                       <button type="button" className={styles.textBtn} onClick={closePasswordChange}>
-                        Cancel
+                        {t('cancel')}
                       </button>
                     </form>
                   )}
@@ -605,19 +596,19 @@ export default function Settings() {
             >
               <h2 className={styles.dangerTitle}>
                 <span aria-hidden="true">⚠</span>
-                Danger zone
+                {t('dangerTitle')}
               </h2>
 
               <div className={styles.dangerRow}>
                 <div className={styles.rowText}>
-                  <span className={styles.rowTitleMobile}>Delete permanently</span>
-                  <span className={styles.rowTitleDesktop}>Delete account permanently</span>
-                  <span className={styles.dangerHintMobile}>Removes all data forever.</span>
-                  <span className={styles.dangerHintDesktop}>Removes all data forever.</span>
+                  <span className={styles.rowTitleMobile}>{t('deleteMobile')}</span>
+                  <span className={styles.rowTitleDesktop}>{t('deleteDesktop')}</span>
+                  <span className={styles.dangerHintMobile}>{t('deleteHint')}</span>
+                  <span className={styles.dangerHintDesktop}>{t('deleteHint')}</span>
                 </div>
                 <button type="button" className={styles.dangerBtn}>
-                  <span className={styles.pillMobile}>Delete</span>
-                  <span className={styles.pillDesktop}>Delete forever</span>
+                  <span className={styles.pillMobile}>{t('deleteBtnMobile')}</span>
+                  <span className={styles.pillDesktop}>{t('deleteBtnDesktop')}</span>
                 </button>
               </div>
             </section>

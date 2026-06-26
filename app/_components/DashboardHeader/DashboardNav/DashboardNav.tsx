@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { logout } from '@/lib/api/auth';
 import { LogoutModal } from '../../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../../LogoutOverlay/LogoutOverlay';
@@ -21,6 +22,7 @@ type DashboardNavProps = {
 
 export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
   const router = useRouter();
+  const t = useTranslations('common');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [initial, setInitial] = useState('U');
@@ -80,20 +82,20 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
     <>
       {isOpen && (
       <div className={styles.root}>
-      <button type="button" className={styles.overlay} aria-label="Close menu" onClick={onClose} />
+      <button type="button" className={styles.overlay} aria-label={t('shared.closeMenu')} onClick={onClose} />
 
       <aside
         id="mobile-nav-drawer"
         className={styles.drawer}
         role="dialog"
         aria-modal="true"
-        aria-label="Dashboard navigation"
+        aria-label={t('dashNav.dashboardNav')}
       >
         <div className={styles.top}>
           <Link href="/dashboard" className={styles.logo} onClick={onClose}>
-            <Image src="/icons/icons/logo.webp" alt="Minecraft game logo" width={144} height={40} priority />
+            <Image src="/icons/icons/logo.webp" alt={t('shared.logoAlt')} width={144} height={40} priority />
           </Link>
-          <button type="button" className={styles.close} aria-label="Close menu" onClick={onClose}>
+          <button type="button" className={styles.close} aria-label={t('shared.closeMenu')} onClick={onClose}>
             ✕
           </button>
         </div>
@@ -108,18 +110,18 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         </div>
 
         <Link href="/dashboard/shop" className={styles.topup} onClick={onClose}>
-          Top up crystals
+          {t('dashNav.topUpCrystals')}
         </Link>
 
         <div className={styles.sectionLabel}>
-          <span>Browse the site</span>
+          <span>{t('shared.browseSite')}</span>
           <span className={styles.sectionLine} aria-hidden="true" />
         </div>
 
-        <nav className={styles.browse} aria-label="Browse the site">
+        <nav className={styles.browse} aria-label={t('shared.browseSite')}>
           {NAV_LINKS.map(link => (
             <Link key={link.href} href={link.href} className={styles.browseLink} onClick={onClose}>
-              <span>{link.drawerLabel}</span>
+              <span>{t(`nav.${link.key}`)}</span>
               <span className={styles.browseChevron} aria-hidden="true">
                 ›
               </span>
@@ -128,11 +130,11 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         </nav>
 
         <div className={styles.sectionLabel}>
-          <span>My workspace</span>
+          <span>{t('shared.myWorkspace')}</span>
           <span className={styles.sectionLine} aria-hidden="true" />
         </div>
 
-        <nav className={styles.workspace} aria-label="My workspace">
+        <nav className={styles.workspace} aria-label={t('shared.myWorkspace')}>
           {workspaceLinks.map(link => {
             const isActive = link.href !== '#' && isNavLinkActive(link.href, pathname);
             const isDisabled = link.soon && link.href === '#';
@@ -147,17 +149,17 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
             const content = (
               <>
                 <span className={styles.wsIcon} style={iconStyle(link.icon)} aria-hidden="true" />
-                <span className={styles.wsLabel}>{link.label}</span>
+                <span className={styles.wsLabel}>{t(`dash.${link.key}`)}</span>
                 {typeof link.badge === 'number' && link.badge > 0 && (
                   <span className={styles.badge}>{link.badge}</span>
                 )}
-                {link.soon && <span className={styles.soon}>Soon</span>}
+                {link.soon && <span className={styles.soon}>{t('shared.soon')}</span>}
               </>
             );
 
             if (isDisabled) {
               return (
-                <span key={link.label} className={className} aria-disabled="true">
+                <span key={link.key} className={className} aria-disabled="true">
                   {content}
                 </span>
               );
@@ -165,7 +167,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
 
             return (
               <Link
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className={className}
                 aria-current={isActive ? 'page' : undefined}
@@ -184,7 +186,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         <div className={styles.account}>
           <Link href="/dashboard/settings" className={styles.footItem} onClick={onClose}>
             <span className={styles.wsIcon} style={iconStyle('settings-outline')} aria-hidden="true" />
-            <span className={styles.footLabel}>Settings</span>
+            <span className={styles.footLabel}>{t('shared.settings')}</span>
           </Link>
           <button
             type="button"
@@ -193,7 +195,7 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
             disabled={loggingOut}
           >
             <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
-            <span className={styles.footLabel}>{loggingOut ? 'Logging out…' : 'Log out'}</span>
+            <span className={styles.footLabel}>{loggingOut ? t('shared.loggingOut') : t('shared.logOut')}</span>
           </button>
         </div>
 

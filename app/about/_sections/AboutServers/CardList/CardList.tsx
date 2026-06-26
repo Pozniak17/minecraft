@@ -1,5 +1,12 @@
+import { getTranslations } from 'next-intl/server';
 import styles from './CardList.module.css';
 import Card from './Card/Card';
+
+const SERVER_DATA = [
+  { image: '/about/images/1.webp', title: 'LuckySurvival', key: 'card1' },
+  { image: '/about/images/2.webp', title: 'MineWars', key: 'card2' },
+  { image: '/about/images/3.webp', title: 'CalmSky', key: 'card3' },
+] as const;
 
 export interface CardProps {
   image: string;
@@ -8,35 +15,19 @@ export interface CardProps {
   description: string;
 }
 
-const CARDS: CardProps[] = [
-  {
-    image: '/about/images/1.webp',
-    ganre: 'Survival',
-    title: 'LuckySurvival',
-    description:
-      'Vanilla survival with PvP and TNT disabled. Fair fights, balanced economy, and long-term gameplay.',
-  },
-  {
-    image: '/about/images/2.webp',
-    ganre: 'PvP',
-    title: 'MineWars',
-    description:
-      'Vanilla survival with PvP and TNT enabled. Ranked matches, tournaments, and team warfare.',
-  },
-  {
-    image: '/about/images/3.webp',
-    ganre: 'Peaceful',
-    title: 'CalmSky',
-    description:
-      'Peaceful vanilla server without PvP or TNT. Focus on creativity, social play, and beautiful builds.',
-  },
-];
+export default async function CardList() {
+  const t = await getTranslations('marketing');
 
-export default function CardList() {
   return (
     <ul className={styles.list}>
-      {CARDS.map(({ image, ganre, title, description }) => (
-        <Card key={title} image={image} ganre={ganre} title={title} description={description} />
+      {SERVER_DATA.map(({ image, title, key }) => (
+        <Card
+          key={title}
+          image={image}
+          ganre={t(`about.servers.${key}Genre` as const)}
+          title={title}
+          description={t(`about.servers.${key}Desc` as const)}
+        />
       ))}
     </ul>
   );

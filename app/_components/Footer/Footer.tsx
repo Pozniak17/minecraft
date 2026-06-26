@@ -1,23 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { NAV_LINKS, SOCIAL_LINKS } from '../Header/navLinks';
 import styles from './Footer.module.css';
 import { Container } from '../Container/Container';
-
-const MAIN_LINKS = NAV_LINKS.filter(
-  link => link.href !== '/' && link.href !== '/how-to-start' && link.href !== '/faq',
-).map(link => ({
-  label: link.drawerLabel,
-  href: link.href,
-}));
-
-const SUPPORT_LINKS = [
-  { label: 'Contacts', href: '/contacts' },
-  { label: 'How to Start Playing', href: '/how-to-start' },
-  { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Cookie Policy', href: '/cookie-policy' },
-  { label: 'Terms and Conditions', href: '/terms' },
-];
 
 const PAYMENT_ICONS = [
   { icon: '/icons/payment/Visa.svg', alt: 'Visa' },
@@ -27,6 +15,23 @@ const PAYMENT_ICONS = [
 ];
 
 export function Footer() {
+  const t = useTranslations('common');
+
+  const MAIN_LINKS = NAV_LINKS.filter(
+    link => link.href !== '/' && link.href !== '/how-to-start' && link.href !== '/faq',
+  ).map(link => ({
+    label: t(`nav.${link.key}`),
+    href: link.href,
+  }));
+
+  const SUPPORT_LINKS = [
+    { label: t('footer.contacts'), href: '/contacts' },
+    { label: t('footer.howToStartPlaying'), href: '/how-to-start' },
+    { label: t('footer.privacyPolicy'), href: '/privacy-policy' },
+    { label: t('footer.cookiePolicy'), href: '/cookie-policy' },
+    { label: t('footer.termsAndConditions'), href: '/terms' },
+  ];
+
   return (
     <footer className={styles.footer}>
       {/* Decorative grass — anchored to footer edges (full viewport width) */}
@@ -56,15 +61,14 @@ export function Footer() {
             <Link href="/" className={styles.logo}>
               <Image
                 src="/icons/icons/logo.webp"
-                alt="Minecraft game logo"
+                alt={t('shared.logoAlt')}
                 width={214}
                 height={59}
               />
             </Link>
 
             <p className={styles.description}>
-              Building a modern Minecraft ecosystem with stable servers, fair gameplay, and an
-              active community.
+              {t('footer.description')}
             </p>
 
             <div className={styles.socials}>
@@ -86,7 +90,7 @@ export function Footer() {
           {/* Navigation columns */}
           <div className={styles.columns}>
             <div className={styles.column}>
-              <h3 className={styles.columnTitle}>Main</h3>
+              <h3 className={styles.columnTitle}>{t('footer.mainTitle')}</h3>
               <ul className={styles.columnList}>
                 {MAIN_LINKS.map(link => (
                   <li key={link.href}>
@@ -99,7 +103,7 @@ export function Footer() {
             </div>
 
             <div className={styles.column}>
-              <h3 className={styles.columnTitle}>Support</h3>
+              <h3 className={styles.columnTitle}>{t('footer.supportTitle')}</h3>
               <ul className={styles.columnList}>
                 {SUPPORT_LINKS.map(link => (
                   <li key={link.href}>
@@ -116,7 +120,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            &copy; 2026 Adventures in Minecraft. All rights reserved.
+            {t('footer.copyright')}
           </p>
           <div className={styles.payments}>
             {PAYMENT_ICONS.map(icon => (

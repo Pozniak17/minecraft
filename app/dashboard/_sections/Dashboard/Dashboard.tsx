@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getOrders } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
@@ -21,26 +21,11 @@ import styles from './Dashboard.module.css';
 
 const nf = new Intl.NumberFormat('en-US');
 
-// Реальні сервери (ключі — з lib/server/gameServers.ts). М'який ліміт — лише для візуальної смужки.
+// Real servers (keys from lib/server/gameServers.ts). Soft cap is visual-only.
 const SERVERS = [
-  {
-    key: 'luckysurvival',
-    name: 'LuckySurvival',
-    description: 'Vanilla survival with PvP — TNT disabled.',
-    meta: 'Java 1.12–1.19',
-  },
-  {
-    key: 'minewars',
-    name: 'MineWars',
-    description: 'Vanilla survival, PvP and TNT enabled.',
-    meta: 'Java 1.12–1.19',
-  },
-  {
-    key: 'calmsky',
-    name: 'CalmSky',
-    description: 'Peaceful — no PvP, no TNT. Build and socialize.',
-    meta: 'Java 1.12–1.19',
-  },
+  { key: 'luckysurvival', name: 'LuckySurvival', meta: 'Java 1.12–1.19' },
+  { key: 'minewars', name: 'MineWars', meta: 'Java 1.12–1.19' },
+  { key: 'calmsky', name: 'CalmSky', meta: 'Java 1.12–1.19' },
 ] as const;
 
 const SOFT_PLAYER_CAP = 200;
@@ -56,13 +41,6 @@ type ActivityItem = {
   desktopOnly?: boolean;
 };
 
-// "A and B" / "A, B, and C"
-function formatNameList(names: string[]): string {
-  if (names.length <= 1) return names[0] ?? '';
-  if (names.length === 2) return `${names[0]} and ${names[1]}`;
-  return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
-}
-
 const ACTIVITY_IMAGES = [
   '/profile/activity/act-1.png',
   '/profile/activity/act-2.png',
@@ -72,47 +50,57 @@ const ACTIVITY_IMAGES = [
 
 const PACK_AMOUNTS = [500, 1500, 5000];
 
-function relativeTime(iso: string | undefined): string {
-  if (!iso) return 'Recently';
-  const then = new Date(iso).getTime();
-  if (Number.isNaN(then)) return 'Recently';
-  const mins = Math.round((Date.now() - then) / 60_000);
-  if (mins < 1) return 'Just now';
-  if (mins < 60) return `${mins} min ago`;
-  const hours = Math.round(mins / 60);
-  if (hours < 24) return `${hours} h ago`;
-  const days = Math.round(hours / 24);
-  if (days === 1) return 'Yesterday';
-  if (days < 30) return `${days} days ago`;
-  const months = Math.round(days / 30);
-  return `${months} mo ago`;
-}
-
-function orderToActivity(
-  order: OrderListItem,
-  meta: Map<string, ProductMeta>,
-  index: number,
-): ActivityItem {
-  const items = order.order_item ?? [];
-  const first = items[0];
-  const currency = first?.currency ?? 'EUR';
-  return {
-    title: formatActivityTitle(order, meta),
-    time: relativeTime(first?.created),
-    amount: `-${formatOrderAmount(order.total_price, currency)}`,
-    tone: 'neg',
-    img: ACTIVITY_IMAGES[index % ACTIVITY_IMAGES.length],
-  };
-}
-
 export default function Dashboard() {
   const locale = useLocale();
+  const t = useTranslations('dashboard');
+
+  function getRelativeTime(iso: string | undefined): string {
+    if (!iso) return t('time.recently');
+    const then = new Date(iso).getTime();
+    if (Number.isNaN(then)) return t('time.recently');
+    const mins = Math.round((Date.now() - then) / 60_000);
+    if (mins < 1) return t('time.justNow');
+    if (mins < 60) return t('time.minutesAgo', { mins });
+    const hours = Math.round(mins / 60);
+    if (hours < 24) return t('time.hoursAgo', { hours });
+    const days = Math.round(hours / 24);
+    if (days === 1) return t('time.yesterday');
+    if (days < 30) return t('time.daysAgo', { days });
+    const months = Math.round(days / 30);
+    return t('time.monthsAgo', { months });
+  }
+
+  function formatNameList(names: string[]): string {
+    const and = t('listConnector');
+    if (names.length <= 1) return names[0] ?? '';
+    if (names.length === 2) return `${names[0]} ${and} ${names[1]}`;
+    return `${names.slice(0, -1).join(', ')}, ${and} ${names[names.length - 1]}`;
+  }
+
+  function orderToActivity(
+    order: OrderListItem,
+    meta: Map<string, ProductMeta>,
+    index: number,
+  ): ActivityItem {
+    const items = order.order_item ?? [];
+    const first = items[0];
+    const currency = first?.currency ?? 'EUR';
+    return {
+      title: formatActivityTitle(order, meta),
+      time: getRelativeTime(first?.created),
+      amount: `-${formatOrderAmount(order.total_price, currency)}`,
+      tone: 'neg',
+      img: ACTIVITY_IMAGES[index % ACTIVITY_IMAGES.length],
+    };
+  }
+
   const [name, setName] = useState('Player');
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [productsLoaded, setProductsLoaded] = useState(false);
   const [ordersLoaded, setOrdersLoaded] = useState(false);
   const activityReady = productsLoaded && ordersLoaded;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const activity = useMemo(
     () => rawOrders.map((order, index) => orderToActivity(order, productMeta, index)),
     [rawOrders, productMeta],
@@ -120,10 +108,10 @@ export default function Dashboard() {
   const [notifOpen, setNotifOpen] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
   const [purchaseNotif, setPurchaseNotif] = useState<ActivityItem | null>(null);
-  // Валюта читається після маунту (localStorage) — щоб уникнути розбіжності SSR/CSR.
+  // Currency is read after mount (localStorage) to avoid SSR/CSR mismatch.
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
 
-  // Живий онлайн кожного сервера (фіксована кількість викликів хука — коректно).
+  // Live player count for each server (fixed hook call order — correct).
   const lucky = useServerOnline('luckysurvival');
   const mine = useServerOnline('minewars');
   const calm = useServerOnline('calmsky');
@@ -136,29 +124,39 @@ export default function Dashboard() {
   const onlineNames = SERVERS.filter(s => liveByKey[s.key].status === 'online').map(s => s.name);
   const activeCount = onlineNames.length;
   const activeHint =
-    activeCount > 0 ? `${onlineNames.join(', ')} online` : 'Checking server status…';
+    activeCount > 0
+      ? t('stats.onlineHint', { names: onlineNames.join(', ') })
+      : t('stats.checkingStatus');
 
   const offlineNames = SERVERS.filter(s => liveByKey[s.key].status === 'offline').map(s => s.name);
   const allResolved = SERVERS.every(s => liveByKey[s.key].status !== 'loading');
   const offlineKey = allResolved ? offlineNames.join('|') : '';
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const offlineNotifications = useMemo<ActivityItem[]>(() => {
     if (offlineKey === '') return [];
     const names = offlineKey.split('|');
+    const and = t('listConnector');
+
+    function fmtNames(ns: string[]): string {
+      if (ns.length <= 1) return ns[0] ?? '';
+      if (ns.length === 2) return `${ns[0]} ${and} ${ns[1]}`;
+      return `${ns.slice(0, -1).join(', ')}, ${and} ${ns[ns.length - 1]}`;
+    }
 
     let title: string;
     let body: string;
     if (names.length === SERVERS.length) {
-      title = 'All servers offline';
-      body = "We're working on it. Please check back shortly.";
+      title = t('offline.allTitle');
+      body = t('offline.allBody');
     } else if (names.length === 1) {
-      title = `${names[0]} is offline`;
-      body = "We're restoring access. Status refreshes every 10 seconds.";
+      title = t('offline.oneTitle', { name: names[0] });
+      body = t('offline.oneBody');
     } else {
-      title = `${names.length} servers offline`;
-      body = `${formatNameList(names)} are temporarily unavailable.`;
+      title = t('offline.multipleTitle', { count: names.length });
+      body = t('offline.multipleBody', { servers: fmtNames(names) });
     }
 
-    return [{ title, body, time: 'Live', tone: 'neg' }];
+    return [{ title, body, time: t('time.live'), tone: 'neg' }];
   }, [offlineKey]);
 
   const notifications = useMemo<ActivityItem[]>(() => {
@@ -182,11 +180,11 @@ export default function Dashboard() {
   const hasSuccess = notifications.some(item => item.tone === 'pos');
   const notifAriaLabel = showNotifDot
     ? hasAlert
-      ? 'Notifications — server alert'
+      ? t('notifications.ariaLabelAlert')
       : hasSuccess
-        ? 'Notifications — purchase complete'
-        : 'Notifications'
-    : 'Notifications';
+        ? t('notifications.ariaLabelSuccess')
+        : t('notifications.ariaLabel')
+    : t('notifications.ariaLabel');
 
   useEffect(() => {
     const email = window.localStorage.getItem('user_email') ?? '';
@@ -234,20 +232,21 @@ export default function Dashboard() {
     const latest = rawOrders[0];
     if (latest) {
       setPurchaseNotif({
-        title: 'Purchase complete',
-        body: `${formatActivityTitle(latest, productMeta)}. Delivered to your in-game nickname.`,
-        time: 'Just now',
+        title: t('purchase.completeTitle'),
+        body: t('purchase.completeBodyItem', { item: formatActivityTitle(latest, productMeta) }),
+        time: t('time.justNow'),
         tone: 'pos',
       });
       return;
     }
 
     setPurchaseNotif({
-      title: 'Purchase complete',
-      body: 'Your payment went through. Crystals and privileges are on their way.',
-      time: 'Just now',
+      title: t('purchase.completeTitle'),
+      body: t('purchase.completeBodyGeneric'),
+      time: t('time.justNow'),
       tone: 'pos',
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activityReady, rawOrders, productMeta]);
 
   useEffect(() => {
@@ -276,9 +275,9 @@ export default function Dashboard() {
     <section className={styles.root}>
       <div className={styles.header}>
         <div className={styles.welcome}>
-          <span className={styles.eyebrow}>Dashboard</span>
-          <h1 className={styles.title}>Welcome back, {name}</h1>
-          <p className={styles.subtitle}>Here is what is happening across your worlds today.</p>
+          <span className={styles.eyebrow}>{t('eyebrow')}</span>
+          <h1 className={styles.title}>{t('welcomeBack', { name })}</h1>
+          <p className={styles.subtitle}>{t('subtitle')}</p>
         </div>
 
         <div className={styles.headerActions}>
@@ -315,10 +314,10 @@ export default function Dashboard() {
             </button>
 
             {notifOpen && (
-              <div className={styles.notifPanel} role="region" aria-label="Notifications">
-                <p className={styles.notifPanelTitle}>Notifications</p>
+              <div className={styles.notifPanel} role="region" aria-label={t('notifications.panelTitle')}>
+                <p className={styles.notifPanelTitle}>{t('notifications.panelTitle')}</p>
                 {notifications.length === 0 ? (
-                  <p className={styles.notifEmpty}>No recent notifications</p>
+                  <p className={styles.notifEmpty}>{t('notifications.empty')}</p>
                 ) : (
                   <ul className={styles.notifList}>
                     {notifications.map((item, index) => (
@@ -346,14 +345,14 @@ export default function Dashboard() {
           </div>
 
           <Link href="/dashboard/shop" className={styles.topUp}>
-            Top up
+            {t('topUp')}
           </Link>
         </div>
       </div>
 
       <div className={styles.stats}>
         <div className={styles.stat}>
-          <span className={styles.statLabel}>Active servers</span>
+          <span className={styles.statLabel}>{t('stats.activeServers')}</span>
           <span className={styles.statValue}>
             {activeCount} / {SERVERS.length}
           </span>
@@ -370,9 +369,9 @@ export default function Dashboard() {
       </div>
 
       <div className={styles.sectionHead}>
-        <h2 className={styles.sectionTitle}>Server status</h2>
+        <h2 className={styles.sectionTitle}>{t('serverStatus.title')}</h2>
         <Link href="/dashboard/servers" className={styles.seeAll}>
-          <span>See all servers</span>
+          <span>{t('serverStatus.seeAll')}</span>
           <span aria-hidden="true">→</span>
         </Link>
       </div>
@@ -400,14 +399,16 @@ export default function Dashboard() {
                 <span
                   className={`${styles.statusBadge} ${isOnline ? '' : styles.statusBadgeOffline}`}
                 >
-                  {isOnline ? 'online' : 'offline'}
+                  {isOnline ? t('serverStatus.online') : t('serverStatus.offline')}
                 </span>
               </div>
 
-              <p className={styles.serverDesc}>{server.description}</p>
+              <p className={styles.serverDesc}>
+                {t(`servers.${server.key}.description`)}
+              </p>
 
               <div className={styles.playersRow}>
-                <span className={styles.playersLabel}>Players online</span>
+                <span className={styles.playersLabel}>{t('serverStatus.playersOnline')}</span>
                 <span className={styles.playersValue}>{onlineText}</span>
               </div>
 
@@ -421,7 +422,7 @@ export default function Dashboard() {
               <div className={styles.serverFoot}>
                 <span className={styles.serverMeta}>{server.meta}</span>
                 <Link href="/dashboard/servers" className={styles.joinButton}>
-                  <span>Join</span>
+                  <span>{t('serverStatus.join')}</span>
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
@@ -433,19 +434,19 @@ export default function Dashboard() {
       <div className={styles.bottom}>
         <div className={styles.activity}>
           <div className={styles.activityHead}>
-            <h2 className={styles.activityTitle}>Recent activity</h2>
+            <h2 className={styles.activityTitle}>{t('activity.title')}</h2>
             <Link href="/dashboard/history" className={styles.viewAll}>
-              View all
+              {t('activity.viewAll')}
             </Link>
           </div>
 
           {!activityReady && (
-            <p className={styles.activityEmpty}>Loading…</p>
+            <p className={styles.activityEmpty}>{t('activity.loading')}</p>
           )}
 
           {activityReady && activity.length === 0 && (
             <p className={styles.activityEmpty}>
-              No activity yet. Your purchases will show up here.
+              {t('activity.empty')}
             </p>
           )}
 
@@ -487,10 +488,10 @@ export default function Dashboard() {
         </div>
 
         <div className={styles.crystals}>
-          <span className={styles.crystalsLabel}>Top up</span>
-          <h2 className={styles.crystalsTitle}>Need more crystals?</h2>
+          <span className={styles.crystalsLabel}>{t('crystals.label')}</span>
+          <h2 className={styles.crystalsTitle}>{t('crystals.title')}</h2>
           <p className={styles.crystalsText}>
-            Buy a pack and unlock privileges, cosmetics, and tournament entries.
+            {t('crystals.text')}
           </p>
 
           <div className={styles.packs}>
@@ -508,7 +509,7 @@ export default function Dashboard() {
           </div>
 
           <Link href="/dashboard/shop" className={styles.openShop}>
-            Open Shop
+            {t('crystals.openShop')}
           </Link>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   getOrderItems,
   changeItemAmount,
@@ -21,8 +21,7 @@ type Row = {
   id: string;
   productId: string;
   title: string;
-  subtitle: string;
-  subtitleDesktop: string;
+  rawCurrency: string | null;
   unitPrice: number;
   qty: number;
   lineTotal: number;
@@ -85,8 +84,7 @@ function orderItemToRow(item: OrderItem, index: number): Row {
     id: item.id,
     productId: item.product_id,
     title: labelFromImage(item.image_name),
-    subtitle: item.currency ?? 'In-game',
-    subtitleDesktop: `${item.currency ?? 'In-game'} — instant delivery`,
+    rawCurrency: item.currency ?? null,
     unitPrice,
     qty: item.amount,
     lineTotal,
@@ -97,6 +95,7 @@ function orderItemToRow(item: OrderItem, index: number): Row {
 }
 
 export default function Cart() {
+  const t = useTranslations('cart');
   const locale = useLocale();
   const { profile } = useProfile();
   const [rows, setRows] = useState<Row[]>([]);
@@ -261,7 +260,7 @@ export default function Cart() {
   async function handlePay() {
     const nick = nickname.trim();
     if (!nick) {
-      setPayMessage('Enter your in-game nickname.');
+      setPayMessage(t('errorNicknameRequired'));
       return;
     }
     setPaying(true);
@@ -279,11 +278,11 @@ export default function Cart() {
       }
       setPayMessage(
         online === false
-          ? `Payment created — join ${server} as "${nick}" so your items can be delivered.`
-          : 'Payment created — awaiting confirmation. Track it in your purchase history.'
+          ? t('paymentCreatedOffline', { server, nick })
+          : t('paymentCreatedOnline')
       );
     } catch {
-      setPayMessage('Could not start payment. Please try again.');
+      setPayMessage(t('errorPaymentFailed'));
     } finally {
       setPaying(false);
     }
@@ -292,26 +291,23 @@ export default function Cart() {
   const summaryBlock = (
     <section className={styles.summary} aria-labelledby="summary-heading">
       <h2 id="summary-heading" className={styles.summaryTitle}>
-        Order summary
+        {t('summaryTitle')}
       </h2>
       <div className={styles.summaryRow}>
-        <span>
-          Subtotal
-          {lineCount > 0 ? ` (${lineCount} ${lineCount === 1 ? 'item' : 'items'})` : ''}
-        </span>
+        <span>{t('subtotal', { count: lineCount })}</span>
         <span className={styles.summaryValue}>{formatMoney(subtotal, cartCurrency)}</span>
       </div>
       <div className={styles.summaryRow}>
-        <span>Promo (—)</span>
+        <span>{t('promoLabel')}</span>
         <span className={styles.summaryValue}>–</span>
       </div>
       <div className={styles.summaryRow}>
-        <span>Service fee</span>
+        <span>{t('serviceFee')}</span>
         <span className={styles.summaryValue}>{formatMoney(0, cartCurrency)}</span>
       </div>
       <div className={styles.summaryDivider} aria-hidden />
       <div className={styles.summaryTotal}>
-        <span>Total</span>
+        <span>{t('total')}</span>
         <span className={styles.summaryTotalValue}>{formatMoney(subtotal, cartCurrency)}</span>
       </div>
       <button
@@ -320,7 +316,7 @@ export default function Cart() {
         onClick={handlePay}
         disabled={paying || lineCount === 0 || !purchaseAgreed}
       >
-        <span>{paying ? 'Processing…' : 'Proceed to pay'}</span>
+        <span>{paying ? t('payBtnProcessing') : t('payBtn')}</span>
         <span aria-hidden>→</span>
       </button>
       <label className={styles.consent}>
@@ -332,7 +328,7 @@ export default function Cart() {
         />
         <span className={styles.consentBox} aria-hidden="true" />
         <span className={styles.consentText}>
-          By purchasing, I agree to immediate digital delivery and waive my withdrawal right.
+          {t('consentText')}
         </span>
       </label>
       {payMessage && <p className={styles.secureNote}>{payMessage}</p>}
@@ -343,33 +339,26 @@ export default function Cart() {
     <div className={styles.shell}>
       <div className={styles.root}>
       <header className={styles.header}>
-        <span className={styles.eyebrow}>Cart</span>
-        <h1 className={styles.title}>
-          Your cart ({lineCount} {lineCount === 1 ? 'item' : 'items'})
-        </h1>
-        <p className={styles.subtitle}>
-          Review the items below, pick a server and your in-game nickname, then proceed to
-          checkout.
-        </p>
+        <span className={styles.eyebrow}>{t('eyebrow')}</span>
+        <h1 className={styles.title}>{t('title', { count: lineCount })}</h1>
+        <p className={styles.subtitle}>{t('subtitle')}</p>
       </header>
 
       <div className={styles.body}>
         <div className={styles.mainPrimary}>
           <section className={styles.panel} aria-labelledby="cart-items-heading">
             <h2 id="cart-items-heading" className={styles.panelLabel}>
-              <span className={styles.panelLabelMobile}>Items</span>
-              <span className={styles.panelLabelDesktop}>Items in cart</span>
+              <span className={styles.panelLabelMobile}>{t('itemsLabelMobile')}</span>
+              <span className={styles.panelLabelDesktop}>{t('itemsLabelDesktop')}</span>
             </h2>
             {!loaded ? (
-              <p className={styles.cartState}>Loading your cart…</p>
+              <p className={styles.cartState}>{t('loading')}</p>
             ) : rows.length === 0 ? (
               <div className={styles.emptyState}>
-                <p className={styles.emptyTitle}>Your cart is empty</p>
-                <p className={styles.emptyText}>
-                  Add privileges or crystals from the store to get started.
-                </p>
+                <p className={styles.emptyTitle}>{t('emptyTitle')}</p>
+                <p className={styles.emptyText}>{t('emptyText')}</p>
                 <Link href="/dashboard/shop" className={styles.emptyCta}>
-                  Browse the store →
+                  {t('emptyCta')}
                 </Link>
               </div>
             ) : (
@@ -392,15 +381,19 @@ export default function Cart() {
                     </div>
                     <div className={styles.itemMeta}>
                       <p className={styles.itemTitle}>{title}</p>
-                      <p className={styles.itemSubtitleMobile}>{item.subtitle}</p>
-                      <p className={styles.itemSubtitleDesktop}>{item.subtitleDesktop}</p>
+                      <p className={styles.itemSubtitleMobile}>
+                        {item.rawCurrency ?? t('itemSubtitleDefault')}
+                      </p>
+                      <p className={styles.itemSubtitleDesktop}>
+                        {t('itemSubtitleDesktop', { currency: item.rawCurrency ?? t('itemSubtitleDefault') })}
+                      </p>
                     </div>
                     <div className={styles.qty}>
                       <button
                         type="button"
                         className={styles.qtyBtn}
                         onClick={() => changeQty(item.id, -1)}
-                        aria-label={`Decrease ${title} quantity`}
+                        aria-label={t('decreaseQty', { title })}
                       >
                         −
                       </button>
@@ -409,7 +402,7 @@ export default function Cart() {
                         type="button"
                         className={`${styles.qtyBtn} ${styles.qtyBtnPlus}`}
                         onClick={() => changeQty(item.id, 1)}
-                        aria-label={`Increase ${title} quantity`}
+                        aria-label={t('increaseQty', { title })}
                       >
                         +
                       </button>
@@ -419,7 +412,7 @@ export default function Cart() {
                       type="button"
                       className={styles.removeBtn}
                       onClick={() => removeItem(item.id)}
-                      aria-label={`Remove ${title}`}
+                      aria-label={t('removeItem', { title })}
                     >
                       ×
                     </button>
@@ -436,13 +429,13 @@ export default function Cart() {
           >
             <div className={styles.panelHead}>
               <h2 id="delivery-heading" className={styles.panelTitle}>
-                Delivery
+                {t('deliveryTitle')}
               </h2>
-              <span className={styles.requiredBadge}>Required</span>
+              <span className={styles.requiredBadge}>{t('requiredBadge')}</span>
             </div>
             <div className={styles.field}>
-              <p className={styles.fieldLabel}>Select server</p>
-              <div className={styles.serverRow} role="radiogroup" aria-label="Select server">
+              <p className={styles.fieldLabel}>{t('selectServerLabel')}</p>
+              <div className={styles.serverRow} role="radiogroup" aria-label={t('selectServerLabel')}>
                 {servers.map(option => (
                   <button
                     key={option}
@@ -462,8 +455,8 @@ export default function Cart() {
             </div>
             <div className={styles.field}>
               <label className={styles.fieldLabel} htmlFor="cart-nickname">
-                <span className={styles.nicknameLabelMobile}>Nickname</span>
-                <span className={styles.nicknameLabelDesktop}>In-game nickname</span>
+                <span className={styles.nicknameLabelMobile}>{t('nicknameMobile')}</span>
+                <span className={styles.nicknameLabelDesktop}>{t('nicknameDesktop')}</span>
               </label>
               <input
                 id="cart-nickname"
@@ -473,29 +466,28 @@ export default function Cart() {
                 autoComplete="username"
               />
             </div>
-            <p className={styles.deliveryNote}>
-              We will deliver privileges and crystals to this nickname on the selected server.
-            </p>
+            <p className={styles.deliveryNote}>{t('deliveryNote')}</p>
           </section>
         </div>
 
         <div className={styles.sidebarColumn}>
           {summaryBlock}
 
-          <aside className={styles.importantNotice} aria-label="Important delivery notice">
+          <aside className={styles.importantNotice} aria-label={t('importantNoticeAriaLabel')}>
             <div className={styles.importantHead}>
               <span className={styles.importantIcon} aria-hidden="true">
                 ⚠
               </span>
-              <p className={styles.importantTitle}>Important</p>
+              <p className={styles.importantTitle}>{t('importantTitle')}</p>
             </div>
             <p className={styles.importantText}>
-              You must be on the selected server{' '}
-              <span className={styles.importantHighlight}>at the moment of purchase.</span>
+              {t.rich('importantText1', {
+                highlight: chunks => (
+                  <span className={styles.importantHighlight}>{chunks}</span>
+                ),
+              })}
             </p>
-            <p className={styles.importantText}>
-              Delivery of items is only possible if you are online on the server.
-            </p>
+            <p className={styles.importantText}>{t('importantText2')}</p>
           </aside>
         </div>
 
@@ -505,20 +497,20 @@ export default function Cart() {
           </span>
           <div className={styles.promoCopy}>
             <h2 id="promo-heading" className={styles.promoTitle}>
-              <span className={styles.promoTitleMobile}>Promo code</span>
-              <span className={styles.promoTitleDesktop}>Have a promo code?</span>
+              <span className={styles.promoTitleMobile}>{t('promoTitleMobile')}</span>
+              <span className={styles.promoTitleDesktop}>{t('promoTitleDesktop')}</span>
             </h2>
-            <p className={styles.promoHint}>Apply a discount before checkout.</p>
+            <p className={styles.promoHint}>{t('promoHint')}</p>
           </div>
           <div className={styles.promoRow}>
             <input
               className={styles.promoInput}
-              placeholder="Enter code"
+              placeholder={t('promoPlaceholder')}
               value={promoCode}
               onChange={e => setPromoCode(e.target.value)}
             />
             <button type="button" className={styles.promoApply}>
-              Apply
+              {t('promoApply')}
             </button>
           </div>
         </section>

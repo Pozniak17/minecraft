@@ -109,8 +109,8 @@ export default async function RootLayout({
           <SiteChrome isAuthed={isAuthed} initialProfile={initialProfile}>
             {children}
           </SiteChrome>
+          <CookieConsent />
         </NextIntlClientProvider>
-        <CookieConsent />
         <Script
           src="https://static.minecraftsgame.com/script.js"
           strategy="afterInteractive"

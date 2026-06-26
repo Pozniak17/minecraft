@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
 import styles from './Breadcrumbs.module.css';
 
@@ -8,7 +9,8 @@ type BreadcrumbsProps = {
   className?: string;
 };
 
-export function Breadcrumbs({ items, links, className }: BreadcrumbsProps) {
+export async function Breadcrumbs({ items, links, className }: BreadcrumbsProps) {
+  const t = await getTranslations('common');
   const classes = [styles.breadcrumbs, className].filter(Boolean).join(' ');
 
   if (items.length === 5) {
@@ -16,7 +18,7 @@ export function Breadcrumbs({ items, links, className }: BreadcrumbsProps) {
     const [firstLink, secondLink, thirdLink, fourthLink] = links;
 
     return (
-      <nav className={classes} aria-label="Breadcrumb">
+      <nav className={classes} aria-label={t('breadcrumb.ariaLabel')}>
         <Link href={firstLink}>{first}</Link> / <Link href={secondLink}>{second}</Link> /{' '}
         <Link href={thirdLink}>{third}</Link> / <Link href={fourthLink}>{fourth}</Link> /{' '}
         <span className={styles.accent}>{fifth}</span>
@@ -29,7 +31,7 @@ export function Breadcrumbs({ items, links, className }: BreadcrumbsProps) {
 
   if (items.length === 3) {
     return (
-      <nav className={classes} aria-label="Breadcrumb">
+      <nav className={classes} aria-label={t('breadcrumb.ariaLabel')}>
         <Link href={firstLink}>{first}</Link> / <Link href={secondLink}>{second}</Link> /{' '}
         <span className={styles.accent}>{third}</span>
       </nav>
@@ -37,7 +39,7 @@ export function Breadcrumbs({ items, links, className }: BreadcrumbsProps) {
   }
 
   return (
-    <nav className={classes} aria-label="Breadcrumb">
+    <nav className={classes} aria-label={t('breadcrumb.ariaLabel')}>
       <Link href={firstLink}>{first}</Link> / <Link href={secondLink}>{second}</Link> /{' '}
       <Link href={thirdLink}>{third}</Link> /{' '}
       <span className={styles.accent}>{fourth}</span>

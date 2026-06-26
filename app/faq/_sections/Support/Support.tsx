@@ -1,20 +1,21 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Support.module.css';
 
-export default function Support() {
+export default async function Support() {
+  const t = await getTranslations('faq');
+
   return (
     <section id="contacts" className={styles.support}>
       <Container variant="faq">
         <div className={styles.content}>
           <div className={styles.card}>
-            <p className={styles.label}>Live support online</p>
-            <h2 className={styles.title}>Still need help?</h2>
-            <p className={styles.description}>
-              Chat with us 24/7 or send a ticket — we usually reply within 4 hours.
-            </p>
+            <p className={styles.label}>{t('support.liveLabel')}</p>
+            <h2 className={styles.title}>{t('support.title')}</h2>
+            <p className={styles.description}>{t('support.desc')}</p>
             <Link href="/contacts" className={styles.primaryButton}>
-              Send a ticket
+              {t('support.sendTicket')}
             </Link>
           </div>
         </div>

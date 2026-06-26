@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import { Container } from '@/app/_components/Container/Container';
 import { categoryHref } from '@/app/blog/categories';
@@ -19,7 +20,7 @@ type HeroProps = Pick<
   | 'heroImageDesktop'
 >;
 
-export default function Hero({
+export default async function Hero({
   genre,
   heroTags,
   breadcrumbLabel,
@@ -31,7 +32,13 @@ export default function Hero({
   image,
   heroImageDesktop,
 }: HeroProps) {
-  const breadcrumbItems = ['Home', 'Blog', genre, breadcrumbLabel];
+  const t = await getTranslations('blog');
+  const breadcrumbItems = [
+    t('articleHero.home'),
+    t('articleHero.blog'),
+    t(`categories.${genre}` as Parameters<typeof t>[0]),
+    breadcrumbLabel,
+  ];
   const breadcrumbLinks = ['/', '/blog', categoryHref(genre)];
   const desktopImage = heroImageDesktop ?? image;
 
@@ -56,7 +63,7 @@ export default function Hero({
             <div className={styles.meta}>
               <span className={styles.date}>{date.toString()}</span>
               <span className={styles.divider} aria-hidden="true" />
-              <span className={styles.readTime}>{time} min read</span>
+              <span className={styles.readTime}>{t('articleHero.minRead', { time })}</span>
             </div>
           </div>
 

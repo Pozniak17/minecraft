@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
 import { isNavLinkActive, LEGAL_LINKS, NAV_LINKS, SOCIAL_LINKS } from '../navLinks';
 import styles from './MobileNav.module.css';
@@ -22,6 +23,8 @@ export function MobileNav({
   isAuthed = false,
   nick = 'Player',
 }: MobileNavProps) {
+  const t = useTranslations('common');
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -47,7 +50,7 @@ export function MobileNav({
       <button
         type="button"
         className={styles.overlay}
-        aria-label="Close menu"
+        aria-label={t('shared.closeMenu')}
         onClick={onClose}
       />
 
@@ -56,19 +59,19 @@ export function MobileNav({
         className={styles.drawer}
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-label={t('mobileNav.mobileNavLabel')}
       >
         <div className={styles.topbar}>
           <Link href="/" className={styles.logo} onClick={onClose}>
             <Image
               src="/icons/icons/logo.webp"
-              alt="Minecraft game logo"
+              alt={t('shared.logoAlt')}
               width={144}
               height={40}
               priority
             />
           </Link>
-          <button type="button" className={styles.closeButton} aria-label="Close menu" onClick={onClose}>
+          <button type="button" className={styles.closeButton} aria-label={t('shared.closeMenu')} onClick={onClose}>
             ✕
           </button>
         </div>
@@ -84,10 +87,10 @@ export function MobileNav({
           ) : (
             <>
               <Link href="/login" className={styles.loginButton} onClick={onClose}>
-                Log in
+                {t('mobileNav.logIn')}
               </Link>
               <Link href="/register" className={styles.signupButton} onClick={onClose}>
-                Sign up
+                {t('mobileNav.signUp')}
               </Link>
             </>
           )}
@@ -96,8 +99,8 @@ export function MobileNav({
         <Link href="/servers" className={styles.statusCard} onClick={onClose}>
           <span className={styles.statusDot} aria-hidden="true" />
           <span className={styles.statusText}>
-            <span className={styles.statusTitle}>Servers online — 2 of 3</span>
-            <span className={styles.statusSubtitle}>212 players exploring right now</span>
+            <span className={styles.statusTitle}>{t('mobileNav.serversOnline')}</span>
+            <span className={styles.statusSubtitle}>{t('mobileNav.playersOnline')}</span>
           </span>
           <span className={styles.statusChevron} aria-hidden="true">
             ›
@@ -105,11 +108,11 @@ export function MobileNav({
         </Link>
 
         <div className={styles.sectionLabel}>
-          <span>Browse the site</span>
+          <span>{t('shared.browseSite')}</span>
           <span className={styles.sectionLine} aria-hidden="true" />
         </div>
 
-        <nav className={styles.nav} aria-label="Browse the site">
+        <nav className={styles.nav} aria-label={t('shared.browseSite')}>
           {NAV_LINKS.map(link => {
             const isActive = isNavLinkActive(link.href, pathname);
 
@@ -121,7 +124,7 @@ export function MobileNav({
                 aria-current={isActive ? 'page' : undefined}
                 onClick={onClose}
               >
-                <span>{link.drawerLabel}</span>
+                <span>{t(`nav.${link.key}`)}</span>
                 <span className={styles.navChevron} aria-hidden="true">
                   ›
                 </span>
@@ -131,7 +134,7 @@ export function MobileNav({
         </nav>
 
         <div className={styles.sectionLabel}>
-          <span>Community</span>
+          <span>{t('mobileNav.community')}</span>
           <span className={styles.sectionLine} aria-hidden="true" />
         </div>
 
@@ -159,7 +162,7 @@ export function MobileNav({
             <span key={link.href} className={styles.legalItem}>
               {index > 0 && <span className={styles.legalSeparator} aria-hidden="true">·</span>}
               <Link href={link.href} className={styles.legalLink} onClick={onClose}>
-                {link.label}
+                {t(`legal.${link.key}`)}
               </Link>
             </span>
           ))}

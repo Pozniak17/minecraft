@@ -1,7 +1,10 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import styles from './MineWarsHeader.module.css';
 
 export default function MineWarsHeader() {
+  const t = useTranslations('servers');
+
   return (
     <div className={styles.banner}>
       <Image
@@ -15,13 +18,13 @@ export default function MineWarsHeader() {
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
         <span className={styles.tag}>
-          PvP&nbsp;&nbsp;•&nbsp;&nbsp;COMPETITIVE&nbsp;&nbsp;•&nbsp;&nbsp;TOURNAMENTS
+          {t('minewars.headerTag')}
         </span>
         <h2 className={styles.title}>MineWars</h2>
         <p className={styles.description}>
-          High-intensity PvP combat, ranked matches
-          <span className={styles.descriptionDesktop}>, team battles</span> and seasonal
-          tournaments.
+          {t('minewars.headerDescStart')}
+          <span className={styles.descriptionDesktop}>{t('minewars.headerDescDesktopExtra')}</span>
+          {t('minewars.headerDescEnd')}
         </p>
       </div>
     </div>

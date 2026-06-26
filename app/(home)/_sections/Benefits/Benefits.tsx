@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import BenefitsList from './BenefitsList/BenefitsList';
 import styles from './Benefits.module.css';
 import { Divider } from '../../../_components/Divider/Divider';
@@ -8,40 +9,24 @@ export type BenefitsCardProps = {
   text: string;
 };
 
-const Data: BenefitsCardProps[] = [
-  {
-    title: 'Stable servers',
-    text: 'High uptime and smooth performance — no lag, no crashes.',
-  },
-  {
-    title: 'Regular updates',
-    text: 'New features, fixes, and improvements every month.',
-  },
-  {
-    title: 'High online',
-    text: 'An active community playing daily across all servers.',
-  },
-  {
-    title: 'Fair economy',
-    text: 'No pay-to-win. Balance comes first.',
-  },
-  {
-    title: 'Active team',
-    text: 'Moderation, support, and development always online.',
-  },
-  {
-    title: 'Player support',
-    text: 'Fast help via Discord and in-game support.',
-  },
-];
+export default async function BenefitsSection() {
+  const t = await getTranslations('home');
 
-export default function BenefitsSection() {
+  const items: BenefitsCardProps[] = [
+    { title: t('benefits.stableServers.title'), text: t('benefits.stableServers.text') },
+    { title: t('benefits.regularUpdates.title'), text: t('benefits.regularUpdates.text') },
+    { title: t('benefits.highOnline.title'), text: t('benefits.highOnline.text') },
+    { title: t('benefits.fairEconomy.title'), text: t('benefits.fairEconomy.text') },
+    { title: t('benefits.activeTeam.title'), text: t('benefits.activeTeam.text') },
+    { title: t('benefits.playerSupport.title'), text: t('benefits.playerSupport.text') },
+  ];
+
   return (
     <>
       <section className={styles.benefitsSection}>
         <Container>
-          <h2 className={styles.title}>Why Play With Us?</h2>
-          <BenefitsList items={Data} />
+          <h2 className={styles.title}>{t('benefits.title')}</h2>
+          <BenefitsList items={items} />
         </Container>
         <div className={styles.benefitsVideoContainer}>
           <div className={styles.overlay}></div>

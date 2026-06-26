@@ -1,0 +1,1544 @@
+{
+  "hero": {
+    "badge": "Help center",
+    "title": "Frequently asked questions",
+    "descMobile": "The answers our team gives most often. Browse by topic, search, or contact us directly.",
+    "descDesktop": "The answers our team gives most often. Browse by topic, search by keyword, or contact us directly if you don't find what you need.",
+    "questions": "questions",
+    "categories": "categories",
+    "avgReply": "avg reply"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "support": "Support",
+    "faq": "FAQ"
+  },
+  "search": {
+    "placeholderMobile": "Search {count} questions\u2026",
+    "placeholderDesktop": "Search {count} questions \u2014 \"reset password\", \"payment refund\"\u2026",
+    "ariaLabel": "Search FAQ",
+    "go": "Go",
+    "search": "Search"
+  },
+  "topics": {
+    "label": "Popular topics",
+    "ariaLabel": "Popular FAQ topics"
+  },
+  "categories": {
+    "all": "All questions",
+    "allMobile": "All",
+    "gettingStarted": "Getting started",
+    "account": "Account & login",
+    "accountMobile": "Account",
+    "payments": "Payments",
+    "servers": "Servers & worlds",
+    "serversMobile": "Servers",
+    "privileges": "Privileges",
+    "gameplay": "Gameplay",
+    "technical": "Technical issues",
+    "rules": "Rules & moderation",
+    "rulesMobile": "Rules"
+  },
+  "categoryMeta": {
+    "getting-started": {
+      "label": "Getting started",
+      "listLabel": "Get started",
+      "breadcrumb": "Getting started"
+    },
+    "account": {
+      "label": "Account & login",
+      "listLabel": "Account",
+      "breadcrumb": "Account & login"
+    },
+    "payments": {
+      "label": "Payments",
+      "listLabel": "Payments",
+      "breadcrumb": "Payments"
+    },
+    "servers": {
+      "label": "Servers & worlds",
+      "listLabel": "Servers",
+      "breadcrumb": "Servers & worlds"
+    },
+    "privileges": {
+      "label": "Privileges",
+      "listLabel": "Privileges",
+      "breadcrumb": "Privileges"
+    },
+    "gameplay": {
+      "label": "Gameplay",
+      "listLabel": "Gameplay",
+      "breadcrumb": "Gameplay"
+    },
+    "technical": {
+      "label": "Technical issues",
+      "listLabel": "Tech",
+      "breadcrumb": "Technical issues"
+    },
+    "rules": {
+      "label": "Rules & moderation",
+      "listLabel": "Rules",
+      "breadcrumb": "Rules & moderation"
+    }
+  },
+  "sort": {
+    "all": "All",
+    "mostHelpful": "Most helpful",
+    "latest": "Latest",
+    "label": "Sort:",
+    "ariaLabel": "Sort questions"
+  },
+  "filters": {
+    "categoryLabel": "Category:",
+    "allCategories": "All categories",
+    "clear": "Clear",
+    "zeroResults": "0 results",
+    "zeroResultsWithQuery": "0 results for \"{query}\"",
+    "resultsRange": "{from}-{to} of {total}",
+    "resultsWithQuery": "{from}-{to} of {total} for \"{query}\""
+  },
+  "list": {
+    "noMatch": "No matching questions",
+    "noMatchDesc": "No questions match your search. Try another keyword or clear the filter to browse all topics.",
+    "showing": "Showing {from}\u2013{to} of {total} questions",
+    "resultsFor": "Results for \"{query}\"",
+    "rangeOf": "{from}-{to} of {total}",
+    "clearSearch": "Clear search",
+    "updMobile": "Upd",
+    "updDesktop": "Updated",
+    "readNow": "Read Now",
+    "prevAriaLabel": "Previous page",
+    "nextAriaLabel": "Next page",
+    "paginationAriaLabel": "FAQ pagination",
+    "pageCaption": "Page {page} of {total} \u2014 {count} questions",
+    "perPage": "Per page:",
+    "perPageAriaLabel": "Items per page",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "sidebar": {
+    "browseByTopic": "Browse by topic",
+    "mostAsked": "Most asked",
+    "ariaLabel": "FAQ navigation"
+  },
+  "mostAsked": {
+    "01": "How do I join the server?",
+    "02": "What versions do you support?",
+    "03": "How do I reset my password?",
+    "04": "How do refunds work?",
+    "05": "Why am I getting connection lost?"
+  },
+  "support": {
+    "liveLabel": "Live support online",
+    "title": "Still need help?",
+    "desc": "Chat with us 24/7 or send a ticket \u2014 we usually reply within 4 hours.",
+    "sendTicket": "Send a ticket"
+  },
+  "cta": {
+    "title": "Still need help?",
+    "descMobile": "Support team replies within 4 h, 24/7.",
+    "descDesktop": "Our support team replies within 4 hours, around the clock. Live chat, email ticket, or Discord \u2014 pick whichever is fastest for you.",
+    "contactUs": "Contact us"
+  },
+  "suggest": {
+    "improvePage": "Help improve this page",
+    "title": "Suggest a question",
+    "desc": "Missing something? Tell us what you searched for and we will add it within a week.",
+    "descSidebar": "Missing something? Tell us what you searched for and we will add it to the FAQ within a week.",
+    "yourQuestion": "Your question",
+    "placeholder": "Your question",
+    "placeholderSidebar": "Your question (e.g. \u201cHow do I host a private world?\u201d)",
+    "category": "Category",
+    "pickOne": "Category \u2014 pick one",
+    "submit": "Submit suggestion"
+  },
+  "article": {
+    "onThisPage": "On this page",
+    "share": "Share this article",
+    "relatedQuestions": "Related questions",
+    "exampleIp": "Example IP",
+    "copy": "Copy",
+    "tagTop": "Top",
+    "tagTopDesktop": "Top question",
+    "views": "{count} views",
+    "helpfulPct": "{percent}% found this helpful",
+    "minRead": "{min} min read",
+    "updatedFull": "Updated {date}, 2026"
+  },
+  "related": {
+    "badgeMobile": "Related",
+    "badgeDesktop": "More from {category}",
+    "titleMobile": "More questions",
+    "titleDesktop": "Related questions",
+    "allFaq": "All FAQ",
+    "readMobile": "Read",
+    "readDesktop": "Read answer"
+  },
+  "feedback": {
+    "hintMobile": "Your vote helps us improve.",
+    "hintDesktop": "Your vote helps us prioritise which answers to expand and re-write.",
+    "yesMobile": "Yes",
+    "yesDesktop": "Yes, helpful",
+    "noMobile": "Not really",
+    "noDesktop": "Could be better",
+    "statsMobile": "{helpful} out of {total} ({percent}%) found this helpful",
+    "statsDesktop": "{helpful} out of {total} players ({percent}%) found this helpful"
+  },
+  "contentCta": {
+    "primary": "Open live chat",
+    "secondary": "Browse all FAQ"
+  },
+  "articles": {
+    "join": {
+      "question": "How do I join the server for the first time?",
+      "breadcrumb": "How to join",
+      "quickAnswer": "Sign up \u2192 choose a server \u2192 copy IP \u2192 paste into Minecraft \u2192 Multiplayer \u2192 Add Server. The whole flow takes about 2 minutes if Minecraft is already installed.",
+      "excerpt": "Sign up on the website, pick a server, copy the IP from your dashboard, and add it in Minecraft Multiplayer. First join takes about two minutes."
+    },
+    "supported-versions": {
+      "question": "What versions of Minecraft do you support?",
+      "breadcrumb": "Supported versions",
+      "quickAnswer": "Java 1.20.4 and the latest Bedrock release. Older versions are not supported because of the custom plugins we run.",
+      "excerpt": "We support Java 1.20.4 and the latest Bedrock release. Custom plugins require a current client \u2014 older versions cannot connect."
+    },
+    "first-day-checklist": {
+      "question": "What should I do on my first day?",
+      "breadcrumb": "First day checklist",
+      "quickAnswer": "Set a home, claim land, open /shop for daily quests, and join Discord. Those four steps cover 90% of new-player confusion.",
+      "excerpt": "Set a home with /sethome, claim your base, check /shop for daily quests, and join Discord to meet other players."
+    },
+    "dashboard-guide": {
+      "question": "How do I use the player dashboard?",
+      "breadcrumb": "Dashboard guide",
+      "quickAnswer": "The dashboard shows server IPs, purchase history, tournament brackets, and account settings \u2014 all tied to one login.",
+      "excerpt": "Your dashboard holds server IPs, shop history, tournament status, and profile settings. Log in once to manage everything."
+    },
+    "change-nickname": {
+      "question": "Can I change my in-game nickname?",
+      "breadcrumb": "Change nickname",
+      "quickAnswer": "Yes \u2014 once every 30 days from Dashboard \u2192 Settings. The change applies on next login across all servers.",
+      "excerpt": "You can change your visible nickname once every 30 days from Dashboard \u2192 Settings. It updates on your next login."
+    },
+    "reset-password": {
+      "question": "I forgot my password \u2014 how do I reset it?",
+      "breadcrumb": "Reset password",
+      "quickAnswer": "Use Forgot password on the login page. We email a one-time link valid for 30 minutes.",
+      "excerpt": "Click Forgot password on the login page. We send a one-time reset link to your email \u2014 valid for 30 minutes."
+    },
+    "link-microsoft": {
+      "question": "How do I link my Microsoft / Mojang account?",
+      "breadcrumb": "Link Microsoft",
+      "quickAnswer": "Dashboard \u2192 Settings \u2192 Linked accounts \u2192 Connect Microsoft. You stay logged in on both Java and Bedrock after linking.",
+      "excerpt": "Open Dashboard \u2192 Settings \u2192 Linked accounts and connect Microsoft. One link covers Java and Bedrock login going forward."
+    },
+    "two-factor-auth": {
+      "question": "Do you support two-factor authentication?",
+      "breadcrumb": "Two-factor auth",
+      "quickAnswer": "Yes \u2014 enable TOTP from Dashboard \u2192 Security. Required for large shop purchases once your account exceeds $50 lifetime spend.",
+      "excerpt": "Enable two-factor authentication from Dashboard \u2192 Security. We require it for high-value shop purchases on active accounts."
+    },
+    "delete-account": {
+      "question": "How do I delete my account?",
+      "breadcrumb": "Delete account",
+      "quickAnswer": "Dashboard \u2192 Settings \u2192 Delete account. Progress is removed after a 14-day grace period; purchases are not refunded automatically.",
+      "excerpt": "Request deletion from Dashboard \u2192 Settings. There is a 14-day grace period before progress is permanently removed."
+    },
+    "payment-methods": {
+      "question": "What payment methods do you accept?",
+      "breadcrumb": "Payment methods",
+      "quickAnswer": "Visa, Mastercard, PayPal, Apple Pay, and Google Pay in supported regions. Crypto is not accepted.",
+      "excerpt": "We accept Visa, Mastercard, PayPal, Apple Pay, and Google Pay where available. All checkout runs through our secure payment partner."
+    },
+    "donations-privileges": {
+      "question": "How do donations and privileges work?",
+      "breadcrumb": "Donations & privileges",
+      "quickAnswer": "Privileges are cosmetic and convenience perks \u2014 never pay-to-win. They activate instantly after payment and sync to every server.",
+      "excerpt": "Shop purchases grant ranks and cosmetics that sync across all servers. Privileges are convenience perks, not combat advantages."
+    },
+    "refund-policy": {
+      "question": "Can I refund a purchase or privilege?",
+      "breadcrumb": "Refund policy",
+      "quickAnswer": "Refunds within 48 hours if the privilege was not used in-game. Open a ticket with your order ID from Dashboard \u2192 History.",
+      "excerpt": "Unused privileges can be refunded within 48 hours. Open a support ticket with your order ID from Dashboard \u2192 History."
+    },
+    "payment-failed": {
+      "question": "My payment failed \u2014 what should I do?",
+      "breadcrumb": "Failed payment",
+      "quickAnswer": "Check your bank for blocks, try another method, or wait 15 minutes and retry. Double charges auto-reverse within an hour.",
+      "excerpt": "Verify your bank allows game purchases, try another payment method, or wait fifteen minutes before retrying."
+    },
+    "server-differences": {
+      "question": "What\u2019s the difference between LuckySurvival, MineWars, and CalmSky?",
+      "breadcrumb": "Server differences",
+      "quickAnswer": "LuckySurvival \u2014 fair PvP, TNT off. MineWars \u2014 ranked PvP, TNT on. CalmSky \u2014 peaceful building, no PvP.",
+      "excerpt": "LuckySurvival is balanced survival, MineWars is competitive PvP with TNT, and CalmSky is a peaceful building server."
+    },
+    "switch-servers": {
+      "question": "Can I switch between servers with one account?",
+      "breadcrumb": "Switch servers",
+      "quickAnswer": "Yes \u2014 one account, separate inventories per server. Copy the new IP from Dashboard \u2192 Servers and add it in Minecraft.",
+      "excerpt": "One account works on every server. Each world keeps its own inventory \u2014 copy a new IP from the dashboard when switching."
+    },
+    "world-resets": {
+      "question": "Do worlds reset? How often?",
+      "breadcrumb": "World resets",
+      "quickAnswer": "Main worlds do not reset on a schedule. Seasonal event worlds wipe after each tournament season \u2014 usually every three months.",
+      "excerpt": "Core survival worlds persist indefinitely. Seasonal event maps reset after each tournament season, roughly every three months."
+    },
+    "download-world": {
+      "question": "Can I download my world or builds?",
+      "breadcrumb": "Download world",
+      "quickAnswer": "Claim owners can request a schematic export of their claimed area once per season from Dashboard \u2192 Servers \u2192 Export.",
+      "excerpt": "If you own a claim, request a schematic export once per season from Dashboard \u2192 Servers \u2192 Export."
+    },
+    "server-status": {
+      "question": "How do I check if a server is online?",
+      "breadcrumb": "Server status",
+      "quickAnswer": "Dashboard \u2192 Servers shows live status. Green dot = online. You can also subscribe to status alerts by email.",
+      "excerpt": "Open Dashboard \u2192 Servers for live status dots, or enable email alerts when a server goes offline for maintenance."
+    },
+    "rank-benefits": {
+      "question": "What benefits do VIP ranks include?",
+      "breadcrumb": "VIP benefits",
+      "quickAnswer": "Extra homes, chat cosmetics, queue priority, and particle trails. No combat or economy advantages on any server.",
+      "excerpt": "VIP ranks add homes, chat flair, queue priority, and cosmetics. They never grant combat or economy advantages."
+    },
+    "rank-duration": {
+      "question": "How long do purchased ranks last?",
+      "breadcrumb": "Rank duration",
+      "quickAnswer": "Most ranks are 30 or 90 days. Lifetime tiers exist for supporters. Expiry dates appear in Dashboard \u2192 History.",
+      "excerpt": "Standard ranks run 30 or 90 days. Lifetime tiers are available in the shop \u2014 expiry dates show in your purchase history."
+    },
+    "gift-rank": {
+      "question": "Can I gift a rank to another player?",
+      "breadcrumb": "Gift a rank",
+      "quickAnswer": "Yes \u2014 choose Gift at checkout and enter the recipient username. They receive an in-game notification when it activates.",
+      "excerpt": "Select Gift at checkout and enter the recipient username. They get an in-game notification when the rank activates."
+    },
+    "claims-protection": {
+      "question": "How do claims and grief protection work?",
+      "breadcrumb": "Claims & protection",
+      "quickAnswer": "Use a golden shovel to claim land. Blocks inside your claim cannot be broken by other players unless you trust them.",
+      "excerpt": "Claim land with a golden shovel. Other players cannot break blocks inside your claim unless you explicitly trust them."
+    },
+    "economy-basics": {
+      "question": "How does the in-game economy work?",
+      "breadcrumb": "Economy basics",
+      "quickAnswer": "Earn coins from quests, trading, and events. Spend at /shop and player markets. Taxes apply only to large chest-shop sales.",
+      "excerpt": "Earn coins through quests, trading, and events. Spend at /shop or player markets \u2014 small trades have no tax."
+    },
+    "tournaments": {
+      "question": "How do weekly tournaments work?",
+      "breadcrumb": "Tournaments",
+      "quickAnswer": "Brackets open Friday 18:00 UTC and close Sunday 23:59 UTC. Sign up from Dashboard \u2192 Tournaments or /tournament in-game.",
+      "excerpt": "Weekly brackets run Friday through Sunday UTC. Register from Dashboard \u2192 Tournaments or type /tournament in-game."
+    },
+    "report-player": {
+      "question": "How do I report another player?",
+      "breadcrumb": "Report a player",
+      "quickAnswer": "Type /report <username> <reason> in-game or open a ticket with screenshots. Reports are reviewed within 24 hours.",
+      "excerpt": "Use /report in-game or open a support ticket with screenshots. Moderators review reports within twenty-four hours."
+    },
+    "connection-lost": {
+      "question": "Why am I getting \u201cconnection lost\u201d errors?",
+      "breadcrumb": "Connection lost",
+      "quickAnswer": "Usually a firewall, VPN, or version mismatch. Allow port 25565, disable VPN, and confirm you run Java 1.20.4 or latest Bedrock.",
+      "excerpt": "Connection lost errors usually mean a firewall, VPN, or version mismatch. Allow port 25565 and update your client."
+    },
+    "resource-pack-issues": {
+      "question": "The resource pack won\u2019t download \u2014 what now?",
+      "breadcrumb": "Resource pack issues",
+      "quickAnswer": "Restart Minecraft, rejoin, and wait on the loading screen. If stuck at 0%, type /resourcepack reload after spawning.",
+      "excerpt": "Restart Minecraft and rejoin. If the pack hangs at zero percent, type /resourcepack reload after you spawn in."
+    },
+    "lag-performance": {
+      "question": "How do I fix lag or low FPS on the server?",
+      "breadcrumb": "Lag & performance",
+      "quickAnswer": "Lower render distance to 12 chunks, disable heavy shaders, and close background apps. Server-side lag spikes are posted on Discord.",
+      "excerpt": "Lower render distance, disable heavy shaders, and close background apps. Check Discord for known server-side lag events."
+    },
+    "server-rules": {
+      "question": "What are the main server rules?",
+      "breadcrumb": "Server rules",
+      "quickAnswer": "No cheating, harassment, or real-money trading. Respect claims, follow chat guidelines, and listen to staff instructions.",
+      "excerpt": "No cheating, harassment, or real-money trading. Respect claims, keep chat civil, and follow staff directions."
+    },
+    "ban-appeal": {
+      "question": "How do I appeal a ban or mute?",
+      "breadcrumb": "Ban appeal",
+      "quickAnswer": "Open Dashboard \u2192 Support \u2192 Appeal with your case ID. Appeals are reviewed within 72 hours \u2014 one appeal per punishment.",
+      "excerpt": "Submit an appeal from Dashboard \u2192 Support with your case ID. Each punishment allows one appeal, reviewed within 72 hours."
+    }
+  },
+  "join": {
+    "lead": {
+      "mobile": "Joining a Minecraft Ecosystem server takes about two minutes once you have Minecraft installed. This guide walks through every step.",
+      "desktop": "Joining a Minecraft Ecosystem server takes about two minutes once you have Minecraft installed. This guide walks through every step, from sign-up to your first connection \u2014 plus what to do if something does not work."
+    },
+    "beforeTitle": "Before you start",
+    "beforeLead": {
+      "mobile": "Make sure you have these ready before you begin.",
+      "desktop": "Make sure you have the following ready before you begin. If anything is missing, links below take you to the right place."
+    },
+    "beforeBulletsMobile": [
+      "Legal copy of Minecraft (Java 1.20.4 or latest Bedrock).",
+      "Valid email address you can access now.",
+      "A nickname for other players to see.",
+      "Stable internet connection."
+    ],
+    "beforeBulletsDesktop": [
+      "A legal copy of Minecraft (Java 1.20.4 or the latest Bedrock release).",
+      "A valid email address you can access right now (for verification).",
+      "A nickname you want other players to see \u2014 can be different from your Microsoft handle.",
+      "A stable internet connection (any modern broadband works)."
+    ],
+    "beforeCallout": {
+      "title": "Heads up",
+      "mobile": "Both Java and Bedrock work. Java has a few extra cosmetics, but every core feature works on both.",
+      "desktop": "Both Java and Bedrock editions work on our servers. Java supports a few more cosmetic plugins, but every core feature \u2014 economy, claims, tournaments \u2014 works identically on both."
+    },
+    "createTitle": "1. Create an account",
+    "createLead": {
+      "mobile": "Sign up with email and password. About 30 seconds total.",
+      "desktop": "Sign up on our website with email and password. The whole step takes about 30 seconds. Your in-game progress, purchases, and friends list are all tied to this account."
+    },
+    "createStepsMobile": [
+      "Open Sign Up, enter email + password.",
+      "Click \u201cCreate account\u201d \u2014 we send a verification link.",
+      "Open the email and click the link.",
+      "Set an in-game nickname."
+    ],
+    "createStepsDesktop": [
+      "Open the Sign Up page and enter your email + password.",
+      "Click \u201cCreate account\u201d. We will send a verification link.",
+      "Open the email (check the spam folder if it does not arrive in 2 minutes) and click the link.",
+      "You will land on the dashboard. Pick an in-game nickname when prompted."
+    ],
+    "createCaption": "Caption: The sign-up form \u2014 minimum fields, easy validation.",
+    "chooseTitle": "2. Choose your server",
+    "chooseLead": {
+      "mobile": "Three servers, each tuned for a different playstyle. Switch any time.",
+      "desktop": "We run three servers in parallel, each tuned for a different playstyle. Pick the one that fits how you like to play \u2014 you can always switch later."
+    },
+    "chooseBulletsMobile": [
+      "LuckySurvival \u2014 fair PvP, balanced economy, TNT off.",
+      "MineWars \u2014 competitive PvP, TNT on, tournaments.",
+      "CalmSky \u2014 peaceful building, no PvP, no TNT."
+    ],
+    "chooseBulletsDesktop": [
+      "LuckySurvival \u2014 vanilla survival with fair PvP, balanced economy, and TNT disabled.",
+      "MineWars \u2014 vanilla survival with PvP and TNT enabled, ranked matches and tournaments.",
+      "CalmSky \u2014 peaceful vanilla server without PvP or TNT, focused on building and community."
+    ],
+    "chooseCallout": {
+      "title": "Tip",
+      "mobile": "New players land on LuckySurvival by default. Start there if unsure.",
+      "desktop": "New players land on LuckySurvival by default. If you are not sure, start there \u2014 it is the safest place to learn the basics."
+    },
+    "addTitleMobile": "3. Add the server",
+    "addTitleDesktop": "3. Add the server in Minecraft",
+    "addLead": {
+      "mobile": "Copy the IP from your dashboard and add it as a multiplayer server in Minecraft.",
+      "desktop": "Each server has a unique IP address. Copy it from the server card in your dashboard, then add it as a multiplayer server in Minecraft."
+    },
+    "addStepsMobile": [
+      "Click \u201cCopy IP\u201d on the server card.",
+      "Minecraft \u2192 Multiplayer.",
+      "Click \u201cAdd Server\u201d.",
+      "Paste the IP. Add any name.",
+      "Click \u201cDone\u201d."
+    ],
+    "addStepsDesktop": [
+      "On the Servers page, click the \u201cCopy IP\u201d button on the server card you picked.",
+      "Open Minecraft and choose \u201cMultiplayer\u201d from the main menu.",
+      "Click \u201cAdd Server\u201d at the bottom of the screen.",
+      "Paste the IP into the \u201cServer Address\u201d field. Add any name you like.",
+      "Click \u201cDone\u201d. The server appears in your list."
+    ],
+    "connectTitle": "4. Connect for the first time",
+    "connectLead": {
+      "mobile": "First connection downloads an ~80\u00a0MB resource pack (20\u201340\u00a0sec). After that, joining is instant.",
+      "desktop": "You are one click away. The first connection downloads our resource pack \u2014 about 80\u00a0MB \u2014 which takes 20\u201340 seconds on a normal connection. After that, joining is instant."
+    },
+    "connectStepsMobile": [
+      "Click the server card.",
+      "Wait for \u201cDownloading server resource pack\u201d.",
+      "Land at spawn lobby.",
+      "Type /tutorial for in-game tips."
+    ],
+    "connectStepsDesktop": [
+      "Click the server card in your Minecraft multiplayer list.",
+      "Wait for \u201cDownloading server resource pack\u201d \u2014 it appears once.",
+      "You will land at the spawn lobby. Press / for chat commands.",
+      "Type /tutorial to see in-game tips, or just start exploring."
+    ],
+    "connectCallout": {
+      "mobile": "The pack downloads inside Minecraft and removes automatically when you leave.",
+      "desktop": "You do not need to install anything manually. The pack downloads inside Minecraft and is removed automatically when you disconnect from our server."
+    },
+    "connectSuccessMobile": "Auto-installed",
+    "connectSuccessDesktop": "Resource pack is automatic",
+    "connectCaption": "Caption: The spawn lobby \u2014 choose your starter kit or open the in-game menu.",
+    "troubleTitle": "Troubleshooting",
+    "troubleLead": {
+      "mobile": "Most issues have a 30-second fix.",
+      "desktop": "Most issues fall into one of four buckets. Each item below has a 30-second fix."
+    },
+    "troubleMobileItems": [
+      { "title": "\u201cOutdated server / client\u201d", "text": "Update Minecraft to 1.20.4 (Java) or the latest Bedrock build." },
+      { "title": "\u201cConnection lost\u201d", "text": "Check firewall and disable VPNs blocking port 25565." },
+      { "title": "Resource pack stuck", "text": "Restart Minecraft. If still hanging \u2014 /resourcepack reload after spawn." },
+      { "title": "Server not visible", "text": "Re-check the IP \u2014 no leading/trailing spaces." }
+    ],
+    "troubleDesktopItems": [
+      { "title": "\u201cOutdated server\u201d or \u201cOutdated client\u201d", "text": "Your Minecraft version does not match the server. Update Minecraft to 1.20.4 (Java) or the latest Bedrock build, then reconnect." },
+      { "title": "\u201cConnection lost\u201d right after joining", "text": "Check your firewall \u2014 Minecraft uses port 25565 (Java) by default. Disable VPNs that block game traffic, then try again." },
+      { "title": "Resource pack stuck at 0%", "text": "Cancel the connection, restart Minecraft, and rejoin. If it still hangs, type /resourcepack reload in chat after spawning." },
+      { "title": "Server not visible in the list", "text": "Make sure you pasted the IP exactly \u2014 no leading or trailing spaces. The address is case-insensitive." }
+    ],
+    "nextTitle": "What\u2019s next?",
+    "nextLead": {
+      "mobile": "Three things to do in your first 10 minutes.",
+      "desktop": "Now that you are in, here are the three things every new player should do in the first 10 minutes."
+    },
+    "nextBulletsMobile": [
+      "Run /sethome \u2014 3 free homes to teleport between.",
+      "/shop to see daily quests.",
+      "Join the community Discord."
+    ],
+    "nextBulletsDesktop": [
+      "Run /sethome at your first base \u2014 you get 3 free homes to teleport between.",
+      "Open the in-game shop with /shop and check the daily quests.",
+      "Join the community Discord \u2014 most builders, traders, and PvP players hang out there."
+    ],
+    "feedbackHintMobile": "Your vote helps us improve.",
+    "feedbackHintDesktop": "Your vote helps us prioritise which answers to expand and re-write.",
+    "feedbackYesMobile": "Yes",
+    "feedbackYesDesktop": "Yes, helpful",
+    "feedbackNoMobile": "Not really",
+    "feedbackNoDesktop": "Could be better",
+    "feedbackStatsMobile": "243 out of 258 (94%) found this helpful",
+    "feedbackStatsDesktop": "243 out of 258 players (94%) found this helpful",
+    "ctaPrimary": "Join Twitch",
+    "ctaSecondary": "Browse all FAQ"
+  },
+  "content": {
+    "supported-versions": {
+      "lead": {
+        "mobile": "We run custom plugins that require a current Minecraft client. Here is what works today.",
+        "desktop": "We run custom plugins, anti-cheat, and economy systems that require a current Minecraft client. Here is exactly what works today \u2014 and what does not."
+      },
+      "s1": {
+        "title": "Supported clients",
+        "leadMobile": "These versions connect without compatibility warnings.",
+        "leadDesktop": "These client versions connect without compatibility warnings and receive the full feature set including tournaments and the in-game shop.",
+        "bullets": [
+          "Java Edition 1.20.4 \u2014 recommended for PC players.",
+          "Latest Bedrock release on Windows, iOS, Android, and console.",
+          "Our launcher auto-selects the correct profile after login."
+        ]
+      },
+      "s2": {
+        "title": "Unsupported versions",
+        "leadMobile": "Older clients cannot join because plugin APIs differ between major releases.",
+        "leadDesktop": "Older clients cannot join because our plugin APIs differ between major releases. Attempting to connect shows an outdated client or server message.",
+        "bullets": [
+          "Java versions below 1.20.4.",
+          "Legacy console editions without Bedrock cross-play.",
+          "Cracked or modified clients flagged by anti-cheat."
+        ],
+        "calloutTitle": "Tip",
+        "calloutMobile": "Update Minecraft before copying a server IP \u2014 it saves a confusing error screen.",
+        "calloutDesktop": "Update Minecraft to the latest patch before copying a server IP. It saves a confusing error screen and avoids support tickets we answer every hour."
+      },
+      "s3": {
+        "title": "Check your version",
+        "leadMobile": "Java: main menu bottom-left shows the version string. Bedrock: Settings \u2192 About.",
+        "leadDesktop": "Java Edition shows the version string on the main menu bottom-left. Bedrock lists the build under Settings \u2192 About. Match it against the supported list above.",
+        "steps": [
+          "Open Minecraft and note your version number.",
+          "Compare it to Java 1.20.4 or the latest Bedrock build.",
+          "Update through the official launcher if needed.",
+          "Reconnect to the server from your dashboard IP."
+        ]
+      }
+    },
+    "first-day-checklist": {
+      "lead": {
+        "mobile": "Your first session sets the pace for everything after. These four steps cover what most new players miss.",
+        "desktop": "Your first session sets the pace for everything after. These four steps cover what most new players miss before they ask in chat \u2014 homes, claims, quests, and community."
+      },
+      "s1": {
+        "title": "Set a home base",
+        "leadMobile": "Run /sethome where you want to return. You start with three free home slots.",
+        "leadDesktop": "Run /sethome where you want to return after mining or dying. Every account starts with three free home slots across all survival servers.",
+        "steps": [
+          "Build or find a safe spot above ground.",
+          "Stand in the center and type /sethome base.",
+          "Test with /home base before exploring far."
+        ]
+      },
+      "s2": {
+        "title": "Claim your land",
+        "leadMobile": "A golden shovel defines your protected area. Other players cannot grief inside it.",
+        "leadDesktop": "Craft or buy a golden shovel to define your protected area. Other players cannot break blocks inside unless you /trust them explicitly.",
+        "bullets": [
+          "Right-click two opposite corners with the golden shovel.",
+          "Claims show particle borders only to you.",
+          "Expand later with /claim expand when you have claim blocks."
+        ]
+      },
+      "s3": {
+        "title": "Open the shop and quests",
+        "leadMobile": "/shop lists daily quests that pay coins for simple tasks \u2014 mine stone, catch fish, deliver items.",
+        "leadDesktop": "/shop lists daily quests that pay coins for simple tasks like mining stone, catching fish, or delivering items to NPCs at spawn.",
+        "bullets": [
+          "Daily quests reset at 00:00 UTC.",
+          "Coins spend at player markets and the official shop.",
+          "Quest progress syncs if you switch servers later the same day."
+        ]
+      }
+    },
+    "dashboard-guide": {
+      "lead": {
+        "mobile": "The dashboard is your control panel outside Minecraft \u2014 servers, purchases, tournaments, and settings.",
+        "desktop": "The dashboard is your control panel outside Minecraft. Everything tied to your account lives here: server IPs, purchases, tournament brackets, and profile settings."
+      },
+      "s1": {
+        "title": "Servers page",
+        "leadMobile": "Copy IPs, see live status, and jump to server-specific guides.",
+        "leadDesktop": "The Servers page lists every world you can join with one-click IP copy, live status dots, and links to server-specific guides.",
+        "bullets": [
+          "Green dot = server online and accepting players.",
+          "Copy IP adds the address to your clipboard.",
+          "Last played timestamp helps you pick up where you left off."
+        ]
+      },
+      "s2": {
+        "title": "Shop & history",
+        "leadMobile": "Buy ranks and cosmetics. History stores receipts and expiry dates.",
+        "leadDesktop": "Buy ranks and cosmetics from the integrated shop. History stores receipts, expiry dates, and refund eligibility windows.",
+        "bullets": [
+          "Privileges activate within seconds of payment.",
+          "Gift checkout lets you send ranks to friends.",
+          "Download invoices for your records from any order row."
+        ]
+      },
+      "s3": {
+        "title": "Tournaments & settings",
+        "leadMobile": "Register for brackets and manage nickname, security, and linked accounts.",
+        "leadDesktop": "Register for active brackets, view seeding, and manage nickname changes, two-factor authentication, and linked Microsoft accounts.",
+        "steps": [
+          "Open Tournaments during an active season window.",
+          "Click Register on the bracket you qualify for.",
+          "Adjust profile settings under Settings \u2192 Profile."
+        ]
+      }
+    },
+    "change-nickname": {
+      "lead": {
+        "mobile": "Your nickname is what other players see in chat, tab list, and leaderboards.",
+        "desktop": "Your nickname is what other players see in chat, the tab list, and leaderboards. It can differ from your Microsoft gamertag or email username."
+      },
+      "s1": {
+        "title": "Change your nickname",
+        "leadMobile": "Dashboard \u2192 Settings \u2192 Profile \u2192 Edit nickname.",
+        "leadDesktop": "Go to Dashboard \u2192 Settings \u2192 Profile and click Edit nickname. Confirm with your password if two-factor authentication is enabled.",
+        "steps": [
+          "Open Settings \u2192 Profile in the dashboard.",
+          "Click Edit nickname and type the new name.",
+          "Save \u2014 the change applies on your next login."
+        ]
+      },
+      "s2": {
+        "title": "Naming rules",
+        "leadMobile": "Names must be 3\u201316 characters, alphanumeric plus underscores.",
+        "leadDesktop": "Names must be 3\u201316 characters, alphanumeric plus underscores, and cannot impersonate staff or contain slurs filtered by our chat system.",
+        "bullets": [
+          "Offensive names are rejected automatically.",
+          "Staff names and rank prefixes are reserved.",
+          "You cannot take a name already linked to another account."
+        ]
+      },
+      "s3": {
+        "title": "Cooldown",
+        "leadMobile": "Nickname changes are limited to once every 30 days per account.",
+        "leadDesktop": "Nickname changes are limited to once every 30 days per account to prevent confusion in trades and tournament records.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Tournament seasons lock nicknames 24 hours before finals.",
+        "calloutDesktop": "Active tournament seasons lock nickname changes 24 hours before finals \u2014 plan changes outside that window."
+      }
+    },
+    "reset-password": {
+      "lead": {
+        "mobile": "Password resets are email-based and expire quickly for security.",
+        "desktop": "Password resets are email-based, expire quickly for security, and never ask you to share the new password with staff."
+      },
+      "s1": {
+        "title": "Request a reset link",
+        "leadMobile": "Use Forgot password on the login page.",
+        "leadDesktop": "On the login page, click Forgot password and enter the email tied to your account.",
+        "steps": [
+          "Open the login page and click Forgot password.",
+          "Enter your account email and submit.",
+          "Check inbox and spam for the reset email.",
+          "Click the link within 30 minutes."
+        ]
+      },
+      "s2": {
+        "title": "Choose a new password",
+        "leadMobile": "Pick at least 10 characters with mixed case and numbers.",
+        "leadDesktop": "Pick at least 10 characters with mixed case, numbers, and a symbol. Reusing your Minecraft or email password is discouraged.",
+        "bullets": [
+          "Confirm the password twice on the reset form.",
+          "You will log in on all devices with the new password.",
+          "Enable two-factor auth afterward if available."
+        ]
+      },
+      "s3": {
+        "title": "Still locked out?",
+        "leadMobile": "If the email never arrives, open a ticket with your username and signup date.",
+        "leadDesktop": "If the email never arrives after five minutes, open a support ticket with your username and approximate signup date for manual verification.",
+        "calloutTitle": "Security note",
+        "calloutMobile": "Staff will never ask for your password in chat or Discord.",
+        "calloutDesktop": "Staff and moderators will never ask for your password in chat, Discord, or email. Report impersonators immediately."
+      }
+    },
+    "link-microsoft": {
+      "lead": {
+        "mobile": "Linking Microsoft merges your launcher identity with your website account.",
+        "desktop": "Linking Microsoft merges your launcher identity with your website account so purchases, bans, and progress stay on one profile."
+      },
+      "s1": {
+        "title": "Start the link flow",
+        "leadMobile": "Dashboard \u2192 Settings \u2192 Linked accounts \u2192 Connect Microsoft.",
+        "leadDesktop": "From Dashboard \u2192 Settings \u2192 Linked accounts, click Connect Microsoft and sign in with the account you use in Minecraft.",
+        "steps": [
+          "Open Linked accounts in dashboard settings.",
+          "Click Connect Microsoft.",
+          "Sign in to the Microsoft popup window.",
+          "Confirm the success banner in the dashboard."
+        ]
+      },
+      "s2": {
+        "title": "After linking",
+        "leadMobile": "Your rank, coins, and tournament history follow the linked profile.",
+        "leadDesktop": "Your rank, coin balance, and tournament history follow the linked profile across Java and Bedrock sessions.",
+        "bullets": [
+          "Unlinking requires a support ticket if you need to swap accounts.",
+          "Only one Microsoft account can link at a time.",
+          "Bedrock and Java share the same link entry."
+        ]
+      },
+      "s3": {
+        "title": "Troubleshooting",
+        "leadMobile": "If the popup closes instantly, disable ad blockers and allow popups for our domain.",
+        "leadDesktop": "If the Microsoft popup closes instantly, disable ad blockers, allow popups for our domain, and try an incognito window.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Use the same Microsoft login you pick in the Minecraft launcher.",
+        "calloutDesktop": "Use the exact Microsoft login you select in the Minecraft launcher \u2014 mismatched accounts are the top linking failure we see."
+      }
+    },
+    "two-factor-auth": {
+      "lead": {
+        "mobile": "Two-factor authentication adds a six-digit code from an authenticator app on login.",
+        "desktop": "Two-factor authentication adds a six-digit TOTP code from an authenticator app whenever you log in or confirm sensitive shop actions."
+      },
+      "s1": {
+        "title": "Enable 2FA",
+        "leadMobile": "Dashboard \u2192 Security \u2192 Enable two-factor authentication.",
+        "leadDesktop": "Open Dashboard \u2192 Security, click Enable two-factor authentication, and scan the QR code with Google Authenticator, Authy, or 1Password.",
+        "steps": [
+          "Install an authenticator app on your phone.",
+          "Scan the QR code shown in Security settings.",
+          "Enter the six-digit code to confirm.",
+          "Save the backup codes in a safe place."
+        ]
+      },
+      "s2": {
+        "title": "When it is required",
+        "leadMobile": "High-value shop checkouts and rank gifts may prompt for 2FA even if you are already logged in.",
+        "leadDesktop": "High-value shop checkouts, rank gifts, and account deletion requests may prompt for 2FA even if you are already logged in.",
+        "bullets": [
+          "Login always accepts TOTP after password entry.",
+          "Backup codes work once each if you lose your phone.",
+          "Disabling 2FA requires email confirmation."
+        ]
+      },
+      "s3": {
+        "title": "Lost access",
+        "leadMobile": "Open a ticket with ID verification if you lose both phone and backup codes.",
+        "leadDesktop": "Open a support ticket with ID verification if you lose both your phone and backup codes. Recovery takes 24\u201348 hours.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Staff cannot read or reset your TOTP secret over chat.",
+        "calloutDesktop": "Staff cannot read or reset your TOTP secret over chat \u2014 the recovery flow exists to protect your purchases."
+      }
+    },
+    "delete-account": {
+      "lead": {
+        "mobile": "Account deletion is permanent after the grace period. Export anything you need first.",
+        "desktop": "Account deletion is permanent after the grace period. Export schematics, download invoices, and cancel active subscriptions before you confirm."
+      },
+      "s1": {
+        "title": "Request deletion",
+        "leadMobile": "Dashboard \u2192 Settings \u2192 Delete account.",
+        "leadDesktop": "Dashboard \u2192 Settings \u2192 Delete account. You must confirm with password and 2FA if enabled.",
+        "steps": [
+          "Read the deletion summary carefully.",
+          "Confirm with your password.",
+          "Enter 2FA if prompted.",
+          "Check your email for the final confirmation link."
+        ]
+      },
+      "s2": {
+        "title": "Grace period",
+        "leadMobile": "You have 14 days to cancel by logging in and clicking Restore account.",
+        "leadDesktop": "You have 14 days to cancel deletion by logging in and clicking Restore account on the banner shown at the top of the dashboard.",
+        "bullets": [
+          "Progress, claims, and ranks are removed after grace ends.",
+          "Purchase history is anonymised, not deleted, for tax records.",
+          "Active tournament registrations are cancelled immediately."
+        ]
+      },
+      "s3": {
+        "title": "Before you go",
+        "leadMobile": "Consider a nickname change or server break instead if you only need a pause.",
+        "leadDesktop": "Consider a nickname change or a server break instead if you only need a pause \u2014 deletion cannot be reversed after day 14.",
+        "calloutTitle": "Refunds",
+        "calloutMobile": "Deletion does not automatically refund unused ranks.",
+        "calloutDesktop": "Deletion does not automatically refund unused ranks. Request refunds separately before starting deletion if eligible."
+      }
+    },
+    "payment-methods": {
+      "lead": {
+        "mobile": "Checkout supports major cards and wallets in most regions where we operate.",
+        "desktop": "Checkout supports major cards and wallets in most regions where we operate. All payments route through our PCI-compliant processor."
+      },
+      "s1": {
+        "title": "Accepted methods",
+        "leadMobile": "Pick any option shown at checkout for your country.",
+        "leadDesktop": "Pick any option shown at checkout for your country \u2014 availability varies by region.",
+        "bullets": [
+          "Visa and Mastercard debit/credit cards.",
+          "PayPal where supported.",
+          "Apple Pay and Google Pay on mobile browsers."
+        ]
+      },
+      "s2": {
+        "title": "Currency and taxes",
+        "leadMobile": "Prices display in USD by default; local currency conversion happens at checkout.",
+        "leadDesktop": "Prices display in USD by default. Your bank or wallet converts to local currency and may add foreign transaction fees.",
+        "bullets": [
+          "VAT or sales tax appears before you pay where required.",
+          "Invoices email automatically after successful purchase.",
+          "Failed authorisations leave no charge on your statement."
+        ]
+      },
+      "s3": {
+        "title": "Not accepted",
+        "leadMobile": "We do not accept crypto, wire transfers, or third-party gift cards.",
+        "leadDesktop": "We do not accept cryptocurrency, manual wire transfers, or third-party gift cards sold outside our official shop.",
+        "calloutTitle": "Security",
+        "calloutMobile": "We never ask for card numbers in Discord or in-game chat.",
+        "calloutDesktop": "We never ask for card numbers in Discord or in-game chat. Checkout always happens on our HTTPS shop domain."
+      }
+    },
+    "donations-privileges": {
+      "lead": {
+        "mobile": "Shop purchases fund server hardware and support cosmetic/convenience perks.",
+        "desktop": "Shop purchases fund server hardware, moderation, and event prizes. Privileges are cosmetic and convenience perks \u2014 never combat pay-to-win."
+      },
+      "s1": {
+        "title": "What you can buy",
+        "leadMobile": "Ranks, particle trails, chat colors, extra homes, and queue priority.",
+        "leadDesktop": "Ranks, particle trails, chat colors, extra homes, and queue priority during peak hours. Every perk lists exactly what it includes before checkout.",
+        "bullets": [
+          "Cosmetics show to other players but do not change damage.",
+          "Extra homes save time \u2014 they do not grant items.",
+          "Queue priority skips login lines, not combat balance."
+        ]
+      },
+      "s2": {
+        "title": "Activation",
+        "leadMobile": "Privileges apply within seconds on all servers tied to your account.",
+        "leadDesktop": "Privileges apply within seconds on all servers tied to your account. Relog if a cosmetic does not appear immediately.",
+        "steps": [
+          "Complete checkout on the shop page.",
+          "Wait for the success screen and email receipt.",
+          "Rejoin any server to sync permissions."
+        ]
+      },
+      "s3": {
+        "title": "Fair play promise",
+        "leadMobile": "We publish a perk diff any time a rank changes so players can audit balance.",
+        "leadDesktop": "We publish a perk diff any time a rank changes so players can audit balance. Report pay-to-win concerns to staff \u2014 they are investigated within 24 hours.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Compare rank cards side-by-side on the shop before buying.",
+        "calloutDesktop": "Compare rank cards side-by-side on the shop before buying \u2014 duration and renewal discounts are listed on each tile."
+      }
+    },
+    "refund-policy": {
+      "lead": {
+        "mobile": "Refunds are limited to unused privileges within 48 hours of purchase.",
+        "desktop": "Refunds are limited to unused privileges within 48 hours of purchase. Used cosmetics, consumed rank time, or gifted items are not eligible."
+      },
+      "s1": {
+        "title": "Eligible refunds",
+        "leadMobile": "You can request a refund if the perk never activated in-game.",
+        "leadDesktop": "You can request a refund if the perk never activated in-game or if you purchased the wrong server tier by mistake within 48 hours.",
+        "bullets": [
+          "Include your order ID from Dashboard \u2192 History.",
+          "Explain whether the perk appeared in-game.",
+          "Refunds return to the original payment method."
+        ]
+      },
+      "s2": {
+        "title": "Not eligible",
+        "leadMobile": "Partially used rank time, opened loot boxes, and gifted purchases are final.",
+        "leadDesktop": "Partially used rank time, opened loot boxes, and gifted purchases are final unless the recipient never claimed the gift.",
+        "bullets": [
+          "Chargebacks may result in a permanent shop ban.",
+          "Promotional bonus items are non-refundable.",
+          "Taxes are refunded only where legally required."
+        ]
+      },
+      "s3": {
+        "title": "Submit a request",
+        "leadMobile": "Dashboard \u2192 History \u2192 Request refund on the order row.",
+        "leadDesktop": "Dashboard \u2192 History \u2192 Request refund on the order row, or open a support ticket if the button is greyed out.",
+        "steps": [
+          "Locate the order in History.",
+          "Click Request refund and select a reason.",
+          "Wait for email confirmation \u2014 usually within one business day."
+        ]
+      }
+    },
+    "payment-failed": {
+      "lead": {
+        "mobile": "Failed payments usually mean a bank block, wrong billing zip, or temporary processor outage.",
+        "desktop": "Failed payments usually mean a bank block, wrong billing zip, or temporary processor outage. No privilege is granted until checkout succeeds."
+      },
+      "s1": {
+        "title": "Quick fixes",
+        "leadMobile": "Try these before opening a ticket.",
+        "leadDesktop": "Try these before opening a ticket \u2014 they resolve most checkout errors.",
+        "steps": [
+          "Verify your card allows online game purchases.",
+          "Match billing zip to your bank records.",
+          "Try PayPal or another wallet if cards fail.",
+          "Wait 15 minutes and retry once."
+        ]
+      },
+      "s2": {
+        "title": "Double charges",
+        "leadMobile": "If you clicked pay twice, pending authorisations drop within an hour.",
+        "leadDesktop": "If you double-clicked pay, pending authorisations usually drop within an hour. Only one completed order creates a rank.",
+        "bullets": [
+          "Check History before paying again.",
+          "Send order IDs if two charges post.",
+          "We void duplicate pending charges automatically when detected."
+        ]
+      },
+      "s3": {
+        "title": "Contact support",
+        "leadMobile": "Open a ticket with the error code shown on the red checkout banner.",
+        "leadDesktop": "Open a ticket with the error code shown on the red checkout banner and a screenshot of History if money left your account without delivery.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Never buy ranks through players offering \u201ccheaper PayPal\u201d \u2014 those are scams.",
+        "calloutDesktop": "Never buy ranks through players offering cheaper PayPal or crypto \u2014 those are scams and will not be restored by staff."
+      }
+    },
+    "server-differences": {
+      "lead": {
+        "mobile": "Three servers, three playstyles \u2014 same account, different rulesets.",
+        "desktop": "We run three parallel servers tuned for different playstyles. One account works everywhere, but inventories and worlds stay separate."
+      },
+      "s1": {
+        "title": "LuckySurvival",
+        "leadMobile": "Default recommendation for new players.",
+        "leadDesktop": "Our default recommendation for new players \u2014 vanilla survival with fair PvP, balanced economy, and TNT disabled.",
+        "bullets": [
+          "Claims and shop quests enabled.",
+          "PvP only outside spawn and untrusted zones.",
+          "Weekly economy events with coin prizes."
+        ]
+      },
+      "s2": {
+        "title": "MineWars",
+        "leadMobile": "Competitive PvP with TNT enabled and ranked tournaments.",
+        "leadDesktop": "Competitive PvP with TNT enabled, ranked tournaments, and larger clan wars on weekends.",
+        "bullets": [
+          "Explosion damage ON in unclaimed wilderness.",
+          "Separate ELO tracker from LuckySurvival.",
+          "Hardcore-style weekend events announced on Discord."
+        ]
+      },
+      "s3": {
+        "title": "CalmSky",
+        "leadMobile": "Peaceful building \u2014 no PvP, no TNT, larger plot limits.",
+        "leadDesktop": "Peaceful building focused \u2014 no PvP, no TNT, larger plot limits, and creative-adjacent events.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "You can hop between servers anytime \u2014 copy the new IP from the dashboard.",
+        "calloutDesktop": "You can hop between servers anytime by copying the new IP from the dashboard. Inventories do not transfer between worlds."
+      }
+    },
+    "switch-servers": {
+      "lead": {
+        "mobile": "One login covers every server. Each world keeps its own inventory and claims.",
+        "desktop": "One website login covers every server in the ecosystem. Each world keeps its own inventory, claims, and economy balance."
+      },
+      "s1": {
+        "title": "How to switch",
+        "leadMobile": "Copy the new IP from Dashboard \u2192 Servers and add it in Minecraft multiplayer.",
+        "leadDesktop": "Copy the new IP from Dashboard \u2192 Servers and add it in Minecraft multiplayer \u2014 or select it if you already saved the address.",
+        "steps": [
+          "Log out of your current server world.",
+          "Open Dashboard \u2192 Servers on the website.",
+          "Copy the IP for the destination server.",
+          "Join from your Minecraft server list."
+        ]
+      },
+      "s2": {
+        "title": "What transfers",
+        "leadMobile": "Ranks, dashboard settings, and tournament registrations follow your account.",
+        "leadDesktop": "Purchased ranks, dashboard settings, and tournament registrations follow your account. World-specific items and claims do not.",
+        "bullets": [
+          "Shop cosmetics sync on login.",
+          "Discord roles update within five minutes.",
+          "Ban status applies ecosystem-wide."
+        ]
+      },
+      "s3": {
+        "title": "What stays behind",
+        "leadMobile": "Chests, builds, and in-world coin purses remain on the server you leave.",
+        "leadDesktop": "Chests, builds, and in-world coin purses remain on the server you leave. Plan accordingly before moving permanently.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Use /mail on supported servers to send items between your own characters via escrow.",
+        "calloutDesktop": "On supported servers, use /mail to send items between your own characters through the escrow system before you migrate."
+      }
+    },
+    "world-resets": {
+      "lead": {
+        "mobile": "Main survival worlds persist. Seasonal maps rotate on a schedule.",
+        "desktop": "Main survival worlds persist indefinitely. Seasonal maps and tournament arenas rotate on a published schedule."
+      },
+      "s1": {
+        "title": "Persistent worlds",
+        "leadMobile": "LuckySurvival, MineWars, and CalmSky cores do not wipe on a calendar.",
+        "leadDesktop": "LuckySurvival, MineWars, and CalmSky core maps do not wipe on a calendar. Your builds stay unless staff announce a migration.",
+        "bullets": [
+          "Claim snapshots backup nightly.",
+          "Major updates may require chunk regeneration in unclaimed areas only.",
+          "Migration notices post 30 days in advance when needed."
+        ]
+      },
+      "s2": {
+        "title": "Seasonal resets",
+        "leadMobile": "Event worlds and some tournament maps reset every season \u2014 roughly quarterly.",
+        "leadDesktop": "Event worlds and some tournament maps reset every season \u2014 roughly quarterly \u2014 with export tools offered beforehand.",
+        "bullets": [
+          "Export schematics before the published cutoff date.",
+          "Season trophies stay on your dashboard profile.",
+          "Leaderboards archive to the website after reset."
+        ]
+      },
+      "s3": {
+        "title": "Notifications",
+        "leadMobile": "Subscribe to email alerts on Dashboard \u2192 Servers for maintenance and reset windows.",
+        "leadDesktop": "Subscribe to email alerts on Dashboard \u2192 Servers for maintenance and reset windows. Discord #announcements mirrors the same schedule.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Unread mail and auction listings must be collected before seasonal wipes.",
+        "calloutDesktop": "Unread mail and auction listings must be collected before seasonal wipes \u2014 escrow returns items to sellers automatically afterward."
+      }
+    },
+    "download-world": {
+      "lead": {
+        "mobile": "Claim owners can export builds as schematics once per season.",
+        "desktop": "Claim owners can export builds as schematics once per season for personal backup \u2014 not for republishing on competing networks."
+      },
+      "s1": {
+        "title": "Request an export",
+        "leadMobile": "Dashboard \u2192 Servers \u2192 select world \u2192 Export schematic.",
+        "leadDesktop": "Dashboard \u2192 Servers \u2192 select world \u2192 Export schematic. Choose the claim you own or co-own.",
+        "steps": [
+          "Verify you are owner or trusted on the claim.",
+          "Click Export schematic and confirm the region.",
+          "Wait for the email with a download link.",
+          "Links expire after 72 hours."
+        ]
+      },
+      "s2": {
+        "title": "Limits",
+        "leadMobile": "One export per claim per season; max volume 256\u00d7256\u00d7256 blocks.",
+        "leadDesktop": "One export per claim per season; max volume 256\u00d7256\u00d7256 blocks. Larger bases require staff assistance.",
+        "bullets": [
+          "Exports exclude chest contents for economy safety.",
+          "Entities and item frames may simplify on import elsewhere.",
+          "Commercial resale of exports violates terms of service."
+        ]
+      },
+      "s3": {
+        "title": "Using the file",
+        "leadMobile": "Import with WorldEdit or Litematica on your own single-player world.",
+        "leadDesktop": "Import with WorldEdit or Litematica on your own single-player world. We do not provide support for third-party editors.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Take screenshots before seasonal resets even if you plan to export.",
+        "calloutDesktop": "Take screenshots before seasonal resets even if you plan to export \u2014 renders help if schematic conversion drops decorative blocks."
+      }
+    },
+    "server-status": {
+      "lead": {
+        "mobile": "Check live status before you troubleshoot your own connection.",
+        "desktop": "Check live status before you troubleshoot your own connection \u2014 scheduled maintenance shows here first."
+      },
+      "s1": {
+        "title": "Dashboard status",
+        "leadMobile": "Green = online, yellow = degraded, red = offline or maintenance.",
+        "leadDesktop": "Dashboard \u2192 Servers shows green for online, yellow for degraded performance, red for offline or maintenance.",
+        "bullets": [
+          "Hover a dot for the last heartbeat timestamp.",
+          "Click a server row for patch notes and player count.",
+          "Subscribe to email alerts with the bell icon."
+        ]
+      },
+      "s2": {
+        "title": "Discord announcements",
+        "leadMobile": "#announcements posts maintenance windows and unexpected outages.",
+        "leadDesktop": "Discord #announcements posts maintenance windows, unexpected outages, and estimated recovery times.",
+        "bullets": [
+          "Enable @announcement ping role for critical alerts.",
+          "Status embeds update automatically every minute.",
+          "Comment threads are disabled during active incidents."
+        ]
+      },
+      "s3": {
+        "title": "When it is just you",
+        "leadMobile": "If status shows online but you cannot join, see the connection lost article.",
+        "leadDesktop": "If status shows online but you cannot join, the issue is likely local \u2014 see the connection lost article for firewall and VPN steps.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Try another server in the list to confirm your client works.",
+        "calloutDesktop": "Try another server in the list to confirm your client works before reinstalling Minecraft."
+      }
+    },
+    "rank-benefits": {
+      "lead": {
+        "mobile": "VIP ranks bundle cosmetics and convenience \u2014 never raw combat stats.",
+        "desktop": "VIP ranks bundle cosmetics and convenience perks. We publish the full perk list on each shop tile so you can audit balance before buying."
+      },
+      "s1": {
+        "title": "Common perks",
+        "leadMobile": "Exact perks vary by tier \u2014 compare cards on the shop page.",
+        "leadDesktop": "Exact perks vary by tier \u2014 compare cards on the shop page. All tiers share the fair-play rules below.",
+        "bullets": [
+          "Extra /home slots and /back cooldown reduction.",
+          "Chat prefix colors and join/leave messages.",
+          "Particle trails and emote animations.",
+          "Priority login queue during peak hours."
+        ]
+      },
+      "s2": {
+        "title": "Never included",
+        "leadMobile": "Ranks do not sell weapons, armor, spawners, or unbalanced kits.",
+        "leadDesktop": "Ranks do not sell weapons, armor, spawners, or unbalanced kits. Any perk that touched combat was removed in the 2025 balance pass.",
+        "bullets": [
+          "No pay-to-win crate keys on survival servers.",
+          "No protected cheating or x-ray disguised as perks.",
+          "No exclusive mob drops tied to rank alone."
+        ]
+      },
+      "s3": {
+        "title": "Try before you buy",
+        "leadMobile": "Ask in Discord #vip-showcase \u2014 players demo trails and chat styles live.",
+        "leadDesktop": "Ask in Discord #vip-showcase \u2014 players demo trails and chat styles live every Saturday.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Lower tiers upgrade pro-rata within seven days of purchase.",
+        "calloutDesktop": "Lower tiers upgrade pro-rata within seven days of purchase \u2014 contact support with your order ID if the upgrade button fails."
+      }
+    },
+    "rank-duration": {
+      "lead": {
+        "mobile": "Most ranks run 30 or 90 days. Lifetime tiers exist for long-term supporters.",
+        "desktop": "Most ranks run 30 or 90 days from activation. Lifetime tiers exist for long-term supporters and show a one-time purchase price."
+      },
+      "s1": {
+        "title": "Checking expiry",
+        "leadMobile": "Dashboard \u2192 History lists active privileges and renewal dates.",
+        "leadDesktop": "Dashboard \u2192 History lists active privileges, renewal dates, and a countdown badge on the profile header.",
+        "bullets": [
+          "Email reminders send seven days before expiry.",
+          "Expired ranks remove cosmetics on next login.",
+          "Lifetime tiers show \u201cPermanent\u201d in History."
+        ]
+      },
+      "s2": {
+        "title": "Renewals",
+        "leadMobile": "Enable auto-renew at checkout or renew manually from History.",
+        "leadDesktop": "Enable auto-renew at checkout or renew manually from History. Auto-renew uses the same payment method as the original order.",
+        "steps": [
+          "Open History and locate the rank row.",
+          "Click Renew or Manage auto-renew.",
+          "Confirm payment \u2014 perks extend immediately."
+        ]
+      },
+      "s3": {
+        "title": "Lapsed ranks",
+        "leadMobile": "You keep leaderboard trophies but lose active cosmetics when time runs out.",
+        "leadDesktop": "You keep leaderboard trophies and forum badges but lose active cosmetics and queue priority when time runs out.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Grace period: 48 hours after expiry with reduced perks before full removal.",
+        "calloutDesktop": "There is a 48-hour grace period after expiry with reduced perks before full removal \u2014 renew during grace to avoid re-equipping cosmetics."
+      }
+    },
+    "gift-rank": {
+      "lead": {
+        "mobile": "Gift checkout delivers a rank to another username instantly after payment.",
+        "desktop": "Gift checkout delivers a rank to another username instantly after payment. The recipient gets an in-game notification and email if their address is public."
+      },
+      "s1": {
+        "title": "Send a gift",
+        "leadMobile": "Select Gift on the shop tile and type the exact in-game username.",
+        "leadDesktop": "Select Gift on the shop tile, type the exact in-game username, and add an optional message shown in the notification.",
+        "steps": [
+          "Pick the rank tier and duration.",
+          "Toggle Gift and enter recipient username.",
+          "Complete checkout with your payment method.",
+          "Recipient syncs on next login or immediately if online."
+        ]
+      },
+      "s2": {
+        "title": "Rules",
+        "leadMobile": "Gifts are non-refundable once claimed unless purchased in error within one hour.",
+        "leadDesktop": "Gifts are non-refundable once claimed unless purchased in error within one hour and the recipient agrees to transfer back via ticket.",
+        "bullets": [
+          "Double-check spelling \u2014 staff cannot move ranks between wrong names.",
+          "You cannot gift to yourself.",
+          "Banned recipients still receive the gift but cannot use it until unbanned."
+        ]
+      },
+      "s3": {
+        "title": "Surprise packages",
+        "leadMobile": "Schedule delivery for a future date at checkout during holiday events.",
+        "leadDesktop": "During holiday events you can schedule delivery for a future date at checkout \u2014 useful for birthdays and clan rewards.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Clan leaders bulk-gift through support invoices for 10+ ranks.",
+        "calloutDesktop": "Clan leaders bulk-gift through support invoices for ten or more ranks \u2014 open a ticket for a quote and single payment link."
+      }
+    },
+    "claims-protection": {
+      "lead": {
+        "mobile": "Claims protect blocks you place from other players. Trust friends explicitly.",
+        "desktop": "Claims protect blocks you place from other players. Trust friends explicitly \u2014 being friends in Discord does not auto-trust in-game."
+      },
+      "s1": {
+        "title": "Create a claim",
+        "leadMobile": "Craft a golden shovel and right-click two opposite corners.",
+        "leadDesktop": "Craft a golden shovel and right-click two opposite corners of the area you want to protect. Particles outline the border for you.",
+        "steps": [
+          "Stand at one corner and right-click with the shovel.",
+          "Move to the opposite corner and right-click again.",
+          "Check particles to confirm the boundary.",
+          "Use /claim info to see size and remaining blocks."
+        ]
+      },
+      "s2": {
+        "title": "Trust and permissions",
+        "leadMobile": "/trust <player> grants build access inside your claim.",
+        "leadDesktop": "/trust <player> grants build access inside your claim. /untrust removes it instantly.",
+        "bullets": [
+          "/trustlist shows who can edit your land.",
+          "Containers can be locked separately with /containertrust.",
+          "Untrusted players cannot open doors or use buttons."
+        ]
+      },
+      "s3": {
+        "title": "Grief reports",
+        "leadMobile": "If damage happens outside claims, staff roll back using logs when you report quickly.",
+        "leadDesktop": "If damage happens outside claims, staff roll back using block logs when you report within 48 hours with coordinates.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Claim your base before logging off the first night.",
+        "calloutDesktop": "Claim your base before logging off the first night \u2014 wilderness is not protected until you place a claim."
+      }
+    },
+    "economy-basics": {
+      "lead": {
+        "mobile": "Coins are the server currency \u2014 earn from quests, trade, and events.",
+        "desktop": "Coins are the server currency. Earn them from quests, player trade, and events; spend at NPC shops and player chest markets."
+      },
+      "s1": {
+        "title": "Earning coins",
+        "leadMobile": "Daily quests, /shop deliveries, and auction sales are the main sources.",
+        "leadDesktop": "Daily quests, /shop deliveries, auction house sales, and tournament placements are the main coin sources for new players.",
+        "bullets": [
+          "Quest streaks bonus coins after day three.",
+          "Player shops tax 2% on sales above 10,000 coins.",
+          "AFK farms violating rules may be nerfed without notice."
+        ]
+      },
+      "s2": {
+        "title": "Spending coins",
+        "leadMobile": "NPC shops sell gear, claim blocks, and event tickets.",
+        "leadDesktop": "NPC shops sell gear, claim blocks, and event tickets. Player chest shops set their own prices \u2014 compare before you buy.",
+        "bullets": [
+          "/balance shows your purse.",
+          "/pay <player> <amount> sends coins directly.",
+          "Coins do not transfer between servers."
+        ]
+      },
+      "s3": {
+        "title": "Inflation controls",
+        "leadMobile": "Staff adjust quest payouts seasonally based on economy dashboards.",
+        "leadDesktop": "Staff adjust quest payouts seasonally based on economy dashboards published in Dev Blog posts.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Bank excess coins in claim chests \u2014 death drops do not take banked items.",
+        "calloutDesktop": "Bank excess coins in claim chests or the NPC bank \u2014 death drops do not remove coins stored through /bank deposit."
+      }
+    },
+    "tournaments": {
+      "lead": {
+        "mobile": "Weekly brackets run Friday through Sunday UTC with coin and cosmetic prizes.",
+        "desktop": "Weekly brackets run Friday 18:00 UTC through Sunday 23:59 UTC with coin pools, trophies, and exclusive cosmetics for top finishers."
+      },
+      "s1": {
+        "title": "Register",
+        "leadMobile": "Dashboard \u2192 Tournaments or /tournament in-game during an open window.",
+        "leadDesktop": "Register from Dashboard \u2192 Tournaments or type /tournament in-game while registration is open.",
+        "steps": [
+          "Confirm you meet the playtime requirement listed on the bracket.",
+          "Click Register and pick your kit loadout if required.",
+          "Check Discord #tournaments for seed times.",
+          "Show up 10 minutes early for check-in."
+        ]
+      },
+      "s2": {
+        "title": "Bracket rules",
+        "leadMobile": "Single elimination by default; finals may be best-of-three.",
+        "leadDesktop": "Single elimination by default; finals may be best-of-three. Match rules and banned items list publish with each season.",
+        "bullets": [
+          "No alt accounts to sandbag lower brackets.",
+          "Disconnects: 5-minute rematch window if screenshot proof provided.",
+          "Staff rulings are final during the event."
+        ]
+      },
+      "s3": {
+        "title": "Rewards",
+        "leadMobile": "Top eight receive coins; top three receive trophy items and dashboard badges.",
+        "leadDesktop": "Top eight receive coin payouts; top three receive trophy items, dashboard badges, and sometimes exclusive skins.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Practice kits on the PvP test shard linked from the bracket page.",
+        "calloutDesktop": "Practice kits on the PvP test shard linked from the bracket page \u2014 stats there do not affect seeding."
+      }
+    },
+    "report-player": {
+      "lead": {
+        "mobile": "Reports help staff act on harassment, cheating, and scam attempts.",
+        "desktop": "Reports help staff act on harassment, cheating, and scam attempts. False reports may result in mutes \u2014 use them in good faith."
+      },
+      "s1": {
+        "title": "In-game report",
+        "leadMobile": "/report <username> <reason> sends logs to moderators automatically.",
+        "leadDesktop": "/report <username> <reason> sends chat and combat logs to moderators automatically with your current location attached.",
+        "steps": [
+          "Type /report followed by the username.",
+          "Pick a category if the menu appears.",
+          "Add one sentence of context.",
+          "Avoid spamming duplicate reports."
+        ]
+      },
+      "s2": {
+        "title": "Ticket with evidence",
+        "leadMobile": "For scams or complex grief, open a dashboard ticket with screenshots.",
+        "leadDesktop": "For scams or complex grief, open a dashboard ticket with screenshots, timestamps, and coordinates when possible.",
+        "bullets": [
+          "Upload images under 10 MB each.",
+          "Include date and server name in the subject.",
+          "Do not post evidence publicly \u2014 it can tip off offenders."
+        ]
+      },
+      "s3": {
+        "title": "Response times",
+        "leadMobile": "Most reports receive a first response within 24 hours.",
+        "leadDesktop": "Most reports receive a first response within 24 hours. Urgent cheating reports during tournaments are prioritized.",
+        "calloutTitle": "Privacy",
+        "calloutMobile": "Reporter identity is not shared with the accused player.",
+        "calloutDesktop": "Reporter identity is not shared with the accused player unless you opt in for a mediation session."
+      }
+    },
+    "connection-lost": {
+      "lead": {
+        "mobile": "Connection lost usually means network filtering, VPN issues, or version mismatch \u2014 not a ban.",
+        "desktop": "Connection lost usually means network filtering, VPN issues, or version mismatch \u2014 not a ban. Check status page before reinstalling."
+      },
+      "s1": {
+        "title": "Client and version",
+        "leadMobile": "Confirm Java 1.20.4 or latest Bedrock before anything else.",
+        "leadDesktop": "Confirm Java 1.20.4 or latest Bedrock before anything else. Mismatched versions fail within seconds of joining.",
+        "bullets": [
+          "Update Minecraft through the official launcher.",
+          "Remove duplicate server entries with typos.",
+          "Disable experimental packs that rewrite networking."
+        ]
+      },
+      "s2": {
+        "title": "Network fixes",
+        "leadMobile": "Allow Minecraft through Windows Firewall or router filtering.",
+        "leadDesktop": "Allow Minecraft through Windows Firewall, macOS security, or router filtering. Java uses port 25565 by default.",
+        "steps": [
+          "Disable VPN or try a different server region.",
+          "Switch from Wi-Fi to Ethernet if possible.",
+          "Restart router if other games also drop."
+        ]
+      },
+      "s3": {
+        "title": "Still failing",
+        "leadMobile": "Run ping test to the IP from Dashboard \u2192 Servers \u2192 Diagnostics.",
+        "leadDesktop": "Run the ping test to the IP from Dashboard \u2192 Servers \u2192 Diagnostics and attach results to a support ticket.",
+        "troubleMobile": [
+          { "title": "Instant disconnect", "text": "Usually version mismatch or banned IP range." },
+          { "title": "Timeout at resource pack", "text": "See resource pack article \u2014 different fix path." }
+        ],
+        "troubleDesktop": [
+          { "title": "Instant disconnect after handshake", "text": "Usually version mismatch, banned IP range, or anti-cheat flag \u2014 include your client log in tickets." },
+          { "title": "Timeout during resource pack", "text": "See the resource pack article \u2014 firewall CDNs block pack hosts separately from game port 25565." }
+        ]
+      }
+    },
+    "resource-pack-issues": {
+      "lead": {
+        "mobile": "Our pack downloads automatically on first join \u2014 about 80 MB.",
+        "desktop": "Our pack downloads automatically on first join \u2014 about 80 MB. It removes itself when you disconnect from our servers."
+      },
+      "s1": {
+        "title": "Normal first join",
+        "leadMobile": "Expect 20\u201340 seconds on a typical broadband connection.",
+        "leadDesktop": "Expect 20\u201340 seconds on a typical broadband connection. Do not cancel \u2014 partial downloads cause repeat prompts.",
+        "steps": [
+          "Click the server and wait on \u201cDownloading resource pack\u201d.",
+          "Let the bar reach 100% once.",
+          "Subsequent joins skip the full download."
+        ]
+      },
+      "s2": {
+        "title": "Stuck at 0%",
+        "leadMobile": "Cancel, restart Minecraft, and rejoin. If still stuck, run /resourcepack reload after spawn.",
+        "leadDesktop": "Cancel, restart Minecraft, and rejoin. If still stuck, run /resourcepack reload in chat after you spawn.",
+        "bullets": [
+          "Disable VPN \u2014 some block CDN hosts.",
+          "Free disk space must exceed 200 MB.",
+          "Bedrock: ensure storage permission is granted."
+        ]
+      },
+      "s3": {
+        "title": "Manual override",
+        "leadMobile": "If automatic delivery fails twice, support can link a direct download for manual install.",
+        "leadDesktop": "If automatic delivery fails twice, support can link a direct download for manual install \u2014 open a ticket with your client edition.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Third-party x-ray packs are banned and may trigger kicks.",
+        "calloutDesktop": "Third-party x-ray or low-fire PvP packs are banned and may trigger automatic kicks even on otherwise allowed clients."
+      }
+    },
+    "lag-performance": {
+      "lead": {
+        "mobile": "Lag can be client-side (FPS) or server-side (TPS). Diagnose which before you tweak settings.",
+        "desktop": "Lag can be client-side (FPS) or server-side (TPS). Diagnose which before you tweak settings \u2014 the fixes differ completely."
+      },
+      "s1": {
+        "title": "Client FPS",
+        "leadMobile": "Lower render distance, disable shaders, and close background apps.",
+        "leadDesktop": "Lower render distance to 12 chunks, disable heavy shaders, and close browser tabs eating RAM.",
+        "bullets": [
+          "Set graphics to Fast on older laptops.",
+          "Turn off smooth lighting temporarily.",
+          "Use sodium/optifine only if allowed for your edition."
+        ]
+      },
+      "s2": {
+        "title": "Server TPS",
+        "leadMobile": "If everyone lags at once, check Discord #announcements for TPS dips.",
+        "leadDesktop": "If everyone lags at once, check Discord #announcements for TPS dips tied to redstone farms or events.",
+        "bullets": [
+          "Huge mob cram farms may be throttled by staff.",
+          "Avoid loading thousands of item entities at once.",
+          "Report recurring spikes with timestamps."
+        ]
+      },
+      "s3": {
+        "title": "Network lag",
+        "leadMobile": "High ping shows as delayed block breaking and chat.",
+        "leadDesktop": "High ping shows as delayed block breaking and chat. Pick the server geographically closest if we offer regional proxies.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "Press F3 to view FPS and ping in Java edition.",
+        "calloutDesktop": "Press F3 to view FPS and ping in Java edition \u2014 screenshot it when opening performance tickets."
+      }
+    },
+    "server-rules": {
+      "lead": {
+        "mobile": "Rules keep the ecosystem playable for builders, traders, and PvP players alike.",
+        "desktop": "Rules keep the ecosystem playable for builders, traders, and PvP players alike. Ignorance is not an excuse \u2014 this summary covers the essentials."
+      },
+      "s1": {
+        "title": "Core rules",
+        "leadMobile": "Breaking these may result in immediate bans.",
+        "leadDesktop": "Breaking these may result in immediate bans without warning depending on severity.",
+        "bullets": [
+          "No hacked clients, x-ray, or automation macros.",
+          "No harassment, hate speech, or doxing.",
+          "No real-money trading of in-game items.",
+          "No impersonating staff or submitting false reports."
+        ]
+      },
+      "s2": {
+        "title": "Server-specific notes",
+        "leadMobile": "MineWars allows TNT in wilderness; CalmSky forbids all PvP.",
+        "leadDesktop": "MineWars allows TNT in unclaimed wilderness; CalmSky forbids all PvP. LuckySurvival sits in the middle \u2014 read signs at spawn.",
+        "bullets": [
+          "Claims must not trap players in nether portals.",
+          "Advertising other servers is muted on first offense.",
+          "English is required in global chat for moderation coverage."
+        ]
+      },
+      "s3": {
+        "title": "Full policy",
+        "leadMobile": "Complete legal text lives at /terms and /privacy-policy on the website.",
+        "leadDesktop": "Complete legal text lives at /terms and /privacy-policy on the website. Major rule changes announce 7 days before enforcement.",
+        "calloutTitle": "Tip",
+        "calloutMobile": "When in doubt, ask a moderator before pushing boundaries.",
+        "calloutDesktop": "When in doubt, ask a moderator before pushing boundaries \u2014 screenshots of staff answers can be attached to appeals."
+      }
+    },
+    "ban-appeal": {
+      "lead": {
+        "mobile": "Appeals review punishments for mistakes or outdated context \u2014 not to retry the same behavior.",
+        "desktop": "Appeals review punishments for mistakes or outdated context \u2014 not to retry the same behavior. One appeal per case ID."
+      },
+      "s1": {
+        "title": "Submit an appeal",
+        "leadMobile": "Dashboard \u2192 Support \u2192 Appeal and enter your case ID from the ban message.",
+        "leadDesktop": "Dashboard \u2192 Support \u2192 Appeal and enter your case ID from the ban message or email notification.",
+        "steps": [
+          "Copy the case ID exactly.",
+          "Explain what happened in your own words.",
+          "Acknowledge the rule you broke if applicable.",
+          "Wait up to 72 hours for a response."
+        ]
+      },
+      "s2": {
+        "title": "What helps",
+        "leadMobile": "Honest appeals with context get answered faster than copy-paste denials.",
+        "leadDesktop": "Honest appeals with context get answered faster than copy-paste denials. Include proof if you believe the ban was wrong.",
+        "bullets": [
+          "First-time offenses often reduce to temp mutes on appeal.",
+          "Repeat offenders within 90 days are usually denied.",
+          "Chargeback-related bans require payment resolution first."
+        ]
+      },
+      "s3": {
+        "title": "If denied",
+        "leadMobile": "Decisions after a full review are final for that case ID.",
+        "leadDesktop": "Decisions after a full review are final for that case ID. Wait until the listed expiry date for automatic unban when applicable.",
+        "calloutTitle": "Heads up",
+        "calloutMobile": "Harassing staff about appeals can extend the ban.",
+        "calloutDesktop": "Harassing staff about appeals in Discord or alt accounts can extend the ban under the evasion rule."
+      }
+    }
+  }
+}

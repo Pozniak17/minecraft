@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import AuthAwareLink from '@/app/_components/AuthAwareLink/AuthAwareLink';
 import styles from './Hero.module.css';
@@ -10,12 +11,14 @@ import img4 from '@/public/how-to-start/4.webp';
 import img5 from '@/public/how-to-start/5.webp';
 import img6 from '@/public/how-to-start/6.webp';
 
-export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+export default async function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+  const t = await getTranslations('marketing');
+
   return (
     <>
       <section className={styles.hero}>
         <Container>
-          <h1 className={styles.title}>How to Start</h1>
+          <h1 className={styles.title}>{t('howToStart.title')}</h1>
         </Container>
       </section>
 
@@ -29,7 +32,7 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
 
               <div className={styles.stepperContent}>
                 <h3 className={styles.stepperTitle}>
-                  Install Minecraft
+                  {t('howToStart.step1Title')}
                   <span className={styles.stepperVersion}>
                     <Image
                       src="/how-to-start/icons/game.svg"
@@ -40,16 +43,14 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                     1.12–1.19
                   </span>
                 </h3>
-                <p className={styles.stepperDescription}>
-                  a licensed version of Minecraft is required to play
-                </p>
+                <p className={styles.stepperDescription}>{t('howToStart.step1Desc')}</p>
                 <a
                   href="https://www.minecraft.net/en-us/download"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.stepperButton}
                 >
-                  Download now
+                  {t('howToStart.step1Button')}
                 </a>
               </div>
             </li>
@@ -59,14 +60,10 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 2
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Create an Account</h3>
-                <p className={styles.stepperDescription}>
-                  To get started, you need to register on our project website. This account is
-                  essential for accessing your personal dashboard, making purchases in our store,
-                  and syncing with the server.
-                </p>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step2Title')}</h3>
+                <p className={styles.stepperDescription}>{t('howToStart.step2Desc')}</p>
                 <Link href="/register" className={styles.stepperButton}>
-                  Sign Up
+                  {t('howToStart.step2Button')}
                 </Link>
               </div>
               <Image src={img1} alt="" className={styles.stepperImage} />
@@ -77,14 +74,10 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 3
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Log in to Dashboard</h3>
-                <p className={styles.stepperDescription}>
-                  In Step 2, you&apos;ll log into your user dashboard. This area offers various
-                  features, including the ability to make purchases, view your order history, and
-                  manage your account settings.
-                </p>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step3Title')}</h3>
+                <p className={styles.stepperDescription}>{t('howToStart.step3Desc')}</p>
                 <Link href={isAuthed ? '/dashboard' : '/login'} className={styles.stepperButton}>
-                  Go to Dashboard
+                  {t('howToStart.step3Button')}
                 </Link>
               </div>
               <Image src={img2} alt="" className={styles.stepperImage} />
@@ -95,12 +88,9 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 4
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Choose a Server</h3>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step4Title')}</h3>
                 <p className={styles.stepperDescription}>
-                  Welcome to Step 2! Here’s how it works: Our project features three unique servers,
-                  each with its own rules and gameplay style. You can explore them through the
-                  following links: <br /> <br /> - LuckySurvival <br /> - MineWars <br /> - CalmSky
-                  <br /> <br /> Dive in and choose the server that suits your gaming style!
+                  {t.rich('howToStart.step4Desc', { br: () => <br /> })}
                 </p>
               </div>
               <Image src={img3} alt="" className={styles.stepperImage} />
@@ -111,14 +101,10 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 5
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Connect to the Server</h3>
-                <p className={styles.stepperDescription}>
-                  To begin, launch Minecraft and navigate to the Multiplayer section. Here, you can
-                  add the server&apos;s IP address, which you can find on the server&apos;s page.
-                  This will allow you to connect and start playing with others!
-                </p>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step5Title')}</h3>
+                <p className={styles.stepperDescription}>{t('howToStart.step5Desc')}</p>
                 <Link href="/servers" className={styles.stepperButton}>
-                  View server details
+                  {t('howToStart.step5Button')}
                 </Link>
               </div>
               <Image src={img4} alt="" className={styles.stepperImage} />
@@ -129,20 +115,14 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 6
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Start Playing</h3>
-                <p className={styles.stepperDescription}>
-                  Now that you&apos;re ready to play, it&apos;s time to register on our project
-                  website. This account will grant you access to your personal dashboard, allow you
-                  to make purchases in our store, and keep everything synced with the server. Get
-                  ready for an engaging experience with development, economy, and player
-                  interactions!
-                </p>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step6Title')}</h3>
+                <p className={styles.stepperDescription}>{t('howToStart.step6Desc')}</p>
                 <AuthAwareLink
                   isAuthed={isAuthed}
                   intent="play"
                   className={styles.stepperButton}
                 >
-                  Start playing now
+                  {t('howToStart.step6Button')}
                 </AuthAwareLink>
               </div>
               <Image src={img5} alt="" className={styles.stepperImage} />
@@ -153,18 +133,14 @@ export default function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
                 7
               </span>
               <div className={styles.stepperContent}>
-                <h3 className={styles.stepperTitle}>Upgrade Your Experience </h3>
-                <p className={styles.stepperDescription}>
-                  Once you&apos;re registered on our project website, you&apos;ll unlock access to
-                  your personal dashboard. This account allows you to shop in our store anytime and
-                  enjoy permanent privileges with your purchases.
-                </p>
+                <h3 className={styles.stepperTitle}>{t('howToStart.step7Title')}</h3>
+                <p className={styles.stepperDescription}>{t('howToStart.step7Desc')}</p>
                 <AuthAwareLink
                   isAuthed={isAuthed}
                   intent="store"
                   className={styles.stepperButton}
                 >
-                  Open Store
+                  {t('howToStart.step7Button')}
                 </AuthAwareLink>
               </div>
               <Image src={img6} alt="" className={styles.stepperImage} />

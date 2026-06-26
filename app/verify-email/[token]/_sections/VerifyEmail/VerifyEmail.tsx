@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { verifyEmailCode } from '@/lib/api/auth';
 import styles from './VerifyEmail.module.css';
 
@@ -25,6 +26,7 @@ export default function VerifyEmail({
   token: string;
   email: string | null;
 }) {
+  const t = useTranslations('auth');
   const router = useRouter();
   const [email, setEmail] = useState(() => normalizeEmail(emailFromUrl));
   const [status, setStatus] = useState<Status>('verifying');
@@ -49,14 +51,14 @@ export default function VerifyEmail({
           setError(
             typeof detail === 'string'
               ? detail
-              : 'Could not verify your email. The link may be invalid or expired.'
+              : t('verifyEmail.errorInvalid')
           );
         } else {
-          setError('Network error. Please try again.');
+          setError(t('verifyEmail.errorNetwork'));
         }
       }
     },
-    [router, token]
+    [router, token, t]
   );
 
   useEffect(() => {
@@ -98,8 +100,8 @@ export default function VerifyEmail({
         {status === 'verifying' && (
           <div className={styles.block}>
             <span className={styles.spinner} aria-hidden="true" />
-            <h1 className={styles.title}>Activating your account…</h1>
-            <p className={styles.text}>Just a moment while we verify your email.</p>
+            <h1 className={styles.title}>{t('verifyEmail.verifyingTitle')}</h1>
+            <p className={styles.text}>{t('verifyEmail.verifyingText')}</p>
           </div>
         )}
 
@@ -108,10 +110,10 @@ export default function VerifyEmail({
             <span className={`${styles.badge} ${styles.badgeOk}`} aria-hidden="true">
               ✓
             </span>
-            <h1 className={styles.title}>Email verified!</h1>
-            <p className={styles.text}>Your account is active. Redirecting you to login…</p>
+            <h1 className={styles.title}>{t('verifyEmail.successTitle')}</h1>
+            <p className={styles.text}>{t('verifyEmail.successText')}</p>
             <Link href="/login" className={styles.cta}>
-              Go to login
+              {t('verifyEmail.successCta')}
             </Link>
           </div>
         )}
@@ -121,7 +123,7 @@ export default function VerifyEmail({
             <span className={`${styles.badge} ${styles.badgeError}`} aria-hidden="true">
               !
             </span>
-            <h1 className={styles.title}>Verification failed</h1>
+            <h1 className={styles.title}>{t('verifyEmail.errorTitle')}</h1>
             <p className={styles.text}>{error}</p>
             <div className={styles.actions}>
               <button
@@ -129,10 +131,10 @@ export default function VerifyEmail({
                 className={styles.cta}
                 onClick={() => email.trim() && runVerify(email.trim())}
               >
-                Try again
+                {t('verifyEmail.tryAgain')}
               </button>
               <Link href="/register" className={styles.secondaryLink}>
-                Back to sign up
+                {t('verifyEmail.backToSignUp')}
               </Link>
             </div>
           </div>
@@ -140,10 +142,8 @@ export default function VerifyEmail({
 
         {status === 'needEmail' && (
           <form className={styles.block} onSubmit={handleEmailSubmit} noValidate>
-            <h1 className={styles.title}>Confirm your email</h1>
-            <p className={styles.text}>
-              Enter the email you registered with to activate your account.
-            </p>
+            <h1 className={styles.title}>{t('verifyEmail.needEmailTitle')}</h1>
+            <p className={styles.text}>{t('verifyEmail.needEmailText')}</p>
             <input
               type="email"
               autoComplete="email"
@@ -154,7 +154,7 @@ export default function VerifyEmail({
               required
             />
             <button type="submit" className={styles.cta}>
-              Verify email
+              {t('verifyEmail.verifyButton')}
             </button>
           </form>
         )}

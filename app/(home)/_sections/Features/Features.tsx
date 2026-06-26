@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './Features.module.css';
 
@@ -11,51 +12,48 @@ export type FeaturesCardProps = {
   icon: string;
 };
 
-const Data: FeaturesCardProps[] = [
-  {
-    title: 'Build & Create',
-    text: 'Build freely. Shape your world.',
-    description:
-      'Create bases, cities, and landscapes with no limits. From small builds to massive projects — your imagination sets the rules.',
-    icon: '/icons/icons/features-box.svg',
-  },
-  {
-    title: 'Survive & Compete',
-    text: 'Fight, survive, and dominate.',
-    description:
-      'Engage in PvP battles, raids, and survival challenges. Prove your skills and climb the rankings.',
-    icon: '/icons/icons/crown.svg',
-  },
-  {
-    title: 'Skins & Cosmetics',
-    text: 'Stand out visually.',
-    description:
-      'Customize your character with unique skins, effects, and visual upgrades. No gameplay advantage — only style.',
-    icon: '/icons/icons/features-mask.svg',
-  },
-  {
-    title: 'In-game Economy',
-    text: 'Trade. Earn. Progress.',
-    description:
-      'A balanced economy powered by in-game currency. Trade with players, buy upgrades, and grow your wealth.',
-    icon: '/icons/icons/dollar.svg',
-  },
-  {
-    title: 'Events & Tournaments',
-    text: 'Competitive events coming soon.',
-    description:
-      'Seasonal events, PvP tournaments, and challenges with rewards. Stay tuned — big battles are ahead.',
-    icon: '/icons/icons/features-calendar.svg',
-  },
-];
+export default async function Features() {
+  const t = await getTranslations('home');
 
-export default function Features() {
+  const items: FeaturesCardProps[] = [
+    {
+      title: t('features.buildCreate.title'),
+      text: t('features.buildCreate.text'),
+      description: t('features.buildCreate.description'),
+      icon: '/icons/icons/features-box.svg',
+    },
+    {
+      title: t('features.surviveCompete.title'),
+      text: t('features.surviveCompete.text'),
+      description: t('features.surviveCompete.description'),
+      icon: '/icons/icons/crown.svg',
+    },
+    {
+      title: t('features.skinsCosmetics.title'),
+      text: t('features.skinsCosmetics.text'),
+      description: t('features.skinsCosmetics.description'),
+      icon: '/icons/icons/features-mask.svg',
+    },
+    {
+      title: t('features.inGameEconomy.title'),
+      text: t('features.inGameEconomy.text'),
+      description: t('features.inGameEconomy.description'),
+      icon: '/icons/icons/dollar.svg',
+    },
+    {
+      title: t('features.eventsTournaments.title'),
+      text: t('features.eventsTournaments.text'),
+      description: t('features.eventsTournaments.description'),
+      icon: '/icons/icons/features-calendar.svg',
+    },
+  ];
+
   return (
     <>
       <section className={styles.features}>
         <Container>
-          <h2 className={styles.title}>Game Features</h2>
-          <FeaturesList items={Data} />
+          <h2 className={styles.title}>{t('features.title')}</h2>
+          <FeaturesList items={items} />
         </Container>
       </section>
 

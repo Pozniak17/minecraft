@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { getDashboardPlayHref } from '@/lib/data/servers';
 import { TWITCH_URL } from '@/lib/data/social';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import styles from './Hero.module.css';
 
-export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+export async function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
+  const t = await getTranslations('home');
   const playHref = getDashboardPlayHref(isAuthed);
 
   return (
@@ -28,7 +30,7 @@ export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
             <div className={styles.cat}>
               <Image
                 src="/icons/illustrations/cat.webp"
-                alt="Minecraft cat"
+                alt={t('hero.catAlt')}
                 width={488}
                 height={222}
               />
@@ -40,17 +42,14 @@ export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
         <Container className={styles.content}>
           <h1 className={styles.title}>
             <span className={styles.titleAccent}>Minecraft:</span>
-            {'\n'}A Next-Generation Ecosystem
+            {'\n'}{t('hero.titleSuffix')}
           </h1>
 
-          <p className={styles.description}>
-            Three unique servers, an in-game economy, rankings, and tournaments. Play the way you
-            like—PvP, survival, or casual building.
-          </p>
+          <p className={styles.description}>{t('hero.description')}</p>
 
           <div className={styles.buttons}>
             <Link href={playHref} className={styles.btnPrimary}>
-              Play Now
+              {t('hero.playNow')}
             </Link>
             <a
               href={TWITCH_URL}
@@ -59,7 +58,7 @@ export function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
               className={styles.btnSecondary}
             >
               <Image src="/icons/social/twitch.svg" alt="" width={24} height={24} />
-              <span>Join Twitch</span>
+              <span>{t('hero.joinTwitch')}</span>
             </a>
           </div>
         </Container>

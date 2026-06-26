@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import styles from './Preview.module.css';
 import CrystalsCards from '@/app/_components/CrystalsCards/CrystalsCards';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
@@ -10,6 +11,7 @@ import Tabs, { type Tab } from '@/app/_components/Tabs/Tabs';
 import { getStoreHref } from '@/lib/data/servers';
 
 export default function Preview({ isAuthed = false }: { isAuthed?: boolean }) {
+  const t = useTranslations('home');
   const [activeTab, setActiveTab] = useState<Tab>('Crystals');
   const storeHref = getStoreHref(isAuthed);
 
@@ -17,7 +19,7 @@ export default function Preview({ isAuthed = false }: { isAuthed?: boolean }) {
     <>
       <section className={styles.preview}>
         <Container>
-          <h2 className={styles.title}>Store Preview</h2>
+          <h2 className={styles.title}>{t('preview.title')}</h2>
 
           <Tabs value={activeTab} onChange={setActiveTab} />
 

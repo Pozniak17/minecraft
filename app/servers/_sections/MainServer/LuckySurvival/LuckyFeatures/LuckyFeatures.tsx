@@ -1,32 +1,19 @@
+import { useTranslations } from 'next-intl';
 import styles from './LuckyFeatures.module.css';
 
-const FEATURES = [
-  {
-    icon: '🌿',
-    title: 'Survival Gameplay',
-    description: 'Classic open-world survival, day/night cycle',
-  },
-  {
-    icon: '⚔️',
-    title: 'PvP Battles',
-    description: 'Fair combat arenas and open-world PvP zones',
-  },
-  {
-    icon: '💰',
-    title: 'In-game Economy',
-    description: 'Buy, sell and trade items with other players',
-  },
-  {
-    icon: '🤝',
-    title: 'Player Interaction',
-    description: 'Guilds, alliances and collaborative building',
-  },
-];
-
 export default function LuckyFeatures() {
+  const t = useTranslations('servers');
+
+  const FEATURES = [
+    { icon: '🌿', title: t('lucky.feature1Title'), description: t('lucky.feature1Desc') },
+    { icon: '⚔️', title: t('lucky.feature2Title'), description: t('lucky.feature2Desc') },
+    { icon: '💰', title: t('lucky.feature3Title'), description: t('lucky.feature3Desc') },
+    { icon: '🤝', title: t('lucky.feature4Title'), description: t('lucky.feature4Desc') },
+  ];
+
   return (
     <section className={styles.card}>
-      <h3 className={styles.eyebrow}>Gameplay Features</h3>
+      <h3 className={styles.eyebrow}>{t('shared.gameplayFeatures')}</h3>
       <ul className={styles.list}>
         {FEATURES.map((feature) => (
           <li key={feature.title} className={styles.feature}>

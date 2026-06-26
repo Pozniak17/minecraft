@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslations } from 'next-intl';
 import { Blocks } from '../Blocks/Blocks';
 import styles from './LogoutOverlay.module.css';
 
@@ -10,6 +11,7 @@ type LogoutOverlayProps = {
 };
 
 export function LogoutOverlay({ show }: LogoutOverlayProps) {
+  const t = useTranslations('common');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ export function LogoutOverlay({ show }: LogoutOverlayProps) {
   return createPortal(
     <div className={styles.root} role="status" aria-live="polite">
       <Blocks height={80} width={80} color="#bde153" ariaLabel="logging-out" />
-      <p className={styles.text}>Logging out…</p>
+      <p className={styles.text}>{t('shared.loggingOut')}</p>
     </div>,
     document.body,
   );

@@ -1,29 +1,20 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import styles from './MineWarsHowToStart.module.css';
 
-const STEPS = [
-  {
-    mobile: 'Install Minecraft',
-    desktop: 'Install Minecraft Java/Bedrock Edition',
-  },
-  {
-    mobile: 'Register & verify account',
-    desktop: 'Register & verify your account',
-  },
-  {
-    mobile: 'Select MineWars & connect',
-    desktop: 'Select MineWars server & connect',
-  },
-  {
-    mobile: 'Join a match or ranked queue!',
-    desktop: 'Join a match or ranked queue!',
-  },
-];
-
 export default function MineWarsHowToStart() {
+  const t = useTranslations('servers');
+
+  const STEPS = [
+    { mobile: t('minewars.step1Mobile'), desktop: t('minewars.step1Desktop') },
+    { mobile: t('minewars.step2Mobile'), desktop: t('minewars.step2Desktop') },
+    { mobile: t('minewars.step3Mobile'), desktop: t('minewars.step3Desktop') },
+    { mobile: t('minewars.step4'), desktop: t('minewars.step4') },
+  ];
+
   return (
     <section className={styles.card}>
-      <h3 className={styles.title}>How to Start Playing</h3>
+      <h3 className={styles.title}>{t('shared.howToStartTitle')}</h3>
 
       <ol className={styles.steps}>
         {STEPS.map((step) => (
@@ -39,7 +30,7 @@ export default function MineWarsHowToStart() {
 
       <Link href="/how-to-start" className={styles.cta}>
         <span aria-hidden="true">📖</span>
-        View Full Instructions →
+        {t('shared.viewFullInstructions')}
       </Link>
     </section>
   );

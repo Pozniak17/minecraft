@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Dashboard",
+  "welcomeBack": "Bon retour, {name}",
+  "subtitle": "Voici ce qui se passe dans tes mondes aujourd'hui.",
+  "topUp": "Recharger",
+  "listConnector": "et",
+  "notifications": {
+    "ariaLabel": "Notifications",
+    "ariaLabelAlert": "Notifications — alerte serveur",
+    "ariaLabelSuccess": "Notifications — achat effectué",
+    "panelTitle": "Notifications",
+    "empty": "Aucune notification récente"
+  },
+  "stats": {
+    "activeServers": "Serveurs actifs",
+    "onlineHint": "{names} en ligne",
+    "checkingStatus": "Vérification du statut…"
+  },
+  "serverStatus": {
+    "title": "Statut des serveurs",
+    "seeAll": "Voir tous les serveurs",
+    "online": "en ligne",
+    "offline": "hors ligne",
+    "playersOnline": "Joueurs en ligne",
+    "join": "Rejoindre"
+  },
+  "offline": {
+    "allTitle": "Tous les serveurs hors ligne",
+    "allBody": "Nous y travaillons. Veuillez vérifier dans quelques instants.",
+    "oneTitle": "{name} est hors ligne",
+    "oneBody": "Nous restaurons l'accès. Le statut se met à jour toutes les 10 secondes.",
+    "multipleTitle": "{count} serveurs hors ligne",
+    "multipleBody": "{servers} sont temporairement indisponibles."
+  },
+  "purchase": {
+    "completeTitle": "Achat effectué",
+    "completeBodyItem": "{item}. Livré à votre pseudo en jeu.",
+    "completeBodyGeneric": "Votre paiement a été validé. Crystals et privilèges sont en route."
+  },
+  "activity": {
+    "title": "Activité récente",
+    "viewAll": "Tout voir",
+    "loading": "Chargement…",
+    "empty": "Aucune activité pour l'instant. Vos achats apparaîtront ici."
+  },
+  "time": {
+    "live": "Live",
+    "recently": "Récemment",
+    "justNow": "À l'instant",
+    "minutesAgo": "Il y a {mins} min",
+    "hoursAgo": "Il y a {hours} h",
+    "yesterday": "Hier",
+    "daysAgo": "Il y a {days} jours",
+    "monthsAgo": "Il y a {months} mois"
+  },
+  "crystals": {
+    "label": "Recharger",
+    "title": "Besoin de plus de Crystals ?",
+    "text": "Achetez un pack et débloquez des privilèges, des cosmétiques et des entrées en tournoi.",
+    "openShop": "Ouvrir la boutique"
+  },
+  "servers": {
+    "luckysurvival": {
+      "description": "Survie Vanilla avec PvP — TNT désactivé."
+    },
+    "minewars": {
+      "description": "Survie Vanilla, PvP et TNT activés."
+    },
+    "calmsky": {
+      "description": "Paisible — pas de PvP, pas de TNT. Construisez et socialisez."
+    }
+  }
+}

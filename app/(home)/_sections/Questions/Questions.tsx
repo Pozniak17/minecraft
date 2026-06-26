@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import AccordionList from './AccordionList/AccordionList';
 import styles from './Questions.module.css';
@@ -8,6 +9,7 @@ export type QuestionsCardProps = {
   answer: string;
 };
 
+// Static English data used for JSON-LD schema in page.tsx — do not translate.
 export const HOME_FAQ: QuestionsCardProps[] = [
   {
     question: 'How do I start playing?',
@@ -34,22 +36,30 @@ export const HOME_FAQ: QuestionsCardProps[] = [
   },
 ];
 
-export default function Questions() {
+export default async function Questions() {
+  const t = await getTranslations('home');
+
+  const faqItems: QuestionsCardProps[] = [
+    { question: t('questions.q1.question'), answer: t('questions.q1.answer') },
+    { question: t('questions.q2.question'), answer: t('questions.q2.answer') },
+    { question: t('questions.q3.question'), answer: t('questions.q3.answer') },
+    { question: t('questions.q4.question'), answer: t('questions.q4.answer') },
+    { question: t('questions.q5.question'), answer: t('questions.q5.answer') },
+  ];
+
   return (
     <section className={styles.questionsSection}>
       <Container>
         <div className={styles.questionsContainer}>
           <div>
-            <h2 className={styles.title}>Frequently Asked Questions</h2>
-            <p className={styles.text}>
-              Didn&apos;t find the answer to your question? Go to the FAQ page
-            </p>
+            <h2 className={styles.title}>{t('questions.title')}</h2>
+            <p className={styles.text}>{t('questions.text')}</p>
 
             <Link href="/faq" className={styles.button}>
-              See More
+              {t('questions.seeMore')}
             </Link>
           </div>
-          <AccordionList items={HOME_FAQ} />
+          <AccordionList items={faqItems} />
         </div>
       </Container>
     </section>

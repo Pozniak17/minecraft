@@ -1,29 +1,27 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from './_components/Container/Container';
 import styles from './not-found.module.css';
 
-export default function NotFound() {
+export default async function NotFound() {
+  const t = await getTranslations('system');
+
   return (
     <div className={styles.section}>
       <Container variant="faq">
         <div className={styles.content}>
           <span className={styles.badgeMobile}>
-            <span></span>Page not found
+            <span></span>{t('notFound_badgeMobile')}
           </span>
 
           <span className={styles.badgeDesktop}>
-            <span></span>Error 404 — page not found
+            <span></span>{t('notFound_badgeDesktop')}
           </span>
-          <h1 className={styles.title}>Lost in the void</h1>
-          <p className={styles.textMobile}>
-            Crafty wandered too far. The page may have been moved or never existed.
-          </p>
-          <p className={styles.textDesktop}>
-            Looks like Crafty wandered too far. The page you were looking for may have been moved,
-            renamed, or never existed in the first place.
-          </p>
+          <h1 className={styles.title}>{t('notFound_title')}</h1>
+          <p className={styles.textMobile}>{t('notFound_textMobile')}</p>
+          <p className={styles.textDesktop}>{t('notFound_textDesktop')}</p>
           <Link href="/" className={styles.backLink}>
-            <span>←</span>Go back
+            <span>←</span>{t('notFound_goBack')}
           </Link>
         </div>
       </Container>

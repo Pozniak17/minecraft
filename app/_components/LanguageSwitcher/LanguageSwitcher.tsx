@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useTransition, type ReactNode } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { setLocale } from '@/app/_actions/setLocale';
 import {
@@ -33,6 +33,7 @@ export function LanguageSwitcher({
 }: Props) {
   const rawLocale = useLocale();
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const t = useTranslations('common');
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -81,7 +82,7 @@ export function LanguageSwitcher({
         onClick={() => setOpen(value => !value)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Change language"
+        aria-label={t('lang.changeLanguage')}
         disabled={isPending}
       >
         <span className={styles.triggerLabel}>{LOCALE_SHORT[locale]}</span>

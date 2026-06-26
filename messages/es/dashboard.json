@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Dashboard",
+  "welcomeBack": "Bienvenido de nuevo, {name}",
+  "subtitle": "Esto es lo que ocurre en tus mundos hoy.",
+  "topUp": "Recargar",
+  "listConnector": "y",
+  "notifications": {
+    "ariaLabel": "Notificaciones",
+    "ariaLabelAlert": "Notificaciones — alerta de servidor",
+    "ariaLabelSuccess": "Notificaciones — compra completada",
+    "panelTitle": "Notificaciones",
+    "empty": "Sin notificaciones recientes"
+  },
+  "stats": {
+    "activeServers": "Servidores activos",
+    "onlineHint": "{names} en línea",
+    "checkingStatus": "Comprobando estado…"
+  },
+  "serverStatus": {
+    "title": "Estado del servidor",
+    "seeAll": "Ver todos los servidores",
+    "online": "en línea",
+    "offline": "sin conexión",
+    "playersOnline": "Jugadores en línea",
+    "join": "Unirse"
+  },
+  "offline": {
+    "allTitle": "Todos los servidores sin conexión",
+    "allBody": "Estamos trabajando en ello. Vuelve a comprobarlo pronto.",
+    "oneTitle": "{name} está sin conexión",
+    "oneBody": "Estamos restableciendo el acceso. El estado se actualiza cada 10 segundos.",
+    "multipleTitle": "{count} servidores sin conexión",
+    "multipleBody": "{servers} no están disponibles temporalmente."
+  },
+  "purchase": {
+    "completeTitle": "Compra completada",
+    "completeBodyItem": "{item}. Entregado a tu apodo en el juego.",
+    "completeBodyGeneric": "Tu pago fue procesado. Los Crystals y privilegios están en camino."
+  },
+  "activity": {
+    "title": "Actividad reciente",
+    "viewAll": "Ver todo",
+    "loading": "Cargando…",
+    "empty": "Sin actividad aún. Tus compras aparecerán aquí."
+  },
+  "time": {
+    "live": "Live",
+    "recently": "Recientemente",
+    "justNow": "Ahora mismo",
+    "minutesAgo": "Hace {mins} min",
+    "hoursAgo": "Hace {hours} h",
+    "yesterday": "Ayer",
+    "daysAgo": "Hace {days} días",
+    "monthsAgo": "Hace {months} meses"
+  },
+  "crystals": {
+    "label": "Recargar",
+    "title": "¿Necesitas más Crystals?",
+    "text": "Compra un paquete y desbloquea privilegios, cosméticos y entradas a torneos.",
+    "openShop": "Abrir tienda"
+  },
+  "servers": {
+    "luckysurvival": {
+      "description": "Supervivencia Vanilla con PvP — TNT desactivado."
+    },
+    "minewars": {
+      "description": "Supervivencia Vanilla, PvP y TNT activados."
+    },
+    "calmsky": {
+      "description": "Pacífico — sin PvP, sin TNT. Construye y socializa."
+    }
+  }
+}

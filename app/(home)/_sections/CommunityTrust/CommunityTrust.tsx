@@ -1,38 +1,36 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '../../../_components/Container/Container';
 import styles from './CommunityTrust.module.css';
 import { Divider } from '../../../_components/Divider/Divider';
 import Strip from './Strip/Strip';
 
-export default function CommunityTrust() {
+export default async function CommunityTrust() {
+  const t = await getTranslations('home');
+
   return (
     <>
       <section className={styles.section}>
         <Container>
-          <h2 className={styles.title}>Players talk about us. Trusted by the community.</h2>
-          <p className={styles.description}>
-            Discover what players and gaming platforms say about our servers. Featured on trusted
-            Minecraft directories and community platforms.
-          </p>
+          <h2 className={styles.title}>{t('communityTrust.title')}</h2>
+          <p className={styles.description}>{t('communityTrust.description')}</p>
 
           <ul className={styles.cards}>
             <div className={styles.firstCard}>
-              <h3 className={styles.titleFirst}>Community Awards</h3>
-              <p className={styles.descriptionFirst}>
-                Chosen by players. Recognized by the community.
-              </p>
+              <h3 className={styles.titleFirst}>{t('communityTrust.awardsTitle')}</h3>
+              <p className={styles.descriptionFirst}>{t('communityTrust.awardsDescription')}</p>
               <Image
                 className={styles.image}
                 src="/icons/illustrations/award.png"
-                alt="Award"
+                alt={t('communityTrust.awardAlt')}
                 width={118}
                 height={128}
               />
             </div>
             <div className={styles.secondCard}>
-              <h3 className={styles.titleSecond}>Platform Mentions</h3>
-              <p className={styles.descriptionSecond}>Featured on trusted Minecraft platforms.</p>
-              <Strip />
+              <h3 className={styles.titleSecond}>{t('communityTrust.platformsTitle')}</h3>
+              <p className={styles.descriptionSecond}>{t('communityTrust.platformsDescription')}</p>
+              <Strip ariaLabel={t('communityTrust.featuredOnAriaLabel')} />
             </div>
           </ul>
         </Container>

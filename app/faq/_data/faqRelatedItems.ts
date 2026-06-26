@@ -3,11 +3,11 @@ import {
   getFaqArticleHref,
   getRelatedArticleSlugs,
 } from './faqArticles';
+import type { FaqArticleCategoryId } from './faqTypes';
 
 export type FaqRelatedItem = {
-  category: string;
-  question: string;
-  excerpt: string;
+  slug: string;
+  categoryId: FaqArticleCategoryId;
   helpfulPercent: number;
   href: string;
 };
@@ -21,9 +21,8 @@ export function getFaqRelatedItems(slug: string): FaqRelatedItem[] {
 
     return [
       {
-        category: meta.categoryLabel,
-        question: meta.question,
-        excerpt: meta.excerpt,
+        slug: relatedSlug,
+        categoryId: meta.categoryId,
         helpfulPercent: meta.helpfulPercent,
         href: getFaqArticleHref(relatedSlug),
       },

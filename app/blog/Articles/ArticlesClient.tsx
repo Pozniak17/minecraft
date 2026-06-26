@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import CardList from '../CardList/CardList';
 import { filterArticlesByCategory, parseCategoryParam } from '../categories';
 import {
@@ -20,7 +21,8 @@ type ArticleSortSelectProps = {
 function ArticleSortSelect({ value, onChange }: ArticleSortSelectProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const label = ARTICLE_SORT_OPTIONS.find(option => option.value === value)?.label ?? 'All Posts';
+  const t = useTranslations('blog');
+  const label = t(`sort.${value}` as Parameters<typeof t>[0]);
 
   useEffect(() => {
     if (!open) return;
@@ -64,7 +66,7 @@ function ArticleSortSelect({ value, onChange }: ArticleSortSelectProps) {
       </button>
 
       {open && (
-        <ul className={styles.sortMenu} role="listbox" aria-label="Sort articles">
+        <ul className={styles.sortMenu} role="listbox" aria-label={t('sort.ariaLabel')}>
           {ARTICLE_SORT_OPTIONS.map(option => (
             <li key={option.value} role="presentation">
               <button
@@ -74,7 +76,7 @@ function ArticleSortSelect({ value, onChange }: ArticleSortSelectProps) {
                 className={`${styles.sortOption} ${value === option.value ? styles.sortOptionActive : ''}`}
                 onClick={() => choose(option.value)}
               >
-                {option.label}
+                {t(`sort.${option.value}` as Parameters<typeof t>[0])}
               </button>
             </li>
           ))}
@@ -92,6 +94,7 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
   const searchParams = useSearchParams();
   const category = parseCategoryParam(searchParams.get('category'));
   const [sort, setSort] = useState<ArticleSort>('all');
+  const t = useTranslations('blog');
 
   const filteredArticles = useMemo(
     () => filterArticlesByCategory(articles, category),
@@ -103,7 +106,11 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
   );
 
   const sectionTitle =
-    category === 'All' ? 'Latest articles' : `${category} articles`;
+    category === 'All'
+      ? t('articles.latestTitle')
+      : t('articles.categoryTitle', {
+          category: t(`categories.${category}` as Parameters<typeof t>[0]),
+        });
 
   return (
     <>
@@ -111,7 +118,7 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
         <h2 className={styles.title}>{sectionTitle}</h2>
         <ArticleSortSelect value={sort} onChange={setSort} />
       </div>
-      <CardList articles={visibleArticles} />
+      <CardList articles={visibleArticles} paginationLabel={t('sidebar.paginationLabel')} />
     </>
   );
 }

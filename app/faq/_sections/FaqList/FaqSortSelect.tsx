@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   FAQ_SORT_OPTIONS,
-  getFaqSortLabel,
   type FaqSortOption,
 } from '../faqCategories';
 import filterStyles from '../Filters/Filters.module.css';
@@ -15,10 +15,19 @@ type FaqSortSelectProps = {
   variant: 'desktop' | 'mobile';
 };
 
+function getSortTranslationKey(id: FaqSortOption): 'sort.all' | 'sort.mostHelpful' | 'sort.latest' {
+  switch (id) {
+    case 'all':          return 'sort.all';
+    case 'most-helpful': return 'sort.mostHelpful';
+    case 'latest':       return 'sort.latest';
+  }
+}
+
 export default function FaqSortSelect({ value, onChange, variant }: FaqSortSelectProps) {
+  const t = useTranslations('faq');
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const label = getFaqSortLabel(value);
+  const label = t(getSortTranslationKey(value));
 
   useEffect(() => {
     if (!open) {
@@ -55,7 +64,7 @@ export default function FaqSortSelect({ value, onChange, variant }: FaqSortSelec
   };
 
   const menu = open ? (
-    <ul className={styles.sortMenu} role="listbox" aria-label="Sort questions">
+    <ul className={styles.sortMenu} role="listbox" aria-label={t('sort.ariaLabel')}>
       {FAQ_SORT_OPTIONS.map(option => (
         <li key={option.id} role="presentation">
           <button
@@ -65,7 +74,7 @@ export default function FaqSortSelect({ value, onChange, variant }: FaqSortSelec
             className={`${styles.sortOption} ${value === option.id ? styles.sortOptionActive : ''}`}
             onClick={() => choose(option.id)}
           >
-            {option.label}
+            {t(getSortTranslationKey(option.id))}
           </button>
         </li>
       ))}
@@ -104,7 +113,7 @@ export default function FaqSortSelect({ value, onChange, variant }: FaqSortSelec
         aria-expanded={open}
         onClick={() => setOpen(current => !current)}
       >
-        <span className={styles.desktopSortLabel}>Sort:</span>
+        <span className={styles.desktopSortLabel}>{t('sort.label')}</span>
         <span className={styles.desktopSortValue}>{label}</span>
         <span
           className={`${styles.desktopSortChevron} ${open ? styles.sortChevronOpen : ''}`}

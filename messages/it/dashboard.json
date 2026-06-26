@@ -1,0 +1,73 @@
+{
+  "eyebrow": "Dashboard",
+  "welcomeBack": "Bentornato, {name}",
+  "subtitle": "Ecco cosa sta succedendo nei tuoi mondi oggi.",
+  "topUp": "Ricarica",
+  "listConnector": "e",
+  "notifications": {
+    "ariaLabel": "Notifiche",
+    "ariaLabelAlert": "Notifiche — avviso server",
+    "ariaLabelSuccess": "Notifiche — acquisto completato",
+    "panelTitle": "Notifiche",
+    "empty": "Nessuna notifica recente"
+  },
+  "stats": {
+    "activeServers": "Server attivi",
+    "onlineHint": "{names} online",
+    "checkingStatus": "Verifica stato server…"
+  },
+  "serverStatus": {
+    "title": "Stato server",
+    "seeAll": "Vedi tutti i server",
+    "online": "online",
+    "offline": "offline",
+    "playersOnline": "Giocatori online",
+    "join": "Entra"
+  },
+  "offline": {
+    "allTitle": "Tutti i server offline",
+    "allBody": "Ci stiamo lavorando. Riprova tra poco.",
+    "oneTitle": "{name} è offline",
+    "oneBody": "Stiamo ripristinando l'accesso. Lo stato si aggiorna ogni 10 secondi.",
+    "multipleTitle": "{count} server offline",
+    "multipleBody": "{servers} sono temporaneamente non disponibili."
+  },
+  "purchase": {
+    "completeTitle": "Acquisto completato",
+    "completeBodyItem": "{item}. Consegnato al tuo nickname in gioco.",
+    "completeBodyGeneric": "Il pagamento è andato a buon fine. Crystals e privilegi sono in arrivo."
+  },
+  "activity": {
+    "title": "Attività recente",
+    "viewAll": "Vedi tutto",
+    "loading": "Caricamento…",
+    "empty": "Nessuna attività ancora. I tuoi acquisti appariranno qui."
+  },
+  "time": {
+    "live": "Live",
+    "recently": "Di recente",
+    "justNow": "Adesso",
+    "minutesAgo": "{mins} min fa",
+    "hoursAgo": "{hours} h fa",
+    "yesterday": "Ieri",
+    "daysAgo": "{days} giorni fa",
+    "monthsAgo": "{months} mesi fa"
+  },
+  "crystals": {
+    "label": "Ricarica",
+    "title": "Hai bisogno di più Crystals?",
+    "text": "Acquista un pacchetto e sblocca privilegi, cosmetici e accesso ai tornei.",
+    "openShop": "Apri negozio"
+  },
+  "servers": {
+    "luckysurvival": {
+      "description": "Sopravvivenza Vanilla con PvP — TNT disabilitato."
+    },
+    "minewars": {
+      "description": "Sopravvivenza Vanilla, PvP e TNT abilitati."
+    },
+    "calmsky": {
+      "description": "Pacifico — niente PvP, niente TNT. Costruisci e socializza."
+    }
+  }
+}

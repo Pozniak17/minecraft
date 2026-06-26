@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import { Badge } from '@/app/_components/Badge/Badge';
 import { FAQ_TOTAL_COUNT } from '@/app/faq/_data/faqArticles';
@@ -6,31 +7,34 @@ import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import HeroTopics from './HeroTopics';
 import HeroSearch from './HeroSearch';
 
-const BREADCRUMB_ITEMS = ['Home', 'Support', 'FAQ'];
 const BREADCRUMB_LINKS = ['/', '/faq'];
 
-const STATS = [
-  { value: String(FAQ_TOTAL_COUNT), label: 'questions' },
-  { value: '8', label: 'categories' },
-  { value: '< 4h', label: 'avg reply' },
-] as const;
+export default async function Hero() {
+  const t = await getTranslations('faq');
 
-export default function Hero() {
+  const STATS = [
+    { value: String(FAQ_TOTAL_COUNT), label: t('hero.questions') },
+    { value: '8', label: t('hero.categories') },
+    { value: '< 4h', label: t('hero.avgReply') },
+  ] as const;
+
   return (
     <section className={styles.hero}>
       <Container variant="faq">
         <div className={styles.content}>
-          <Breadcrumbs items={BREADCRUMB_ITEMS} links={BREADCRUMB_LINKS} />
+          <Breadcrumbs
+            items={[t('breadcrumb.home'), t('breadcrumb.support'), t('breadcrumb.faq')]}
+            links={BREADCRUMB_LINKS}
+          />
 
           <div className={styles.head}>
-            <Badge className={styles.badge}>Help center</Badge>
-            <h1 className={styles.title}>Frequently asked questions</h1>
+            <Badge className={styles.badge}>{t('hero.badge')}</Badge>
+            <h1 className={styles.title}>{t('hero.title')}</h1>
             <p className={`${styles.description} ${styles.descriptionMobile}`}>
-              The answers our team gives most often. Browse by topic, search, or contact us directly.
+              {t('hero.descMobile')}
             </p>
             <p className={`${styles.description} ${styles.descriptionDesktop}`}>
-              The answers our team gives most often. Browse by topic, search by keyword, or contact us
-              directly if you don&apos;t find what you need.
+              {t('hero.descDesktop')}
             </p>
           </div>
 

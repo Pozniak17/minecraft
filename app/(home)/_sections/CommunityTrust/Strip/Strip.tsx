@@ -20,14 +20,15 @@ const STRIP_LOGOS = STRIP_SOURCES.map((logo) => ({
 
 type StripProps = {
   className?: string;
+  ariaLabel?: string;
 };
 
-export default function Strip({ className }: StripProps) {
+export default function Strip({ className, ariaLabel = 'Featured on' }: StripProps) {
   return (
     <div
       className={[styles.marquee, className].filter(Boolean).join(' ')}
       role="list"
-      aria-label="Featured on"
+      aria-label={ariaLabel}
     >
       <div className={styles.track}>
         {STRIP_LOGOS.map((logo) => (

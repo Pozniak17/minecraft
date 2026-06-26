@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { filterFaqArticles, getFaqArticleHref, sortFaqArticles } from '@/app/faq/_data/faqArticles';
 import { getCategoryById, type FaqCategoryId } from '../faqCategories';
 import { useFaqPage } from '../FaqPageContext';
 import type { FaqListItem } from './faqItems';
 import FaqPerPageSelect from './FaqPerPageSelect';
 import FaqSortSelect from './FaqSortSelect';
+import { getCategoryTranslationKey } from '../categoryTranslationKeys';
 import styles from './FaqList.module.css';
 
 type FaqListProps = {
@@ -47,6 +49,7 @@ function buildPageNumbers(totalPages: number, activePage: number): (number | '�
 }
 
 export default function FaqList({ activeCategory }: FaqListProps) {
+  const t = useTranslations('faq');
   const [activePage, setActivePage] = useState(1);
   const { searchQuery, clearSearch, itemsPerPage, setItemsPerPage, sortOption, setSortOption } =
     useFaqPage();
@@ -58,7 +61,8 @@ export default function FaqList({ activeCategory }: FaqListProps) {
     [activeCategory, searchQuery, sortOption],
   );
 
-  const headerTitle = trimmedQuery ? `Results for "${trimmedQuery}"` : category.label;
+  const categoryLabel = t(getCategoryTranslationKey(activeCategory, 'full'));
+  const headerTitle = trimmedQuery ? t('list.resultsFor', { query: trimmedQuery }) : categoryLabel;
   const totalPages = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
   const rangeStart =
     filteredItems.length === 0 ? 0 : (activePage - 1) * itemsPerPage + 1;
@@ -89,12 +93,12 @@ export default function FaqList({ activeCategory }: FaqListProps) {
             <h2 className={styles.headerTitle}>{headerTitle}</h2>
             <p className={styles.headerSubtitle}>
               {filteredItems.length === 0
-                ? 'No matching questions'
-                : `Showing ${rangeStart}-${rangeEnd} of ${filteredItems.length} questions`}
+                ? t('list.noMatch')
+                : t('list.showing', { from: rangeStart, to: rangeEnd, total: filteredItems.length })}
             </p>
             {trimmedQuery && (
               <button type="button" className={styles.clearSearch} onClick={clearSearch}>
-                Clear search
+                {t('list.clearSearch')}
               </button>
             )}
           </div>
@@ -102,10 +106,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
         </header>
 
         {filteredItems.length === 0 ? (
-          <p className={styles.empty}>
-            No questions match your search. Try another keyword or clear the filter to browse all
-            topics.
-          </p>
+          <p className={styles.empty}>{t('list.noMatchDesc')}</p>
         ) : (
           <ul className={styles.list}>
             {pageItems.map(item => (
@@ -118,17 +119,22 @@ export default function FaqList({ activeCategory }: FaqListProps) {
 
                   <div className={styles.body}>
                     <div className={styles.meta}>
-                      <span className={styles.category}>{item.category}</span>
+                      <span className={styles.category}>
+                        {t(getCategoryTranslationKey(item.categoryId, 'full'))}
+                      </span>
                       <span className={styles.updated}>
-                        <span className={styles.updatedLabelMobile}>Upd</span>
-                        <span className={styles.updatedLabelDesktop}>Updated</span> {item.updated}
+                        <span className={styles.updatedLabelMobile}>{t('list.updMobile')}</span>
+                        <span className={styles.updatedLabelDesktop}>{t('list.updDesktop')}</span>{' '}
+                        {item.updated}
                       </span>
                     </div>
 
-                    <h3 className={styles.question}>{item.question}</h3>
+                    <h3 className={styles.question}>
+                      {t(`articles.${item.slug}.question` as Parameters<typeof t>[0])}
+                    </h3>
 
                     <Link href={getFaqArticleHref(item.slug)} className={styles.readButton}>
-                      Read Now
+                      {t('list.readNow')}
                     </Link>
                   </div>
                 </div>
@@ -140,14 +146,14 @@ export default function FaqList({ activeCategory }: FaqListProps) {
         )}
 
         {showListFooter && (
-          <nav className={styles.pagination} aria-label="FAQ pagination">
+          <nav className={styles.pagination} aria-label={t('list.paginationAriaLabel')}>
             {showPageControls && (
               <>
                 <div className={`${styles.pagRow} ${styles.mobileOnly}`}>
                   <button
                     type="button"
                     className={styles.pagArrow}
-                    aria-label="Previous page"
+                    aria-label={t('list.prevAriaLabel')}
                     disabled={activePage === 1}
                     onClick={() => setActivePage(page => Math.max(1, page - 1))}
                   >
@@ -185,7 +191,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
                   <button
                     type="button"
                     className={`${styles.pagArrow} ${styles.pagArrowNext}`}
-                    aria-label="Next page"
+                    aria-label={t('list.nextAriaLabel')}
                     disabled={activePage === totalPages}
                     onClick={() => setActivePage(page => Math.min(totalPages, page + 1))}
                   >
@@ -194,7 +200,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
                 </div>
 
                 <p className={`${styles.pagCaption} ${styles.mobileOnly}`}>
-                  Page {activePage} of {totalPages} — {filteredItems.length} questions
+                  {t('list.pageCaption', { page: activePage, total: totalPages, count: filteredItems.length })}
                 </p>
               </>
             )}
@@ -207,12 +213,12 @@ export default function FaqList({ activeCategory }: FaqListProps) {
                   <button
                     type="button"
                     className={styles.pagDesktopPrev}
-                    aria-label="Previous page"
+                    aria-label={t('list.prevAriaLabel')}
                     disabled={activePage === 1}
                     onClick={() => setActivePage(page => Math.max(1, page - 1))}
                   >
                     <span aria-hidden="true">←</span>
-                    <span>Prev</span>
+                    <span>{t('list.prev')}</span>
                   </button>
 
                   <div className={styles.pagDesktopNumbers}>
@@ -248,11 +254,11 @@ export default function FaqList({ activeCategory }: FaqListProps) {
                   <button
                     type="button"
                     className={styles.pagDesktopNext}
-                    aria-label="Next page"
+                    aria-label={t('list.nextAriaLabel')}
                     disabled={activePage === totalPages}
                     onClick={() => setActivePage(page => Math.min(totalPages, page + 1))}
                   >
-                    <span>Next</span>
+                    <span>{t('list.next')}</span>
                     <span className={styles.pagDesktopNextArrow} aria-hidden="true">
                       →
                     </span>
@@ -262,7 +268,7 @@ export default function FaqList({ activeCategory }: FaqListProps) {
 
               <div className={styles.pagDesktopInfo}>
                 <span className={styles.pagDesktopRange}>
-                  {rangeStart}-{rangeEnd} of {filteredItems.length}
+                  {t('list.rangeOf', { from: rangeStart, to: rangeEnd, total: filteredItems.length })}
                 </span>
                 <FaqPerPageSelect value={itemsPerPage} onChange={setItemsPerPage} />
               </div>

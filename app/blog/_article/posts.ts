@@ -1143,6 +1143,31 @@ export function getAllPostSlugs(): string[] {
   return BLOG_POSTS.map(post => post.slug);
 }
 
+type RawGetter = (key: string) => unknown;
+
+export function getTranslatedPost(slug: string, getRaw: RawGetter): BlogPostFull | undefined {
+  const base = POSTS_BY_SLUG.get(slug);
+  if (!base) return undefined;
+
+  try {
+    const pt = getRaw(`posts.${slug}`) as Partial<BlogPostFull> | null;
+    if (!pt) return base;
+    return {
+      ...base,
+      title: (pt.title as string) ?? base.title,
+      description: (pt.description as string) ?? base.description,
+      descriptionDesktop: (pt.descriptionDesktop as string | undefined) ?? base.descriptionDesktop,
+      heroTags: (pt.heroTags as string[]) ?? base.heroTags,
+      sidebarTags: (pt.sidebarTags as string[]) ?? base.sidebarTags,
+      breadcrumbLabel: (pt.breadcrumbLabel as string) ?? base.breadcrumbLabel,
+      lead: (pt.lead as BlogPostFull['lead']) ?? base.lead,
+      sections: (pt.sections as BlogPostFull['sections']) ?? base.sections,
+    };
+  } catch {
+    return base;
+  }
+}
+
 function toCardProps(post: BlogPostFull): ArticleCardProps & { slug: string } {
   const { popularity: _popularity, slug, heroTags: _heroTags, sidebarTags: _sidebarTags, breadcrumbLabel: _breadcrumbLabel, descriptionDesktop: _descriptionDesktop, heroImageDesktop: _heroImageDesktop, lead: _lead, sections: _sections, ...card } = post;
   return { ...card, slug };

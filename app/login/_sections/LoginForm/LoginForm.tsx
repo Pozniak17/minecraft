@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { login } from '@/lib/api/auth';
 import styles from './LoginForm.module.css';
 
@@ -43,6 +44,7 @@ function EyeIcon({ open }: { open: boolean }) {
 }
 
 export default function LoginForm() {
+  const t = useTranslations('auth');
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,7 +58,7 @@ export default function LoginForm() {
     setFormError(null);
 
     if (!email.trim() || !password) {
-      setFormError('Enter your email and password.');
+      setFormError(t('login.errorEmpty'));
       return;
     }
 
@@ -72,9 +74,9 @@ export default function LoginForm() {
       setStatus('idle');
       if (isAxiosError(err)) {
         const detail = err.response?.data?.detail;
-        setFormError(typeof detail === 'string' ? detail : 'Invalid email or password.');
+        setFormError(typeof detail === 'string' ? detail : t('login.errorInvalid'));
       } else {
-        setFormError('Network error. Please try again.');
+        setFormError(t('login.errorNetwork'));
       }
     }
   }
@@ -97,18 +99,16 @@ export default function LoginForm() {
               <span className={styles.backArrow} aria-hidden="true">
                 ←
               </span>
-              Back to home
+              {t('login.backToHome')}
             </Link>
           </div>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.head}>
-              <h1 className={styles.title}>Welcome back</h1>
+              <h1 className={styles.title}>{t('login.title')}</h1>
               <p className={styles.subtitle}>
-                <span className={styles.subtitleMobile}>Sign in to continue building.</span>
-                <span className={styles.subtitleDesktop}>
-                  Sign in to continue building. Use the email and password you registered with.
-                </span>
+                <span className={styles.subtitleMobile}>{t('login.subtitleMobile')}</span>
+                <span className={styles.subtitleDesktop}>{t('login.subtitleDesktop')}</span>
               </p>
             </div>
 
@@ -116,14 +116,14 @@ export default function LoginForm() {
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="login-email">
-                Email address
+                {t('login.emailLabel')}
               </label>
               <input
                 id="login-email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="you@example.com"
+                placeholder={t('login.emailPlaceholder')}
                 className={styles.input}
                 value={email}
                 onChange={event => setEmail(event.target.value)}
@@ -133,7 +133,7 @@ export default function LoginForm() {
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="login-password">
-                Password
+                {t('login.passwordLabel')}
               </label>
               <div className={styles.inputWrap}>
                 <input
@@ -141,7 +141,7 @@ export default function LoginForm() {
                   name="password"
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
-                  placeholder="Enter your password"
+                  placeholder={t('login.passwordPlaceholder')}
                   className={`${styles.input} ${styles.inputWithToggle}`}
                   value={password}
                   onChange={event => setPassword(event.target.value)}
@@ -151,7 +151,7 @@ export default function LoginForm() {
                   type="button"
                   className={styles.toggle}
                   onClick={() => setShowPassword(value => !value)}
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-label={showPassword ? t('login.hidePassword') : t('login.showPassword')}
                   aria-pressed={showPassword}
                   tabIndex={-1}
                 >
@@ -169,40 +169,40 @@ export default function LoginForm() {
                   onChange={event => setRememberMe(event.target.checked)}
                 />
                 <span className={styles.checkboxBox} aria-hidden="true" />
-                <span className={styles.checkboxText}>Remember me</span>
+                <span className={styles.checkboxText}>{t('login.rememberMe')}</span>
               </label>
               <Link href="/forgot-password" className={styles.forgotLink}>
-                Forgot password?
+                {t('login.forgotPassword')}
               </Link>
             </div>
 
             <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Logging in…' : 'Log in'}
+              {status === 'submitting' ? t('login.submitting') : t('login.submit')}
             </button>
 
             <div className={styles.signupBlock}>
               <div className={styles.divider} role="presentation">
                 <span className={styles.dividerLine} />
                 <span className={styles.dividerLabel}>
-                  <span className={styles.dividerLabelMobile}>New here?</span>
-                  <span className={styles.dividerLabelDesktop}>New to the ecosystem?</span>
+                  <span className={styles.dividerLabelMobile}>{t('login.dividerMobile')}</span>
+                  <span className={styles.dividerLabelDesktop}>{t('login.dividerDesktop')}</span>
                 </span>
                 <span className={styles.dividerLine} />
               </div>
 
               <p className={styles.footerLink}>
-                No account?
+                {t('login.noAccount')}
                 <Link href="/register" className={styles.createLink}>
-                  Create one →
+                  {t('login.createOne')}
                 </Link>
               </p>
             </div>
           </form>
 
           <p className={styles.helpFoot}>
-            Trouble signing in?{' '}
+            {t('login.troubleSigningIn')}{' '}
             <Link href="/faq" className={styles.supportLink}>
-              Contact support
+              {t('login.contactSupport')}
             </Link>
           </p>
         </div>
@@ -223,14 +223,13 @@ export default function LoginForm() {
 
         <blockquote className={styles.quoteCard}>
           <p className={styles.quoteText}>
-            &ldquo;Best survival server I have ever played on — fair economy, kind admins, zero
-            lag.&rdquo;
+            &ldquo;{t('login.quoteText')}&rdquo;
           </p>
           <footer className={styles.quoteMeta}>
             <span className={styles.quoteAvatar}>R</span>
             <span className={styles.quoteAuthor}>
               <span className={styles.quoteName}>RedstoneKing</span>
-              <span className={styles.quoteSince}>Player since 2024</span>
+              <span className={styles.quoteSince}>{t('login.quoteSince')}</span>
             </span>
           </footer>
         </blockquote>

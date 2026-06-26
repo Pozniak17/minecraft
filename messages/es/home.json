@@ -1,0 +1,138 @@
+{
+  "hero": {
+    "titleSuffix": "Un Ecosistema de Nueva Generación",
+    "description": "Tres servidores únicos, una economía en el juego, clasificaciones y torneos. Juega como quieras — PvP, supervivencia o construcción.",
+    "playNow": "Jugar ahora",
+    "joinTwitch": "Unirse a Twitch",
+    "catAlt": "Gato de Minecraft"
+  },
+  "benefits": {
+    "title": "¿Por qué jugar con nosotros?",
+    "stableServers": { "title": "Servidores estables", "text": "Alta disponibilidad y rendimiento fluido — sin lag, sin caídas." },
+    "regularUpdates": { "title": "Actualizaciones regulares", "text": "Nuevas funciones, correcciones y mejoras cada mes." },
+    "highOnline": { "title": "Gran comunidad", "text": "Una comunidad activa que juega a diario en todos los servidores." },
+    "fairEconomy": { "title": "Economía justa", "text": "Sin pay-to-win. El equilibrio es lo primero." },
+    "activeTeam": { "title": "Equipo activo", "text": "Moderación, soporte y desarrollo siempre en línea." },
+    "playerSupport": { "title": "Soporte al jugador", "text": "Ayuda rápida por Discord y soporte en el juego." }
+  },
+  "features": {
+    "title": "Características del juego",
+    "carouselAriaLabel": "Características del juego",
+    "goToFeature": "Ir a {title}",
+    "buildCreate": {
+      "title": "Construir y Crear",
+      "text": "Construye libremente. Da forma a tu mundo.",
+      "description": "Crea bases, ciudades y paisajes sin límites. Desde pequeñas construcciones hasta proyectos masivos — tu imaginación pone las reglas."
+    },
+    "surviveCompete": {
+      "title": "Sobrevivir y Competir",
+      "text": "Lucha, sobrevive y domina.",
+      "description": "Participa en batallas PvP, raids y desafíos de supervivencia. Demuestra tus habilidades y sube en el ranking."
+    },
+    "skinsCosmetics": {
+      "title": "Skins y Cosméticos",
+      "text": "Destaca visualmente.",
+      "description": "Personaliza tu personaje con skins únicas, efectos y mejoras visuales. Sin ventaja de juego — solo estilo."
+    },
+    "inGameEconomy": {
+      "title": "Economía en el juego",
+      "text": "Comercia. Gana. Progresa.",
+      "description": "Una economía equilibrada impulsada por moneda en el juego. Comercia con jugadores, compra mejoras y haz crecer tu riqueza."
+    },
+    "eventsTournaments": {
+      "title": "Eventos y Torneos",
+      "text": "Eventos competitivos próximamente.",
+      "description": "Eventos de temporada, torneos PvP y desafíos con recompensas. Mantente atento — grandes batallas se avecinan."
+    }
+  },
+  "server": {
+    "title": "Elige tu servidor",
+    "descLine1": "Cada servidor ofrece un estilo de juego único.",
+    "descLine2": "Únete al mundo que mejor te encaje.",
+    "liveStats": "Estadísticas del servidor en vivo",
+    "totalPlayersOnline": "Jugadores en línea ahora",
+    "serversOnline": "Servidores en línea",
+    "topPlayersToday": "Mejores jugadores hoy",
+    "carouselAriaLabel": "Servidores",
+    "goToServer": "Ir a {title}",
+    "luckysurvival": {
+      "text": "Supervivencia clásica con PvP equilibrado",
+      "description": "Supervivencia vanilla con PvP y TNT desactivados. Perfecto para combates justos, progresión y juego a largo plazo."
+    },
+    "minewars": {
+      "text": "Libertad total. Caos total.",
+      "description": "Supervivencia vanilla con PvP y TNT activados. Construye, destruye, saquea o domina — sin límites en el estilo de juego."
+    },
+    "calmsky": {
+      "text": "Construir, relajarse y conectar",
+      "description": "Servidor vanilla pacífico sin PvP ni TNT. Céntrate en la creatividad, el juego social y las bellas construcciones."
+    },
+    "cardStatus": "Estado",
+    "cardOnline": "En línea",
+    "cardPlayersOnline": "Jugadores en línea:",
+    "cardServerIp": "IP del servidor:",
+    "cardCopyNotice": "¡IP copiada! Inicia Minecraft y conéctate ahora",
+    "cardJoin": "Unirse a {title}",
+    "cardOnlineAlt": "En línea",
+    "cardPlayersAlt": "Jugadores",
+    "bonusTitle": "Bono para nuevos jugadores",
+    "bonusText": "20% de descuento en tu primera compra",
+    "bonusDescLine1": "Mejora tu juego con moneda en el juego o privilegios.",
+    "bonusDescLine2": "Oferta por tiempo limitado para nuevos jugadores.",
+    "bonusClaim": "Reclamar bono",
+    "bonusCopyNotice": "¡Código promocional copiado! Úsalo al pagar."
+  },
+  "preview": {
+    "title": "Vista previa de la tienda"
+  },
+  "rate": {
+    "title": "Jugadores mejor valorados",
+    "text": "Juega más. Progresa más. Destaca.",
+    "rank": "Rango",
+    "player": "Jugador",
+    "server": "Servidor",
+    "level": "Nivel",
+    "playtime": "Tiempo de juego",
+    "activityScore": "Puntuación de actividad"
+  },
+  "questions": {
+    "title": "Preguntas frecuentes",
+    "text": "¿No encontraste respuesta? Ve a la página de FAQ",
+    "seeMore": "Ver más",
+    "q1": {
+      "question": "¿Cómo empiezo a jugar?",
+      "answer": "Crea una cuenta, elige un servidor y conéctate usando la dirección IP."
+    },
+    "q2": {
+      "question": "¿Puedo jugar en varios servidores?",
+      "answer": "Sí. Una cuenta funciona en LuckySurvival, MineWars y CalmSky — cambia cuando quieras."
+    },
+    "q3": {
+      "question": "¿Admitís la Java Edition?",
+      "answer": "Sí. Soportamos Java 1.20.4 y la última versión Bedrock."
+    },
+    "q4": {
+      "question": "¿Cómo contacto al soporte?",
+      "answer": "Usa el chat en vivo, correo electrónico o Discord — nuestro equipo responde en menos de 4 horas, todo el día."
+    },
+    "q5": {
+      "question": "¿Los eventos son gratuitos?",
+      "answer": "Sí. Los torneos y eventos de temporada son gratuitos para todos los jugadores — sin compra adicional."
+    }
+  },
+  "communityTrust": {
+    "title": "Los jugadores hablan de nosotros. La comunidad confía en nosotros.",
+    "description": "Descubre lo que jugadores y plataformas gaming dicen sobre nuestros servidores. Presentes en directorios Minecraft de confianza.",
+    "awardsTitle": "Premios de la comunidad",
+    "awardsDescription": "Elegido por jugadores. Reconocido por la comunidad.",
+    "platformsTitle": "Menciones de plataformas",
+    "platformsDescription": "Presentado en plataformas Minecraft de confianza.",
+    "awardAlt": "Premio",
+    "featuredOnAriaLabel": "Presentado en"
+  },
+  "startAdventure": {
+    "title": "¿Listo para comenzar tu aventura?",
+    "description": "Únete al mundo de servidores Minecraft únicos.",
+    "playNow": "Jugar ahora"
+  }
+}

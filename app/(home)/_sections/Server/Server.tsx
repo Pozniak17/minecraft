@@ -1,20 +1,23 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import CardList from './CardList/CardList';
 import { NewPlayerBonus } from './NewPlayerBonus/NewPlayerBonus';
 import styles from './Server.module.css';
 
-export default function Server() {
+export default async function Server() {
+  const t = await getTranslations('home');
+
   return (
     <>
       <section className={styles.section}>
         <Container>
-          <h2 className={styles.title}>Choose Your Server</h2>
+          <h2 className={styles.title}>{t('server.title')}</h2>
           <p className={styles.description}>
-            Each server offers a unique playstyle.
+            {t('server.descLine1')}
             <br />
-            Join the world that fits you best.
+            {t('server.descLine2')}
           </p>
           <div className={styles.cards}>
             <CardList />
@@ -23,10 +26,10 @@ export default function Server() {
           <div className={styles.statsContainer}>
             <div className={styles.statsCards}>
               <div className={styles.stats}>
-                <h3 className={styles.statsTitle}>Live Server Stats</h3>
+                <h3 className={styles.statsTitle}>{t('server.liveStats')}</h3>
                 <ul className={styles.statsList}>
                   <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>Total players online now</p>
+                    <p className={styles.statsItemText}>{t('server.totalPlayersOnline')}</p>
                     <span className={styles.statsBadge}>
                       <Image
                         className={styles.statsBadgeDot}
@@ -40,7 +43,7 @@ export default function Server() {
                   </li>
 
                   <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>Servers online</p>
+                    <p className={styles.statsItemText}>{t('server.serversOnline')}</p>
                     <span className={styles.statsBadge}>
                       <Image
                         className={styles.statsBadgeDot}
@@ -56,12 +59,13 @@ export default function Server() {
               </div>
               <div className={styles.topPlayers}>
                 <h3 className={styles.statsTitleWrapper}>
-                  Top Players Today
+                  {t('server.topPlayersToday')}
                   <Image
                     src="/icons/illustrations/champ-cup.webp"
-                    alt="Arrow up"
+                    alt=""
                     width={33}
                     height={36}
+                    aria-hidden="true"
                   />
                 </h3>
 

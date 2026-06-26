@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslations } from 'next-intl';
 import styles from './LogoutModal.module.css';
 
 type LogoutModalProps = {
@@ -24,6 +25,7 @@ export function LogoutModal({
   initial,
   confirming = false,
 }: LogoutModalProps) {
+  const t = useTranslations('common');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -55,7 +57,7 @@ export function LogoutModal({
       <button
         type="button"
         className={styles.backdrop}
-        aria-label="Close logout dialog"
+        aria-label={t('logout.closeDialog')}
         onClick={onClose}
         disabled={confirming}
       />
@@ -79,16 +81,15 @@ export function LogoutModal({
         </div>
 
         <h2 id="logout-modal-title" className={styles.title}>
-          Log out of your account?
+          {t('logout.title')}
         </h2>
 
         <p id="logout-modal-desc" className={styles.description}>
           <span className={styles.descriptionMobile}>
-            You will need to sign in again. In-game sessions remain unaffected.
+            {t('logout.descMobile')}
           </span>
           <span className={styles.descriptionDesktop}>
-            You will need to sign in again to access your dashboard, cart, and active
-            privileges. Active in-game sessions remain unaffected.
+            {t('logout.descDesktop')}
           </span>
         </p>
 
@@ -97,7 +98,7 @@ export function LogoutModal({
             {initial}
           </span>
           <div className={styles.userCopy}>
-            <span className={styles.userLabel}>Signed in as</span>
+            <span className={styles.userLabel}>{t('logout.signedInAs')}</span>
             <span className={styles.userNameMobile}>{name}</span>
             <span className={styles.userNameDesktop}>
               {name}
@@ -113,7 +114,7 @@ export function LogoutModal({
             onClick={onClose}
             disabled={confirming}
           >
-            Cancel
+            {t('logout.cancel')}
           </button>
           <button
             type="button"
@@ -121,11 +122,11 @@ export function LogoutModal({
             onClick={onConfirm}
             disabled={confirming}
           >
-            {confirming ? 'Logging out…' : 'Log out'}
+            {confirming ? t('shared.loggingOut') : t('shared.logOut')}
           </button>
         </div>
 
-        <p className={styles.footnote}>Sessions auto-expire after 30 days</p>
+        <p className={styles.footnote}>{t('logout.autoExpire')}</p>
       </div>
     </div>,
     document.body,

@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Start",
+    "servers": "Server",
+    "store": "Shop",
+    "howToStart": "Erste Schritte",
+    "blog": "Blog",
+    "about": "\u00dcber uns",
+    "faq": "FAQ"
+  },
+  "legal": {
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookies"
+  },
+  "shared": {
+    "logoAlt": "Minecraft-Spiellogo",
+    "openMenu": "Men\u00fc \u00f6ffnen",
+    "closeMenu": "Men\u00fc schlie\u00dfen",
+    "mainNav": "Hauptnavigation",
+    "browseSite": "Seite durchsuchen",
+    "myWorkspace": "Mein Bereich",
+    "settings": "Einstellungen",
+    "logOut": "Abmelden",
+    "loggingOut": "Abmelden\u2026",
+    "soon": "Bald",
+    "profileAlt": "Profil"
+  },
+  "header": {
+    "goToDashboard": "Zum Dashboard",
+    "logIn": "Anmelden",
+    "signUp": "Registrieren"
+  },
+  "mobileNav": {
+    "mobileNavLabel": "Mobile Navigation",
+    "logIn": "Anmelden",
+    "signUp": "Registrieren",
+    "serversOnline": "Server online \u2014 2 von 3",
+    "playersOnline": "212 Spieler erkunden gerade",
+    "community": "Community"
+  },
+  "footer": {
+    "description": "Ein modernes Minecraft-\u00d6kosystem mit stabilen Servern, fairem Gameplay und einer aktiven Community.",
+    "mainTitle": "Navigation",
+    "supportTitle": "Support",
+    "contacts": "Kontakt",
+    "howToStartPlaying": "Wie man anf\u00e4ngt",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "cookiePolicy": "Cookie-Richtlinie",
+    "termsAndConditions": "Nutzungsbedingungen",
+    "copyright": "\u00a9 2026 Adventures in Minecraft. Alle Rechte vorbehalten."
+  },
+  "dash": {
+    "dashboard": "Dashboard",
+    "shop": "Shop",
+    "servers": "Server",
+    "cart": "Warenkorb",
+    "history": "Kaufverlauf",
+    "top": "Top / Rangliste",
+    "tournaments": "Turniere",
+    "howToStart": "Erste Schritte"
+  },
+  "dashNav": {
+    "dashboardNav": "Dashboard-Navigation",
+    "dashboardHome": "Dashboard-Startseite",
+    "topUpCrystals": "Kristalle aufladen"
+  },
+  "cookie": {
+    "ariaLabel": "Cookie-Einwilligung",
+    "title": "Wir verwenden Cookies",
+    "text": "Wir verwenden Cookies, um Sie eingeloggt zu halten, Ihre Sitzung zu sichern und Ihr Erlebnis zu verbessern. Mehr dazu in unserer <link>Cookie-Richtlinie</link>.",
+    "reject": "Ablehnen",
+    "accept": "Alle akzeptieren"
+  },
+  "lang": {
+    "changeLanguage": "Sprache \u00e4ndern"
+  },
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb"
+  },
+  "logout": {
+    "closeDialog": "Dialog schlie\u00dfen",
+    "title": "Vom Konto abmelden?",
+    "descMobile": "Sie m\u00fcssen sich erneut anmelden. Spielsitzungen bleiben unber\u00fchrt.",
+    "descDesktop": "Sie m\u00fcssen sich erneut anmelden, um auf Dashboard, Warenkorb und Privilegien zuzugreifen. Aktive Spielsitzungen bleiben unber\u00fchrt.",
+    "signedInAs": "Angemeldet als",
+    "cancel": "Abbrechen",
+    "autoExpire": "Sitzungen laufen nach 30 Tagen ab"
+  }
+}

@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import styles from './HowToStart.module.css';
 
 type StepStatus = 'completed' | 'current' | 'pending';
@@ -22,158 +23,28 @@ type Step = {
   image?: string;
 };
 
-const STEPS: Step[] = [
-  {
-    id: 1,
-    navLabel: 'Download Minecraft',
-    title: 'Download Minecraft',
-    description: 'You need Minecraft Java or Bedrock. Java has more plugins.',
-    descriptionDesktop:
-      'You need a legal copy of Minecraft (Java or Bedrock edition). The Java edition is what most of our players use because it supports more plugins and custom crafts.',
-    bullets: [
-      'Open minecraft.net and sign in.',
-      'Install 1.20.4 (Java) or latest Bedrock.',
-      'Launch once to verify.',
-    ],
-    bulletsDesktop: [
-      'Open minecraft.net and sign in with your Microsoft account.',
-      'Download the launcher and install Minecraft 1.20.4 (Java) or the latest Bedrock release.',
-      'Launch the game once to verify everything loads.',
-    ],
-    callout: 'Cosmetics and tournaments ship to Java first.',
-    calloutDesktop:
-      'Both editions work on our servers, but cosmetics and tournament features ship to Java first. Bedrock support arrives 1-2 weeks later.',
-    status: 'completed',
-    image: '/how-to-start/private-image-desktop.webp',
-  },
-  {
-    id: 2,
-    navLabel: 'Create your account',
-    title: 'Create your account',
-    description: 'Sign up with email + password. One-minute activation.',
-    descriptionDesktop:
-      'Sign up on our website with your email and password. Activation takes one minute.',
-    bullets: [
-      'Open Sign Up, enter email + password.',
-      'Confirm via the link in your email.',
-      'Pick an in-game nickname.',
-    ],
-    bulletsDesktop: [
-      'Open the Sign Up page and enter your email + password.',
-      'Confirm your email via the link we send (check spam if it does not arrive in 2 min).',
-      'Set an in-game nickname — this is what other players will see.',
-    ],
-    status: 'completed',
-  },
-  {
-    id: 3,
-    navLabel: 'Buy or join a server',
-    title: 'Buy or join a server',
-    description: 'Pick a server, copy the IP, paste in Minecraft.',
-    descriptionDesktop:
-      'Pick a server from the Servers page — LuckySurvival, MineWars, or CalmSky. Copy the IP and paste it into Minecraft → Multiplayer → Add Server.',
-    bullets: [
-      'Open Servers page.',
-      'Click Copy IP.',
-      'Minecraft → Multiplayer → Add Server.',
-      'Click to connect.',
-    ],
-    bulletsDesktop: [
-      'Open the Servers page in your dashboard.',
-      'Click "Copy IP" on the card you want.',
-      'In Minecraft, choose Multiplayer → Add Server → paste the IP.',
-      'Click the server card to connect.',
-    ],
-    callout: 'First connection downloads our 80 MB resource pack.',
-    calloutDesktop:
-      'First connection downloads our ~80 MB resource pack. After that, joining is instant.',
-    status: 'current',
-  },
-  {
-    id: 4,
-    navLabel: 'Link your account',
-    title: 'Link your nickname',
-    titleDesktop: 'Link your in-game nickname',
-    description: 'Connect your in-game name to your account for delivery.',
-    descriptionDesktop:
-      'After joining for the first time, link your in-game nickname to your account so privileges and crystals deliver to the right player.',
-    bullets: [
-      'In game: /link <your email>',
-      'Check your email for a link.',
-      'Click the link to finish linking.',
-    ],
-    bulletsDesktop: [
-      'In game, run /link followed by your account email.',
-      'We send an activation link to your email.',
-      'Open the link in your browser — your nickname is linked automatically.',
-    ],
-    status: 'pending',
-  },
-  {
-    id: 5,
-    navLabel: 'Pick a privilege',
-    title: 'Pick a privilege',
-    titleDesktop: 'Pick a privilege (optional)',
-    description: 'Unlock cosmetics, cooldowns, and home points.',
-    descriptionDesktop:
-      'Privileges unlock cosmetics, faster cooldowns, and extra home points. All eight tiers are listed in the Shop with descriptions and live preview.',
-    bullets: ['Shop → Privileges, pick a tier.', 'Add to cart, pay.'],
-    bulletsDesktop: [
-      'Open Shop → Privileges.',
-      'Hover any tier to see the full perk list.',
-      'Add to cart, pick the server, pay.',
-    ],
-    status: 'pending',
-  },
-  {
-    id: 6,
-    navLabel: 'Top up crystals',
-    title: 'Top up crystals',
-    titleDesktop: 'Top up crystals (optional)',
-    description: 'Buy a pack or use the slider for custom amount.',
-    descriptionDesktop:
-      'Crystals are our in-game currency for cosmetics, tournament entries, and time-limited items. Buy a pack or use the custom-amount slider.',
-    bullets: [
-      'Shop → Crystals.',
-      'Pick a preset or set amount.',
-      'Instant delivery.',
-    ],
-    bulletsDesktop: [
-      'Open Shop → Crystals.',
-      'Pick a preset pack or use the slider to set exact amount.',
-      'Crystals deliver instantly to your nickname.',
-    ],
-    status: 'pending',
-  },
-  {
-    id: 7,
-    navLabel: 'Join community Discord',
-    title: 'Join community Discord',
-    titleDesktop: 'Join the community Discord',
-    description: 'Updates, announcements, support — all live on Discord.',
-    descriptionDesktop:
-      'Most of our updates, tournament announcements, and player support happen on Discord. Free to join, easy to leave.',
-    bullets: [
-      'Tap the Discord button.',
-      'Run /verify in Discord.',
-      'Pick your server role.',
-    ],
-    bulletsDesktop: [
-      'Click the Discord button in the sidebar.',
-      'Use the /verify command to link your accounts.',
-      'Pick your favourite-server role and you are set.',
-    ],
-    callout: 'Average first-response on support: under 4 hours.',
-    calloutDesktop:
-      'Live support is available on Discord 24/7. Average first-response time is under 4 hours.',
-    status: 'pending',
-  },
+type StepDef = {
+  id: number;
+  status: StepStatus;
+  hasTitleDesktop: boolean;
+  hasCallout: boolean;
+  image?: string;
+};
+
+const STEP_DEFS: StepDef[] = [
+  { id: 1, status: 'completed', hasTitleDesktop: false, hasCallout: true, image: '/how-to-start/private-image-desktop.webp' },
+  { id: 2, status: 'completed', hasTitleDesktop: false, hasCallout: false },
+  { id: 3, status: 'current',   hasTitleDesktop: false, hasCallout: true },
+  { id: 4, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
+  { id: 5, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
+  { id: 6, status: 'pending',   hasTitleDesktop: true,  hasCallout: false },
+  { id: 7, status: 'pending',   hasTitleDesktop: true,  hasCallout: true },
 ];
 
-const TOTAL_STEPS = STEPS.length;
+const TOTAL_STEPS = STEP_DEFS.length;
 const DONE_COUNT = 3;
 const PROGRESS_PERCENT = (DONE_COUNT / TOTAL_STEPS) * 100;
-const DEFAULT_ACTIVE_STEP = STEPS.find(step => step.status === 'current')?.id ?? 1;
+const DEFAULT_ACTIVE_STEP = 3;
 
 function getDesktopSidebarStatus(stepId: number, activeStepId: number): StepStatus {
   if (stepId <= 2) return 'completed';
@@ -232,10 +103,39 @@ function SidebarBadge({ step, status }: { step: Step; status: StepStatus }) {
 }
 
 export default function HowToStart() {
+  const t = useTranslations('account');
   const [activeStepId, setActiveStepId] = useState(DEFAULT_ACTIVE_STEP);
   const sidebarButtonRefs = useRef(new Map<number, HTMLButtonElement>());
   const isProgrammaticScroll = useRef(false);
   const lastSyncedStepId = useRef(DEFAULT_ACTIVE_STEP);
+
+  const steps: Step[] = useMemo(
+    () =>
+      STEP_DEFS.map(def => {
+        const sk = `hts.s${def.id}` as const;
+        return {
+          id: def.id,
+          status: def.status,
+          image: def.image,
+          navLabel: t(`${sk}.nav` as Parameters<typeof t>[0]),
+          title: t(`${sk}.title` as Parameters<typeof t>[0]),
+          titleDesktop: def.hasTitleDesktop
+            ? t(`${sk}.titleDesktop` as Parameters<typeof t>[0])
+            : undefined,
+          description: t(`${sk}.descMobile` as Parameters<typeof t>[0]),
+          descriptionDesktop: t(`${sk}.descDesktop` as Parameters<typeof t>[0]),
+          bullets: t.raw(`${sk}.bullets` as Parameters<typeof t>[0]) as string[],
+          bulletsDesktop: t.raw(`${sk}.bulletsDesktop` as Parameters<typeof t>[0]) as string[],
+          callout: def.hasCallout
+            ? t(`${sk}.callout` as Parameters<typeof t>[0])
+            : undefined,
+          calloutDesktop: def.hasCallout
+            ? t(`${sk}.calloutDesktop` as Parameters<typeof t>[0])
+            : undefined,
+        };
+      }),
+    [t],
+  );
 
   const scrollToStep = useCallback((id: number) => {
     setActiveStepId(id);
@@ -262,9 +162,9 @@ export default function HowToStart() {
         getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
       );
       const marker = (Number.isFinite(headerHeight) ? headerHeight : 72) + 40;
-      let nextActiveStep = STEPS[0].id;
+      let nextActiveStep = steps[0].id;
 
-      for (const step of STEPS) {
+      for (const step of steps) {
         const element = document.getElementById(`how-to-start-step-${step.id}`);
         if (!element) continue;
 
@@ -302,29 +202,23 @@ export default function HowToStart() {
       window.removeEventListener('scroll', onScroll);
       mediaQuery.removeEventListener('change', onMediaChange);
     };
-  }, []);
+  }, [steps]);
 
   return (
     <div className={styles.shell}>
       <div className={styles.root}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>How to Start</span>
-          <h1 className={styles.title}>Get started in under 2 minutes</h1>
-          <p className={styles.subtitleMobile}>
-            Quick step-by-step guide for new players. Support chat is one click away if you get
-            stuck.
-          </p>
-          <p className={styles.subtitleDesktop}>
-            A quick step-by-step guide for new players. If you get stuck at any step, the in-app
-            support chat is one click away.
-          </p>
+          <span className={styles.eyebrow}>{t('hts.eyebrow')}</span>
+          <h1 className={styles.title}>{t('hts.title')}</h1>
+          <p className={styles.subtitleMobile}>{t('hts.subtitleMobile')}</p>
+          <p className={styles.subtitleDesktop}>{t('hts.subtitleDesktop')}</p>
         </header>
 
-        <section className={styles.progressCard} aria-label="Your progress">
+        <section className={styles.progressCard} aria-label={t('hts.allDoneLabel')}>
           <div className={styles.progressTop}>
-            <span className={styles.progressLabel}>Your progress</span>
+            <span className={styles.progressLabel}>{t('hts.progressLabel')}</span>
             <span className={styles.progressValue}>
-              {DONE_COUNT} of {TOTAL_STEPS} done
+              {t('hts.progressValue', { done: DONE_COUNT, total: TOTAL_STEPS })}
             </span>
           </div>
           <div
@@ -333,7 +227,7 @@ export default function HowToStart() {
             aria-valuenow={DONE_COUNT}
             aria-valuemin={0}
             aria-valuemax={TOTAL_STEPS}
-            aria-label={`${DONE_COUNT} of ${TOTAL_STEPS} steps completed`}
+            aria-label={t('hts.progressAriaLabel', { done: DONE_COUNT, total: TOTAL_STEPS })}
           >
             <span
               className={styles.progressFill}
@@ -343,10 +237,10 @@ export default function HowToStart() {
         </section>
 
         <div className={styles.body}>
-          <nav className={styles.sidebar} aria-label="Steps">
-            <span className={styles.sidebarLabel}>Steps</span>
+          <nav className={styles.sidebar} aria-label={t('hts.sidebarAriaLabel')}>
+            <span className={styles.sidebarLabel}>{t('hts.sidebarLabel')}</span>
             <ul className={styles.sidebarList}>
-              {STEPS.map(step => {
+              {steps.map(step => {
                 const sidebarStatus = getDesktopSidebarStatus(step.id, activeStepId);
 
                 return (
@@ -382,7 +276,7 @@ export default function HowToStart() {
 
           <div className={styles.content}>
             <ol className={styles.steps}>
-              {STEPS.map(step => (
+              {steps.map(step => (
                 <li
                   key={step.id}
                   id={`how-to-start-step-${step.id}`}
@@ -431,7 +325,7 @@ export default function HowToStart() {
                     <div className={styles.stepMedia}>
                       <Image
                         src={step.image}
-                        alt="Minecraft download illustration"
+                        alt={t('hts.downloadIllustrationAlt')}
                         fill
                         className={styles.stepImage}
                         sizes="(min-width: 1024px) 50vw, 0px"
@@ -450,22 +344,22 @@ export default function HowToStart() {
               ))}
             </ol>
 
-            <section className={styles.doneCard} aria-label="All steps complete">
+            <section className={styles.doneCard} aria-label={t('hts.allDoneLabel')}>
               <div className={styles.doneMain}>
                 <span className={styles.doneIcon} aria-hidden="true">
                   ✓
                 </span>
                 <div className={styles.doneCopy}>
-                  <h2 className={styles.doneTitle}>All set — welcome aboard.</h2>
-                  <p className={styles.doneText}>Need help? The support chat is one click away.</p>
+                  <h2 className={styles.doneTitle}>{t('hts.doneTitle')}</h2>
+                  <p className={styles.doneText}>{t('hts.doneText')}</p>
                 </div>
               </div>
               <div className={styles.doneActions}>
                 <Link href="/faq" className={styles.doneButtonPrimary}>
-                  Open support
+                  {t('hts.openSupport')}
                 </Link>
                 <Link href="/dashboard" className={styles.doneButtonSecondary}>
-                  Go to dashboard
+                  {t('hts.goToDashboard')}
                 </Link>
               </div>
             </section>

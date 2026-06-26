@@ -1,7 +1,10 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import styles from './CalmSkyHeader.module.css';
 
 export default function CalmSkyHeader() {
+  const t = useTranslations('servers');
+
   return (
     <div className={styles.banner}>
       <Image
@@ -15,12 +18,12 @@ export default function CalmSkyHeader() {
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
         <span className={styles.tag}>
-          PEACEFUL&nbsp;&nbsp;•&nbsp;&nbsp;BUILDING&nbsp;&nbsp;•&nbsp;&nbsp;CREATIVE
+          {t('calmsky.headerTag')}
         </span>
         <h2 className={styles.title}>CalmSky</h2>
         <p className={styles.description}>
-          A relaxed, peaceful server for building, exploring and enjoying Minecraft
-          <span className={styles.descriptionDesktop}> at your own pace</span>.
+          {t('calmsky.headerDescStart')}
+          <span className={styles.descriptionDesktop}>{t('calmsky.headerDescDesktopSuffix')}</span>.
         </p>
       </div>
     </div>

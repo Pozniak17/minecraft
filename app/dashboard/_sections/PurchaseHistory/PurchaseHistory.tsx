@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { getOrders, downloadOrderBill, openOrderBill, orderHasBill } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
@@ -55,14 +55,13 @@ function mapOrder(order: OrderListItem, meta: Map<string, ProductMeta>): Order {
   };
 }
 
-const PERIODS = ['Last 90 days', 'Last 30 days', 'Last 7 days', 'All time'] as const;
+const PERIOD_KEYS = ['last90', 'last30', 'last7', 'allTime'] as const;
+type PeriodKey = (typeof PERIOD_KEYS)[number];
 
-type Period = (typeof PERIODS)[number];
-
-const PERIOD_DAYS: Record<Exclude<Period, 'All time'>, number> = {
-  'Last 7 days': 7,
-  'Last 30 days': 30,
-  'Last 90 days': 90,
+const PERIOD_DAYS: Record<Exclude<PeriodKey, 'allTime'>, number> = {
+  last7: 7,
+  last30: 30,
+  last90: 90,
 };
 
 function getOrderTimestamp(order: OrderListItem): number {
@@ -72,19 +71,13 @@ function getOrderTimestamp(order: OrderListItem): number {
   return times.length ? Math.max(...times) : 0;
 }
 
-function orderMatchesPeriod(order: OrderListItem, period: Period): boolean {
-  if (period === 'All time') return true;
+function orderMatchesPeriod(order: OrderListItem, period: PeriodKey): boolean {
+  if (period === 'allTime') return true;
   const ts = getOrderTimestamp(order);
   if (!ts) return false;
   const cutoff = Date.now() - PERIOD_DAYS[period] * 24 * 60 * 60 * 1000;
   return ts >= cutoff;
 }
-
-const STATUS_LABEL: Record<OrderStatus, string> = {
-  paid: 'paid',
-  refund: 'refund',
-  failed: 'failed',
-};
 
 function splitDate(date: string) {
   const parts = date.split(' ');
@@ -96,7 +89,8 @@ function splitDate(date: string) {
 
 export default function PurchaseHistory() {
   const locale = useLocale();
-  const [period, setPeriod] = useState<Period>('Last 90 days');
+  const t = useTranslations('account');
+  const [period, setPeriod] = useState<PeriodKey>('last90');
   const [periodOpen, setPeriodOpen] = useState(false);
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
@@ -105,13 +99,26 @@ export default function PurchaseHistory() {
   const [openingId, setOpeningId] = useState<string | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
 
+  const periodLabels: Record<PeriodKey, string> = {
+    last90: t('ph.period.last90'),
+    last30: t('ph.period.last30'),
+    last7: t('ph.period.last7'),
+    allTime: t('ph.period.allTime'),
+  };
+
+  const statusLabels: Record<OrderStatus, string> = {
+    paid: t('ph.status.paid'),
+    refund: t('ph.status.refund'),
+    failed: t('ph.status.failed'),
+  };
+
   async function handleOpenReceipt(orderId: string) {
     setOpeningId(orderId);
     setDownloadError(null);
     try {
       await openOrderBill(orderId);
     } catch (err) {
-      setDownloadError(err instanceof Error ? err.message : 'Could not open receipt.');
+      setDownloadError(err instanceof Error ? err.message : t('ph.error.openFallback'));
     } finally {
       setOpeningId(null);
     }
@@ -123,7 +130,7 @@ export default function PurchaseHistory() {
     try {
       await downloadOrderBill(orderId);
     } catch (err) {
-      setDownloadError(err instanceof Error ? err.message : 'Could not download receipt.');
+      setDownloadError(err instanceof Error ? err.message : t('ph.error.downloadFallback'));
     } finally {
       setDownloadingId(null);
     }
@@ -197,31 +204,31 @@ export default function PurchaseHistory() {
 
     return [
       {
-        labelMobile: 'Orders',
-        labelDesktop: 'Orders',
+        labelMobile: t('ph.stat.ordersMobile'),
+        labelDesktop: t('ph.stat.ordersDesktop'),
         value: nf.format(filteredOrders.length),
         icon: '/profile/purchase_history/1.svg',
       },
       {
-        labelMobile: 'Spent',
-        labelDesktop: 'Total spent',
+        labelMobile: t('ph.stat.spentMobile'),
+        labelDesktop: t('ph.stat.spentDesktop'),
         value: spentFmt.format(spent),
         icon: '/profile/purchase_history/2.svg',
       },
       {
-        labelMobile: 'Crystals',
-        labelDesktop: 'Crystals bought',
+        labelMobile: t('ph.stat.crystalsMobile'),
+        labelDesktop: t('ph.stat.crystalsDesktop'),
         value: nf.format(crystals),
         icon: '/profile/purchase_history/3.svg',
       },
       {
-        labelMobile: 'Privileges',
-        labelDesktop: 'Privileges',
+        labelMobile: t('ph.stat.privilegesMobile'),
+        labelDesktop: t('ph.stat.privilegesDesktop'),
         value: nf.format(privileges),
         icon: '/profile/purchase_history/4.svg',
       },
     ];
-  }, [filteredOrders, productMeta]);
+  }, [filteredOrders, productMeta, t]);
 
   const hasNoOrders = loaded && rawOrders.length === 0;
   const hasNoOrdersInPeriod = loaded && rawOrders.length > 0 && orders.length === 0;
@@ -236,26 +243,26 @@ export default function PurchaseHistory() {
         aria-haspopup="listbox"
       >
         <span className={styles.periodLabel}>
-          <span className={styles.periodPrefix}>Period:</span>
-          <span className={styles.periodValue}>{period}</span>
+          <span className={styles.periodPrefix}>{t('ph.periodPrefix')}</span>
+          <span className={styles.periodValue}>{periodLabels[period]}</span>
         </span>
         <span className={styles.periodCaret} aria-hidden>
           ▾
         </span>
       </button>
       {periodOpen && (
-        <ul className={styles.periodMenu} role="listbox" aria-label="Select period">
-          {PERIODS.map(option => (
-            <li key={option} role="option" aria-selected={period === option}>
+        <ul className={styles.periodMenu} role="listbox" aria-label={t('ph.periodMenuLabel')}>
+          {PERIOD_KEYS.map(key => (
+            <li key={key} role="option" aria-selected={period === key}>
               <button
                 type="button"
                 className={styles.periodOption}
                 onClick={() => {
-                  setPeriod(option);
+                  setPeriod(key);
                   setPeriodOpen(false);
                 }}
               >
-                {option}
+                {periodLabels[key]}
               </button>
             </li>
           ))}
@@ -269,11 +276,9 @@ export default function PurchaseHistory() {
       <div className={styles.root}>
         <header className={styles.header}>
           <div className={styles.headerMain}>
-            <span className={styles.eyebrow}>History</span>
-            <h1 className={styles.title}>Purchase history</h1>
-            <p className={styles.subtitle}>
-              Every order across every server. Open or download receipts any time.
-            </p>
+            <span className={styles.eyebrow}>{t('ph.eyebrow')}</span>
+            <h1 className={styles.title}>{t('ph.title')}</h1>
+            <p className={styles.subtitle}>{t('ph.subtitle')}</p>
           </div>
           <div className={styles.toolbar}>
             {periodControl}
@@ -308,23 +313,19 @@ export default function PurchaseHistory() {
         </div>
 
         {!loaded ? (
-          <p className={styles.stateNote}>Loading your orders…</p>
+          <p className={styles.stateNote}>{t('ph.loading')}</p>
         ) : hasNoOrders ? (
           <div className={styles.emptyState}>
-            <p className={styles.emptyTitle}>No orders yet</p>
-            <p className={styles.emptyText}>
-              Your purchases will appear here once you complete your first order.
-            </p>
+            <p className={styles.emptyTitle}>{t('ph.empty.title')}</p>
+            <p className={styles.emptyText}>{t('ph.empty.text')}</p>
             <Link href="/dashboard/shop" className={styles.emptyCta}>
-              Go to shop →
+              {t('ph.empty.cta')}
             </Link>
           </div>
         ) : hasNoOrdersInPeriod ? (
           <div className={styles.emptyState}>
-            <p className={styles.emptyTitle}>No orders in this period</p>
-            <p className={styles.emptyText}>
-              Try a longer period or choose &ldquo;All time&rdquo; to see your full history.
-            </p>
+            <p className={styles.emptyTitle}>{t('ph.emptyPeriod.title')}</p>
+            <p className={styles.emptyText}>{t('ph.emptyPeriod.text')}</p>
           </div>
         ) : (
           <>
@@ -341,7 +342,7 @@ export default function PurchaseHistory() {
                     <div className={styles.orderTotal}>
                       <p className={styles.orderPrice}>{order.total}</p>
                       <span className={`${styles.statusBadge} ${styles[`status_${order.status}`]}`}>
-                        {STATUS_LABEL[order.status]}
+                        {statusLabels[order.status]}
                       </span>
                     </div>
                   </div>
@@ -362,7 +363,7 @@ export default function PurchaseHistory() {
                       disabled={!order.hasBill || openingId === order.id || downloadingId === order.id}
                       onClick={() => handleOpenReceipt(order.id)}
                     >
-                      {openingId === order.id ? 'Opening…' : 'Open'}
+                      {openingId === order.id ? t('ph.btn.opening') : t('ph.btn.open')}
                     </button>
                     <button
                       type="button"
@@ -370,7 +371,7 @@ export default function PurchaseHistory() {
                       disabled={!order.hasBill || downloadingId === order.id || openingId === order.id}
                       onClick={() => handleDownloadReceipt(order.id)}
                     >
-                      <span>{downloadingId === order.id ? 'Downloading…' : 'Receipt'}</span>
+                      <span>{downloadingId === order.id ? t('ph.btn.downloading') : t('ph.btn.receipt')}</span>
                       <Image
                         src="/profile/purchase_history/5.svg"
                         alt=""
@@ -385,28 +386,28 @@ export default function PurchaseHistory() {
               ))}
             </ul>
 
-            <div className={styles.table} role="table" aria-label="Purchase history">
+            <div className={styles.table} role="table" aria-label={t('ph.table.ariaLabel')}>
               <div className={styles.tableHead} role="row">
                 <span className={styles.colDate} role="columnheader">
-                  Date
+                  {t('ph.col.date')}
                 </span>
                 <span className={styles.colItems} role="columnheader">
-                  Items
+                  {t('ph.col.items')}
                 </span>
                 <span className={styles.colServer} role="columnheader">
-                  Server
+                  {t('ph.col.server')}
                 </span>
                 <span className={styles.colNickname} role="columnheader">
-                  Nickname
+                  {t('ph.col.nickname')}
                 </span>
                 <span className={styles.colAmount} role="columnheader">
-                  Amount
+                  {t('ph.col.amount')}
                 </span>
                 <span className={styles.colStatus} role="columnheader">
-                  Status
+                  {t('ph.col.status')}
                 </span>
                 <span className={styles.colReceipt} role="columnheader">
-                  Receipt
+                  {t('ph.col.receipt')}
                 </span>
               </div>
 
@@ -443,7 +444,7 @@ export default function PurchaseHistory() {
                         className={`${styles.statusBadge} ${styles.statusBadgeDot} ${styles[`status_${order.status}`]}`}
                       >
                         <span className={styles.statusDot} aria-hidden />
-                        {STATUS_LABEL[order.status]}
+                        {statusLabels[order.status]}
                       </span>
                     </div>
                     <div className={styles.colReceipt} role="cell">
@@ -454,12 +455,12 @@ export default function PurchaseHistory() {
                           disabled={!order.hasBill || openingId === order.id || downloadingId === order.id}
                           onClick={() => handleOpenReceipt(order.id)}
                         >
-                          {openingId === order.id ? 'Opening…' : 'Open'}
+                          {openingId === order.id ? t('ph.btn.opening') : t('ph.btn.open')}
                         </button>
                         <button
                           type="button"
                           className={styles.tableReceiptBtn}
-                          aria-label="Download receipt"
+                          aria-label={t('ph.btn.downloadAriaLabel')}
                           disabled={!order.hasBill || downloadingId === order.id || openingId === order.id}
                           onClick={() => handleDownloadReceipt(order.id)}
                         >

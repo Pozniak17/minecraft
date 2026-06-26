@@ -4,6 +4,7 @@ import { isAxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { register as registerUser, sendEmailCode } from '@/lib/api/auth';
 import { initSeon, getSeonSession } from '@/lib/client/seon';
 import styles from './RegistrationForm.module.css';
@@ -31,10 +32,11 @@ function mapApiErrors(data: unknown): { fields: FieldErrors; general: string | n
   return { fields, general };
 }
 
+type StrengthKey = 'weak' | 'fair' | 'okay' | 'strong';
+
 type PasswordStrength = {
   filledBars: number;
-  label: string;
-  hint: string;
+  key: StrengthKey;
   color: string;
 };
 
@@ -47,40 +49,25 @@ function getPasswordStrength(password: string): PasswordStrength | null {
   if (/[a-z]/.test(password) && /[A-Z]/.test(password)) points++;
   if (/[^a-zA-Z0-9]/.test(password)) points++;
 
-  if (points <= 1) {
-    return {
-      filledBars: 1,
-      label: 'Weak',
-      hint: 'Use at least 8 characters.',
-      color: '#ff6b6b',
-    };
-  }
-
-  if (points === 2) {
-    return {
-      filledBars: 2,
-      label: 'Fair',
-      hint: 'Add a number or uppercase letter.',
-      color: '#ffb347',
-    };
-  }
-
-  if (points === 3) {
-    return {
-      filledBars: 3,
-      label: 'Okay',
-      hint: 'Good — try adding a symbol.',
-      color: '#ffb347',
-    };
-  }
-
-  return {
-    filledBars: 4,
-    label: 'Strong',
-    hint: 'Great password!',
-    color: '#bde153',
-  };
+  if (points <= 1) return { filledBars: 1, key: 'weak', color: '#ff6b6b' };
+  if (points === 2) return { filledBars: 2, key: 'fair', color: '#ffb347' };
+  if (points === 3) return { filledBars: 3, key: 'okay', color: '#ffb347' };
+  return { filledBars: 4, key: 'strong', color: '#bde153' };
 }
+
+const STRENGTH_KEY_TO_LABEL: Record<StrengthKey, string> = {
+  weak: 'register.strengthWeak',
+  fair: 'register.strengthFair',
+  okay: 'register.strengthOkay',
+  strong: 'register.strengthStrong',
+};
+
+const STRENGTH_KEY_TO_HINT: Record<StrengthKey, string> = {
+  weak: 'register.strengthWeakHint',
+  fair: 'register.strengthFairHint',
+  okay: 'register.strengthOkayHint',
+  strong: 'register.strengthStrongHint',
+};
 
 function EyeIcon({ open }: { open: boolean }) {
   return open ? (
@@ -116,13 +103,8 @@ function EyeIcon({ open }: { open: boolean }) {
   );
 }
 
-const STATS = [
-  { value: '12,000+', label: 'active players' },
-  { value: '4.8/5', label: 'community rating' },
-  { value: '24/7', label: 'support' },
-] as const;
-
 export default function RegistrationForm() {
+  const t = useTranslations('auth');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -139,6 +121,12 @@ export default function RegistrationForm() {
 
   const passwordStrength = useMemo(() => getPasswordStrength(password), [password]);
 
+  const STATS = [
+    { value: '12,000+', label: t('register.statActivePlayers') },
+    { value: '4.8/5', label: t('register.statCommunityRating') },
+    { value: '24/7', label: t('register.statSupport') },
+  ];
+
   useEffect(() => {
     // Стартуємо SEON-агент на відкритті форми (поведінковий аналіз для антифроду).
     initSeon();
@@ -150,9 +138,9 @@ export default function RegistrationForm() {
     setFieldErrors({});
 
     const errors: FieldErrors = {};
-    if (!email.trim()) errors.email = 'Email is required.';
+    if (!email.trim()) errors.email = t('register.errorEmailRequired');
     if (password.length < 4 || password.length > 24) {
-      errors.password = 'Password must be 4–24 characters.';
+      errors.password = t('register.errorPasswordLength');
     }
 
     if (Object.keys(errors).length > 0) {
@@ -160,11 +148,11 @@ export default function RegistrationForm() {
       return;
     }
     if (confirmPassword !== password) {
-      setFormError('Passwords do not match.');
+      setFormError(t('register.errorPasswordMatch'));
       return;
     }
     if (!agreed) {
-      setFormError('Please accept the Terms of Service and Privacy Policy.');
+      setFormError(t('register.errorTerms'));
       return;
     }
 
@@ -186,9 +174,9 @@ export default function RegistrationForm() {
       if (isAxiosError(err)) {
         const { fields, general } = mapApiErrors(err.response?.data);
         setFieldErrors(fields);
-        setFormError(general ?? 'Something went wrong. Please try again.');
+        setFormError(general ?? t('register.errorGeneral'));
       } else {
-        setFormError('Network error. Please try again.');
+        setFormError(t('register.errorNetwork'));
       }
     }
   }
@@ -200,7 +188,7 @@ export default function RegistrationForm() {
       await sendEmailCode({ email: email.trim() });
       setResent(true);
     } catch {
-      setFormError('Could not resend the email. Please try again later.');
+      setFormError(t('register.errorResend'));
     } finally {
       setResending(false);
     }
@@ -224,50 +212,44 @@ export default function RegistrationForm() {
               <span className={styles.backArrow} aria-hidden="true">
                 ←
               </span>
-              Back to home
+              {t('register.backToHome')}
             </Link>
           </div>
 
           {status === 'success' ? (
             <div className={styles.success}>
               <div className={styles.head}>
-                <h1 className={styles.title}>Check your email</h1>
+                <h1 className={styles.title}>{t('register.successTitle')}</h1>
                 <p className={styles.subtitle}>
-                  We sent a verification link to{' '}
-                  <span className={styles.successEmail}>{email}</span>. Open it to activate your
-                  account, then sign in.
+                  {t('register.successSubtitle', { email })}
                 </p>
               </div>
 
               {formError && <p className={styles.formError}>{formError}</p>}
 
               <Link href="/login" className={styles.successCta}>
-                Go to login
+                {t('register.successCta')}
               </Link>
 
               <p className={styles.footerLink}>
-                <span>Didn&apos;t get the email?</span>
+                <span>{t('register.didntGet')}</span>
                 <button
                   type="button"
                   className={styles.linkButton}
                   onClick={handleResend}
                   disabled={resending}
                 >
-                  {resending ? 'Sending…' : resent ? 'Sent again' : 'Resend email'}
+                  {resending ? t('register.sending') : resent ? t('register.sentAgain') : t('register.resendEmail')}
                 </button>
               </p>
             </div>
           ) : (
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
               <div className={styles.head}>
-                <h1 className={styles.title}>Create your account</h1>
+                <h1 className={styles.title}>{t('register.title')}</h1>
                 <p className={styles.subtitle}>
-                  <span className={styles.subtitleMobile}>
-                    Join 12,000+ players. Takes under a minute.
-                  </span>
-                  <span className={styles.subtitleDesktop}>
-                    Join 12,000+ players already in the ecosystem. Free, takes under a minute.
-                  </span>
+                  <span className={styles.subtitleMobile}>{t('register.subtitleMobile')}</span>
+                  <span className={styles.subtitleDesktop}>{t('register.subtitleDesktop')}</span>
                 </p>
               </div>
 
@@ -275,14 +257,14 @@ export default function RegistrationForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="register-email">
-                  Email address
+                  {t('register.emailLabel')}
                 </label>
                 <input
                   id="register-email"
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder={t('register.emailPlaceholder')}
                   className={[styles.input, fieldErrors.email && styles.inputError]
                     .filter(Boolean)
                     .join(' ')}
@@ -297,7 +279,7 @@ export default function RegistrationForm() {
 
               <div className={styles.passwordField}>
                 <label className={styles.label} htmlFor="register-password">
-                  Password
+                  {t('register.passwordLabel')}
                 </label>
                 <div className={styles.inputWrap}>
                   <input
@@ -305,7 +287,7 @@ export default function RegistrationForm() {
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
-                    placeholder="Strong password"
+                    placeholder={t('register.passwordPlaceholder')}
                     className={[
                       styles.input,
                       styles.inputWithToggle,
@@ -324,7 +306,7 @@ export default function RegistrationForm() {
                     type="button"
                     className={styles.toggle}
                     onClick={() => setShowPassword(value => !value)}
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-label={showPassword ? t('register.hidePassword') : t('register.showPassword')}
                     aria-pressed={showPassword}
                     tabIndex={-1}
                   >
@@ -356,9 +338,11 @@ export default function RegistrationForm() {
                         className={styles.strengthLabel}
                         style={{ color: passwordStrength.color }}
                       >
-                        {passwordStrength.label}
+                        {t(STRENGTH_KEY_TO_LABEL[passwordStrength.key])}
                       </span>
-                      <span className={styles.strengthHint}>{passwordStrength.hint}</span>
+                      <span className={styles.strengthHint}>
+                        {t(STRENGTH_KEY_TO_HINT[passwordStrength.key])}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -366,7 +350,7 @@ export default function RegistrationForm() {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="register-confirm-password">
-                  Confirm password
+                  {t('register.confirmPasswordLabel')}
                 </label>
                 <div className={styles.inputWrap}>
                   <input
@@ -374,7 +358,7 @@ export default function RegistrationForm() {
                     name="confirmPassword"
                     type={showConfirm ? 'text' : 'password'}
                     autoComplete="new-password"
-                    placeholder="Repeat your password"
+                    placeholder={t('register.confirmPasswordPlaceholder')}
                     className={`${styles.input} ${styles.inputWithToggle}`}
                     minLength={4}
                     maxLength={24}
@@ -386,7 +370,7 @@ export default function RegistrationForm() {
                     type="button"
                     className={styles.toggle}
                     onClick={() => setShowConfirm(value => !value)}
-                    aria-label={showConfirm ? 'Hide password' : 'Show password'}
+                    aria-label={showConfirm ? t('register.hidePassword') : t('register.showPassword')}
                     aria-pressed={showConfirm}
                     tabIndex={-1}
                   >
@@ -405,13 +389,13 @@ export default function RegistrationForm() {
                 />
                 <span className={styles.checkboxBox} aria-hidden="true" />
                 <span className={styles.checkboxText}>
-                  I agree to the{' '}
+                  {t('register.agreeTermsPrefix')}{' '}
                   <Link href="/terms" className={styles.checkboxLink}>
-                    Terms of Service
+                    {t('register.termsOfService')}
                   </Link>{' '}
-                  and{' '}
+                  {t('register.agreeTermsAnd')}{' '}
                   <Link href="/privacy-policy" className={styles.checkboxLink}>
-                    Privacy Policy
+                    {t('register.privacyPolicy')}
                   </Link>
                 </span>
               </label>
@@ -421,20 +405,20 @@ export default function RegistrationForm() {
                 className={styles.submit}
                 disabled={status === 'submitting'}
               >
-                {status === 'submitting' ? 'Creating account…' : 'Create account'}
+                {status === 'submitting' ? t('register.submitting') : t('register.submit')}
               </button>
 
               <div className={styles.loginBlock}>
                 <div className={styles.divider} role="presentation">
                   <span className={styles.dividerLine} />
-                  <span className={styles.dividerLabel}>Already a member</span>
+                  <span className={styles.dividerLabel}>{t('register.divider')}</span>
                   <span className={styles.dividerLine} />
                 </div>
 
                 <p className={styles.footerLink}>
-                  <span>Already have an account?</span>
+                  <span>{t('register.alreadyAccount')}</span>
                   <Link href="/login" className={styles.loginLink}>
-                    Log in →
+                    {t('register.loginLink')}
                   </Link>
                 </p>
               </div>
@@ -442,9 +426,9 @@ export default function RegistrationForm() {
           )}
 
           <p className={styles.helpFoot}>
-            Need help signing up?{' '}
+            {t('register.needHelp')}{' '}
             <Link href="/faq" className={styles.supportLink}>
-              Contact support
+              {t('register.contactSupport')}
             </Link>
           </p>
         </div>

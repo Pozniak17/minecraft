@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslations } from 'next-intl';
+import { COUNTRY_KEYS } from '@/lib/data/countries';
 import styles from './CountrySelect.module.css';
 
 type CountrySelectProps = {
@@ -44,6 +46,8 @@ function getMenuPosition(trigger: HTMLElement): MenuPosition {
 }
 
 export default function CountrySelect({ id, value, countries, onChange }: CountrySelectProps) {
+  const t = useTranslations('settings');
+
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [menuPosition, setMenuPosition] = useState<MenuPosition | null>(null);
@@ -51,21 +55,29 @@ export default function CountrySelect({ id, value, countries, onChange }: Countr
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
 
+  const getCountryLabel = useCallback(
+    (name: string) => {
+      const key = COUNTRY_KEYS[name];
+      return key ? t(`countries.${key}`) : name;
+    },
+    [t],
+  );
+
   const options = useMemo(() => {
-    const items = [{ value: '', label: 'Not set' }];
+    const items = [{ value: '', label: t('countryNotSet') }];
 
     if (value && !countries.includes(value)) {
       items.push({ value, label: value });
     }
 
     for (const country of countries) {
-      items.push({ value: country, label: country });
+      items.push({ value: country, label: getCountryLabel(country) });
     }
 
     return items;
-  }, [countries, value]);
+  }, [countries, value, t, getCountryLabel]);
 
-  const displayLabel = value || 'Not set';
+  const displayLabel = value ? getCountryLabel(value) : t('countryNotSet');
 
   const updateMenuPosition = useCallback(() => {
     const trigger = triggerRef.current;

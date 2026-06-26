@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "G\u0142\u00f3wna",
+    "servers": "Serwery",
+    "store": "Sklep",
+    "howToStart": "Jak zacz\u0105\u0107",
+    "blog": "Blog",
+    "about": "O nas",
+    "faq": "FAQ"
+  },
+  "legal": {
+    "privacy": "Prywatno\u015b\u0107",
+    "terms": "Regulamin",
+    "cookies": "Cookies"
+  },
+  "shared": {
+    "logoAlt": "Logo gry Minecraft",
+    "openMenu": "Otw\u00f3rz menu",
+    "closeMenu": "Zamknij menu",
+    "mainNav": "G\u0142\u00f3wna nawigacja",
+    "browseSite": "Przegl\u0105daj witryn\u0119",
+    "myWorkspace": "M\u00f3j obszar",
+    "settings": "Ustawienia",
+    "logOut": "Wyloguj si\u0119",
+    "loggingOut": "Wylogowywanie\u2026",
+    "soon": "Wkr\u00f3tce",
+    "profileAlt": "Profil"
+  },
+  "header": {
+    "goToDashboard": "Przejd\u017a do panelu",
+    "logIn": "Zaloguj si\u0119",
+    "signUp": "Zarejestruj si\u0119"
+  },
+  "mobileNav": {
+    "mobileNavLabel": "Nawigacja mobilna",
+    "logIn": "Zaloguj si\u0119",
+    "signUp": "Zarejestruj si\u0119",
+    "serversOnline": "Serwery online \u2014 2 z 3",
+    "playersOnline": "212 graczy eksploruje teraz",
+    "community": "Spo\u0142eczno\u015b\u0107"
+  },
+  "footer": {
+    "description": "Nowoczesny ekosystem Minecraft ze stabilnymi serwerami, sprawiedliw\u0105 rozgrywk\u0105 i aktywn\u0105 spo\u0142eczno\u015bci\u0105.",
+    "mainTitle": "Menu",
+    "supportTitle": "Wsparcie",
+    "contacts": "Kontakt",
+    "howToStartPlaying": "Jak zacz\u0105\u0107 gra\u0107",
+    "privacyPolicy": "Polityka prywatno\u015bci",
+    "cookiePolicy": "Polityka cookies",
+    "termsAndConditions": "Regulamin",
+    "copyright": "\u00a9 2026 Adventures in Minecraft. Wszelkie prawa zastrze\u017cone."
+  },
+  "dash": {
+    "dashboard": "Panel",
+    "shop": "Sklep",
+    "servers": "Serwery",
+    "cart": "Koszyk",
+    "history": "Historia zakup\u00f3w",
+    "top": "Top / Rankingi",
+    "tournaments": "Turnieje",
+    "howToStart": "Jak zacz\u0105\u0107"
+  },
+  "dashNav": {
+    "dashboardNav": "Nawigacja panelu",
+    "dashboardHome": "Strona g\u0142\u00f3wna panelu",
+    "topUpCrystals": "Do\u0142aduj kryszta\u0142y"
+  },
+  "cookie": {
+    "ariaLabel": "Zgoda na pliki cookie",
+    "title": "U\u017cywamy plik\u00f3w cookie",
+    "text": "U\u017cywamy plik\u00f3w cookie, aby utrzyma\u0107 Ci\u0119 zalogowanym, zabezpieczy\u0107 sesj\u0119 i ulepszy\u0107 Twoje do\u015bwiadczenia. Wi\u0119cej informacji w naszej <link>Polityce cookies</link>.",
+    "reject": "Odrzu\u0107",
+    "accept": "Akceptuj wszystkie"
+  },
+  "lang": {
+    "changeLanguage": "Zmie\u0144 j\u0119zyk"
+  },
+  "breadcrumb": {
+    "ariaLabel": "\u015acie\u017cka nawigacji"
+  },
+  "logout": {
+    "closeDialog": "Zamknij okno dialogowe",
+    "title": "Wylogowa\u0107 si\u0119 z konta?",
+    "descMobile": "B\u0119dziesz musia\u0142 zalogowa\u0107 si\u0119 ponownie. Sesje w grze pozostaj\u0105 bez zmian.",
+    "descDesktop": "B\u0119dziesz musia\u0142 zalogowa\u0107 si\u0119 ponownie, aby uzyska\u0107 dost\u0119p do panelu, koszyka i aktywnych przywilej\u00f3w. Aktywne sesje w grze pozostaj\u0105 bez zmian.",
+    "signedInAs": "Zalogowany jako",
+    "cancel": "Anuluj",
+    "autoExpire": "Sesje wygasaj\u0105 automatycznie po 30 dniach"
+  }
+}

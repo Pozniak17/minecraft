@@ -1,0 +1,138 @@
+{
+  "lastUpdatedLabel": "Ostatnia aktualizacja",
+  "privacy": {
+    "badge": "Dokumenty prawne",
+    "title": "Polityka prywatności",
+    "lastUpdated": "18 czerwca 2026",
+    "intro": "Niniejsza Polityka prywatności wyjaśnia, w jaki sposób Adventures in Minecraft gromadzi, wykorzystuje i chroni dane osobowe, które podajesz podczas korzystania z naszej strony internetowej i serwerów gry.",
+    "sections": [
+      {
+        "heading": "Gromadzone informacje",
+        "paragraphs": [
+          "Zbieramy informacje, które nam bezpośrednio przekazujesz, takie jak nazwa użytkownika, adres e-mail i hasło podczas tworzenia konta.",
+          "Automatycznie gromadzimy również dane techniczne, w tym adres IP, informacje o urządzeniu, typ przeglądarki oraz aktywność w grze, w celu świadczenia i zabezpieczania naszych usług."
+        ]
+      },
+      {
+        "heading": "Wykorzystanie Twoich informacji",
+        "paragraphs": [
+          "Wykorzystujemy Twoje informacje do świadczenia i utrzymywania naszych usług, uwierzytelniania konta, przetwarzania płatności, zapobiegania nadużyciom i oszustwom oraz komunikowania ważnych aktualizacji.",
+          "Możemy wykorzystywać zagregowane, zanonimizowane dane w celu analizy sposobu, w jaki gracze korzystają z naszych serwerów, oraz poprawy jakości rozgrywki i wydajności."
+        ]
+      },
+      {
+        "heading": "Udostępnianie informacji",
+        "paragraphs": [
+          "Nie sprzedajemy Twoich danych osobowych. Możemy udostępniać dane zaufanym dostawcom usług, którzy pomagają nam prowadzić naszą platformę, a także gdy jest to wymagane przez prawo."
+        ]
+      },
+      {
+        "heading": "Przechowywanie danych",
+        "paragraphs": [
+          "Przechowujemy Twoje dane osobowe przez cały okres aktywności Twojego konta lub przez czas niezbędny do świadczenia naszych usług i wypełnienia obowiązków prawnych."
+        ]
+      },
+      {
+        "heading": "Twoje prawa",
+        "paragraphs": [
+          "W zależności od miejsca zamieszkania możesz mieć prawo do dostępu do swoich danych osobowych, ich poprawiania lub usunięcia, a także do sprzeciwienia się określonym operacjom przetwarzania lub ich ograniczenia.",
+          "Aby skorzystać z któregokolwiek z tych praw, skontaktuj się z naszym zespołem wsparcia za pośrednictwem kanałów wskazanych na stronie Kontakt."
+        ]
+      },
+      {
+        "heading": "Kontakt",
+        "paragraphs": [
+          "Jeśli masz pytania dotyczące niniejszej Polityki prywatności lub sposobu przetwarzania Twoich danych, skontaktuj się z nami przez Discord lub nasz adres e-mail wsparcia."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "badge": "Dokumenty prawne",
+    "title": "Regulamin",
+    "lastUpdated": "18 czerwca 2026",
+    "intro": "Niniejszy Regulamin określa zasady dostępu do witryny internetowej, serwerów gry i powiązanych usług Adventures in Minecraft oraz korzystania z nich. Korzystając z naszych usług, akceptujesz niniejszy Regulamin.",
+    "sections": [
+      {
+        "heading": "Akceptacja Regulaminu",
+        "paragraphs": [
+          "Tworząc konto lub korzystając z naszych usług w jakikolwiek inny sposób, potwierdzasz, że akceptujesz niniejszy Regulamin i zobowiązujesz się do jego przestrzegania.",
+          "Jeśli nie zgadzasz się z jakąkolwiek częścią Regulaminu, nie możesz korzystać z naszych usług."
+        ]
+      },
+      {
+        "heading": "Konta i uprawnienia",
+        "paragraphs": [
+          "Jesteś odpowiedzialny za zachowanie poufności danych logowania do swojego konta oraz za wszelkie działania podejmowane na tym koncie.",
+          "Przy rejestracji musisz podać prawdziwe informacje i utrzymywać je w aktualnym stanie."
+        ]
+      },
+      {
+        "heading": "Dozwolone korzystanie",
+        "paragraphs": [
+          "Zobowiązujesz się nie oszukiwać, nie wykorzystywać błędów w grze, nie używać nieautoryzowanego oprogramowania firm trzecich, nie nękać innych graczy ani nie angażować się w działania zakłócające rozgrywkę innych.",
+          "Zastrzegamy sobie prawo do zawieszenia lub usunięcia kont naruszających te zasady."
+        ]
+      },
+      {
+        "heading": "Zakupy i przedmioty wirtualne",
+        "paragraphs": [
+          "Zakupione przedmioty lub usługi w grze są Ci licencjonowane, a nie sprzedawane, i nie mają żadnej realnej wartości pieniężnej.",
+          "Wszystkie zakupy są ostateczne, chyba że obowiązujące przepisy prawa stanowią inaczej."
+        ]
+      },
+      {
+        "heading": "Ograniczenie odpowiedzialności",
+        "paragraphs": [
+          "Nasze usługi są świadczone w stanie „takim, jakim są” i „w miarę dostępności”. W maksymalnym zakresie dopuszczalnym przez prawo nie ponosimy odpowiedzialności za pośrednie ani wynikowe szkody powstałe w wyniku korzystania z naszych usług."
+        ]
+      },
+      {
+        "heading": "Zmiany Regulaminu",
+        "paragraphs": [
+          "Możemy od czasu do czasu aktualizować niniejszy Regulamin. Kontynuowanie korzystania z naszych usług po wejściu w życie zmian oznacza akceptację zaktualizowanego Regulaminu."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "badge": "Dokumenty prawne",
+    "title": "Polityka cookies",
+    "lastUpdated": "18 czerwca 2026",
+    "intro": "Niniejsza Polityka cookies wyjaśnia, czym są pliki cookie, jak Adventures in Minecraft z nich korzysta oraz jakie masz możliwości wyboru w zakresie ich stosowania.",
+    "sections": [
+      {
+        "heading": "Czym są pliki cookie",
+        "paragraphs": [
+          "Pliki cookie to małe pliki tekstowe zapisywane na Twoim urządzeniu podczas odwiedzania strony internetowej. Pomagają witrynie zapamiętać Twoje preferencje i poprawić Twoje doświadczenia."
+        ]
+      },
+      {
+        "heading": "Rodzaje używanych plików cookie",
+        "paragraphs": [
+          "Niezbędne pliki cookie są konieczne do prawidłowego działania witryny, np. do utrzymania sesji logowania i jej zabezpieczenia. Nie można ich wyłączyć.",
+          "Analityczne pliki cookie pomagają nam zrozumieć, jak odwiedzający korzystają z naszej witryny, abyśmy mogli ją ulepszać. Marketingowe pliki cookie mogą być używane do dostarczania trafnych treści i mierzenia skuteczności kampanii."
+        ]
+      },
+      {
+        "heading": "Zarządzanie preferencjami",
+        "paragraphs": [
+          "Przy pierwszej wizycie na naszej stronie możesz wybrać, czy chcesz zaakceptować, czy odrzucić niezbędne pliki cookie za pośrednictwem naszego banera cookies.",
+          "Możesz również zarządzać plikami cookie i usuwać je w dowolnym momencie za pośrednictwem ustawień przeglądarki. Wyłączenie niektórych plików cookie może wpłynąć na funkcjonowanie witryny."
+        ]
+      },
+      {
+        "heading": "Pliki cookie stron trzecich",
+        "paragraphs": [
+          "Niektóre pliki cookie mogą być ustawiane przez zewnętrzne usługi pojawiające się na naszych stronach. Nie kontrolujemy sposobu korzystania z plików cookie przez te podmioty trzecie."
+        ]
+      },
+      {
+        "heading": "Aktualizacje niniejszej Polityki",
+        "paragraphs": [
+          "Możemy okresowo aktualizować niniejszą Politykę cookies, aby odzwierciedlić zmiany technologiczne lub regulacyjne. Zachęcamy do jej regularnego przeglądania, aby pozostawać na bieżąco."
+        ]
+      }
+    ]
+  }
+}

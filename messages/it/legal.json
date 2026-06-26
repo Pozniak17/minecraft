@@ -1,0 +1,138 @@
+{
+  "lastUpdatedLabel": "Ultimo aggiornamento",
+  "privacy": {
+    "badge": "Legale",
+    "title": "Informativa sulla privacy",
+    "lastUpdated": "18 giugno 2026",
+    "intro": "La presente Informativa sulla privacy spiega come Adventures in Minecraft raccoglie, utilizza e protegge le informazioni personali che lei fornisce durante l'utilizzo del nostro sito web e dei nostri server di gioco.",
+    "sections": [
+      {
+        "heading": "Informazioni che raccogliamo",
+        "paragraphs": [
+          "Raccogliamo le informazioni che lei ci fornisce direttamente, come nome utente, indirizzo e-mail e password al momento della creazione dell'account.",
+          "Raccogliamo inoltre automaticamente dati tecnici, tra cui l'indirizzo IP, le informazioni sul dispositivo, il tipo di browser e l'attività di gioco, al fine di gestire e proteggere i nostri servizi."
+        ]
+      },
+      {
+        "heading": "Come utilizziamo le sue informazioni",
+        "paragraphs": [
+          "Utilizziamo le sue informazioni per fornire e mantenere i nostri servizi, autenticare il suo account, elaborare gli acquisti, prevenire frodi e abusi e comunicare aggiornamenti importanti.",
+          "Possiamo utilizzare dati aggregati e anonimizzati per comprendere come i giocatori utilizzano i nostri server e migliorare l'esperienza di gioco e le prestazioni."
+        ]
+      },
+      {
+        "heading": "Condivisione delle informazioni",
+        "paragraphs": [
+          "Non vendiamo le sue informazioni personali. Possiamo condividere i dati con fornitori di servizi di fiducia che ci assistono nella gestione della piattaforma e nei casi previsti dalla legge."
+        ]
+      },
+      {
+        "heading": "Conservazione dei dati",
+        "paragraphs": [
+          "Conserviamo le sue informazioni personali per tutto il tempo in cui il suo account è attivo o per il tempo necessario a fornire i nostri servizi e adempiere ai nostri obblighi legali."
+        ]
+      },
+      {
+        "heading": "I suoi diritti",
+        "paragraphs": [
+          "A seconda della sua ubicazione, lei potrebbe avere il diritto di accedere, correggere o cancellare i propri dati personali e di opporsi a determinati trattamenti o di limitarli.",
+          "Per esercitare tali diritti, la preghiamo di contattare il nostro team di assistenza attraverso i canali indicati nella pagina Contatti."
+        ]
+      },
+      {
+        "heading": "Contattaci",
+        "paragraphs": [
+          "Per qualsiasi domanda relativa alla presente Informativa sulla privacy o alle modalità di trattamento dei suoi dati, la preghiamo di contattarci tramite Discord o la nostra e-mail di supporto."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "badge": "Legale",
+    "title": "Termini e condizioni",
+    "lastUpdated": "18 giugno 2026",
+    "intro": "I presenti Termini e condizioni disciplinano l'accesso e l'utilizzo del sito web, dei server di gioco e dei servizi correlati di Adventures in Minecraft. Utilizzando i nostri servizi, lei accetta i presenti termini.",
+    "sections": [
+      {
+        "heading": "Accettazione dei termini",
+        "paragraphs": [
+          "Creando un account o utilizzando in qualsiasi altro modo i nostri servizi, lei conferma di accettare i presenti Termini e condizioni e di impegnarsi a rispettarli.",
+          "Se non accetta una qualsiasi parte di questi termini, non deve utilizzare i nostri servizi."
+        ]
+      },
+      {
+        "heading": "Account e requisiti di accesso",
+        "paragraphs": [
+          "Lei è responsabile del mantenimento della riservatezza delle credenziali del proprio account e di tutte le attività svolte con lo stesso.",
+          "È tenuto a fornire informazioni accurate al momento della registrazione e a tenerle aggiornate."
+        ]
+      },
+      {
+        "heading": "Uso accettabile",
+        "paragraphs": [
+          "Lei si impegna a non barare, sfruttare bug, utilizzare software di terze parti non autorizzato, molestare altri giocatori o svolgere attività che compromettano l'esperienza di gioco altrui.",
+          "Ci riserviamo il diritto di sospendere o chiudere gli account che violino queste norme."
+        ]
+      },
+      {
+        "heading": "Acquisti e oggetti virtuali",
+        "paragraphs": [
+          "Gli oggetti di gioco o i servizi acquistati vengono concessi in licenza, non venduti, e non hanno alcun valore monetario reale.",
+          "Tutti gli acquisti sono definitivi, salvo diversa disposizione della normativa applicabile."
+        ]
+      },
+      {
+        "heading": "Limitazione di responsabilità",
+        "paragraphs": [
+          "I nostri servizi sono forniti «così come sono» e «secondo disponibilità». Nella misura massima consentita dalla legge, non siamo responsabili per danni indiretti o consequenziali derivanti dall'utilizzo dei nostri servizi."
+        ]
+      },
+      {
+        "heading": "Modifiche ai presenti termini",
+        "paragraphs": [
+          "Potremmo aggiornare i presenti Termini e condizioni periodicamente. Il continuo utilizzo dei nostri servizi dopo l'entrata in vigore delle modifiche costituisce accettazione dei termini aggiornati."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "badge": "Legale",
+    "title": "Informativa sui cookie",
+    "lastUpdated": "18 giugno 2026",
+    "intro": "La presente Informativa sui cookie spiega cosa sono i cookie, come Adventures in Minecraft li utilizza e le scelte a sua disposizione in merito al loro impiego.",
+    "sections": [
+      {
+        "heading": "Cosa sono i cookie",
+        "paragraphs": [
+          "I cookie sono piccoli file di testo memorizzati sul suo dispositivo quando visita un sito web. Consentono al sito di ricordare le sue preferenze e migliorare la sua esperienza."
+        ]
+      },
+      {
+        "heading": "Tipi di cookie che utilizziamo",
+        "paragraphs": [
+          "I cookie necessari sono indispensabili per il funzionamento del sito web, ad esempio per mantenerla connessa e proteggere la sua sessione. Non possono essere disattivati.",
+          "I cookie analitici ci aiutano a capire come i visitatori interagiscono con il nostro sito al fine di migliorarlo. I cookie di marketing possono essere utilizzati per fornire contenuti pertinenti e misurare le prestazioni delle campagne."
+        ]
+      },
+      {
+        "heading": "Gestione delle preferenze",
+        "paragraphs": [
+          "Alla prima visita del nostro sito, lei può scegliere di accettare o rifiutare i cookie non essenziali tramite il nostro banner dei cookie.",
+          "Può inoltre controllare ed eliminare i cookie in qualsiasi momento attraverso le impostazioni del browser. La disattivazione di determinati cookie potrebbe influire sul funzionamento del sito."
+        ]
+      },
+      {
+        "heading": "Cookie di terze parti",
+        "paragraphs": [
+          "Alcuni cookie potrebbero essere impostati da servizi di terze parti presenti sulle nostre pagine. Non controlliamo l'utilizzo dei cookie da parte di tali terze parti."
+        ]
+      },
+      {
+        "heading": "Aggiornamenti della presente informativa",
+        "paragraphs": [
+          "Potremmo aggiornare periodicamente la presente Informativa sui cookie per riflettere i cambiamenti tecnologici o normativi. La invitiamo a consultarla regolarmente per restare informato."
+        ]
+      }
+    ]
+  }
+}

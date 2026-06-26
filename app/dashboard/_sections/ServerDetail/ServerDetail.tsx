@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { DashboardServer, LivePlayer } from '@/lib/data/dashboardServers';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './ServerDetail.module.css';
@@ -12,6 +13,8 @@ type ServerDetailProps = {
 };
 
 function LiveRows({ players }: { players: LivePlayer[] }) {
+  const t = useTranslations('serversData');
+
   return (
     <>
       {players.map(player => (
@@ -21,7 +24,7 @@ function LiveRows({ players }: { players: LivePlayer[] }) {
           </span>
           <div className={styles.liveCopy}>
             <span className={styles.liveName}>{player.name}</span>
-            <span className={styles.liveActivity}>{player.activity}</span>
+            <span className={styles.liveActivity}>{t(`activities.${player.activity}`)}</span>
           </div>
           <span className={styles.liveDot} aria-hidden />
         </li>
@@ -37,9 +40,11 @@ function ChartBlock({
   chartData: number[];
   chartMax: number;
 }) {
+  const t = useTranslations('serversData');
+
   return (
     <div className={styles.chart}>
-      <h3 className={styles.chartTitle}>Players over the last 24 h</h3>
+      <h3 className={styles.chartTitle}>{t('ui.playersLast24h')}</h3>
       <div className={styles.chartBars} aria-hidden>
         {chartData.map((height, index) => (
           <span
@@ -50,19 +55,20 @@ function ChartBlock({
         ))}
       </div>
       <div className={styles.chartFooter}>
-        <span>24h ago</span>
-        <span className={styles.chartNow}>Now</span>
+        <span>{t('ui.24hAgo')}</span>
+        <span className={styles.chartNow}>{t('ui.now')}</span>
       </div>
     </div>
   );
 }
 
 export default function ServerDetail({ server }: ServerDetailProps) {
+  const t = useTranslations('serversData');
   const [copied, setCopied] = useState(false);
   const live = useServerOnline(server.id);
   const isOnline = live.status === 'online';
   const isLoading = live.status === 'loading';
-  const statusLabel = isLoading ? 'checking…' : isOnline ? 'online' : 'offline';
+  const statusLabel = isLoading ? t('ui.checking') : isOnline ? t('ui.online') : t('ui.offline');
   const current =
     live.online !== null ? live.online : isLoading ? server.current : null;
   const playersMobile =
@@ -76,7 +82,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
       return live.players.map(name => ({
         initial: name.charAt(0).toUpperCase() || '?',
         name,
-        activity: 'Playing',
+        activity: 'playing',
       }));
     }
     if (isLoading) {
@@ -102,7 +108,7 @@ export default function ServerDetail({ server }: ServerDetailProps) {
           <span className={styles.crumbArrow} aria-hidden>
             ←
           </span>
-          <span>All servers</span>
+          <span>{t('ui.allServers')}</span>
         </Link>
         <span className={styles.crumbSep} aria-hidden>
           /
@@ -131,13 +137,13 @@ export default function ServerDetail({ server }: ServerDetailProps) {
               <span className={styles.statusDot} aria-hidden />
               {statusLabel}
             </span>
-            <span className={styles.category}>{server.category}</span>
+            <span className={styles.category}>{t(`${server.id}.category`)}</span>
           </div>
 
           <h1 className={styles.title}>{server.detailTitle}</h1>
 
-          <p className={styles.leadMobile}>{server.detailDescription}</p>
-          <p className={styles.leadDesktop}>{server.detailDescriptionDesktop}</p>
+          <p className={styles.leadMobile}>{t(`${server.id}.detailDescription`)}</p>
+          <p className={styles.leadDesktop}>{t(`${server.id}.detailDescriptionDesktop`)}</p>
 
           <dl className={styles.stats}>
             <div className={styles.stat}>
@@ -146,23 +152,23 @@ export default function ServerDetail({ server }: ServerDetailProps) {
                 <span className={styles.statValueDesktop}>{playersDesktop}</span>
               </dt>
               <dd className={styles.statLabel}>
-                <span className={styles.statLabelMobile}>players</span>
-                <span className={styles.statLabelDesktop}>players online</span>
+                <span className={styles.statLabelMobile}>{t('ui.statLabelPlayers')}</span>
+                <span className={styles.statLabelDesktop}>{t('ui.statLabelPlayersDesktop')}</span>
               </dd>
             </div>
             <div className={styles.stat}>
-              <dt className={styles.statValue}>{isOnline ? server.latency : 'Offline'}</dt>
-              <dd className={styles.statLabel}>latency</dd>
+              <dt className={styles.statValue}>{isOnline ? server.latency : t('ui.offlineLabel')}</dt>
+              <dd className={styles.statLabel}>{t('ui.latencyLabel')}</dd>
             </div>
             <div className={styles.stat}>
               <dt className={styles.statValue}>{server.uptime}</dt>
-              <dd className={styles.statLabel}>uptime</dd>
+              <dd className={styles.statLabel}>{t('ui.uptimeLabel')}</dd>
             </div>
           </dl>
 
           <div className={styles.ipBox}>
             <div className={styles.ipTop}>
-              <span className={styles.ipLabel}>Server IP</span>
+              <span className={styles.ipLabel}>{t('ui.serverIp')}</span>
               <span className={styles.ipVersion}>{server.version}</span>
             </div>
             <div className={styles.ipRow}>
@@ -171,29 +177,29 @@ export default function ServerDetail({ server }: ServerDetailProps) {
           </div>
 
           <button type="button" className={styles.join} onClick={handleCopy}>
-            {copied ? 'Copied' : server.joinLabelDesktop}
+            {copied ? t('ui.copied') : t('ui.copyIp')}
           </button>
         </div>
       </div>
 
-      <h2 className={styles.sectionTitle}>About the server</h2>
+      <h2 className={styles.sectionTitle}>{t('ui.aboutServer')}</h2>
       <div className={styles.about}>
-        <p className={styles.aboutTextMobile}>{server.aboutText}</p>
-        <p className={styles.aboutTextDesktop}>{server.aboutTextDesktop}</p>
-        <p className={styles.featuresHeading}>Key features:</p>
+        <p className={styles.aboutTextMobile}>{t(`${server.id}.aboutText`)}</p>
+        <p className={styles.aboutTextDesktop}>{t(`${server.id}.aboutTextDesktop`)}</p>
+        <p className={styles.featuresHeading}>{t('ui.keyFeatures')}</p>
         <ul className={styles.featureListMobile}>
-          {server.features.map(feature => (
-            <li key={feature} className={styles.featureItem}>
+          {Array.from({ length: server.featureCount }, (_, i) => (
+            <li key={i} className={styles.featureItem}>
               <span className={styles.featureDot} aria-hidden />
-              {feature}
+              {t(`${server.id}.feature${i}`)}
             </li>
           ))}
         </ul>
         <ul className={styles.featureListDesktop}>
-          {server.featuresDesktop.map(feature => (
-            <li key={feature} className={styles.featureItem}>
+          {Array.from({ length: server.featureCountDesktop }, (_, i) => (
+            <li key={i} className={styles.featureItem}>
               <span className={styles.featureDot} aria-hidden />
-              {feature}
+              {t(`${server.id}.featureD${i}`)}
             </li>
           ))}
         </ul>
@@ -201,8 +207,8 @@ export default function ServerDetail({ server }: ServerDetailProps) {
 
       {hasLive ? (
         <>
-          <h2 className={styles.liveTitleMobile}>Live now</h2>
-          <h2 className={styles.activityTitleDesktop}>Current activity</h2>
+          <h2 className={styles.liveTitleMobile}>{t('ui.liveNow')}</h2>
+          <h2 className={styles.activityTitleDesktop}>{t('ui.currentActivity')}</h2>
 
           <div className={styles.activityRow}>
             <div className={styles.livePanelMobile}>
@@ -213,8 +219,8 @@ export default function ServerDetail({ server }: ServerDetailProps) {
 
             <div className={styles.livePanelDesktop}>
               <div className={styles.liveHeadDesktop}>
-                <span className={styles.liveHeadTitle}>Live now</span>
-                <span className={styles.liveHeadCount}>{playersDesktop} players</span>
+                <span className={styles.liveHeadTitle}>{t('ui.liveNow')}</span>
+                <span className={styles.liveHeadCount}>{playersDesktop} {t('ui.players')}</span>
               </div>
               <ul className={styles.liveList}>
                 <LiveRows players={livePlayers} />

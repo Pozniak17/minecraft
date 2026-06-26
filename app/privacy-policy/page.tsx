@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { LegalPage } from '@/app/_components/LegalPage/LegalPage';
-import { privacyPolicy } from '@/lib/data/legal';
+import type { LegalDocument } from '@/lib/data/legal';
 import { buildMetadata } from '@/lib/seo/meta';
 
 export const metadata: Metadata = buildMetadata({
@@ -9,6 +10,16 @@ export const metadata: Metadata = buildMetadata({
   path: '/privacy-policy',
 });
 
-export default function PrivacyPolicyPage() {
-  return <LegalPage document={privacyPolicy} />;
+export default async function PrivacyPolicyPage() {
+  const t = await getTranslations('legal');
+
+  const document: LegalDocument = {
+    badge: t('privacy.badge'),
+    title: t('privacy.title'),
+    lastUpdated: t('privacy.lastUpdated'),
+    intro: t('privacy.intro'),
+    sections: t.raw('privacy.sections') as LegalDocument['sections'],
+  };
+
+  return <LegalPage document={document} />;
 }

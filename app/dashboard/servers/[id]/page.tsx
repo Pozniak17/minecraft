@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 import ServerDetail from '@/app/dashboard/_sections/ServerDetail/ServerDetail';
 import { DASHBOARD_SERVERS, getDashboardServer } from '@/lib/data/dashboardServers';
 import { requireAuth } from '@/lib/server/requireAuth';
@@ -20,9 +21,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Server — Dashboard' };
   }
 
+  const t = await getTranslations('serversData');
+
   return {
     title: `${server.detailTitle} — Dashboard`,
-    description: server.detailDescription,
+    description: t(`${server.id}.detailDescription`),
   };
 }
 

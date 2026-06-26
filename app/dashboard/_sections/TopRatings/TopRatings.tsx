@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import styles from './TopRatings.module.css';
 
 type Metric = 'playtime' | 'kills' | 'wealth' | 'achievements';
@@ -31,18 +32,18 @@ type ListPlayer = {
   achievements: number;
 };
 
-const TABS: { id: Metric; labelMobile: string; labelDesktop: string }[] = [
-  { id: 'playtime', labelMobile: 'Playtime', labelDesktop: 'Playtime' },
-  { id: 'kills', labelMobile: 'Kills', labelDesktop: 'Kills' },
-  { id: 'wealth', labelMobile: 'Wealth', labelDesktop: 'Wealth' },
-  { id: 'achievements', labelMobile: 'Achiev', labelDesktop: 'Achievements' },
+const TABS: { id: Metric; mobileKey: string; desktopKey: string }[] = [
+  { id: 'playtime', mobileKey: 'tr.tab.playtimeMobile', desktopKey: 'tr.tab.playtimeDesktop' },
+  { id: 'kills', mobileKey: 'tr.tab.killsMobile', desktopKey: 'tr.tab.killsDesktop' },
+  { id: 'wealth', mobileKey: 'tr.tab.wealthMobile', desktopKey: 'tr.tab.wealthDesktop' },
+  { id: 'achievements', mobileKey: 'tr.tab.achievMobile', desktopKey: 'tr.tab.achievDesktop' },
 ];
 
-const PERIODS = ['This week', 'This month', 'All time'] as const;
-const SERVERS = ['All servers', 'LuckySurvival', 'MineWars', 'CalmSky'] as const;
+const PERIOD_KEYS = ['thisWeek', 'thisMonth', 'allTime'] as const;
+const SERVER_KEYS = ['allServers', 'LuckySurvival', 'MineWars', 'CalmSky'] as const;
 
-type Period = (typeof PERIODS)[number];
-type ServerFilter = (typeof SERVERS)[number];
+type PeriodKey = (typeof PERIOD_KEYS)[number];
+type ServerFilter = (typeof SERVER_KEYS)[number];
 
 const PODIUM: PodiumPlayer[] = [
   {
@@ -101,8 +102,6 @@ const LIST: ListPlayer[] = [
   { rank: 12, name: 'IronArchitect', server: 'CalmSky', playtime: '108 h 26 m', kills: 138, wealth: '5,420', achievements: 19 },
 ];
 
-const TABLE_COLUMNS = ['#', 'Player', 'Server', 'Playtime', 'Kills', 'Wealth'] as const;
-
 function playerInitial(name: string) {
   return name.charAt(0).toUpperCase();
 }
@@ -127,21 +126,40 @@ function metricValue(player: ListPlayer, metric: Metric): string {
 }
 
 function matchesServer(server: string, filter: ServerFilter) {
-  return filter === 'All servers' || server === filter;
+  return filter === 'allServers' || server === filter;
 }
 
-function matchesPeriod(rank: number, period: Period) {
-  if (period === 'All time') return true;
-  if (period === 'This month') return rank <= 10;
+function matchesPeriod(rank: number, period: PeriodKey) {
+  if (period === 'allTime') return true;
+  if (period === 'thisMonth') return rank <= 10;
   return rank <= 6;
 }
 
 export default function TopRatings() {
+  const t = useTranslations('account');
   const [activeMetric, setActiveMetric] = useState<Metric>('playtime');
-  const [period, setPeriod] = useState<Period>('This week');
-  const [server, setServer] = useState<ServerFilter>('All servers');
+  const [period, setPeriod] = useState<PeriodKey>('thisWeek');
+  const [server, setServer] = useState<ServerFilter>('allServers');
   const [periodOpen, setPeriodOpen] = useState(false);
   const [serverOpen, setServerOpen] = useState(false);
+
+  const periodLabels: Record<PeriodKey, string> = {
+    thisWeek: t('tr.period.thisWeek'),
+    thisMonth: t('tr.period.thisMonth'),
+    allTime: t('tr.period.allTime'),
+  };
+
+  const serverLabel = (key: ServerFilter) =>
+    key === 'allServers' ? t('tr.server.allServers') : key;
+
+  const tableColumns = [
+    t('tr.col.hash'),
+    t('tr.col.player'),
+    t('tr.col.server'),
+    t('tr.col.playtime'),
+    t('tr.col.kills'),
+    t('tr.col.wealth'),
+  ];
 
   const filteredPodium = useMemo(
     () =>
@@ -164,25 +182,20 @@ export default function TopRatings() {
       <div className={styles.root}>
         <header className={styles.header}>
           <div className={styles.headerMain}>
-            <span className={styles.eyebrow}>Top / Ratings</span>
-            <h1 className={styles.title}>Player leaderboard</h1>
-            <p className={styles.subtitleMobile}>
-              Updated weekly. 200+ active players ranked across every server.
-            </p>
-            <p className={styles.subtitleDesktop}>
-              Top players by playtime, updated automatically. 200+ active players ranked across
-              every server.
-            </p>
+            <span className={styles.eyebrow}>{t('tr.eyebrow')}</span>
+            <h1 className={styles.title}>{t('tr.title')}</h1>
+            <p className={styles.subtitleMobile}>{t('tr.subtitleMobile')}</p>
+            <p className={styles.subtitleDesktop}>{t('tr.subtitleDesktop')}</p>
           </div>
 
           <div className={styles.refreshBadge}>
             <span className={styles.refreshDot} aria-hidden="true" />
-            <span>Auto refresh — weekly</span>
+            <span>{t('tr.autoRefresh')}</span>
           </div>
         </header>
 
         <div className={styles.filtersRow}>
-          <div className={styles.tabs} role="tablist" aria-label="Leaderboard metrics">
+          <div className={styles.tabs} role="tablist" aria-label={t('tr.tabsAriaLabel')}>
             {TABS.map(tab => (
               <button
                 key={tab.id}
@@ -194,8 +207,8 @@ export default function TopRatings() {
                   .join(' ')}
                 onClick={() => setActiveMetric(tab.id)}
               >
-                <span className={styles.tabLabelMobile}>{tab.labelMobile}</span>
-                <span className={styles.tabLabelDesktop}>{tab.labelDesktop}</span>
+                <span className={styles.tabLabelMobile}>{t(tab.mobileKey as Parameters<typeof t>[0])}</span>
+                <span className={styles.tabLabelDesktop}>{t(tab.desktopKey as Parameters<typeof t>[0])}</span>
               </button>
             ))}
           </div>
@@ -212,25 +225,25 @@ export default function TopRatings() {
                 aria-expanded={periodOpen}
                 aria-haspopup="listbox"
               >
-                <span className={styles.filterPrefix}>Period:</span>
-                <span className={styles.filterValue}>{period}</span>
+                <span className={styles.filterPrefix}>{t('tr.filter.periodPrefix')}</span>
+                <span className={styles.filterValue}>{periodLabels[period]}</span>
                 <span className={styles.filterCaret} aria-hidden="true">
                   ▾
                 </span>
               </button>
               {periodOpen && (
-                <ul className={styles.filterMenu} role="listbox" aria-label="Select period">
-                  {PERIODS.map(option => (
-                    <li key={option} role="option" aria-selected={period === option}>
+                <ul className={styles.filterMenu} role="listbox" aria-label={t('tr.filter.periodLabel')}>
+                  {PERIOD_KEYS.map(key => (
+                    <li key={key} role="option" aria-selected={period === key}>
                       <button
                         type="button"
                         className={styles.filterOption}
                         onClick={() => {
-                          setPeriod(option);
+                          setPeriod(key);
                           setPeriodOpen(false);
                         }}
                       >
-                        {option}
+                        {periodLabels[key]}
                       </button>
                     </li>
                   ))}
@@ -249,25 +262,25 @@ export default function TopRatings() {
                 aria-expanded={serverOpen}
                 aria-haspopup="listbox"
               >
-                <span className={styles.filterPrefix}>Server:</span>
-                <span className={styles.filterValue}>{server}</span>
+                <span className={styles.filterPrefix}>{t('tr.filter.serverPrefix')}</span>
+                <span className={styles.filterValue}>{serverLabel(server)}</span>
                 <span className={styles.filterCaret} aria-hidden="true">
                   ▾
                 </span>
               </button>
               {serverOpen && (
-                <ul className={styles.filterMenu} role="listbox" aria-label="Select server">
-                  {SERVERS.map(option => (
-                    <li key={option} role="option" aria-selected={server === option}>
+                <ul className={styles.filterMenu} role="listbox" aria-label={t('tr.filter.serverLabel')}>
+                  {SERVER_KEYS.map(key => (
+                    <li key={key} role="option" aria-selected={server === key}>
                       <button
                         type="button"
                         className={styles.filterOption}
                         onClick={() => {
-                          setServer(option);
+                          setServer(key);
                           setServerOpen(false);
                         }}
                       >
-                        {option}
+                        {serverLabel(key)}
                       </button>
                     </li>
                   ))}
@@ -277,7 +290,7 @@ export default function TopRatings() {
           </div>
         </div>
 
-        <div className={`${styles.podium} ${styles.podiumMobile}`} aria-label="Top 3 players">
+        <div className={`${styles.podium} ${styles.podiumMobile}`} aria-label={t('tr.top3Label')}>
           {filteredPodium.map(player => (
             <article
               key={player.rank}
@@ -323,7 +336,7 @@ export default function TopRatings() {
           ))}
         </div>
 
-        <div className={`${styles.podium} ${styles.podiumDesktop}`} aria-label="Top 3 players">
+        <div className={`${styles.podium} ${styles.podiumDesktop}`} aria-label={t('tr.top3Label')}>
           {filteredPodium.map(player => (
             <article
               key={player.rank}
@@ -387,9 +400,9 @@ export default function TopRatings() {
           ))}
         </div>
 
-        <section className={`${styles.list} ${styles.listMobile}`} aria-label="Leaderboard rankings">
+        <section className={`${styles.list} ${styles.listMobile}`} aria-label={t('tr.listLabel')}>
           {filteredList.length === 0 ? (
-            <p className={styles.emptyFilter}>No players match these filters.</p>
+            <p className={styles.emptyFilter}>{t('tr.emptyFilter')}</p>
           ) : (
             <ul className={styles.listRows}>
               {filteredList.map(player => (
@@ -409,16 +422,16 @@ export default function TopRatings() {
           )}
         </section>
 
-        <section className={styles.table} aria-label="Leaderboard rankings">
+        <section className={styles.table} aria-label={t('tr.listLabel')}>
           <div className={styles.tableHead}>
-            {TABLE_COLUMNS.map(column => (
+            {tableColumns.map(column => (
               <span key={column} className={styles.tableHeadCell}>
                 {column}
               </span>
             ))}
           </div>
           {filteredList.length === 0 ? (
-            <p className={styles.emptyFilter}>No players match these filters.</p>
+            <p className={styles.emptyFilter}>{t('tr.emptyFilter')}</p>
           ) : (
             <ul className={styles.tableBody}>
               {filteredList.map(player => (

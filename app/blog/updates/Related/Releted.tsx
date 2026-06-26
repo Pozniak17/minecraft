@@ -1,72 +1,36 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import Card, { type ArticleCardProps } from '@/app/blog/CardList/Card/Card';
 import styles from './Releted.module.css';
 
-const RELATED_ARTICLES: (ArticleCardProps & { slug: string })[] = [
-  {
-    image: '/blog/1.webp',
-    genre: 'Guides',
-    time: 4,
-    title: 'Top 10 survival tips for absolute beginners',
-    description:
-      'Spawning in a fresh world is overwhelming. Here is the short list of things to do in your first hour.',
-    date: 'Apr 22, 2026',
-    slug: 'survival-tips',
-  },
-  {
-    image: '/blog/2.webp',
-    genre: 'Engineering',
-    time: 6,
-    title: 'How to build an efficient iron farm in 2026',
-    description:
-      'A compact, lag-friendly design that produces ~600 ingots per hour and works on every server in our ecosystem.',
-    date: 'Apr 18, 2026',
-    slug: 'iron-farm',
-  },
-  {
-    image: '/blog/3.webp',
-    genre: 'PvP',
-    time: 5,
-    title: 'PvP loadouts that actually work on MineWars',
-    description:
-      'We tested 18 builds across two weeks of small-scale fights. Four loadouts keep winning — the rest, retire.',
-    date: 'Apr 15, 2026',
-    slug: 'pvp-loadouts',
-  },
-];
+type RelatedArticle = ArticleCardProps & { slug: string };
 
-const RELATED_ARTICLES_DESKTOP: ArticleCardProps[] = [
-  {
-    ...RELATED_ARTICLES[0],
-    description:
-      'Spawning in a fresh world is overwhelming. Here is the short list of things to do in your first hour — and the three mistakes that ruin most new runs.',
-  },
-  {
-    ...RELATED_ARTICLES[1],
-    description:
-      'A compact, lag-friendly design that produces around 600 ingots per hour and works on every server in our ecosystem — no datapacks required.',
-  },
-  {
-    ...RELATED_ARTICLES[2],
-    description:
-      'We tested 18 builds across two weeks of small-scale fights. These are the four loadouts that keep winning, plus the ones you can safely retire.',
-  },
-];
+export default async function Related() {
+  const t = await getTranslations('blog');
 
-export default function Related() {
+  const related = t.raw('updates.related') as Array<
+    RelatedArticle & { descriptionDesktop?: string }
+  >;
+
+  const relatedMobile: RelatedArticle[] = related.map(({ descriptionDesktop: _dt, ...article }) => article);
+  const relatedDesktop: RelatedArticle[] = related.map(article => ({
+    ...article,
+    description: article.descriptionDesktop ?? article.description,
+  }));
+
   return (
     <section className={styles.related}>
       <Container variant="blog">
         <div className={styles.inner}>
           <div className={styles.head}>
             <div className={styles.headLeft}>
-              <span className={styles.badge}>Popular this week</span>
-              <h2 className={styles.title}>Keep reading</h2>
+              <span className={styles.badge}>{t('related.badge')}</span>
+              <h2 className={styles.title}>{t('related.title')}</h2>
             </div>
 
             <Link href="/blog" className={`${styles.button} ${styles.buttonDesktop}`}>
-              All articles
+              {t('related.allArticles')}
               <span className={styles.arrow} aria-hidden="true">
                 →
               </span>
@@ -74,19 +38,19 @@ export default function Related() {
           </div>
 
           <ul className={`${styles.list} ${styles.listMobile}`}>
-            {RELATED_ARTICLES.map(article => (
+            {relatedMobile.map(article => (
               <Card key={article.title} {...article} />
             ))}
           </ul>
 
           <ul className={`${styles.list} ${styles.listDesktop}`}>
-            {RELATED_ARTICLES_DESKTOP.map(article => (
+            {relatedDesktop.map(article => (
               <Card key={article.title} {...article} />
             ))}
           </ul>
 
           <Link href="/blog" className={`${styles.button} ${styles.buttonMobile}`}>
-            All articles
+            {t('related.allArticles')}
             <span className={styles.arrow} aria-hidden="true">
               →
             </span>

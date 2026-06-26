@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Fragment } from 'react';
+import { getTranslations } from 'next-intl/server';
 
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import { Container } from '@/app/_components/Container/Container';
@@ -10,10 +11,13 @@ type ArticleHeroProps = {
   article: FaqArticleMeta;
 };
 
-function DesktopBreadcrumbs({ article }: { article: FaqArticleMeta }) {
-  const items = article.breadcrumbItemsDesktop;
-  const links = article.breadcrumbLinksDesktop;
-
+function DesktopBreadcrumbs({
+  items,
+  links,
+}: {
+  items: string[];
+  links: (string | undefined)[];
+}) {
   return (
     <nav className={styles.breadcrumbsDesktop} aria-label="Breadcrumb">
       {items.map((label, index) => {
@@ -21,7 +25,7 @@ function DesktopBreadcrumbs({ article }: { article: FaqArticleMeta }) {
         const href = links[index];
 
         return (
-          <Fragment key={label}>
+          <Fragment key={label + index}>
             {index > 0 && (
               <span className={styles.breadcrumbSep} aria-hidden="true">
                 /
@@ -41,9 +45,28 @@ function DesktopBreadcrumbs({ article }: { article: FaqArticleMeta }) {
   );
 }
 
-export default function Hero({ article }: ArticleHeroProps) {
-  const breadcrumbItemsMobile = ['Home', 'FAQ', article.breadcrumbCategory, article.breadcrumbShort];
+export default async function Hero({ article }: ArticleHeroProps) {
+  const t = await getTranslations('faq');
+
+  const categoryLabel = t(`categoryMeta.${article.categoryId}.label` as Parameters<typeof t>[0]);
+  const categoryBreadcrumb = t(`categoryMeta.${article.categoryId}.breadcrumb` as Parameters<typeof t>[0]);
+  const breadcrumbShort = t(`articles.${article.slug}.breadcrumb` as Parameters<typeof t>[0]);
+
+  const breadcrumbItemsMobile = [
+    t('breadcrumb.home'),
+    t('breadcrumb.faq'),
+    categoryBreadcrumb,
+    breadcrumbShort,
+  ];
   const breadcrumbLinksMobile = ['/', '/faq', '/faq'];
+
+  const breadcrumbItemsDesktop = [
+    t('breadcrumb.home'),
+    t('breadcrumb.support'),
+    t('breadcrumb.faq'),
+    categoryBreadcrumb,
+    breadcrumbShort,
+  ];
 
   return (
     <section className={styles.hero}>
@@ -54,25 +77,30 @@ export default function Hero({ article }: ArticleHeroProps) {
             links={breadcrumbLinksMobile}
             className={`${styles.breadcrumbsMobile} ${styles.mobileOnly}`}
           />
-          <DesktopBreadcrumbs article={article} />
+          <DesktopBreadcrumbs
+            items={breadcrumbItemsDesktop}
+            links={['/', '/faq', '/faq', `/faq?category=${article.categoryId}`, undefined]}
+          />
 
           <div className={styles.tags}>
-            <span className={styles.tagCategory}>{article.categoryLabel}</span>
+            <span className={styles.tagCategory}>{categoryLabel}</span>
             {article.featured && (
               <>
                 <span className={`${styles.tagTop} ${styles.mobileOnly}`}>
                   <span aria-hidden="true">★</span>
-                  Top
+                  {t('article.tagTop')}
                 </span>
                 <span className={`${styles.tagTop} ${styles.desktopOnly}`}>
                   <span aria-hidden="true">★</span>
-                  Top question
+                  {t('article.tagTopDesktop')}
                 </span>
               </>
             )}
           </div>
 
-          <h1 className={styles.title}>{article.question}</h1>
+          <h1 className={styles.title}>
+            {t(`articles.${article.slug}.question` as Parameters<typeof t>[0])}
+          </h1>
 
           <div className={`${styles.meta} ${styles.mobileOnly}`}>
             <span>{article.updated}</span>
@@ -81,13 +109,13 @@ export default function Hero({ article }: ArticleHeroProps) {
           </div>
 
           <div className={`${styles.meta} ${styles.desktopOnly}`}>
-            <span>{article.updatedFull}</span>
+            <span>{t('article.updatedFull', { date: article.updated })}</span>
             <span className={styles.metaDot} aria-hidden="true" />
-            <span>{formatArticleViews(article.views)} views</span>
+            <span>{t('article.views', { count: formatArticleViews(article.views) })}</span>
             <span className={styles.metaDot} aria-hidden="true" />
-            <span>{article.helpfulPercent}% found this helpful</span>
+            <span>{t('article.helpfulPct', { percent: article.helpfulPercent })}</span>
             <span className={styles.metaDot} aria-hidden="true" />
-            <span>{article.readMinutes} min read</span>
+            <span>{t('article.minRead', { min: article.readMinutes })}</span>
           </div>
         </div>
       </Container>

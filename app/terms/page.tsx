@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { LegalPage } from '@/app/_components/LegalPage/LegalPage';
-import { termsConditions } from '@/lib/data/legal';
+import type { LegalDocument } from '@/lib/data/legal';
 import { buildMetadata } from '@/lib/seo/meta';
 
 export const metadata: Metadata = buildMetadata({
@@ -9,6 +10,16 @@ export const metadata: Metadata = buildMetadata({
   path: '/terms',
 });
 
-export default function TermsPage() {
-  return <LegalPage document={termsConditions} />;
+export default async function TermsPage() {
+  const t = await getTranslations('legal');
+
+  const document: LegalDocument = {
+    badge: t('terms.badge'),
+    title: t('terms.title'),
+    lastUpdated: t('terms.lastUpdated'),
+    intro: t('terms.intro'),
+    sections: t.raw('terms.sections') as LegalDocument['sections'],
+  };
+
+  return <LegalPage document={document} />;
 }

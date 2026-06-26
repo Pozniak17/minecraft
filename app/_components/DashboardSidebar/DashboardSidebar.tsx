@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { logout } from '@/lib/api/auth';
 import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
@@ -17,6 +18,7 @@ import styles from './DashboardSidebar.module.css';
 export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const t = useTranslations('common');
   const { profile, displayName: name, initial, photoUrl } = useProfile();
   const email = profile?.email ?? '';
   const [loggingOut, setLoggingOut] = useState(false);
@@ -42,24 +44,24 @@ export function DashboardSidebar() {
 
   return (
     <>
-    <aside className={styles.sidebar} aria-label="Dashboard navigation">
+    <aside className={styles.sidebar} aria-label={t('dashNav.dashboardNav')}>
       <Link href="/dashboard" className={styles.logo}>
         <Image
           src="/icons/icons/logo.webp"
-          alt="Minecraft game logo"
+          alt={t('shared.logoAlt')}
           width={214}
           height={59}
           priority
         />
       </Link>
 
-      <Link href="/dashboard/settings" className={styles.userCard} aria-label="Settings">
+      <Link href="/dashboard/settings" className={styles.userCard} aria-label={t('shared.settings')}>
         {photoUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             className={styles.avatar}
             src={photoUrl}
-            alt="Profile"
+            alt={t('shared.profileAlt')}
             style={{ objectFit: 'cover' }}
           />
         ) : (
@@ -73,11 +75,11 @@ export function DashboardSidebar() {
       </Link>
 
       <div className={styles.sectionLabel}>
-        <span>My workspace</span>
+        <span>{t('shared.myWorkspace')}</span>
         <span className={styles.sectionLine} aria-hidden="true" />
       </div>
 
-      <nav className={styles.workspace} aria-label="My workspace">
+      <nav className={styles.workspace} aria-label={t('shared.myWorkspace')}>
         {workspaceLinks.map(link => {
           const isActive = link.href !== '#' && isNavLinkActive(link.href, pathname);
           const isDisabled = link.soon && link.href === '#';
@@ -92,17 +94,17 @@ export function DashboardSidebar() {
           const content = (
             <>
               <span className={styles.wsIcon} style={iconStyle(link.icon)} aria-hidden="true" />
-              <span className={styles.wsLabel}>{link.label}</span>
+              <span className={styles.wsLabel}>{t(`dash.${link.key}`)}</span>
               {typeof link.badge === 'number' && link.badge > 0 && (
                 <span className={styles.badge}>{link.badge}</span>
               )}
-              {link.soon && <span className={styles.soon}>Soon</span>}
+              {link.soon && <span className={styles.soon}>{t('shared.soon')}</span>}
             </>
           );
 
           if (isDisabled) {
             return (
-              <span key={link.label} className={className} aria-disabled="true">
+              <span key={link.key} className={className} aria-disabled="true">
                 {content}
               </span>
             );
@@ -110,7 +112,7 @@ export function DashboardSidebar() {
 
           return (
             <Link
-              key={link.label}
+              key={link.key}
               href={link.href}
               className={className}
               aria-current={isActive ? 'page' : undefined}
@@ -141,7 +143,7 @@ export function DashboardSidebar() {
               style={iconStyle('settings-outline')}
               aria-hidden="true"
             />
-            <span className={styles.footLabel}>Settings</span>
+            <span className={styles.footLabel}>{t('shared.settings')}</span>
           </Link>
           <button
             type="button"
@@ -150,7 +152,7 @@ export function DashboardSidebar() {
             disabled={loggingOut}
           >
             <span className={styles.wsIcon} style={iconStyle('logout-outline')} aria-hidden="true" />
-            <span className={styles.footLabel}>{loggingOut ? 'Logging out…' : 'Log out'}</span>
+            <span className={styles.footLabel}>{loggingOut ? t('shared.loggingOut') : t('shared.logOut')}</span>
           </button>
         </div>
       </div>

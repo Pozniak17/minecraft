@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import { Badge } from '@/app/_components/Badge/Badge';
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
@@ -6,36 +7,48 @@ import { CONTACT_STATS, SUPPORT_EMAIL } from '@/lib/data/contacts';
 import { TWITCH_URL } from '@/lib/data/social';
 import styles from './Hero.module.css';
 
-const BREADCRUMB_ITEMS = ['Home', 'FAQ', 'Contacts'];
 const BREADCRUMB_LINKS = ['/', '/faq'];
 
-export default function Hero() {
+export default async function Hero() {
+  const t = await getTranslations('marketing');
+
+  const breadcrumbItems = [
+    t('contacts.hero.breadcrumbHome'),
+    t('contacts.hero.breadcrumbFaq'),
+    t('contacts.hero.breadcrumbContacts'),
+  ];
+
   return (
     <section className={styles.hero}>
       <div className={styles.overlay} aria-hidden="true" />
 
       <Container variant="faq" className={styles.content}>
-        <Breadcrumbs items={BREADCRUMB_ITEMS} links={BREADCRUMB_LINKS} />
+        <Breadcrumbs items={breadcrumbItems} links={BREADCRUMB_LINKS} />
 
         <div className={styles.head}>
-          <Badge className={styles.badge}>Get in touch</Badge>
-          <h1 className={styles.title}>Contact us</h1>
+          <Badge className={styles.badge}>{t('contacts.hero.badge')}</Badge>
+          <h1 className={styles.title}>{t('contacts.hero.title')}</h1>
           <p className={`${styles.description} ${styles.descriptionMobile}`}>
-            Our team is here to help. Pick the channel that works best for you.
+            {t('contacts.hero.descriptionMobile')}
           </p>
           <p className={`${styles.description} ${styles.descriptionDesktop}`}>
-            Our support team is here to help. Email, Twitch, or the FAQ — whichever is easiest for
-            you.
+            {t('contacts.hero.descriptionDesktop')}
           </p>
         </div>
 
         <div className={styles.stats}>
           {CONTACT_STATS.map(stat => (
-            <div key={stat.label} className={styles.stat}>
-              <span className={styles.statValue}>{stat.value}</span>
+            <div key={stat.id} className={styles.stat}>
+              <span className={styles.statValue}>
+                {t(`contacts.data.stat.${stat.id}.value` as const)}
+              </span>
               <span className={styles.statLabel}>
-                <span className={styles.statLabelMobile}>{stat.label}</span>
-                <span className={styles.statLabelDesktop}>{stat.labelDesktop}</span>
+                <span className={styles.statLabelMobile}>
+                  {t(`contacts.data.stat.${stat.id}.label` as const)}
+                </span>
+                <span className={styles.statLabelDesktop}>
+                  {t(`contacts.data.stat.${stat.id}.labelDesktop` as const)}
+                </span>
               </span>
             </div>
           ))}
@@ -43,7 +56,7 @@ export default function Hero() {
 
         <div className={styles.actions}>
           <a href={`mailto:${SUPPORT_EMAIL}`} className={styles.actionPrimary}>
-            Email us
+            {t('contacts.hero.emailUs')}
           </a>
           <a
             href={TWITCH_URL}
@@ -51,10 +64,10 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Join Twitch
+            {t('contacts.hero.joinTwitch')}
           </a>
           <Link href="/faq" className={styles.actionSecondary}>
-            Browse FAQ
+            {t('contacts.hero.browseFaq')}
           </Link>
         </div>
       </Container>

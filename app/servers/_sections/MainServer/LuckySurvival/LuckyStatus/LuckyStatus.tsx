@@ -1,22 +1,24 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './LuckyStatus.module.css';
 
 const ACTIVITY_PERCENT = 68;
 
 export default function LuckyStatus() {
+  const t = useTranslations('servers');
   const { online, status } = useServerOnline('luckysurvival');
   const isOffline = status === 'offline';
 
   const STATS = [
     {
       value: online !== null ? String(online) : isOffline ? '—' : '427',
-      labelMobile: 'Players',
-      labelDesktop: 'Players Online',
+      labelMobile: t('shared.playersMobile'),
+      labelDesktop: t('shared.playersDesktop'),
     },
-    { value: '89%', labelMobile: 'Load', labelDesktop: 'Server Load' },
-    { value: '24/7', labelMobile: 'Availability', labelDesktop: 'Availability' },
+    { value: '89%', labelMobile: t('shared.loadMobile'), labelDesktop: t('shared.loadDesktop') },
+    { value: '24/7', labelMobile: t('shared.availabilityLabel'), labelDesktop: t('shared.availabilityLabel') },
   ];
 
   return (
@@ -26,9 +28,9 @@ export default function LuckyStatus() {
           className={[styles.dot, isOffline && styles.dotOffline].filter(Boolean).join(' ')}
           aria-hidden="true"
         />
-        <h3 className={styles.title}>Live Server Status</h3>
+        <h3 className={styles.title}>{t('shared.liveServerStatus')}</h3>
         <span className={isOffline ? styles.offline : styles.online}>
-          {isOffline ? 'OFFLINE' : 'ONLINE'}
+          {isOffline ? t('shared.offline') : t('shared.online')}
         </span>
       </div>
 
@@ -50,7 +52,7 @@ export default function LuckyStatus() {
         aria-valuenow={ACTIVITY_PERCENT}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Server activity"
+        aria-label={t('shared.activityAriaLabel')}
       >
         <span className={styles.activityFill} />
       </div>

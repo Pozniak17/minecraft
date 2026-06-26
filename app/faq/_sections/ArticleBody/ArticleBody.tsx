@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Container } from '@/app/_components/Container/Container';
 import {
   getFaqArticleBySlug,
   getFaqArticleHref,
 } from '@/app/faq/_data/faqArticles';
-import { getFaqArticleContent } from '@/app/faq/_data/faqArticleContent';
+import { getTranslatedFaqArticleContent } from '@/app/faq/_data/faqArticleContentI18n';
 import type { FaqArticleContentBlock } from '@/app/faq/_data/joinArticleContent';
 import type { FaqSectionContent } from '@/app/faq/_data/faqArticleTypes';
 import { GAME_SERVERS } from '@/lib/server/gameServers';
@@ -277,7 +278,8 @@ type ArticleBodyProps = {
 };
 
 export default function ArticleBody({ slug }: ArticleBodyProps) {
-  const content = getFaqArticleContent(slug);
+  const t = useTranslations('faq');
+  const content = getTranslatedFaqArticleContent(slug, t, t.raw);
   const meta = getFaqArticleBySlug(slug);
 
   if (!content || !meta) {
@@ -287,15 +289,15 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
   const sectionIds = content.sections.map(section => section.id);
   const { activeId, scrollToSection } = useFaqArticleToc(sectionIds);
   const primaryCtaHref =
-    content.cta?.primary === 'Join Twitch' ? TWITCH_URL : content.cta?.primaryHref ?? '/faq';
+    content.cta?.primary === t('join.ctaPrimary') ? TWITCH_URL : content.cta?.primaryHref ?? '/faq';
 
   return (
     <section className={styles.article}>
       <Container variant="faq">
         <div className={styles.body}>
           <aside className={styles.sidebar}>
-            <nav className={styles.sidebarToc} aria-label="On this page">
-              <p className={styles.sidebarTocLabel}>On this page</p>
+            <nav className={styles.sidebarToc} aria-label={t('article.onThisPage')}>
+              <p className={styles.sidebarTocLabel}>{t('article.onThisPage')}</p>
               <ul className={styles.sidebarTocList}>
                 {content.sections.map(item => (
                   <li key={item.id}>
@@ -313,24 +315,19 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
             </nav>
 
             <div className={styles.shareCard}>
-              <p className={styles.shareCardTitle}>Share this article</p>
+              <p className={styles.shareCardTitle}>{t('article.share')}</p>
               <ShareLinks className={styles.shareCardLinks} />
             </div>
 
             <div className={styles.relatedCard}>
-              <p className={styles.relatedCardTitle}>Related questions</p>
+              <p className={styles.relatedCardTitle}>{t('article.relatedQuestions')}</p>
               <ul className={styles.relatedCardList}>
                 {content.sidebarRelatedSlugs.map(relatedSlug => {
-                  const related = getFaqArticleBySlug(relatedSlug);
-                  if (!related) {
-                    return null;
-                  }
-
                   return (
                     <li key={relatedSlug}>
                       <Link href={getFaqArticleHref(relatedSlug)} className={styles.relatedCardLink}>
                         <span aria-hidden="true">→</span>
-                        {related.question}
+                        {t(`articles.${relatedSlug}.question` as Parameters<typeof t>[0])}
                       </Link>
                     </li>
                   );
@@ -340,9 +337,9 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
           </aside>
 
           <div className={styles.main}>
-            <nav className={`${styles.toc} ${styles.mobileOnly}`} aria-label="On this page">
+            <nav className={`${styles.toc} ${styles.mobileOnly}`} aria-label={t('article.onThisPage')}>
               <div className={styles.tocHead}>
-                <span className={styles.tocLabel}>On this page</span>
+                <span className={styles.tocLabel}>{t('article.onThisPage')}</span>
                 <span className={styles.tocChevron} aria-hidden="true">
                   ▾
                 </span>

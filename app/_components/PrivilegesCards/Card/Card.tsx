@@ -1,5 +1,7 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { PrivilegesCardProps } from '../PrivilegesCards';
 import styles from './Card.module.css';
 
@@ -23,7 +25,8 @@ export default function Card({
   pending = false,
   done = false,
 }: CardProps) {
-  const label = done ? 'Added ✓' : pending ? 'Adding…' : 'Add to cart';
+  const t = useTranslations('store');
+  const label = done ? t('privCard_added') : pending ? t('privCard_adding') : t('privCard_addToCart');
 
   const cta = (
     <>
@@ -47,7 +50,7 @@ export default function Card({
       </div>
       {price && (
         <div className={styles.priceRow}>
-          <span className={styles.priceLabel}>Price</span>
+          <span className={styles.priceLabel}>{t('privCard_price')}</span>
           <span className={styles.priceValue}>{price}</span>
         </div>
       )}
