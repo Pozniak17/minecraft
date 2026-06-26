@@ -61,7 +61,7 @@ function ServerCard({ server }: { server: DashboardServer }) {
             <span className={styles.statusDot} aria-hidden />
             {statusLabel}
           </span>
-          <span className={styles.latency}>{isOnline ? server.latency : t('ui.offlineLabel')}</span>
+          <span className={styles.latency}>{isOnline ? server.latency : '—'}</span>
         </div>
 
         <h2 className={styles.cardTitle}>

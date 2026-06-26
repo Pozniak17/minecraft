@@ -255,23 +255,23 @@
       ]
     },
     "s7": {
-      "nav": "Unirte a Discord",
-      "title": "Unirte a Discord",
-      "titleDesktop": "Unirte al Discord de la comunidad",
-      "descMobile": "Actualizaciones, anuncios, soporte \u2014 todo en Discord.",
-      "descDesktop": "La mayor\u00eda de nuestras actualizaciones, anuncios de torneos y soporte se realizan en Discord. Gratuito para unirse, f\u00e1cil de abandonar.",
+      "nav": "Unirse a Twitch",
+      "title": "Unirse a Twitch",
+      "titleDesktop": "Unirse a la comunidad en Twitch",
+      "descMobile": "Streams, momentos de torneos y encuentros de la comunidad \u2014 todo en Twitch.",
+      "descDesktop": "La mayor\u00eda de nuestras actualizaciones, anuncios de torneos y eventos comunitarios se realizan en Twitch. Gratis para seguir, f\u00e1cil de entrar cuando hay un stream en directo.",
       "bullets": [
-        "Pulsar el bot\u00f3n de Discord.",
-        "Ejecutar /verify en Discord.",
-        "Elegir tu rol de servidor."
+        "Pulsar el bot\u00f3n de Twitch.",
+        "Seguir el canal.",
+        "Activar notificaciones para streams en directo."
       ],
       "bulletsDesktop": [
-        "Hacer clic en el bot\u00f3n Discord de la barra lateral.",
-        "Usar el comando /verify para vincular tus cuentas.",
-        "Elegir tu rol de servidor favorito y listo."
+        "Hacer clic en el bot\u00f3n Twitch de la barra lateral.",
+        "Seguir nuestro canal para estar al d\u00eda.",
+        "Activar notificaciones para no perderte un torneo ni un stream comunitario."
       ],
-      "callout": "Primera respuesta de soporte en promedio: menos de 4 horas.",
-      "calloutDesktop": "El soporte en vivo est\u00e1 disponible en Discord 24/7. Tiempo promedio de primera respuesta: menos de 4 horas."
+      "callout": "Disfruta de streams en directo, sesiones de preguntas y finales de torneos con el resto de la comunidad.",
+      "calloutDesktop": "Disfruta de streams en directo, sesiones de preguntas y finales de torneos con el resto de la comunidad \u2014 saluda en el chat cuando te conectes."
     }
   }
 }

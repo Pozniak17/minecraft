@@ -255,23 +255,23 @@
       ]
     },
     "s7": {
-      "nav": "Unirsi a Discord",
-      "title": "Unirsi a Discord",
-      "titleDesktop": "Unirsi al Discord della comunit\u00e0",
-      "descMobile": "Aggiornamenti, annunci, supporto \u2014 tutto su Discord.",
-      "descDesktop": "La maggior parte dei nostri aggiornamenti, annunci di tornei e supporto avvengono su Discord. Gratuito da unirsi, facile da lasciare.",
+      "nav": "Unisciti a Twitch",
+      "title": "Unisciti a Twitch",
+      "titleDesktop": "Unisciti alla community su Twitch",
+      "descMobile": "Stream, highlights dei tornei e incontri della community \u2014 tutto su Twitch.",
+      "descDesktop": "La maggior parte dei nostri aggiornamenti, annunci di tornei ed eventi della community avvengono su Twitch. Gratuito da seguire, facile entrare quando parte uno stream live.",
       "bullets": [
-        "Toccare il pulsante Discord.",
-        "Eseguire /verify in Discord.",
-        "Scegliere il ruolo del server."
+        "Toccare il pulsante Twitch.",
+        "Seguire il canale.",
+        "Attivare le notifiche per gli stream live."
       ],
       "bulletsDesktop": [
-        "Fare clic sul pulsante Discord nella barra laterale.",
-        "Usare il comando /verify per collegare gli account.",
-        "Scegliere il ruolo del server preferito e sei pronto."
+        "Fare clic sul pulsante Twitch nella barra laterale.",
+        "Seguire il nostro canale per restare aggiornato.",
+        "Attivare le notifiche per non perdere un torneo o uno stream della community."
       ],
-      "callout": "Prima risposta al supporto in media: meno di 4 ore.",
-      "calloutDesktop": "Il supporto live \u00e8 disponibile su Discord 24/7. Tempo medio della prima risposta: meno di 4 ore."
+      "callout": "Guarda stream live, sessioni Q&A e finali di torneo insieme al resto della community.",
+      "calloutDesktop": "Guarda stream live, sessioni Q&A e finali di torneo insieme al resto della community \u2014 saluta in chat quando ti colleghi."
     }
   }
 }

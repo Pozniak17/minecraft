@@ -255,23 +255,23 @@
       ]
     },
     "s7": {
-      "nav": "Do\u0142\u0105cz do Discord",
-      "title": "Do\u0142\u0105cz do Discord",
-      "titleDesktop": "Do\u0142\u0105cz do spo\u0142eczno\u015bci Discord",
-      "descMobile": "Aktualizacje, og\u0142oszenia, wsparcie \u2014 wszystko na Discord.",
-      "descDesktop": "Wi\u0119kszo\u015b\u0107 aktualizacji, og\u0142osze\u0144 turniejowych i wsparcia graczy odbywa si\u0119 na Discord. Bezp\u0142atne do\u0142\u0105czenie, \u0142atwe wyj\u015bcie.",
+      "nav": "Do\u0142\u0105cz na Twitchu",
+      "title": "Do\u0142\u0105cz na Twitchu",
+      "titleDesktop": "Do\u0142\u0105cz do spo\u0142eczno\u015bci na Twitchu",
+      "descMobile": "Streamy, skr\u00f3ty z turniej\u00f3w i spotkania spo\u0142eczno\u015bci \u2014 wszystko na Twitchu.",
+      "descDesktop": "Wi\u0119kszo\u015b\u0107 aktualizacji, og\u0142osze\u0144 turniejowych i wydarze\u0144 spo\u0142eczno\u015bci odbywa si\u0119 na Twitchu. Darmowe obserwowanie, \u0142atwe do\u0142\u0105czenie, gdy tylko ruszy transmisja.",
       "bullets": [
-        "Naci\u015bn\u0105\u0107 przycisk Discord.",
-        "Wykona\u0107 /verify w Discord.",
-        "Wybra\u0107 rol\u0119 serwera."
+        "Naci\u015bnij przycisk Twitch.",
+        "Obserwuj kana\u0142.",
+        "W\u0142\u0105cz powiadomienia o transmisjach na \u017cywo."
       ],
       "bulletsDesktop": [
-        "Klikn\u0105\u0107 przycisk Discord na pasku bocznym.",
-        "U\u017cy\u0107 komendy /verify do po\u0142\u0105czenia kont.",
-        "Wybra\u0107 ulubon\u0105 rol\u0119 serwera i gotowe."
+        "Kliknij przycisk Twitch na pasku bocznym.",
+        "Obserwuj nasz kana\u0142, \u017ceby by\u0107 na bie\u017c\u0105co.",
+        "W\u0142\u0105cz powiadomienia, \u017ceby nie przegapi\u0107 turnieju ani streamu spo\u0142eczno\u015bci."
       ],
-      "callout": "\u015arednio pierwsza odpowied\u017a wsparcia: poni\u017cej 4 godzin.",
-      "calloutDesktop": "Wsparcie live na Discord 24/7. \u015arednio pierwsza odpowied\u017a: poni\u017cej 4 godzin."
+      "callout": "Ogl\u0105daj transmisje na \u017cywo, sesje Q&A i fina\u0142y turniej\u00f3w razem ze spo\u0142eczno\u015bci\u0105.",
+      "calloutDesktop": "Ogl\u0105daj transmisje na \u017cywo, sesje Q&A i fina\u0142y turniej\u00f3w razem ze spo\u0142eczno\u015bci\u0105 \u2014 napisz cze\u015b\u0107 na czacie, gdy do\u0142\u0105czysz."
     }
   }
 }
