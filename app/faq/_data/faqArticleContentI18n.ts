@@ -2,6 +2,7 @@ import type { FaqArticleFullContent, FaqSectionContent } from './faqArticleTypes
 
 type TFn = (key: string, values?: Record<string, string | number | Date>) => string;
 type TRawFn = (key: string) => unknown;
+type THasFn = (key: string) => boolean;
 
 function b(mobile: string, desktop: string = mobile) {
   return { mobile, desktop };
@@ -13,6 +14,7 @@ function buildSimpleSection(
   slug: string,
   t: TFn,
   tRaw: TRawFn,
+  tHas: THasFn,
 ): FaqSectionContent {
   const sKey = `content.${slug}.s${index}`;
 
@@ -34,17 +36,15 @@ function buildSimpleSection(
       ? { mobile: rawTroubleMobile, desktop: rawTroubleDesktop }
       : undefined;
 
-  // callout (optional)
+  // callout (optional — only when keys exist; t() returns the key path when missing)
   let callout: FaqSectionContent['callout'] | undefined;
-  try {
+  if (tHas(`${sKey}.calloutTitle`) && tHas(`${sKey}.calloutMobile`)) {
     const calloutTitle = t(`${sKey}.calloutTitle`);
     const calloutMobile = t(`${sKey}.calloutMobile`);
-    const calloutDesktop = t(`${sKey}.calloutDesktop`);
-    if (calloutTitle && calloutMobile) {
-      callout = { variant: 'info', title: calloutTitle, text: b(calloutMobile, calloutDesktop) };
-    }
-  } catch {
-    // key doesn't exist for this section — fine
+    const calloutDesktop = tHas(`${sKey}.calloutDesktop`)
+      ? t(`${sKey}.calloutDesktop`)
+      : calloutMobile;
+    callout = { variant: 'info', title: calloutTitle, text: b(calloutMobile, calloutDesktop) };
   }
 
   const sectionIndex = index - 1; // convert 1-based to 0-based for tocNum
@@ -64,11 +64,11 @@ function buildSimpleSection(
 }
 
 /** Builds a translated FaqArticleFullContent for simple articles (all except 'join'). */
-function buildSimpleArticleContent(slug: string, t: TFn, tRaw: TRawFn): FaqArticleFullContent {
+function buildSimpleArticleContent(slug: string, t: TFn, tRaw: TRawFn, tHas: THasFn): FaqArticleFullContent {
   const leadMobile = t(`content.${slug}.lead.mobile`);
   const leadDesktop = t(`content.${slug}.lead.desktop`);
 
-  const sections = [1, 2, 3].map(i => buildSimpleSection(i, slug, t, tRaw));
+  const sections = [1, 2, 3].map(i => buildSimpleSection(i, slug, t, tRaw, tHas));
 
   const helpful = Math.round((100 * 0.9)); // placeholder, stats are generic
   const percent = 90;
@@ -221,12 +221,13 @@ export function getTranslatedFaqArticleContent(
   slug: string,
   t: TFn,
   tRaw: TRawFn,
+  tHas: THasFn,
 ): FaqArticleFullContent | undefined {
   try {
     if (slug === 'join') {
       return buildJoinContent(t, tRaw);
     }
-    return buildSimpleArticleContent(slug, t, tRaw);
+    return buildSimpleArticleContent(slug, t, tRaw, tHas);
   } catch {
     return undefined;
   }

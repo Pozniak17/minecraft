@@ -279,7 +279,7 @@ type ArticleBodyProps = {
 
 export default function ArticleBody({ slug }: ArticleBodyProps) {
   const t = useTranslations('faq');
-  const content = getTranslatedFaqArticleContent(slug, t, t.raw);
+  const content = getTranslatedFaqArticleContent(slug, t, t.raw, t.has);
   const meta = getFaqArticleBySlug(slug);
 
   if (!content || !meta) {
