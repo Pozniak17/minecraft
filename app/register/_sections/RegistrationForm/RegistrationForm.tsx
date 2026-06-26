@@ -122,9 +122,9 @@ export default function RegistrationForm() {
   const passwordStrength = useMemo(() => getPasswordStrength(password), [password]);
 
   const STATS = [
-    { value: '12,000+', label: t('register.statActivePlayers') },
+    { value: 'GLOBAL', label: t('register.statGlobalPlayers') },
     { value: '4.8/5', label: t('register.statCommunityRating') },
-    { value: '24/7', label: t('register.statSupport') },
+    { value: '3', label: t('register.statLiveServers') },
   ];
 
   useEffect(() => {
@@ -427,7 +427,7 @@ export default function RegistrationForm() {
 
           <p className={styles.helpFoot}>
             {t('register.needHelp')}{' '}
-            <Link href="/faq" className={styles.supportLink}>
+            <Link href="/contacts" className={styles.supportLink}>
               {t('register.contactSupport')}
             </Link>
           </p>

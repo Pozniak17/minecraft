@@ -201,7 +201,7 @@ export default function LoginForm() {
 
           <p className={styles.helpFoot}>
             {t('login.troubleSigningIn')}{' '}
-            <Link href="/faq" className={styles.supportLink}>
+            <Link href="/contacts" className={styles.supportLink}>
               {t('login.contactSupport')}
             </Link>
           </p>

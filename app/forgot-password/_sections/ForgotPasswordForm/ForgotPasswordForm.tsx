@@ -271,7 +271,7 @@ export default function ForgotPasswordForm() {
 
           <p className={styles.helpFoot}>
             {t('forgotPassword.cantAccess')}{' '}
-            <Link href="/faq" className={styles.supportLink}>
+            <Link href="/contacts" className={styles.supportLink}>
               {t('forgotPassword.contactSupport')}
             </Link>
           </p>
