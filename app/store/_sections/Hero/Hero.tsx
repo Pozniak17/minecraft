@@ -11,7 +11,8 @@ export default async function Hero() {
       <div className={styles.overlay} aria-hidden />
       <Container className={styles.content}>
         <h1 className={styles.title}>
-          {t('hero_titleMain')} <span>{t('hero_titleAccent')}</span>
+          {t('hero_titleMain')}
+          <span>{t('hero_titleAccent')}</span>
         </h1>
         <p className={styles.description}>{t('hero_description')}</p>
 

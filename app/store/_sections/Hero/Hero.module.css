@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 593px;
+  min-height: 593px;
   background-color: var(--color-bg);
   background-image: url('/store/images/bg.webp');
   background-repeat: no-repeat;
@@ -33,16 +33,17 @@
 }
 
 .title {
-  width: 342px;
+  max-width: 342px;
   margin-bottom: 18px;
   color: var(--color-text);
+  text-wrap: balance;
 
   /* mobile/H1 */
   font-family: var(--font-main);
   font-size: 48px;
   font-style: normal;
   font-weight: 800;
-  line-height: normal;
+  line-height: 1.1;
 }
 
 .title span {
@@ -73,11 +74,13 @@
 .button {
   display: flex;
   width: 294px;
+  min-height: 47px;
   height: 47px;
   padding: 0 23px;
   justify-content: center;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 
   color: var(--color-text);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
@@ -107,13 +110,13 @@
 
   .content {
     padding-top: 152px;
-    padding-bottom: 0;
+    padding-bottom: 48px;
     display: block;
     text-align: start;
   }
 
   .title {
-    width: 523px;
+    max-width: 640px;
     margin-bottom: 7px;
     font-size: 64px;
   }
