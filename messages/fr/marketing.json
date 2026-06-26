@@ -13,6 +13,17 @@
       "description1": "Créé par des amis passionnés de Minecraft — devenu un écosystème complet porté par la communauté.",
       "description2": "Ce projet est bien plus qu'un ensemble de serveurs — c'est une vraie communauté. Nous avons commencé comme un petit groupe d'amis passionnés de Minecraft et sommes devenus un grand écosystème. Notre objectif est d'offrir un hébergement de qualité, un TPS stable, des plugins uniques et — surtout — une atmosphère sûre et conviviale. Nous évoluons constamment et prenons en compte chaque retour."
     },
+    "economy": {
+      "badge": "Économie & Privilèges",
+      "title": "Ton confort, ta personnalisation",
+      "description": "Nous avons construit un écosystème juste et transparent. Gagne la monnaie en jeu pendant que tu joues, ou soutiens le projet pour débloquer des privilèges uniques, des objets cosmétiques et des boosters qui te démarquent et rendent le gameplay encore plus agréable.",
+      "stat1Label": "Objets cosmétiques",
+      "stat1Value": "100+",
+      "stat2Label": "Niveaux de privilèges",
+      "stat2Value": "8",
+      "stat3Label": "Économie en direct",
+      "stat3Value": "24/7"
+    },
     "servers": {
       "badge": "Monde",
       "title": "3 mondes uniques — choisis ton chemin",

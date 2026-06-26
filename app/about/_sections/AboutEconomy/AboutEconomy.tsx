@@ -1,37 +1,29 @@
+import { getTranslations } from 'next-intl/server';
 import { Container } from '@/app/_components/Container/Container';
 import styles from './AboutEconomy.module.css';
 
-export default function AboutEconomy() {
+const STATS = ['stat1', 'stat2', 'stat3'] as const;
+
+export default async function AboutEconomy() {
+  const t = await getTranslations('marketing');
+
   return (
     <section className={styles.section}>
       <Container>
         <div className={styles.bg_image}></div>
-        <span className={styles.badge}>Economy & Privileges</span>
-        <h2 className={styles.title}>Your comfort, your customization</h2>
-        <p className={styles.description}>
-          We built a fair and transparent ecosystem. Earn the in-game currency while you play, or
-          support the project to unlock unique privileges, custom cosmetic items, and boosters that
-          make you stand out and make gameplay even more enjoyable.
-        </p>
+        <span className={styles.badge}>{t('about.economy.badge')}</span>
+        <h2 className={styles.title}>{t('about.economy.title')}</h2>
+        <p className={styles.description}>{t('about.economy.description')}</p>
 
         <ul className={styles.list}>
-          <li className={styles.item}>
-            <p className={styles.text}>
-              Cosmetic items<span className={styles.accent}>100+</span>
-            </p>
-          </li>
-
-          <li className={styles.item}>
-            <p className={styles.text}>
-              Privilege tiers<span className={styles.accent}>20+</span>
-            </p>
-          </li>
-
-          <li className={styles.item}>
-            <p className={styles.text}>
-              Live economy<span className={styles.accent}>24/7</span>
-            </p>
-          </li>
+          {STATS.map((stat) => (
+            <li key={stat} className={styles.item}>
+              <p className={styles.text}>
+                {t(`about.economy.${stat}Label`)}
+                <span className={styles.accent}>{t(`about.economy.${stat}Value`)}</span>
+              </p>
+            </li>
+          ))}
         </ul>
       </Container>
     </section>
