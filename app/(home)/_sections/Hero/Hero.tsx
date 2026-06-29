@@ -23,7 +23,7 @@ export async function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
           />
           <div className={styles.overlay}></div>
           <div className={styles.frame}>

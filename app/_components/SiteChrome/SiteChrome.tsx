@@ -1,13 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { DashboardHeader } from '../DashboardHeader/DashboardHeader';
-import { DashboardSidebar } from '../DashboardSidebar/DashboardSidebar';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { ProfileProvider } from '../ProfileProvider/ProfileProvider';
 import type { UserProfile } from '@/lib/api/types';
-import styles from './SiteChrome.module.css';
+
+const DashboardShell = dynamic(
+  () => import('./DashboardShell').then(mod => ({ default: mod.DashboardShell })),
+);
 
 const AUTH_ROUTES = ['/register', '/login', '/forgot-password', '/verify-email', '/payment'];
 const DASHBOARD_ROUTES = ['/dashboard'];
@@ -36,13 +38,7 @@ export function SiteChrome({
   const isDashboard = isAuthed && matchesRoute(pathname, DASHBOARD_ROUTES);
 
   const content = isDashboard ? (
-    <div className={styles.dashboard}>
-      <DashboardSidebar />
-      <div className={styles.dashboardMain}>
-        <DashboardHeader />
-        <main className={styles.dashboardContent}>{children}</main>
-      </div>
-    </div>
+    <DashboardShell>{children}</DashboardShell>
   ) : (
     <>
       <Header isAuthed={isAuthed} />

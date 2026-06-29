@@ -52,7 +52,7 @@ export function buildMetadata({
   const imageUrl = absoluteUrl(image);
 
   return {
-    title,
+    title: title ?? { absolute: DEFAULT_TITLE },
     description,
     alternates: { canonical },
     robots: noindex

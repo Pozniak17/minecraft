@@ -9,8 +9,24 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  experimental: {
+    inlineCss: true,
+  },
   turbopack: {
     root: projectRoot,
+  },
+  async headers() {
+    return [
+      {
+        source: '/favicon/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 

@@ -24,6 +24,7 @@ export default async function RateCard({
             width={20}
             height={22}
             className={styles.cup}
+            style={{ height: 'auto' }}
           />
           {rank}
         </span>

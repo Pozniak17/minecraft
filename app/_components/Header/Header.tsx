@@ -46,7 +46,13 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
         <div className={`${styles.divider} ${styles.dividerEdge}`} />
 
         <Link href="/" className={styles.logo}>
-          <Image src="/icons/icons/logo.webp" alt={t('shared.logoAlt')} width={215} height={59} />
+          <Image
+            src="/icons/icons/logo.webp"
+            alt={t('shared.logoAlt')}
+            width={215}
+            height={59}
+            priority
+          />
         </Link>
 
         <div className={styles.divider} />

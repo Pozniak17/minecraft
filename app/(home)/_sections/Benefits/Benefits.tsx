@@ -30,7 +30,7 @@ export default async function BenefitsSection() {
         </Container>
         <div className={styles.benefitsVideoContainer}>
           <div className={styles.overlay}></div>
-          <video className={styles.video} autoPlay loop muted playsInline preload="auto">
+          <video className={styles.video} autoPlay loop muted playsInline preload="none">
             <source src="/video/benefits-video.mp4" type="video/mp4" />
           </video>
         </div>

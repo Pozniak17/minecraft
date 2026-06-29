@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
-import Benefits from './_sections/Benefits/Benefits';
-import CommunityTrust from './_sections/CommunityTrust/CommunityTrust';
-import Features from './_sections/Features/Features';
-
+import dynamic from 'next/dynamic';
 import { Hero } from './_sections/Hero/Hero';
-import Preview from './_sections/Preview/Preview';
-import Questions, { HOME_FAQ } from './_sections/Questions/Questions';
-import Rate from './_sections/Rate/Rate';
-
 import Server from './_sections/Server/Server';
-import StartAdventure from './_sections/StartAdventure/StartAdventure';
+import Questions, { HOME_FAQ } from './_sections/Questions/Questions';
 import { getRefreshToken } from '@/lib/server/authCookies';
 import { buildMetadata } from '@/lib/seo/meta';
 import { JsonLd } from '@/app/_components/JsonLd/JsonLd';
 import { faqPageSchema, itemListSchema, videoGameSchema } from '@/lib/seo/schema';
 import { PROJECT_SERVERS } from '@/lib/data/servers';
+
+const HomeBelowFold = dynamic(() => import('./HomeBelowFold'));
 
 export const metadata: Metadata = buildMetadata({ path: '/' });
 
@@ -38,13 +33,7 @@ export default async function Home() {
       />
       <Hero isAuthed={isAuthed} />
       <Server />
-      <Features />
-      <Preview isAuthed={isAuthed} />
-      <Benefits />
-      <Rate />
-      <CommunityTrust />
-      <Questions />
-      <StartAdventure isAuthed={isAuthed} />
+      <HomeBelowFold isAuthed={isAuthed} />
     </>
   );
 }

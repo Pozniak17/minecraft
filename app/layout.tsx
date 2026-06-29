@@ -18,6 +18,7 @@ import {
   absoluteUrl,
 } from '@/lib/seo/meta';
 import { JsonLd } from './_components/JsonLd/JsonLd';
+import { DeferredManifest } from './_components/DeferredManifest/DeferredManifest';
 import { organizationSchema, websiteSchema } from '@/lib/seo/schema';
 
 const montserrat = Montserrat({
@@ -25,7 +26,7 @@ const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
-  preload: false,
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -36,7 +37,6 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
-  manifest: '/favicon/site.webmanifest',
   icons: {
     icon: [
       { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -106,6 +106,7 @@ export default async function RootLayout({
         <JsonLd id="org-schema" data={organizationSchema()} />
         <JsonLd id="website-schema" data={websiteSchema()} />
         <NextIntlClientProvider>
+          <DeferredManifest />
           <SiteChrome isAuthed={isAuthed} initialProfile={initialProfile}>
             {children}
           </SiteChrome>
@@ -113,7 +114,7 @@ export default async function RootLayout({
         </NextIntlClientProvider>
         <Script
           src="https://static.minecraftsgame.com/script.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </body>
     </html>
