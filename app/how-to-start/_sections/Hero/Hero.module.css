@@ -301,6 +301,8 @@
 
   .stepperImage {
     display: block;
+    flex: 0 1 auto;
+    min-width: 0;
     margin-left: 120px;
     margin-top: -80px;
   }

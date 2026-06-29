@@ -2,13 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import {
-  getOrderItems,
-  changeItemAmount,
-  removeFromCart,
-} from '@/lib/api/cart';
+import { getOrderItems, changeItemAmount, removeFromCart } from '@/lib/api/cart';
 import { getServers, getProducts } from '@/lib/api/shop';
 import { createPayment } from '@/lib/api/payment';
 import type { OrderItem } from '@/lib/api/types';
@@ -41,7 +37,6 @@ function serverKey(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-
 // create_payment може повернути URL платіжки під різними іменами полів —
 // дістаємо перший валідний, щоб коректно зредіректити на оплату.
 function extractPaymentUrl(data: unknown): string | null {
@@ -70,7 +65,11 @@ function extractPaymentUrl(data: unknown): string | null {
 
 function labelFromImage(name: string | undefined): string {
   if (!name) return 'Item';
-  const base = name.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
+  const base =
+    name
+      .split('/')
+      .pop()
+      ?.replace(/\.[a-z0-9]+$/i, '') ?? '';
   return base ? base.replace(/[-_]+/g, ' ') : 'Item';
 }
 
@@ -103,29 +102,23 @@ export default function Cart() {
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
   const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
-  const [nickname, setNickname] = useState('');
-  const nicknameSeeded = useRef(false);
+  const suggestedNickname = useMemo(() => {
+    const gameUsername = profile?.game_username?.trim();
+    if (gameUsername) return gameUsername;
+    if (!profile) return '';
+
+    const email =
+      profile.email ??
+      (typeof window !== 'undefined' ? window.localStorage.getItem('user_email') : null) ??
+      '';
+    return email ? email.split('@')[0] : '';
+  }, [profile]);
+  const [nicknameOverride, setNicknameOverride] = useState<string | null>(null);
+  const nickname = nicknameOverride ?? suggestedNickname;
   const [promoCode, setPromoCode] = useState('');
   const [paying, setPaying] = useState(false);
   const [payMessage, setPayMessage] = useState<string | null>(null);
   const [purchaseAgreed, setPurchaseAgreed] = useState(false);
-
-  useEffect(() => {
-    if (nicknameSeeded.current) return;
-
-    const gameUsername = profile?.game_username?.trim();
-    if (gameUsername) {
-      setNickname(gameUsername);
-      nicknameSeeded.current = true;
-      return;
-    }
-
-    if (profile === null) return;
-
-    const email = profile.email ?? window.localStorage.getItem('user_email') ?? '';
-    if (email) setNickname(email.split('@')[0]);
-    nicknameSeeded.current = true;
-  }, [profile]);
 
   useEffect(() => {
     let active = true;
@@ -196,10 +189,7 @@ export default function Cart() {
 
   const lineCount = rows.length;
 
-  const subtotal = useMemo(
-    () => rows.reduce((sum, item) => sum + item.lineTotal, 0),
-    [rows]
-  );
+  const subtotal = useMemo(() => rows.reduce((sum, item) => sum + item.lineTotal, 0), [rows]);
 
   // Валюта кошика = валюта його позицій (бекенд тримає одну валюту на кошик).
   const cartCurrency = rows[0]?.currency ?? DEFAULT_CURRENCY;
@@ -277,9 +267,7 @@ export default function Cart() {
         return;
       }
       setPayMessage(
-        online === false
-          ? t('paymentCreatedOffline', { server, nick })
-          : t('paymentCreatedOnline')
+        online === false ? t('paymentCreatedOffline', { server, nick }) : t('paymentCreatedOnline')
       );
     } catch {
       setPayMessage(t('errorPaymentFailed'));
@@ -327,9 +315,7 @@ export default function Cart() {
           onChange={event => setPurchaseAgreed(event.target.checked)}
         />
         <span className={styles.consentBox} aria-hidden="true" />
-        <span className={styles.consentText}>
-          {t('consentText')}
-        </span>
+        <span className={styles.consentText}>{t('consentText')}</span>
       </label>
       {payMessage && <p className={styles.secureNote}>{payMessage}</p>}
     </section>
@@ -338,183 +324,187 @@ export default function Cart() {
   return (
     <div className={styles.shell}>
       <div className={styles.root}>
-      <header className={styles.header}>
-        <span className={styles.eyebrow}>{t('eyebrow')}</span>
-        <h1 className={styles.title}>{t('title', { count: lineCount })}</h1>
-        <p className={styles.subtitle}>{t('subtitle')}</p>
-      </header>
+        <header className={styles.header}>
+          <span className={styles.eyebrow}>{t('eyebrow')}</span>
+          <h1 className={styles.title}>{t('title', { count: lineCount })}</h1>
+          <p className={styles.subtitle}>{t('subtitle')}</p>
+        </header>
 
-      <div className={styles.body}>
-        <div className={styles.mainPrimary}>
-          <section className={styles.panel} aria-labelledby="cart-items-heading">
-            <h2 id="cart-items-heading" className={styles.panelLabel}>
-              <span className={styles.panelLabelMobile}>{t('itemsLabelMobile')}</span>
-              <span className={styles.panelLabelDesktop}>{t('itemsLabelDesktop')}</span>
-            </h2>
-            {!loaded ? (
-              <p className={styles.cartState}>{t('loading')}</p>
-            ) : rows.length === 0 ? (
-              <div className={styles.emptyState}>
-                <p className={styles.emptyTitle}>{t('emptyTitle')}</p>
-                <p className={styles.emptyText}>{t('emptyText')}</p>
-                <Link href="/dashboard/shop" className={styles.emptyCta}>
-                  {t('emptyCta')}
-                </Link>
-              </div>
-            ) : (
-            <ul className={styles.itemList}>
-              {rows.map(item => {
-                const lineTotal = item.lineTotal;
-                const title = titleFor(item);
-
-                return (
-                  <li key={item.id} className={styles.itemRow}>
-                    <div className={styles.itemThumb}>
-                      <Image
-                        src={item.image}
-                        alt=""
-                        width={64}
-                        height={64}
-                        className={styles.itemImg}
-                        aria-hidden
-                      />
-                    </div>
-                    <div className={styles.itemMeta}>
-                      <p className={styles.itemTitle}>{title}</p>
-                      <p className={styles.itemSubtitleMobile}>
-                        {item.rawCurrency ?? t('itemSubtitleDefault')}
-                      </p>
-                      <p className={styles.itemSubtitleDesktop}>
-                        {t('itemSubtitleDesktop', { currency: item.rawCurrency ?? t('itemSubtitleDefault') })}
-                      </p>
-                    </div>
-                    <div className={styles.qty}>
-                      <button
-                        type="button"
-                        className={styles.qtyBtn}
-                        onClick={() => changeQty(item.id, -1)}
-                        aria-label={t('decreaseQty', { title })}
-                      >
-                        −
-                      </button>
-                      <span className={styles.qtyValue}>{item.qty}</span>
-                      <button
-                        type="button"
-                        className={`${styles.qtyBtn} ${styles.qtyBtnPlus}`}
-                        onClick={() => changeQty(item.id, 1)}
-                        aria-label={t('increaseQty', { title })}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <p className={styles.itemPrice}>{formatMoney(lineTotal, item.currency)}</p>
-                    <button
-                      type="button"
-                      className={styles.removeBtn}
-                      onClick={() => removeItem(item.id)}
-                      aria-label={t('removeItem', { title })}
-                    >
-                      ×
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-            )}
-          </section>
-
-          <section
-            className={`${styles.panel} ${styles.panelDelivery}`}
-            aria-labelledby="delivery-heading"
-          >
-            <div className={styles.panelHead}>
-              <h2 id="delivery-heading" className={styles.panelTitle}>
-                {t('deliveryTitle')}
+        <div className={styles.body}>
+          <div className={styles.mainPrimary}>
+            <section className={styles.panel} aria-labelledby="cart-items-heading">
+              <h2 id="cart-items-heading" className={styles.panelLabel}>
+                <span className={styles.panelLabelMobile}>{t('itemsLabelMobile')}</span>
+                <span className={styles.panelLabelDesktop}>{t('itemsLabelDesktop')}</span>
               </h2>
-              <span className={styles.requiredBadge}>{t('requiredBadge')}</span>
-            </div>
-            <div className={styles.field}>
-              <p className={styles.fieldLabel}>{t('selectServerLabel')}</p>
-              <div className={styles.serverRow} role="radiogroup" aria-label={t('selectServerLabel')}>
-                {servers.map(option => (
-                  <button
-                    key={option}
-                    type="button"
-                    role="radio"
-                    aria-checked={server === option}
-                    className={`${styles.serverOption} ${server === option ? styles.serverOptionActive : ''}`}
-                    onClick={() => setServer(option)}
-                  >
-                    <span className={styles.serverRadio} aria-hidden>
-                      {server === option && <span className={styles.serverRadioDot} />}
-                    </span>
-                    <span>{option}</span>
-                  </button>
-                ))}
+              {!loaded ? (
+                <p className={styles.cartState}>{t('loading')}</p>
+              ) : rows.length === 0 ? (
+                <div className={styles.emptyState}>
+                  <p className={styles.emptyTitle}>{t('emptyTitle')}</p>
+                  <p className={styles.emptyText}>{t('emptyText')}</p>
+                  <Link href="/dashboard/shop" className={styles.emptyCta}>
+                    {t('emptyCta')}
+                  </Link>
+                </div>
+              ) : (
+                <ul className={styles.itemList}>
+                  {rows.map(item => {
+                    const lineTotal = item.lineTotal;
+                    const title = titleFor(item);
+
+                    return (
+                      <li key={item.id} className={styles.itemRow}>
+                        <div className={styles.itemThumb}>
+                          <Image
+                            src={item.image}
+                            alt=""
+                            width={64}
+                            height={64}
+                            className={styles.itemImg}
+                            aria-hidden
+                          />
+                        </div>
+                        <div className={styles.itemMeta}>
+                          <p className={styles.itemTitle}>{title}</p>
+                          <p className={styles.itemSubtitleMobile}>
+                            {item.rawCurrency ?? t('itemSubtitleDefault')}
+                          </p>
+                          <p className={styles.itemSubtitleDesktop}>
+                            {t('itemSubtitleDesktop', {
+                              currency: item.rawCurrency ?? t('itemSubtitleDefault'),
+                            })}
+                          </p>
+                        </div>
+                        <div className={styles.qty}>
+                          <button
+                            type="button"
+                            className={styles.qtyBtn}
+                            onClick={() => changeQty(item.id, -1)}
+                            aria-label={t('decreaseQty', { title })}
+                          >
+                            −
+                          </button>
+                          <span className={styles.qtyValue}>{item.qty}</span>
+                          <button
+                            type="button"
+                            className={`${styles.qtyBtn} ${styles.qtyBtnPlus}`}
+                            onClick={() => changeQty(item.id, 1)}
+                            aria-label={t('increaseQty', { title })}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <p className={styles.itemPrice}>{formatMoney(lineTotal, item.currency)}</p>
+                        <button
+                          type="button"
+                          className={styles.removeBtn}
+                          onClick={() => removeItem(item.id)}
+                          aria-label={t('removeItem', { title })}
+                        >
+                          ×
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+
+            <section
+              className={`${styles.panel} ${styles.panelDelivery}`}
+              aria-labelledby="delivery-heading"
+            >
+              <div className={styles.panelHead}>
+                <h2 id="delivery-heading" className={styles.panelTitle}>
+                  {t('deliveryTitle')}
+                </h2>
+                <span className={styles.requiredBadge}>{t('requiredBadge')}</span>
               </div>
+              <div className={styles.field}>
+                <p className={styles.fieldLabel}>{t('selectServerLabel')}</p>
+                <div
+                  className={styles.serverRow}
+                  role="radiogroup"
+                  aria-label={t('selectServerLabel')}
+                >
+                  {servers.map(option => (
+                    <button
+                      key={option}
+                      type="button"
+                      role="radio"
+                      aria-checked={server === option}
+                      className={`${styles.serverOption} ${server === option ? styles.serverOptionActive : ''}`}
+                      onClick={() => setServer(option)}
+                    >
+                      <span className={styles.serverRadio} aria-hidden>
+                        {server === option && <span className={styles.serverRadioDot} />}
+                      </span>
+                      <span>{option}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.field}>
+                <label className={styles.fieldLabel} htmlFor="cart-nickname">
+                  <span className={styles.nicknameLabelMobile}>{t('nicknameMobile')}</span>
+                  <span className={styles.nicknameLabelDesktop}>{t('nicknameDesktop')}</span>
+                </label>
+                <input
+                  id="cart-nickname"
+                  className={styles.input}
+                  value={nickname}
+                  onChange={e => setNicknameOverride(e.target.value)}
+                  autoComplete="username"
+                />
+              </div>
+              <p className={styles.deliveryNote}>{t('deliveryNote')}</p>
+            </section>
+          </div>
+
+          <div className={styles.sidebarColumn}>
+            {summaryBlock}
+
+            <aside className={styles.importantNotice} aria-label={t('importantNoticeAriaLabel')}>
+              <div className={styles.importantHead}>
+                <span className={styles.importantIcon} aria-hidden="true">
+                  ⚠
+                </span>
+                <p className={styles.importantTitle}>{t('importantTitle')}</p>
+              </div>
+              <p className={styles.importantText}>
+                {t.rich('importantText1', {
+                  highlight: chunks => <span className={styles.importantHighlight}>{chunks}</span>,
+                })}
+              </p>
+              <p className={styles.importantText}>{t('importantText2')}</p>
+            </aside>
+          </div>
+
+          <section className={styles.promoPanel} aria-labelledby="promo-heading">
+            <span className={styles.promoIcon} aria-hidden>
+              🎟
+            </span>
+            <div className={styles.promoCopy}>
+              <h2 id="promo-heading" className={styles.promoTitle}>
+                <span className={styles.promoTitleMobile}>{t('promoTitleMobile')}</span>
+                <span className={styles.promoTitleDesktop}>{t('promoTitleDesktop')}</span>
+              </h2>
+              <p className={styles.promoHint}>{t('promoHint')}</p>
             </div>
-            <div className={styles.field}>
-              <label className={styles.fieldLabel} htmlFor="cart-nickname">
-                <span className={styles.nicknameLabelMobile}>{t('nicknameMobile')}</span>
-                <span className={styles.nicknameLabelDesktop}>{t('nicknameDesktop')}</span>
-              </label>
+            <div className={styles.promoRow}>
               <input
-                id="cart-nickname"
-                className={styles.input}
-                value={nickname}
-                onChange={e => setNickname(e.target.value)}
-                autoComplete="username"
+                className={styles.promoInput}
+                placeholder={t('promoPlaceholder')}
+                value={promoCode}
+                onChange={e => setPromoCode(e.target.value)}
               />
+              <button type="button" className={styles.promoApply}>
+                {t('promoApply')}
+              </button>
             </div>
-            <p className={styles.deliveryNote}>{t('deliveryNote')}</p>
           </section>
         </div>
-
-        <div className={styles.sidebarColumn}>
-          {summaryBlock}
-
-          <aside className={styles.importantNotice} aria-label={t('importantNoticeAriaLabel')}>
-            <div className={styles.importantHead}>
-              <span className={styles.importantIcon} aria-hidden="true">
-                ⚠
-              </span>
-              <p className={styles.importantTitle}>{t('importantTitle')}</p>
-            </div>
-            <p className={styles.importantText}>
-              {t.rich('importantText1', {
-                highlight: chunks => (
-                  <span className={styles.importantHighlight}>{chunks}</span>
-                ),
-              })}
-            </p>
-            <p className={styles.importantText}>{t('importantText2')}</p>
-          </aside>
-        </div>
-
-        <section className={styles.promoPanel} aria-labelledby="promo-heading">
-          <span className={styles.promoIcon} aria-hidden>
-            🎟
-          </span>
-          <div className={styles.promoCopy}>
-            <h2 id="promo-heading" className={styles.promoTitle}>
-              <span className={styles.promoTitleMobile}>{t('promoTitleMobile')}</span>
-              <span className={styles.promoTitleDesktop}>{t('promoTitleDesktop')}</span>
-            </h2>
-            <p className={styles.promoHint}>{t('promoHint')}</p>
-          </div>
-          <div className={styles.promoRow}>
-            <input
-              className={styles.promoInput}
-              placeholder={t('promoPlaceholder')}
-              value={promoCode}
-              onChange={e => setPromoCode(e.target.value)}
-            />
-            <button type="button" className={styles.promoApply}>
-              {t('promoApply')}
-            </button>
-          </div>
-        </section>
-      </div>
       </div>
     </div>
   );
