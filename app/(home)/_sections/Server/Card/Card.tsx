@@ -53,7 +53,15 @@ export function Card({
         />
         <span className={styles.versionLabel}>{version}</span>
       </span>
-      <Image className={styles.icon} src={icon} alt={title} width={203} height={191} />
+      <Image
+        className={styles.icon}
+        src={icon}
+        alt={title}
+        width={203}
+        height={191}
+        sizes="(max-width: 1279px) 254px, 203px"
+        loading="lazy"
+      />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.text}>{text}</p>
       <p className={styles.description}>{description}</p>

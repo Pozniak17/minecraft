@@ -24,9 +24,11 @@ import { organizationSchema, websiteSchema } from '@/lib/seo/schema';
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '600', '800'],
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', 'Segoe UI', 'sans-serif'],
 });
 
 export const metadata: Metadata = {

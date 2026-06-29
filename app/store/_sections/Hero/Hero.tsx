@@ -8,6 +8,16 @@ export default async function Hero() {
 
   return (
     <section className={styles.hero}>
+      <Image
+        src="/store/images/bg.webp"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className={styles.bgImage}
+        aria-hidden
+      />
       <div className={styles.overlay} aria-hidden />
       <Container className={styles.content}>
         <h1 className={styles.title}>

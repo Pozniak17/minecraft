@@ -3,16 +3,19 @@
   width: 100%;
   min-height: 593px;
   background-color: var(--color-bg);
-  background-image: url('/store/images/bg.webp');
-  background-repeat: no-repeat;
-  background-position: 80% center;
-  background-size: cover;
   overflow: hidden;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: 80% center;
+  z-index: 0;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(180deg, rgba(3, 29, 23, 0) 22.38%, var(--color-bg) 100%),
     linear-gradient(0deg, rgba(3, 29, 23, 0) 78%, var(--color-bg) 100%),
@@ -23,7 +26,7 @@
 
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding-top: 120px;
   padding-bottom: 106px;
   display: flex;
@@ -104,8 +107,8 @@
 }
 
 @media (min-width: 1280px) {
-  .hero {
-    background-position: right top;
+  .bgImage {
+    object-position: right top;
   }
 
   .content {
