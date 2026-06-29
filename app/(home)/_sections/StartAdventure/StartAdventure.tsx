@@ -39,6 +39,7 @@ export default async function StartAdventure({ isAuthed = false }: { isAuthed?: 
             src="/icons/illustrations/effect.png"
             alt=""
             fill
+            sizes="(min-width: 1280px) 463px, 0px"
             loading="lazy"
             className={styles.effect}
           />
