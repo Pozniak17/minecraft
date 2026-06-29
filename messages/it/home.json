@@ -117,6 +117,7 @@
     "title": "Domande frequenti",
     "text": "Non hai trovato risposta? Vai alla pagina FAQ",
     "seeMore": "Vedi altro",
+    "seeMoreAriaLabel": "Vai alle FAQ",
     "q1": {
       "question": "Come inizio a giocare?",
       "answer": "Crea un account, scegli un server e connettiti usando l'indirizzo IP."

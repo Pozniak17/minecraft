@@ -54,7 +54,7 @@ export default async function Questions() {
             <h2 className={styles.title}>{t('questions.title')}</h2>
             <p className={styles.text}>{t('questions.text')}</p>
 
-            <Link href="/faq" className={styles.button}>
+            <Link href="/faq" className={styles.button} aria-label={t('questions.seeMoreAriaLabel')}>
               {t('questions.seeMore')}
             </Link>
           </div>

@@ -114,6 +114,7 @@
     "title": "Często zadawane pytania",
     "text": "Nie znalazłeś odpowiedzi? Przejdź na stronę FAQ",
     "seeMore": "Zobacz więcej",
+    "seeMoreAriaLabel": "Przejdź do FAQ",
     "q1": {
       "question": "Jak zacząć grać?",
       "answer": "Utwórz konto, wybierz serwer i połącz się używając adresu IP."

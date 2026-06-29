@@ -114,6 +114,7 @@
     "title": "Frequently Asked Questions",
     "text": "Didn't find the answer to your question? Go to the FAQ page",
     "seeMore": "See More",
+    "seeMoreAriaLabel": "Visit the FAQ",
     "q1": {
       "question": "How do I start playing?",
       "answer": "Create an account, choose a server, and connect using the IP address."

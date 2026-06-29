@@ -5,6 +5,7 @@
 
   "storeItems_ariaLabel": "Art\u00edculos de la tienda",
   "crystalCard_seeMore": "Ver m\u00e1s",
+  "crystalCard_seeMoreAriaLabel": "Ver {title} en la tienda",
   "crystalCard_pack1_title": "500 Cristales",
   "crystalCard_pack2_title": "1.500 Cristales",
   "crystalCard_pack3_title": "5.000 Cristales",

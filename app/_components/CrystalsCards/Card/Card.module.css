@@ -63,7 +63,8 @@
   font-size: var(--Size-Mobile-Body-xsmall, 12px);
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 18px */
+  line-height: 150%;
+  /* 18px */
 }
 
 .button {

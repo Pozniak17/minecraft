@@ -17,7 +17,11 @@ export default function Card({ title, text, icon, seeMoreHref }: CardProps) {
         <Image className={styles.icon} src={icon} alt={title} width={177} height={124} />
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.text}>{text}</p>
-        <Link href={seeMoreHref} className={styles.button}>
+        <Link
+          href={seeMoreHref}
+          className={styles.button}
+          aria-label={t('crystalCard_seeMoreAriaLabel', { title })}
+        >
           <Image
             src="/icons/icons/arrow-up.svg"
             alt=""
