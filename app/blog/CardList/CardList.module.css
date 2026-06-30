@@ -1,11 +1,10 @@
 .list {
-    margin-bottom: 20px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+  margin-bottom: 20px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 16px;
 }
 
 .pagination {
@@ -44,13 +43,19 @@
     color: #001812;
 }
 
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+    gap: 24px;
+  }
+}
+
 @media (min-width: 1280px) {
-    .list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 32px 24px;
-        justify-content: space-between;
-    }
+  .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
 
     .pagination {
         padding-top: 12px;
