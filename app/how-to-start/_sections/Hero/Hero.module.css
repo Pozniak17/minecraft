@@ -280,6 +280,14 @@
     align-items: flex-start;
   }
 
+  .stepperItem {
+    width: 100%;
+  }
+
+  .stepperContent {
+    flex: 0 0 auto;
+  }
+
   .stepperTitle {
     margin-bottom: 24px;
     width: 100%;
@@ -299,11 +307,18 @@
     width: 531px;
   }
 
-  .stepperImage {
+  .stepperImageWrap {
     display: block;
-    flex: 0 1 auto;
+    flex: 1 1 0;
     min-width: 0;
     margin-left: 120px;
     margin-top: -80px;
+  }
+
+  .stepperImage {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
   }
 }

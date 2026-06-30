@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { useCartItemCount } from '@/lib/client/cartCount';
-import { dashboardIconStyle as iconStyle, WORKSPACE_LINKS } from '../../dashboardNav';
 import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
 import { isNavLinkActive, LEGAL_LINKS, NAV_LINKS, SOCIAL_LINKS } from '../navLinks';
 import styles from './MobileNav.module.css';
@@ -14,26 +12,10 @@ type MobileNavProps = {
   isOpen: boolean;
   onClose: () => void;
   pathname: string;
-  isAuthed?: boolean;
-  nick?: string;
-  avatarInitial?: string;
-  photoUrl?: string | null;
 };
 
-export function MobileNav({
-  isOpen,
-  onClose,
-  pathname,
-  isAuthed = false,
-  nick = 'Player',
-  avatarInitial,
-  photoUrl = null,
-}: MobileNavProps) {
+export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
   const t = useTranslations('common');
-  const cartCount = useCartItemCount(isAuthed);
-  const workspaceLinks = WORKSPACE_LINKS.map(link =>
-    link.href === '/dashboard/cart' ? { ...link, badge: cartCount } : link
-  );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -87,28 +69,12 @@ export function MobileNav({
         </div>
 
         <div className={styles.authRow}>
-          {isAuthed ? (
-            <Link href="/dashboard" className={styles.account} onClick={onClose}>
-              {photoUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className={styles.avatar} src={photoUrl} alt={t('shared.profileAlt')} />
-              ) : (
-                <span className={styles.avatar} aria-hidden="true">
-                  {avatarInitial ?? nick.charAt(0).toUpperCase()}
-                </span>
-              )}
-              <span className={styles.nick}>{nick}</span>
-            </Link>
-          ) : (
-            <>
-              <Link href="/login" className={styles.loginButton} onClick={onClose}>
-                {t('mobileNav.logIn')}
-              </Link>
-              <Link href="/register" className={styles.signupButton} onClick={onClose}>
-                {t('mobileNav.signUp')}
-              </Link>
-            </>
-          )}
+          <Link href="/login" className={styles.loginButton} onClick={onClose}>
+            {t('mobileNav.logIn')}
+          </Link>
+          <Link href="/register" className={styles.signupButton} onClick={onClose}>
+            {t('mobileNav.signUp')}
+          </Link>
         </div>
 
         <Link href="/servers" className={styles.statusCard} onClick={onClose}>
@@ -147,60 +113,6 @@ export function MobileNav({
             );
           })}
         </nav>
-
-        {isAuthed && (
-          <>
-            <div className={styles.sectionLabel}>
-              <span>{t('shared.myWorkspace')}</span>
-              <span className={styles.sectionLine} aria-hidden="true" />
-            </div>
-
-            <nav className={styles.workspace} aria-label={t('shared.myWorkspace')}>
-              {workspaceLinks.map(link => {
-                const isActive = link.href !== '#' && isNavLinkActive(link.href, pathname);
-                const isDisabled = link.soon && link.href === '#';
-                const className = [
-                  styles.wsItem,
-                  isActive && styles.wsItemActive,
-                  isDisabled && styles.wsItemDisabled,
-                ]
-                  .filter(Boolean)
-                  .join(' ');
-
-                const content = (
-                  <>
-                    <span className={styles.wsIcon} style={iconStyle(link.icon)} aria-hidden="true" />
-                    <span className={styles.wsLabel}>{t(`dash.${link.key}`)}</span>
-                    {typeof link.badge === 'number' && link.badge > 0 && (
-                      <span className={styles.badge}>{link.badge}</span>
-                    )}
-                    {link.soon && <span className={styles.soon}>{t('shared.soon')}</span>}
-                  </>
-                );
-
-                if (isDisabled) {
-                  return (
-                    <span key={link.key} className={className} aria-disabled="true">
-                      {content}
-                    </span>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={link.key}
-                    href={link.href}
-                    className={className}
-                    aria-current={isActive ? 'page' : undefined}
-                    onClick={onClose}
-                  >
-                    {content}
-                  </Link>
-                );
-              })}
-            </nav>
-          </>
-        )}
 
         <div className={styles.sectionLabel}>
           <span>{t('mobileNav.community')}</span>

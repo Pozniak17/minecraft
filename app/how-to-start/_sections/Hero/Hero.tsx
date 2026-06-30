@@ -11,6 +11,17 @@ import img3 from '@/public/how-to-start/3.webp';
 import img4 from '@/public/how-to-start/4.webp';
 import img5 from '@/public/how-to-start/5.webp';
 import img6 from '@/public/how-to-start/6.webp';
+import type { StaticImageData } from 'next/image';
+
+const STEPPER_IMAGE_STYLE = { height: 'auto' } as const;
+
+function StepperImage({ src }: { src: StaticImageData }) {
+  return (
+    <div className={styles.stepperImageWrap}>
+      <Image src={src} alt="" className={styles.stepperImage} style={STEPPER_IMAGE_STYLE} />
+    </div>
+  );
+}
 
 export default async function Hero({ isAuthed = false }: { isAuthed?: boolean }) {
   const t = await getTranslations('marketing');
@@ -67,7 +78,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   {t('howToStart.step2Button')}
                 </Link>
               </div>
-              <Image src={img1} alt="" className={styles.stepperImage} />
+              <StepperImage src={img1} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -81,7 +92,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   {t('howToStart.step3Button')}
                 </Link>
               </div>
-              <Image src={img2} alt="" className={styles.stepperImage} />
+              <StepperImage src={img2} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -111,7 +122,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   })}
                 </p>
               </div>
-              <Image src={img3} alt="" className={styles.stepperImage} />
+              <StepperImage src={img3} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -125,7 +136,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   {t('howToStart.step5Button')}
                 </Link>
               </div>
-              <Image src={img4} alt="" className={styles.stepperImage} />
+              <StepperImage src={img4} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -139,7 +150,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   {t('howToStart.step6Button')}
                 </AuthAwareLink>
               </div>
-              <Image src={img5} alt="" className={styles.stepperImage} />
+              <StepperImage src={img5} />
             </li>
 
             <li className={styles.stepperItem}>
@@ -153,7 +164,7 @@ export default async function Hero({ isAuthed = false }: { isAuthed?: boolean })
                   {t('howToStart.step7Button')}
                 </AuthAwareLink>
               </div>
-              <Image src={img6} alt="" className={styles.stepperImage} />
+              <StepperImage src={img6} />
             </li>
           </ul>
         </div>

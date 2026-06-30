@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { Container } from '../Container/Container';
+import { DashboardNav } from '../DashboardHeader/DashboardNav/DashboardNav';
 import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import { MobileNav } from './MobileNav/MobileNav';
 import { isNavLinkActive, NAV_LINKS } from './navLinks';
@@ -123,7 +124,7 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
       </Container>
 
       {isAuthed ? (
-        <AuthenticatedMobileNav
+        <DashboardNav
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
           pathname={pathname}
@@ -133,33 +134,8 @@ export function Header({ isAuthed = false }: { isAuthed?: boolean }) {
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
           pathname={pathname}
-          isAuthed={false}
         />
       )}
     </header>
-  );
-}
-
-function AuthenticatedMobileNav({
-  isOpen,
-  onClose,
-  pathname,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  pathname: string;
-}) {
-  const { displayName, initial, photoUrl } = useProfile();
-
-  return (
-    <MobileNav
-      isOpen={isOpen}
-      onClose={onClose}
-      pathname={pathname}
-      isAuthed
-      nick={displayName}
-      avatarInitial={initial}
-      photoUrl={photoUrl}
-    />
   );
 }
