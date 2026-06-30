@@ -154,20 +154,14 @@
   display: flex;
   gap: 8px;
   width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.stats::-webkit-scrollbar {
-  display: none;
 }
 
 .statCard {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  flex-shrink: 0;
-  width: 77px;
+  flex: 1 1 0;
+  min-width: 0;
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.12);
