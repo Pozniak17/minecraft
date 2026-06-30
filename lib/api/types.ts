@@ -124,6 +124,9 @@ export interface OrderListItem {
   server?: string | null;
   user_nickname?: string | null;
   has_bill?: string | boolean | null;
+  is_refund?: string | boolean | null;
+  is_refunded?: string | boolean | null;
+  status?: string | null;
 }
 
 // ---- Payment ----

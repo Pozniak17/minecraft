@@ -23,6 +23,12 @@
     "popular": "M\u00e1s populares",
     "ariaLabel": "Ordenar art\u00edculos"
   },
+  "pagination": {
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "prevAriaLabel": "P\u00e1gina anterior",
+    "nextAriaLabel": "P\u00e1gina siguiente"
+  },
   "articles": {
     "latestTitle": "\u00daltimos art\u00edculos",
     "categoryTitle": "Art\u00edculos de {category}"

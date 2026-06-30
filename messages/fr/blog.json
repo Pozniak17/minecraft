@@ -23,6 +23,12 @@
     "popular": "Plus populaires",
     "ariaLabel": "Trier les articles"
   },
+  "pagination": {
+    "prev": "Pr\u00e9c\u00e9dent",
+    "next": "Suivant",
+    "prevAriaLabel": "Page pr\u00e9c\u00e9dente",
+    "nextAriaLabel": "Page suivante"
+  },
   "articles": {
     "latestTitle": "Derniers articles",
     "categoryTitle": "Articles {category}"

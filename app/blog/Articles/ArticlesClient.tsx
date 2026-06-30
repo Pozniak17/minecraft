@@ -9,6 +9,7 @@ import {
   ARTICLE_SORT_OPTIONS,
   type ArticleSort,
   type BlogArticle,
+  paginateArticles,
   sortBlogArticles,
 } from './articlesData';
 import styles from './Articles.module.css';
@@ -94,6 +95,7 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
   const searchParams = useSearchParams();
   const category = parseCategoryParam(searchParams.get('category'));
   const [sort, setSort] = useState<ArticleSort>('all');
+  const [page, setPage] = useState(1);
   const t = useTranslations('blog');
 
   const filteredArticles = useMemo(
@@ -104,6 +106,25 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
     () => sortBlogArticles(filteredArticles, sort),
     [filteredArticles, sort],
   );
+  const { pageItems, totalPages, activePage, showPagination } = useMemo(
+    () => paginateArticles(visibleArticles, page),
+    [visibleArticles, page],
+  );
+
+  useEffect(() => {
+    setPage(1);
+  }, [category, sort]);
+
+  useEffect(() => {
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [page, totalPages]);
+
+  const handlePageChange = (nextPage: number) => {
+    setPage(nextPage);
+    document.querySelector(`.${styles.articles}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const sectionTitle =
     category === 'All'
@@ -118,7 +139,19 @@ export default function ArticlesClient({ articles }: ArticlesClientProps) {
         <h2 className={styles.title}>{sectionTitle}</h2>
         <ArticleSortSelect value={sort} onChange={setSort} />
       </div>
-      <CardList articles={visibleArticles} paginationLabel={t('sidebar.paginationLabel')} />
+      <CardList
+        articles={pageItems}
+        pagination={
+          showPagination
+            ? {
+                activePage,
+                totalPages,
+                onPageChange: handlePageChange,
+              }
+            : undefined
+        }
+        paginationLabel={t('sidebar.paginationLabel')}
+      />
     </>
   );
 }

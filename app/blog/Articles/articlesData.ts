@@ -14,6 +14,25 @@ export const ARTICLE_SORT_OPTIONS: { value: ArticleSort; label: string }[] = [
   { value: 'popular', label: 'Most Popular' },
 ];
 
+export const BLOG_ARTICLES_PER_PAGE = 6;
+
+export function paginateArticles<T>(
+  items: T[],
+  page: number,
+  perPage = BLOG_ARTICLES_PER_PAGE,
+) {
+  const totalPages = Math.max(1, Math.ceil(items.length / perPage));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * perPage;
+
+  return {
+    pageItems: items.slice(start, start + perPage),
+    totalPages,
+    activePage: safePage,
+    showPagination: items.length > perPage,
+  };
+}
+
 export const BLOG_ARTICLES: BlogArticle[] = BLOG_POSTS.map(
   ({
     popularity,

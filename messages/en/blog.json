@@ -23,6 +23,12 @@
     "popular": "Most Popular",
     "ariaLabel": "Sort articles"
   },
+  "pagination": {
+    "prev": "Previous",
+    "next": "Next",
+    "prevAriaLabel": "Previous page",
+    "nextAriaLabel": "Next page"
+  },
   "articles": {
     "latestTitle": "Latest articles",
     "categoryTitle": "{category} articles"

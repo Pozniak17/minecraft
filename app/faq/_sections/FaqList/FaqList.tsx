@@ -10,6 +10,7 @@ import type { FaqListItem } from './faqItems';
 import FaqPerPageSelect from './FaqPerPageSelect';
 import FaqSortSelect from './FaqSortSelect';
 import { getCategoryTranslationKey } from '../categoryTranslationKeys';
+import { buildPageNumbers } from '@/lib/pagination/buildPageNumbers';
 import styles from './FaqList.module.css';
 
 type FaqListProps = {
@@ -26,26 +27,6 @@ function toListItem(article: ReturnType<typeof filterFaqArticles>[number]): FaqL
     question: article.question,
     divider: article.listId === '03' && article.categoryId === 'getting-started',
   };
-}
-
-function buildPageNumbers(totalPages: number, activePage: number): (number | '…')[] {
-  if (totalPages <= 1) {
-    return [1];
-  }
-
-  if (totalPages <= 5) {
-    return Array.from({ length: totalPages }, (_, index) => index + 1);
-  }
-
-  if (activePage <= 3) {
-    return [1, 2, 3, 4, '…', totalPages];
-  }
-
-  if (activePage >= totalPages - 2) {
-    return [1, '…', totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-  }
-
-  return [1, '…', activePage - 1, activePage, activePage + 1, '…', totalPages];
 }
 
 export default function FaqList({ activeCategory }: FaqListProps) {

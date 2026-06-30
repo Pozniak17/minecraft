@@ -23,6 +23,12 @@
     "popular": "Najpopularniejsze",
     "ariaLabel": "Sortuj artyku\u0142y"
   },
+  "pagination": {
+    "prev": "Poprzednia",
+    "next": "Nast\u0119pna",
+    "prevAriaLabel": "Poprzednia strona",
+    "nextAriaLabel": "Nast\u0119pna strona"
+  },
   "articles": {
     "latestTitle": "Najnowsze artyku\u0142y",
     "categoryTitle": "Artyku\u0142y w kategorii {category}"

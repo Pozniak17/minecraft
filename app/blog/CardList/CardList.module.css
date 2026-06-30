@@ -14,33 +14,78 @@
 }
 
 .pagRow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagArrow,
+.pagNumber,
+.pagEllipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.pagArrow {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.pagArrowNext {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #bde153;
+}
+
+.pagArrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .pagNumber {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
-    font-family: Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: normal;
-    cursor: default;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.pagNumber:hover:not(.pagNumberActive) {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .pagNumberActive {
-    border-color: #bde153;
-    background: #bde153;
-    color: #001812;
+  border-color: #bde153;
+  background: #bde153;
+  color: #001812;
+}
+
+.pagEllipsis {
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
 }
 
 @media (min-width: 768px) {

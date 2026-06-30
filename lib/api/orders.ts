@@ -43,18 +43,50 @@ async function fetchOrderBill(orderId: string): Promise<{ blob: Blob; filename: 
   return { blob, filename };
 }
 
+function readTruthyFlag(value: string | boolean | null | undefined): boolean | null {
+  if (value == null) return null;
+  if (value === true) return true;
+  if (value === false) return false;
+  const normalized = String(value).toLowerCase().trim();
+  if (normalized === 'true' || normalized === '1' || normalized === 'yes') return true;
+  if (normalized === 'false' || normalized === '0' || normalized === 'no') return false;
+  return null;
+}
+
 export function orderHasBill(order: Pick<OrderListItem, 'has_bill'>): boolean {
   const value = order.has_bill;
   if (value == null) return true;
   if (value === true) return true;
   if (value === false) return false;
-  const normalized = String(value).toLowerCase();
+  const normalized = String(value).toLowerCase().trim();
   return normalized === 'true' || normalized === '1' || normalized === 'yes';
 }
 
-export type OrderPaymentStatus = 'paid' | 'failed';
+export function isOrderRefunded(
+  order: Pick<OrderListItem, 'is_refund' | 'is_refunded' | 'status' | 'has_bill'>,
+): boolean {
+  const refundFlag = readTruthyFlag(order.is_refund) ?? readTruthyFlag(order.is_refunded);
+  if (refundFlag === true) return true;
+  if (refundFlag === false) return false;
 
-export function mapOrderStatus(order: Pick<OrderListItem, 'has_bill'>): OrderPaymentStatus {
+  const status = order.status?.toLowerCase().trim();
+  if (status === 'refund' || status === 'refunded') return true;
+
+  const bill = order.has_bill;
+  if (bill != null) {
+    const normalized = String(bill).toLowerCase().trim();
+    if (normalized === 'refund' || normalized === 'refunded') return true;
+  }
+
+  return false;
+}
+
+export type OrderPaymentStatus = 'paid' | 'refund' | 'failed';
+
+export function mapOrderStatus(
+  order: Pick<OrderListItem, 'has_bill' | 'is_refund' | 'is_refunded' | 'status'>,
+): OrderPaymentStatus {
+  if (isOrderRefunded(order)) return 'refund';
   return orderHasBill(order) ? 'paid' : 'failed';
 }
 

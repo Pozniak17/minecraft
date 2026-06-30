@@ -10,6 +10,7 @@ import {
   openOrderBill,
   orderHasBill,
   mapOrderStatus,
+  type OrderPaymentStatus,
 } from '@/lib/api/orders';
 import { getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
@@ -21,15 +22,13 @@ import {
 } from '@/lib/client/orderDisplay';
 import styles from './PurchaseHistory.module.css';
 
-type OrderStatus = 'paid' | 'refund' | 'failed';
-
 type Order = {
   id: string;
   date: string;
   player: string;
   server: string;
   total: string;
-  status: OrderStatus;
+  status: OrderPaymentStatus;
   items: string[];
   hasBill: boolean;
 };
@@ -112,7 +111,7 @@ export default function PurchaseHistory() {
     allTime: t('ph.period.allTime'),
   };
 
-  const statusLabels: Record<OrderStatus, string> = {
+  const statusLabels: Record<OrderPaymentStatus, string> = {
     paid: t('ph.status.paid'),
     refund: t('ph.status.refund'),
     failed: t('ph.status.failed'),
@@ -190,8 +189,8 @@ export default function PurchaseHistory() {
     let currency = 'EUR';
 
     for (const order of filteredOrders) {
-      // Невдалі платежі (has_bill: false) не враховуємо у витратах та доставлених товарах.
-      if (!orderHasBill(order)) continue;
+      // Лише успішні оплачені замовлення; refund і failed не враховуємо у витратах та товарах.
+      if (mapOrderStatus(order) !== 'paid') continue;
       spent += Number(order.total_price) || 0;
       for (const item of order.order_item ?? []) {
         if (item.currency) currency = item.currency;

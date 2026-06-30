@@ -23,6 +23,12 @@
     "popular": "Pi\u00f9 popolari",
     "ariaLabel": "Ordina articoli"
   },
+  "pagination": {
+    "prev": "Precedente",
+    "next": "Successivo",
+    "prevAriaLabel": "Pagina precedente",
+    "nextAriaLabel": "Pagina successiva"
+  },
   "articles": {
     "latestTitle": "Ultimi articoli",
     "categoryTitle": "Articoli su {category}"
