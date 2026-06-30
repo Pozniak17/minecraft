@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "Could not open receipt.",
       "downloadFallback": "Could not download receipt."
+    },
+    "pagination": {
+      "ariaLabel": "Purchase history pagination",
+      "prevAriaLabel": "Previous page",
+      "nextAriaLabel": "Next page"
     }
   },
   "tr": {

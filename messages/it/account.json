@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "Impossibile aprire la ricevuta.",
       "downloadFallback": "Impossibile scaricare la ricevuta."
+    },
+    "pagination": {
+      "ariaLabel": "Paginazione cronologia acquisti",
+      "prevAriaLabel": "Pagina precedente",
+      "nextAriaLabel": "Pagina successiva"
     }
   },
   "tr": {

@@ -250,6 +250,82 @@
   background: rgba(189, 225, 83, 0.18);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.pagRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagArrow,
+.pagNumber,
+.pagEllipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.pagArrow {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pagArrowNext {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-primary);
+}
+
+.pagArrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagNumber {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.pagNumber:hover:not(.pagNumberActive) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagNumberActive {
+  border-color: rgba(189, 225, 83, 0.3);
+  background: rgba(189, 225, 83, 0.12);
+  color: var(--color-primary);
+}
+
+.pagEllipsis {
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  font-weight: 800;
+}
+
 /* ── Orders (mobile cards) ── */
 
 .orderList {
@@ -749,5 +825,19 @@
 
   .tableReceiptBtn:hover {
     background: rgba(189, 225, 83, 0.18);
+  }
+
+  .pagination {
+    padding-top: 16px;
+  }
+
+  .pagRow {
+    gap: 8px;
+  }
+
+  .pagNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
   }
 }

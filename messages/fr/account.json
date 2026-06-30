@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "Impossible d\u2019ouvrir le re\u00e7u.",
       "downloadFallback": "Impossible de t\u00e9l\u00e9charger le re\u00e7u."
+    },
+    "pagination": {
+      "ariaLabel": "Pagination de l'historique des achats",
+      "prevAriaLabel": "Page pr\u00e9c\u00e9dente",
+      "nextAriaLabel": "Page suivante"
     }
   },
   "tr": {

@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "Quittung konnte nicht ge\u00f6ffnet werden.",
       "downloadFallback": "Quittung konnte nicht heruntergeladen werden."
+    },
+    "pagination": {
+      "ariaLabel": "Seitenumbruch der Kaufhistorie",
+      "prevAriaLabel": "Vorherige Seite",
+      "nextAriaLabel": "N\u00e4chste Seite"
     }
   },
   "tr": {

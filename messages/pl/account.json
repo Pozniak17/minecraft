@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "Nie mo\u017cna otworzy\u0107 paragonu.",
       "downloadFallback": "Nie mo\u017cna pobra\u0107 paragonu."
+    },
+    "pagination": {
+      "ariaLabel": "Paginacja historii zakup\u00f3w",
+      "prevAriaLabel": "Poprzednia strona",
+      "nextAriaLabel": "Nast\u0119pna strona"
     }
   },
   "tr": {

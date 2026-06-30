@@ -58,6 +58,11 @@
     "error": {
       "openFallback": "No se pudo abrir el recibo.",
       "downloadFallback": "No se pudo descargar el recibo."
+    },
+    "pagination": {
+      "ariaLabel": "Paginaci\u00f3n del historial de compras",
+      "prevAriaLabel": "P\u00e1gina anterior",
+      "nextAriaLabel": "P\u00e1gina siguiente"
     }
   },
   "tr": {

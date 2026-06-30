@@ -20,7 +20,10 @@ import {
   formatOrderLineItem,
   type ProductMeta,
 } from '@/lib/client/orderDisplay';
+import { buildPageNumbers } from '@/lib/pagination/buildPageNumbers';
 import styles from './PurchaseHistory.module.css';
+
+const ORDERS_PER_PAGE = 10;
 
 type Order = {
   id: string;
@@ -103,6 +106,7 @@ export default function PurchaseHistory() {
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [openingId, setOpeningId] = useState<string | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
 
   const periodLabels: Record<PeriodKey, string> = {
     last90: t('ph.period.last90'),
@@ -180,6 +184,30 @@ export default function PurchaseHistory() {
     () => filteredOrders.map(order => mapOrder(order, productMeta)),
     [filteredOrders, productMeta],
   );
+
+  const totalPages = Math.max(1, Math.ceil(orders.length / ORDERS_PER_PAGE));
+  const activePage = Math.min(page, totalPages);
+  const showPagination = orders.length > ORDERS_PER_PAGE;
+  const pageNumbers = buildPageNumbers(totalPages, activePage);
+  const paginatedOrders = useMemo(() => {
+    const start = (activePage - 1) * ORDERS_PER_PAGE;
+    return orders.slice(start, start + ORDERS_PER_PAGE);
+  }, [orders, activePage]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [period]);
+
+  useEffect(() => {
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [page, totalPages]);
+
+  function handlePageChange(nextPage: number) {
+    setPage(nextPage);
+    document.querySelector(`.${styles.root}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   // Статистика рахується з відфільтрованих замовлень за обраний період.
   const stats = useMemo(() => {
@@ -337,7 +365,7 @@ export default function PurchaseHistory() {
         ) : (
           <>
             <ul className={styles.orderList}>
-              {orders.map(order => (
+              {paginatedOrders.map(order => (
                 <li key={order.id} className={styles.orderCard}>
                   <div className={styles.orderHead}>
                     <div className={styles.orderMeta}>
@@ -418,7 +446,7 @@ export default function PurchaseHistory() {
                 </span>
               </div>
 
-              {orders.map(order => {
+              {paginatedOrders.map(order => {
                 const { month, dayYear } = splitDate(order.date);
 
                 return (
@@ -486,6 +514,60 @@ export default function PurchaseHistory() {
                 );
               })}
             </div>
+
+            {showPagination ? (
+              <nav className={styles.pagination} aria-label={t('ph.pagination.ariaLabel')}>
+                <div className={styles.pagRow}>
+                  <button
+                    type="button"
+                    className={styles.pagArrow}
+                    aria-label={t('ph.pagination.prevAriaLabel')}
+                    disabled={activePage === 1}
+                    onClick={() => handlePageChange(activePage - 1)}
+                  >
+                    ←
+                  </button>
+
+                  {pageNumbers.map((pageNumber, index) => {
+                    if (pageNumber === '…') {
+                      return (
+                        <span
+                          key={`ellipsis-${index}`}
+                          className={styles.pagEllipsis}
+                          aria-hidden="true"
+                        >
+                          …
+                        </span>
+                      );
+                    }
+
+                    const isActive = pageNumber === activePage;
+
+                    return (
+                      <button
+                        key={pageNumber}
+                        type="button"
+                        className={`${styles.pagNumber} ${isActive ? styles.pagNumberActive : ''}`}
+                        aria-current={isActive ? 'page' : undefined}
+                        onClick={() => handlePageChange(pageNumber)}
+                      >
+                        {pageNumber}
+                      </button>
+                    );
+                  })}
+
+                  <button
+                    type="button"
+                    className={`${styles.pagArrow} ${styles.pagArrowNext}`}
+                    aria-label={t('ph.pagination.nextAriaLabel')}
+                    disabled={activePage === totalPages}
+                    onClick={() => handlePageChange(activePage + 1)}
+                  >
+                    →
+                  </button>
+                </div>
+              </nav>
+            ) : null}
           </>
         )}
       </div>
