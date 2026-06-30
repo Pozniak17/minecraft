@@ -2,6 +2,7 @@ import axios, {
   type AxiosError,
   type InternalAxiosRequestConfig,
 } from 'axios';
+import { isAuthRedirectSuppressed } from './authRedirect';
 
 type RetriableConfig = InternalAxiosRequestConfig & { _retry?: boolean };
 
@@ -34,8 +35,10 @@ http.interceptors.response.use(
       const ok = await tryRefresh();
       if (ok) return http(original);
 
-      if (typeof window !== 'undefined') {
-        window.location.href = '/login';
+      if (!isAuthRedirectSuppressed() && typeof window !== 'undefined') {
+        if (window.location.pathname.startsWith('/dashboard')) {
+          window.location.href = '/login';
+        }
       }
     }
 

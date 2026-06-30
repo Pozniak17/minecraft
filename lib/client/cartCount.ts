@@ -10,24 +10,31 @@ export function notifyCartUpdated() {
   window.dispatchEvent(new Event(CART_UPDATED_EVENT));
 }
 
-export function useCartItemCount(): number {
+export function useCartItemCount(enabled = true): number {
   const pathname = usePathname();
   const [count, setCount] = useState(0);
 
   const refresh = useCallback(async () => {
+    if (!enabled) return;
     try {
       const items = await getOrderItems();
       setCount(items.length);
     } catch {
       // залишаємо попереднє значення
     }
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
+    if (!enabled) {
+      setCount(0);
+      return;
+    }
     refresh();
-  }, [refresh, pathname]);
+  }, [refresh, pathname, enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const onUpdate = () => {
       refresh();
     };
@@ -37,7 +44,7 @@ export function useCartItemCount(): number {
       window.removeEventListener(CART_UPDATED_EVENT, onUpdate);
       window.removeEventListener('focus', onUpdate);
     };
-  }, [refresh]);
+  }, [refresh, enabled]);
 
   return count;
 }

@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { logout } from '@/lib/api/auth';
+import { performClientLogout } from '@/lib/client/logout';
 import { useProfile } from '../ProfileProvider/ProfileProvider';
 import { LogoutModal } from '../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../LogoutOverlay/LogoutOverlay';
@@ -17,7 +17,6 @@ import styles from './DashboardSidebar.module.css';
 
 export function DashboardSidebar() {
   const pathname = usePathname();
-  const router = useRouter();
   const t = useTranslations('common');
   const { profile, displayName: name, initial, photoUrl } = useProfile();
   const email = profile?.email ?? '';
@@ -31,14 +30,9 @@ export function DashboardSidebar() {
   async function handleLogout() {
     setLoggingOut(true);
     try {
-      await logout();
-    } catch {
-      // навіть якщо запит впав — чистимо клієнтський стан і виходимо
+      await performClientLogout();
     } finally {
-      window.localStorage.removeItem('user_email');
       setLogoutOpen(false);
-      router.push('/');
-      router.refresh();
     }
   }
 

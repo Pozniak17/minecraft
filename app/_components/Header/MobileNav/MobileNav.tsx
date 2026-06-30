@@ -30,7 +30,7 @@ export function MobileNav({
   photoUrl = null,
 }: MobileNavProps) {
   const t = useTranslations('common');
-  const cartCount = useCartItemCount();
+  const cartCount = useCartItemCount(isAuthed);
   const workspaceLinks = WORKSPACE_LINKS.map(link =>
     link.href === '/dashboard/cart' ? { ...link, badge: cartCount } : link
   );
