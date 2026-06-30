@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { logout } from '@/lib/api/auth';
+import { useProfile } from '../../ProfileProvider/ProfileProvider';
 import { LogoutModal } from '../../LogoutModal/LogoutModal';
 import { LogoutOverlay } from '../../LogoutOverlay/LogoutOverlay';
 import { useCartItemCount } from '@/lib/client/cartCount';
@@ -23,22 +24,14 @@ type DashboardNavProps = {
 export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
   const router = useRouter();
   const t = useTranslations('common');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [initial, setInitial] = useState('U');
+  const { profile, displayName: name, initial, photoUrl } = useProfile();
+  const email = profile?.email ?? '';
   const [loggingOut, setLoggingOut] = useState(false);
   const [logoutOpen, setLogoutOpen] = useState(false);
   const cartCount = useCartItemCount();
   const workspaceLinks = WORKSPACE_LINKS.map(link =>
     link.href === '/dashboard/cart' ? { ...link, badge: cartCount } : link
   );
-
-  useEffect(() => {
-    const storedEmail = window.localStorage.getItem('user_email') ?? '';
-    setEmail(storedEmail);
-    setName(storedEmail ? storedEmail.split('@')[0] : 'Player');
-    setInitial(storedEmail ? storedEmail.charAt(0).toUpperCase() : 'U');
-  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -101,9 +94,19 @@ export function DashboardNav({ isOpen, onClose, pathname }: DashboardNavProps) {
         </div>
 
         <div className={styles.userCard}>
-          <span className={styles.avatar} aria-hidden="true">
-            {initial}
-          </span>
+          {photoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              className={styles.avatar}
+              src={photoUrl}
+              alt={t('shared.profileAlt')}
+              style={{ objectFit: 'cover' }}
+            />
+          ) : (
+            <span className={styles.avatar} aria-hidden="true">
+              {initial}
+            </span>
+          )}
           <div className={styles.userInfo}>
             <span className={styles.userName}>{name}</span>
           </div>
