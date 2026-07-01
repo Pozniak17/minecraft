@@ -54,9 +54,9 @@ export const FAQ_MOBILE_CHIP_IDS: FaqCategoryId[] = [
   'gameplay',
 ];
 
-export const FAQ_DEFAULT_ITEMS_PER_PAGE = 5;
+export const FAQ_DEFAULT_ITEMS_PER_PAGE = 8;
 
-export const FAQ_PAGE_SIZE_OPTIONS = [5, 10, 15] as const;
+export const FAQ_PAGE_SIZE_OPTIONS = [8, 10, 15] as const;
 
 export type FaqPageSize = (typeof FAQ_PAGE_SIZE_OPTIONS)[number];
 

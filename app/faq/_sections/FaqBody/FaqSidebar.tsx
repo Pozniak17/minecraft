@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { FAQ_CATEGORIES, FAQ_MOST_ASKED, type FaqCategoryId } from '../faqCategories';
 import { getCategoryTranslationKey } from '../categoryTranslationKeys';
+import FaqSupportCard from '../FaqSupportCard/FaqSupportCard';
 import styles from './FaqSidebar.module.css';
 
 type FaqSidebarProps = {
@@ -54,6 +55,8 @@ export default function FaqSidebar({ activeCategory, onCategoryChange }: FaqSide
           ))}
         </ul>
       </div>
+
+      <FaqSupportCard />
     </aside>
   );
 }

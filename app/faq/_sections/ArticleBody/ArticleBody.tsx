@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Container } from '@/app/_components/Container/Container';
 import ArticleShareLinks from '@/app/blog/_components/ArticleShareLinks/ArticleShareLinks';
-import { getFaqArticleBySlug, getFaqArticleHref } from '@/app/faq/_data/faqArticles';
+import { getFaqArticleBySlug } from '@/app/faq/_data/faqArticles';
 import { getTranslatedFaqArticleContent } from '@/app/faq/_data/faqArticleContentI18n';
 import type { FaqArticleContentBlock } from '@/app/faq/_data/joinArticleContent';
 import type { FaqSectionContent } from '@/app/faq/_data/faqArticleTypes';
@@ -296,25 +296,6 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
                 className={styles.shareCardLinks}
                 linkClassName={styles.shareLink}
               />
-            </div>
-
-            <div className={styles.relatedCard}>
-              <p className={styles.relatedCardTitle}>{t('article.relatedQuestions')}</p>
-              <ul className={styles.relatedCardList}>
-                {content.sidebarRelatedSlugs.map(relatedSlug => {
-                  return (
-                    <li key={relatedSlug}>
-                      <Link
-                        href={getFaqArticleHref(relatedSlug)}
-                        className={styles.relatedCardLink}
-                      >
-                        <span aria-hidden="true">→</span>
-                        {t(`articles.${relatedSlug}.question` as Parameters<typeof t>[0])}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
           </aside>
 

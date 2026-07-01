@@ -449,13 +449,11 @@
   line-height: 18px;
 }
 
-.shareCard,
-.relatedCard {
+.shareCard {
   display: none;
 }
 
-.shareCardTitle,
-.relatedCardTitle {
+.shareCardTitle {
   color: rgba(255, 255, 255, 0.55);
   font-family: Montserrat, sans-serif;
   font-size: 10px;
@@ -601,19 +599,15 @@
     background: rgba(255, 255, 255, 0.05);
   }
 
-  .shareCard,
-  .relatedCard {
+  .shareCard {
     display: flex;
     flex-direction: column;
+    gap: 14px;
     width: 100%;
+    padding: 20px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.04);
-  }
-
-  .shareCard {
-    gap: 14px;
-    padding: 20px;
   }
 
   .shareCardTitle {
@@ -631,44 +625,6 @@
     width: 48px;
     height: 48px;
     border-radius: 10px;
-  }
-
-  .relatedCard {
-    gap: 10px;
-    padding: 18px;
-    border-radius: 14px;
-  }
-
-  .relatedCardList {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    width: 100%;
-  }
-
-  .relatedCardLink {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding-block: 8px;
-    color: rgba(255, 255, 255, 0.78);
-    font-family: Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 18px;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .relatedCardLink span {
-    flex-shrink: 0;
-    color: #bde153;
-    font-size: 11px;
-    line-height: 18px;
-  }
-
-  .relatedCardLink:hover {
-    color: #fff;
   }
 
   .main {
