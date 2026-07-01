@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { formatServerOnlineCount } from '@/lib/client/formatServerOnlineCount';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './CalmSkyStatus.module.css';
 
@@ -11,7 +12,7 @@ export default function CalmSkyStatus() {
 
   const STATS = [
     {
-      value: online !== null ? String(online) : isOffline ? '—' : '508',
+      value: formatServerOnlineCount(online, status),
       labelMobile: t('shared.playersMobile'),
       labelDesktop: t('shared.playersDesktop'),
     },

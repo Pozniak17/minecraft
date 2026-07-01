@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { formatServerOnlineCount } from '@/lib/client/formatServerOnlineCount';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './LuckyStatus.module.css';
 
@@ -13,7 +14,7 @@ export default function LuckyStatus() {
 
   const STATS = [
     {
-      value: online !== null ? String(online) : isOffline ? '—' : '427',
+      value: formatServerOnlineCount(online, status),
       labelMobile: t('shared.playersMobile'),
       labelDesktop: t('shared.playersDesktop'),
     },

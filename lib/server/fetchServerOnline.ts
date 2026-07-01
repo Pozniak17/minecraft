@@ -36,7 +36,9 @@ export async function fetchServerOnline(server: GameServerKey): Promise<ServerOn
         .map((p: { name?: string }) => p?.name)
         .filter((name: unknown): name is string => typeof name === 'string'),
     };
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`[fetchServerOnline] ${server} (${config.ip}:${GAME_API_PORT}) failed: ${message}`);
     return {
       server,
       status: 'offline',
