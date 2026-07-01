@@ -1415,27 +1415,7 @@
       "s3": {
         "title": "Toujours en échec",
         "leadMobile": "Lancez un test de ping vers l'IP depuis Tableau de bord \u2192 Serveurs \u2192 Diagnostics.",
-        "leadDesktop": "Lancez le test de ping vers l'IP depuis Tableau de bord \u2192 Serveurs \u2192 Diagnostics et joignez les résultats à un ticket de support.",
-        "troubleMobile": [
-          {
-            "title": "Déconnexion instantanée",
-            "text": "Généralement une incompatibilité de version ou une plage IP bannie."
-          },
-          {
-            "title": "Timeout au pack de ressources",
-            "text": "Consultez l'article sur le pack de ressources \u2014 solution différente."
-          }
-        ],
-        "troubleDesktop": [
-          {
-            "title": "Déconnexion instantanée après la poignée de main",
-            "text": "Généralement une incompatibilité de version, une plage IP bannie ou un flag anti-triche \u2014 incluez votre journal client dans les tickets."
-          },
-          {
-            "title": "Timeout pendant le pack de ressources",
-            "text": "Consultez l'article sur le pack de ressources \u2014 les pare-feux CDN bloquent les hôtes de pack séparément du port de jeu 25565."
-          }
-        ]
+        "leadDesktop": "Lancez le test de ping vers l'IP depuis Tableau de bord \u2192 Serveurs \u2192 Diagnostics et joignez les résultats à un ticket de support."
       }
     },
     "resource-pack-issues": {

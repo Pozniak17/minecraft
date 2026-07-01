@@ -1528,25 +1528,6 @@ const SIMPLE_ARTICLES: SimpleArticleSeed[] = [
           desktop:
             'Run the ping test to the IP from Dashboard → Servers → Diagnostics and attach results to a support ticket.',
         },
-        troubleItems: {
-          mobile: [
-            { title: 'Instant disconnect', text: 'Usually version mismatch or banned IP range.' },
-            {
-              title: 'Timeout at resource pack',
-              text: 'See resource pack article — different fix path.',
-            },
-          ],
-          desktop: [
-            {
-              title: 'Instant disconnect after handshake',
-              text: 'Usually version mismatch, banned IP range, or anti-cheat flag — include your client log in tickets.',
-            },
-            {
-              title: 'Timeout during resource pack',
-              text: 'See the resource pack article — firewall CDNs block pack hosts separately from game port 25565.',
-            },
-          ],
-        },
       },
     ],
     related: ['supported-versions', 'resource-pack-issues', 'server-status'],

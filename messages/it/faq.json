@@ -1415,27 +1415,7 @@
       "s3": {
         "title": "Ancora non funziona",
         "leadMobile": "Esegui il ping test all'IP da Dashboard \u2192 Server \u2192 Diagnostica.",
-        "leadDesktop": "Esegui il ping test all'IP da Dashboard \u2192 Server \u2192 Diagnostica e allega i risultati a un ticket di supporto.",
-        "troubleMobile": [
-          {
-            "title": "Disconnessione immediata",
-            "text": "Di solito versione non corrispondente o intervallo IP bannato."
-          },
-          {
-            "title": "Timeout al resource pack",
-            "text": "Consulta l'articolo sul resource pack \u2014 procedura di correzione diversa."
-          }
-        ],
-        "troubleDesktop": [
-          {
-            "title": "Disconnessione immediata dopo l'handshake",
-            "text": "Di solito versione non corrispondente, intervallo IP bannato o flag anti-cheat \u2014 includi il log del client nei ticket."
-          },
-          {
-            "title": "Timeout durante il resource pack",
-            "text": "Consulta l'articolo sul resource pack \u2014 i CDN del firewall bloccano i server dei pack separatamente dalla porta di gioco 25565."
-          }
-        ]
+        "leadDesktop": "Esegui il ping test all'IP da Dashboard \u2192 Server \u2192 Diagnostica e allega i risultati a un ticket di supporto."
       }
     },
     "resource-pack-issues": {

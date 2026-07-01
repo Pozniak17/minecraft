@@ -1415,27 +1415,7 @@
       "s3": {
         "title": "Sigue fallando",
         "leadMobile": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos.",
-        "leadDesktop": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos y adjunta los resultados a un ticket de soporte.",
-        "troubleMobile": [
-          {
-            "title": "Desconexión instantánea",
-            "text": "Normalmente es incompatibilidad de versión o un rango de IP baneado."
-          },
-          {
-            "title": "Tiempo de espera en el paquete de recursos",
-            "text": "Consulta el artículo del paquete de recursos \u2014 el proceso de solución es diferente."
-          }
-        ],
-        "troubleDesktop": [
-          {
-            "title": "Desconexión instantánea tras el handshake",
-            "text": "Normalmente es incompatibilidad de versión, rango de IP baneado o marca del anti-trampa \u2014 incluye tu registro de cliente en los tickets."
-          },
-          {
-            "title": "Tiempo de espera durante el paquete de recursos",
-            "text": "Consulta el artículo del paquete de recursos \u2014 los firewalls de CDN bloquean los hosts de paquetes de forma independiente al puerto de juego 25565."
-          }
-        ]
+        "leadDesktop": "Ejecuta el test de ping a la IP desde Panel \u2192 Servidores \u2192 Diagnósticos y adjunta los resultados a un ticket de soporte."
       }
     },
     "resource-pack-issues": {

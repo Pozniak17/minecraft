@@ -1415,27 +1415,7 @@
       "s3": {
         "title": "Nadal nie działa",
         "leadMobile": "Uruchom test ping do IP z Panelu \u2192 Serwery \u2192 Diagnostyka.",
-        "leadDesktop": "Uruchom test ping do IP z Panelu \u2192 Serwery \u2192 Diagnostyka i dołącz wyniki do zgłoszenia wsparcia.",
-        "troubleMobile": [
-          {
-            "title": "Natychmiastowe rozłączenie",
-            "text": "Zazwyczaj niezgodność wersji lub zablokowany zakres IP."
-          },
-          {
-            "title": "Timeout przy paczce zasobów",
-            "text": "Sprawdź artykuł o paczce zasobów \u2014 inna ścieżka naprawy."
-          }
-        ],
-        "troubleDesktop": [
-          {
-            "title": "Natychmiastowe rozłączenie po handshake",
-            "text": "Zazwyczaj niezgodność wersji, zablokowany zakres IP lub flaga antycheat \u2014 dołącz log klienta do zgłoszeń."
-          },
-          {
-            "title": "Timeout podczas paczki zasobów",
-            "text": "Sprawdź artykuł o paczce zasobów \u2014 zapory blokują hosty CDN osobno od portu gry 25565."
-          }
-        ]
+        "leadDesktop": "Uruchom test ping do IP z Panelu \u2192 Serwery \u2192 Diagnostyka i dołącz wyniki do zgłoszenia wsparcia."
       }
     },
     "resource-pack-issues": {

@@ -1415,27 +1415,7 @@
       "s3": {
         "title": "Immer noch Fehler",
         "leadMobile": "Ping-Test zur IP von Dashboard \u2192 Server \u2192 Diagnose ausf\u00fchren.",
-        "leadDesktop": "Den Ping-Test zur IP von Dashboard \u2192 Server \u2192 Diagnose ausf\u00fchren und Ergebnisse einem Support-Ticket beilegen.",
-        "troubleMobile": [
-          {
-            "title": "Sofortiger Verbindungsabbruch",
-            "text": "Meist Versionskonflikt oder gesperrter IP-Bereich."
-          },
-          {
-            "title": "Timeout beim Ressourcenpaket",
-            "text": "Ressourcenpaket-Artikel lesen \u2014 anderer L\u00f6sungsweg."
-          }
-        ],
-        "troubleDesktop": [
-          {
-            "title": "Sofortiger Verbindungsabbruch nach dem Handshake",
-            "text": "Meist Versionskonflikt, gesperrter IP-Bereich oder Anti-Cheat-Markierung \u2014 Client-Log in Tickets einf\u00fcgen."
-          },
-          {
-            "title": "Timeout beim Ressourcenpaket",
-            "text": "Ressourcenpaket-Artikel lesen \u2014 Firewall-CDNs blockieren Pack-Hosts separat von Spielport 25565."
-          }
-        ]
+        "leadDesktop": "Den Ping-Test zur IP von Dashboard \u2192 Server \u2192 Diagnose ausf\u00fchren und Ergebnisse einem Support-Ticket beilegen."
       }
     },
     "resource-pack-issues": {

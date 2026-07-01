@@ -28,18 +28,6 @@ function buildSimpleSection(
   const bullets = Array.isArray(rawBullets) ? rawBullets : undefined;
   const steps = Array.isArray(rawSteps) ? rawSteps : undefined;
 
-  // trouble items for connection-lost s3
-  const rawTroubleMobile = tRaw(`${sKey}.troubleMobile`) as
-    | Array<{ title: string; text: string }>
-    | undefined;
-  const rawTroubleDesktop = tRaw(`${sKey}.troubleDesktop`) as
-    | Array<{ title: string; text: string }>
-    | undefined;
-  const troubleItems =
-    Array.isArray(rawTroubleMobile) && Array.isArray(rawTroubleDesktop)
-      ? { mobile: rawTroubleMobile, desktop: rawTroubleDesktop }
-      : undefined;
-
   // callout (optional — only when keys exist; t() returns the key path when missing)
   let callout: FaqSectionContent['callout'] | undefined;
   if (tHas(`${sKey}.calloutTitle`) && tHas(`${sKey}.calloutMobile`)) {
@@ -63,7 +51,6 @@ function buildSimpleSection(
     bullets: bullets ? { mobile: bullets, desktop: bullets } : undefined,
     steps: steps ? { mobile: steps, desktop: steps } : undefined,
     callout,
-    troubleItems,
   };
 }
 

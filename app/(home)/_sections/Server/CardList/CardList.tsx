@@ -21,8 +21,9 @@ const SERVER_IDS: { id: GameServerKey; title: string; icon: string }[] = [
 export default function CardList() {
   const t = useTranslations('home');
 
-  const CARDS: (Omit<CardProps, 'connectAddress' | 'version'> & { id: GameServerKey })[] =
-    SERVER_IDS.map(({ id, title, icon }) => ({
+  const CARDS: (Omit<CardProps, 'connectAddress' | 'version' | 'serverId'> & {
+    id: GameServerKey;
+  })[] = SERVER_IDS.map(({ id, title, icon }) => ({
       id,
       title,
       icon,
