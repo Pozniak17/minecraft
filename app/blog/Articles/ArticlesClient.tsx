@@ -69,15 +69,15 @@ function ArticleSortSelect({ value, onChange }: ArticleSortSelectProps) {
       {open && (
         <ul className={styles.sortMenu} role="listbox" aria-label={t('sort.ariaLabel')}>
           {ARTICLE_SORT_OPTIONS.map(option => (
-            <li key={option} role="presentation">
+            <li key={option.value} role="presentation">
               <button
                 type="button"
                 role="option"
-                aria-selected={value === option}
-                className={`${styles.sortOption} ${value === option ? styles.sortOptionActive : ''}`}
-                onClick={() => choose(option)}
+                aria-selected={value === option.value}
+                className={`${styles.sortOption} ${value === option.value ? styles.sortOptionActive : ''}`}
+                onClick={() => choose(option.value)}
               >
-                {t(`sort.${option}` as Parameters<typeof t>[0])}
+                {t(`sort.${option.value}` as Parameters<typeof t>[0])}
               </button>
             </li>
           ))}

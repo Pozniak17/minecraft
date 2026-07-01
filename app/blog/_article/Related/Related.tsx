@@ -44,7 +44,7 @@ export default async function Related({ articles, desktopArticles }: RelatedProp
           </ul>
 
           <Link href="/blog" className={`${styles.button} ${styles.buttonMobile}`}>
-            {t('articleCta')}
+            {t('related.allArticles')}
             <span className={styles.arrow} aria-hidden="true">
               →
             </span>

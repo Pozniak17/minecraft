@@ -18,7 +18,7 @@
     "readArticleAriaLabel": "Read Server Update 2.6 article"
   },
   "sort": {
-    "all": "All articles",
+    "all": "All Posts",
     "newest": "Newest",
     "popular": "Most Popular",
     "ariaLabel": "Sort articles"
@@ -63,7 +63,7 @@
     "blog": "Blog",
     "minRead": "{time} min read"
   },
-  "articleCta": "Browse the blog",
+  "articleCta": "All Posts",
   "share": {
     "x": "Share on X",
     "twitch": "Copy link to share on Twitch",

@@ -18,7 +18,7 @@
     "readArticleAriaLabel": "Server-Update 2.6 lesen"
   },
   "sort": {
-    "all": "Alle Artikel",
+    "all": "Alle Beitr\u00e4ge",
     "newest": "Neueste",
     "popular": "Beliebteste",
     "ariaLabel": "Artikel sortieren"
@@ -63,7 +63,7 @@
     "blog": "Blog",
     "minRead": "{time} Min. Lesezeit"
   },
-  "articleCta": "Zum Blog",
+  "articleCta": "Alle Beitr\u00e4ge",
   "share": {
     "x": "Auf X teilen",
     "twitch": "Link f\u00fcr Twitch kopieren",
