@@ -1,13 +1,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { formatServerOnlineCount } from '@/lib/client/formatServerOnlineCount';
+import { formatServerOnlineCount, formatServerLoadPercent } from '@/lib/client/formatServerOnlineCount';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './CalmSkyStatus.module.css';
 
 export default function CalmSkyStatus() {
   const t = useTranslations('servers');
-  const { online, status } = useServerOnline('calmsky');
+  const { online, status, players } = useServerOnline('calmsky');
   const isOffline = status === 'offline';
 
   const STATS = [
@@ -16,7 +16,11 @@ export default function CalmSkyStatus() {
       labelMobile: t('shared.playersMobile'),
       labelDesktop: t('shared.playersDesktop'),
     },
-    { value: '71%', labelMobile: t('shared.loadMobile'), labelDesktop: t('shared.loadDesktop') },
+    {
+      value: formatServerLoadPercent(status, players.length),
+      labelMobile: t('shared.loadMobile'),
+      labelDesktop: t('shared.loadDesktop'),
+    },
     { value: '24/7', labelMobile: t('shared.availabilityLabel'), labelDesktop: t('shared.availabilityLabel') },
   ];
 
