@@ -8,7 +8,7 @@ import type { FaqArticleCategoryId } from './faqTypes';
 export type FaqRelatedItem = {
   slug: string;
   categoryId: FaqArticleCategoryId;
-  helpfulPercent: number;
+  readMinutes: number;
   href: string;
 };
 
@@ -23,7 +23,7 @@ export function getFaqRelatedItems(slug: string): FaqRelatedItem[] {
       {
         slug: relatedSlug,
         categoryId: meta.categoryId,
-        helpfulPercent: meta.helpfulPercent,
+        readMinutes: meta.readMinutes,
         href: getFaqArticleHref(relatedSlug),
       },
     ];

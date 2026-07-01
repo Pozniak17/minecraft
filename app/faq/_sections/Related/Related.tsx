@@ -52,9 +52,8 @@ export default async function Related({ items, categoryLabel = '' }: RelatedProp
                     {t(`articles.${item.slug}.excerpt` as Parameters<typeof t>[0])}
                   </p>
                   <div className={styles.footer}>
-                    <span className={styles.helpful}>
-                      <span className={styles.mobileOnly}>👍 {item.helpfulPercent}%</span>
-                      <span className={styles.desktopOnly}>{item.helpfulPercent}%</span>
+                    <span className={styles.readTime}>
+                      {t('article.minRead', { min: item.readMinutes })}
                     </span>
                     <Link href={item.href} className={styles.readLink}>
                       <span className={styles.mobileOnly}>

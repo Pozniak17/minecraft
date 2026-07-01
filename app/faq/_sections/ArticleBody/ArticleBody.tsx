@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Container } from '@/app/_components/Container/Container';
+import ArticleShareLinks from '@/app/blog/_components/ArticleShareLinks/ArticleShareLinks';
 import { getFaqArticleBySlug, getFaqArticleHref } from '@/app/faq/_data/faqArticles';
 import { getTranslatedFaqArticleContent } from '@/app/faq/_data/faqArticleContentI18n';
 import type { FaqArticleContentBlock } from '@/app/faq/_data/joinArticleContent';
@@ -12,28 +13,6 @@ import { GAME_SERVERS } from '@/lib/server/gameServers';
 import { TWITCH_URL } from '@/lib/data/social';
 import styles from './ArticleBody.module.css';
 import { useFaqArticleToc } from './useFaqArticleToc';
-
-const SOCIAL_LINKS = [
-  {
-    icon: '/icons/social/prime_twitter.svg',
-    alt: 'X',
-    href: 'https://x.com/Minecrafts_Game',
-    size: 18,
-  },
-  { icon: '/icons/social/twitch.svg', alt: 'Twitch', href: TWITCH_URL, size: 18 },
-  {
-    icon: '/icons/social/ic_round-facebook.svg',
-    alt: 'Facebook',
-    href: 'https://www.facebook.com/minecraftsgame/',
-    size: 18,
-  },
-  {
-    icon: '/icons/social/ri_instagram-fill.svg',
-    alt: 'Instagram',
-    href: 'https://www.instagram.com/minecraftsgame',
-    size: 18,
-  },
-] as const;
 
 const EXAMPLE_IP = GAME_SERVERS.luckysurvival.ip;
 
@@ -155,25 +134,6 @@ function SuccessCallout({
         <p className={`${styles.calloutText} ${styles.desktopOnly}`}>{desktopChildren}</p>
       )}
     </aside>
-  );
-}
-
-function ShareLinks({ className }: { className?: string }) {
-  return (
-    <div className={className}>
-      {SOCIAL_LINKS.map(link => (
-        <a
-          key={link.alt}
-          href={link.href}
-          className={styles.shareLink}
-          aria-label={link.alt}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={link.icon} alt="" width={link.size} height={link.size} />
-        </a>
-      ))}
-    </div>
   );
 }
 
@@ -300,6 +260,7 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
 
   const sectionIds = content.sections.map(section => section.id);
   const { activeId, scrollToSection } = useFaqArticleToc(sectionIds);
+  const shareTitle = t(`articles.${slug}.question` as Parameters<typeof t>[0]);
   const primaryCtaHref =
     content.cta?.primary === t('join.ctaPrimary')
       ? TWITCH_URL
@@ -330,7 +291,11 @@ export default function ArticleBody({ slug }: ArticleBodyProps) {
 
             <div className={styles.shareCard}>
               <p className={styles.shareCardTitle}>{t('article.share')}</p>
-              <ShareLinks className={styles.shareCardLinks} />
+              <ArticleShareLinks
+                title={shareTitle}
+                className={styles.shareCardLinks}
+                linkClassName={styles.shareLink}
+              />
             </div>
 
             <div className={styles.relatedCard}>
