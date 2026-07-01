@@ -345,7 +345,7 @@ export default function Articles() {
               <p className={`${styles.paragraph} ${styles.desktopOnly}`}>{s08.closingDesktop}</p>
               <div className={styles.cta}>
                 <Link href="/blog" className={styles.ctaPrimary}>
-                  {s08.cta}
+                  {t('articleCta')}
                 </Link>
               </div>
             </section>

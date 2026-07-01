@@ -30,7 +30,7 @@ export default async function Related() {
             </div>
 
             <Link href="/blog" className={`${styles.button} ${styles.buttonDesktop}`}>
-              {t('related.allArticles')}
+              {t('articleCta')}
               <span className={styles.arrow} aria-hidden="true">
                 →
               </span>
@@ -50,7 +50,7 @@ export default async function Related() {
           </ul>
 
           <Link href="/blog" className={`${styles.button} ${styles.buttonMobile}`}>
-            {t('related.allArticles')}
+            {t('articleCta')}
             <span className={styles.arrow} aria-hidden="true">
               →
             </span>

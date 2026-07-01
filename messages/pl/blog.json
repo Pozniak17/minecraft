@@ -63,6 +63,7 @@
     "blog": "Blog",
     "minRead": "{time} min czytania"
   },
+  "articleCta": "Przejd\u017a do bloga",
   "share": {
     "x": "Udost\u0119pnij na X",
     "twitch": "Skopiuj link do Twitcha",

@@ -126,6 +126,8 @@ function Callout({
 }
 
 function ArticleBlockRenderer({ block }: { block: ArticleBlock }) {
+  const t = useTranslations('blog');
+
   switch (block.type) {
     case 'paragraph':
       return <ResponsiveParagraph text={block.text} className={styles.paragraph} />;
@@ -156,11 +158,8 @@ function ArticleBlockRenderer({ block }: { block: ArticleBlock }) {
     case 'cta':
       return (
         <div className={styles.cta}>
-          <button type="button" className={styles.ctaPrimary}>
-            {block.primary}
-          </button>
-          <Link href={block.secondaryHref} className={styles.ctaSecondary}>
-            {block.secondaryLabel}
+          <Link href="/blog" className={styles.ctaPrimary}>
+            {t('articleCta')}
           </Link>
         </div>
       );

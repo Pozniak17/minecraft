@@ -8,11 +8,7 @@ export type BlogArticle = ArticleCardProps & {
 
 export type ArticleSort = 'all' | 'newest' | 'popular';
 
-export const ARTICLE_SORT_OPTIONS: { value: ArticleSort; label: string }[] = [
-  { value: 'all', label: 'All Posts' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'popular', label: 'Most Popular' },
-];
+export const ARTICLE_SORT_OPTIONS: ArticleSort[] = ['all', 'newest', 'popular'];
 
 export const BLOG_ARTICLES_PER_PAGE = 6;
 
