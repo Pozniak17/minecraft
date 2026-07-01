@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { Breadcrumbs } from '@/app/_components/Breadcrumbs/Breadcrumbs';
 import { Container } from '@/app/_components/Container/Container';
-import { formatArticleViews, type FaqArticleMeta } from '@/app/faq/_data/faqArticles';
+import type { FaqArticleMeta } from '@/app/faq/_data/faqArticles';
 import styles from './Hero.module.css';
 
 type ArticleHeroProps = {
@@ -101,22 +101,6 @@ export default async function Hero({ article }: ArticleHeroProps) {
           <h1 className={styles.title}>
             {t(`articles.${article.slug}.question` as Parameters<typeof t>[0])}
           </h1>
-
-          <div className={`${styles.meta} ${styles.mobileOnly}`}>
-            <span>{article.updated}</span>
-            <span>{article.helpfulPercent}%</span>
-            <span>{article.readMinutes} min</span>
-          </div>
-
-          <div className={`${styles.meta} ${styles.desktopOnly}`}>
-            <span>{t('article.updatedFull', { date: article.updated })}</span>
-            <span className={styles.metaDot} aria-hidden="true" />
-            <span>{t('article.views', { count: formatArticleViews(article.views) })}</span>
-            <span className={styles.metaDot} aria-hidden="true" />
-            <span>{t('article.helpfulPct', { percent: article.helpfulPercent })}</span>
-            <span className={styles.metaDot} aria-hidden="true" />
-            <span>{t('article.minRead', { min: article.readMinutes })}</span>
-          </div>
         </div>
       </Container>
     </section>

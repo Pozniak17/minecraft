@@ -145,6 +145,12 @@
   flex-shrink: 0;
   width: 7px;
   height: 7px;
+  border-radius: 50%;
+  background: var(--primary-color-primary-500, #bde153);
+}
+
+.statusDotOffline {
+  background: #ff6b6b;
 }
 
 .statusIcon {

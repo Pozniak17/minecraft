@@ -92,10 +92,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .statsBadge {
-  width: 75px;
+  flex-shrink: 0;
+  min-width: 75px;
   height: 25px;
   padding: 0 12px;
   background: var(--new-group-color-bg-default-505, rgba(255, 255, 255, 0.05));
@@ -113,7 +119,8 @@
   font-size: var(--Size-Desk-Body-xxxsmal, 12px);
   font-style: normal;
   font-weight: 400;
-  line-height: 270%; /* 32.4px */
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .statsBadgeDot {
@@ -123,8 +130,8 @@
 }
 
 .topPlayers .statsBadge {
-  width: 85px;
-  padding: 0 8px;
+  min-width: 108px;
+  padding: 0 10px;
 }
 
 /* topPlayers Card */

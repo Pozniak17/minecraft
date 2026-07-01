@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Container } from '../../../_components/Container/Container';
 import { Divider } from '../../../_components/Divider/Divider';
 import CardList from './CardList/CardList';
 import { NewPlayerBonus } from './NewPlayerBonus/NewPlayerBonus';
+import { ServerLiveStats } from './ServerLiveStats/ServerLiveStats';
+import { ServerTopPlayers } from './ServerTopPlayers/ServerTopPlayers';
 import styles from './Server.module.css';
 
 export default async function Server() {
@@ -25,94 +26,8 @@ export default async function Server() {
 
           <div className={styles.statsContainer}>
             <div className={styles.statsCards}>
-              <div className={styles.stats}>
-                <h3 className={styles.statsTitle}>{t('server.liveStats')}</h3>
-                <ul className={styles.statsList}>
-                  <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>{t('server.totalPlayersOnline')}</p>
-                    <span className={styles.statsBadge}>
-                      <Image
-                        className={styles.statsBadgeDot}
-                        src="/icons/icons/ellipse.svg"
-                        alt=""
-                        width={7}
-                        height={7}
-                      />
-                      100+
-                    </span>
-                  </li>
-
-                  <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>{t('server.serversOnline')}</p>
-                    <span className={styles.statsBadge}>
-                      <Image
-                        className={styles.statsBadgeDot}
-                        src="/icons/icons/ellipse.svg"
-                        alt=""
-                        width={7}
-                        height={7}
-                      />
-                      3 / 3
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.topPlayers}>
-                <h3 className={styles.statsTitleWrapper}>
-                  {t('server.topPlayersToday')}
-                  <Image
-                    src="/icons/illustrations/champ-cup.webp"
-                    alt=""
-                    width={33}
-                    height={36}
-                    aria-hidden="true"
-                  />
-                </h3>
-
-                <ul className={styles.statsList}>
-                  <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>AlexPvP</p>
-                    <span className={styles.statsBadge}>
-                      <Image
-                        className={styles.statsBadgeDot}
-                        src="/icons/icons/ellipse.svg"
-                        alt=""
-                        width={7}
-                        height={7}
-                      />
-                      4,520 pts
-                    </span>
-                  </li>
-
-                  <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>SkyBuilder</p>
-                    <span className={styles.statsBadge}>
-                      <Image
-                        className={styles.statsBadgeDot}
-                        src="/icons/icons/ellipse.svg"
-                        alt=""
-                        width={7}
-                        height={7}
-                      />
-                      3,980 pts
-                    </span>
-                  </li>
-
-                  <li className={styles.statsItem}>
-                    <p className={styles.statsItemText}>WarLord</p>
-                    <span className={styles.statsBadge}>
-                      <Image
-                        className={styles.statsBadgeDot}
-                        src="/icons/icons/ellipse.svg"
-                        alt=""
-                        width={7}
-                        height={7}
-                      />
-                      3,740 pts
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <ServerLiveStats />
+              <ServerTopPlayers />
             </div>
 
             <NewPlayerBonus />

@@ -3,9 +3,12 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useServerOnline } from '@/lib/client/useServerOnline';
+import type { GameServerKey } from '@/lib/server/gameServers';
 import styles from './Card.module.css';
 
 export type CardProps = {
+  serverId: GameServerKey;
   title: string;
   text: string;
   description: string;
@@ -15,6 +18,7 @@ export type CardProps = {
 };
 
 export function Card({
+  serverId,
   title,
   text,
   description,
@@ -23,6 +27,9 @@ export function Card({
   connectAddress,
 }: CardProps) {
   const t = useTranslations('home');
+  const { online, status } = useServerOnline(serverId);
+  const isOffline = status === 'offline';
+  const isLoading = status === 'loading';
   const [copied, setCopied] = useState(false);
   const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -70,14 +77,11 @@ export function Card({
         <li className={styles.item}>
           {t('server.cardStatus')}
           <div className={styles.status}>
-            <Image
-              className={styles.statusDot}
-              src="/icons/icons/ellipse.svg"
-              alt={t('server.cardOnlineAlt')}
-              width={7}
-              height={7}
+            <span
+              className={`${styles.statusDot} ${isOffline ? styles.statusDotOffline : ''}`}
+              aria-hidden="true"
             />
-            {t('server.cardOnline')}
+            {isOffline ? t('server.cardOffline') : t('server.cardOnline')}
           </div>
         </li>
         <li className={styles.item}>
@@ -90,7 +94,7 @@ export function Card({
               width={13}
               height={13}
             />
-            32
+            {isLoading ? '…' : online !== null ? online : '—'}
           </div>
         </li>
         <li className={`${styles.item} ${styles.itemIp}`}>

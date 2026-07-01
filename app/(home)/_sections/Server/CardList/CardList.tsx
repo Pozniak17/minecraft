@@ -64,6 +64,7 @@ export default function CardList() {
             <div className={styles.slide} key={card.id}>
               <Card
                 {...card}
+                serverId={card.id}
                 version={MINECRAFT_VERSION_LABEL}
                 connectAddress={getServerConnectAddress(card.id)}
               />
