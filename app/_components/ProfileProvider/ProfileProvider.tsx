@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 import { getProfile } from '@/lib/api/profile';
+import { resolveWelcomeName } from '@/lib/client/profileDisplay';
 import type { UserProfile } from '@/lib/api/types';
 
 type ProfileContextValue = {
@@ -70,8 +71,7 @@ export function ProfileProvider({
   }, []);
 
   const value = useMemo<ProfileContextValue>(() => {
-    const displayName =
-      profile?.username || profile?.email?.split('@')[0] || 'Player';
+    const displayName = resolveWelcomeName(profile);
     const initialChar = (displayName || 'U').charAt(0).toUpperCase() || 'U';
     const photoUrl = hasPhotoFlag(profile?.has_profile_photo)
       ? `/api/user/profile/photo${photoVersion ? `?v=${photoVersion}` : ''}`

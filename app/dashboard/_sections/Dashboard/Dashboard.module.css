@@ -68,6 +68,15 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
+.playingAs {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
 .headerActions {
   display: none;
 }

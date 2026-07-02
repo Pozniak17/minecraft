@@ -1,6 +1,7 @@
 {
   "eyebrow": "Dashboard",
   "welcomeBack": "Bienvenido de nuevo, {name}",
+  "playingAs": "Jugando como {nick}",
   "subtitle": "Esto es lo que ocurre en tus mundos hoy.",
   "topUp": "Recargar",
   "listConnector": "y",

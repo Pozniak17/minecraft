@@ -14,7 +14,9 @@ import {
   type ProductMeta,
 } from '@/lib/client/orderDisplay';
 import { useServerOnline } from '@/lib/client/useServerOnline';
+import { resolvePlayingAsNickname, resolveWelcomeName } from '@/lib/client/profileDisplay';
 import { hasPurchaseSuccessPending, clearPurchaseSuccess } from '@/lib/client/purchaseNotification';
+import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
 import { crystalsToCurrency } from '@/lib/pricing';
 import { DEFAULT_CURRENCY, formatMoney, getStoredCurrency } from '@/lib/client/currency';
 import styles from './Dashboard.module.css';
@@ -51,6 +53,12 @@ const PACK_AMOUNTS = [500, 1500, 5000];
 export default function Dashboard() {
   const locale = useLocale();
   const t = useTranslations('dashboard');
+  const { profile } = useProfile();
+  const welcomeName = useMemo(() => resolveWelcomeName(profile), [profile]);
+  const playingAs = useMemo(
+    () => resolvePlayingAsNickname(profile, welcomeName),
+    [profile, welcomeName],
+  );
 
   function getRelativeTime(iso: string | undefined): string {
     if (!iso) return t('time.recently');
@@ -92,7 +100,6 @@ export default function Dashboard() {
     };
   }
 
-  const [name, setName] = useState('Player');
   const [rawOrders, setRawOrders] = useState<OrderListItem[]>([]);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
   const [productsLoaded, setProductsLoaded] = useState(false);
@@ -185,9 +192,6 @@ export default function Dashboard() {
     : t('notifications.ariaLabel');
 
   useEffect(() => {
-    const email = window.localStorage.getItem('user_email') ?? '';
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (email) setName(email.split('@')[0]);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrency(getStoredCurrency());
   }, []);
@@ -274,7 +278,10 @@ export default function Dashboard() {
       <div className={styles.header}>
         <div className={styles.welcome}>
           <span className={styles.eyebrow}>{t('eyebrow')}</span>
-          <h1 className={styles.title}>{t('welcomeBack', { name })}</h1>
+          <h1 className={styles.title}>{t('welcomeBack', { name: welcomeName })}</h1>
+          {playingAs ? (
+            <p className={styles.playingAs}>{t('playingAs', { nick: playingAs })}</p>
+          ) : null}
           <p className={styles.subtitle}>{t('subtitle')}</p>
         </div>
 
