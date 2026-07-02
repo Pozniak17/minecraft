@@ -48,6 +48,11 @@
       "refund": "reembolso",
       "failed": "fallido"
     },
+    "statusShort": {
+      "paid": "pagado",
+      "refund": "reemb.",
+      "failed": "fallido"
+    },
     "btn": {
       "open": "Abrir",
       "opening": "Abriendo\u2026",

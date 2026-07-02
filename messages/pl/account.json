@@ -48,6 +48,11 @@
       "refund": "zwrot",
       "failed": "nieudane"
     },
+    "statusShort": {
+      "paid": "op\u0142acone",
+      "refund": "zwrot",
+      "failed": "nieudane"
+    },
     "btn": {
       "open": "Otw\u00f3rz",
       "opening": "Otwieranie\u2026",

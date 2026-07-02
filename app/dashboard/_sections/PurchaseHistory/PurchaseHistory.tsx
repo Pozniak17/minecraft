@@ -30,7 +30,7 @@ function OpenReceiptIcon({ className }: { className?: string }) {
     <svg
       className={className}
       width="13"
-      height="13"
+      height="14"
       viewBox="0 0 13 13"
       fill="none"
       aria-hidden
@@ -140,6 +140,11 @@ export default function PurchaseHistory() {
     paid: t('ph.status.paid'),
     refund: t('ph.status.refund'),
     failed: t('ph.status.failed'),
+  };
+  const statusTableLabels: Record<OrderPaymentStatus, string> = {
+    paid: t('ph.statusShort.paid'),
+    refund: t('ph.statusShort.refund'),
+    failed: t('ph.statusShort.failed'),
   };
 
   async function handleOpenReceipt(orderId: string) {
@@ -506,9 +511,10 @@ export default function PurchaseHistory() {
                     <div className={styles.colStatus} role="cell">
                       <span
                         className={`${styles.statusBadge} ${styles.statusBadgeDot} ${styles[`status_${order.status}`]}`}
+                        title={statusLabels[order.status]}
                       >
                         <span className={styles.statusDot} aria-hidden />
-                        {statusLabels[order.status]}
+                        {statusTableLabels[order.status]}
                       </span>
                     </div>
                     <div className={styles.colReceipt} role="cell">

@@ -483,10 +483,12 @@
   white-space: nowrap;
 }
 
-.openBtnIcon {
+.openBtnIcon,
+.receiptIcon {
+  display: block;
   flex-shrink: 0;
   width: 13px;
-  height: 13px;
+  height: 14px;
 }
 
 .openBtnLabel {
@@ -494,22 +496,8 @@
   text-overflow: ellipsis;
 }
 
-@media (max-width: 399px) {
-  .openBtn:not(.openBtnLoading) .openBtnLabel {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .openBtnLoading .openBtnIcon {
-    display: none;
-  }
+.openBtnLoading .openBtnIcon {
+  display: none;
 }
 
 .openBtn:hover {
@@ -558,12 +546,6 @@
 
 .receiptBtn:disabled:hover {
   background: rgba(189, 225, 83, 0.1);
-}
-
-.receiptIcon {
-  flex-shrink: 0;
-  width: 13px;
-  height: 14px;
 }
 
 /* ─────────────── Desktop ─────────────── */
@@ -723,7 +705,7 @@
   .tableHead,
   .tableRow {
     display: grid;
-    grid-template-columns: 110px minmax(0, 1fr) 110px 130px 90px 90px 110px;
+    grid-template-columns: 110px minmax(0, 1fr) 110px 120px 90px minmax(120px, auto) minmax(110px, auto);
     gap: 12px;
     align-items: center;
     padding: 14px 20px;
@@ -812,9 +794,16 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    max-width: 100%;
     padding: 3px 8px;
     font-size: 9px;
     letter-spacing: 0.54px;
+    white-space: nowrap;
+  }
+
+  .colStatus {
+    min-width: 0;
+    overflow: hidden;
   }
 
   .statusDot {

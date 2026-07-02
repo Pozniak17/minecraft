@@ -48,6 +48,11 @@
       "refund": "R\u00fcckerstattung",
       "failed": "fehlgeschlagen"
     },
+    "statusShort": {
+      "paid": "bezahlt",
+      "refund": "erstattet",
+      "failed": "fehler"
+    },
     "btn": {
       "open": "\u00d6ffnen",
       "opening": "\u00d6ffne\u2026",

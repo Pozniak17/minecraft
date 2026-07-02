@@ -48,6 +48,11 @@
       "refund": "rimborso",
       "failed": "fallito"
     },
+    "statusShort": {
+      "paid": "pagato",
+      "refund": "rimb.",
+      "failed": "fallito"
+    },
     "btn": {
       "open": "Apri",
       "opening": "Apertura\u2026",

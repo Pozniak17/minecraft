@@ -48,6 +48,11 @@
       "refund": "refund",
       "failed": "failed"
     },
+    "statusShort": {
+      "paid": "paid",
+      "refund": "refund",
+      "failed": "failed"
+    },
     "btn": {
       "open": "Open",
       "opening": "Opening\u2026",
