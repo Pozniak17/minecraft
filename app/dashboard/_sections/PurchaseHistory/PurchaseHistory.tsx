@@ -25,6 +25,27 @@ import styles from './PurchaseHistory.module.css';
 
 const ORDERS_PER_PAGE = 10;
 
+function OpenReceiptIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="13"
+      height="13"
+      viewBox="0 0 13 13"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M4.5 1.5H11.5V8.5M11.5 1.5L1.5 11.5"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 type Order = {
   id: string;
   date: string;
@@ -394,11 +415,19 @@ export default function PurchaseHistory() {
                   <div className={styles.orderActions}>
                     <button
                       type="button"
-                      className={styles.openBtn}
+                      className={`${styles.openBtn}${openingId === order.id ? ` ${styles.openBtnLoading}` : ''}`}
+                      aria-label={
+                        openingId === order.id ? t('ph.btn.opening') : t('ph.btn.openAriaLabel')
+                      }
                       disabled={!order.hasBill || openingId === order.id || downloadingId === order.id}
                       onClick={() => handleOpenReceipt(order.id)}
                     >
-                      {openingId === order.id ? t('ph.btn.opening') : t('ph.btn.open')}
+                      {openingId !== order.id ? (
+                        <OpenReceiptIcon className={styles.openBtnIcon} />
+                      ) : null}
+                      <span className={styles.openBtnLabel}>
+                        {openingId === order.id ? t('ph.btn.opening') : t('ph.btn.open')}
+                      </span>
                     </button>
                     <button
                       type="button"

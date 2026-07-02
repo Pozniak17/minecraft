@@ -51,6 +51,7 @@
     "btn": {
       "open": "Apri",
       "opening": "Apertura\u2026",
+      "openAriaLabel": "Apri ricevuta",
       "receipt": "Ricevuta",
       "downloading": "Scaricando\u2026",
       "downloadAriaLabel": "Scarica ricevuta"

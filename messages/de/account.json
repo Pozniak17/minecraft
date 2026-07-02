@@ -51,6 +51,7 @@
     "btn": {
       "open": "\u00d6ffnen",
       "opening": "\u00d6ffne\u2026",
+      "openAriaLabel": "Quittung \u00f6ffnen",
       "receipt": "Quittung",
       "downloading": "L\u00e4dt herunter\u2026",
       "downloadAriaLabel": "Quittung herunterladen"

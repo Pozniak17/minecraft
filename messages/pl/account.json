@@ -51,6 +51,7 @@
     "btn": {
       "open": "Otw\u00f3rz",
       "opening": "Otwieranie\u2026",
+      "openAriaLabel": "Otw\u00f3rz paragon",
       "receipt": "Paragon",
       "downloading": "Pobieranie\u2026",
       "downloadAriaLabel": "Pobierz paragon"

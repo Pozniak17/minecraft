@@ -51,6 +51,7 @@
     "btn": {
       "open": "Abrir",
       "opening": "Abriendo\u2026",
+      "openAriaLabel": "Abrir recibo",
       "receipt": "Recibo",
       "downloading": "Descargando\u2026",
       "downloadAriaLabel": "Descargar recibo"
