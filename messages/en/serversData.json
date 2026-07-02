@@ -63,7 +63,7 @@
   "ui": {
     "serversEyebrow": "Servers",
     "pickYourWorld": "Pick your world",
-    "subtitleMain": "Live status, current load, latency.",
+    "subtitleMain": "Live status, latency.",
     "subtitleTap": "Tap a card to open the server.",
     "subtitleClick": "Click a server to see details and copy IP.",
     "autoRefresh": "Auto refresh — 10 s",

@@ -28,8 +28,6 @@ const SERVERS = [
   { key: 'calmsky', name: 'CalmSky', meta: 'Java 1.12–1.19' },
 ] as const;
 
-const SOFT_PLAYER_CAP = 200;
-
 type ActivityItem = {
   title: string;
   time: string;
@@ -381,10 +379,6 @@ export default function Dashboard() {
           const live = liveByKey[server.key];
           const isOnline = live.status === 'online';
           const onlineText = live.online !== null ? nf.format(live.online) : '—';
-          const ratio =
-            isOnline && live.online !== null
-              ? Math.min(1, live.online / SOFT_PLAYER_CAP)
-              : 0;
 
           return (
             <article key={server.key} className={styles.server}>
@@ -410,13 +404,6 @@ export default function Dashboard() {
               <div className={styles.playersRow}>
                 <span className={styles.playersLabel}>{t('serverStatus.playersOnline')}</span>
                 <span className={styles.playersValue}>{onlineText}</span>
-              </div>
-
-              <div className={styles.bar}>
-                <span
-                  className={`${styles.barFill} ${isOnline ? '' : styles.barFillEmpty}`}
-                  style={{ width: `${Math.round(ratio * 100)}%` }}
-                />
               </div>
 
               <div className={styles.serverFoot}>

@@ -14,17 +14,11 @@ function ServerCard({ server }: { server: DashboardServer }) {
   const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const live = useServerOnline(server.id);
   const isOnline = live.status === 'online';
-  const isLoading = live.status === 'loading';
-  const current = live.online ?? (isLoading ? server.current : 0);
-  const ratio = server.max > 0 ? current / server.max : 0;
+  const showPlayers = isOnline && live.online !== null;
   const mobileTitle = server.nameMobile ?? server.name;
-  const playersMobile =
-    live.online !== null
-      ? `${live.online}/${server.max} ${t('ui.players')}`
-      : `—/${server.max} ${t('ui.players')}`;
-  const playersDesktop =
-    live.online !== null ? `${live.online} / ${server.max}` : `— / ${server.max}`;
-  const statusLabel = isLoading ? t('ui.checking') : isOnline ? t('ui.online') : t('ui.offline');
+  const playersMobile = showPlayers ? `${live.online} ${t('ui.players')}` : null;
+  const playersDesktop = showPlayers ? String(live.online) : null;
+  const statusLabel = live.status === 'loading' ? t('ui.checking') : isOnline ? t('ui.online') : t('ui.offline');
 
   useEffect(() => {
     return () => {
@@ -61,7 +55,7 @@ function ServerCard({ server }: { server: DashboardServer }) {
             <span className={styles.statusDot} aria-hidden />
             {statusLabel}
           </span>
-          <span className={styles.latency}>{isOnline ? server.latency : '—'}</span>
+          {isOnline ? <span className={styles.latency}>{server.latency}</span> : null}
         </div>
 
         <h2 className={styles.cardTitle}>
@@ -69,21 +63,16 @@ function ServerCard({ server }: { server: DashboardServer }) {
           <span className={styles.titleDesktop}>{server.name}</span>
         </h2>
 
-        <p className={styles.playersMobile}>{playersMobile}</p>
+        {playersMobile ? <p className={styles.playersMobile}>{playersMobile}</p> : null}
 
         <p className={styles.description}>{t(`${server.id}.description`)}</p>
 
-        <div className={styles.playersRow}>
-          <span className={styles.playersLabel}>{t('ui.playersOnline')}</span>
-          <span className={styles.playersCount}>{playersDesktop}</span>
-        </div>
-
-        <div className={styles.bar} aria-hidden>
-          <span
-            className={`${styles.barFill} ${!isOnline ? styles.barFillEmpty : ''}`}
-            style={{ width: `${Math.round(ratio * 100)}%` }}
-          />
-        </div>
+        {showPlayers ? (
+          <div className={styles.playersRow}>
+            <span className={styles.playersLabel}>{t('ui.playersOnline')}</span>
+            <span className={styles.playersCount}>{playersDesktop}</span>
+          </div>
+        ) : null}
       </div>
 
       <div className={styles.actions}>

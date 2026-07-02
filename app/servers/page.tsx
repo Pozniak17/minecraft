@@ -11,7 +11,7 @@ import MainServer from './_sections/MainServer/MainServer';
 export const metadata: Metadata = buildMetadata({
   title: 'Servers',
   description:
-    'Pick your world — LuckySurvival, MineWars, or CalmSky. Live status, current load, and latency for every Minecraft server.',
+    'Pick your world — LuckySurvival, MineWars, or CalmSky. Live status and latency for every Minecraft server.',
   path: '/servers',
 });
 

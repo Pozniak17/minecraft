@@ -63,7 +63,7 @@
   "ui": {
     "serversEyebrow": "Servidores",
     "pickYourWorld": "Elige tu mundo",
-    "subtitleMain": "Estado en vivo, carga actual, latencia.",
+    "subtitleMain": "Estado en vivo, latencia.",
     "subtitleTap": "Toca una tarjeta para abrir el servidor.",
     "subtitleClick": "Haz clic en un servidor para ver detalles y copiar la IP.",
     "autoRefresh": "Actualización automática — 10 s",

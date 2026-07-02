@@ -63,7 +63,7 @@
   "ui": {
     "serversEyebrow": "Serwery",
     "pickYourWorld": "Wybierz swój świat",
-    "subtitleMain": "Status na żywo, aktualne obciążenie, opóźnienie.",
+    "subtitleMain": "Status na żywo, opóźnienie.",
     "subtitleTap": "Dotknij karty, aby otworzyć serwer.",
     "subtitleClick": "Kliknij serwer, aby zobaczyć szczegóły i skopiować IP.",
     "autoRefresh": "Auto odświeżanie — 10 s",

@@ -17,7 +17,6 @@ export type DashboardServer = {
   detailTitle: string;
   status: ServerStatus;
   current: number;
-  max: number;
   image: string;
   latency: string;
   uptime: string;
@@ -38,7 +37,6 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     detailTitle: 'LuckySurvival',
     status: 'online',
     current: 128,
-    max: 200,
     image: '/profile/servers/1.webp',
     latency: '12 ms',
     uptime: '99.9%',
@@ -69,7 +67,6 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     detailTitle: 'MineWars',
     status: 'online',
     current: 312,
-    max: 400,
     image: '/profile/servers/2.webp',
     latency: '8 ms',
     uptime: '99.8%',
@@ -101,7 +98,6 @@ export const DASHBOARD_SERVERS: DashboardServer[] = [
     detailTitle: 'CalmSky',
     status: 'online',
     current: 84,
-    max: 150,
     image: '/profile/servers/3.webp',
     latency: '15 ms',
     uptime: '99.7%',

@@ -72,9 +72,9 @@ export default function ServerDetail({ server }: ServerDetailProps) {
   const current =
     live.online !== null ? live.online : isLoading ? server.current : null;
   const playersMobile =
-    current !== null ? `${current}/${server.max}` : `—/${server.max}`;
+    current !== null ? String(current) : '—';
   const playersDesktop =
-    current !== null ? `${current} / ${server.max}` : `— / ${server.max}`;
+    current !== null ? String(current) : '—';
   const chartMax = Math.max(...server.chartData, 1);
 
   const livePlayers = useMemo((): LivePlayer[] => {

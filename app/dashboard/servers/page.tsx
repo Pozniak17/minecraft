@@ -4,7 +4,7 @@ import Servers from '@/app/servers/_sections/Servers/Servers';
 
 export const metadata: Metadata = {
   title: 'Servers — Dashboard',
-  description: 'Pick your world — live status, current load, and latency for every server.',
+  description: 'Pick your world — live status and latency for every server.',
 };
 
 export default async function DashboardServersPage() {

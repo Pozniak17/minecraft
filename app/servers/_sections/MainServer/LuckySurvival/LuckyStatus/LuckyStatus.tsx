@@ -1,26 +1,20 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { formatServerOnlineCount, formatServerLoadPercent, getServerLoadPercent } from '@/lib/client/formatServerOnlineCount';
+import { formatServerOnlineCount } from '@/lib/client/formatServerOnlineCount';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './LuckyStatus.module.css';
 
 export default function LuckyStatus() {
   const t = useTranslations('servers');
-  const { online, status, players } = useServerOnline('luckysurvival');
+  const { online, status } = useServerOnline('luckysurvival');
   const isOffline = status === 'offline';
-  const loadPercent = getServerLoadPercent(status, players.length);
 
   const STATS = [
     {
       value: formatServerOnlineCount(online, status),
       labelMobile: t('shared.playersMobile'),
       labelDesktop: t('shared.playersDesktop'),
-    },
-    {
-      value: formatServerLoadPercent(status, players.length),
-      labelMobile: t('shared.loadMobile'),
-      labelDesktop: t('shared.loadDesktop'),
     },
     { value: '24/7', labelMobile: t('shared.availabilityLabel'), labelDesktop: t('shared.availabilityLabel') },
   ];
@@ -49,19 +43,6 @@ export default function LuckyStatus() {
           </li>
         ))}
       </ul>
-
-      {loadPercent !== null && (
-        <div
-          className={styles.activityBar}
-          role="progressbar"
-          aria-valuenow={loadPercent}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={t('shared.activityAriaLabel')}
-        >
-          <span className={styles.activityFill} style={{ width: `${loadPercent}%` }} />
-        </div>
-      )}
     </section>
   );
 }

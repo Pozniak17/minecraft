@@ -1,13 +1,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { formatServerOnlineCount, formatServerLoadPercent } from '@/lib/client/formatServerOnlineCount';
+import { formatServerOnlineCount } from '@/lib/client/formatServerOnlineCount';
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './MineWarsStatus.module.css';
 
 export default function MineWarsStatus() {
   const t = useTranslations('servers');
-  const { online, status, players } = useServerOnline('minewars');
+  const { online, status } = useServerOnline('minewars');
   const isOffline = status === 'offline';
 
   const STATS = [
@@ -15,11 +15,6 @@ export default function MineWarsStatus() {
       value: formatServerOnlineCount(online, status),
       labelMobile: t('shared.playersMobile'),
       labelDesktop: t('shared.playersDesktop'),
-    },
-    {
-      value: formatServerLoadPercent(status, players.length),
-      labelMobile: t('shared.loadMobile'),
-      labelDesktop: t('shared.loadDesktop'),
     },
     { value: '24/7', labelMobile: t('shared.availabilityLabel'), labelDesktop: t('shared.availabilityLabel') },
   ];
