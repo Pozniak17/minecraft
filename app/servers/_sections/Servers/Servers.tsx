@@ -8,6 +8,12 @@ import { DASHBOARD_SERVERS, type DashboardServer } from '@/lib/data/dashboardSer
 import { useServerOnline } from '@/lib/client/useServerOnline';
 import styles from './Servers.module.css';
 
+/** Лише для ширини зеленої смуги — не показується користувачу. */
+function getOnlineBarWidth(online: number, chartData: number[]): number {
+  const peak = Math.max(...chartData, 1);
+  return Math.min(100, Math.max(12, Math.round((online / peak) * 100)));
+}
+
 function ServerCard({ server }: { server: DashboardServer }) {
   const t = useTranslations('serversData');
   const [copied, setCopied] = useState(false);
@@ -71,6 +77,15 @@ function ServerCard({ server }: { server: DashboardServer }) {
           <div className={styles.playersRow}>
             <span className={styles.playersLabel}>{t('ui.playersOnline')}</span>
             <span className={styles.playersCount}>{playersDesktop}</span>
+          </div>
+        ) : null}
+
+        {showPlayers ? (
+          <div className={styles.bar} aria-hidden>
+            <span
+              className={styles.barFill}
+              style={{ width: `${getOnlineBarWidth(live.online!, server.chartData)}%` }}
+            />
           </div>
         ) : null}
       </div>
