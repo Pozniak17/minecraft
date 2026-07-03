@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Legal",
+    "title": "Delivery Policy",
+    "lastUpdated": "July 3, 2026",
+    "intro": "This Delivery Policy explains how Adventures in Minecraft delivers digital items, privileges, and in-game currency after you complete a purchase on our website.",
+    "sections": [
+      {
+        "heading": "Digital Delivery",
+        "paragraphs": [
+          "All products sold through our store are digital goods delivered directly to your in-game account. There is no physical shipping involved.",
+          "Delivery is initiated automatically after your payment is confirmed by our payment provider."
+        ]
+      },
+      {
+        "heading": "Server and Nickname",
+        "paragraphs": [
+          "At checkout you must select the target game server and provide the in-game nickname that should receive the items.",
+          "You are responsible for entering the correct server and nickname. We cannot redirect items that were delivered to a nickname you entered incorrectly."
+        ]
+      },
+      {
+        "heading": "Online Requirement",
+        "paragraphs": [
+          "You must be online on the selected server at the moment of purchase for delivery to succeed.",
+          "If you are offline when payment completes, delivery may be delayed or fail. Join the selected server as soon as possible after paying so your items can be credited."
+        ]
+      },
+      {
+        "heading": "Delivery Timeframes",
+        "paragraphs": [
+          "Most purchases are delivered within seconds of payment confirmation. In rare cases — such as server maintenance or high load — delivery may take up to 24 hours.",
+          "If you have not received your items within 24 hours, please contact our support team with your order details."
+        ]
+      },
+      {
+        "heading": "Failed or Partial Delivery",
+        "paragraphs": [
+          "If delivery fails due to a technical issue on our side, we will retry automatically or manually credit your account once the issue is resolved.",
+          "If delivery fails because you were offline, used an incorrect nickname, or selected the wrong server, you must contact support. We will review the case and attempt to resolve it where possible."
+        ]
+      },
+      {
+        "heading": "Contact Support",
+        "paragraphs": [
+          "For any delivery-related questions or issues, reach out to us via Discord or the contact channels listed on our Contacts page. Include your in-game nickname, server, and approximate purchase time."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Legal",
+    "title": "Billing, Refunds & Chargeback Policy",
+    "lastUpdated": "July 3, 2026",
+    "intro": "This policy describes how we process payments, handle refunds, and manage chargebacks for purchases made on the Adventures in Minecraft website.",
+    "sections": [
+      {
+        "heading": "Payment Processing",
+        "paragraphs": [
+          "Payments are processed through a PCI DSS-compliant payment provider. We do not store full card numbers, CVV codes, or other sensitive card data on our servers.",
+          "By completing a purchase, you authorize us to charge the payment method you provide for the total amount shown at checkout, including any applicable taxes or fees."
+        ]
+      },
+      {
+        "heading": "Digital Goods and Final Sale",
+        "paragraphs": [
+          "All in-game items, privileges, and virtual currency are digital goods licensed to you, not sold, and have no real-world monetary value.",
+          "Because delivery begins immediately after payment, purchases are generally final. Refunds are only provided where required by applicable consumer protection law."
+        ]
+      },
+      {
+        "heading": "Refund Eligibility",
+        "paragraphs": [
+          "We may issue a refund if you were charged but did not receive your items due to a confirmed technical error on our side, and support was unable to deliver the items manually.",
+          "Refunds are not available for items already delivered and consumed in-game, purchases made with an incorrect nickname or server, or cases where you were offline at the time of delivery."
+        ]
+      },
+      {
+        "heading": "How to Request a Refund",
+        "paragraphs": [
+          "Contact our support team within 14 days of the purchase. Provide your in-game nickname, server, purchase date, and a description of the issue.",
+          "Approved refunds are returned to the original payment method. Processing times depend on your bank or card issuer and may take 5–10 business days."
+        ]
+      },
+      {
+        "heading": "Chargebacks",
+        "paragraphs": [
+          "If you dispute a charge with your bank or card issuer without first contacting us, we reserve the right to suspend or permanently ban the associated account.",
+          "Filing a chargeback for a purchase where items were successfully delivered may be considered fraud. We will provide transaction and delivery evidence to the payment provider to contest illegitimate chargebacks."
+        ]
+      },
+      {
+        "heading": "Billing Inquiries",
+        "paragraphs": [
+          "For billing questions, refund requests, or payment issues, contact us via Discord or the support email listed on our Contacts page."
+        ]
+      }
+    ]
   }
 }

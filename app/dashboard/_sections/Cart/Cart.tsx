@@ -119,6 +119,7 @@ export default function Cart() {
   const [paying, setPaying] = useState(false);
   const [payMessage, setPayMessage] = useState<string | null>(null);
   const [purchaseAgreed, setPurchaseAgreed] = useState(false);
+  const [policiesAgreed, setPoliciesAgreed] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -302,7 +303,7 @@ export default function Cart() {
         type="button"
         className={styles.payBtn}
         onClick={handlePay}
-        disabled={paying || lineCount === 0 || !purchaseAgreed}
+        disabled={paying || lineCount === 0 || !purchaseAgreed || !policiesAgreed}
       >
         <span>{paying ? t('payBtnProcessing') : t('payBtn')}</span>
         <span aria-hidden>→</span>
@@ -316,6 +317,39 @@ export default function Cart() {
         />
         <span className={styles.consentBox} aria-hidden="true" />
         <span className={styles.consentText}>{t('consentText')}</span>
+      </label>
+      <label className={styles.consent}>
+        <input
+          type="checkbox"
+          className={styles.consentInput}
+          checked={policiesAgreed}
+          onChange={event => setPoliciesAgreed(event.target.checked)}
+        />
+        <span className={styles.consentBox} aria-hidden="true" />
+        <span className={styles.consentText}>
+          {t.rich('policiesConsentText', {
+            privacy: chunks => (
+              <Link href="/privacy-policy" className={styles.consentLink}>
+                {chunks}
+              </Link>
+            ),
+            terms: chunks => (
+              <Link href="/terms" className={styles.consentLink}>
+                {chunks}
+              </Link>
+            ),
+            delivery: chunks => (
+              <Link href="/delivery-policy" className={styles.consentLink}>
+                {chunks}
+              </Link>
+            ),
+            billing: chunks => (
+              <Link href="/billing-refunds" className={styles.consentLink}>
+                {chunks}
+              </Link>
+            ),
+          })}
+        </span>
       </label>
       {payMessage && <p className={styles.secureNote}>{payMessage}</p>}
     </section>
@@ -464,6 +498,7 @@ export default function Cart() {
 
           <div className={styles.sidebarColumn}>
             {summaryBlock}
+            <p className={styles.pciNote}>{t('pciNote')}</p>
 
             <aside className={styles.importantNotice} aria-label={t('importantNoticeAriaLabel')}>
               <div className={styles.importantHead}>

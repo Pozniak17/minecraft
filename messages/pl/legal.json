@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Dokumenty prawne",
+    "title": "Polityka dostawy",
+    "lastUpdated": "3 lipca 2026",
+    "intro": "Niniejsza Polityka dostawy wyjaśnia, w jaki sposób Adventures in Minecraft dostarcza cyfrowe przedmioty, przywileje i walutę w grze po zakończeniu zakupu na naszej stronie.",
+    "sections": [
+      {
+        "heading": "Dostawa cyfrowa",
+        "paragraphs": [
+          "Wszystkie produkty sprzedawane w naszym sklepie to towary cyfrowe dostarczane bezpośrednio na Twoje konto w grze. Nie ma fizycznej wysyłki.",
+          "Dostawa rozpoczyna się automatycznie po potwierdzeniu płatności przez naszego operatora płatności."
+        ]
+      },
+      {
+        "heading": "Serwer i nick",
+        "paragraphs": [
+          "Przy finalizacji zakupu musisz wybrać docelowy serwer gry i podać nick w grze, na który mają trafić przedmioty.",
+          "Odpowiadasz za podanie poprawnego serwera i nicku. Nie możemy przekierować przedmiotów dostarczonych na błędnie wpisany nick."
+        ]
+      },
+      {
+        "heading": "Wymóg bycia online",
+        "paragraphs": [
+          "Musisz być online na wybranym serwerze w momencie zakupu, aby dostawa się powiodła.",
+          "Jeśli jesteś offline w chwili zakończenia płatności, dostawa może być opóźniona lub nieudana. Dołącz do wybranego serwera jak najszybciej po opłaceniu, aby przedmioty mogły zostać naliczone."
+        ]
+      },
+      {
+        "heading": "Terminy dostawy",
+        "paragraphs": [
+          "Większość zakupów jest dostarczana w ciągu kilku sekund od potwierdzenia płatności. W rzadkich przypadkach — np. podczas konserwacji serwera lub dużego obciążenia — dostawa może potrwać do 24 godzin.",
+          "Jeśli nie otrzymałeś przedmiotów w ciągu 24 godzin, skontaktuj się z naszym zespołem wsparcia, podając szczegóły zamówienia."
+        ]
+      },
+      {
+        "heading": "Nieudana lub częściowa dostawa",
+        "paragraphs": [
+          "Jeśli dostawa nie powiedzie się z powodu problemu technicznego po naszej stronie, ponowimy próbę automatycznie lub ręcznie naliczymy przedmioty po rozwiązaniu problemu.",
+          "Jeśli dostawa nie powiedzie się, ponieważ byłeś offline, użyłeś błędnego nicku lub wybrałeś niewłaściwy serwer, skontaktuj się ze wsparciem. Rozpatrzymy sprawę i postaramy się ją rozwiązać, jeśli to możliwe."
+        ]
+      },
+      {
+        "heading": "Kontakt ze wsparciem",
+        "paragraphs": [
+          "W przypadku pytań lub problemów związanych z dostawą skontaktuj się z nami przez Discord lub kanały wymienione na stronie Kontakt. Podaj nick w grze, serwer i przybliżony czas zakupu."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Dokumenty prawne",
+    "title": "Polityka płatności, zwrotów i chargebacków",
+    "lastUpdated": "3 lipca 2026",
+    "intro": "Niniejsza polityka opisuje, w jaki sposób przetwarzamy płatności, obsługujemy zwroty i zarządzamy chargebackami za zakupy dokonane na stronie Adventures in Minecraft.",
+    "sections": [
+      {
+        "heading": "Przetwarzanie płatności",
+        "paragraphs": [
+          "Płatności są przetwarzane przez operatora zgodnego z PCI DSS. Nie przechowujemy pełnych numerów kart, kodów CVV ani innych wrażliwych danych karty na naszych serwerach.",
+          "Dokonując zakupu, upoważniasz nas do obciążenia podanej metody płatności kwotą całkowitą widoczną przy finalizacji, w tym ewentualnymi podatkami lub opłatami."
+        ]
+      },
+      {
+        "heading": "Towary cyfrowe i sprzedaż ostateczna",
+        "paragraphs": [
+          "Wszystkie przedmioty w grze, przywileje i wirtualna waluta to towary cyfrowe licencjonowane dla Ciebie, a nie sprzedawane, i nie mają wartości pieniężnej w świecie rzeczywistym.",
+          "Ponieważ dostawa rozpoczyna się natychmiast po płatności, zakupy są co do zasady ostateczne. Zwroty są udzielane wyłącznie tam, gdzie wymaga tego obowiązujące prawo konsumenckie."
+        ]
+      },
+      {
+        "heading": "Uprawnienie do zwrotu",
+        "paragraphs": [
+          "Możemy dokonać zwrotu, jeśli zostałeś obciążony, ale nie otrzymałeś przedmiotów z powodu potwierdzonego błędu technicznego po naszej stronie, a wsparcie nie było w stanie dostarczyć przedmiotów ręcznie.",
+          "Zwroty nie przysługują za przedmioty już dostarczone i wykorzystane w grze, zakupy z błędnym nickiem lub serwerem oraz w przypadkach, gdy byłeś offline w momencie dostawy."
+        ]
+      },
+      {
+        "heading": "Jak złożyć wniosek o zwrot",
+        "paragraphs": [
+          "Skontaktuj się z naszym zespołem wsparcia w ciągu 14 dni od zakupu. Podaj nick w grze, serwer, datę zakupu i opis problemu.",
+          "Zatwierdzone zwroty są kierowane na pierwotną metodę płatności. Czas przetwarzania zależy od banku lub wydawcy karty i może wynosić 5–10 dni roboczych."
+        ]
+      },
+      {
+        "heading": "Chargebacki",
+        "paragraphs": [
+          "Jeśli zakwestionujesz obciążenie u banku lub wydawcy karty bez wcześniejszego kontaktu z nami, zastrzegamy sobie prawo do zawieszenia lub trwałego zablokowania powiązanego konta.",
+          "Złożenie chargebacku za zakup, w którym przedmioty zostały pomyślnie dostarczone, może być uznane za oszustwo. Dostarczymy operatorowi płatności dowody transakcji i dostawy, aby kwestionować nieuzasadnione chargebacki."
+        ]
+      },
+      {
+        "heading": "Zapytania dotyczące płatności",
+        "paragraphs": [
+          "W sprawach płatności, wniosków o zwrot lub problemów z płatnością skontaktuj się z nami przez Discord lub e-mail wsparcia podany na stronie Kontakt."
+        ]
+      }
+    ]
   }
 }

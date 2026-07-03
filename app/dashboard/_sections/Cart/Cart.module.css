@@ -627,6 +627,27 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
+.consentLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consentLink:hover {
+  filter: brightness(1.12);
+}
+
+.pciNote {
+  align-self: center;
+  margin-top: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.36px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 .secureNote {
   align-self: center;
   font-size: 9px;

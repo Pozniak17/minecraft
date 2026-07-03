@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Legal",
+    "title": "Política de entrega",
+    "lastUpdated": "3 de julio de 2026",
+    "intro": "Esta Política de entrega explica cómo Adventures in Minecraft entrega artículos digitales, privilegios y moneda del juego después de completar una compra en nuestro sitio web.",
+    "sections": [
+      {
+        "heading": "Entrega digital",
+        "paragraphs": [
+          "Todos los productos vendidos en nuestra tienda son bienes digitales entregados directamente a su cuenta del juego. No hay envío físico.",
+          "La entrega se inicia automáticamente después de que su pago sea confirmado por nuestro proveedor de pagos."
+        ]
+      },
+      {
+        "heading": "Servidor y nickname",
+        "paragraphs": [
+          "Al finalizar la compra debe seleccionar el servidor de juego de destino y proporcionar el nickname del juego que recibirá los artículos.",
+          "Usted es responsable de introducir el servidor y nickname correctos. No podemos redirigir artículos entregados a un nickname introducido incorrectamente."
+        ]
+      },
+      {
+        "heading": "Requisito de estar en línea",
+        "paragraphs": [
+          "Debe estar en línea en el servidor seleccionado en el momento de la compra para que la entrega tenga éxito.",
+          "Si está desconectado cuando se complete el pago, la entrega puede retrasarse o fallar. Únase al servidor seleccionado lo antes posible después de pagar para que sus artículos puedan acreditarse."
+        ]
+      },
+      {
+        "heading": "Plazos de entrega",
+        "paragraphs": [
+          "La mayoría de las compras se entregan en segundos tras la confirmación del pago. En casos excepcionales — como mantenimiento del servidor o alta carga — la entrega puede tardar hasta 24 horas.",
+          "Si no ha recibido sus artículos en 24 horas, contacte con nuestro equipo de soporte con los detalles de su pedido."
+        ]
+      },
+      {
+        "heading": "Entrega fallida o parcial",
+        "paragraphs": [
+          "Si la entrega falla por un problema técnico de nuestra parte, reintentaremos automáticamente o acreditaremos manualmente su cuenta una vez resuelto el problema.",
+          "Si la entrega falla porque estaba desconectado, usó un nickname incorrecto o seleccionó el servidor equivocado, debe contactar con soporte. Revisaremos el caso e intentaremos resolverlo cuando sea posible."
+        ]
+      },
+      {
+        "heading": "Contactar con soporte",
+        "paragraphs": [
+          "Para cualquier pregunta o problema relacionado con la entrega, contáctenos por Discord o los canales indicados en nuestra página de Contactos. Incluya su nickname del juego, servidor y hora aproximada de compra."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Legal",
+    "title": "Política de facturación, reembolsos y contracargos",
+    "lastUpdated": "3 de julio de 2026",
+    "intro": "Esta política describe cómo procesamos pagos, gestionamos reembolsos y manejamos contracargos por compras realizadas en el sitio web de Adventures in Minecraft.",
+    "sections": [
+      {
+        "heading": "Procesamiento de pagos",
+        "paragraphs": [
+          "Los pagos se procesan a través de un proveedor compatible con PCI DSS. No almacenamos números completos de tarjeta, códigos CVV u otros datos sensibles de tarjeta en nuestros servidores.",
+          "Al completar una compra, nos autoriza a cargar el método de pago que proporcione por el importe total mostrado en el checkout, incluidos impuestos o tasas aplicables."
+        ]
+      },
+      {
+        "heading": "Bienes digitales y venta final",
+        "paragraphs": [
+          "Todos los artículos del juego, privilegios y moneda virtual son bienes digitales licenciados para usted, no vendidos, y no tienen valor monetario real.",
+          "Como la entrega comienza inmediatamente después del pago, las compras son generalmente definitivas. Los reembolsos solo se proporcionan cuando lo exija la legislación de protección al consumidor aplicable."
+        ]
+      },
+      {
+        "heading": "Elegibilidad para reembolso",
+        "paragraphs": [
+          "Podemos emitir un reembolso si se le cobró pero no recibió sus artículos debido a un error técnico confirmado de nuestra parte y el soporte no pudo entregarlos manualmente.",
+          "No hay reembolsos para artículos ya entregados y consumidos en el juego, compras con nickname o servidor incorrectos, o casos en los que estaba desconectado en el momento de la entrega."
+        ]
+      },
+      {
+        "heading": "Cómo solicitar un reembolso",
+        "paragraphs": [
+          "Contacte con nuestro equipo de soporte dentro de los 14 días posteriores a la compra. Proporcione su nickname del juego, servidor, fecha de compra y una descripción del problema.",
+          "Los reembolsos aprobados se devuelven al método de pago original. Los tiempos de procesamiento dependen de su banco o emisor de tarjeta y pueden tardar de 5 a 10 días hábiles."
+        ]
+      },
+      {
+        "heading": "Contracargos",
+        "paragraphs": [
+          "Si disputa un cargo con su banco o emisor de tarjeta sin contactarnos primero, nos reservamos el derecho de suspender o prohibir permanentemente la cuenta asociada.",
+          "Presentar un contracargo por una compra en la que los artículos se entregaron correctamente puede considerarse fraude. Proporcionaremos al proveedor de pagos pruebas de transacción y entrega para impugnar contracargos injustificados."
+        ]
+      },
+      {
+        "heading": "Consultas de facturación",
+        "paragraphs": [
+          "Para preguntas de facturación, solicitudes de reembolso o problemas de pago, contáctenos por Discord o el correo de soporte indicado en nuestra página de Contactos."
+        ]
+      }
+    ]
   }
 }

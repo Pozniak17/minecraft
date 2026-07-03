@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Legale",
+    "title": "Politica di consegna",
+    "lastUpdated": "3 luglio 2026",
+    "intro": "La presente Politica di consegna spiega come Adventures in Minecraft consegna oggetti digitali, privilegi e valuta di gioco dopo un acquisto sul nostro sito.",
+    "sections": [
+      {
+        "heading": "Consegna digitale",
+        "paragraphs": [
+          "Tutti i prodotti venduti nel nostro negozio sono beni digitali consegnati direttamente al tuo account di gioco. Non è prevista spedizione fisica.",
+          "La consegna viene avviata automaticamente dopo la conferma del pagamento da parte del nostro provider di pagamento."
+        ]
+      },
+      {
+        "heading": "Server e nickname",
+        "paragraphs": [
+          "Al checkout devi selezionare il server di gioco di destinazione e fornire il nickname di gioco che riceverà gli oggetti.",
+          "Sei responsabile di inserire server e nickname corretti. Non possiamo reindirizzare oggetti consegnati a un nickname inserito in modo errato."
+        ]
+      },
+      {
+        "heading": "Requisito di essere online",
+        "paragraphs": [
+          "Devi essere online sul server selezionato al momento dell'acquisto affinché la consegna abbia successo.",
+          "Se sei offline al completamento del pagamento, la consegna può essere ritardata o fallire. Entra nel server selezionato il prima possibile dopo il pagamento affinché i tuoi oggetti possano essere accreditati."
+        ]
+      },
+      {
+        "heading": "Tempi di consegna",
+        "paragraphs": [
+          "La maggior parte degli acquisti viene consegnata entro pochi secondi dalla conferma del pagamento. In rari casi — come manutenzione del server o carico elevato — la consegna può richiedere fino a 24 ore.",
+          "Se non hai ricevuto i tuoi oggetti entro 24 ore, contatta il nostro team di supporto con i dettagli dell'ordine."
+        ]
+      },
+      {
+        "heading": "Consegna fallita o parziale",
+        "paragraphs": [
+          "Se la consegna fallisce a causa di un problema tecnico da parte nostra, riproveremo automaticamente o accrediteremo manualmente il tuo account una volta risolto il problema.",
+          "Se la consegna fallisce perché eri offline, hai usato un nickname errato o hai selezionato il server sbagliato, devi contattare il supporto. Esamineremo il caso e tenteremo di risolverlo quando possibile."
+        ]
+      },
+      {
+        "heading": "Contatta il supporto",
+        "paragraphs": [
+          "Per qualsiasi domanda o problema relativo alla consegna, contattaci via Discord o i canali indicati nella pagina Contatti. Includi nickname di gioco, server e ora approssimativa dell'acquisto."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Legale",
+    "title": "Politica di fatturazione, rimborsi e chargeback",
+    "lastUpdated": "3 luglio 2026",
+    "intro": "Questa politica descrive come elaboriamo i pagamenti, gestiamo i rimborsi e i chargeback per gli acquisti effettuati sul sito Adventures in Minecraft.",
+    "sections": [
+      {
+        "heading": "Elaborazione dei pagamenti",
+        "paragraphs": [
+          "I pagamenti sono elaborati tramite un provider conforme a PCI DSS. Non memorizziamo numeri completi di carta, codici CVV o altri dati sensibili della carta sui nostri server.",
+          "Completando un acquisto, ci autorizzi ad addebitare il metodo di pagamento fornito per l'importo totale mostrato al checkout, incluse eventuali tasse o commissioni."
+        ]
+      },
+      {
+        "heading": "Beni digitali e vendita definitiva",
+        "paragraphs": [
+          "Tutti gli oggetti di gioco, privilegi e valuta virtuale sono beni digitali concessi in licenza, non venduti, e non hanno valore monetario reale.",
+          "Poiché la consegna inizia immediatamente dopo il pagamento, gli acquisti sono generalmente definitivi. I rimborsi sono previsti solo dove richiesto dalla legge applicabile sulla protezione dei consumatori."
+        ]
+      },
+      {
+        "heading": "Idoneità al rimborso",
+        "paragraphs": [
+          "Possiamo emettere un rimborso se sei stato addebitato ma non hai ricevuto i tuoi oggetti a causa di un errore tecnico confermato da parte nostra e il supporto non è riuscito a consegnarli manualmente.",
+          "I rimborsi non sono disponibili per oggetti già consegnati e consumati in gioco, acquisti con nickname o server errati, o casi in cui eri offline al momento della consegna."
+        ]
+      },
+      {
+        "heading": "Come richiedere un rimborso",
+        "paragraphs": [
+          "Contatta il nostro team di supporto entro 14 giorni dall'acquisto. Fornisci nickname di gioco, server, data di acquisto e una descrizione del problema.",
+          "I rimborsi approvati vengono restituiti al metodo di pagamento originale. I tempi di elaborazione dipendono dalla banca o dall'emittente della carta e possono richiedere 5–10 giorni lavorativi."
+        ]
+      },
+      {
+        "heading": "Chargeback",
+        "paragraphs": [
+          "Se contesti un addebito con la banca o l'emittente della carta senza contattarci prima, ci riserviamo il diritto di sospendere o bannare permanentemente l'account associato.",
+          "Presentare un chargeback per un acquisto in cui gli oggetti sono stati consegnati con successo può essere considerato frode. Forniremo al provider di pagamento prove di transazione e consegna per contestare chargeback ingiustificati."
+        ]
+      },
+      {
+        "heading": "Richieste di fatturazione",
+        "paragraphs": [
+          "Per domande di fatturazione, richieste di rimborso o problemi di pagamento, contattaci via Discord o l'e-mail di supporto indicata nella pagina Contatti."
+        ]
+      }
+    ]
   }
 }

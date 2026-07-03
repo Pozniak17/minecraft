@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Rechtliches",
+    "title": "Lieferrichtlinie",
+    "lastUpdated": "3. Juli 2026",
+    "intro": "Diese Lieferrichtlinie erklärt, wie Adventures in Minecraft digitale Gegenstände, Privilegien und Ingame-Währung nach einem Kauf auf unserer Website liefert.",
+    "sections": [
+      {
+        "heading": "Digitale Lieferung",
+        "paragraphs": [
+          "Alle in unserem Shop verkauften Produkte sind digitale Güter, die direkt auf Ihr Ingame-Konto geliefert werden. Es gibt keinen physischen Versand.",
+          "Die Lieferung wird automatisch gestartet, sobald Ihre Zahlung von unserem Zahlungsanbieter bestätigt wurde."
+        ]
+      },
+      {
+        "heading": "Server und Nickname",
+        "paragraphs": [
+          "Beim Checkout müssen Sie den Ziel-Spielserver auswählen und den Ingame-Nickname angeben, der die Gegenstände erhalten soll.",
+          "Sie sind dafür verantwortlich, den richtigen Server und Nickname einzugeben. Wir können Gegenstände nicht umleiten, die an einen falsch eingegebenen Nickname geliefert wurden."
+        ]
+      },
+      {
+        "heading": "Online-Anforderung",
+        "paragraphs": [
+          "Sie müssen zum Zeitpunkt des Kaufs auf dem ausgewählten Server online sein, damit die Lieferung erfolgreich ist.",
+          "Wenn Sie offline sind, wenn die Zahlung abgeschlossen wird, kann die Lieferung verzögert werden oder fehlschlagen. Treten Sie dem ausgewählten Server so schnell wie möglich nach der Zahlung bei, damit Ihre Gegenstände gutgeschrieben werden können."
+        ]
+      },
+      {
+        "heading": "Lieferzeiten",
+        "paragraphs": [
+          "Die meisten Käufe werden innerhalb von Sekunden nach Zahlungsbestätigung geliefert. In seltenen Fällen — z. B. bei Serverwartung oder hoher Auslastung — kann die Lieferung bis zu 24 Stunden dauern.",
+          "Wenn Sie Ihre Gegenstände innerhalb von 24 Stunden nicht erhalten haben, wenden Sie sich bitte mit Ihren Bestelldetails an unser Support-Team."
+        ]
+      },
+      {
+        "heading": "Fehlgeschlagene oder teilweise Lieferung",
+        "paragraphs": [
+          "Wenn die Lieferung aufgrund eines technischen Problems auf unserer Seite fehlschlägt, versuchen wir es automatisch erneut oder schreiben Ihrem Konto die Gegenstände manuell gut, sobald das Problem behoben ist.",
+          "Wenn die Lieferung fehlschlägt, weil Sie offline waren, einen falschen Nickname verwendet oder den falschen Server ausgewählt haben, müssen Sie den Support kontaktieren. Wir prüfen den Fall und versuchen, ihn nach Möglichkeit zu lösen."
+        ]
+      },
+      {
+        "heading": "Support kontaktieren",
+        "paragraphs": [
+          "Bei Fragen oder Problemen zur Lieferung erreichen Sie uns über Discord oder die auf unserer Kontaktseite aufgeführten Kanäle. Geben Sie Ihren Ingame-Nickname, Server und die ungefähre Kaufzeit an."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Rechtliches",
+    "title": "Richtlinie zu Abrechnung, Erstattungen und Chargebacks",
+    "lastUpdated": "3. Juli 2026",
+    "intro": "Diese Richtlinie beschreibt, wie wir Zahlungen verarbeiten, Erstattungen handhaben und Chargebacks für Käufe auf der Adventures in Minecraft Website verwalten.",
+    "sections": [
+      {
+        "heading": "Zahlungsabwicklung",
+        "paragraphs": [
+          "Zahlungen werden über einen PCI-DSS-konformen Zahlungsanbieter abgewickelt. Wir speichern keine vollständigen Kartennummern, CVV-Codes oder andere sensible Kartendaten auf unseren Servern.",
+          "Mit dem Abschluss eines Kaufs autorisieren Sie uns, die von Ihnen angegebene Zahlungsmethode mit dem beim Checkout angezeigten Gesamtbetrag einschließlich anfallender Steuern oder Gebühren zu belasten."
+        ]
+      },
+      {
+        "heading": "Digitale Güter und endgültiger Verkauf",
+        "paragraphs": [
+          "Alle Ingame-Gegenstände, Privilegien und virtuelle Währung sind digitale Güter, die Ihnen lizenziert werden, nicht verkauft, und haben keinen realen Geldwert.",
+          "Da die Lieferung unmittelbar nach der Zahlung beginnt, sind Käufe grundsätzlich endgültig. Erstattungen werden nur gewährt, wenn dies nach geltendem Verbraucherschutzrecht erforderlich ist."
+        ]
+      },
+      {
+        "heading": "Erstattungsberechtigung",
+        "paragraphs": [
+          "Wir können eine Erstattung gewähren, wenn Ihnen Kosten berechnet wurden, Sie Ihre Gegenstände aber aufgrund eines bestätigten technischen Fehlers auf unserer Seite nicht erhalten haben und der Support die Gegenstände nicht manuell liefern konnte.",
+          "Erstattungen sind nicht verfügbar für bereits gelieferte und im Spiel verbrauchte Gegenstände, Käufe mit falschem Nickname oder Server oder Fälle, in denen Sie zum Zeitpunkt der Lieferung offline waren."
+        ]
+      },
+      {
+        "heading": "So beantragen Sie eine Erstattung",
+        "paragraphs": [
+          "Kontaktieren Sie unser Support-Team innerhalb von 14 Tagen nach dem Kauf. Geben Sie Ihren Ingame-Nickname, Server, Kaufdatum und eine Beschreibung des Problems an.",
+          "Genehmigte Erstattungen werden an die ursprüngliche Zahlungsmethode zurückgegeben. Die Bearbeitungszeit hängt von Ihrer Bank oder Ihrem Kartenherausgeber ab und kann 5–10 Werktage dauern."
+        ]
+      },
+      {
+        "heading": "Chargebacks",
+        "paragraphs": [
+          "Wenn Sie eine Belastung bei Ihrer Bank oder Ihrem Kartenherausgeber bestreiten, ohne uns zuvor zu kontaktieren, behalten wir uns das Recht vor, das zugehörige Konto zu sperren oder dauerhaft zu sperren.",
+          "Die Einreichung eines Chargebacks für einen Kauf, bei dem Gegenstände erfolgreich geliefert wurden, kann als Betrug gelten. Wir stellen dem Zahlungsanbieter Transaktions- und Liefernachweise zur Verfügung, um unbegründete Chargebacks anzufechten."
+        ]
+      },
+      {
+        "heading": "Abrechnungsanfragen",
+        "paragraphs": [
+          "Bei Fragen zur Abrechnung, Erstattungsanträgen oder Zahlungsproblemen kontaktieren Sie uns über Discord oder die auf unserer Kontaktseite angegebene Support-E-Mail."
+        ]
+      }
+    ]
   }
 }

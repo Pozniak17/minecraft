@@ -134,5 +134,103 @@
         ]
       }
     ]
+  },
+  "delivery": {
+    "badge": "Mentions légales",
+    "title": "Politique de livraison",
+    "lastUpdated": "3 juillet 2026",
+    "intro": "La présente Politique de livraison explique comment Adventures in Minecraft livre les objets numériques, privilèges et monnaie en jeu après un achat sur notre site.",
+    "sections": [
+      {
+        "heading": "Livraison numérique",
+        "paragraphs": [
+          "Tous les produits vendus dans notre boutique sont des biens numériques livrés directement sur votre compte en jeu. Il n'y a pas d'expédition physique.",
+          "La livraison est lancée automatiquement après confirmation de votre paiement par notre prestataire de paiement."
+        ]
+      },
+      {
+        "heading": "Serveur et pseudo",
+        "paragraphs": [
+          "Lors du paiement, vous devez sélectionner le serveur de jeu cible et indiquer le pseudo en jeu qui recevra les objets.",
+          "Vous êtes responsable de saisir le bon serveur et pseudo. Nous ne pouvons pas rediriger les objets livrés à un pseudo saisi incorrectement."
+        ]
+      },
+      {
+        "heading": "Obligation d'être en ligne",
+        "paragraphs": [
+          "Vous devez être en ligne sur le serveur sélectionné au moment de l'achat pour que la livraison réussisse.",
+          "Si vous êtes hors ligne lorsque le paiement est finalisé, la livraison peut être retardée ou échouer. Rejoignez le serveur sélectionné dès que possible après le paiement pour que vos objets soient crédités."
+        ]
+      },
+      {
+        "heading": "Délais de livraison",
+        "paragraphs": [
+          "La plupart des achats sont livrés en quelques secondes après confirmation du paiement. Dans de rares cas — maintenance du serveur ou forte charge — la livraison peut prendre jusqu'à 24 heures.",
+          "Si vous n'avez pas reçu vos objets dans les 24 heures, contactez notre équipe d'assistance avec les détails de votre commande."
+        ]
+      },
+      {
+        "heading": "Livraison échouée ou partielle",
+        "paragraphs": [
+          "Si la livraison échoue en raison d'un problème technique de notre côté, nous réessaierons automatiquement ou créditerons manuellement votre compte une fois le problème résolu.",
+          "Si la livraison échoue parce que vous étiez hors ligne, avez utilisé un mauvais pseudo ou sélectionné le mauvais serveur, contactez l'assistance. Nous examinerons le cas et tenterons de le résoudre si possible."
+        ]
+      },
+      {
+        "heading": "Contacter l'assistance",
+        "paragraphs": [
+          "Pour toute question ou problème lié à la livraison, contactez-nous via Discord ou les canaux indiqués sur notre page Contacts. Indiquez votre pseudo en jeu, le serveur et l'heure approximative d'achat."
+        ]
+      }
+    ]
+  },
+  "billingRefunds": {
+    "badge": "Mentions légales",
+    "title": "Politique de facturation, remboursements et rétrofacturations",
+    "lastUpdated": "3 juillet 2026",
+    "intro": "Cette politique décrit comment nous traitons les paiements, gérons les remboursements et les rétrofacturations pour les achats effectués sur le site Adventures in Minecraft.",
+    "sections": [
+      {
+        "heading": "Traitement des paiements",
+        "paragraphs": [
+          "Les paiements sont traités via un prestataire conforme à la norme PCI DSS. Nous ne stockons pas les numéros complets de carte, codes CVV ou autres données sensibles de carte sur nos serveurs.",
+          "En finalisant un achat, vous nous autorisez à débiter le moyen de paiement fourni pour le montant total affiché au checkout, taxes et frais applicables inclus."
+        ]
+      },
+      {
+        "heading": "Biens numériques et vente ferme",
+        "paragraphs": [
+          "Tous les objets en jeu, privilèges et monnaie virtuelle sont des biens numériques qui vous sont concédés sous licence, non vendus, et n'ont aucune valeur monétaire réelle.",
+          "Comme la livraison commence immédiatement après le paiement, les achats sont généralement définitifs. Les remboursements ne sont accordés que lorsque la législation applicable sur la protection des consommateurs l'exige."
+        ]
+      },
+      {
+        "heading": "Éligibilité au remboursement",
+        "paragraphs": [
+          "Nous pouvons accorder un remboursement si vous avez été débité mais n'avez pas reçu vos objets en raison d'une erreur technique confirmée de notre côté et que l'assistance n'a pas pu les livrer manuellement.",
+          "Aucun remboursement n'est disponible pour les objets déjà livrés et consommés en jeu, les achats avec un mauvais pseudo ou serveur, ou les cas où vous étiez hors ligne au moment de la livraison."
+        ]
+      },
+      {
+        "heading": "Comment demander un remboursement",
+        "paragraphs": [
+          "Contactez notre équipe d'assistance dans les 14 jours suivant l'achat. Fournissez votre pseudo en jeu, le serveur, la date d'achat et une description du problème.",
+          "Les remboursements approuvés sont retournés au moyen de paiement d'origine. Les délais de traitement dépendent de votre banque ou émetteur de carte et peuvent prendre 5 à 10 jours ouvrables."
+        ]
+      },
+      {
+        "heading": "Rétrofacturations",
+        "paragraphs": [
+          "Si vous contestez un débit auprès de votre banque ou émetteur de carte sans nous contacter au préalable, nous nous réservons le droit de suspendre ou bannir définitivement le compte associé.",
+          "Déposer une rétrofacturation pour un achat dont les objets ont été livrés avec succès peut être considéré comme une fraude. Nous fournirons au prestataire de paiement des preuves de transaction et de livraison pour contester les rétrofacturations injustifiées."
+        ]
+      },
+      {
+        "heading": "Questions de facturation",
+        "paragraphs": [
+          "Pour toute question de facturation, demande de remboursement ou problème de paiement, contactez-nous via Discord ou l'e-mail d'assistance indiqué sur notre page Contacts."
+        ]
+      }
+    ]
   }
 }
