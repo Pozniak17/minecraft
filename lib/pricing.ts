@@ -51,3 +51,15 @@ function crystalsToEur(amount: number): number {
 export function crystalsToCurrency(amount: number, currency = 'EUR'): number {
   return eurToCurrency(crystalsToEur(amount), currency);
 }
+
+/** Ціна пакета кристалів: API price-per-crystal має пріоритет над fallback-курсом. */
+export function crystalPackPrice(
+  amount: number,
+  pricePerCrystal: number | null,
+  currency = 'EUR',
+): number {
+  if (pricePerCrystal != null) {
+    return amount * pricePerCrystal;
+  }
+  return crystalsToCurrency(amount, currency);
+}

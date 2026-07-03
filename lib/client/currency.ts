@@ -2,6 +2,7 @@
 // Бекенд тримає ціну в EUR і раз на день перераховує в інші валюти, тож фронт
 // лише передає обрану валюту — конвертацію робить бекенд.
 const CURRENCY_STORAGE_KEY = 'shop:currency';
+export const CURRENCY_CHANGE_EVENT = 'shop:currency-change';
 export const DEFAULT_CURRENCY = 'EUR';
 
 export function getStoredCurrency(): string {
@@ -17,6 +18,7 @@ export function setStoredCurrency(currency: string): void {
   if (typeof window === 'undefined') return;
   try {
     window.localStorage.setItem(CURRENCY_STORAGE_KEY, currency);
+    window.dispatchEvent(new Event(CURRENCY_CHANGE_EVENT));
   } catch {
     // localStorage недоступний (приватний режим тощо) — ігноруємо.
   }

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { getOrders } from '@/lib/api/orders';
-import { getProducts } from '@/lib/api/shop';
+import { getCurrencies, getProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import {
   buildProductMeta,
@@ -17,8 +17,12 @@ import { useServerOnline } from '@/lib/client/useServerOnline';
 import { resolvePlayingAsNickname, resolveWelcomeName } from '@/lib/client/profileDisplay';
 import { hasPurchaseSuccessPending, clearPurchaseSuccess } from '@/lib/client/purchaseNotification';
 import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
-import { crystalsToCurrency } from '@/lib/pricing';
-import { DEFAULT_CURRENCY, formatMoney, getStoredCurrency } from '@/lib/client/currency';
+import { crystalPackPrice } from '@/lib/pricing';
+import {
+  CURRENCY_CHANGE_EVENT,
+  DEFAULT_CURRENCY,
+  getStoredCurrency,
+} from '@/lib/client/currency';
 import styles from './Dashboard.module.css';
 
 const nf = new Intl.NumberFormat('en-US');
@@ -115,6 +119,7 @@ export default function Dashboard() {
   const [purchaseNotif, setPurchaseNotif] = useState<ActivityItem | null>(null);
   // Currency is read after mount (localStorage) to avoid SSR/CSR mismatch.
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
+  const [pricePerCrystal, setPricePerCrystal] = useState<number | null>(null);
 
   // Live player count for each server (fixed hook call order — correct).
   const lucky = useServerOnline('luckysurvival');
@@ -192,9 +197,54 @@ export default function Dashboard() {
     : t('notifications.ariaLabel');
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setCurrency(getStoredCurrency());
+    let active = true;
+
+    function resolveCurrency() {
+      getCurrencies()
+        .then(list => {
+          if (!active) return;
+          if (list.length === 0) {
+            setCurrency(getStoredCurrency());
+            return;
+          }
+          const stored = getStoredCurrency();
+          const preferred =
+            list.find(c => c.abbr === stored) ||
+            list.find(c => c.abbr === DEFAULT_CURRENCY) ||
+            list[0];
+          setCurrency(preferred.abbr);
+        })
+        .catch(() => {
+          if (active) setCurrency(getStoredCurrency());
+        });
+    }
+
+    resolveCurrency();
+    window.addEventListener(CURRENCY_CHANGE_EVENT, resolveCurrency);
+    window.addEventListener('storage', resolveCurrency);
+
+    return () => {
+      active = false;
+      window.removeEventListener(CURRENCY_CHANGE_EVENT, resolveCurrency);
+      window.removeEventListener('storage', resolveCurrency);
+    };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    setPricePerCrystal(null);
+    getProducts({ priced: true, page_size: 100, currency, lang: locale })
+      .then(data => {
+        if (!active) return;
+        const crystal = data.results.find(p => p.category_slug === 'crystals');
+        const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
+        if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [currency, locale]);
 
   useEffect(() => {
     let active = true;
@@ -496,7 +546,7 @@ export default function Dashboard() {
                   <span className={styles.packAmount}>{nf.format(amount)}</span>
                 </span>
                 <span className={styles.packPrice}>
-                  {formatMoney(crystalsToCurrency(amount, currency), currency)}
+                  {formatOrderAmount(crystalPackPrice(amount, pricePerCrystal, currency), currency)}
                 </span>
               </div>
             ))}
