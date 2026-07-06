@@ -15,17 +15,13 @@ import { useProfile } from '@/app/_components/ProfileProvider/ProfileProvider';
 import CountrySelect from './CountrySelect/CountrySelect';
 import styles from './Settings.module.css';
 
-type SectionId = 'profile' | 'security' | 'danger';
+type SectionId = 'profile' | 'security';
 
 type PasswordStep = 'idle' | 'form' | 'done';
 
 type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
-const SECTION_IDS: { id: SectionId; danger?: boolean }[] = [
-  { id: 'profile' },
-  { id: 'security' },
-  { id: 'danger', danger: true },
-];
+const SECTION_IDS: SectionId[] = ['profile', 'security'];
 
 function getErrorText(err: unknown, fallback: string, networkError: string): string {
   if (isAxiosError(err)) {
@@ -175,14 +171,14 @@ export default function Settings() {
         getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
       );
       const marker = (Number.isFinite(headerHeight) ? headerHeight : 72) + 40;
-      let nextActiveSection = SECTION_IDS[0].id;
+      let nextActiveSection = SECTION_IDS[0];
 
-      for (const section of SECTION_IDS) {
-        const element = sectionRefs.current[section.id];
+      for (const sectionId of SECTION_IDS) {
+        const element = sectionRefs.current[sectionId];
         if (!element) continue;
 
         if (element.getBoundingClientRect().top <= marker) {
-          nextActiveSection = section.id;
+          nextActiveSection = sectionId;
         }
       }
 
@@ -285,27 +281,26 @@ export default function Settings() {
           <nav className={styles.subnav} aria-label={t('subnavAriaLabel')}>
             <span className={styles.subnavLabel}>{t('subnavLabel')}</span>
             <div className={styles.subnavList}>
-              {SECTION_IDS.map(section => (
+              {SECTION_IDS.map(sectionId => (
                 <button
-                  key={section.id}
+                  key={sectionId}
                   ref={node => {
                     if (node) {
-                      subnavButtonRefs.current.set(section.id, node);
+                      subnavButtonRefs.current.set(sectionId, node);
                     } else {
-                      subnavButtonRefs.current.delete(section.id);
+                      subnavButtonRefs.current.delete(sectionId);
                     }
                   }}
                   type="button"
                   className={[
                     styles.subnavItem,
-                    section.danger && styles.subnavItemDanger,
-                    activeSection === section.id && styles.subnavItemActive,
+                    activeSection === sectionId && styles.subnavItemActive,
                   ]
                     .filter(Boolean)
                     .join(' ')}
-                  onClick={() => scrollToSection(section.id)}
+                  onClick={() => scrollToSection(sectionId)}
                 >
-                  {t(`sections.${section.id}`)}
+                  {t(`sections.${sectionId}`)}
                 </button>
               ))}
             </div>
@@ -585,32 +580,6 @@ export default function Settings() {
                 </div>
               )}
 
-            </section>
-
-            <section
-              ref={node => {
-                sectionRefs.current.danger = node;
-              }}
-              id="settings-danger"
-              className={styles.dangerCard}
-            >
-              <h2 className={styles.dangerTitle}>
-                <span aria-hidden="true">⚠</span>
-                {t('dangerTitle')}
-              </h2>
-
-              <div className={styles.dangerRow}>
-                <div className={styles.rowText}>
-                  <span className={styles.rowTitleMobile}>{t('deleteMobile')}</span>
-                  <span className={styles.rowTitleDesktop}>{t('deleteDesktop')}</span>
-                  <span className={styles.dangerHintMobile}>{t('deleteHint')}</span>
-                  <span className={styles.dangerHintDesktop}>{t('deleteHint')}</span>
-                </div>
-                <button type="button" className={styles.dangerBtn}>
-                  <span className={styles.pillMobile}>{t('deleteBtnMobile')}</span>
-                  <span className={styles.pillDesktop}>{t('deleteBtnDesktop')}</span>
-                </button>
-              </div>
             </section>
           </div>
         </div>
