@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Badge } from '../Badge/Badge';
 import { Container } from '../Container/Container';
+import { PRIVACY_EMAIL } from '@/lib/data/contacts';
 import styles from './LegalPage.module.css';
 
 type LegalSection = {
@@ -45,6 +46,16 @@ export async function LegalPage({ document }: { document: LegalDocument }) {
             </section>
           ))}
         </div>
+
+        <footer className={styles.contactFooter}>
+          <p className={styles.contactLabel}>{t('contactFooterLabel')}</p>
+          <p className={styles.contactText}>
+            {t('contactFooterText')}{' '}
+            <a href={`mailto:${PRIVACY_EMAIL}`} className={styles.contactLink}>
+              {PRIVACY_EMAIL}
+            </a>
+          </p>
+        </footer>
       </Container>
     </section>
   );

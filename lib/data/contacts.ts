@@ -1,4 +1,5 @@
-export const SUPPORT_EMAIL = 'support@minecraftsgame.com';
+export const SUPPORT_EMAIL = 'help@minecraftsgame.com';
+export const PRIVACY_EMAIL = 'privacy@minecraftsgame.com';
 
 export const CONTACT_TOPICS = [
   { value: 'general' },

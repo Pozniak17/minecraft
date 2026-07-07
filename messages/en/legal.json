@@ -1,5 +1,7 @@
 {
   "lastUpdatedLabel": "Last updated",
+  "contactFooterLabel": "Contact",
+  "contactFooterText": "For questions about this policy, please email us at",
   "privacy": {
     "badge": "Legal",
     "title": "Privacy Policy",
