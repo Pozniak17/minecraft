@@ -17,16 +17,23 @@ const PAYMENT_ICONS = [
 export function Footer() {
   const t = useTranslations('common');
 
-  const MAIN_LINKS = NAV_LINKS.filter(
+  const NAV_MAIN_LINKS = NAV_LINKS.filter(
     link => link.href !== '/' && link.href !== '/how-to-start' && link.href !== '/faq',
   ).map(link => ({
     label: t(`nav.${link.key}`),
     href: link.href,
   }));
 
-  const SUPPORT_LINKS = [
-    { label: t('footer.contacts'), href: '/contacts' },
+  const storeIndex = NAV_MAIN_LINKS.findIndex(link => link.href === '/store');
+
+  const MAIN_LINKS = [
+    ...NAV_MAIN_LINKS.slice(0, storeIndex + 1),
     { label: t('footer.howToStartPlaying'), href: '/how-to-start' },
+    ...NAV_MAIN_LINKS.slice(storeIndex + 1),
+    { label: t('footer.contacts'), href: '/contacts' },
+  ];
+
+  const SUPPORT_LINKS = [
     { label: t('footer.privacyPolicy'), href: '/privacy-policy' },
     { label: t('footer.cookiePolicy'), href: '/cookie-policy' },
     { label: t('footer.termsAndConditions'), href: '/terms' },
@@ -105,7 +112,7 @@ export function Footer() {
             </div>
 
             <div className={styles.column}>
-              <h3 className={styles.columnTitle}>{t('footer.supportTitle')}</h3>
+              <h3 className={styles.columnTitle}>{t('footer.legalTitle')}</h3>
               <ul className={styles.columnList}>
                 {SUPPORT_LINKS.map(link => (
                   <li key={link.href}>
