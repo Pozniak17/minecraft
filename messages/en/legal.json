@@ -32,7 +32,7 @@
           "Account Information: login credentials, username, activity logs, settings, and profile details.",
           "Contact Details: your email address and, where provided, phone number or postal address.",
           "Transaction Information: your order and purchase history and account balance.",
-          "Payment Data: Payments are handled by our authorised payment processor, FINTECH GLOBAL SOFTWARE LTD. We do not collect, process, or store your payment card details or other sensitive financial information. Payment data is collected and processed directly by the payment gateway in compliance with PCI-DSS standards.",
+          "Payment Data: Payments are handled by our authorised payment processor, SMART OUTSOURCING SERVICES S.R.L. We do not collect, process, or store your payment card details or other sensitive financial information. Payment data is collected and processed directly by the payment gateway in compliance with PCI-DSS standards.",
           "Communication Records: correspondence with our customer support team.",
           "Technical Information: device data, IP address, operating system, browser type, and settings.",
           "Customer Support Data: details of issues you report and how they were resolved.",

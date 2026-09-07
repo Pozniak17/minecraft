@@ -32,7 +32,7 @@
           "Kontoinformationen: Anmeldedaten, Benutzername, Aktivitätsprotokolle, Einstellungen und Profildetails.",
           "Kontaktdaten: Ihre E-Mail-Adresse und, sofern angegeben, Telefonnummer oder Postanschrift.",
           "Transaktionsinformationen: Ihre Bestell- und Kaufhistorie sowie Kontostand.",
-          "Zahlungsdaten: Zahlungen werden von unserem autorisierten Zahlungsdienstleister FINTECH GLOBAL SOFTWARE LTD abgewickelt. Wir erheben, verarbeiten oder speichern Ihre Zahlungskartendaten oder sonstige sensible Finanzinformationen nicht. Zahlungsdaten werden direkt vom Zahlungsgateway in Übereinstimmung mit den PCI-DSS-Standards erhoben und verarbeitet.",
+          "Zahlungsdaten: Zahlungen werden von unserem autorisierten Zahlungsdienstleister SMART OUTSOURCING SERVICES S.R.L. abgewickelt. Wir erheben, verarbeiten oder speichern Ihre Zahlungskartendaten oder sonstige sensible Finanzinformationen nicht. Zahlungsdaten werden direkt vom Zahlungsgateway in Übereinstimmung mit den PCI-DSS-Standards erhoben und verarbeitet.",
           "Kommunikationsaufzeichnungen: Korrespondenz mit unserem Kundensupport.",
           "Technische Informationen: Gerätedaten, IP-Adresse, Betriebssystem, Browsertyp und Einstellungen.",
           "Kundensupport-Daten: Details zu von Ihnen gemeldeten Problemen und deren Behebung.",
