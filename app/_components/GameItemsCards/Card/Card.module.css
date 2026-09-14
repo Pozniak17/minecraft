@@ -25,17 +25,17 @@
   background: rgba(189, 225, 83, 0.1);
 }
 
-/* Іконки згенеровані на суцільному #001812, тож зображення на всю ширину
-   читається як тло картки, а не як квадрат, що плаває всередині. */
+/* Єдиний фон іконок — прозорі WebP + цей колір у iconWrap. */
 .iconWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
   flex-shrink: 0;
+  background: #133e3d;
 }
 
 .icon {
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 

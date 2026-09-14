@@ -267,6 +267,10 @@
   background: rgba(189, 225, 83, 0.05);
 }
 
+.itemThumbProduct {
+  background: #133e3d;
+}
+
 .itemImg {
   width: 48px;
   height: 48px;

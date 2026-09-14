@@ -13,10 +13,10 @@ for (const f of readdirSync(assets)) {
   if (!f.endsWith('.png')) continue;
   const name = f.replace(/\.png$/, '');
   if (!needed.has(name)) continue;
-  const out = join(dest, `${name}.webp`);
+  const out = join(dest, `${name}.png`);
   if (existsSync(out)) continue;
-  await sharp(join(assets, f)).resize(512, 512, { fit: 'cover' }).webp({ quality: 82, effort: 4 }).toFile(out);
+  await sharp(join(assets, f)).resize(512, 512, { fit: 'cover' }).png({ compressionLevel: 9 }).toFile(out);
   n++;
 }
-const have = readdirSync(dest).filter(f => f.endsWith('.webp')).length;
+const have = readdirSync(dest).filter(f => f.endsWith('.png')).length;
 console.log(`synced ${n} new → total ${have}/441`);

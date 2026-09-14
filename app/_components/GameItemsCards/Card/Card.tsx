@@ -43,9 +43,10 @@ export default function Card({
         <div className={styles.iconWrap}>
           <Image
             className={styles.icon}
-            src={`/products/${imageName}.webp`}
+            src={`/products/${imageName}.png`}
             alt=""
             fill
+            unoptimized
             sizes="(min-width: 1280px) 190px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
           />
         </div>

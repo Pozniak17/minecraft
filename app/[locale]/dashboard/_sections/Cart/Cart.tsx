@@ -369,7 +369,7 @@ export default function Cart() {
   // Блоки мають власну іконку; кристали й привілеї лишаються на промо-картинках.
   const imageFor = (row: Row) => {
     const slug = productMeta.get(row.productId)?.iconSlug;
-    return slug ? `/products/${slug}.webp` : row.image;
+    return slug ? `/products/${slug}.png` : row.image;
   };
 
   const lineCount = rows.length;
@@ -817,15 +817,21 @@ export default function Cart() {
                     const lineTotal = item.lineTotal;
                     const title = titleFor(item);
 
+                    const thumbSrc = imageFor(item);
+                    const isProductIcon = thumbSrc.startsWith('/products/');
+
                     return (
                       <li key={item.id} className={styles.itemRow}>
-                        <div className={styles.itemThumb}>
+                        <div
+                          className={`${styles.itemThumb} ${isProductIcon ? styles.itemThumbProduct : ''}`}
+                        >
                           <Image
-                            src={imageFor(item)}
+                            src={thumbSrc}
                             alt=""
                             width={64}
                             height={64}
                             className={styles.itemImg}
+                            unoptimized={isProductIcon}
                             aria-hidden
                           />
                         </div>
