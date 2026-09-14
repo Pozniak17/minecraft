@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from '@/i18n/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import GameItemsCards from '@/app/_components/GameItemsCards/GameItemsCards';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
@@ -25,6 +26,11 @@ import styles from './Shop.module.css';
 
 const TABS = ['All', 'Crystals', 'Privileges', 'GameItems'] as const;
 type Tab = (typeof TABS)[number];
+
+function tabFromSearchParam(raw: string | null): Tab | null {
+  if (!raw) return null;
+  return (TABS as readonly string[]).includes(raw) ? (raw as Tab) : null;
+}
 
 const MIN = 10;
 const MAX = 15_000;
@@ -89,10 +95,16 @@ const SLIDER_TICKS = [0, 0.25, 0.5, 0.75, 1].map(
 
 export default function Shop() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const locale = useLocale();
   const t = useTranslations('store');
   const isDashboard = pathname?.startsWith('/dashboard') ?? false;
-  const [tab, setTab] = useState<Tab>('All');
+  const [tab, setTab] = useState<Tab>(() => tabFromSearchParam(searchParams.get('tab')) ?? 'All');
+
+  useEffect(() => {
+    const fromUrl = tabFromSearchParam(searchParams.get('tab'));
+    if (fromUrl) setTab(fromUrl);
+  }, [searchParams]);
   const [amount, setAmount] = useState(2500);
   const [amountInput, setAmountInput] = useState('2500');
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { requireAuth } from '@/lib/server/requireAuth';
 import Shop from '@/app/[locale]/store/_sections/Shop/Shop';
 
@@ -10,5 +11,9 @@ export const metadata: Metadata = {
 export default async function DashboardShopPage() {
   await requireAuth();
 
-  return <Shop />;
+  return (
+    <Suspense fallback={null}>
+      <Shop />
+    </Suspense>
+  );
 }

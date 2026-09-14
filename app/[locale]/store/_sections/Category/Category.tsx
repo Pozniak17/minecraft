@@ -8,14 +8,16 @@ import Tabs, { type Tab } from '@/app/_components/Tabs/Tabs';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import CrystalsCards from '@/app/_components/CrystalsCards/CrystalsCards';
 import GameItemsCards from '@/app/_components/GameItemsCards/GameItemsCards';
-import { getShopHref } from '@/lib/data/servers';
+import { useShopSectionHref } from '@/lib/client/useShopSectionHref';
 
 const STORE_TABS = ['Crystals', 'Privileges', 'GameItems'] as const satisfies readonly Tab[];
 
 export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
   const t = useTranslations('store');
   const [activeTab, setActiveTab] = useState<Tab>('Privileges');
-  const shopHref = getShopHref(isAuthed);
+  const crystalsHref = useShopSectionHref(isAuthed, 'Crystals');
+  const privilegesHref = useShopSectionHref(isAuthed, 'Privileges');
+  const gameItemsHref = useShopSectionHref(isAuthed, 'GameItems');
 
   return (
     <section className={styles.section}>
@@ -26,11 +28,11 @@ export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
 
         <div className={styles.cards}>
           {activeTab === 'Crystals' ? (
-            <CrystalsCards seeMoreHref={shopHref} />
+            <CrystalsCards seeMoreHref={crystalsHref} />
           ) : activeTab === 'GameItems' ? (
-            <GameItemsCards shopHref={shopHref} />
+            <GameItemsCards shopHref={gameItemsHref} />
           ) : (
-            <PrivilegesCards addToCartHref={shopHref} />
+            <PrivilegesCards addToCartHref={privilegesHref} />
           )}
         </div>
       </Container>

@@ -4,9 +4,11 @@ import { isAxiosError } from 'axios';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { register as registerUser, sendEmailCode } from '@/lib/api/auth';
 import { initSeon, getSeonSession } from '@/lib/client/seon';
+import { safeNextPath } from '@/lib/client/safeNextPath';
 import styles from './RegistrationForm.module.css';
 
 type FieldErrors = Partial<Record<'email' | 'password', string>>;
@@ -105,6 +107,10 @@ function EyeIcon({ open }: { open: boolean }) {
 
 export default function RegistrationForm() {
   const t = useTranslations('auth');
+  const searchParams = useSearchParams();
+  const nextPath = safeNextPath(searchParams.get('next'));
+  const loginHref =
+    nextPath === '/dashboard' ? '/login' : `/login?next=${encodeURIComponent(nextPath)}`;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -227,7 +233,7 @@ export default function RegistrationForm() {
 
               {formError && <p className={styles.formError}>{formError}</p>}
 
-              <Link href="/login" className={styles.successCta}>
+              <Link href={loginHref} className={styles.successCta}>
                 {t('register.successCta')}
               </Link>
 
@@ -417,7 +423,7 @@ export default function RegistrationForm() {
 
                 <p className={styles.footerLink}>
                   <span>{t('register.alreadyAccount')}</span>{' '}
-                  <Link href="/login" className={styles.loginLink}>
+                  <Link href={loginHref} className={styles.loginLink}>
                     {t('register.loginLink')}
                   </Link>
                 </p>

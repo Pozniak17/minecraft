@@ -4,9 +4,11 @@ import { isAxiosError } from 'axios';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useRouter } from '@/i18n/navigation';
+import { useSearchParams } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { login } from '@/lib/api/auth';
+import { safeNextPath } from '@/lib/client/safeNextPath';
 import styles from './LoginForm.module.css';
 
 function EyeIcon({ open }: { open: boolean }) {
@@ -46,6 +48,10 @@ function EyeIcon({ open }: { open: boolean }) {
 export default function LoginForm() {
   const t = useTranslations('auth');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextPath = safeNextPath(searchParams.get('next'));
+  const registerHref =
+    nextPath === '/dashboard' ? '/register' : `/register?next=${encodeURIComponent(nextPath)}`;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -68,7 +74,7 @@ export default function LoginForm() {
       if (typeof window !== 'undefined') {
         window.localStorage.setItem('user_email', email.trim());
       }
-      router.push('/dashboard');
+      router.push(nextPath);
       router.refresh();
     } catch (err) {
       setStatus('idle');
@@ -192,7 +198,7 @@ export default function LoginForm() {
 
               <p className={styles.footerLink}>
                 {t('login.noAccount')}
-                <Link href="/register" className={styles.createLink}>
+                <Link href={registerHref} className={styles.createLink}>
                   {t('login.createOne')}
                 </Link>
               </p>

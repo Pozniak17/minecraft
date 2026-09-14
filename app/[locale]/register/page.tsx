@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 import RegistrationForm from './_sections/RegistrationForm/RegistrationForm';
 
@@ -12,5 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RegisterPage() {
-  return <RegistrationForm />;
+  return (
+    <Suspense fallback={null}>
+      <RegistrationForm />
+    </Suspense>
+  );
 }
