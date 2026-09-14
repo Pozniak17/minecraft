@@ -1,0 +1,247 @@
+.root {
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: var(--font-main, Montserrat), sans-serif;
+  font-size: 14px;
+  line-height: normal;
+}
+
+.search::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.search:focus-visible {
+  outline: 2px solid var(--color-primary, #bde153);
+  outline-offset: 2px;
+}
+
+.count {
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-main, Montserrat), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skeleton {
+  aspect-ratio: 0.72;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.loadMoreWrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.loadMore {
+  padding: 10px 28px;
+  border-radius: 109px;
+  border: 1px solid rgba(189, 225, 83, 0.2);
+  background: rgba(189, 225, 83, 0.1);
+  color: #fff;
+  font-family: var(--font-main, Montserrat), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.loadMore:hover {
+  border-color: var(--color-primary, #bde153);
+  background: rgba(189, 225, 83, 0.15);
+}
+
+.loadMore:focus-visible {
+  outline: 2px solid var(--color-primary, #bde153);
+  outline-offset: 2px;
+}
+
+.empty {
+  margin: 32px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-main, Montserrat), sans-serif;
+  font-size: 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.pagRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagArrow,
+.pagNumber,
+.pagEllipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.pagArrow {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.pagArrowNext {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #bde153;
+}
+
+.pagArrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagNumber {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.pagNumber:hover:not(.pagNumberActive) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagNumberActive {
+  border-color: #bde153;
+  background: #bde153;
+  color: #001812;
+}
+
+.pagEllipsis {
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search {
+    margin-inline: 0;
+  }
+
+  .count {
+    text-align: right;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .pagination {
+    padding-top: 32px;
+  }
+
+  .pagRow {
+    gap: 8px;
+  }
+
+  .pagNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+}

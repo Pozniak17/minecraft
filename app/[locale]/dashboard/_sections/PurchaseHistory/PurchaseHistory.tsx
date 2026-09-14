@@ -12,7 +12,7 @@ import {
   mapOrderStatus,
   type OrderPaymentStatus,
 } from '@/lib/api/orders';
-import { getProducts } from '@/lib/api/shop';
+import { getAllProducts } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import {
   buildProductMeta,
@@ -236,10 +236,10 @@ export default function PurchaseHistory() {
   // Каталог товарів: даємо позиціям реальну назву та визначаємо кристали за категорією.
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100, lang: locale })
-      .then(data => {
+    getAllProducts({ lang: locale })
+      .then(products => {
         if (!active) return;
-        setProductMeta(buildProductMeta(data.results));
+        setProductMeta(buildProductMeta(products));
       })
       .catch(() => {});
     return () => {

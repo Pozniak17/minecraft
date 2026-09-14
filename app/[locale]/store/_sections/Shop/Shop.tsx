@@ -4,9 +4,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import GameItemsCards from '@/app/_components/GameItemsCards/GameItemsCards';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import { isAxiosError } from 'axios';
-import { getCurrencies, getProducts } from '@/lib/api/shop';
+import { getAllInCategory, getCurrencies } from '@/lib/api/shop';
 import type { Currency } from '@/lib/api/types';
 import { addToCart, changeItemAmount, getOrderItems } from '@/lib/api/cart';
 import {
@@ -22,7 +23,7 @@ import {
 import CurrencySelect from './CurrencySelect/CurrencySelect';
 import styles from './Shop.module.css';
 
-const TABS = ['All', 'Crystals', 'Privileges'] as const;
+const TABS = ['All', 'Crystals', 'Privileges', 'GameItems'] as const;
 type Tab = (typeof TABS)[number];
 
 const MIN = 10;
@@ -123,6 +124,8 @@ export default function Shop() {
 
   const showCrystals = tab === 'All' || tab === 'Crystals';
   const showPrivileges = tab === 'All' || tab === 'Privileges';
+  const showGameItems = tab === 'All' || tab === 'GameItems';
+  const gameItemsPreview = tab === 'All';
 
   const crystalAddLabel = (key: string, full = false) => {
     if (addingKey === key) return t('shop_adding');
@@ -197,17 +200,18 @@ export default function Shop() {
 
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100, lang: locale })
-      .then(data => {
+    Promise.all([
+      getAllInCategory('crystals', { lang: locale }),
+      getAllInCategory('privileges', { lang: locale }),
+    ])
+      .then(([crystals, privileges]) => {
         if (!active) return;
         const map = new Map<string, string>();
-        let crystal: string | null = null;
-        for (const p of data.results) {
+        for (const p of [...crystals, ...privileges]) {
           if (p.title) map.set(p.title.toLowerCase(), p.id);
-          if (p.category_slug === 'crystals') crystal = p.id;
         }
         setProductIdByTitle(map);
-        setCrystalId(crystal);
+        setCrystalId(crystals[0]?.id ?? null);
       })
       .catch(() => {});
     return () => {
@@ -223,16 +227,19 @@ export default function Shop() {
     let active = true;
     setPricePerCrystal(null);
     setPrivilegePrices(buildFallbackPrivilegePrices(currency));
-    getProducts({ priced: true, page_size: 100, currency, lang: locale })
-      .then(data => {
+    Promise.all([
+      getAllInCategory('crystals', { priced: true, currency, lang: locale }),
+      getAllInCategory('privileges', { priced: true, currency, lang: locale }),
+    ])
+      .then(([crystals, privileges]) => {
         if (!active) return;
-        const crystal = data.results.find(p => p.category_slug === 'crystals');
+        const crystal = crystals[0];
         const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
         if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
 
         const prices = buildFallbackPrivilegePrices(currency);
-        for (const p of data.results) {
-          if (p.category_slug === 'crystals' || !p.title || p.price == null) continue;
+        for (const p of privileges) {
+          if (!p.title || p.price == null) continue;
           const value = Number(p.price);
           if (!Number.isFinite(value)) continue;
           const formatted = `${value.toFixed(2)} ${currency}`;
@@ -307,6 +314,41 @@ export default function Shop() {
     [productIdByTitle, currency, flash, t]
   );
 
+  const addGameItem = useCallback(
+    async (product: { id: string; title: string }) => {
+      const key = `item-${product.id}`;
+      if (addingKey) return;
+      setAddingKey(key);
+      try {
+        await addToCart({ amount: 1, item_id: product.id, currency });
+        notifyCartUpdated();
+        markCrystalAdded(key);
+        flash(t('shop_toastItemAdded', { title: product.title }));
+      } catch (err) {
+        if (isAxiosError(err) && (err.response?.status === 403 || err.response?.status === 400)) {
+          try {
+            const items = await getOrderItems();
+            const existing = items.find(it => it.product_id === product.id);
+            const nextQty = Math.min(BACKEND_MAX_QTY, (existing?.amount ?? 0) + 1);
+            await changeItemAmount(product.id, nextQty);
+            notifyCartUpdated();
+            markCrystalAdded(key);
+            flash(
+              t('shop_toastItemUpdated', { title: product.title, total: nf.format(nextQty) }),
+            );
+            return;
+          } catch {
+            // fall through to generic error
+          }
+        }
+        flash(t('shop_toastError'));
+      } finally {
+        setAddingKey(null);
+      }
+    },
+    [addingKey, currency, flash, markCrystalAdded, t]
+  );
+
   return (
     <div className={styles.shell}>
     <div className={styles.root}>
@@ -347,8 +389,10 @@ export default function Shop() {
                 </>
               ) : item === 'Crystals' ? (
                 t('shop_tabCrystals')
-              ) : (
+              ) : item === 'Privileges' ? (
                 t('shop_tabPrivileges')
+              ) : (
+                t('shop_tabGameItems')
               )}
             </button>
           ))}
@@ -534,6 +578,21 @@ export default function Shop() {
               onAddToCart={addPrivilege}
             />
           </div>
+        </>
+      )}
+
+      {showGameItems && (
+        <>
+          <div className={styles.prTitle}>
+            <h2 className={styles.prHeading}>{t('shop_itemsHeading')}</h2>
+            <p className={styles.prNote}>{t('shop_itemsNote')}</p>
+          </div>
+          <GameItemsCards
+            priced={isDashboard}
+            currency={currency}
+            onAddToCart={isDashboard ? addGameItem : undefined}
+            initialLimit={gameItemsPreview ? 12 : undefined}
+          />
         </>
       )}
     </div>

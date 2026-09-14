@@ -5,7 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { getOrders } from '@/lib/api/orders';
-import { getCurrencies, getProducts } from '@/lib/api/shop';
+import { getAllInCategory, getAllProducts, getCurrencies } from '@/lib/api/shop';
 import type { OrderListItem } from '@/lib/api/types';
 import {
   buildProductMeta,
@@ -238,10 +238,10 @@ export default function Dashboard() {
   useEffect(() => {
     let active = true;
     setPricePerCrystal(null);
-    getProducts({ priced: true, page_size: 100, currency, lang: locale })
-      .then(data => {
+    getAllInCategory('crystals', { priced: true, currency, lang: locale })
+      .then(products => {
         if (!active) return;
-        const crystal = data.results.find(p => p.category_slug === 'crystals');
+        const crystal = products[0];
         const parsed = crystal?.price != null ? Number(crystal.price) : NaN;
         if (Number.isFinite(parsed) && parsed > 0) setPricePerCrystal(parsed);
       })
@@ -253,10 +253,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100, lang: locale })
-      .then(data => {
+    getAllProducts({ lang: locale })
+      .then(products => {
         if (!active) return;
-        setProductMeta(buildProductMeta(data.results));
+        setProductMeta(buildProductMeta(products));
       })
       .catch(() => {})
       .finally(() => {

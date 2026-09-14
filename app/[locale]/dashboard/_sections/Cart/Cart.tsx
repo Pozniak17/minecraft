@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { getOrderItems, changeItemAmount, removeFromCart } from '@/lib/api/cart';
-import { getServers, getProducts } from '@/lib/api/shop';
+import { getAllProducts, getServers } from '@/lib/api/shop';
 import { createPayment } from '@/lib/api/payment';
 import { applyPromo } from '@/lib/api/promos';
 import type { OrderItem } from '@/lib/api/types';
@@ -168,7 +168,18 @@ function labelFromImage(name: string | undefined): string {
   return base ? base.replace(/[-_]+/g, ' ') : 'Item';
 }
 
-type ProductMeta = { title: string; isCrystal: boolean };
+// Слаг іконки блока йде прямо в шлях /products/, тож пропускаємо лише [a-z0-9-].
+function productIconSlug(name: string | null | undefined): string | null {
+  if (!name) return null;
+  const base =
+    name
+      .split('/')
+      .pop()
+      ?.replace(/\.[a-z0-9]+$/i, '') ?? '';
+  return /^[a-z0-9-]+$/.test(base) ? base : null;
+}
+
+type ProductMeta = { title: string; isCrystal: boolean; iconSlug: string | null };
 
 function orderItemToRow(item: OrderItem, index: number): Row {
   const unitPrice = Number(item.price) || 0;
@@ -333,14 +344,15 @@ export default function Cart() {
   // Мапа продуктів: даємо позиціям кошика реальну назву та крок (кристали — по 10).
   useEffect(() => {
     let active = true;
-    getProducts({ page_size: 100, lang: locale })
-      .then(data => {
+    getAllProducts({ lang: locale })
+      .then(products => {
         if (!active) return;
         const map = new Map<string, ProductMeta>();
-        for (const p of data.results) {
+        for (const p of products) {
           map.set(p.id, {
             title: p.title ?? '',
             isCrystal: p.category_slug === 'crystals',
+            iconSlug: p.category_slug === 'items' ? productIconSlug(p.image_name) : null,
           });
         }
         setProductMeta(map);
@@ -354,6 +366,11 @@ export default function Cart() {
   // Назва та крок кількості — derived з мапи продуктів (кристали продаються по 10).
   const titleFor = (row: Row) => productMeta.get(row.productId)?.title || row.title;
   const stepFor = (row: Row) => (productMeta.get(row.productId)?.isCrystal ? 10 : 1);
+  // Блоки мають власну іконку; кристали й привілеї лишаються на промо-картинках.
+  const imageFor = (row: Row) => {
+    const slug = productMeta.get(row.productId)?.iconSlug;
+    return slug ? `/products/${slug}.webp` : row.image;
+  };
 
   const lineCount = rows.length;
 
@@ -804,7 +821,7 @@ export default function Cart() {
                       <li key={item.id} className={styles.itemRow}>
                         <div className={styles.itemThumb}>
                           <Image
-                            src={item.image}
+                            src={imageFor(item)}
                             alt=""
                             width={64}
                             height={64}

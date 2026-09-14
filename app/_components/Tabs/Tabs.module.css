@@ -1,5 +1,7 @@
 .tabs {
-  width: 314px;
+  display: flex;
+  width: max-content;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 2px;
@@ -11,13 +13,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 154px;
+  flex: 1 1 0;
+  min-width: 0;
   height: 49px;
-  padding: 14px 44px;
+  padding: 14px 14px;
   border-radius: var(--radius-pill, 109px);
   color: var(--color-text, #fff);
   font-family: var(--font-main, Montserrat), sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   line-height: normal;
   white-space: nowrap;
@@ -46,4 +49,13 @@
   box-shadow:
     inset -3px -4px 7px 0 rgba(255, 255, 255, 0.15),
     4px 5px 30px 0 rgba(187, 223, 51, 0.55);
+}
+
+@media (min-width: 768px) {
+  .tab {
+    flex: 0 1 auto;
+    min-width: 154px;
+    padding-inline: 24px;
+    font-size: 16px;
+  }
 }

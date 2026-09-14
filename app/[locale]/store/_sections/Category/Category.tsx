@@ -7,7 +7,10 @@ import styles from './Category.module.css';
 import Tabs, { type Tab } from '@/app/_components/Tabs/Tabs';
 import PrivilegesCards from '@/app/_components/PrivilegesCards/PrivilegesCards';
 import CrystalsCards from '@/app/_components/CrystalsCards/CrystalsCards';
+import GameItemsCards from '@/app/_components/GameItemsCards/GameItemsCards';
 import { getShopHref } from '@/lib/data/servers';
+
+const STORE_TABS = ['Crystals', 'Privileges', 'GameItems'] as const satisfies readonly Tab[];
 
 export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
   const t = useTranslations('store');
@@ -19,11 +22,13 @@ export default function Category({ isAuthed = false }: { isAuthed?: boolean }) {
       <Container>
         <h2 className={styles.title}>{t('category_title')}</h2>
 
-        <Tabs value={activeTab} onChange={setActiveTab} />
+        <Tabs value={activeTab} onChange={setActiveTab} tabs={STORE_TABS} />
 
         <div className={styles.cards}>
           {activeTab === 'Crystals' ? (
             <CrystalsCards seeMoreHref={shopHref} />
+          ) : activeTab === 'GameItems' ? (
+            <GameItemsCards shopHref={shopHref} />
           ) : (
             <PrivilegesCards addToCartHref={shopHref} />
           )}
