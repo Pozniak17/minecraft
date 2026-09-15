@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
+import { productIconUrl } from '@/lib/products/iconUrl';
 import styles from './Card.module.css';
 
 type CardProps = {
@@ -43,7 +44,7 @@ export default function Card({
         <div className={styles.iconWrap}>
           <Image
             className={styles.icon}
-            src={`/products/${imageName}.png`}
+            src={productIconUrl(imageName)}
             alt=""
             fill
             unoptimized

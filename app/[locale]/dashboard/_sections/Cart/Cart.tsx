@@ -12,6 +12,7 @@ import { applyPromo } from '@/lib/api/promos';
 import type { OrderItem } from '@/lib/api/types';
 import { DEFAULT_CURRENCY, formatMoney } from '@/lib/client/currency';
 import { notifyCartUpdated } from '@/lib/client/cartCount';
+import { productIconUrl } from '@/lib/products/iconUrl';
 import {
   savePendingPayment,
   getPendingPayment,
@@ -369,7 +370,7 @@ export default function Cart() {
   // Блоки мають власну іконку; кристали й привілеї лишаються на промо-картинках.
   const imageFor = (row: Row) => {
     const slug = productMeta.get(row.productId)?.iconSlug;
-    return slug ? `/products/${slug}.png` : row.image;
+    return slug ? productIconUrl(slug) : row.image;
   };
 
   const lineCount = rows.length;

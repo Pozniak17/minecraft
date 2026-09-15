@@ -17,6 +17,7 @@ import {
   setStoredCurrency,
 } from '@/lib/client/currency';
 import { notifyCartUpdated } from '@/lib/client/cartCount';
+import { prefetchGameItems } from '@/lib/client/gameItemsCache';
 import {
   buildFallbackPrivilegePrices,
   crystalsToCurrency,
@@ -264,6 +265,12 @@ export default function Shop() {
       .catch(() => {
         if (!active) return;
         setPrivilegePrices(buildFallbackPrivilegePrices(currency));
+      })
+      .finally(() => {
+        // Повний каталог блоків прогріваємо аж тепер: бекенд обробляє запити по
+        // одному, тож стартувати разом із кристалами означало б відкласти те,
+        // що видно на екрані першим.
+        if (active) prefetchGameItems(locale, { priced: true, currency, limit: null });
       });
     return () => {
       active = false;

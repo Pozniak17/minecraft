@@ -25,7 +25,7 @@
   background: rgba(189, 225, 83, 0.1);
 }
 
-/* Єдиний фон іконок — прозорі WebP + цей колір у iconWrap. */
+/* Єдиний фон іконок — lossless WebP 320px з baked bg #133e3d + цей колір у iconWrap. */
 .iconWrap {
   position: relative;
   width: 100%;

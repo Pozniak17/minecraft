@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { getAllGameItems } from '@/lib/api/shop';
+import {
+  loadGameItems,
+  peekGameItems,
+  type GameItemsQuery,
+} from '@/lib/client/gameItemsCache';
 import type { Product } from '@/lib/api/types';
 import { buildPageNumbers } from '@/lib/pagination/buildPageNumbers';
 import Card from './Card/Card';
@@ -26,12 +30,6 @@ type GameItemsCardsProps = {
   initialLimit?: number;
 };
 
-function normalizeItems(products: Product[]): Product[] {
-  return products
-    .filter(p => p.image_name && p.title)
-    .sort((a, b) => (a.title ?? '').localeCompare(b.title ?? '', undefined, { sensitivity: 'base' }));
-}
-
 export default function GameItemsCards({
   shopHref,
   priced = false,
@@ -41,12 +39,25 @@ export default function GameItemsCards({
 }: GameItemsCardsProps) {
   const t = useTranslations('store');
   const locale = useLocale();
-  const [items, setItems] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState(initialLimit == null);
+
+  const cacheQuery = useMemo<GameItemsQuery>(
+    () => ({
+      priced,
+      currency,
+      limit: initialLimit != null && !expanded ? PAGE_SIZE : null,
+    }),
+    [priced, currency, initialLimit, expanded],
+  );
+
+  // Дані вже прогріті (префетч, перемикання таба) — монтуємось одразу з ними,
+  // без скелетона. На першому завантаженні сторінки кеш порожній, тож розмітка
+  // збігається з тією, що віддав сервер.
+  const [items, setItems] = useState<Product[]>(() => peekGameItems(locale, cacheQuery) ?? []);
+  const [loading, setLoading] = useState(() => peekGameItems(locale, cacheQuery) == null);
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [page, setPage] = useState(1);
-  const [expanded, setExpanded] = useState(initialLimit == null);
   const [addingId, setAddingId] = useState<string | null>(null);
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
   const doneTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
@@ -63,16 +74,21 @@ export default function GameItemsCards({
   }, [debouncedQuery]);
 
   useEffect(() => {
+    const cached = peekGameItems(locale, cacheQuery);
+    if (cached) {
+      setItems(cached);
+      setLoading(false);
+      return;
+    }
+
     let active = true;
     setLoading(true);
-    getAllGameItems(locale, { priced, currency })
+    loadGameItems(locale, cacheQuery)
       .then(data => {
-        if (!active) return;
-        setItems(normalizeItems(data));
+        if (active) setItems(data);
       })
       .catch(() => {
-        if (!active) return;
-        setItems([]);
+        if (active) setItems([]);
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -80,7 +96,7 @@ export default function GameItemsCards({
     return () => {
       active = false;
     };
-  }, [locale, priced, currency]);
+  }, [locale, cacheQuery]);
 
   useEffect(() => {
     return () => {

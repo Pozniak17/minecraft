@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { backend, backendAuth } from '@/lib/server/backend';
 import { withAuth } from '@/lib/server/withAuth';
 import { handleApiError } from '@/lib/server/apiError';
+import { catalogCacheKey, withCatalogCache } from '@/lib/server/catalogCache';
 import { DEFAULT_LANG } from '@/lib/api/config';
 
 export async function GET(req: NextRequest) {
@@ -28,8 +29,20 @@ export async function GET(req: NextRequest) {
     }
 
     delete params.currency;
-    const { data } = await backend.get(`/core/${lang}/list/public/`, { params });
-    return NextResponse.json(data);
+
+    const fetchPublic = async () => {
+      const { data } = await backend.get(`/core/${lang}/list/public/`, { params });
+      return data;
+    };
+
+    // Пошук не кешуємо: запити довільні, а кеш від них лише розпухне.
+    const data = params.search_query
+      ? await fetchPublic()
+      : await withCatalogCache(catalogCacheKey(lang, params), fetchPublic);
+
+    return NextResponse.json(data, {
+      headers: { 'Cache-Control': 'public, max-age=60, stale-while-revalidate=300' },
+    });
   } catch (err) {
     return handleApiError(err, 'Failed to load products');
   }

@@ -6,7 +6,7 @@ const PRODUCTS_DIR = 'public/products';
 const ASSETS_DIR =
   process.env.CURSOR_ASSETS ??
   'C:/Users/pozni/.cursor/projects/c-Users-pozni-Documents-GitHub-codectum-minecraft/assets';
-const OUTPUT_SIZE = 512;
+const OUTPUT_SIZE = 320;
 const CANONICAL_BG = [19, 62, 61];
 
 // Фон подекуди має віньєтку, тож заливка йде за плавним переходом (крок ≤ LOCAL),
@@ -185,7 +185,7 @@ async function normalizeIcon(sourcePath, outPath) {
   const out = await sharp(data, { raw: { width, height, channels: 4 } })
     .resize(OUTPUT_SIZE, OUTPUT_SIZE, { fit: 'cover', kernel: 'lanczos3' })
     .removeAlpha()
-    .png({ compressionLevel: 9, palette: false })
+    .webp({ lossless: true, effort: 6 })
     .toBuffer();
   writeFileSync(outPath, out);
 
@@ -212,7 +212,7 @@ for (const name of names) {
     continue;
   }
 
-  const result = await normalizeIcon(sourcePath, join(PRODUCTS_DIR, `${name}.png`));
+  const result = await normalizeIcon(sourcePath, join(PRODUCTS_DIR, `${name}.webp`));
   processed++;
 
   if (result.removedPct < 20) {
@@ -224,9 +224,9 @@ for (const name of names) {
 }
 
 if (!only) {
-  const leftoverWebp = readdirSync(PRODUCTS_DIR).filter(f => f.endsWith('.webp'));
-  for (const file of leftoverWebp) unlinkSync(join(PRODUCTS_DIR, file));
+  const leftoverPng = readdirSync(PRODUCTS_DIR).filter(f => f.endsWith('.png'));
+  for (const file of leftoverPng) unlinkSync(join(PRODUCTS_DIR, file));
 }
 
-console.log(`normalized ${processed}/${names.length} icons → PNG (baked bg #133e3d)`);
+console.log(`normalized ${processed}/${names.length} icons → WebP ${OUTPUT_SIZE}px lossless (bg #133e3d)`);
 for (const warning of warnings) console.log(`  ! ${warning}`);
