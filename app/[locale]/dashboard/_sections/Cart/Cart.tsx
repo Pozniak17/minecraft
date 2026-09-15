@@ -42,6 +42,7 @@ const CART_IMAGES = ['/profile/cart/1.webp', '/profile/cart/2.webp', '/profile/c
 const FALLBACK_SERVERS = ['LuckySurvival', 'MineWars', 'CalmSky'];
 // Верхня межа кількості за позицію — узгоджено з бекендом (AddToCart.amount max 20000).
 const MAX_QTY = 15_000;
+const QTY_DEBOUNCE_MS = 350;
 // Мінімальна сума замовлення після знижок (EUR).
 const MIN_ORDER_TOTAL = 10;
 
@@ -200,6 +201,41 @@ function orderItemToRow(item: OrderItem, index: number): Row {
   };
 }
 
+/** Бекенд повертає позиції в іншому порядку (часто updated DESC) — тримаємо порядок UI. */
+function mergeCartRows(
+  prev: Row[],
+  serverRows: Row[],
+  targets: Map<string, number>,
+): Row[] {
+  const byId = new Map(serverRows.map(r => [r.id, r]));
+  const merged: Row[] = [];
+
+  for (const prevRow of prev) {
+    const server = byId.get(prevRow.id);
+    if (!server) continue;
+    byId.delete(prevRow.id);
+    const target = targets.get(server.id);
+    merged.push({
+      ...server,
+      image: prevRow.image,
+      ...(target != null
+        ? { qty: target, lineTotal: server.unitPrice * target }
+        : {}),
+    });
+  }
+
+  for (const server of byId.values()) {
+    const target = targets.get(server.id);
+    merged.push(
+      target != null
+        ? { ...server, qty: target, lineTotal: server.unitPrice * target }
+        : server,
+    );
+  }
+
+  return merged;
+}
+
 export default function Cart() {
   const t = useTranslations('cart');
   const locale = useLocale();
@@ -207,6 +243,7 @@ export default function Cart() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [productMeta, setProductMeta] = useState<Map<string, ProductMeta>>(new Map());
+  const [productMetaReady, setProductMetaReady] = useState(false);
   const [servers, setServers] = useState<string[]>(FALLBACK_SERVERS);
   const [server, setServer] = useState<string>(FALLBACK_SERVERS[0]);
   const suggestedNickname = useMemo(() => {
@@ -237,6 +274,12 @@ export default function Cart() {
   // інакше знижка порахується від застарілого (несинхронізованого) замовлення.
   const [qtySyncing, setQtySyncing] = useState(false);
   const qtySyncCount = useRef(0);
+  // Цільова кількість на рядок — джерело істини для швидких кліків ±.
+  const targetQty = useRef<Map<string, number>>(new Map());
+  const syncTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+  const syncingRows = useRef<Set<string>>(new Set());
+  const rowsRef = useRef<Row[]>([]);
+  const productMetaRef = useRef<Map<string, ProductMeta>>(new Map());
   // Ре-валідація промо на бекенді при зміні кількості: токен відкидає застарілі
   // відповіді, а ref памʼятає Subtotal, для якого промо вже підтверджено (щоб не
   // смикати бекенд даремно, напр. одразу після ручного застосування).
@@ -315,16 +358,74 @@ export default function Cart() {
     };
   }, []);
 
-  // Перезавантаження кошика з бекенду — щоб підтягнути авторитетні price/sum_item_price.
+  useEffect(() => {
+    rowsRef.current = rows;
+  }, [rows]);
+
+  useEffect(() => {
+    productMetaRef.current = productMeta;
+  }, [productMeta]);
+
+  // Перезавантаження кошика з бекенду — price/sum_item_price; локальну ціль зберігаємо.
   const reloadCart = useCallback(async () => {
     try {
       const items = await getOrderItems();
-      setRows(items.map(orderItemToRow));
+      const serverRows = items.map(orderItemToRow);
+      setRows(prev => mergeCartRows(prev, serverRows, targetQty.current));
       notifyCartUpdated();
     } catch {
       // мовчазний фолбек — лишаємо поточний стан
     }
   }, []);
+
+  const flushRowSync = useCallback(
+    async (rowId: string) => {
+      const row = rowsRef.current.find(r => r.id === rowId);
+      if (!row?.fromApi) return;
+      if (syncingRows.current.has(rowId)) return;
+
+      syncingRows.current.add(rowId);
+      qtySyncCount.current += 1;
+      setQtySyncing(true);
+
+      try {
+        while (true) {
+          const amount = targetQty.current.get(rowId);
+          if (amount == null) break;
+
+          await changeItemAmount(row.productId, amount);
+          const latest = targetQty.current.get(rowId);
+          if (latest == null || latest === amount) {
+            targetQty.current.delete(rowId);
+            break;
+          }
+        }
+      } catch {
+        // Ціль лишається в targetQty — спробуємо знову при наступному кліку або flush.
+      } finally {
+        syncingRows.current.delete(rowId);
+        qtySyncCount.current = Math.max(0, qtySyncCount.current - 1);
+        if (qtySyncCount.current === 0) {
+          setQtySyncing(false);
+          await reloadCart();
+        }
+      }
+    },
+    [reloadCart],
+  );
+
+  const scheduleRowSync = useCallback(
+    (rowId: string) => {
+      const existing = syncTimers.current.get(rowId);
+      if (existing) clearTimeout(existing);
+      const timer = setTimeout(() => {
+        syncTimers.current.delete(rowId);
+        void flushRowSync(rowId);
+      }, QTY_DEBOUNCE_MS);
+      syncTimers.current.set(rowId, timer);
+    },
+    [flushRowSync],
+  );
 
   useEffect(() => {
     let active = true;
@@ -345,6 +446,7 @@ export default function Cart() {
   // Мапа продуктів: даємо позиціям кошика реальну назву та крок (кристали — по 10).
   useEffect(() => {
     let active = true;
+    setProductMetaReady(false);
     getAllProducts({ lang: locale })
       .then(products => {
         if (!active) return;
@@ -357,20 +459,40 @@ export default function Cart() {
           });
         }
         setProductMeta(map);
+        setProductMetaReady(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        if (active) setProductMetaReady(true);
+      });
     return () => {
       active = false;
     };
   }, [locale]);
 
+  // Незавершені зміни кількості — відправляємо одразу, без debounce.
+  useEffect(() => {
+    return () => {
+      for (const [rowId, timer] of syncTimers.current) {
+        clearTimeout(timer);
+        const amount = targetQty.current.get(rowId);
+        const row = rowsRef.current.find(r => r.id === rowId);
+        if (row?.fromApi && amount != null) {
+          void changeItemAmount(row.productId, amount);
+        }
+      }
+      syncTimers.current.clear();
+    };
+  }, []);
+
   // Назва та крок кількості — derived з мапи продуктів (кристали продаються по 10).
   const titleFor = (row: Row) => productMeta.get(row.productId)?.title || row.title;
   const stepFor = (row: Row) => (productMeta.get(row.productId)?.isCrystal ? 10 : 1);
   // Блоки мають власну іконку; кристали й привілеї лишаються на промо-картинках.
-  const imageFor = (row: Row) => {
-    const slug = productMeta.get(row.productId)?.iconSlug;
-    return slug ? productIconUrl(slug) : row.image;
+  const imageFor = (row: Row): string | null => {
+    if (!productMetaReady) return null;
+    const meta = productMeta.get(row.productId);
+    if (!meta) return row.image;
+    return meta.iconSlug ? productIconUrl(meta.iconSlug) : row.image;
   };
 
   const lineCount = rows.length;
@@ -455,38 +577,35 @@ export default function Cart() {
   }, [subtotal, appliedPromo, lineCount, qtySyncing, clearAppliedPromo, t]);
 
   // dir: +1 / -1 — напрямок; крок залежить від товару (кристали — по 10).
-  const changeQty = (id: string, dir: 1 | -1) => {
-    let nextQty = 1;
-    let productId: string | null = null;
-    let fromApi = false;
-    setRows(prev =>
-      prev.map(row => {
-        if (row.id !== id) return row;
-        const step = stepFor(row);
-        // Клемп у межах бекенду: [step .. MAX_QTY].
-        nextQty = Math.min(MAX_QTY, Math.max(step, row.qty + dir * step));
-        productId = row.productId;
-        fromApi = row.fromApi;
-        // Оптимістичне оновлення суми; нижче синхронізуємо з бекендом.
-        return { ...row, qty: nextQty, lineTotal: row.unitPrice * nextQty };
-      })
-    );
+  const changeQty = useCallback(
+    (id: string, dir: 1 | -1) => {
+      const row = rowsRef.current.find(r => r.id === id);
+      if (!row) return;
 
-    // Бекенд ідентифікує позицію кошика за product_id, а не за id рядка замовлення.
-    if (fromApi && productId) {
-      qtySyncCount.current += 1;
-      setQtySyncing(true);
-      changeItemAmount(productId, nextQty)
-        .then(() => reloadCart())
-        .catch(() => {})
-        .finally(() => {
-          qtySyncCount.current = Math.max(0, qtySyncCount.current - 1);
-          if (qtySyncCount.current === 0) setQtySyncing(false);
-        });
-    }
-  };
+      const step = productMetaRef.current.get(row.productId)?.isCrystal ? 10 : 1;
+      const base = targetQty.current.get(id) ?? row.qty;
+      const next = Math.min(MAX_QTY, Math.max(step, base + dir * step));
+      targetQty.current.set(id, next);
+
+      setRows(prev =>
+        prev.map(r =>
+          r.id === id ? { ...r, qty: next, lineTotal: r.unitPrice * next } : r,
+        ),
+      );
+
+      if (row.fromApi) scheduleRowSync(id);
+    },
+    [scheduleRowSync],
+  );
 
   const removeItem = (id: string) => {
+    const timer = syncTimers.current.get(id);
+    if (timer) {
+      clearTimeout(timer);
+      syncTimers.current.delete(id);
+    }
+    targetQty.current.delete(id);
+
     const target = rows.find(r => r.id === id);
     setRows(prev => prev.filter(row => row.id !== id));
     if (target?.fromApi) {
@@ -819,22 +938,24 @@ export default function Cart() {
                     const title = titleFor(item);
 
                     const thumbSrc = imageFor(item);
-                    const isProductIcon = thumbSrc.startsWith('/products/');
+                    const isProductIcon = thumbSrc?.startsWith('/products/') ?? false;
 
                     return (
                       <li key={item.id} className={styles.itemRow}>
                         <div
                           className={`${styles.itemThumb} ${isProductIcon ? styles.itemThumbProduct : ''}`}
                         >
-                          <Image
-                            src={thumbSrc}
-                            alt=""
-                            width={64}
-                            height={64}
-                            className={styles.itemImg}
-                            unoptimized={isProductIcon}
-                            aria-hidden
-                          />
+                          {thumbSrc ? (
+                            <Image
+                              src={thumbSrc}
+                              alt=""
+                              width={64}
+                              height={64}
+                              className={styles.itemImg}
+                              unoptimized={isProductIcon}
+                              aria-hidden
+                            />
+                          ) : null}
                         </div>
                         <div className={styles.itemMeta}>
                           <p className={styles.itemTitle}>{title}</p>
