@@ -9,185 +9,224 @@ const ASSETS_DIR =
 const OUTPUT_SIZE = 512;
 const CANONICAL_BG = [19, 62, 61];
 
+// Фон подекуди має віньєтку, тож заливка йде за плавним переходом (крок ≤ LOCAL),
+// але зупиняється на різкому контурі блока й не відходить від фону далі за BAND.
+// Заміри по всьому каталогу: фон відходить від краю щонайбільше на 28
+// (віньєтка polished-diorite), а заливка починає їсти блок від 40 (cauldron).
+const LOCAL_STEP = 7;
+const GLOBAL_BAND = 30;
+// Ширина антиаліасного контуру, у якому піксель ще є сумішшю блока й старого фону.
+const HALO_TOLERANCE = 70;
+const HALO_RADIUS = 2;
+const MIN_HALO_ALPHA = 0.2;
+
 function rgbDistance(a, b) {
-  const dr = a[0] - b[0];
-  const dg = a[1] - b[1];
-  const db = a[2] - b[2];
-  return Math.sqrt(dr * dr + dg * dg + db * db);
+  return Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
 }
 
-function luminance([r, g, b]) {
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-
-function cornerBg(data, width, height) {
-  const corners = [
-    [0, 0],
-    [width - 1, 0],
-    [0, height - 1],
-    [width - 1, height - 1],
-  ];
-  let r = 0;
-  let g = 0;
-  let b = 0;
-  for (const [x, y] of corners) {
+/** Медіана по рамці 1px — стійка до шуму й до обʼєктів, що торкаються краю. */
+function borderBg(data, width, height) {
+  const channels = [[], [], []];
+  const sample = (x, y) => {
     const i = (y * width + x) * 4;
-    r += data[i];
-    g += data[i + 1];
-    b += data[i + 2];
+    if (data[i + 3] === 0) return;
+    channels[0].push(data[i]);
+    channels[1].push(data[i + 1]);
+    channels[2].push(data[i + 2]);
+  };
+  for (let x = 0; x < width; x++) {
+    sample(x, 0);
+    sample(x, height - 1);
   }
-  return [Math.round(r / 4), Math.round(g / 4), Math.round(b / 4)];
+  for (let y = 1; y < height - 1; y++) {
+    sample(0, y);
+    sample(width - 1, y);
+  }
+  return channels.map(list => {
+    if (!list.length) return 0;
+    list.sort((a, b) => a - b);
+    return list[list.length >> 1];
+  });
 }
 
-function toleranceForBg(bg) {
-  return luminance(bg) < 38 ? 52 : 40;
-}
-
-function isBackgroundPixel(px, bg, tolerance) {
-  if (rgbDistance(px, bg) > tolerance) return false;
-  return luminance(px) <= luminance(bg) + 22;
-}
-
-function removeEdgeBackground(data, width, height, bg, tolerance) {
+/**
+ * Заливка від краю: знімаємо лише фон, звʼязаний із рамкою.
+ * Глобального проходу навмисно немає — він виїдав темні та бірюзові
+ * грані блоків (prismarine, cauldron, black-stained-glass тощо).
+ */
+function floodFillBackground(data, width, height, bg) {
   const total = width * height;
-  const visited = new Uint8Array(total);
+  const mask = new Uint8Array(total);
   const queue = new Int32Array(total);
   let head = 0;
   let tail = 0;
+  let removed = 0;
 
-  const tryPush = (x, y) => {
-    const idx = y * width + x;
-    if (visited[idx]) return;
+  const colorAt = idx => {
     const i = idx * 4;
-    if (data[i + 3] === 0) return;
-    const px = [data[i], data[i + 1], data[i + 2]];
-    if (!isBackgroundPixel(px, bg, tolerance)) return;
-    visited[idx] = 1;
+    return [data[i], data[i + 1], data[i + 2]];
+  };
+
+  const push = (idx, from) => {
+    if (mask[idx]) return;
+    if (data[idx * 4 + 3] !== 0) {
+      const px = colorAt(idx);
+      if (rgbDistance(px, bg) > GLOBAL_BAND) return;
+      if (from !== null && rgbDistance(px, colorAt(from)) > LOCAL_STEP) return;
+    }
+    mask[idx] = 1;
+    removed++;
     queue[tail++] = idx;
   };
 
   for (let x = 0; x < width; x++) {
-    tryPush(x, 0);
-    tryPush(x, height - 1);
+    push(x, null);
+    push((height - 1) * width + x, null);
   }
   for (let y = 1; y < height - 1; y++) {
-    tryPush(0, y);
-    tryPush(width - 1, y);
+    push(y * width, null);
+    push(y * width + width - 1, null);
   }
 
   while (head < tail) {
     const idx = queue[head++];
-    const i = idx * 4;
-    data[i + 3] = 0;
-
     const x = idx % width;
     const y = (idx - x) / width;
-    if (x > 0) tryPush(x - 1, y);
-    if (x < width - 1) tryPush(x + 1, y);
-    if (y > 0) tryPush(x, y - 1);
-    if (y < height - 1) tryPush(x, y + 1);
+    if (x > 0) push(idx - 1, idx);
+    if (x < width - 1) push(idx + 1, idx);
+    if (y > 0) push(idx - width, idx);
+    if (y < height - 1) push(idx + width, idx);
+  }
+
+  return { mask, removed };
+}
+
+/** Середній колір знятого фону поруч — локальна оцінка (фон буває з віньєткою). */
+function localBgAround(source, mask, width, height, x, y, radius) {
+  const minX = Math.max(0, x - radius);
+  const maxX = Math.min(width - 1, x + radius);
+  const minY = Math.max(0, y - radius);
+  const maxY = Math.min(height - 1, y + radius);
+  let r = 0;
+  let g = 0;
+  let b = 0;
+  let count = 0;
+  for (let ny = minY; ny <= maxY; ny++) {
+    for (let nx = minX; nx <= maxX; nx++) {
+      const idx = ny * width + nx;
+      if (!mask[idx]) continue;
+      const i = idx * 4;
+      r += source[i];
+      g += source[i + 1];
+      b += source[i + 2];
+      count++;
+    }
+  }
+  if (!count) return null;
+  return [r / count, g / count, b / count];
+}
+
+/**
+ * Контурні пікселі — це суміш блока зі старим фоном. Розкладаємо суміш,
+ * щоб при заміні фону на #133e3d не залишався темний або світлий обідок.
+ */
+function recolorHalo(data, mask, width, height) {
+  const source = Uint8ClampedArray.from(data);
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const idx = y * width + x;
+      if (mask[idx]) continue;
+      const localBg = localBgAround(source, mask, width, height, x, y, HALO_RADIUS);
+      if (!localBg) continue;
+
+      const i = idx * 4;
+      const px = [source[i], source[i + 1], source[i + 2]];
+      const distance = rgbDistance(px, localBg);
+      if (distance >= HALO_TOLERANCE) continue;
+
+      const alpha = Math.max(MIN_HALO_ALPHA, distance / HALO_TOLERANCE);
+      for (let c = 0; c < 3; c++) {
+        const object = (px[c] - (1 - alpha) * localBg[c]) / alpha;
+        const composited = alpha * object + (1 - alpha) * CANONICAL_BG[c];
+        data[i + c] = Math.max(0, Math.min(255, Math.round(composited)));
+      }
+    }
   }
 }
 
-function removeGlobalBackground(data, bg, tolerance) {
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i + 3] === 0) continue;
-    const px = [data[i], data[i + 1], data[i + 2]];
-    if (!isBackgroundPixel(px, bg, tolerance)) continue;
-    data[i + 3] = 0;
+function bakeBackground(data, mask) {
+  for (let idx = 0; idx < mask.length; idx++) {
+    if (!mask[idx]) continue;
+    const i = idx * 4;
+    data[i] = CANONICAL_BG[0];
+    data[i + 1] = CANONICAL_BG[1];
+    data[i + 2] = CANONICAL_BG[2];
+    data[i + 3] = 255;
   }
-}
-
-function removeLegacyCanonical(data, bg) {
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i + 3] === 0) continue;
-    const px = [data[i], data[i + 1], data[i + 2]];
-    if (rgbDistance(px, CANONICAL_BG) > 10) continue;
-    if (luminance(px) > luminance(bg) + 22) continue;
-    data[i + 3] = 0;
-  }
-}
-
-async function loadRaw512(sourcePath) {
-  const { data, info } = await sharp(readFileSync(sourcePath))
-    .resize(OUTPUT_SIZE, OUTPUT_SIZE, { fit: 'cover' })
-    .ensureAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
-  return { data, info };
 }
 
 async function normalizeIcon(sourcePath, outPath) {
-  const { data, info } = await loadRaw512(sourcePath);
-  const bg = cornerBg(data, info.width, info.height);
-  const tolerance = toleranceForBg(bg);
+  // Обробка у нативній роздільності, ресайз — в кінці: інакше ресемплінг
+  // змішує блок зі старим фоном і фон уже не відняти без обідка.
+  const { data, info } = await sharp(readFileSync(sourcePath))
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
 
-  removeEdgeBackground(data, info.width, info.height, bg, tolerance);
-  removeGlobalBackground(data, bg, tolerance);
-  removeLegacyCanonical(data, bg);
+  const { width, height } = info;
+  const bg = borderBg(data, width, height);
 
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i + 3] !== 0) continue;
-    data[i] = CANONICAL_BG[0];
-    data[i + 1] = CANONICAL_BG[1];
-    data[i + 2] = CANONICAL_BG[2];
-    data[i + 3] = 255;
-  }
+  const total = width * height;
+  const { mask, removed } = floodFillBackground(data, width, height, bg);
 
-  for (let i = 0; i < data.length; i += 4) {
-    const px = [data[i], data[i + 1], data[i + 2]];
-    if (rgbDistance(px, CANONICAL_BG) > 6) continue;
-    if (luminance(px) > luminance(bg) + 22) continue;
-    data[i] = CANONICAL_BG[0];
-    data[i + 1] = CANONICAL_BG[1];
-    data[i + 2] = CANONICAL_BG[2];
-    data[i + 3] = 255;
-  }
+  recolorHalo(data, mask, width, height);
+  bakeBackground(data, mask);
 
-  // PNG: lossless — WebP спотворює суцільний #133e3d у «темні»/«світлі» плями.
-  const out = await sharp(data, {
-    raw: { width: info.width, height: info.height, channels: 4 },
-  })
+  const out = await sharp(data, { raw: { width, height, channels: 4 } })
+    .resize(OUTPUT_SIZE, OUTPUT_SIZE, { fit: 'cover', kernel: 'lanczos3' })
+    .removeAlpha()
     .png({ compressionLevel: 9, palette: false })
     .toBuffer();
   writeFileSync(outPath, out);
 
-  return { bg, tolerance, total: info.width * info.height };
+  return { bg, removedPct: (removed / total) * 100 };
 }
+
+const onlyArg = process.argv.find(arg => arg.startsWith('--only='));
+const only = onlyArg ? new Set(onlyArg.slice('--only='.length).split(',')) : null;
 
 const catalog = JSON.parse(
   readFileSync('technical/product-prices-image-names.json', 'utf8'),
 ).products;
-const names = [...new Set(catalog.map(p => p.image_name))].sort();
+const names = [...new Set(catalog.map(p => p.image_name))]
+  .filter(name => !only || only.has(name))
+  .sort();
 
 let processed = 0;
-const samples = [];
+const warnings = [];
 
 for (const name of names) {
-  const pngPath = join(ASSETS_DIR, `${name}.png`);
-  const legacyWebp = join(PRODUCTS_DIR, `${name}.webp`);
-  const outPath = join(PRODUCTS_DIR, `${name}.png`);
-  const sourcePath = existsSync(pngPath) ? pngPath : legacyWebp;
-  if (!existsSync(sourcePath)) continue;
-
-  const result = await normalizeIcon(sourcePath, outPath);
-  processed++;
-
-  if (existsSync(legacyWebp)) {
-    unlinkSync(legacyWebp);
+  const sourcePath = join(ASSETS_DIR, `${name}.png`);
+  if (!existsSync(sourcePath)) {
+    warnings.push(`${name}: джерело відсутнє в ассетах`);
+    continue;
   }
 
-  if (['granite', 'gold-ore', 'andesite', 'acacia-leaves', 'acacia-wood'].includes(name)) {
-    samples.push({ name, ...result });
+  const result = await normalizeIcon(sourcePath, join(PRODUCTS_DIR, `${name}.png`));
+  processed++;
+
+  if (result.removedPct < 20) {
+    warnings.push(`${name}: знято лише ${result.removedPct.toFixed(1)}% фону`);
+  }
+  if (result.removedPct > 97) {
+    warnings.push(`${name}: знято ${result.removedPct.toFixed(1)}% — можливе протікання в блок`);
   }
 }
 
-const leftoverWebp = readdirSync(PRODUCTS_DIR).filter(f => f.endsWith('.webp'));
-for (const file of leftoverWebp) {
-  unlinkSync(join(PRODUCTS_DIR, file));
+if (!only) {
+  const leftoverWebp = readdirSync(PRODUCTS_DIR).filter(f => f.endsWith('.webp'));
+  for (const file of leftoverWebp) unlinkSync(join(PRODUCTS_DIR, file));
 }
 
 console.log(`normalized ${processed}/${names.length} icons → PNG (baked bg #133e3d)`);
-for (const s of samples) {
-  console.log(`  ${s.name}: src bg rgb(${s.bg.join(',')}), tol ${s.tolerance}`);
-}
+for (const warning of warnings) console.log(`  ! ${warning}`);
