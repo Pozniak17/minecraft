@@ -37,6 +37,7 @@ export function Footer() {
     { label: t('footer.privacyPolicy'), href: '/privacy-policy' },
     { label: t('footer.cookiePolicy'), href: '/cookie-policy' },
     { label: t('footer.termsAndConditions'), href: '/terms' },
+    { label: t('footer.billingRefunds'), href: '/billing-refunds' },
   ];
 
   return (

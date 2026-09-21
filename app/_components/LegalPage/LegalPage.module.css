@@ -96,6 +96,17 @@
   text-align: left;
 }
 
+.inlineLink {
+  color: var(--color-primary, #bde153);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.inlineLink:hover {
+  color: var(--color-text, #fff);
+}
+
 .list {
   display: flex;
   flex-direction: column;

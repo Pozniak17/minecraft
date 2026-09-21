@@ -165,7 +165,7 @@
     "intro": [
       "Hallo und willkommen auf https://minecraftsgame.com/ (die \"Website\").",
       "Diese Allgemeinen Geschäftsbedingungen (die \"Bedingungen\") stehen zwischen Ihnen und Dexervil LTD — einer Gesellschaft nach dem Recht des Vereinigten Königreichs mit eingetragenem Sitz in 2nd Floor College House, 17 King Edwards Road, Ruislip, London, United Kingdom, HA4 7AE, Handelsregisternummer 17345695 (\"wir\", \"uns\", \"unser\" oder das \"Unternehmen\") — und Ihnen, dem Nutzer (\"Sie\" oder \"Ihr\").",
-      "Sie regeln Ihre Nutzung der Website sowie alles, was Sie darüber kaufen, einschließlich unserer Server und Digitalen Artikel, die wir unter der Marke \"Adventures in Minecraft\" betreiben (die \"Dienste\"). Wenn Sie die Website nutzen oder etwas darauf kaufen, sind Sie an diese Bedingungen, unsere Datenschutzerklärung, unsere Cookie-Richtlinie, unsere Billing-, Rückerstattungs- & Rückbuchungsrichtlinie und jede andere Richtlinie gebunden, die wir hier oder auf der Website verlinken (zusammen die \"Nutzungsbedingungen\").",
+      "Sie regeln Ihre Nutzung der Website sowie alles, was Sie darüber kaufen, einschließlich unserer Server und Digitalen Artikel, die wir unter der Marke \"Adventures in Minecraft\" betreiben (die \"Dienste\"). Wenn Sie die Website nutzen oder etwas darauf kaufen, sind Sie an diese Bedingungen, unsere Datenschutzerklärung, unsere Cookie-Richtlinie, unsere [Billing-, Rückerstattungs- & Rückbuchungsrichtlinie](/billing-refunds) und jede andere Richtlinie gebunden, die wir hier oder auf der Website verlinken (zusammen die \"Nutzungsbedingungen\").",
       "Lesen Sie dies, bevor Sie loslegen. Etwas nicht einverstanden? Dann nutzen Sie die Website besser nicht.",
       "Sie müssen diese Bedingungen akzeptieren, um ein Konto zu erstellen und die Dienste zu nutzen. Noch kein Konto? Die Nutzung eines beliebigen Teils des Dienstes bedeutet, dass Sie sie ohnehin akzeptiert haben.",
       "Fragen zu all dem — privacy@minecraftsgame.com.",
@@ -328,7 +328,7 @@
         "bullets": [
           "Serverzugang erhalten nur Nutzer mit einer echten, lizenzierten Kopie des Spiels.",
           "Alles — Server, Digitale Artikel, jegliche Werbung auf der Website oder den Servern — ist für alle Altersgruppen geeignet. Kein Glücksspiel, keine Pornografie, keine Gewalt, kein Terrorismus, keine expliziten Inhalte und keine anderen unsicheren oder nicht jugendfreien Materialien, nirgends im Zusammenhang mit unseren Diensten.",
-          "Eine \"Spende\" bedeutet eine Zahlung, bei der der Spender nichts Exklusives zurückerhält. Verschafft eine Zahlung jemandem ein Privileg, ein Cosmetic oder einen Vorteil, den andere Nutzer nicht erhalten, ist das ein Kauf eines Digitalen Artikels — und alles in diesen Bedingungen und unserer Billing-, Rückerstattungs- & Rückbuchungsrichtlinie gilt, egal wie es beim Checkout bezeichnet ist.",
+          "Eine \"Spende\" bedeutet eine Zahlung, bei der der Spender nichts Exklusives zurückerhält. Verschafft eine Zahlung jemandem ein Privileg, ein Cosmetic oder einen Vorteil, den andere Nutzer nicht erhalten, ist das ein Kauf eines Digitalen Artikels — und alles in diesen Bedingungen und unserer [Billing-, Rückerstattungs- & Rückbuchungsrichtlinie](/billing-refunds) gilt, egal wie es beim Checkout bezeichnet ist.",
           "Wir verkaufen nicht — und Sie dürfen nicht weiterverkaufen oder beim Verkauf helfen — irgendein Privileg, einen Digitalen Artikel oder einen Anspruch, der jemandem einen Wettbewerbsvorteil gegenüber anderen Nutzern verschafft oder das Erlebnis anderer Nutzer auf den Servern anderweitig ruiniert.",
           "Kosmetische Digitale Artikel auf der Website ahmen einen Minecraft Player Cape nicht optisch nach.",
           "Kristalle und jede andere virtuelle Währung auf der Website oder den Servern haben keinen realen Wert — keine Auszahlung, keine Einlösung gegen echtes Geld, keine Verwendung außerhalb unserer Server und nichts, das wie Minecoins oder eine andere Mojang- oder Microsoft-Währung aussieht oder als solche ausgegeben wird.",
@@ -463,6 +463,82 @@
         "heading": "Fragen?",
         "paragraphs": [
           "Schreiben Sie an privacy@minecraftsgame.com."
+        ]
+      }
+    ]
+  },
+  "billing": {
+    "badge": "Rechtliches",
+    "title": "Billing-, Rückerstattungs- & Rückbuchungsrichtlinie",
+    "lastUpdated": "20. September 2026",
+    "intro": [],
+    "sections": [
+      {
+        "heading": "Überblick",
+        "paragraphs": [
+          "So funktioniert die Abrechnung auf https://minecraftsgame.com/ — wie Ihr Guthaben und etwaige wiederkehrende Käufe gehandhabt werden und was zu tun ist, wenn eine Abbuchung falsch aussieht, bevor Sie sich an Ihre Bank wenden. Wenn Sie einen Digitalen Artikel kaufen, Ihr Guthaben aufladen oder einen anderen Kauf auf der Website tätigen, stimmen Sie dem Folgenden zu. Lesen Sie dies zusammen mit unseren Allgemeinen Geschäftsbedingungen, insbesondere den Abschnitten 13, 14 und 17.",
+          "Käufe laufen in EUR (€), sofern der Checkout nichts anderes angibt. Wir akzeptieren Visa und Mastercard, sicher verarbeitet durch unseren Zahlungsdienstleister FINTECH GLOBAL SOFTWARE LTD, gemäß PCI-DSS. Alles ist tokenisiert; Dexervil LTD sieht oder speichert Ihre vollständige Kartennummer nie."
+        ]
+      },
+      {
+        "heading": "Abrechnung und Ihr Guthaben — erklärt",
+        "paragraphs": [
+          "Sie können einen Digitalen Artikel direkt für einen gewählten Server kaufen oder zuerst ein Guthaben aufladen und es nach und nach ausgeben — einschließlich für wiederkehrende oder Abonnementkäufe (Abschnitt 4).",
+          "Laden Sie Ihr Guthaben auf, wird der Betrag sofort Ihrer Zahlungsmethode belastet und landet in dem Moment, in dem die Zahlung durchgeht, auf Ihrem Kontoguthaben, in EUR oder der Währung, in der Sie gezahlt haben. Sie sehen das Guthaben in Ihrem Persönlichen Kabinett, und es sinkt mit dem Preis jedes Digitalen Artikels, den Sie kaufen.",
+          "Betrachten Sie das Guthaben als Guthaben im Shop, nicht als Geld auf einem Bankkonto. Es verzinst sich nicht, kann nicht ausgezahlt oder gegen Bargeld getauscht werden und kann nicht auf ein anderes Konto oder eine andere Plattform übertragen werden, außer wo das Gesetz es vorsieht. Es kauft ausschließlich Digitale Artikel auf dieser Website, im Einklang mit den Minecraft Usage Guidelines, die in Abschnitt 17 unserer Allgemeinen Geschäftsbedingungen behandelt werden."
+        ]
+      },
+      {
+        "heading": "Was mit Ihrem Guthaben passiert, wenn Ihr Konto geschlossen wird",
+        "paragraphs": [
+          "Wird Ihr Konto geschlossen — ob durch Sie oder durch uns, gemäß unseren Allgemeinen Geschäftsbedingungen — geht ein etwaiges Restguthaben einen von zwei Wegen:"
+        ],
+        "bullets": [
+          "wegen eines Verstoßes gegen die Bedingungen geschlossen? Das Restguthaben kann verfallen, vorbehaltlich des Gesetzes;",
+          "aus einem anderen Grund geschlossen? Sie können eine Rückerstattung des Restbetrags auf Ihre ursprüngliche Zahlungsmethode verlangen, sobald wir Ihre Identität und Zahlung wie in Abschnitt 5 beschrieben überprüft haben;",
+          "so oder so, stellen Sie den Antrag innerhalb von 90 Tagen nach der Schließung — danach können wir es als verfallen behandeln, sofern das Gesetz es nicht untersagt."
+        ]
+      },
+      {
+        "heading": "Käufe, Stornierung und Rückerstattungen",
+        "paragraphs": [
+          "4.1 Einzelkäufe. Sobald ein Digitaler Artikel auf Ihrem Server-Konto landet, ist dieser Kauf abgeschlossen — grundsätzlich nicht erstattungsfähig, es sei denn, das Gesetz verlangt etwas anderes oder wir entscheiden nach eigenem Ermessen, dass eine Rückerstattung sinnvoll ist (etwa, er kam nie an, es gab einen Lieferfehler auf unserer Seite, oder Ihnen wurde der falsche Betrag berechnet). Der vollständige Überblick, wann Rückerstattungen gelten und wann nicht, steht in unseren Allgemeinen Geschäftsbedingungen.",
+          "4.2 Wiederkehrende und Abonnementkäufe. Ein Privileg oder einen Rang auf wiederkehrender Basis gekauft? Jede Abbuchung gilt als eigener Kauf und folgt denselben Regeln wie 4.1. Jederzeit kostenlos kündbar über Ihr Persönliches Kabinett oder durch Kontaktaufnahme mit uns — Einzelheiten in Abschnitt 13 der Allgemeinen Geschäftsbedingungen. Kündigen Sie mindestens 24 Stunden vor dem nächsten Abrechnungsdatum, wenn Sie nicht erneut belastet werden möchten. Was vor der Kündigung bereits geliefert wurde, bleibt Ihnen.",
+          "4.3 Ungenutztes Guthaben. Geld auf Ihrem Guthaben verfällt nicht, wir können es jedoch nach 90 Tagen Inaktivität als ruhend behandeln — wir melden uns, bevor wir etwas anrühren, wie es das Gesetz verlangt. Außerhalb einer Kontoschließung (Abschnitt 3) oder einer gesetzlichen Vorgabe ist ungenutztes Guthaben nicht erstattungsfähig.",
+          "4.4 Technische Probleme. Belastet, aber der Digitale Artikel ist wegen eines technischen Fehlers auf unserer Seite nie aufgetaucht? Wir schreiben ihn Ihrem Guthaben wieder gut oder erstatten, wenn Sie das lieber möchten und es praktikabel ist, Ihre ursprüngliche Zahlungsmethode."
+        ]
+      },
+      {
+        "heading": "Abrechnungssupport erhalten",
+        "paragraphs": [
+          "Eine Frage zu einer Abbuchung? Sprechen Sie mit uns, bevor Sie etwas anderes tun, einschließlich einer Rückbuchung. Die meisten Fälle — ein Digitaler Artikel, der nicht ankam, eine Abbuchung, die Sie nicht erkennen, eine Frage zu einem wiederkehrenden Kauf — klären sich schnell, sobald wir gemeinsam draufschauen.",
+          "Schreiben Sie an privacy@minecraftsgame.com mit dem Folgenden — je mehr Sie vorab senden, desto schneller können wir uns darum kümmern:"
+        ],
+        "bullets": [
+          "die auf Ihrem Konto hinterlegte E-Mail-Adresse;",
+          "ungefähr, wann der Kauf stattfand;",
+          "der belastete Betrag und die Währung;",
+          "welcher Digitale Artikel und welcher Server, falls relevant;",
+          "ein Screenshot oder eine Kopie der Zahlungsbestätigung oder der Zeile auf dem Kontoauszug;",
+          "ein Screenshot Ihres Guthabens im Persönlichen Kabinett, falls relevant."
+        ]
+      },
+      {
+        "heading": "Wie schnell wir reagieren",
+        "paragraphs": [
+          "Wir streben an, Abrechnungs- und Rückbuchungsanfragen innerhalb von 2 Geschäftstagen zu bestätigen und innerhalb von 10 Geschäftstagen, nachdem wir alles in Abschnitt 5 Genannte erhalten haben, eine Lösung oder Entscheidung zu treffen."
+        ]
+      },
+      {
+        "heading": "Rückbuchungen",
+        "paragraphs": [
+          "Versuchen Sie es zuerst bei uns, über Abschnitt 5 — das ist fast immer schneller als der Weg über Ihre Bank. Sollte dennoch eine Rückbuchung für eine ordnungsgemäß autorisierte Abbuchung eingehen, bei der der Digitale Artikel tatsächlich geliefert wurde oder die wir bereits im Rahmen dieser Richtlinie geklärt haben, behalten wir uns das Recht vor, ihr zu widersprechen und Ihr Konto während der Prüfung zu sperren oder einzuschränken."
+        ]
+      },
+      {
+        "heading": "Einhaltung der Minecraft Usage Guidelines",
+        "paragraphs": [
+          "Mojangs Usage Guidelines prägen, wie wir hier die Abrechnung handhaben. In der Praxis heißt das: Preise und Details zu Digitalen Artikeln werden auf der Website veröffentlicht, bevor Sie etwas kaufen; für alles, was mit echtem Geld bezahlt wurde, erhalten Sie über Ihr Persönliches Kabinett eine Online-Kaufhistorie; und Ihr Guthaben hat — ebenso wie Kristalle oder andere In-Game-Währung — keinen realen Wert und kann nicht ausgezahlt, eingelöst oder von der Website oder unseren Servern wegbewegt werden. Nichts davon setzt Abschnitt 17 unserer Allgemeinen Geschäftsbedingungen außer Kraft."
         ]
       }
     ]

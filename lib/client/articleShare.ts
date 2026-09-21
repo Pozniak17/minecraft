@@ -3,7 +3,7 @@ export function buildArticleShareLinks(pageUrl: string, title: string) {
   const encodedTitle = encodeURIComponent(title);
 
   return {
-    x: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    x: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
   };
 }

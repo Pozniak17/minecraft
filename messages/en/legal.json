@@ -165,7 +165,7 @@
     "intro": [
       "Hi, and welcome to https://minecraftsgame.com/ (the \"Website\").",
       "These Terms and Conditions (the \"Terms\") sit between you and Dexervil LTD — a UK company, registered address 2nd Floor College House, 17 King Edwards Road, Ruislip, London, United Kingdom, HA4 7AE, company number 17345695 (\"we,\" \"us,\" \"our,\" or the \"Company\") — and you, the user (\"you\" or \"your\").",
-      "They cover your use of the Website plus anything you buy through it, including our Servers and Digital Items, which we run under the brand \"Adventures in Minecraft\" (the \"Services\"). Use the Website, or buy something on it, and you're bound by these Terms, our Privacy Policy, our Cookie Policy, our Billing, Refunds & Chargeback Policy, and any other policy we link to here or on the Website (together, the \"Terms of Use\").",
+      "They cover your use of the Website plus anything you buy through it, including our Servers and Digital Items, which we run under the brand \"Adventures in Minecraft\" (the \"Services\"). Use the Website, or buy something on it, and you're bound by these Terms, our Privacy Policy, our Cookie Policy, our [Billing, Refunds & Chargeback Policy](/billing-refunds), and any other policy we link to here or on the Website (together, the \"Terms of Use\").",
       "Read through this before you dive in. Don't agree with something? Best not to use the Website.",
       "You'll need to accept these Terms to create an account and use the Services. No account yet? Using any part of the Service means you've accepted them anyway.",
       "Questions about any of this — privacy@minecraftsgame.com.",
@@ -328,7 +328,7 @@
         "bullets": [
           "Server access only goes to users with a genuine, licensed copy of the Game.",
           "Everything — Servers, Digital Items, any advertising on the Website or Servers — is all-ages appropriate. No gambling, pornography, violence, terrorism, explicit content, or other unsafe or mature material, anywhere in connection with our Services.",
-          "A \"donation\" means a payment with nothing exclusive coming back to the donor. If a payment gets someone a privilege, cosmetic, or benefit that other users don't get, that's a Digital Item purchase — and everything in these Terms and our Billing, Refunds & Chargeback Policy applies, whatever it's labelled as at checkout.",
+          "A \"donation\" means a payment with nothing exclusive coming back to the donor. If a payment gets someone a privilege, cosmetic, or benefit that other users don't get, that's a Digital Item purchase — and everything in these Terms and our [Billing, Refunds & Chargeback Policy](/billing-refunds) applies, whatever it's labelled as at checkout.",
           "We don't sell, and you can't resell or help sell, any privilege, Digital Item, or entitlement that gives someone a competitive edge over other users, or that otherwise wrecks other users' experience of the Servers.",
           "Cosmetic Digital Items on the Website won't visually copy a Minecraft Player Cape.",
           "Crystals and any other virtual currency on the Website or Servers carry no real-world value — no cashing out, no redeeming for real money, no using them anywhere but our Servers, and nothing that looks like or claims to be Minecoins or any other Mojang or Microsoft currency.",
@@ -463,6 +463,82 @@
         "heading": "Questions?",
         "paragraphs": [
           "Email privacy@minecraftsgame.com."
+        ]
+      }
+    ]
+  },
+  "billing": {
+    "badge": "Legal",
+    "title": "Billing, Refunds & Chargeback Policy",
+    "lastUpdated": "September 20, 2026",
+    "intro": [],
+    "sections": [
+      {
+        "heading": "Overview",
+        "paragraphs": [
+          "Here's how billing works on https://minecraftsgame.com/ — how your balance and any recurring purchases are handled, and what to do if a charge looks wrong before you go to your bank about it. Buying a Digital Item, topping up your balance, or making any other purchase on the Website means you're agreeing to what follows. Read it alongside our Terms and Conditions, especially Sections 13, 14, and 17.",
+          "Purchases run through EUR (€) unless checkout says otherwise. We take Visa and Mastercard, processed securely by our payment provider, FINTECH GLOBAL SOFTWARE LTD, under PCI-DSS. Everything's tokenized; Dexervil LTD never sees or stores your full card number."
+        ]
+      },
+      {
+        "heading": "Billing and Your Balance, Explained",
+        "paragraphs": [
+          "You can buy a Digital Item directly for a chosen Server, or top up a balance first and spend it as you go — including on recurring or subscription purchases (Section 4).",
+          "Top up your balance and the charge hits your payment method straight away, landing in your account balance the moment payment clears, in EUR or whatever currency you paid in. You'll see the balance in your Personal Cabinet, and it drops by the price of each Digital Item as you buy it.",
+          "Think of the balance as store credit, not money in a bank. It doesn't earn interest, can't be cashed out or swapped for cash, and can't move to another account or platform, except where the law says otherwise. It only buys Digital Items on this Website in line with the Minecraft Usage Guidelines covered in Section 17 of our Terms and Conditions."
+        ]
+      },
+      {
+        "heading": "What Happens to Your Balance If Your Account Closes",
+        "paragraphs": [
+          "Close your account — whether that's you or us, under our Terms and Conditions — and any leftover balance goes one of two ways:"
+        ],
+        "bullets": [
+          "closed because you breached the Terms? The remaining balance may be forfeited, subject to the law;",
+          "closed for any other reason? You can ask for a refund of whatever's left, to your original payment method, once we've verified your identity and payment as described in Section 5;",
+          "either way, ask within 90 days of closure — after that, we may treat it as forfeited unless the law says we can't."
+        ]
+      },
+      {
+        "heading": "Purchases, Cancelling, and Refunds",
+        "paragraphs": [
+          "4.1 Individual purchases. Once a Digital Item lands in your Server account, that purchase is done — generally non-refundable, unless the law requires otherwise or we decide, at our discretion, that a refund makes sense (say, it never arrived, there was a delivery fault on our end, or you were charged the wrong amount). The full rundown of when refunds do and don't apply is in our Terms and Conditions.",
+          "4.2 Recurring and subscription purchases. Bought a privilege or rank on a recurring basis? Each charge counts as its own purchase and follows the same rules as 4.1. Cancel anytime, free, through your Personal Cabinet or by contacting us — details in Section 13 of the Terms and Conditions. Cancel at least 24 hours before the next billing date if you don't want to be charged again. Anything already delivered before you cancel stays yours.",
+          "4.3 Unused balance. Money sitting in your balance doesn't expire, though we may treat it as dormant after 90 days of inactivity — we'll reach out before touching anything, as the law requires. Outside of account closure (Section 3) or a legal requirement, unused balance isn't refundable.",
+          "4.4 Technical issues. Charged but the Digital Item never showed up because of a technical fault on our side? We'll credit it back to your balance or, if you'd rather and it's practical, refund your original payment method."
+        ]
+      },
+      {
+        "heading": "Getting Billing Support",
+        "paragraphs": [
+          "Got a question about a charge? Talk to us before doing anything else, including a chargeback. Most issues — a Digital Item that didn't arrive, a charge you don't recognise, a recurring-purchase query — sort themselves out fast once we're actually looking at it together.",
+          "Email privacy@minecraftsgame.com with the following — the more you send upfront, the faster we can look into it:"
+        ],
+        "bullets": [
+          "the email address on your account;",
+          "roughly when the purchase happened;",
+          "the amount and currency charged;",
+          "which Digital Item and Server, if relevant;",
+          "a screenshot or copy of the payment confirmation or bank statement line;",
+          "a screenshot of your Personal Cabinet balance, if it's relevant."
+        ]
+      },
+      {
+        "heading": "How Fast We Respond",
+        "paragraphs": [
+          "We aim to acknowledge billing and chargeback queries within 2 business days, and to have a resolution or decision within 10 business days of getting everything we asked for in Section 5."
+        ]
+      },
+      {
+        "heading": "Chargebacks",
+        "paragraphs": [
+          "Try us first, through Section 5 — it's almost always quicker than going through your bank. That said, if a chargeback comes in for a charge that was properly authorised, where the Digital Item was actually delivered, or where we've already sorted things out under this Policy, we reserve the right to dispute it and to suspend or limit your account while it's being looked at."
+        ]
+      },
+      {
+        "heading": "Staying in Line with Minecraft Usage Guidelines",
+        "paragraphs": [
+          "Mojang's Usage Guidelines shape how we run billing here. In practice that means: pricing and Digital Item details are published on the Website before you buy anything; you get an online purchase history for anything paid with real money, through your Personal Cabinet; and your balance, along with any crystals or other in-game currency, has no real-world value and can't be cashed out, redeemed, or moved off the Website or our Servers. None of this overrides Section 17 of our Terms and Conditions."
         ]
       }
     ]

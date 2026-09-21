@@ -1,8 +1,33 @@
+import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { Badge } from '../Badge/Badge';
 import { Container } from '../Container/Container';
 import { LEGAL_COMPANY_DETAILS, PRIVACY_EMAIL } from '@/lib/data/contacts';
 import styles from './LegalPage.module.css';
+
+// Inline-посилання в тексті політик через простий markdown-синтаксис [текст](/шлях).
+// Дозволяє робити перехресні посилання між політиками, не ускладнюючи структуру JSON.
+const INLINE_LINK_RE = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+function renderInline(text: string): ReactNode {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  INLINE_LINK_RE.lastIndex = 0;
+  while ((match = INLINE_LINK_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    nodes.push(
+      <Link key={match.index} href={match[2]} className={styles.inlineLink}>
+        {match[1]}
+      </Link>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (nodes.length === 0) return text;
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
+}
 
 type LegalSection = {
   heading: string;
@@ -33,7 +58,7 @@ export async function LegalPage({ document }: { document: LegalDocument }) {
           <div className={styles.introGroup}>
             {introParagraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex} className={styles.intro}>
-                {paragraph}
+                {renderInline(paragraph)}
               </p>
             ))}
           </div>
@@ -88,14 +113,14 @@ export async function LegalPage({ document }: { document: LegalDocument }) {
               </h2>
               {sectionItem.paragraphs.map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex} className={styles.paragraph}>
-                  {paragraph}
+                  {renderInline(paragraph)}
                 </p>
               ))}
               {sectionItem.bullets && sectionItem.bullets.length > 0 ? (
                 <ul className={styles.list}>
                   {sectionItem.bullets.map((item, bulletIndex) => (
                     <li key={bulletIndex} className={styles.listItem}>
-                      {item}
+                      {renderInline(item)}
                     </li>
                   ))}
                 </ul>

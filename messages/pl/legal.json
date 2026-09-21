@@ -165,7 +165,7 @@
     "intro": [
       "Cześć i witaj na https://minecraftsgame.com/ (\"Witryna\").",
       "Niniejszy Regulamin (\"Regulamin\") obowiązuje pomiędzy Tobą a Dexervil LTD — spółką prawa brytyjskiego, z siedzibą pod adresem 2nd Floor College House, 17 King Edwards Road, Ruislip, London, United Kingdom, HA4 7AE, numer spółki 17345695 (\"my\", \"nas\", \"nasz\" lub \"Spółka\") — oraz Tobą, użytkownikiem (\"Ty\" lub \"Twój\").",
-      "Obejmuje on korzystanie z Witryny oraz wszystko, co za jej pośrednictwem kupujesz, w tym nasze Serwery i Przedmioty Cyfrowe, które prowadzimy pod marką \"Adventures in Minecraft\" (\"Usługi\"). Skorzystaj z Witryny lub coś na niej kup, a będziesz związany niniejszym Regulaminem, naszą Polityką prywatności, naszą Polityką plików cookie, naszą Polityką rozliczeń, zwrotów i obciążeń zwrotnych oraz każdą inną polityką, do której odsyłamy tutaj lub w Witrynie (razem: \"Warunki korzystania\").",
+      "Obejmuje on korzystanie z Witryny oraz wszystko, co za jej pośrednictwem kupujesz, w tym nasze Serwery i Przedmioty Cyfrowe, które prowadzimy pod marką \"Adventures in Minecraft\" (\"Usługi\"). Skorzystaj z Witryny lub coś na niej kup, a będziesz związany niniejszym Regulaminem, naszą Polityką prywatności, naszą Polityką plików cookie, naszą [Polityką rozliczeń, zwrotów i obciążeń zwrotnych](/billing-refunds) oraz każdą inną polityką, do której odsyłamy tutaj lub w Witrynie (razem: \"Warunki korzystania\").",
       "Przeczytaj to, zanim zaczniesz. Nie zgadzasz się z czymś? Lepiej nie korzystaj z Witryny.",
       "Aby założyć konto i korzystać z Usług, musisz zaakceptować niniejszy Regulamin. Nie masz jeszcze konta? Korzystanie z jakiejkolwiek części Usługi i tak oznacza, że go zaakceptowałeś.",
       "Pytania o cokolwiek z tego — privacy@minecraftsgame.com.",
@@ -328,7 +328,7 @@
         "bullets": [
           "Dostęp do Serwerów mają wyłącznie użytkownicy z oryginalną, licencjonowaną kopią Gry.",
           "Wszystko — Serwery, Przedmioty Cyfrowe, wszelkie reklamy w Witrynie lub na Serwerach — jest odpowiednie dla każdego wieku. Żadnego hazardu, pornografii, przemocy, terroryzmu, treści o charakterze jednoznacznym ani innych niebezpiecznych lub przeznaczonych dla dorosłych materiałów, nigdzie w związku z naszymi Usługami.",
-          "\"Darowizna\" oznacza płatność, za którą darczyńca nie otrzymuje nic ekskluzywnego. Jeśli płatność zapewnia komuś przywilej, kosmetyk lub korzyść, której inni użytkownicy nie mają, jest to zakup Przedmiotu Cyfrowego — i obowiązuje wszystko, co zawarto w niniejszym Regulaminie oraz w naszej Polityce rozliczeń, zwrotów i obciążeń zwrotnych, niezależnie od tego, jak zostanie to oznaczone przy płatności.",
+          "\"Darowizna\" oznacza płatność, za którą darczyńca nie otrzymuje nic ekskluzywnego. Jeśli płatność zapewnia komuś przywilej, kosmetyk lub korzyść, której inni użytkownicy nie mają, jest to zakup Przedmiotu Cyfrowego — i obowiązuje wszystko, co zawarto w niniejszym Regulaminie oraz w naszej [Polityce rozliczeń, zwrotów i obciążeń zwrotnych](/billing-refunds), niezależnie od tego, jak zostanie to oznaczone przy płatności.",
           "Nie sprzedajemy — i nie możesz odsprzedawać ani pomagać w sprzedaży — żadnego przywileju, Przedmiotu Cyfrowego ani uprawnienia, które daje komuś przewagę konkurencyjną nad innymi użytkownikami lub w inny sposób psuje doświadczenie innych użytkowników na Serwerach.",
           "Kosmetyczne Przedmioty Cyfrowe w Witrynie nie będą wizualnie kopiować Minecraft Player Cape.",
           "Kryształy i wszelka inna waluta wirtualna w Witrynie lub na Serwerach nie mają wartości w świecie rzeczywistym — żadnej wypłaty, żadnej wymiany na prawdziwe pieniądze, żadnego użycia gdziekolwiek poza naszymi Serwerami i niczego, co wygląda lub podaje się za Minecoiny albo jakąkolwiek inną walutę Mojang lub Microsoft.",
@@ -463,6 +463,82 @@
         "heading": "Pytania?",
         "paragraphs": [
           "Napisz na privacy@minecraftsgame.com."
+        ]
+      }
+    ]
+  },
+  "billing": {
+    "badge": "Informacje prawne",
+    "title": "Polityka rozliczeń, zwrotów i obciążeń zwrotnych",
+    "lastUpdated": "20 września 2026",
+    "intro": [],
+    "sections": [
+      {
+        "heading": "Przegląd",
+        "paragraphs": [
+          "Oto jak działają rozliczenia w https://minecraftsgame.com/ — jak obsługiwane są Twoje saldo i ewentualne zakupy cykliczne oraz co zrobić, jeśli obciążenie wygląda nieprawidłowo, zanim zwrócisz się do banku. Zakup Przedmiotu Cyfrowego, doładowanie salda lub dokonanie dowolnego innego zakupu w Witrynie oznacza akceptację poniższych zasad. Czytaj to razem z naszym Regulaminem, w szczególności z Sekcjami 13, 14 i 17.",
+          "Zakupy realizowane są w EUR (€), chyba że przy płatności wskazano inaczej. Akceptujemy Visa i Mastercard, przetwarzane bezpiecznie przez naszego operatora płatności, FINTECH GLOBAL SOFTWARE LTD, zgodnie ze standardem PCI-DSS. Wszystko jest tokenizowane; Dexervil LTD nigdy nie widzi ani nie przechowuje pełnego numeru Twojej karty."
+        ]
+      },
+      {
+        "heading": "Rozliczenia i Twoje saldo — wyjaśnienie",
+        "paragraphs": [
+          "Możesz kupić Przedmiot Cyfrowy bezpośrednio na wybrany Serwer albo najpierw doładować saldo i wydawać je na bieżąco — również na zakupy cykliczne lub subskrypcyjne (Sekcja 4).",
+          "Doładuj saldo, a obciążenie zostanie od razu pobrane z Twojej metody płatności i trafi na saldo Twojego konta w chwili zaksięgowania płatności, w EUR lub w walucie, którą zapłaciłeś. Saldo zobaczysz w swoim Gabinecie Osobistym, a maleje ono o cenę każdego Przedmiotu Cyfrowego, który kupujesz.",
+          "Traktuj saldo jak kredyt sklepowy, a nie pieniądze w banku. Nie jest oprocentowane, nie można go wypłacić ani wymienić na gotówkę i nie można przenieść go na inne konto lub platformę, poza przypadkami przewidzianymi przez prawo. Służy wyłącznie do zakupu Przedmiotów Cyfrowych w tej Witrynie, zgodnie z Minecraft Usage Guidelines omówionymi w Sekcji 17 naszego Regulaminu."
+        ]
+      },
+      {
+        "heading": "Co dzieje się z Twoim saldem, gdy Twoje konto zostaje zamknięte",
+        "paragraphs": [
+          "Gdy Twoje konto zostaje zamknięte — czy to przez Ciebie, czy przez nas, na podstawie naszego Regulaminu — wszelkie pozostałe saldo podąża jedną z dwóch dróg:"
+        ],
+        "bullets": [
+          "zamknięte z powodu naruszenia Regulaminu? Pozostałe saldo może przepaść, z zastrzeżeniem przepisów prawa;",
+          "zamknięte z jakiegokolwiek innego powodu? Możesz poprosić o zwrot tego, co pozostało, na Twoją pierwotną metodę płatności, po zweryfikowaniu przez nas Twojej tożsamości i płatności w sposób opisany w Sekcji 5;",
+          "tak czy inaczej, złóż wniosek w ciągu 90 dni od zamknięcia — po tym czasie możemy uznać saldo za przepadłe, chyba że prawo na to nie zezwala."
+        ]
+      },
+      {
+        "heading": "Zakupy, anulowanie i zwroty",
+        "paragraphs": [
+          "4.1 Zakupy jednorazowe. Gdy Przedmiot Cyfrowy trafi na Twoje konto na Serwerze, zakup jest zrealizowany — co do zasady bezzwrotny, chyba że prawo wymaga inaczej lub zdecydujemy, według własnego uznania, że zwrot ma sens (np. przedmiot nigdy nie dotarł, wystąpił błąd dostawy po naszej stronie lub obciążono Cię niewłaściwą kwotą). Pełne omówienie tego, kiedy zwroty przysługują, a kiedy nie, znajduje się w naszym Regulaminie.",
+          "4.2 Zakupy cykliczne i subskrypcyjne. Kupiłeś przywilej lub rangę w trybie cyklicznym? Każde obciążenie liczy się jako osobny zakup i podlega tym samym zasadom co 4.1. Anuluj w dowolnym momencie, bezpłatnie, przez swój Gabinet Osobisty lub kontaktując się z nami — szczegóły w Sekcji 13 Regulaminu. Anuluj co najmniej 24 godziny przed kolejną datą rozliczenia, jeśli nie chcesz zostać ponownie obciążony. Wszystko, co zostało dostarczone przed anulowaniem, pozostaje Twoje.",
+          "4.3 Niewykorzystane saldo. Pieniądze na Twoim saldzie nie wygasają, choć możemy uznać je za nieaktywne po 90 dniach bezczynności — skontaktujemy się z Tobą, zanim czegokolwiek dotkniemy, zgodnie z wymogami prawa. Poza zamknięciem konta (Sekcja 3) lub wymogiem prawnym niewykorzystane saldo nie podlega zwrotowi.",
+          "4.4 Problemy techniczne. Obciążono Cię, ale Przedmiot Cyfrowy nigdy się nie pojawił z powodu usterki technicznej po naszej stronie? Zwrócimy go na Twoje saldo albo, jeśli wolisz i jest to wykonalne, zwrócimy środki na Twoją pierwotną metodę płatności."
+        ]
+      },
+      {
+        "heading": "Uzyskanie wsparcia w sprawach rozliczeń",
+        "paragraphs": [
+          "Masz pytanie o obciążenie? Porozmawiaj z nami, zanim zrobisz cokolwiek innego, w tym obciążenie zwrotne. Większość spraw — Przedmiot Cyfrowy, który nie dotarł, obciążenie, którego nie rozpoznajesz, pytanie o zakup cykliczny — rozwiązuje się szybko, gdy tylko przyjrzymy się temu wspólnie.",
+          "Napisz na privacy@minecraftsgame.com, podając poniższe — im więcej prześlesz od razu, tym szybciej zajmiemy się sprawą:"
+        ],
+        "bullets": [
+          "adres e-mail przypisany do Twojego konta;",
+          "orientacyjnie, kiedy nastąpił zakup;",
+          "kwotę i walutę obciążenia;",
+          "który Przedmiot Cyfrowy i który Serwer, jeśli to istotne;",
+          "zrzut ekranu lub kopię potwierdzenia płatności albo pozycji z wyciągu bankowego;",
+          "zrzut ekranu salda w Twoim Gabinecie Osobistym, jeśli to istotne."
+        ]
+      },
+      {
+        "heading": "Jak szybko odpowiadamy",
+        "paragraphs": [
+          "Staramy się potwierdzić przyjęcie zapytań dotyczących rozliczeń i obciążeń zwrotnych w ciągu 2 dni roboczych oraz przedstawić rozwiązanie lub decyzję w ciągu 10 dni roboczych od otrzymania wszystkiego, o co prosiliśmy w Sekcji 5."
+        ]
+      },
+      {
+        "heading": "Obciążenia zwrotne",
+        "paragraphs": [
+          "Najpierw spróbuj z nami, przez Sekcję 5 — to prawie zawsze szybsze niż droga przez bank. Niemniej jeśli wpłynie obciążenie zwrotne dotyczące płatności prawidłowo autoryzowanej, w przypadku której Przedmiot Cyfrowy został faktycznie dostarczony, lub którą już rozwiązaliśmy na podstawie niniejszej Polityki, zastrzegamy sobie prawo do jego zakwestionowania oraz do zawieszenia lub ograniczenia Twojego konta na czas rozpatrywania."
+        ]
+      },
+      {
+        "heading": "Zgodność z Minecraft Usage Guidelines",
+        "paragraphs": [
+          "Usage Guidelines Mojang kształtują sposób, w jaki prowadzimy tu rozliczenia. W praktyce oznacza to: ceny i szczegóły Przedmiotów Cyfrowych są publikowane w Witrynie przed jakimkolwiek zakupem; masz historię zakupów online dla wszystkiego, co opłacono prawdziwymi pieniędzmi, w swoim Gabinecie Osobistym; a Twoje saldo, wraz z kryształami lub inną walutą w grze, nie ma wartości w świecie rzeczywistym i nie może zostać wypłacone, wymienione ani przeniesione poza Witrynę lub nasze Serwery. Nic z tego nie uchyla Sekcji 17 naszego Regulaminu."
         ]
       }
     ]

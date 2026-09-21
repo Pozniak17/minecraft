@@ -165,7 +165,7 @@
     "intro": [
       "Hola y bienvenido/a a https://minecraftsgame.com/ (el \"Sitio web\").",
       "Estos Términos y Condiciones (los \"Términos\") se establecen entre tú y Dexervil LTD — una sociedad del Reino Unido, con domicilio social en 2nd Floor College House, 17 King Edwards Road, Ruislip, London, United Kingdom, HA4 7AE, con número de sociedad 17345695 (\"nosotros\", \"nos\", \"nuestro\" o la \"Empresa\") — y tú, el usuario (\"tú\" o \"tu\").",
-      "Cubren tu uso del Sitio web y todo lo que compres a través de él, incluidos nuestros Servidores y Artículos Digitales, que operamos bajo la marca \"Adventures in Minecraft\" (los \"Servicios\"). Usa el Sitio web, o compra algo en él, y quedarás vinculado por estos Términos, nuestra Política de Privacidad, nuestra Política de Cookies, nuestra Política de Facturación, Reembolsos y Contracargos, y cualquier otra política que enlacemos aquí o en el Sitio web (en conjunto, las \"Condiciones de Uso\").",
+      "Cubren tu uso del Sitio web y todo lo que compres a través de él, incluidos nuestros Servidores y Artículos Digitales, que operamos bajo la marca \"Adventures in Minecraft\" (los \"Servicios\"). Usa el Sitio web, o compra algo en él, y quedarás vinculado por estos Términos, nuestra Política de Privacidad, nuestra Política de Cookies, nuestra [Política de Facturación, Reembolsos y Contracargos](/billing-refunds), y cualquier otra política que enlacemos aquí o en el Sitio web (en conjunto, las \"Condiciones de Uso\").",
       "Lee esto antes de lanzarte. ¿No estás de acuerdo con algo? Mejor no uses el Sitio web.",
       "Tendrás que aceptar estos Términos para crear una cuenta y usar los Servicios. ¿Aún no tienes cuenta? Usar cualquier parte del Servicio significa que ya los has aceptado.",
       "¿Preguntas sobre todo esto? privacy@minecraftsgame.com.",
@@ -328,7 +328,7 @@
         "bullets": [
           "El acceso a los Servidores solo es para usuarios con una copia auténtica y con licencia del Juego.",
           "Todo — Servidores, Artículos Digitales, cualquier publicidad en el Sitio web o los Servidores — es apto para todas las edades. Ni apuestas, ni pornografía, ni violencia, ni terrorismo, ni contenido explícito, ni ningún otro material inseguro o para adultos, en ningún punto relacionado con nuestros Servicios.",
-          "Una \"donación\" significa un pago sin nada exclusivo a cambio para el donante. Si un pago proporciona a alguien un privilegio, un cosmético o un beneficio que otros usuarios no tienen, es una compra de un Artículo Digital — y se aplica todo lo de estos Términos y nuestra Política de Facturación, Reembolsos y Contracargos, sea cual sea su etiqueta al pagar.",
+          "Una \"donación\" significa un pago sin nada exclusivo a cambio para el donante. Si un pago proporciona a alguien un privilegio, un cosmético o un beneficio que otros usuarios no tienen, es una compra de un Artículo Digital — y se aplica todo lo de estos Términos y nuestra [Política de Facturación, Reembolsos y Contracargos](/billing-refunds), sea cual sea su etiqueta al pagar.",
           "No vendemos — y tú no puedes revender ni ayudar a vender — ningún privilegio, Artículo Digital o derecho que dé a alguien una ventaja competitiva sobre otros usuarios, o que de otro modo arruine la experiencia de otros usuarios en los Servidores.",
           "Los Artículos Digitales cosméticos del Sitio web no reproducirán visualmente una Minecraft Player Cape.",
           "Los cristales y cualquier otra moneda virtual del Sitio web o los Servidores no tienen valor en el mundo real — no se pueden retirar, ni canjear por dinero real, ni usar en ningún sitio salvo nuestros Servidores, y nada que parezca o se presente como Minecoins ni cualquier otra moneda de Mojang o Microsoft.",
@@ -463,6 +463,82 @@
         "heading": "¿Preguntas?",
         "paragraphs": [
           "Escribe a privacy@minecraftsgame.com."
+        ]
+      }
+    ]
+  },
+  "billing": {
+    "badge": "Legal",
+    "title": "Política de Facturación, Reembolsos y Contracargos",
+    "lastUpdated": "20 de septiembre de 2026",
+    "intro": [],
+    "sections": [
+      {
+        "heading": "Resumen",
+        "paragraphs": [
+          "Así funciona la facturación en https://minecraftsgame.com/ — cómo se gestionan tu saldo y cualquier compra recurrente, y qué hacer si un cargo parece incorrecto antes de acudir a tu banco. Comprar un Artículo Digital, recargar tu saldo o realizar cualquier otra compra en el Sitio web significa que aceptas lo siguiente. Léela junto con nuestros Términos y Condiciones, en especial las Secciones 13, 14 y 17.",
+          "Las compras se realizan en EUR (€), salvo que el pago indique otra cosa. Aceptamos Visa y Mastercard, procesadas de forma segura por nuestro proveedor de pagos, FINTECH GLOBAL SOFTWARE LTD, conforme a la norma PCI-DSS. Todo está tokenizado; Dexervil LTD nunca ve ni almacena el número completo de tu tarjeta."
+        ]
+      },
+      {
+        "heading": "La facturación y tu saldo, explicados",
+        "paragraphs": [
+          "Puedes comprar un Artículo Digital directamente para un Servidor elegido, o recargar primero un saldo y gastarlo a medida que avanzas — incluido en compras recurrentes o por suscripción (Sección 4).",
+          "Recarga tu saldo y el cargo se aplica de inmediato a tu método de pago, quedando en el saldo de tu cuenta en cuanto el pago se confirma, en EUR o en la moneda con la que pagaste. Verás el saldo en tu Gabinete Personal, y baja según el precio de cada Artículo Digital que compres.",
+          "Piensa en el saldo como crédito de la tienda, no como dinero en un banco. No genera intereses, no se puede retirar ni cambiar por efectivo, y no puede transferirse a otra cuenta o plataforma, salvo donde la ley lo disponga. Solo sirve para comprar Artículos Digitales en este Sitio web, conforme a las Minecraft Usage Guidelines que se tratan en la Sección 17 de nuestros Términos y Condiciones."
+        ]
+      },
+      {
+        "heading": "Qué ocurre con tu saldo si se cierra tu cuenta",
+        "paragraphs": [
+          "Si se cierra tu cuenta — ya sea por ti o por nosotros, conforme a nuestros Términos y Condiciones — cualquier saldo restante sigue una de dos vías:"
+        ],
+        "bullets": [
+          "¿cerrada porque incumpliste los Términos? El saldo restante puede perderse, sujeto a la ley;",
+          "¿cerrada por cualquier otro motivo? Puedes solicitar el reembolso de lo que quede, a tu método de pago original, una vez que hayamos verificado tu identidad y tu pago como se describe en la Sección 5;",
+          "en cualquier caso, solicítalo dentro de los 90 días posteriores al cierre — después de eso, podemos considerarlo perdido salvo que la ley lo impida."
+        ]
+      },
+      {
+        "heading": "Compras, cancelación y reembolsos",
+        "paragraphs": [
+          "4.1 Compras individuales. Una vez que un Artículo Digital llega a tu cuenta del Servidor, esa compra está hecha — por lo general no reembolsable, salvo que la ley exija otra cosa o que decidamos, a nuestra discreción, que un reembolso tiene sentido (por ejemplo, nunca llegó, hubo un fallo de entrega por nuestra parte, o se te cobró un importe erróneo). El detalle completo de cuándo aplican y cuándo no los reembolsos está en nuestros Términos y Condiciones.",
+          "4.2 Compras recurrentes y por suscripción. ¿Compraste un privilegio o rango de forma recurrente? Cada cargo cuenta como una compra propia y sigue las mismas reglas que 4.1. Cancela cuando quieras, gratis, desde tu Gabinete Personal o contactándonos — detalles en la Sección 13 de los Términos y Condiciones. Cancela al menos 24 horas antes de la próxima fecha de facturación si no quieres que se te vuelva a cobrar. Todo lo ya entregado antes de cancelar es tuyo.",
+          "4.3 Saldo no utilizado. El dinero de tu saldo no caduca, aunque podemos tratarlo como inactivo tras 90 días de inactividad — te avisaremos antes de tocar nada, como exige la ley. Fuera del cierre de la cuenta (Sección 3) o de una obligación legal, el saldo no utilizado no es reembolsable.",
+          "4.4 Problemas técnicos. ¿Se te cobró pero el Artículo Digital nunca apareció por un fallo técnico de nuestra parte? Te lo abonamos de nuevo en el saldo o, si lo prefieres y es viable, reembolsamos tu método de pago original."
+        ]
+      },
+      {
+        "heading": "Obtener soporte de facturación",
+        "paragraphs": [
+          "¿Una duda sobre un cargo? Háblanos antes de hacer nada más, incluido un contracargo. La mayoría de los casos — un Artículo Digital que no llegó, un cargo que no reconoces, una consulta sobre una compra recurrente — se resuelven rápido en cuanto lo miramos juntos.",
+          "Escribe a privacy@minecraftsgame.com con lo siguiente — cuanto más envíes de entrada, más rápido podremos investigarlo:"
+        ],
+        "bullets": [
+          "la dirección de correo asociada a tu cuenta;",
+          "aproximadamente cuándo se realizó la compra;",
+          "el importe y la moneda cobrados;",
+          "qué Artículo Digital y qué Servidor, si procede;",
+          "una captura o copia de la confirmación de pago o de la línea del extracto bancario;",
+          "una captura del saldo de tu Gabinete Personal, si procede."
+        ]
+      },
+      {
+        "heading": "Con qué rapidez respondemos",
+        "paragraphs": [
+          "Nuestro objetivo es acusar recibo de las consultas de facturación y contracargos en un plazo de 2 días hábiles, y ofrecer una resolución o decisión en un plazo de 10 días hábiles desde que recibimos todo lo que pedimos en la Sección 5."
+        ]
+      },
+      {
+        "heading": "Contracargos",
+        "paragraphs": [
+          "Prueba primero con nosotros, a través de la Sección 5 — casi siempre es más rápido que acudir a tu banco. Dicho esto, si se presenta un contracargo por un cargo debidamente autorizado, cuyo Artículo Digital sí se entregó, o que ya hemos resuelto conforme a esta Política, nos reservamos el derecho de impugnarlo y de suspender o limitar tu cuenta mientras se revisa."
+        ]
+      },
+      {
+        "heading": "Cumplimiento de las Minecraft Usage Guidelines",
+        "paragraphs": [
+          "Las Usage Guidelines de Mojang determinan cómo gestionamos la facturación aquí. En la práctica eso significa: los precios y los detalles de los Artículos Digitales se publican en el Sitio web antes de que compres nada; dispones de un historial de compras en línea de todo lo pagado con dinero real, a través de tu Gabinete Personal; y tu saldo, junto con los cristales u otra moneda del juego, no tiene valor en el mundo real y no se puede retirar, canjear ni sacar del Sitio web o de nuestros Servidores. Nada de esto prevalece sobre la Sección 17 de nuestros Términos y Condiciones."
         ]
       }
     ]

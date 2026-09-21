@@ -165,7 +165,7 @@
     "intro": [
       "Bonjour et bienvenue sur https://minecraftsgame.com/ (le \"Site\").",
       "Ces Conditions générales (les \"Conditions\") s'appliquent entre vous et Dexervil LTD — une société de droit britannique, dont le siège social est situé 2nd Floor College House, 17 King Edwards Road, Ruislip, London, United Kingdom, HA4 7AE, numéro de société 17345695 (\"nous\", \"notre\" ou la \"Société\") — et vous, l'utilisateur (\"vous\" ou \"votre\").",
-      "Elles couvrent votre utilisation du Site ainsi que tout ce que vous y achetez, y compris nos Serveurs et Articles numériques, que nous exploitons sous la marque \"Adventures in Minecraft\" (les \"Services\"). Utilisez le Site, ou achetez-y quelque chose, et vous êtes lié par ces Conditions, notre Politique de confidentialité, notre Politique en matière de cookies, notre Politique de facturation, de remboursements et de rétrofacturation, et toute autre politique que nous lions ici ou sur le Site (ensemble, les \"Conditions d'utilisation\").",
+      "Elles couvrent votre utilisation du Site ainsi que tout ce que vous y achetez, y compris nos Serveurs et Articles numériques, que nous exploitons sous la marque \"Adventures in Minecraft\" (les \"Services\"). Utilisez le Site, ou achetez-y quelque chose, et vous êtes lié par ces Conditions, notre Politique de confidentialité, notre Politique en matière de cookies, notre [Politique de facturation, de remboursements et de rétrofacturation](/billing-refunds), et toute autre politique que nous lions ici ou sur le Site (ensemble, les \"Conditions d'utilisation\").",
       "Lisez ceci avant de vous lancer. Pas d'accord avec quelque chose ? Mieux vaut ne pas utiliser le Site.",
       "Vous devrez accepter ces Conditions pour créer un compte et utiliser les Services. Pas encore de compte ? Utiliser une quelconque partie du Service signifie que vous les avez de toute façon acceptées.",
       "Des questions sur tout cela — privacy@minecraftsgame.com.",
@@ -328,7 +328,7 @@
         "bullets": [
           "L'accès aux Serveurs est réservé aux utilisateurs disposant d'une copie authentique et sous licence du Jeu.",
           "Tout — Serveurs, Articles numériques, toute publicité sur le Site ou les Serveurs — convient à tous les âges. Pas de jeux d'argent, de pornographie, de violence, de terrorisme, de contenu explicite ou d'autres contenus dangereux ou réservés aux adultes, où que ce soit en lien avec nos Services.",
-          "Un \"don\" désigne un paiement sans contrepartie exclusive pour le donateur. Si un paiement procure à quelqu'un un privilège, un cosmétique ou un avantage que les autres utilisateurs n'ont pas, il s'agit d'un achat d'Article numérique — et tout ce qui figure dans ces Conditions et notre Politique de facturation, de remboursements et de rétrofacturation s'applique, quelle que soit son étiquette au moment du paiement.",
+          "Un \"don\" désigne un paiement sans contrepartie exclusive pour le donateur. Si un paiement procure à quelqu'un un privilège, un cosmétique ou un avantage que les autres utilisateurs n'ont pas, il s'agit d'un achat d'Article numérique — et tout ce qui figure dans ces Conditions et notre [Politique de facturation, de remboursements et de rétrofacturation](/billing-refunds) s'applique, quelle que soit son étiquette au moment du paiement.",
           "Nous ne vendons pas — et vous ne pouvez pas revendre ni aider à vendre — un privilège, un Article numérique ou un droit qui confère un avantage concurrentiel sur les autres utilisateurs, ou qui gâche par ailleurs l'expérience des autres utilisateurs sur les Serveurs.",
           "Les Articles numériques cosmétiques sur le Site ne reproduisent pas visuellement une Minecraft Player Cape.",
           "Les cristaux et toute autre monnaie virtuelle sur le Site ou les Serveurs n'ont aucune valeur réelle — pas de retrait, pas de conversion en argent réel, pas d'utilisation ailleurs que sur nos Serveurs, et rien qui ressemble ou prétende être des Minecoins ou toute autre monnaie de Mojang ou Microsoft.",
@@ -463,6 +463,82 @@
         "heading": "Des questions ?",
         "paragraphs": [
           "Écrivez à privacy@minecraftsgame.com."
+        ]
+      }
+    ]
+  },
+  "billing": {
+    "badge": "Mentions légales",
+    "title": "Politique de facturation, de remboursements et de rétrofacturation",
+    "lastUpdated": "20 septembre 2026",
+    "intro": [],
+    "sections": [
+      {
+        "heading": "Aperçu",
+        "paragraphs": [
+          "Voici comment fonctionne la facturation sur https://minecraftsgame.com/ — comment votre solde et vos éventuels achats récurrents sont gérés, et que faire si un débit semble incorrect avant d'en parler à votre banque. Acheter un Article numérique, recharger votre solde ou effectuer tout autre achat sur le Site signifie que vous acceptez ce qui suit. À lire en parallèle de nos Conditions générales, en particulier les Sections 13, 14 et 17.",
+          "Les achats se font en EUR (€), sauf indication contraire au paiement. Nous acceptons Visa et Mastercard, traités en toute sécurité par notre prestataire de paiement, FINTECH GLOBAL SOFTWARE LTD, conformément à la norme PCI-DSS. Tout est tokenisé ; Dexervil LTD ne voit ni ne conserve jamais le numéro complet de votre carte."
+        ]
+      },
+      {
+        "heading": "La facturation et votre solde, expliqués",
+        "paragraphs": [
+          "Vous pouvez acheter un Article numérique directement pour un Serveur choisi, ou recharger d'abord un solde et le dépenser au fur et à mesure — y compris pour des achats récurrents ou par abonnement (Section 4).",
+          "Rechargez votre solde et le débit est effectué immédiatement sur votre moyen de paiement, puis crédité sur le solde de votre compte dès que le paiement est validé, en EUR ou dans la devise avec laquelle vous avez payé. Vous verrez le solde dans votre Espace personnel, et il diminue du prix de chaque Article numérique que vous achetez.",
+          "Considérez le solde comme un avoir de boutique, pas comme de l'argent en banque. Il ne produit pas d'intérêts, ne peut être retiré ni échangé contre des espèces, et ne peut être transféré vers un autre compte ou une autre plateforme, sauf lorsque la loi le prévoit. Il ne sert qu'à acheter des Articles numériques sur ce Site, conformément aux Minecraft Usage Guidelines traitées à la Section 17 de nos Conditions générales."
+        ]
+      },
+      {
+        "heading": "Ce qu'il advient de votre solde si votre compte est fermé",
+        "paragraphs": [
+          "Si votre compte est fermé — que ce soit par vous ou par nous, au titre de nos Conditions générales — tout solde restant suit l'une de ces deux voies :"
+        ],
+        "bullets": [
+          "fermé parce que vous avez enfreint les Conditions ? Le solde restant peut être perdu, sous réserve de la loi ;",
+          "fermé pour toute autre raison ? Vous pouvez demander le remboursement de ce qu'il reste, sur votre moyen de paiement d'origine, une fois votre identité et votre paiement vérifiés comme décrit à la Section 5 ;",
+          "dans les deux cas, faites la demande dans les 90 jours suivant la fermeture — au-delà, nous pourrons le considérer comme perdu, sauf si la loi l'interdit."
+        ]
+      },
+      {
+        "heading": "Achats, annulation et remboursements",
+        "paragraphs": [
+          "4.1 Achats individuels. Une fois qu'un Article numérique arrive sur votre compte Serveur, l'achat est finalisé — en principe non remboursable, sauf si la loi l'exige ou si nous décidons, à notre discrétion, qu'un remboursement se justifie (par exemple, il n'est jamais arrivé, il y a eu une erreur de livraison de notre côté, ou vous avez été débité du mauvais montant). Le détail complet des cas où les remboursements s'appliquent ou non figure dans nos Conditions générales.",
+          "4.2 Achats récurrents et par abonnement. Vous avez acheté un privilège ou un rang de manière récurrente ? Chaque débit compte comme un achat à part entière et suit les mêmes règles que 4.1. Annulez à tout moment, gratuitement, via votre Espace personnel ou en nous contactant — détails à la Section 13 des Conditions générales. Annulez au moins 24 heures avant la prochaine date de facturation si vous ne voulez pas être débité à nouveau. Tout ce qui a déjà été livré avant votre annulation vous reste acquis.",
+          "4.3 Solde non utilisé. L'argent présent sur votre solde n'expire pas, mais nous pouvons le considérer comme dormant après 90 jours d'inactivité — nous vous contacterons avant de toucher à quoi que ce soit, comme la loi l'exige. En dehors d'une fermeture de compte (Section 3) ou d'une obligation légale, le solde non utilisé n'est pas remboursable.",
+          "4.4 Problèmes techniques. Débité mais l'Article numérique n'est jamais apparu à cause d'une panne technique de notre côté ? Nous le recréditons sur votre solde ou, si vous préférez et que c'est possible, remboursons votre moyen de paiement d'origine."
+        ]
+      },
+      {
+        "heading": "Obtenir de l'aide sur la facturation",
+        "paragraphs": [
+          "Une question sur un débit ? Parlez-nous-en avant de faire quoi que ce soit d'autre, y compris une rétrofacturation. La plupart des cas — un Article numérique qui n'est pas arrivé, un débit que vous ne reconnaissez pas, une question sur un achat récurrent — se règlent vite une fois que nous les examinons ensemble.",
+          "Écrivez à privacy@minecraftsgame.com en indiquant ce qui suit — plus vous en fournissez d'emblée, plus vite nous pourrons enquêter :"
+        ],
+        "bullets": [
+          "l'adresse e-mail associée à votre compte ;",
+          "approximativement quand l'achat a eu lieu ;",
+          "le montant et la devise débités ;",
+          "quel Article numérique et quel Serveur, le cas échéant ;",
+          "une capture d'écran ou une copie de la confirmation de paiement ou de la ligne du relevé bancaire ;",
+          "une capture d'écran du solde de votre Espace personnel, le cas échéant."
+        ]
+      },
+      {
+        "heading": "Notre délai de réponse",
+        "paragraphs": [
+          "Nous visons à accuser réception des demandes de facturation et de rétrofacturation sous 2 jours ouvrés, et à apporter une résolution ou une décision dans les 10 jours ouvrés suivant la réception de tout ce que nous avons demandé à la Section 5."
+        ]
+      },
+      {
+        "heading": "Rétrofacturations",
+        "paragraphs": [
+          "Essayez d'abord avec nous, via la Section 5 — c'est presque toujours plus rapide que de passer par votre banque. Cela dit, si une rétrofacturation est engagée pour un débit dûment autorisé, dont l'Article numérique a bien été livré, ou que nous avons déjà réglé au titre de la présente Politique, nous nous réservons le droit de la contester et de suspendre ou limiter votre compte pendant son examen."
+        ]
+      },
+      {
+        "heading": "Conformité aux Minecraft Usage Guidelines",
+        "paragraphs": [
+          "Les Usage Guidelines de Mojang encadrent la façon dont nous gérons la facturation ici. Concrètement : les prix et les détails des Articles numériques sont publiés sur le Site avant tout achat ; vous disposez d'un historique d'achats en ligne pour tout ce qui est payé en argent réel, via votre Espace personnel ; et votre solde, ainsi que les cristaux ou toute autre monnaie en jeu, n'a aucune valeur réelle et ne peut être retiré, échangé ni sorti du Site ou de nos Serveurs. Rien de tout cela ne prévaut sur la Section 17 de nos Conditions générales."
         ]
       }
     ]
