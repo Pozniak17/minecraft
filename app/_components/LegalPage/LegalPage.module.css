@@ -49,6 +49,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 20px;
+  text-align: left;
 }
 
 .body {
@@ -63,8 +64,6 @@
 .block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 10px;
   padding: 20px;
   border-radius: var(--radius-card, 20px);
@@ -76,6 +75,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+  text-align: center;
   color: var(--color-text, #fff);
   font-family: var(--font-main, Montserrat), sans-serif;
   font-size: 16px;
@@ -93,17 +93,15 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 21px;
-  text-align: center;
+  text-align: left;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
   margin: 0;
-  padding-left: 0;
-  list-style: none;
+  padding-left: 20px;
 }
 
 .listItem {
@@ -111,7 +109,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 21px;
-  text-align: center;
+  text-align: left;
 }
 
 .companyDetailsWrap {
