@@ -1,91 +1,90 @@
 {
   "nav": {
-    "home": "G\u0142\u00f3wna",
+    "home": "Główna",
     "servers": "Serwery",
     "store": "Sklep",
-    "howToStart": "Jak zacz\u0105\u0107",
+    "howToStart": "Jak zacząć",
     "blog": "Blog",
     "about": "O nas",
     "faq": "FAQ"
   },
   "legal": {
-    "privacy": "Prywatno\u015b\u0107",
+    "privacy": "Prywatność",
     "terms": "Regulamin",
     "cookies": "Cookies"
   },
   "shared": {
     "logoAlt": "Logo gry Minecraft",
-    "openMenu": "Otw\u00f3rz menu",
+    "openMenu": "Otwórz menu",
     "closeMenu": "Zamknij menu",
-    "mainNav": "G\u0142\u00f3wna nawigacja",
-    "browseSite": "Przegl\u0105daj witryn\u0119",
-    "myWorkspace": "M\u00f3j obszar",
+    "mainNav": "Główna nawigacja",
+    "browseSite": "Przeglądaj witrynę",
+    "myWorkspace": "Mój obszar",
     "settings": "Ustawienia",
-    "logOut": "Wyloguj si\u0119",
-    "loggingOut": "Wylogowywanie\u2026",
-    "soon": "Wkr\u00f3tce",
+    "logOut": "Wyloguj się",
+    "loggingOut": "Wylogowywanie…",
+    "soon": "Wkrótce",
     "profileAlt": "Profil"
   },
   "header": {
-    "goToDashboard": "Przejd\u017a do panelu",
-    "logIn": "Zaloguj si\u0119",
-    "signUp": "Zarejestruj si\u0119"
+    "goToDashboard": "Przejdź do panelu",
+    "logIn": "Zaloguj się",
+    "signUp": "Zarejestruj się"
   },
   "mobileNav": {
     "mobileNavLabel": "Nawigacja mobilna",
-    "logIn": "Zaloguj si\u0119",
-    "signUp": "Zarejestruj si\u0119",
+    "logIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
     "serversTitle": "Poznaj nasze serwery",
-    "serversSubtitle": "Trzy \u015bwiaty \u2014 \u0141atwy, Normalny i Trudny",
-    "community": "Spo\u0142eczno\u015b\u0107"
+    "serversSubtitle": "Trzy światy — Łatwy, Normalny i Trudny",
+    "community": "Społeczność"
   },
   "footer": {
     "legalAddressAlt": "DEXERVIL LTD, Company number 17345695, Waterside House, Enterprise Park, Ground Floor, Sunderland, SR5 2TZ, United Kingdom",
     "mainTitle": "Menu",
     "legalTitle": "Prawne",
     "contacts": "Kontakt",
-    "howToStartPlaying": "Jak zacz\u0105\u0107 gra\u0107",
-    "privacyPolicy": "Polityka prywatno\u015bci",
+    "howToStartPlaying": "Jak zacząć grać",
+    "privacyPolicy": "Polityka prywatności",
     "cookiePolicy": "Polityka cookies",
     "termsAndConditions": "Regulamin",
-    "deliveryPolicy": "Polityka dostawy",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. Wszelkie prawa zastrze\u017cone."
+    "copyright": "© 2026 Adventures in Minecraft. Wszelkie prawa zastrzeżone."
   },
   "dash": {
     "dashboard": "Panel",
     "shop": "Sklep",
     "servers": "Serwery",
     "cart": "Koszyk",
-    "history": "Historia zakup\u00f3w",
+    "history": "Historia zakupów",
     "top": "Top / Rankingi",
     "tournaments": "Turnieje",
-    "howToStart": "Jak zacz\u0105\u0107"
+    "howToStart": "Jak zacząć"
   },
   "dashNav": {
     "dashboardNav": "Nawigacja panelu",
-    "dashboardHome": "Strona g\u0142\u00f3wna panelu",
-    "topUpCrystals": "Do\u0142aduj kryszta\u0142y"
+    "dashboardHome": "Strona główna panelu",
+    "topUpCrystals": "Doładuj kryształy"
   },
   "cookie": {
     "ariaLabel": "Zgoda na pliki cookie",
-    "title": "U\u017cywamy plik\u00f3w cookie",
-    "text": "U\u017cywamy plik\u00f3w cookie, aby utrzyma\u0107 Ci\u0119 zalogowanym, zabezpieczy\u0107 sesj\u0119 i ulepszy\u0107 Twoje do\u015bwiadczenia. Wi\u0119cej informacji w naszej <link>Polityce cookies</link>.",
-    "reject": "Odrzu\u0107",
+    "title": "Używamy plików cookie",
+    "text": "Używamy plików cookie, aby utrzymać Cię zalogowanym, zabezpieczyć sesję i ulepszyć Twoje doświadczenia. Więcej informacji w naszej <link>Polityce cookies</link>.",
+    "reject": "Odrzuć",
     "accept": "Akceptuj wszystkie"
   },
   "lang": {
-    "changeLanguage": "Zmie\u0144 j\u0119zyk"
+    "changeLanguage": "Zmień język"
   },
   "breadcrumb": {
-    "ariaLabel": "\u015acie\u017cka nawigacji"
+    "ariaLabel": "Ścieżka nawigacji"
   },
   "logout": {
     "closeDialog": "Zamknij okno dialogowe",
-    "title": "Wylogowa\u0107 si\u0119 z konta?",
-    "descMobile": "B\u0119dziesz musia\u0142 zalogowa\u0107 si\u0119 ponownie. Sesje w grze pozostaj\u0105 bez zmian.",
-    "descDesktop": "B\u0119dziesz musia\u0142 zalogowa\u0107 si\u0119 ponownie, aby uzyska\u0107 dost\u0119p do panelu, koszyka i aktywnych przywilej\u00f3w. Aktywne sesje w grze pozostaj\u0105 bez zmian.",
+    "title": "Wylogować się z konta?",
+    "descMobile": "Będziesz musiał zalogować się ponownie. Sesje w grze pozostają bez zmian.",
+    "descDesktop": "Będziesz musiał zalogować się ponownie, aby uzyskać dostęp do panelu, koszyka i aktywnych przywilejów. Aktywne sesje w grze pozostają bez zmian.",
     "signedInAs": "Zalogowany jako",
     "cancel": "Anuluj",
-    "autoExpire": "Sesje wygasaj\u0105 po 7 dniach braku aktywno\u015bci"
+    "autoExpire": "Sesje wygasają po 7 dniach braku aktywności"
   }
 }

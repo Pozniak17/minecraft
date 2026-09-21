@@ -3,53 +3,52 @@
     "home": "Inicio",
     "servers": "Servidores",
     "store": "Tienda",
-    "howToStart": "C\u00f3mo empezar",
+    "howToStart": "Cómo empezar",
     "blog": "Blog",
     "about": "Acerca de",
     "faq": "FAQ"
   },
   "legal": {
     "privacy": "Privacidad",
-    "terms": "T\u00e9rminos",
+    "terms": "Términos",
     "cookies": "Cookies"
   },
   "shared": {
     "logoAlt": "Logo del juego Minecraft",
-    "openMenu": "Abrir men\u00fa",
-    "closeMenu": "Cerrar men\u00fa",
-    "mainNav": "Navegaci\u00f3n principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mainNav": "Navegación principal",
     "browseSite": "Explorar el sitio",
     "myWorkspace": "Mi espacio",
-    "settings": "Configuraci\u00f3n",
-    "logOut": "Cerrar sesi\u00f3n",
-    "loggingOut": "Cerrando sesi\u00f3n\u2026",
-    "soon": "Pr\u00f3ximamente",
+    "settings": "Configuración",
+    "logOut": "Cerrar sesión",
+    "loggingOut": "Cerrando sesión…",
+    "soon": "Próximamente",
     "profileAlt": "Perfil"
   },
   "header": {
     "goToDashboard": "Ir al panel",
-    "logIn": "Iniciar sesi\u00f3n",
+    "logIn": "Iniciar sesión",
     "signUp": "Registrarse"
   },
   "mobileNav": {
-    "mobileNavLabel": "Navegaci\u00f3n m\u00f3vil",
-    "logIn": "Iniciar sesi\u00f3n",
+    "mobileNavLabel": "Navegación móvil",
+    "logIn": "Iniciar sesión",
     "signUp": "Registrarse",
     "serversTitle": "Explora nuestros servidores",
-    "serversSubtitle": "Tres mundos \u2014 F\u00e1cil, Normal y Dif\u00edcil",
+    "serversSubtitle": "Tres mundos — Fácil, Normal y Difícil",
     "community": "Comunidad"
   },
   "footer": {
     "legalAddressAlt": "DEXERVIL LTD, Company number 17345695, Waterside House, Enterprise Park, Ground Floor, Sunderland, SR5 2TZ, United Kingdom",
-    "mainTitle": "Men\u00fa",
+    "mainTitle": "Menú",
     "legalTitle": "Legal",
     "contacts": "Contacto",
-    "howToStartPlaying": "C\u00f3mo empezar a jugar",
-    "privacyPolicy": "Pol\u00edtica de privacidad",
-    "cookiePolicy": "Pol\u00edtica de cookies",
-    "termsAndConditions": "T\u00e9rminos y condiciones",
-    "deliveryPolicy": "Pol\u00edtica de entrega",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. Todos los derechos reservados."
+    "howToStartPlaying": "Cómo empezar a jugar",
+    "privacyPolicy": "Política de privacidad",
+    "cookiePolicy": "Política de cookies",
+    "termsAndConditions": "Términos y condiciones",
+    "copyright": "© 2026 Adventures in Minecraft. Todos los derechos reservados."
   },
   "dash": {
     "dashboard": "Panel",
@@ -57,19 +56,19 @@
     "servers": "Servidores",
     "cart": "Carrito",
     "history": "Historial de compras",
-    "top": "Top / Clasificaci\u00f3n",
+    "top": "Top / Clasificación",
     "tournaments": "Torneos",
-    "howToStart": "C\u00f3mo empezar"
+    "howToStart": "Cómo empezar"
   },
   "dashNav": {
-    "dashboardNav": "Navegaci\u00f3n del panel",
+    "dashboardNav": "Navegación del panel",
     "dashboardHome": "Inicio del panel",
     "topUpCrystals": "Recargar cristales"
   },
   "cookie": {
     "ariaLabel": "Consentimiento de cookies",
     "title": "Usamos cookies",
-    "text": "Usamos cookies para mantenerle conectado, proteger su sesi\u00f3n y mejorar su experiencia. M\u00e1s informaci\u00f3n en nuestra <link>Pol\u00edtica de cookies</link>.",
+    "text": "Usamos cookies para mantenerle conectado, proteger su sesión y mejorar su experiencia. Más información en nuestra <link>Política de cookies</link>.",
     "reject": "Rechazar",
     "accept": "Aceptar todo"
   },
@@ -77,15 +76,15 @@
     "changeLanguage": "Cambiar idioma"
   },
   "breadcrumb": {
-    "ariaLabel": "Ruta de navegaci\u00f3n"
+    "ariaLabel": "Ruta de navegación"
   },
   "logout": {
-    "closeDialog": "Cerrar di\u00e1logo",
-    "title": "\u00bfCerrar sesi\u00f3n?",
-    "descMobile": "Deber\u00e1 iniciar sesi\u00f3n de nuevo. Las sesiones en el juego no se ven afectadas.",
-    "descDesktop": "Deber\u00e1 iniciar sesi\u00f3n de nuevo para acceder al panel, carrito y privilegios activos. Las sesiones en el juego no se ven afectadas.",
+    "closeDialog": "Cerrar diálogo",
+    "title": "¿Cerrar sesión?",
+    "descMobile": "Deberá iniciar sesión de nuevo. Las sesiones en el juego no se ven afectadas.",
+    "descDesktop": "Deberá iniciar sesión de nuevo para acceder al panel, carrito y privilegios activos. Las sesiones en el juego no se ven afectadas.",
     "signedInAs": "Conectado como",
     "cancel": "Cancelar",
-    "autoExpire": "Las sesiones expiran tras 7 d\u00edas de inactividad"
+    "autoExpire": "Las sesiones expiran tras 7 días de inactividad"
   }
 }

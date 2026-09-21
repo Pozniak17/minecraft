@@ -22,7 +22,6 @@ const staticRoutes: { path: string; priority: number; changeFrequency: Entry['ch
   { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/delivery-policy', priority: 0.3, changeFrequency: 'yearly' },
 ];
 
 function localizedAlternates(path: string): NonNullable<Entry['alternates']>['languages'] {

@@ -22,7 +22,7 @@
     "myWorkspace": "My workspace",
     "settings": "Settings",
     "logOut": "Log out",
-    "loggingOut": "Logging out\u2026",
+    "loggingOut": "Logging out…",
     "soon": "Soon",
     "profileAlt": "Profile"
   },
@@ -36,7 +36,7 @@
     "logIn": "Log in",
     "signUp": "Sign up",
     "serversTitle": "Explore our servers",
-    "serversSubtitle": "Three worlds \u2014 Easy, Normal and Hard",
+    "serversSubtitle": "Three worlds — Easy, Normal and Hard",
     "community": "Community"
   },
   "footer": {
@@ -48,8 +48,7 @@
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
     "termsAndConditions": "Terms and Conditions",
-    "deliveryPolicy": "Delivery Policy",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. All rights reserved."
+    "copyright": "© 2026 Adventures in Minecraft. All rights reserved."
   },
   "dash": {
     "dashboard": "Dashboard",

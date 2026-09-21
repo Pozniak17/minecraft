@@ -838,11 +838,6 @@ export default function Cart() {
                   {chunks}
                 </Link>
               ),
-              delivery: chunks => (
-                <Link href="/delivery-policy" className={styles.consentLink}>
-                  {chunks}
-                </Link>
-              ),
             })}
           </span>
         </label>

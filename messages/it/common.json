@@ -22,7 +22,7 @@
     "myWorkspace": "Il mio spazio",
     "settings": "Impostazioni",
     "logOut": "Esci",
-    "loggingOut": "Disconnessione\u2026",
+    "loggingOut": "Disconnessione…",
     "soon": "Presto",
     "profileAlt": "Profilo"
   },
@@ -36,8 +36,8 @@
     "logIn": "Accedi",
     "signUp": "Registrati",
     "serversTitle": "Esplora i nostri server",
-    "serversSubtitle": "Tre mondi \u2014 Facile, Normale e Difficile",
-    "community": "Comunit\u00e0"
+    "serversSubtitle": "Tre mondi — Facile, Normale e Difficile",
+    "community": "Comunità"
   },
   "footer": {
     "legalAddressAlt": "DEXERVIL LTD, Company number 17345695, Waterside House, Enterprise Park, Ground Floor, Sunderland, SR5 2TZ, United Kingdom",
@@ -48,8 +48,7 @@
     "privacyPolicy": "Informativa sulla privacy",
     "cookiePolicy": "Informativa sui cookie",
     "termsAndConditions": "Termini e condizioni",
-    "deliveryPolicy": "Politica di consegna",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. Tutti i diritti riservati."
+    "copyright": "© 2026 Adventures in Minecraft. Tutti i diritti riservati."
   },
   "dash": {
     "dashboard": "Dashboard",
@@ -69,7 +68,7 @@
   "cookie": {
     "ariaLabel": "Consenso cookie",
     "title": "Utilizziamo i cookie",
-    "text": "Utilizziamo i cookie per mantenerti connesso, proteggere la sessione e migliorare la tua esperienza. Scopri di pi\u00f9 nella nostra <link>Informativa sui cookie</link>.",
+    "text": "Utilizziamo i cookie per mantenerti connesso, proteggere la sessione e migliorare la tua esperienza. Scopri di più nella nostra <link>Informativa sui cookie</link>.",
     "reject": "Rifiuta",
     "accept": "Accetta tutto"
   },
@@ -81,11 +80,11 @@
   },
   "logout": {
     "closeDialog": "Chiudi finestra",
-    "title": "Disconnettersi dall\u2019account?",
+    "title": "Disconnettersi dall’account?",
     "descMobile": "Dovrai accedere di nuovo. Le sessioni di gioco non vengono influenzate.",
     "descDesktop": "Dovrai accedere di nuovo per accedere alla dashboard, al carrello e ai privilegi attivi. Le sessioni di gioco attive non vengono influenzate.",
     "signedInAs": "Acceduto come",
     "cancel": "Annulla",
-    "autoExpire": "Le sessioni scadono dopo 7 giorni di inattivit\u00e0"
+    "autoExpire": "Le sessioni scadono dopo 7 giorni di inattività"
   }
 }

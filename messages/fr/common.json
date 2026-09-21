@@ -3,13 +3,13 @@
     "home": "Accueil",
     "servers": "Serveurs",
     "store": "Boutique",
-    "howToStart": "D\u00e9buter",
+    "howToStart": "Débuter",
     "blog": "Blog",
-    "about": "\u00c0 propos",
+    "about": "À propos",
     "faq": "FAQ"
   },
   "legal": {
-    "privacy": "Confidentialit\u00e9",
+    "privacy": "Confidentialité",
     "terms": "Conditions",
     "cookies": "Cookies"
   },
@@ -20,24 +20,24 @@
     "mainNav": "Navigation principale",
     "browseSite": "Parcourir le site",
     "myWorkspace": "Mon espace",
-    "settings": "Param\u00e8tres",
-    "logOut": "Se d\u00e9connecter",
-    "loggingOut": "D\u00e9connexion\u2026",
-    "soon": "Bient\u00f4t",
+    "settings": "Paramètres",
+    "logOut": "Se déconnecter",
+    "loggingOut": "Déconnexion…",
+    "soon": "Bientôt",
     "profileAlt": "Profil"
   },
   "header": {
     "goToDashboard": "Tableau de bord",
     "logIn": "Connexion",
-    "signUp": "S\u2019inscrire"
+    "signUp": "S’inscrire"
   },
   "mobileNav": {
     "mobileNavLabel": "Navigation mobile",
     "logIn": "Connexion",
-    "signUp": "S\u2019inscrire",
-    "serversTitle": "D\u00e9couvrir nos serveurs",
-    "serversSubtitle": "Trois mondes \u2014 Facile, Normal et Difficile",
-    "community": "Communaut\u00e9"
+    "signUp": "S’inscrire",
+    "serversTitle": "Découvrir nos serveurs",
+    "serversSubtitle": "Trois mondes — Facile, Normal et Difficile",
+    "community": "Communauté"
   },
   "footer": {
     "legalAddressAlt": "DEXERVIL LTD, Company number 17345695, Waterside House, Enterprise Park, Ground Floor, Sunderland, SR5 2TZ, United Kingdom",
@@ -45,11 +45,10 @@
     "legalTitle": "Juridique",
     "contacts": "Contacts",
     "howToStartPlaying": "Comment commencer",
-    "privacyPolicy": "Politique de confidentialit\u00e9",
+    "privacyPolicy": "Politique de confidentialité",
     "cookiePolicy": "Politique des cookies",
-    "termsAndConditions": "Conditions d\u2019utilisation",
-    "deliveryPolicy": "Politique de livraison",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. Tous droits r\u00e9serv\u00e9s."
+    "termsAndConditions": "Conditions d’utilisation",
+    "copyright": "© 2026 Adventures in Minecraft. Tous droits réservés."
   },
   "dash": {
     "dashboard": "Tableau de bord",
@@ -59,7 +58,7 @@
     "history": "Historique",
     "top": "Classement",
     "tournaments": "Tournois",
-    "howToStart": "D\u00e9buter"
+    "howToStart": "Débuter"
   },
   "dashNav": {
     "dashboardNav": "Navigation du tableau de bord",
@@ -69,7 +68,7 @@
   "cookie": {
     "ariaLabel": "Consentement aux cookies",
     "title": "Nous utilisons des cookies",
-    "text": "Nous utilisons des cookies pour vous maintenir connect\u00e9, s\u00e9curiser votre session et am\u00e9liorer votre exp\u00e9rience. En savoir plus dans notre <link>Politique des cookies</link>.",
+    "text": "Nous utilisons des cookies pour vous maintenir connecté, sécuriser votre session et améliorer votre expérience. En savoir plus dans notre <link>Politique des cookies</link>.",
     "reject": "Refuser",
     "accept": "Tout accepter"
   },
@@ -77,15 +76,15 @@
     "changeLanguage": "Changer de langue"
   },
   "breadcrumb": {
-    "ariaLabel": "Fil d\u2019Ariane"
+    "ariaLabel": "Fil d’Ariane"
   },
   "logout": {
-    "closeDialog": "Fermer la bo\u00eete de dialogue",
-    "title": "Se d\u00e9connecter du compte\u00a0?",
-    "descMobile": "Vous devrez vous reconnecter. Les sessions en jeu ne sont pas affect\u00e9es.",
-    "descDesktop": "Vous devrez vous reconnecter pour acc\u00e9der au tableau de bord, panier et privil\u00e8ges actifs. Les sessions en jeu restent inchang\u00e9es.",
-    "signedInAs": "Connect\u00e9 en tant que",
+    "closeDialog": "Fermer la boîte de dialogue",
+    "title": "Se déconnecter du compte ?",
+    "descMobile": "Vous devrez vous reconnecter. Les sessions en jeu ne sont pas affectées.",
+    "descDesktop": "Vous devrez vous reconnecter pour accéder au tableau de bord, panier et privilèges actifs. Les sessions en jeu restent inchangées.",
+    "signedInAs": "Connecté en tant que",
     "cancel": "Annuler",
-    "autoExpire": "Les sessions expirent apr\u00e8s 7\u00a0jours d'inactivit\u00e9"
+    "autoExpire": "Les sessions expirent après 7 jours d'inactivité"
   }
 }

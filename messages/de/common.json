@@ -5,7 +5,7 @@
     "store": "Shop",
     "howToStart": "Erste Schritte",
     "blog": "Blog",
-    "about": "\u00dcber uns",
+    "about": "Über uns",
     "faq": "FAQ"
   },
   "legal": {
@@ -15,14 +15,14 @@
   },
   "shared": {
     "logoAlt": "Minecraft-Spiellogo",
-    "openMenu": "Men\u00fc \u00f6ffnen",
-    "closeMenu": "Men\u00fc schlie\u00dfen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
     "mainNav": "Hauptnavigation",
     "browseSite": "Seite durchsuchen",
     "myWorkspace": "Mein Bereich",
     "settings": "Einstellungen",
     "logOut": "Abmelden",
-    "loggingOut": "Abmelden\u2026",
+    "loggingOut": "Abmelden…",
     "soon": "Bald",
     "profileAlt": "Profil"
   },
@@ -36,7 +36,7 @@
     "logIn": "Anmelden",
     "signUp": "Registrieren",
     "serversTitle": "Unsere Server entdecken",
-    "serversSubtitle": "Drei Welten \u2014 Leicht, Normal und Schwer",
+    "serversSubtitle": "Drei Welten — Leicht, Normal und Schwer",
     "community": "Community"
   },
   "footer": {
@@ -44,12 +44,11 @@
     "mainTitle": "Navigation",
     "legalTitle": "Rechtliches",
     "contacts": "Kontakt",
-    "howToStartPlaying": "Wie man anf\u00e4ngt",
+    "howToStartPlaying": "Wie man anfängt",
     "privacyPolicy": "Datenschutzrichtlinie",
     "cookiePolicy": "Cookie-Richtlinie",
     "termsAndConditions": "Nutzungsbedingungen",
-    "deliveryPolicy": "Lieferrichtlinie",
-    "copyright": "\u00a9 2026 Adventures in Minecraft. Alle Rechte vorbehalten."
+    "copyright": "© 2026 Adventures in Minecraft. Alle Rechte vorbehalten."
   },
   "dash": {
     "dashboard": "Dashboard",
@@ -74,18 +73,18 @@
     "accept": "Alle akzeptieren"
   },
   "lang": {
-    "changeLanguage": "Sprache \u00e4ndern"
+    "changeLanguage": "Sprache ändern"
   },
   "breadcrumb": {
     "ariaLabel": "Breadcrumb"
   },
   "logout": {
-    "closeDialog": "Dialog schlie\u00dfen",
+    "closeDialog": "Dialog schließen",
     "title": "Vom Konto abmelden?",
-    "descMobile": "Sie m\u00fcssen sich erneut anmelden. Spielsitzungen bleiben unber\u00fchrt.",
-    "descDesktop": "Sie m\u00fcssen sich erneut anmelden, um auf Dashboard, Warenkorb und Privilegien zuzugreifen. Aktive Spielsitzungen bleiben unber\u00fchrt.",
+    "descMobile": "Sie müssen sich erneut anmelden. Spielsitzungen bleiben unberührt.",
+    "descDesktop": "Sie müssen sich erneut anmelden, um auf Dashboard, Warenkorb und Privilegien zuzugreifen. Aktive Spielsitzungen bleiben unberührt.",
     "signedInAs": "Angemeldet als",
     "cancel": "Abbrechen",
-    "autoExpire": "Sitzungen laufen nach 7 Tagen Inaktivit\u00e4t ab"
+    "autoExpire": "Sitzungen laufen nach 7 Tagen Inaktivität ab"
   }
 }
